@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-    <link rel="preconnect" href="https://www.larksuite.com">
-<link rel="dns-prefetch" href="https://www.larksuite.com">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Kết nối sớm tới Lark -->
+    <link rel="preconnect" href="https://rjtj1yaw65k.sg.larksuite.com">
+    <link rel="dns-prefetch" href="https://rjtj1yaw65k.sg.larksuite.com">
 
     <title>Cổng vận hành - Tascus Food</title>
 
@@ -69,12 +73,7 @@
             align-items: center;
             justify-content: center;
 
-            font-size: 18px;
-            font-weight: 650;
-
-            color: #222;
-
-            letter-spacing: -0.5px;
+            overflow: hidden;
         }
 
         .logo img {
@@ -137,6 +136,8 @@
             letter-spacing: 0.8px;
 
             text-transform: uppercase;
+
+            white-space: nowrap;
         }
 
         .section-title::after {
@@ -186,12 +187,16 @@
 
             color: inherit;
 
+            cursor: pointer;
+
             transition:
-                transform 0.15s ease,
-                box-shadow 0.15s ease,
-                border-color 0.15s ease;
+                transform 0.12s ease,
+                box-shadow 0.12s ease,
+                border-color 0.12s ease;
 
             -webkit-tap-highlight-color: transparent;
+
+            touch-action: manipulation;
         }
 
         .menu-button:hover {
@@ -234,6 +239,8 @@
             margin-right: 16px;
 
             color: #333;
+
+            line-height: 1;
         }
 
 
@@ -273,6 +280,8 @@
             font-weight: 600;
 
             margin-bottom: 5px;
+
+            line-height: 1.3;
         }
 
         .button-description {
@@ -300,8 +309,8 @@
             color: #999;
 
             transition:
-                transform 0.15s ease,
-                color 0.15s ease;
+                transform 0.12s ease,
+                color 0.12s ease;
         }
 
         .menu-button:hover .arrow {
@@ -436,6 +445,10 @@
                 margin-bottom: 14px;
             }
 
+            .logo img {
+                border-radius: 14px;
+            }
+
             .header h1 {
                 font-size: 23px;
             }
@@ -532,6 +545,7 @@
         }
 
     </style>
+
 </head>
 
 
@@ -547,7 +561,12 @@
     <header class="header">
 
         <div class="logo">
-           <img src="./tascuslogofinal-png-07.png" alt="Tascus Food">
+
+            <img
+                src="./tascuslogofinal-png-07.png"
+                alt="Tascus Food"
+            >
+
         </div>
 
         <h1>
@@ -555,7 +574,7 @@
         </h1>
 
         <p>
-            Trung tâm tác nghiệp dành cho nhân viên các cửa hàng <br>
+            Trung tâm tác nghiệp dành cho nhân viên các cửa hàng<br>
             Tascus Food Khương Trung và Thái Thịnh.
         </p>
 
@@ -580,8 +599,6 @@
             <a
                 id="link-order"
                 class="menu-button"
-                target="_blank"
-                rel="noopener"
             >
 
                 <div class="button-icon yellow">
@@ -612,8 +629,6 @@
             <a
                 id="link-confirm"
                 class="menu-button"
-                target="_blank"
-                rel="noopener"
             >
 
                 <div class="button-icon orange">
@@ -663,8 +678,6 @@
             <a
                 id="link-revenue"
                 class="menu-button"
-                target="_blank"
-                rel="noopener"
             >
 
                 <div class="button-icon orange">
@@ -695,8 +708,6 @@
             <a
                 id="link-waste"
                 class="menu-button"
-                target="_blank"
-                rel="noopener"
             >
 
                 <div class="button-icon red">
@@ -745,8 +756,6 @@
             <a
                 id="link-log"
                 class="menu-button"
-                target="_blank"
-                rel="noopener"
             >
 
                 <div class="button-icon">
@@ -795,8 +804,6 @@
             <a
                 id="link-khuong-trung"
                 class="menu-button sop-button"
-                target="_blank"
-                rel="noopener"
             >
 
                 <div class="button-icon">
@@ -826,8 +833,6 @@
             <a
                 id="link-thai-thinh"
                 class="menu-button sop-button"
-                target="_blank"
-                rel="noopener"
             >
 
                 <div class="button-icon">
@@ -970,7 +975,7 @@ const CONFIG = {
 
 
 /* =====================================================
-   GÁN LINK CHO CÁC NÚT
+   GÁN LINK
 ===================================================== */
 
 const LINK_MAP = {
@@ -999,6 +1004,11 @@ const LINK_MAP = {
 };
 
 
+
+/* =====================================================
+   ÁP DỤNG LINK
+===================================================== */
+
 Object.entries(LINK_MAP).forEach(
     ([id, url]) => {
 
@@ -1018,4 +1028,5 @@ Object.entries(LINK_MAP).forEach(
 
 
 </body>
+
 </html>
