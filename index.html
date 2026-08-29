@@ -1,405 +1,889 @@
-```html
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Cổng vận hành - Tascus Food</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Arial,
+            sans-serif;
+
+        background: #f5f6f7;
+        color: #222;
+
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 24px 16px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 620px;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .logo {
+        width: 58px;
+        height: 58px;
+
+        margin: 0 auto 16px;
+
+        border-radius: 16px;
+
+        background: #fff;
+        border: 1px solid #e1e3e5;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        overflow: hidden;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 15px;
+    }
+
+    .header h1 {
+        font-size: 25px;
+        font-weight: 600;
+        letter-spacing: -0.4px;
+        margin-bottom: 8px;
+    }
+
+    .header p {
+        font-size: 14px;
+        line-height: 1.55;
+        color: #777;
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    .section {
+        margin-bottom: 25px;
+    }
+
+    .section:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        margin-bottom: 10px;
+        padding-left: 3px;
+    }
+
+    .section-title span {
+        font-size: 11px;
+        font-weight: 600;
+        color: #888;
+
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+
+        white-space: nowrap;
+    }
+
+    .section-title::after {
+        content: "";
+
+        flex: 1;
+
+        height: 1px;
+
+        background: #e2e4e6;
+    }
+
+    /* =========================
+       MENU
+    ========================= */
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* =========================
+       BUTTON
+    ========================= */
+
+    .menu-button {
+        width: 100%;
+
+        background: #fff;
+
+        border: 1px solid #e1e3e5;
+        border-radius: 16px;
+
+        padding: 20px;
+
+        display: flex;
+        align-items: center;
+
+        text-decoration: none;
+        color: inherit;
+
+        cursor: pointer;
+
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+
+        transition:
+            transform 0.1s ease,
+            box-shadow 0.1s ease,
+            border-color 0.1s ease;
+    }
+
+    .menu-button:hover {
+        border-color: #cfd2d5;
+
+        box-shadow:
+            0 7px 20px rgba(0, 0, 0, 0.06);
+
+        transform: translateY(-1px);
+    }
+
+    .menu-button:active {
+        transform: scale(0.975);
+
+        box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    /* =========================
+       ICON
+    ========================= */
+
+    .button-icon {
+        width: 48px;
+        height: 48px;
+
+        flex-shrink: 0;
+
+        border-radius: 13px;
+
+        background: #f1f2f3;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 22px;
+
+        margin-right: 16px;
+
+        color: #333;
+
+        line-height: 1;
+    }
+
+    /* =========================
+       TASCUS ACCENTS
+    ========================= */
+
+    .button-icon.yellow {
+        background: #faf6df;
+        color: #9b8420;
+    }
+
+    .button-icon.orange {
+        background: #fcf0e8;
+        color: #c5632c;
+    }
+
+    .button-icon.red {
+        background: #faecea;
+        color: #b94b42;
+    }
+
+    /* =========================
+       CONTENT
+    ========================= */
+
+    .button-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .button-title {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.3;
+
+        margin-bottom: 5px;
+    }
+
+    .button-description {
+        font-size: 13px;
+        line-height: 1.45;
+
+        color: #777;
+    }
+
+    /* =========================
+       ARROW
+    ========================= */
+
+    .arrow {
+        flex-shrink: 0;
+
+        margin-left: 12px;
+
+        font-size: 21px;
+        line-height: 1;
+
+        color: #999;
+
+        transition:
+            transform 0.1s ease,
+            color 0.1s ease;
+    }
+
+    .menu-button:hover .arrow {
+        color: #666;
+        transform: translateX(2px);
+    }
+
+    /* =========================
+       SOP
+    ========================= */
+
+    .sop-button {
+        min-height: 76px;
+
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .sop-button .button-icon {
+        width: 44px;
+        height: 44px;
+
+        margin-right: 14px;
+
+        font-size: 17px;
+    }
+
+    .sop-button .button-title {
+        font-size: 14px;
+        margin-bottom: 3px;
+    }
+
+    .sop-button .button-description {
+        font-size: 12px;
+    }
+
+    /* =========================
+       COMING SOON
+    ========================= */
+
+    .coming-soon {
+        background: #fafafa;
+        cursor: default;
+    }
+
+    .coming-soon:hover {
+        transform: none;
+
+        border-color: #e1e3e5;
+
+        box-shadow: none;
+    }
+
+    .coming-soon:active {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .coming-soon .button-icon {
+        background: #f1f2f3;
+        color: #999;
+    }
+
+    .coming-soon-badge {
+        flex-shrink: 0;
+
+        margin-left: 12px;
+
+        padding: 6px 9px;
+
+        border-radius: 8px;
+
+        background: #f0f1f2;
+
+        color: #999;
+
+        font-size: 10px;
+        font-weight: 600;
+
+        white-space: nowrap;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+        text-align: center;
+
+        margin-top: 25px;
+
+        font-size: 12px;
+
+        color: #999;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+        body {
+            align-items: flex-start;
+
+            padding:
+                max(28px, env(safe-area-inset-top))
+                16px
+                max(24px, env(safe-area-inset-bottom));
+        }
+
+        .container {
+            max-width: 480px;
+            margin: auto 0;
+        }
+
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            width: 54px;
+            height: 54px;
+
+            border-radius: 15px;
+
+            margin-bottom: 14px;
+        }
+
+        .logo img {
+            border-radius: 14px;
+        }
+
+        .header h1 {
+            font-size: 23px;
+        }
+
+        .header p {
+            font-size: 13px;
+        }
+
+        .section {
+            margin-bottom: 22px;
+        }
+
+        .menu {
+            gap: 11px;
+        }
+
+        .menu-button {
+            min-height: 96px;
+
+            padding: 18px 16px;
+
+            border-radius: 15px;
+        }
+
+        .button-icon {
+            width: 46px;
+            height: 46px;
+
+            margin-right: 13px;
+
+            border-radius: 12px;
+        }
+
+        .button-title {
+            font-size: 15px;
+        }
+
+        .button-description {
+            font-size: 12.5px;
+        }
+
+        .arrow {
+            font-size: 19px;
+        }
+
+        .sop-button {
+            min-height: 72px;
+        }
+
+        .sop-button .button-icon {
+            width: 43px;
+            height: 43px;
+        }
+    }
+
+    /* =========================
+       SMALL PHONES
+    ========================= */
+
+    @media (max-width: 360px) {
+
+        body {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .header h1 {
+            font-size: 21px;
+        }
+
+        .menu-button {
+            padding: 16px 13px;
+        }
+
+        .button-icon {
+            width: 42px;
+            height: 42px;
+
+            font-size: 19px;
+
+            margin-right: 11px;
+        }
+
+        .button-description {
+            font-size: 12px;
+        }
+
+        .coming-soon-badge {
+            padding: 5px 7px;
+            font-size: 9px;
+        }
+    }
+</style>
+```
+
+</head>
+
 <body>
 
 <main class="container">
 
-    <!-- =========================================
-         HEADER
-    ========================================== -->
+```
+<!-- HEADER -->
 
-    <header class="header">
+<header class="header">
 
-        <div class="logo">
-            <img
-                src="./tascuslogofinal-png-07.png"
-                alt="Tascus Food"
-            >
-        </div>
+    <div class="logo">
+        <img
+            src="./tascuslogofinal-png-07.png"
+            alt="Tascus Food"
+        >
+    </div>
 
-        <h1>Cổng vận hành</h1>
+    <h1>Cổng vận hành</h1>
 
-        <p>
-            Trung tâm tác nghiệp dành cho nhân viên các cửa hàng<br>
-            Tascus Food Khương Trung và Thái Thịnh.
-        </p>
+    <p>
+        Trung tâm tác nghiệp dành cho nhân viên các cửa hàng<br>
+        Tascus Food Khương Trung và Thái Thịnh.
+    </p>
 
-    </header>
+</header>
 
 
-    <!-- =========================================
-         TÁC NGHIỆP
-    ========================================== -->
+<!-- =========================
+     TÁC NGHIỆP
+========================== -->
 
-    <section class="section">
+<section class="section">
 
-        <div class="section-title">
-            <span>Tác nghiệp</span>
-        </div>
+    <div class="section-title">
+        <span>Tác nghiệp</span>
+    </div>
 
-        <div class="menu">
+    <div class="menu">
 
-            <!-- ĐẶT RAU BÁNH -->
+        <a
+            class="menu-button"
+            href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation"
+        >
 
-            <a
-                class="menu-button"
-                href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation"
-            >
+            <div class="button-icon yellow">
+                🥬
+            </div>
 
-                <div class="button-icon yellow">
-                    🥬
+            <div class="button-content">
+
+                <div class="button-title">
+                    Đặt rau, bánh
                 </div>
 
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Đặt rau, bánh
-                    </div>
-
-                    <div class="button-description">
-                        Tạo lệnh đặt hàng bánh và rau
-                        cho cửa hàng.
-                    </div>
-
-                </div>
-
-                <div class="arrow">›</div>
-
-            </a>
-
-
-            <!-- XÁC NHẬN BÁNH -->
-
-            <a
-                class="menu-button"
-                href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgdDj2XyZrIQqfrdH9nySoOg"
-            >
-
-                <div class="button-icon orange">
-                    ✓
-                </div>
-
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Xác nhận bánh
-                    </div>
-
-                    <div class="button-description">
-                        Xác nhận số lượng bánh đã nhận
-                        tại cửa hàng.
-                    </div>
-
-                </div>
-
-                <div class="arrow">›</div>
-
-            </a>
-
-
-            <!-- BẬT / TẮT MÓN TỰ ĐỘNG -->
-
-            <div class="menu-button coming-soon">
-
-                <div class="button-icon">
-                    ⚡
-                </div>
-
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Bật/Tắt món tự động trên app
-                    </div>
-
-                    <div class="button-description">
-                        Quản lý trạng thái món bán trên
-                        các ứng dụng đặt hàng.
-                    </div>
-
-                </div>
-
-                <div class="coming-soon-badge">
-                    SẮP RA MẮT
+                <div class="button-description">
+                    Tạo lệnh đặt hàng bánh và rau
+                    cho cửa hàng.
                 </div>
 
             </div>
 
-        </div>
+            <div class="arrow">›</div>
 
-    </section>
+        </a>
 
 
-    <!-- =========================================
-         BÁO CÁO
-    ========================================== -->
+        <a
+            class="menu-button"
+            href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgdDj2XyZrIQqfrdH9nySoOg"
+        >
 
-    <section class="section">
+            <div class="button-icon orange">
+                ✓
+            </div>
 
-        <div class="section-title">
-            <span>Báo cáo</span>
-        </div>
+            <div class="button-content">
 
-        <div class="menu">
-
-            <!-- DOANH THU -->
-
-            <a
-                class="menu-button"
-                href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb"
-            >
-
-                <div class="button-icon orange">
-                    ₫
+                <div class="button-title">
+                    Xác nhận bánh
                 </div>
 
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Báo cáo doanh thu
-                    </div>
-
-                    <div class="button-description">
-                        Gửi báo cáo doanh thu của
-                        cửa hàng.
-                    </div>
-
-                </div>
-
-                <div class="arrow">›</div>
-
-            </a>
-
-
-            <!-- HUỶ NGUYÊN VẬT LIỆU -->
-
-            <a
-                class="menu-button"
-                href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd"
-            >
-
-                <div class="button-icon red">
-                    !
-                </div>
-
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Báo cáo huỷ nguyên vật liệu
-                    </div>
-
-                    <div class="button-description">
-                        Ghi nhận nguyên vật liệu bị huỷ
-                        trong quá trình vận hành.
-                    </div>
-
-                </div>
-
-                <div class="arrow">›</div>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================================
-         VẬN HÀNH
-    ========================================== -->
-
-    <section class="section">
-
-        <div class="section-title">
-            <span>Vận hành</span>
-        </div>
-
-        <div class="menu">
-
-            <!-- NHẬT KÝ -->
-
-            <a
-                class="menu-button"
-                href="./OperationLogs.html"
-            >
-
-                <div class="button-icon">
-                    ◷
-                </div>
-
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Nhật ký vận hành
-                    </div>
-
-                    <div class="button-description">
-                        Ghi nhận và cập nhật các vấn đề
-                        phát sinh trong vận hành.
-                    </div>
-
-                </div>
-
-                <div class="arrow">›</div>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================================
-         QUY TRÌNH
-    ========================================== -->
-
-    <section class="section">
-
-        <div class="section-title">
-            <span>Quy trình vận hành tiêu chuẩn</span>
-        </div>
-
-        <div class="menu">
-
-            <!-- KHƯƠNG TRUNG -->
-
-            <a
-                class="menu-button sop-button"
-                href="https://rjtj1yaw65k.sg.larksuite.com/wiki/UE0wwgqeSi2pKskkDgalSbTjgJd?from=from_copylink"
-            >
-
-                <div class="button-icon">
-                    ≡
-                </div>
-
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Quy trình vận hành · 69 Khương Trung
-                    </div>
-
-                    <div class="button-description">
-                        Quy trình vận hành cửa hàng
-                    </div>
-
-                </div>
-
-                <div class="arrow">↗</div>
-
-            </a>
-
-
-            <!-- THÁI THỊNH -->
-
-            <a
-                class="menu-button sop-button"
-                href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd"
-            >
-
-                <div class="button-icon">
-                    ≡
-                </div>
-
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Quy trình vận hành · 122 Thái Thịnh
-                    </div>
-
-                    <div class="button-description">
-                        Quy trình vận hành cửa hàng
-                    </div>
-
-                </div>
-
-                <div class="arrow">↗</div>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================================
-         NHÂN VIÊN
-    ========================================== -->
-
-    <section class="section">
-
-        <div class="section-title">
-            <span>Nhân viên</span>
-        </div>
-
-        <div class="menu">
-
-            <!-- ĐÀO TẠO / KIỂM TRA -->
-
-            <div class="menu-button coming-soon">
-
-                <div class="button-icon">
-                    ✓
-                </div>
-
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Đào tạo / Kiểm tra
-                    </div>
-
-                    <div class="button-description">
-                        Học quy trình và kiểm tra kiến thức
-                        vận hành của nhân viên.
-                    </div>
-
-                </div>
-
-                <div class="coming-soon-badge">
-                    SẮP RA MẮT
+                <div class="button-description">
+                    Xác nhận số lượng bánh đã nhận
+                    tại cửa hàng.
                 </div>
 
             </div>
 
+            <div class="arrow">›</div>
 
-            <!-- SỔ TAY NHÂN VIÊN -->
+        </a>
 
-            <div class="menu-button coming-soon">
 
-                <div class="button-icon">
-                    +
+        <div class="menu-button coming-soon">
+
+            <div class="button-icon">
+                ⚡
+            </div>
+
+            <div class="button-content">
+
+                <div class="button-title">
+                    Bật/Tắt món tự động trên app
                 </div>
 
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Sổ tay nhân viên
-                    </div>
-
-                    <div class="button-description">
-                        Tài liệu hướng dẫn dành cho nhân viên
-                        Tascus Food.
-                    </div>
-
-                </div>
-
-                <div class="coming-soon-badge">
-                    SẮP RA MẮT
+                <div class="button-description">
+                    Quản lý trạng thái món bán trên
+                    các ứng dụng đặt hàng.
                 </div>
 
             </div>
 
+            <div class="coming-soon-badge">
+                SẮP RA MẮT
+            </div>
+
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
+<!-- =========================
+     BÁO CÁO
+========================== -->
 
-    <footer class="footer">
-        Tascus Food · Cổng vận hành
-    </footer>
+<section class="section">
+
+    <div class="section-title">
+        <span>Báo cáo</span>
+    </div>
+
+    <div class="menu">
+
+        <a
+            class="menu-button"
+            href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb"
+        >
+
+            <div class="button-icon orange">
+                ₫
+            </div>
+
+            <div class="button-content">
+
+                <div class="button-title">
+                    Báo cáo doanh thu
+                </div>
+
+                <div class="button-description">
+                    Gửi báo cáo doanh thu của
+                    cửa hàng.
+                </div>
+
+            </div>
+
+            <div class="arrow">›</div>
+
+        </a>
+
+
+        <a
+            class="menu-button"
+            href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd"
+        >
+
+            <div class="button-icon red">
+                !
+            </div>
+
+            <div class="button-content">
+
+                <div class="button-title">
+                    Báo cáo huỷ nguyên vật liệu
+                </div>
+
+                <div class="button-description">
+                    Ghi nhận nguyên vật liệu bị huỷ
+                    trong quá trình vận hành.
+                </div>
+
+            </div>
+
+            <div class="arrow">›</div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VẬN HÀNH
+========================== -->
+
+<section class="section">
+
+    <div class="section-title">
+        <span>Vận hành</span>
+    </div>
+
+    <div class="menu">
+
+        <a
+            class="menu-button"
+            href="./OperationLogs.html"
+        >
+
+            <div class="button-icon">
+                ◷
+            </div>
+
+            <div class="button-content">
+
+                <div class="button-title">
+                    Nhật ký vận hành
+                </div>
+
+                <div class="button-description">
+                    Ghi nhận và cập nhật các vấn đề
+                    phát sinh trong vận hành.
+                </div>
+
+            </div>
+
+            <div class="arrow">›</div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     QUY TRÌNH
+========================== -->
+
+<section class="section">
+
+    <div class="section-title">
+        <span>Quy trình vận hành tiêu chuẩn</span>
+    </div>
+
+    <div class="menu">
+
+        <a
+            class="menu-button sop-button"
+            href="https://rjtj1yaw65k.sg.larksuite.com/wiki/UE0wwgqeSi2pKskkDgalSbTjgJd?from=from_copylink"
+        >
+
+            <div class="button-icon">
+                ≡
+            </div>
+
+            <div class="button-content">
+
+                <div class="button-title">
+                    Quy trình vận hành · 69 Khương Trung
+                </div>
+
+                <div class="button-description">
+                    Quy trình vận hành cửa hàng
+                </div>
+
+            </div>
+
+            <div class="arrow">↗</div>
+
+        </a>
+
+
+        <a
+            class="menu-button sop-button"
+            href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd"
+        >
+
+            <div class="button-icon">
+                ≡
+            </div>
+
+            <div class="button-content">
+
+                <div class="button-title">
+                    Quy trình vận hành · 122 Thái Thịnh
+                </div>
+
+                <div class="button-description">
+                    Quy trình vận hành cửa hàng
+                </div>
+
+            </div>
+
+            <div class="arrow">↗</div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NHÂN VIÊN
+========================== -->
+
+<section class="section">
+
+    <div class="section-title">
+        <span>Nhân viên</span>
+    </div>
+
+    <div class="menu">
+
+        <div class="menu-button coming-soon">
+
+            <div class="button-icon">
+                +
+            </div>
+
+            <div class="button-content">
+
+                <div class="button-title">
+                    Sổ tay nhân viên
+                </div>
+
+                <div class="button-description">
+                    Tài liệu hướng dẫn dành cho nhân viên
+                    Tascus Food.
+                </div>
+
+            </div>
+
+            <div class="coming-soon-badge">
+                SẮP RA MẮT
+            </div>
+
+        </div>
+
+
+        <div class="menu-button coming-soon">
+
+            <div class="button-icon">
+                ✓
+            </div>
+
+            <div class="button-content">
+
+                <div class="button-title">
+                    Đào tạo / Kiểm tra
+                </div>
+
+                <div class="button-description">
+                    Học quy trình và kiểm tra kiến thức
+                    vận hành của nhân viên.
+                </div>
+
+            </div>
+
+            <div class="coming-soon-badge">
+                SẮP RA MẮT
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+    Tascus Food · Cổng vận hành
+</footer>
+```
 
 </main>
 
 </body>
-```
+</html>
