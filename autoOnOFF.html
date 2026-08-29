@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tắt món - Tascus Food</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    background: #f5f5f5;
+    color: #171717;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 22px 16px 35px;
+}
+
+/* HEADER */
+
+.header {
+    margin-bottom: 18px;
+}
+
+.brand {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    margin-top: 6px;
+    color: #888;
+    font-size: 13px;
+}
+
+/* STORE */
+
+.store {
+    background: #fff;
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 9px rgba(0,0,0,0.04);
+}
+
+.store-label {
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+    letter-spacing: .5px;
+    margin-bottom: 3px;
+}
+
+.store-name {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* SUMMARY */
+
+.summary {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.summary-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 14px;
+    padding: 13px;
+    box-shadow: 0 2px 9px rgba(0,0,0,0.035);
+}
+
+.summary-number {
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.summary-label {
+    margin-top: 3px;
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+}
+
+/* MENU */
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-item {
+    min-height: 66px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 13px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 9px rgba(0,0,0,0.04);
+    transition: background .2s, opacity .2s;
+}
+
+.menu-item.off {
+    background: #fafafa;
+}
+
+.menu-info {
+    min-width: 0;
+    padding-right: 14px;
+}
+
+.menu-name {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.menu-status {
+    margin-top: 4px;
+    font-size: 11px;
+    color: #777;
+}
+
+.menu-item.on .menu-status {
+    color: #c76a00;
+    font-weight: 600;
+}
+
+/* SWITCH */
+
+.switch {
+    position: relative;
+    width: 58px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    background: #d5d5d5;
+    border-radius: 50px;
+    transition: .22s ease;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 4px;
+    top: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,.18);
+    transition: .22s ease;
+}
+
+.switch input:checked + .slider {
+    background: #f28c28;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(26px);
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #aaa;
+    font-size: 10px;
+}
+
+.updated {
+    margin-top: 4px;
+}
+
+/* MOBILE */
+
+@media (max-width: 400px) {
+
+    .container {
+        padding: 17px 12px 28px;
+    }
+
+    .title {
+        font-size: 25px;
+    }
+
+    .menu-item {
+        min-height: 64px;
+        padding: 12px 13px;
+    }
+
+    .menu-name {
+        font-size: 14px;
+    }
+
+    .switch {
+        width: 56px;
+        height: 31px;
+    }
+
+    .slider::before {
+        width: 23px;
+        height: 23px;
+    }
+
+    .switch input:checked + .slider::before {
+        transform: translateX(25px);
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<div class="header">
+    <div class="brand">TASCUS FOOD</div>
+    <h1 class="title">Tắt món</h1>
+    <div class="subtitle">
+        Bật hoặc tắt món đang bán
+    </div>
+</div>
+
+<div class="store">
+    <div class="store-label">CỬA HÀNG</div>
+    <div class="store-name">69 Khương Trung</div>
+</div>
+
+<div class="summary">
+
+    <div class="summary-card">
+        <div class="summary-number" id="onCount">14</div>
+        <div class="summary-label">ĐANG BÁN</div>
+    </div>
+
+    <div class="summary-card">
+        <div class="summary-number" id="offCount">0</div>
+        <div class="summary-label">ĐANG TẮT</div>
+    </div>
+
+</div>
+
+<div class="menu-list" id="menuList"></div>
+
+<div class="footer">
+    Tascus Food · Hệ thống vận hành
+    <div class="updated" id="updated">
+        Chưa có thay đổi
+    </div>
+</div>
+```
+
+</div>
+
+<script>
+
+const dishes = [
+    "Burger",
+    "Crepe",
+    "Bánh mỳ",
+    "Mỳ Ý",
+    "Salad",
+    "Gà vòng",
+    "Gà viên",
+    "Trà chanh nha đam",
+    "Trà tắc nha đam",
+    "Trà Hisbicus Africa",
+    "Nước chanh vàng",
+    "Coca-cola",
+    "Khoai tây chiên",
+    "Khoai phủ bò"
+];
+
+const states = {};
+
+dishes.forEach((dish, index) => {
+    states[index] = true;
+});
+
+function renderMenu() {
+
+    const list = document.getElementById("menuList");
+
+    list.innerHTML = "";
+
+    dishes.forEach((dish, index) => {
+
+        const isOn = states[index];
+
+        const item = document.createElement("div");
+
+        item.className = "menu-item " + (isOn ? "on" : "off");
+
+        item.innerHTML = `
+            <div class="menu-info">
+                <div class="menu-name">${dish}</div>
+                <div class="menu-status">
+                    ${isOn ? "Đang bán" : "Đã tắt món"}
+                </div>
+            </div>
+
+            <label class="switch">
+                <input
+                    type="checkbox"
+                    ${isOn ? "checked" : ""}
+                    onchange="toggleDish(${index}, this.checked)"
+                >
+                <span class="slider"></span>
+            </label>
+        `;
+
+        list.appendChild(item);
+    });
+
+    updateSummary();
+}
+
+function toggleDish(index, value) {
+
+    states[index] = value;
+
+    renderMenu();
+
+    document.getElementById("updated").textContent =
+        "Cập nhật lúc " + getTime();
+
+    /*
+    ==========================================
+    ĐIỂM GẮN HTTP REQUEST
+    ==========================================
+
+    Sau này có thể gửi:
+
+    {
+        dish: dishes[index],
+        status: value ? "ON" : "OFF"
+    }
+
+    Ví dụ:
+
+    sendToLark({
+        dish: dishes[index],
+        status: value ? "ON" : "OFF"
+    });
+
+    ==========================================
+    */
+}
+
+function updateSummary() {
+
+    const on = Object.values(states).filter(Boolean).length;
+    const off = dishes.length - on;
+
+    document.getElementById("onCount").textContent = on;
+    document.getElementById("offCount").textContent = off;
+}
+
+function getTime() {
+
+    const now = new Date();
+
+    return now.toLocaleTimeString("vi-VN", {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+}
+
+renderMenu();
+
+</script>
+
+</body>
+</html>
