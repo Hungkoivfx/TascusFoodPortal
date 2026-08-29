@@ -11,6 +11,30 @@
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
+.back-button {
+display: inline-flex;
+align-items: center;
+gap: 7px;
+margin-bottom: 18px;
+padding: 9px 13px;
+background: #ffffff;
+color: #555;
+text-decoration: none;
+border-radius: 11px;
+font-size: 13px;
+font-weight: 600;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+transition: .15s ease;
+}
+
+.back-button span:first-child {
+font-size: 18px;
+line-height: 1;
+}
+
+.back-button:active {
+transform: scale(0.96);
+}
 
 body {
     margin: 0;
@@ -248,7 +272,7 @@ body {
 <body>
 
 <div class="container">
-
+<!-- BACK BUTTON --> <a href="index.html" class="back-button"> <span>←</span> <span>Quay lại</span> </a>
 
 <div class="header">
     <div class="brand">TASCUS FOOD</div>
