@@ -1,329 +1,627 @@
 <!DOCTYPE html>
 
 <html lang="vi">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Thư viện công thức - Tascus Food</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f5f6f8;
-        color: #222;
-        height: 100vh;
-        overflow: hidden;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    /* HEADER */
-    .header {
-        height: 64px;
-        background: #ffffff;
-        border-bottom: 1px solid #e5e7eb;
-        display: flex;
-        align-items: center;
-        padding: 0 24px;
-        position: relative;
-        z-index: 10;
-    }
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
 
-    .logo {
-        font-size: 21px;
-        font-weight: 700;
-        color: #222;
-    }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f6f8;
+    color: #222;
+    overflow: hidden;
+}
 
-    .logo span {
-        color: #777;
-        font-weight: 400;
-        margin-left: 8px;
-    }
 
-    /* MAIN */
-    .layout {
-        display: flex;
-        height: calc(100vh - 64px);
-    }
+/* =========================================
+   HEADER
+========================================= */
 
-    /* SIDEBAR */
-    .sidebar {
-        width: 250px;
-        min-width: 250px;
-        background: #ffffff;
-        border-right: 1px solid #e5e7eb;
-        padding: 20px 14px;
-        overflow-y: auto;
-    }
+.header {
+    height: 64px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
 
-    .sidebar-title {
-        font-size: 12px;
-        font-weight: 700;
-        color: #999;
-        text-transform: uppercase;
-        letter-spacing: 0.6px;
-        padding: 0 12px;
-        margin-bottom: 10px;
-    }
+    display: flex;
+    align-items: center;
 
-    .category {
-        width: 100%;
-        border: none;
-        background: transparent;
-        padding: 13px 12px;
-        margin-bottom: 3px;
-        border-radius: 9px;
-        text-align: left;
-        font-size: 15px;
-        color: #444;
-        cursor: pointer;
-        transition: 0.2s;
-    }
+    padding: 0 24px;
 
-    .category:hover {
-        background: #f3f4f6;
-    }
+    position: relative;
+    z-index: 10;
+}
 
-    .category.active {
-        background: #222;
-        color: #fff;
-        font-weight: 600;
-    }
 
-    /* CONTENT */
-    .content {
-        flex: 1;
-        overflow-y: auto;
-        padding: 28px 32px 50px;
-    }
+/* =========================================
+   BACK BUTTON
+========================================= */
 
-    .content- {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 22px;
-    }
+.back-button {
+    width: 40px;
+    height: 40px;
 
-    .content-title {
-        font-size: 24px;
-        font-weight: 700;
-    }
+    margin-right: 14px;
 
-    .content-count {
-        font-size: 13px;
-        color: #888;
-    }
+    padding: 0;
 
-    /* IMAGE GRID */
-    .recipe-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 22px;
-        max-width: 1100px;
-    }
+    border: none;
+    border-radius: 9px;
 
-    .recipe-card {
-        background: #ffffff;
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid #e5e7eb;
-        cursor: pointer;
-        transition: 0.2s;
-    }
+    background: #f3f4f6;
+    color: #333;
 
-    .recipe-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    }
+    font-size: 24px;
+    line-height: 40px;
 
-    .recipe-image {
-        width: 100%;
-        aspect-ratio: 16 / 10;
-        object-fit: cover;
-        display: block;
-        background: #eee;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    .recipe-info {
-        padding: 14px 16px;
-    }
+    cursor: pointer;
 
-    .recipe-name {
-        font-size: 16px;
-        font-weight: 600;
-    }
-
-    .recipe-number {
-        font-size: 12px;
-        color: #999;
-        margin-top: 5px;
-    }
-
-    /* IMAGE VIEWER */
-    .viewer {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.88);
-        z-index: 100;
-        align-items: center;
-        justify-content: center;
-        padding: 30px;
-    }
-
-    .viewer.show {
-        display: flex;
-    }
-
-    .viewer img {
-        max-width: 95%;
-        max-height: 90vh;
-        object-fit: contain;
-        border-radius: 6px;
-    }
-
-    .close {
-        position: absolute;
-        top: 20px;
-        right: 28px;
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        border: none;
-        background: rgba(255,255,255,0.15);
-        color: white;
-        font-size: 26px;
-        cursor: pointer;
-    }
-
-    .close:hover {
-        background: rgba(255,255,255,0.25);
-    }
-
-    /* MOBILE */
-    @media (max-width: 700px) {
-.back-button { width: 36px; height: 36px; margin-right: 9px; font-size: 21px; }
-        body {
-            overflow: hidden;
-        }
-
-        .header {
-            height: 58px;
-            padding: 0 16px;
-        }
-
-        .logo {
-            font-size: 18px;
-        }
-
-        .layout {
-            height: calc(100vh - 58px);
-        }
-
-        .sidebar {
-            width: 125px;
-            min-width: 125px;
-            padding: 14px 8px;
-        }
-
-        .sidebar-title {
-            padding: 0 8px;
-            font-size: 10px;
-        }
-
-        .category {
-            padding: 11px 8px;
-            font-size: 13px;
-        }
-
-        .content {
-            padding: 18px 14px 40px;
-        }
-
-        .content-title {
-            font-size: 20px;
-        }
-
-        .content-count {
-            font-size: 11px;
-        }
-
-        .recipe-grid {
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-
-        .recipe-info {
-            padding: 11px 13px;
-        }
-       .back-button {
-
-```
-width: 40px;
-height: 40px;
-
-margin-right: 14px;
-
-border: none;
-border-radius: 9px;
-
-background: #f3f4f6;
-color: #333;
-
-font-size: 24px;
-line-height: 40px;
-
-display: flex;
-align-items: center;
-justify-content: center;
-
-cursor: pointer;
-
-transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-```
-
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
 
 .back-button:hover {
-
-```
-background: #e5e7eb;
-```
-
+    background: #e5e7eb;
 }
 
 .back-button:active {
+    transform: scale(0.94);
+}
 
-```
-transform: scale(0.94);
-```
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    font-size: 21px;
+    font-weight: 700;
+    color: #222;
+}
+
+.logo span {
+    color: #777;
+    font-weight: 400;
+    margin-left: 8px;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.layout {
+    display: flex;
+
+    width: 100%;
+    height: calc(100vh - 64px);
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+
+    height: 100%;
+
+    background: #ffffff;
+
+    border-right: 1px solid #e5e7eb;
+
+    padding: 20px 14px;
+
+    overflow-y: auto;
+}
+
+.sidebar-title {
+    height: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: #999;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+
+    padding: 0 12px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   CATEGORY BUTTON
+========================================= */
+
+.category {
+    display: block;
+
+    width: 100%;
+
+    height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 0 12px;
+
+    margin: 0 0 3px 0;
+
+    border-radius: 9px;
+
+    text-align: left;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    line-height: 44px;
+
+    color: #444;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+
+    white-space: nowrap;
+}
+
+.category:hover {
+    background: #f3f4f6;
+}
+
+.category.active {
+    background: #222;
+
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 100%;
+
+    overflow-y: auto;
+
+    padding: 28px 32px 50px;
+}
+
+.content-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.content-title {
+    font-size: 24px;
+
+    font-weight: 700;
+}
+
+.content-count {
+    font-size: 13px;
+
+    color: #888;
+}
+
+
+/* =========================================
+   RECIPE GRID
+
+   DESKTOP:
+   2 ẢNH / HÀNG
+
+   ẢNH GIỮ NGUYÊN TỶ LỆ DỌC 2:3
+========================================= */
+
+.recipe-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+    width: 100%;
+
+    max-width: 1100px;
+}
+
+
+/* =========================================
+   RECIPE CARD
+========================================= */
+
+.recipe-card {
+    width: 100%;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e7eb;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   RECIPE IMAGE
+
+   ẢNH GỐC:
+   1024 × 1536
+
+   TỶ LỆ:
+   2 : 3
+
+   KHÔNG CROP
+   KHÔNG ÉP TỶ LỆ
+========================================= */
+
+.recipe-image {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+
+    background: #f5f5f5;
+
+    cursor: zoom-in;
+}
+
+
+/* =========================================
+   RECIPE INFO
+========================================= */
+
+.recipe-info {
+    padding: 14px 16px;
+}
+
+.recipe-name {
+    font-size: 16px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+.recipe-number {
+    font-size: 12px;
+
+    color: #999;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   IMAGE VIEWER
+========================================= */
+
+.viewer {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.90);
+
+    z-index: 100;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    cursor: zoom-out;
+}
+
+.viewer.show {
+    display: flex;
+}
+
+.viewer img {
+    display: block;
+
+    max-width: 95vw;
+
+    max-height: 95vh;
+
+    width: auto;
+
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 6px;
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.close {
+    position: absolute;
+
+    top: 20px;
+
+    right: 28px;
+
+    width: 42px;
+
+    height: 42px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    color: #ffffff;
+
+    font-size: 26px;
+
+    line-height: 42px;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.close:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .header {
+        height: 58px;
+
+        padding: 0 16px;
+    }
+
+
+    .back-button {
+        width: 36px;
+
+        height: 36px;
+
+        margin-right: 9px;
+
+        font-size: 21px;
+
+        line-height: 36px;
+    }
+
+
+    .logo {
+        font-size: 18px;
+    }
+
+
+    .logo span {
+        margin-left: 5px;
+    }
+
+
+    .layout {
+        height: calc(100vh - 58px);
+    }
+
+
+    .sidebar {
+        width: 125px;
+
+        min-width: 125px;
+
+        max-width: 125px;
+
+        padding: 14px 8px;
+    }
+
+
+    .sidebar-title {
+        padding: 0 8px;
+
+        font-size: 10px;
+
+        margin-bottom: 8px;
+    }
+
+
+    .category {
+        height: 40px;
+
+        min-height: 40px;
+
+        max-height: 40px;
+
+        padding: 0 8px;
+
+        font-size: 13px;
+
+        line-height: 40px;
+    }
+
+
+    .category.active {
+        height: 40px;
+
+        min-height: 40px;
+
+        max-height: 40px;
+
+        line-height: 40px;
+    }
+
+
+    .content {
+        padding: 18px 14px 40px;
+    }
+
+
+    .content-title {
+        font-size: 20px;
+    }
+
+
+    .content-count {
+        font-size: 11px;
+    }
+
+
+    /* MOBILE:
+       1 ẢNH / HÀNG */
+
+    .recipe-grid {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+
+    .recipe-info {
+        padding: 11px 13px;
+    }
+
+
+    .recipe-name {
+        font-size: 14px;
+    }
 
 }
 
+
+/* =========================================
+   MOBILE NHỎ
+========================================= */
+
+@media (max-width: 450px) {
+
+    .sidebar {
+        width: 110px;
+
+        min-width: 110px;
+
+        max-width: 110px;
     }
+
+
+    .category {
+        font-size: 12px;
+    }
+
+
+    .content {
+        padding:
+            15px
+            10px
+            30px;
+    }
+
+}
+
 </style>
 
 </head>
 
 <body>
 
+<!-- =========================================
+     HEADER
+========================================= -->
+
 <header class="header">
 
-```
+
 <button
     type="button"
     class="back-button"
     onclick="window.location.href='index.html'"
+    aria-label="Quay lại trang chủ"
 >
     ←
 </button>
+
 
 <div class="logo">
 
@@ -334,366 +632,573 @@ transform: scale(0.94);
     </span>
 
 </div>
-```
+
 
 </header>
 
-
 <div class="layout">
 
+<!-- =========================================
+     SIDEBAR
+========================================= -->
 
-<!-- CỘT TRÁI -->
 <aside class="sidebar">
 
-    <div class="sidebar-title">
-        Nhóm món
-    </div>
 
-    <button class="category active" onclick="showCategory('banhmi', this)">
-        🥖 Bánh mì
-    </button>
+<div class="sidebar-title">
+    Nhóm món
+</div>
 
-    <button class="category" onclick="showCategory('burger', this)">
-        🍔 Burger
-    </button>
 
-    <button class="category" onclick="showCategory('sandwich', this)">
-        🥪 Sandwich
-    </button>
+<button
+    type="button"
+    class="category active"
+    onclick="showCategory('banhmi', this)"
+>
+    🥖 Bánh mì
+</button>
 
-    <button class="category" onclick="showCategory('crepe', this)">
-        🥞 Crepe
-    </button>
 
-    <button class="category" onclick="showCategory('salad', this)">
-        🥗 Salad
-    </button>
+<button
+    type="button"
+    class="category"
+    onclick="showCategory('burger', this)"
+>
+    🍔 Burger
+</button>
 
-    <button class="category" onclick="showCategory('fries', this)">
-        🍟 Khoai tây
-    </button>
+
+<button
+    type="button"
+    class="category"
+    onclick="showCategory('sandwich', this)"
+>
+    🥪 Sandwich
+</button>
+
+
+<button
+    type="button"
+    class="category"
+    onclick="showCategory('crepe', this)"
+>
+    🥞 Crepe
+</button>
+
+
+<button
+    type="button"
+    class="category"
+    onclick="showCategory('salad', this)"
+>
+    🥗 Salad
+</button>
+
+
+<button
+    type="button"
+    class="category"
+    onclick="showCategory('fries', this)"
+>
+    🍟 Khoai tây
+</button>
+
+
+<button
+    type="button"
+    class="category"
+    onclick="showCategory('pasta', this)"
+>
+    🍝 Mỳ Ý
+</button>
+
+
+<button
+    type="button"
+    class="category"
+    onclick="showCategory('drink', this)"
+>
+    🍹 Đồ uống
+</button>
+
 
 </aside>
 
+<!-- =========================================
+     CONTENT
+========================================= -->
 
-<!-- CỘT PHẢI -->
 <main class="content">
 
-    <div class="content-header">
 
-        <div>
-            <div class="content-title" id="categoryTitle">
-                Bánh mì
-            </div>
-        </div>
+<div class="content-header">
 
-        <div class="content-count" id="recipeCount">
-            4 công thức
-        </div>
 
+    <div
+        class="content-title"
+        id="categoryTitle"
+    >
+        Bánh mì
     </div>
 
-    <div class="recipe-grid" id="recipeGrid"></div>
 
-</main>
+    <div
+        class="content-count"
+        id="recipeCount"
+    >
+        5 công thức
+    </div>
 
 
 </div>
 
-<!-- XEM ẢNH LỚN -->
 
-<div class="viewer" id="viewer" onclick="closeViewer(event)">
+<div
+    class="recipe-grid"
+    id="recipeGrid"
+></div>
 
 
-<button class="close" onclick="closeViewer()">
+</main>
+
+</div>
+
+<!-- =========================================
+     IMAGE VIEWER
+========================================= -->
+
+<div
+    class="viewer"
+    id="viewer"
+    onclick="closeViewer(event)"
+>
+
+
+<button
+    type="button"
+    class="close"
+    onclick="closeViewer(event)"
+    aria-label="Đóng"
+>
     ×
 </button>
 
-<img id="viewerImage" src="" alt="Công thức">
+
+<img
+    id="viewerImage"
+    src=""
+    alt="Công thức"
+>
 
 
 </div>
 
 <script>
 
-/*
-====================================================
-DỮ LIỆU CÔNG THỨC
-====================================================
 
-Sau này bạn chỉ cần thay URL ảnh ở đây.
+/* =====================================================
+   DỮ LIỆU CÔNG THỨC
 
-Ví dụ:
+   GIỮ NGUYÊN TOÀN BỘ TÊN FILE ẢNH BẠN ĐÃ ĐƯA.
+===================================================== */
 
-{
-    name: "Bánh mì gà",
-    image: "https://....../banh-mi-ga.jpg"
-}
-
-====================================================
-*/
 
 const recipes = {
 
-banhmi: {
 
-    title: "Bánh mì",
+    /* =====================================
+       BÁNH MÌ
+    ===================================== */
 
-    items: [
+    banhmi: {
 
-        {
-            name: "Bánh mì gà nướng sả",
-            image: "BM-BMganuongsa.png"
-        },
+        title: "Bánh mì",
 
-        {
-            name: "Bánh mì xúc xích bò bằm hầm phô mai",
-            image: "BM-BMXucxichbobamhamphomai.png"
-        },
+        items: [
 
-        {
-            name: "Bánh mì heo nướng xá xíu",
-            image: "BM-BMheonuongxaxiu.png"
-        },
+            {
+                name: "Bánh mì gà nướng sả",
+                image: "BM-BMganuongsa.png"
+            },
 
-        {
-            name: "Bánh mì bò phô mai",
-            image: "BM-BMbophomai.png"
-        },
+            {
+                name: "Bánh mì xúc xích bò bằm hầm phô mai",
+                image: "BM-BMXucxichbobamhamphomai.png"
+            },
 
-        {
-            name: "Bánh mì bò tiêu đen",
-            image: "BM-BMbotieuden.png"
-        }
+            {
+                name: "Bánh mì heo nướng xá xíu",
+                image: "BM-BMheonuongxaxiu.png"
+            },
 
-    ]
+            {
+                name: "Bánh mì bò phô mai",
+                image: "BM-BMbophomai.png"
+            },
 
-},
+            {
+                name: "Bánh mì bò tiêu đen",
+                image: "BM-BMbotieuden.png"
+            }
 
+        ]
 
-burger: {
+    },
 
-    title: "Burger",
 
-    items: [
+    /* =====================================
+       BURGER
+    ===================================== */
 
-        {
-            name: "Burger",
-            image: "burger.png"
-        }
+    burger: {
 
-    ]
+        title: "Burger",
 
-},
+        items: [
 
+            {
+                name: "Burger",
+                image: "burger.png"
+            }
 
-sandwich: {
+        ]
 
-    title: "Sandwich",
+    },
 
-    items: [
 
-        {
-            name: "Sandwich xúc xích phô mai",
-            image: "Sanwich-Sandwichxucxichphomai.png"
-        },
+    /* =====================================
+       SANDWICH
+    ===================================== */
 
-        {
-            name: "Sandwich jambon phô mai",
-            image: "Sanwich-Sandwichjambonphomai.png"
-        },
+    sandwich: {
 
-        {
-            name: "Sandwich phô mai pate heo",
-            image: "Sanwich-Sandwichphomaipateheo.png"
-        },
+        title: "Sandwich",
 
-        {
-            name: "Sandwich phô mai pate bò",
-            image: "Sanwich-Sandwichphomaipatebo.png"
-        },
+        items: [
 
-        {
-            name: "Sandwich phô mai sô cô la",
-            image: "Sandwich-Sanwichphomaisocola.png"
-        }
+            {
+                name: "Sandwich xúc xích phô mai",
+                image: "Sanwich-Sandwichxucxichphomai.png"
+            },
 
-    ]
+            {
+                name: "Sandwich jambon phô mai",
+                image: "Sanwich-Sandwichjambonphomai.png"
+            },
 
-},
+            {
+                name: "Sandwich phô mai pate heo",
+                image: "Sanwich-Sandwichphomaipateheo.png"
+            },
 
+            {
+                name: "Sandwich phô mai pate bò",
+                image: "Sanwich-Sandwichphomaipatebo.png"
+            },
 
-crepe: {
+            {
+                name: "Sandwich phô mai sô cô la",
+                image: "Sandwich-Sanwichphomaisocola.png"
+            }
 
-    title: "Crepe",
+        ]
 
-    items: [
+    },
 
-        {
-            name: "Crepe xúc xích phô mai",
-            image: "Crepe-Crepexucxicphomai.png"
-        },
 
-        {
-            name: "Crepe jambon",
-            image: "Crepe-Crepejambon.png"
-        }
+    /* =====================================
+       CREPE
+    ===================================== */
 
-    ]
+    crepe: {
 
-},
+        title: "Crepe",
 
+        items: [
 
-salad: {
+            {
+                name: "Crepe xúc xích phô mai",
+                image: "Crepe-Crepexucxicphomai.png"
+            },
 
-    title: "Salad",
+            {
+                name: "Crepe jambon",
+                image: "Crepe-Crepejambon.png"
+            }
 
-    items: [
+        ]
 
-        {
-            name: "Salad gà viên",
-            image: "Salad-gavien.png"
-        },
+    },
 
-        {
-            name: "Salad combo No Nê một ghế",
-            image: "Salad-none.png"
-        }
 
-    ]
+    /* =====================================
+       SALAD
+    ===================================== */
 
-},
+    salad: {
 
+        title: "Salad",
 
-fries: {
+        items: [
 
-    title: "Khoai tây",
+            {
+                name: "Salad gà viên",
+                image: "Salad-gavien.png"
+            },
 
-    items: [
+            {
+                name: "Salad combo No Nê một ghế",
+                image: "Salad-none.png"
+            }
 
-        {
-            name: "Khoai tây chiên",
-            image: "Khoaitaychien.png"
-        }
+        ]
 
-    ]
+    },
 
-},
 
+    /* =====================================
+       KHOAI TÂY
+    ===================================== */
 
-pasta: {
+    fries: {
 
-    title: "Mỳ Ý",
+        title: "Khoai tây",
 
-    items: [
+        items: [
 
-        {
-            name: "Mỳ Ý xúc xích bò bằm",
-            image: "Pasta-MyYsotbobam.png"
-        }
+            {
+                name: "Khoai tây chiên",
+                image: "Khoaitaychien.png"
+            }
 
-    ]
+        ]
 
-},
+    },
 
 
-drink: {
+    /* =====================================
+       MỲ Ý
+    ===================================== */
 
-    title: "Đồ uống",
+    pasta: {
 
-    items: [
+        title: "Mỳ Ý",
 
-        {
-            name: "Công thức đồ uống",
-            image: "Douong.png"
-        }
+        items: [
 
-    ]
+            {
+                name: "Mỳ Ý xúc xích bò bằm",
+                image: "Pasta-MyYsotbobam.png"
+            }
 
-}
+        ]
+
+    },
+
+
+    /* =====================================
+       ĐỒ UỐNG
+    ===================================== */
+
+    drink: {
+
+        title: "Đồ uống",
+
+        items: [
+
+            {
+                name: "Công thức đồ uống",
+                image: "Douong.png"
+            }
+
+        ]
+
+    }
 
 };
 
-/*
-====================================================
-HIỂN THỊ NHÓM MÓN
-====================================================
-*/
+
+/* =====================================================
+   HIỂN THỊ NHÓM MÓN
+===================================================== */
 
 function showCategory(category, button) {
 
+
     const data = recipes[category];
 
-    document.getElementById("categoryTitle").textContent = data.title;
 
-    document.getElementById("recipeCount").textContent =
+    if (!data) {
+        return;
+    }
+
+
+    document.getElementById(
+        "categoryTitle"
+    ).textContent = data.title;
+
+
+    document.getElementById(
+        "recipeCount"
+    ).textContent =
         data.items.length + " công thức";
 
-    document.querySelectorAll(".category").forEach(btn => {
-        btn.classList.remove("active");
-    });
+
+    document
+        .querySelectorAll(".category")
+        .forEach(function(btn) {
+
+            btn.classList.remove("active");
+
+        });
+
 
     button.classList.add("active");
 
-    const grid = document.getElementById("recipeGrid");
+
+    const grid =
+        document.getElementById(
+            "recipeGrid"
+        );
+
 
     grid.innerHTML = "";
 
-    data.items.forEach((item, index) => {
 
-        const card = document.createElement("div");
+    data.items.forEach(
+        function(item, index) {
 
-        card.className = "recipe-card";
 
-        card.innerHTML = `
-            <img
-                class="recipe-image"
-                src="${item.image}"
-                alt="${item.name}"
-                loading="lazy"
-                onclick="openViewer('${item.image}')"
-            >
+            const card =
+                document.createElement(
+                    "div"
+                );
 
-            <div class="recipe-info">
-                <div class="recipe-name">
-                    ${item.name}
-                </div>
 
-                <div class="recipe-number">
-                    Công thức ${index + 1}
-                </div>
-            </div>
-        `;
+            card.className =
+                "recipe-card";
 
-        grid.appendChild(card);
 
-    });
+            const image =
+                document.createElement(
+                    "img"
+                );
+
+
+            image.className =
+                "recipe-image";
+
+
+            image.src =
+                item.image;
+
+
+            image.alt =
+                item.name;
+
+
+            image.loading =
+                "lazy";
+
+
+            image.onclick =
+                function(event) {
+
+                    event.stopPropagation();
+
+                    openViewer(
+                        item.image
+                    );
+
+                };
+
+
+            const info =
+                document.createElement(
+                    "div"
+                );
+
+
+            info.className =
+                "recipe-info";
+
+
+            const name =
+                document.createElement(
+                    "div"
+                );
+
+
+            name.className =
+                "recipe-name";
+
+
+            name.textContent =
+                item.name;
+
+
+            const number =
+                document.createElement(
+                    "div"
+                );
+
+
+            number.className =
+                "recipe-number";
+
+
+            number.textContent =
+                "Công thức " +
+                (index + 1);
+
+
+            info.appendChild(name);
+
+            info.appendChild(number);
+
+
+            card.appendChild(image);
+
+            card.appendChild(info);
+
+
+            grid.appendChild(card);
+
+        }
+    );
 
 }
 
 
-/*
-====================================================
-MỞ ẢNH LỚN
-====================================================
-*/
+/* =====================================================
+   MỞ ẢNH
+===================================================== */
 
 function openViewer(image) {
 
-    document.getElementById("viewerImage").src = image;
 
-    document.getElementById("viewer").classList.add("show");
+    document.getElementById(
+        "viewerImage"
+    ).src = image;
+
+
+    document.getElementById(
+        "viewer"
+    ).classList.add("show");
+
+
+    document.body.style.overflow =
+        "hidden";
 
 }
 
 
-/*
-====================================================
-ĐÓNG ẢNH
-====================================================
-*/
+/* =====================================================
+   ĐÓNG ẢNH
+===================================================== */
 
 function closeViewer(event) {
+
 
     if (
         !event ||
@@ -701,25 +1206,63 @@ function closeViewer(event) {
         event.target.classList.contains("close")
     ) {
 
-        document.getElementById("viewer").classList.remove("show");
+
+        document.getElementById(
+            "viewer"
+        ).classList.remove("show");
+
+
+        document.body.style.overflow =
+            "hidden";
+
 
     }
 
 }
 
 
-/*
-====================================================
-LOAD MẶC ĐỊNH
-====================================================
-*/
+/* =====================================================
+   ESC ĐỂ ĐÓNG
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
+
+            document.getElementById(
+                "viewer"
+            ).classList.remove("show");
+
+
+            document.body.style.overflow =
+                "hidden";
+
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   LOAD MẶC ĐỊNH
+===================================================== */
 
 showCategory(
     "banhmi",
-    document.querySelector(".category.active")
+    document.querySelector(
+        ".category.active"
+    )
 );
 
 </script>
 
 </body>
+
 </html>
