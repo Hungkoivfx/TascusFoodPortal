@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T06:27:54.623Z",
+  "updated_at": "2026-08-30T06:34:36.575Z",
   "records": [
     {
       "id": "Z024",
@@ -55,6 +55,18 @@
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Đã xử lý",
       "phuong_an_xu_ly": "đã test xong",
+      "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z019",
+      "chi_nhanh": "122 Thái Thịnh",
+      "thoi_gian": "2026/08/30 11:39",
+      "nguoi_bao_cao": "s",
+      "noi_dung": "s",
+      "muc_do": "Khẩn cấp",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Theo dõi",
+      "phuong_an_xu_ly": "Tắt bếp nhưng chưa xử lý dứt điểm được",
       "nguoi_xu_ly": "Hưng"
     }
   ]
