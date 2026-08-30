@@ -9,7 +9,6 @@
 <meta
 name="viewport"
 content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-
 >
 
 <title>Nhật ký vận hành · Tascus Food</title>
@@ -20,6 +19,12 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
@@ -46,9 +51,15 @@ body {
 
 button,
 input,
-textarea,
-select {
+select,
+textarea {
     font-family: inherit;
+}
+
+input,
+select,
+textarea {
+    font-size: 16px;
 }
 
 .container {
@@ -229,32 +240,26 @@ select {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 8px;
-
     margin-bottom: 10px;
 }
 
 .section-title-wrap {
     display: flex;
     align-items: baseline;
-
     gap: 7px;
-
     min-width: 0;
 }
 
 .section-title {
     font-size: 14px;
     font-weight: 650;
-
     white-space: nowrap;
 }
 
 .section-count {
     font-size: 11px;
     color: #999;
-
     white-space: nowrap;
 }
 
@@ -372,9 +377,7 @@ select {
 .log-id {
     font-size: 11px;
     font-weight: 650;
-
     color: #555;
-
     white-space: nowrap;
 }
 
@@ -394,7 +397,6 @@ select {
 .log-time {
     font-size: 11px;
     color: #999;
-
     white-space: nowrap;
 }
 
@@ -427,6 +429,11 @@ select {
 
 .status-done {
     background: #e7e7e7;
+    color: #777;
+}
+
+.status-no-action {
+    background: #f3f3f3;
     color: #777;
 }
 
@@ -506,448 +513,41 @@ select {
 
 
 /* =====================================================
-   FORM MODAL
+   MODAL BACKGROUND
 ===================================================== */
 
-.form-modal {
+.modal {
     position: fixed;
 
     inset: 0;
 
-    z-index: 12000;
+    z-index: 10000;
 
     background: rgba(0,0,0,.42);
 
     display: none;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 16px;
 }
 
-.form-modal.active {
+.modal.active {
     display: flex;
 }
+
+
+/* =====================================================
+   FORM BOX
+===================================================== */
 
 .form-box {
     width: 100%;
-
     max-width: 520px;
 
     max-height: 92vh;
-
-    overflow-y: auto;
-
-    background: #fff;
-
-    border-radius: 18px;
-
-    padding: 20px;
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.18);
-
-    animation:
-        formIn .16s ease-out;
-}
-
-@keyframes formIn {
-
-    from {
-        opacity: 0;
-        transform: scale(.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-}
-
-
-/* =====================================================
-   FORM HEADER
-===================================================== */
-
-.form-header {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 10px;
-
-    margin-bottom: 20px;
-}
-
-.form-header-title {
-    font-size: 18px;
-
-    font-weight: 650;
-}
-
-.form-close {
-    width: 34px;
-    height: 34px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: #f1f2f3;
-
-    color: #555;
-
-    font-size: 21px;
-
-    cursor: pointer;
-
-    flex-shrink: 0;
-}
-
-
-/* =====================================================
-   FORM GROUP
-===================================================== */
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-.form-label {
-    display: block;
-
-    font-size: 13px;
-
-    font-weight: 650;
-
-    color: #333;
-
-    margin-bottom: 8px;
-}
-
-.required {
-    color: #888;
-}
-
-
-/* =====================================================
-   INPUT
-===================================================== */
-
-.form-input,
-.form-textarea,
-.form-select {
-
-    width: 100%;
-
-    border:
-        1px solid #dfe1e4;
-
-    border-radius: 11px;
-
-    background: #fafafa;
-
-    color: #222;
-
-    outline: none;
-
-    font-size: 16px;
-
-    transition:
-        border-color .12s ease,
-        background .12s ease,
-        box-shadow .12s ease;
-}
-
-.form-input,
-.form-select {
-
-    height: 48px;
-
-    padding:
-        0 13px;
-}
-
-.form-textarea {
-
-    min-height: 115px;
-
-    padding: 12px 13px;
-
-    resize: vertical;
-
-    line-height: 1.5;
-}
-
-.form-input:focus,
-.form-textarea:focus,
-.form-select:focus {
-
-    border-color: #999;
-
-    background: #fff;
-
-    box-shadow:
-        0 0 0 3px rgba(0,0,0,.045);
-}
-
-
-/* =====================================================
-   CHOICE
-===================================================== */
-
-.choice-list {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-}
-
-.choice-button {
-
-    width: 100%;
-
-    min-height: 51px;
-
-    padding: 11px 12px;
-
-    border:
-        1px solid #dfe1e4;
-
-    border-radius: 11px;
-
-    background: #fafafa;
-
-    color: #333;
-
-    display: flex;
-
-    align-items: center;
-
-    text-align: left;
-
-    cursor: pointer;
-
-    -webkit-tap-highlight-color: transparent;
-}
-
-.choice-button:active {
-
-    transform: scale(.99);
-}
-
-.choice-button.selected {
-
-    background: #f0f0f1;
-
-    border-color: #888;
-}
-
-.choice-radio {
-
-    width: 19px;
-    height: 19px;
-
-    border:
-        1.5px solid #b8babd;
-
-    border-radius: 50%;
-
-    flex-shrink: 0;
-
-    margin-right: 11px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-}
-
-.choice-radio::after {
-
-    content: "";
-
-    width: 9px;
-    height: 9px;
-
-    border-radius: 50%;
-
-    background: #333;
-
-    opacity: 0;
-}
-
-.choice-button.selected
-.choice-radio {
-
-    border-color: #555;
-}
-
-.choice-button.selected
-.choice-radio::after {
-
-    opacity: 1;
-}
-
-.choice-text {
-
-    flex: 1;
-
-    min-width: 0;
-}
-
-.choice-title {
-
-    display: block;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    line-height: 1.35;
-}
-
-.choice-description {
-
-    display: block;
-
-    margin-top: 2px;
-
-    font-size: 11px;
-
-    color: #888;
-
-    line-height: 1.4;
-}
-
-
-/* =====================================================
-   FORM HINT
-===================================================== */
-
-.form-hint {
-
-    margin-top: 6px;
-
-    font-size: 11px;
-
-    color: #999;
-
-    line-height: 1.45;
-}
-
-
-/* =====================================================
-   FORM ERROR
-===================================================== */
-
-.form-error {
-
-    display: none;
-
-    margin-top: 6px;
-
-    font-size: 11px;
-
-    color: #777;
-}
-
-.form-group.error
-.form-error {
-
-    display: block;
-}
-
-.form-group.error
-.form-input,
-.form-group.error
-.form-textarea,
-.form-group.error
-.form-select {
-
-    border-color: #999;
-}
-
-
-/* =====================================================
-   SUBMIT
-===================================================== */
-
-.submit-button {
-
-    width: 100%;
-
-    min-height: 50px;
-
-    border: none;
-
-    border-radius: 11px;
-
-    background: #222;
-
-    color: #fff;
-
-    font-size: 14px;
-
-    font-weight: 650;
-
-    cursor: pointer;
-
-    margin-top: 4px;
-}
-
-.submit-button:active {
-
-    transform: scale(.985);
-}
-
-.submit-button:disabled {
-
-    opacity: .5;
-
-    cursor: default;
-}
-
-
-/* =====================================================
-   DETAIL MODAL
-===================================================== */
-
-.detail-modal {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 11000;
-
-    background: rgba(0,0,0,.42);
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 16px;
-}
-
-.detail-modal.active {
-    display: flex;
-}
-
-.detail-box {
-    width: 100%;
-
-    max-width: 520px;
-
-    max-height: 90vh;
+    max-height: 92dvh;
 
     overflow-y: auto;
 
@@ -961,10 +561,10 @@ select {
         0 20px 50px rgba(0,0,0,.15);
 
     animation:
-        detailIn .16s ease-out;
+        modalIn .16s ease-out;
 }
 
-@keyframes detailIn {
+@keyframes modalIn {
 
     from {
         opacity: 0;
@@ -978,25 +578,23 @@ select {
 
 }
 
-.detail-header {
+.form-header {
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
     gap: 10px;
 
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
-.detail-title {
-    font-size: 18px;
-
+.form-title {
+    font-size: 19px;
     font-weight: 650;
 }
 
-.detail-close {
+.close-button {
     width: 34px;
     height: 34px;
 
@@ -1015,17 +613,233 @@ select {
     flex-shrink: 0;
 }
 
+
+/* =====================================================
+   FORM FIELD
+===================================================== */
+
+.form-field {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #555;
+}
+
+.form-label .required {
+    color: #999;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+
+    width: 100%;
+
+    border: 1px solid #dedfe1;
+
+    background: #fafafa;
+
+    color: #222;
+
+    border-radius: 11px;
+
+    outline: none;
+
+    transition:
+        border-color .12s ease,
+        background .12s ease;
+}
+
+.form-input,
+.form-select {
+
+    height: 46px;
+
+    padding:
+        0 13px;
+}
+
+.form-textarea {
+
+    min-height: 110px;
+
+    padding:
+        12px 13px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+
+    border-color: #aaa;
+
+    background: #fff;
+}
+
+.form-input[readonly] {
+
+    background: #f1f2f3;
+
+    color: #666;
+
+    cursor: default;
+}
+
+
+/* =====================================================
+   ID DISPLAY
+===================================================== */
+
+.id-display {
+
+    width: 100%;
+
+    min-height: 46px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 13px;
+
+    border-radius: 11px;
+
+    background: #f1f2f3;
+
+    color: #555;
+
+    font-size: 16px;
+
+    font-weight: 650;
+
+    letter-spacing: .3px;
+}
+
+
+/* =====================================================
+   ACTIONS FORM
+===================================================== */
+
+.form-actions {
+
+    display: flex;
+
+    gap: 9px;
+
+    margin-top: 20px;
+}
+
+.form-button {
+
+    flex: 1;
+
+    min-height: 46px;
+
+    border-radius: 11px;
+
+    border: 1px solid #ddd;
+
+    background: #f1f2f3;
+
+    color: #333;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.form-button.primary {
+
+    background: #222;
+
+    color: #fff;
+
+    border-color: #222;
+}
+
+.form-button:active {
+
+    transform: scale(.985);
+
+}
+
+
+/* =====================================================
+   DETAIL MODAL
+===================================================== */
+
+.detail-box {
+
+    width: 100%;
+
+    max-width: 520px;
+
+    max-height: 92vh;
+    max-height: 92dvh;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.15);
+
+    animation:
+        modalIn .16s ease-out;
+}
+
+.detail-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+.detail-title {
+
+    font-size: 18px;
+
+    font-weight: 650;
+}
+
 .detail-row {
+
     padding: 11px 0;
 
     border-bottom: 1px solid #eee;
 }
 
-.detail-row:last-child {
+.detail-row:last-of-type {
+
     border-bottom: none;
 }
 
 .detail-label {
+
     font-size: 10px;
 
     color: #999;
@@ -1034,6 +848,7 @@ select {
 }
 
 .detail-value {
+
     font-size: 14px;
 
     color: #333;
@@ -1042,7 +857,41 @@ select {
 }
 
 .detail-content {
+
     white-space: pre-wrap;
+}
+
+
+/* =====================================================
+   UPDATE BUTTON
+===================================================== */
+
+.update-button {
+
+    width: 100%;
+
+    min-height: 48px;
+
+    margin-top: 18px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #222;
+
+    color: #fff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.update-button:active {
+
+    transform: scale(.985);
 }
 
 
@@ -1050,29 +899,8 @@ select {
    HELP MODAL
 ===================================================== */
 
-.help-modal {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 10000;
-
-    background: rgba(0,0,0,.42);
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 16px;
-}
-
-.help-modal.active {
-    display: flex;
-}
-
 .help-box {
+
     width: 100%;
 
     max-width: 520px;
@@ -1091,24 +919,11 @@ select {
         0 20px 50px rgba(0,0,0,.15);
 
     animation:
-        helpIn .16s ease-out;
-}
-
-@keyframes helpIn {
-
-    from {
-        opacity: 0;
-        transform: scale(.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-
+        modalIn .16s ease-out;
 }
 
 .help-header {
+
     display: flex;
 
     align-items: center;
@@ -1121,31 +936,14 @@ select {
 }
 
 .help-title {
+
     font-size: 19px;
 
     font-weight: 650;
 }
 
-.help-close {
-    width: 34px;
-    height: 34px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: #f1f2f3;
-
-    color: #555;
-
-    font-size: 21px;
-
-    cursor: pointer;
-
-    flex-shrink: 0;
-}
-
 .help-content {
+
     font-size: 13px;
 
     line-height: 1.6;
@@ -1154,18 +952,22 @@ select {
 }
 
 .help-content p {
+
     margin-bottom: 13px;
 }
 
 .help-content p:last-child {
+
     margin-bottom: 0;
 }
 
 .help-content strong {
+
     color: #333;
 }
 
 .help-list {
+
     margin: 5px 0 15px;
 
     padding: 0;
@@ -1174,6 +976,7 @@ select {
 }
 
 .help-list li {
+
     margin-bottom: 10px;
 
     padding-left: 15px;
@@ -1182,6 +985,7 @@ select {
 }
 
 .help-list li::before {
+
     content: "•";
 
     position: absolute;
@@ -1194,6 +998,7 @@ select {
 }
 
 .help-final {
+
     padding-top: 13px;
 
     margin-top: 4px;
@@ -1210,9 +1015,7 @@ select {
 
 @media (max-width: 600px) {
 
-    .form-modal,
-    .help-modal,
-    .detail-modal {
+    .modal {
 
         padding: 0;
 
@@ -1220,12 +1023,13 @@ select {
     }
 
     .form-box,
-    .help-box,
-    .detail-box {
+    .detail-box,
+    .help-box {
 
         max-width: none;
 
         max-height: 90vh;
+        max-height: 90dvh;
 
         border-radius:
             18px 18px 0 0;
@@ -1234,15 +1038,12 @@ select {
             20px 16px
             max(22px, env(safe-area-inset-bottom))
             16px;
-    }
-
-    .form-box {
 
         animation:
-            formSlideUp .18s ease-out;
+            slideUp .18s ease-out;
     }
 
-    @keyframes formSlideUp {
+    @keyframes slideUp {
 
         from {
             opacity: 0;
@@ -1256,61 +1057,80 @@ select {
 
     }
 
-
-    /*
-     * Không cho mobile tự zoom khi focus input.
-     */
-
-    input,
-    textarea,
-    select {
-
-        font-size: 16px !important;
-
-    }
-
 }
-
 
 @media (max-width: 520px) {
 
     .section-header {
+
         gap: 5px;
     }
 
     .section-title {
+
         font-size: 13px;
     }
 
     .section-count {
+
         display: none;
     }
 
     .filter-tabs {
+
         max-width: 72%;
     }
 
     .filter-tab {
+
         font-size: 9px;
-        padding: 6px;
+
+        padding:
+            6px;
+    }
+
+}
+
+@media (max-width: 390px) {
+
+    .filter-tab {
+
+        font-size: 8px;
+
+        padding:
+            5px;
+    }
+
+    .log-branch {
+
+        max-width: 85px;
+    }
+
+    .log-time {
+
+        display: none;
     }
 
 }
 
 
-@media (max-width: 390px) {
+/*
+=====================================================
+   MOBILE INPUT ZOOM PROTECTION
 
-    .filter-tab {
-        font-size: 8px;
-        padding: 5px;
-    }
+   iOS Safari có thể tự zoom khi input có font
+   nhỏ hơn 16px. Giữ form controls >= 16px.
+=====================================================
+*/
 
-    .log-branch {
-        max-width: 85px;
-    }
+@media (max-width: 600px) {
 
-    .log-time {
-        display: none;
+    input,
+    select,
+    textarea {
+
+        font-size: 16px !important;
+
     }
 
 }
@@ -1319,9 +1139,12 @@ select {
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
 
 <!-- =====================================================
      HEADER
@@ -1329,47 +1152,36 @@ select {
 
 <header class="header">
 
-<button
-class="back-button"
-onclick="goBack()"
-aria-label="Quay lại"
+    <button
+        class="back-button"
+        onclick="goBack()"
+        aria-label="Quay lại"
+    >
+        ‹
+    </button>
 
->
+    <div class="header-text">
 
+        <div class="header-title">
+            Nhật ký vận hành
+        </div>
 
-‹
+        <div class="header-subtitle">
+            Các sự việc được ghi nhận tại cửa hàng
+        </div>
 
+    </div>
 
-</button>
-
-<div class="header-text">
-
-
-<div class="header-title">
-    Nhật ký vận hành
-</div>
-
-<div class="header-subtitle">
-    Các sự việc được ghi nhận tại cửa hàng
-</div>
-
-
-</div>
-
-<button
-class="help-button"
-onclick="openHelp()"
-aria-label="Hướng dẫn"
-
->
-
-
-?
-
-
-</button>
+    <button
+        class="help-button"
+        onclick="openHelp()"
+        aria-label="Hướng dẫn"
+    >
+        ?
+    </button>
 
 </header>
+
 
 <!-- =====================================================
      ACTION BUTTONS
@@ -1377,67 +1189,35 @@ aria-label="Hướng dẫn"
 
 <section class="actions">
 
-<button
-class="action-button"
-onclick="openReportForm()"
+    <button
+        class="action-button"
+        onclick="openNewReport()"
+    >
 
->
+        <div class="action-icon">
+            ＋
+        </div>
 
+        <div class="action-content">
 
-<div class="action-icon">
-    ＋
-</div>
+            <div class="action-title">
+                Báo cáo vấn đề mới
+            </div>
 
-<div class="action-content">
+            <div class="action-description">
+                Ghi nhận sự việc hoặc vấn đề vừa phát sinh.
+            </div>
 
-    <div class="action-title">
-        Báo cáo vấn đề mới
-    </div>
+        </div>
 
-    <div class="action-description">
-        Ghi nhận sự việc hoặc vấn đề vừa phát sinh.
-    </div>
+        <div class="action-arrow">
+            ›
+        </div>
 
-</div>
-
-<div class="action-arrow">
-    ›
-</div>
-
-
-</button>
-
-<button
-class="action-button"
-onclick="openUpdateForm()"
-
->
-
-
-<div class="action-icon">
-    ↻
-</div>
-
-<div class="action-content">
-
-    <div class="action-title">
-        Cập nhật vấn đề cũ
-    </div>
-
-    <div class="action-description">
-        Chọn một vấn đề đã ghi nhận để cập nhật.
-    </div>
-
-</div>
-
-<div class="action-arrow">
-    ›
-</div>
-
-
-</button>
+    </button>
 
 </section>
+
 
 <!-- =====================================================
      RECENT
@@ -1445,78 +1225,78 @@ onclick="openUpdateForm()"
 
 <section class="section">
 
-<div class="section-header">
+    <div class="section-header">
 
+        <div class="section-title-wrap">
 
-<div class="section-title-wrap">
+            <div class="section-title">
+                Sự việc gần đây
+            </div>
 
-    <div class="section-title">
-        Sự việc gần đây
+            <div
+                class="section-count"
+                id="recentCount"
+            >
+                0 sự việc
+            </div>
+
+        </div>
+
+        <div class="filter-tabs">
+
+            <button
+                class="filter-tab active"
+                onclick="filterLogs(
+                    'recent',
+                    'all',
+                    this
+                )"
+            >
+                Tất cả
+            </button>
+
+            <button
+                class="filter-tab"
+                onclick="filterLogs(
+                    'recent',
+                    'Khương Trung',
+                    this
+                )"
+            >
+                Khương Trung
+            </button>
+
+            <button
+                class="filter-tab"
+                onclick="filterLogs(
+                    'recent',
+                    'Thái Thịnh',
+                    this
+                )"
+            >
+                Thái Thịnh
+            </button>
+
+        </div>
+
     </div>
+
 
     <div
-        class="section-count"
-        id="recentCount"
+        class="logs"
+        id="recentLogs"
+    ></div>
+
+
+    <div
+        class="empty"
+        id="recentEmpty"
     >
-        0 sự việc
+        Không có sự việc nào tại cửa hàng này.
     </div>
 
-</div>
-
-
-<div class="filter-tabs">
-
-    <button
-        class="filter-tab active"
-        onclick="filterLogs(
-            'recent',
-            'all',
-            this
-        )"
-    >
-        Tất cả
-    </button>
-
-    <button
-        class="filter-tab"
-        onclick="filterLogs(
-            'recent',
-            'Khương Trung',
-            this
-        )"
-    >
-        Khương Trung
-    </button>
-
-    <button
-        class="filter-tab"
-        onclick="filterLogs(
-            'recent',
-            'Thái Thịnh',
-            this
-        )"
-    >
-        Thái Thịnh
-    </button>
-
-</div>
-
-
-</div>
-
-<div
-    class="logs"
-    id="recentLogs"
-></div>
-
-<div
-    class="empty"
-    id="recentEmpty"
->
-    Không có sự việc nào tại cửa hàng này.
-</div>
-
 </section>
+
 
 <!-- =====================================================
      COMPLETED
@@ -1524,678 +1304,548 @@ onclick="openUpdateForm()"
 
 <section class="section">
 
-<div class="section-header">
+    <div class="section-header">
+
+        <div class="section-title-wrap">
+
+            <div class="section-title">
+                Đã xử lý xong
+            </div>
+
+            <div
+                class="section-count"
+                id="completedCount"
+            >
+                0 sự việc
+            </div>
+
+        </div>
 
 
-<div class="section-title-wrap">
+        <div class="filter-tabs">
 
-    <div class="section-title">
-        Đã xử lý xong
+            <button
+                class="filter-tab active"
+                onclick="filterLogs(
+                    'completed',
+                    'all',
+                    this
+                )"
+            >
+                Tất cả
+            </button>
+
+            <button
+                class="filter-tab"
+                onclick="filterLogs(
+                    'completed',
+                    'Khương Trung',
+                    this
+                )"
+            >
+                Khương Trung
+            </button>
+
+            <button
+                class="filter-tab"
+                onclick="filterLogs(
+                    'completed',
+                    'Thái Thịnh',
+                    this
+                )"
+            >
+                Thái Thịnh
+            </button>
+
+        </div>
+
     </div>
+
 
     <div
-        class="section-count"
-        id="completedCount"
+        class="logs"
+        id="completedLogs"
+    ></div>
+
+
+    <div
+        class="empty"
+        id="completedEmpty"
     >
-        0 sự việc
+        Không có sự việc nào được xử lý
+        trong thời gian gần đây.
     </div>
-
-</div>
-
-
-<div class="filter-tabs">
-
-    <button
-        class="filter-tab active"
-        onclick="filterLogs(
-            'completed',
-            'all',
-            this
-        )"
-    >
-        Tất cả
-    </button>
-
-    <button
-        class="filter-tab"
-        onclick="filterLogs(
-            'completed',
-            'Khương Trung',
-            this
-        )"
-    >
-        Khương Trung
-    </button>
-
-    <button
-        class="filter-tab"
-        onclick="filterLogs(
-            'completed',
-            'Thái Thịnh',
-            this
-        )"
-    >
-        Thái Thịnh
-    </button>
-
-</div>
-
-
-</div>
-
-<div
-    class="logs"
-    id="completedLogs"
-></div>
-
-<div
-    class="empty"
-    id="completedEmpty"
->
-    Không có sự việc nào được xử lý
-    trong thời gian gần đây.
-</div>
 
 </section>
 
+
 </div>
 
+
 <!-- =====================================================
-     FORM MODAL
+     NEW REPORT MODAL
 ===================================================== -->
 
 <div
-    class="form-modal"
-    id="formModal"
+    class="modal"
+    id="newReportModal"
 >
 
-<div class="form-box">
+    <div class="form-box">
 
-<div class="form-header">
+        <div class="form-header">
 
+            <div class="form-title">
+                Báo cáo vấn đề mới
+            </div>
 
-<div
-    class="form-header-title"
-    id="formTitle"
->
-    Báo cáo vấn đề mới
-</div>
+            <button
+                class="close-button"
+                onclick="closeNewReport()"
+                aria-label="Đóng"
+            >
+                ×
+            </button>
 
-<button
-    class="form-close"
-    onclick="closeForm()"
-    aria-label="Đóng"
->
-    ×
-</button>
+        </div>
 
 
-</div>
+        <div class="form-field">
 
-<!-- =====================================================
-     REPORT FORM
-===================================================== -->
+            <label class="form-label">
+                Cơ sở
+                <span class="required">*</span>
+            </label>
 
-<div id="reportForm">
+            <select
+                class="form-select"
+                id="newBranch"
+            >
 
-<div class="form-group">
+                <option value="">
+                    Chọn cơ sở
+                </option>
 
+                <option value="Khương Trung">
+                    Khương Trung
+                </option>
 
-<label
-    class="form-label"
-    for="reportBranch"
->
-    Chi nhánh
-    <span class="required">*</span>
-</label>
+                <option value="Thái Thịnh">
+                    Thái Thịnh
+                </option>
 
-<select
-    class="form-select"
-    id="reportBranch"
->
+            </select>
 
-    <option value="">
-        Chọn chi nhánh
-    </option>
-
-    <option value="Khương Trung">
-        Khương Trung
-    </option>
-
-    <option value="Thái Thịnh">
-        Thái Thịnh
-    </option>
-
-</select>
-
-<div class="form-error">
-    Vui lòng chọn chi nhánh.
-</div>
+        </div>
 
 
-</div>
+        <div class="form-field">
 
-<div class="form-group">
+            <label class="form-label">
+                Nội dung vấn đề
+                <span class="required">*</span>
+            </label>
 
+            <textarea
+                class="form-textarea"
+                id="newContent"
+                placeholder="Mô tả ngắn gọn vấn đề..."
+            ></textarea>
 
-<label
-    class="form-label"
-    for="reportContent"
->
-    Nội dung sự việc
-    <span class="required">*</span>
-</label>
-
-<textarea
-    class="form-textarea"
-    id="reportContent"
-    placeholder="Mô tả ngắn gọn chuyện gì đã xảy ra..."
-></textarea>
-
-<div class="form-hint">
-    Không cần viết dài. Chỉ cần ghi đúng điều người khác cần biết.
-</div>
-
-<div class="form-error">
-    Vui lòng nhập nội dung sự việc.
-</div>
+        </div>
 
 
-</div>
+        <div class="form-field">
 
-<div class="form-group">
+            <label class="form-label">
+                Mục cần xử lý
+                <span class="required">*</span>
+            </label>
 
+            <select
+                class="form-select"
+                id="newNeed"
+            >
 
-<label class="form-label">
-    Mức độ
-    <span class="required">*</span>
-</label>
+                <option value="">
+                    Chọn phương án
+                </option>
 
+                <option value="Chỉ thông báo / báo cáo">
+                    Chỉ thông báo / báo cáo
+                </option>
 
-<div class="choice-list">
+                <option value="Cần xử lý">
+                    Cần xử lý
+                </option>
 
+            </select>
 
-    <button
-        type="button"
-        class="choice-button"
-        data-group="level"
-        data-value="Bình thường"
-        onclick="selectChoice(this, 'level')"
-    >
-
-        <span class="choice-radio"></span>
-
-        <span class="choice-text">
-
-            <span class="choice-title">
-                Bình thường
-            </span>
-
-            <span class="choice-description">
-                Sự việc cần ghi nhận nhưng chưa ảnh hưởng đáng kể.
-            </span>
-
-        </span>
-
-    </button>
+        </div>
 
 
-    <button
-        type="button"
-        class="choice-button"
-        data-group="level"
-        data-value="Quan trọng"
-        onclick="selectChoice(this, 'level')"
-    >
+        <div class="form-field">
 
-        <span class="choice-radio"></span>
+            <label class="form-label">
+                Người báo cáo
+                <span class="required">*</span>
+            </label>
 
-        <span class="choice-text">
+            <input
+                class="form-input"
+                id="newReporter"
+                type="text"
+                placeholder="Nhập tên người báo cáo"
+                autocomplete="name"
+            >
 
-            <span class="choice-title">
-                Quan trọng
-            </span>
-
-            <span class="choice-description">
-                Cần được chú ý và xử lý trong thời gian gần.
-            </span>
-
-        </span>
-
-    </button>
+        </div>
 
 
-    <button
-        type="button"
-        class="choice-button"
-        data-group="level"
-        data-value="Khẩn cấp"
-        onclick="selectChoice(this, 'level')"
-    >
+        <div class="form-actions">
 
-        <span class="choice-radio"></span>
+            <button
+                class="form-button"
+                onclick="closeNewReport()"
+            >
+                Hủy
+            </button>
 
-        <span class="choice-text">
+            <button
+                class="form-button primary"
+                onclick="submitNewReport()"
+            >
+                Ghi nhận
+            </button>
 
-            <span class="choice-title">
-                Khẩn cấp
-            </span>
+        </div>
 
-            <span class="choice-description">
-                Có thể ảnh hưởng trực tiếp đến hoạt động cửa hàng.
-            </span>
-
-        </span>
-
-    </button>
-
+    </div>
 
 </div>
 
-
-</div>
-
-<div class="form-group">
-
-
-<label class="form-label">
-    Cần xử lý
-    <span class="required">*</span>
-</label>
-
-
-<div class="choice-list">
-
-
-    <button
-        type="button"
-        class="choice-button"
-        data-group="handling"
-        data-value="Chỉ thông báo / báo cáo"
-        onclick="selectChoice(this, 'handling')"
-    >
-
-        <span class="choice-radio"></span>
-
-        <span class="choice-text">
-
-            <span class="choice-title">
-                Chỉ thông báo / báo cáo
-            </span>
-
-            <span class="choice-description">
-                Ghi nhận để các ca sau biết, không yêu cầu xử lý thêm.
-            </span>
-
-        </span>
-
-    </button>
-
-
-    <button
-        type="button"
-        class="choice-button"
-        data-group="handling"
-        data-value="Cần xử lý"
-        onclick="selectChoice(this, 'handling')"
-    >
-
-        <span class="choice-radio"></span>
-
-        <span class="choice-text">
-
-            <span class="choice-title">
-                Cần xử lý
-            </span>
-
-            <span class="choice-description">
-                Vấn đề cần có người tiếp nhận và xử lý.
-            </span>
-
-        </span>
-
-    </button>
-
-
-</div>
-
-
-</div>
-
-<div class="form-group">
-
-
-<label
-    class="form-label"
-    for="reporter"
->
-    Người báo cáo
-    <span class="required">*</span>
-</label>
-
-<input
-    type="text"
-    class="form-input"
-    id="reporter"
-    placeholder="Nhập tên của bạn"
-    autocomplete="name"
->
-
-<div class="form-error">
-    Vui lòng nhập tên người báo cáo.
-</div>
-
-
-</div>
-
-<button
-type="button"
-class="submit-button"
-onclick="submitReport()"
-
->
-
-
-Ghi nhận sự việc
-
-
-</button>
-
-</div>
-
-<!-- =====================================================
-     UPDATE FORM
-===================================================== -->
-
-<div
-    id="updateForm"
-    style="display:none"
->
-
-<div class="form-group">
-
-
-<label
-    class="form-label"
-    for="updateId"
->
-    Mã sự việc
-    <span class="required">*</span>
-</label>
-
-<input
-    type="text"
-    class="form-input"
-    id="updateId"
-    placeholder="Ví dụ: Z026"
-    autocomplete="off"
->
-
-<div class="form-hint">
-    Nhập mã của sự việc đã được ghi nhận.
-</div>
-
-
-</div>
-
-<div class="form-group">
-
-
-<label
-    class="form-label"
-    for="updateContent"
->
-    Nội dung cập nhật
-    <span class="required">*</span>
-</label>
-
-<textarea
-    class="form-textarea"
-    id="updateContent"
-    placeholder="Ghi lại tình hình mới hoặc kết quả xử lý..."
-></textarea>
-
-
-</div>
-
-<div class="form-group">
-
-
-<label class="form-label">
-    Trạng thái xử lý
-    <span class="required">*</span>
-</label>
-
-
-<div class="choice-list">
-
-
-    <button
-        type="button"
-        class="choice-button"
-        data-group="updateStatus"
-        data-value="Đang xử lý"
-        onclick="selectChoice(this, 'updateStatus')"
-    >
-
-        <span class="choice-radio"></span>
-
-        <span class="choice-text">
-
-            <span class="choice-title">
-                Đang xử lý
-            </span>
-
-        </span>
-
-    </button>
-
-
-    <button
-        type="button"
-        class="choice-button"
-        data-group="updateStatus"
-        data-value="Đã xử lý"
-        onclick="selectChoice(this, 'updateStatus')"
-    >
-
-        <span class="choice-radio"></span>
-
-        <span class="choice-text">
-
-            <span class="choice-title">
-                Đã xử lý
-            </span>
-
-        </span>
-
-    </button>
-
-
-</div>
-
-
-</div>
-
-<div class="form-group">
-
-
-<label
-    class="form-label"
-    for="updateHandler"
->
-    Người xử lý
-</label>
-
-<input
-    type="text"
-    class="form-input"
-    id="updateHandler"
-    placeholder="Nhập tên người xử lý"
-    autocomplete="name"
->
-
-
-</div>
-
-<button
-type="button"
-class="submit-button"
-onclick="submitUpdate()"
-
->
-
-
-Ghi nhận cập nhật
-
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =====================================================
-     HELP MODAL
-===================================================== -->
-
-<div
-    class="help-modal"
-    id="helpModal"
->
-
-<div class="help-box">
-
-<div class="help-header">
-
-
-<div class="help-title">
-    Nhật ký vận hành để làm gì?
-</div>
-
-<button
-    class="help-close"
-    onclick="closeHelp()"
->
-    ×
-</button>
-
-
-</div>
-
-<div class="help-content">
-
-<p>
-    Trong lúc làm việc sẽ có những chuyện phát sinh
-    mà không phải lúc nào cũng xử lý xong ngay trong ca.
-</p>
-
-<p>
-    Ví dụ: máy có vấn đề, thiếu đồ, khách phản ánh,
-    phát hiện một việc cần sửa, hoặc có chuyện mà ca sau cần biết.
-</p>
-
-<p>
-    Thay vì chỉ nói trong nhóm Zalo rồi tin nhắn trôi mất,
-    mình ghi lại ở đây để
-    <strong>
-        các ca sau vẫn biết chuyện gì đã xảy ra.
-    </strong>
-</p>
-
-<ul class="help-list">
-
-<li>
-    <strong>Báo cáo vấn đề mới:</strong>
-    Có chuyện mới xảy ra thì báo ở đây.
-</li>
-
-<li>
-    <strong>Cập nhật vấn đề cũ:</strong>
-    Nếu chuyện đó đã có người báo rồi,
-    vào đây để cập nhật thêm.
-</li>
-
-<li>
-    <strong>Sự việc gần đây:</strong>
-    Để xem cửa hàng đang có những chuyện gì cần chú ý.
-</li>
-
-<li>
-    <strong>Đã xử lý xong:</strong>
-    Để biết những chuyện vừa được giải quyết,
-    tránh việc ca sau không biết rồi lại báo lại từ đầu.
-</li>
-
-</ul>
-
-<p>
-    Không cần viết dài.
-    Chỉ cần ghi
-    <strong>
-        đúng chuyện gì xảy ra và người khác cần biết điều gì.
-    </strong>
-</p>
-
-<p class="help-final">
-
-
-Mục đích đơn giản là:
-
-<br>
-
-<strong>
-    Ca trước biết → ca sau biết →
-    không ai phải đoán xem chuyện gì đã xảy ra.
-</strong>
-
-
-</p>
-
-</div>
-
-</div>
-
-</div>
 
 <!-- =====================================================
      DETAIL MODAL
 ===================================================== -->
 
 <div
-    class="detail-modal"
+    class="modal"
     id="detailModal"
 >
 
-<div class="detail-box">
+    <div class="detail-box">
 
-<div class="detail-header">
+        <div class="detail-header">
 
+            <div
+                class="detail-title"
+                id="detailTitle"
+            >
+                Chi tiết sự việc
+            </div>
+
+            <button
+                class="close-button"
+                onclick="closeLogDetail()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="detailContent"></div>
+
+
+        <button
+            class="update-button"
+            onclick="openUpdateFromDetail()"
+        >
+            Cập nhật vấn đề
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     UPDATE MODAL
+===================================================== -->
 
 <div
-    class="detail-title"
-    id="detailTitle"
+    class="modal"
+    id="updateModal"
 >
-    Chi tiết sự việc
+
+    <div class="form-box">
+
+        <div class="form-header">
+
+            <div class="form-title">
+                Cập nhật vấn đề
+            </div>
+
+            <button
+                class="close-button"
+                onclick="closeUpdate()"
+                aria-label="Đóng"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label class="form-label">
+                ID
+            </label>
+
+            <div
+                class="id-display"
+                id="updateId"
+            >
+                Z000
+            </div>
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label class="form-label">
+                Cơ sở
+            </label>
+
+            <div
+                class="id-display"
+                id="updateBranch"
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label class="form-label">
+                Nội dung vấn đề
+            </label>
+
+            <div
+                class="id-display"
+                id="updateContent"
+                style="
+                    min-height:46px;
+                    height:auto;
+                    padding-top:12px;
+                    padding-bottom:12px;
+                    align-items:flex-start;
+                    white-space:pre-wrap;
+                    line-height:1.5;
+                "
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label class="form-label">
+                Trạng thái xử lý
+                <span class="required">*</span>
+            </label>
+
+            <select
+                class="form-select"
+                id="updateStatus"
+            >
+
+                <option value="">
+                    Chọn trạng thái
+                </option>
+
+                <option value="Chưa xử lý">
+                    Chưa xử lý
+                </option>
+
+                <option value="Đang xử lý">
+                    Đang xử lý
+                </option>
+
+                <option value="Đã xử lý">
+                    Đã xử lý
+                </option>
+
+                <option value="Không cần xử lý">
+                    Không cần xử lý
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label class="form-label">
+                Biện pháp xử lý
+            </label>
+
+            <textarea
+                class="form-textarea"
+                id="updateAction"
+                placeholder="Nhập biện pháp đã thực hiện..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label class="form-label">
+                Người báo cáo
+                <span class="required">*</span>
+            </label>
+
+            <input
+                class="form-input"
+                id="updateReporter"
+                type="text"
+                placeholder="Nhập tên người báo cáo"
+                autocomplete="name"
+            >
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <button
+                class="form-button"
+                onclick="closeUpdate()"
+            >
+                Hủy
+            </button>
+
+            <button
+                class="form-button primary"
+                onclick="submitUpdate()"
+            >
+                Cập nhật
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 
-<button
-    class="detail-close"
-    onclick="closeLogDetail()"
+
+<!-- =====================================================
+     HELP MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="helpModal"
 >
-    ×
-</button>
 
+    <div class="help-box">
+
+        <div class="help-header">
+
+            <div class="help-title">
+                Nhật ký vận hành để làm gì?
+            </div>
+
+            <button
+                class="close-button"
+                onclick="closeHelp()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="help-content">
+
+            <p>
+                Trong lúc làm việc sẽ có những chuyện phát sinh
+                mà không phải lúc nào cũng xử lý xong ngay trong ca.
+            </p>
+
+            <p>
+                Ví dụ: máy có vấn đề, thiếu đồ, khách phản ánh,
+                phát hiện một việc cần sửa, hoặc có chuyện mà ca sau cần biết.
+            </p>
+
+            <p>
+                Thay vì chỉ nói trong nhóm Zalo rồi tin nhắn trôi mất,
+                mình ghi lại ở đây để
+                <strong>
+                    các ca sau vẫn biết chuyện gì đã xảy ra.
+                </strong>
+            </p>
+
+            <ul class="help-list">
+
+                <li>
+                    <strong>Báo cáo vấn đề mới:</strong>
+                    Có chuyện mới xảy ra thì báo ở đây.
+                </li>
+
+                <li>
+                    <strong>Sự việc gần đây:</strong>
+                    Để xem cửa hàng đang có những chuyện gì cần chú ý.
+                </li>
+
+                <li>
+                    <strong>Cập nhật vấn đề:</strong>
+                    Mở một sự việc rồi cập nhật trạng thái và biện pháp xử lý.
+                </li>
+
+                <li>
+                    <strong>Đã xử lý xong:</strong>
+                    Để biết những chuyện vừa được giải quyết.
+                </li>
+
+            </ul>
+
+            <p>
+                Không cần viết dài.
+                Chỉ cần ghi
+                <strong>
+                    đúng chuyện gì xảy ra và người khác cần biết điều gì.
+                </strong>
+            </p>
+
+            <p class="help-final">
+
+                Mục đích đơn giản là:
+
+                <br>
+
+                <strong>
+                    Ca trước biết → ca sau biết →
+                    không ai phải đoán xem chuyện gì đã xảy ra.
+                </strong>
+
+            </p>
+
+        </div>
+
+    </div>
 
 </div>
 
-<div id="detailContent"></div>
-
-</div>
-
-</div>
 
 <script>
 
@@ -2222,16 +1872,7 @@ let currentFilters = {
 
 };
 
-
-const formData = {
-
-    level: "",
-
-    handling: "",
-
-    updateStatus: ""
-
-};
+let selectedRecord = null;
 
 
 /* =====================================================
@@ -2240,9 +1881,7 @@ const formData = {
 
 function goBack() {
 
-    if (
-        window.history.length > 1
-    ) {
+    if (window.history.length > 1) {
 
         window.history.back();
 
@@ -2257,36 +1896,36 @@ function goBack() {
 
 
 /* =====================================================
-   FORM MODAL
+   HELP
 ===================================================== */
 
-function openReportForm() {
+function openHelp() {
 
-    document.getElementById(
-        "formTitle"
-    ).textContent =
-        "Báo cáo vấn đề mới";
+    document
+        .getElementById("helpModal")
+        .classList.add("active");
 
+    lockBody();
 
-    document.getElementById(
-        "reportForm"
-    ).style.display =
-        "block";
+}
 
 
-    document.getElementById(
-        "updateForm"
-    ).style.display =
-        "none";
+function closeHelp() {
+
+    document
+        .getElementById("helpModal")
+        .classList.remove("active");
+
+    unlockBody();
+
+}
 
 
-    resetReportForm();
+/* =====================================================
+   BODY LOCK
+===================================================== */
 
-
-    document.getElementById(
-        "formModal"
-    ).classList.add("active");
-
+function lockBody() {
 
     document.body.style.overflow =
         "hidden";
@@ -2294,367 +1933,133 @@ function openReportForm() {
 }
 
 
-function openUpdateForm() {
+function unlockBody() {
 
-    document.getElementById(
-        "formTitle"
-    ).textContent =
-        "Cập nhật vấn đề cũ";
+    const anyOpen =
+        document.querySelector(
+            ".modal.active"
+        );
 
+    if (!anyOpen) {
 
-    document.getElementById(
-        "reportForm"
-    ).style.display =
-        "none";
+        document.body.style.overflow =
+            "";
 
-
-    document.getElementById(
-        "updateForm"
-    ).style.display =
-        "block";
-
-
-    resetUpdateForm();
-
-
-    document.getElementById(
-        "formModal"
-    ).classList.add("active");
-
-
-    document.body.style.overflow =
-        "hidden";
+    }
 
 }
 
 
-function closeForm() {
+/* =====================================================
+   NEW REPORT
+===================================================== */
 
-    document.getElementById(
-        "formModal"
-    ).classList.remove(
-        "active"
+function openNewReport() {
+
+    document
+        .getElementById("newReportModal")
+        .classList.add("active");
+
+    lockBody();
+
+}
+
+
+function closeNewReport() {
+
+    document
+        .getElementById("newReportModal")
+        .classList.remove("active");
+
+    unlockBody();
+
+}
+
+
+function generateNextID() {
+
+    const numbers = [];
+
+    currentRecords.forEach(
+        function(record) {
+
+            const id =
+                String(
+                    record.id || ""
+                ).trim();
+
+            const match =
+                id.match(
+                    /^Z(\d{3})$/
+                );
+
+            if (match) {
+
+                numbers.push(
+                    Number(match[1])
+                );
+
+            }
+
+        }
     );
 
 
-    document.body.style.overflow =
-        "";
-
-}
-
-
-/* =====================================================
-   RESET REPORT
-===================================================== */
-
-function resetReportForm() {
-
-    document.getElementById(
-        "reportBranch"
-    ).value = "";
+    let next =
+        numbers.length
+            ? Math.max(...numbers) + 1
+            : 1;
 
 
-    document.getElementById(
-        "reportContent"
-    ).value = "";
+    if (next > 999) {
+
+        next = 1;
+
+    }
 
 
-    document.getElementById(
-        "reporter"
-    ).value = "";
-
-
-    formData.level = "";
-
-    formData.handling = "";
-
-
-    document
-        .querySelectorAll(
-            '[data-group="level"], [data-group="handling"]'
+    return (
+        "Z" +
+        String(next).padStart(
+            3,
+            "0"
         )
-        .forEach(
-            function(button) {
-
-                button.classList.remove(
-                    "selected"
-                );
-
-            }
-        );
-
-
-    document
-        .querySelectorAll(
-            "#reportForm .form-group"
-        )
-        .forEach(
-            function(group) {
-
-                group.classList.remove(
-                    "error"
-                );
-
-            }
-        );
-
-}
-
-
-/* =====================================================
-   RESET UPDATE
-===================================================== */
-
-function resetUpdateForm() {
-
-    document.getElementById(
-        "updateId"
-    ).value = "";
-
-
-    document.getElementById(
-        "updateContent"
-    ).value = "";
-
-
-    document.getElementById(
-        "updateHandler"
-    ).value = "";
-
-
-    formData.updateStatus = "";
-
-
-    document
-        .querySelectorAll(
-            '[data-group="updateStatus"]'
-        )
-        .forEach(
-            function(button) {
-
-                button.classList.remove(
-                    "selected"
-                );
-
-            }
-        );
-
-}
-
-
-/* =====================================================
-   CHOICE
-===================================================== */
-
-function selectChoice(
-    button,
-    group
-) {
-
-    document
-        .querySelectorAll(
-            '[data-group="' +
-            group +
-            '"]'
-        )
-        .forEach(
-            function(item) {
-
-                item.classList.remove(
-                    "selected"
-                );
-
-            }
-        );
-
-
-    button.classList.add(
-        "selected"
     );
 
-
-    formData[group] =
-        button.dataset.value || "";
-
 }
 
 
-/* =====================================================
-   SUBMIT REPORT
-===================================================== */
-
-function submitReport() {
+function submitNewReport() {
 
     const branch =
-        document.getElementById(
-            "reportBranch"
-        );
+        document
+            .getElementById("newBranch")
+            .value
+            .trim();
 
     const content =
-        document.getElementById(
-            "reportContent"
-        );
+        document
+            .getElementById("newContent")
+            .value
+            .trim();
+
+    const need =
+        document
+            .getElementById("newNeed")
+            .value
+            .trim();
 
     const reporter =
-        document.getElementById(
-            "reporter"
-        );
-
-
-    let valid = true;
-
-
-    document
-        .querySelectorAll(
-            "#reportForm .form-group"
-        )
-        .forEach(
-            function(group) {
-
-                group.classList.remove(
-                    "error"
-                );
-
-            }
-        );
-
-
-    if (!branch.value) {
-
-        branch
-            .closest(".form-group")
-            .classList.add("error");
-
-        valid = false;
-
-    }
-
-
-    if (!content.value.trim()) {
-
-        content
-            .closest(".form-group")
-            .classList.add("error");
-
-        valid = false;
-
-    }
-
-
-    if (!formData.level) {
-
         document
-            .querySelector(
-                '[data-group="level"]'
-            )
-            .closest(".form-group")
-            .classList.add("error");
-
-        valid = false;
-
-    }
+            .getElementById("newReporter")
+            .value
+            .trim();
 
 
-    if (!formData.handling) {
-
-        document
-            .querySelector(
-                '[data-group="handling"]'
-            )
-            .closest(".form-group")
-            .classList.add("error");
-
-        valid = false;
-
-    }
-
-
-    if (!reporter.value.trim()) {
-
-        reporter
-            .closest(".form-group")
-            .classList.add("error");
-
-        valid = false;
-
-    }
-
-
-    if (!valid) {
-
-        return;
-
-    }
-
-
-    const data = {
-
-        chi_nhanh:
-            branch.value,
-
-        noi_dung:
-            content.value.trim(),
-
-        muc_do:
-            formData.level,
-
-        can_xu_ly:
-            formData.handling,
-
-        nguoi_bao_cao:
-            reporter.value.trim(),
-
-        thoi_gian:
-            new Date().toISOString()
-
-    };
-
-
-    console.log(
-        "BÁO CÁO MỚI:",
-        data
-    );
-
-
-    alert(
-        "Frontend đã nhận dữ liệu.\n\n" +
-        "Chưa kết nối hệ thống lưu dữ liệu."
-    );
-
-
-    closeForm();
-
-}
-
-
-/* =====================================================
-   SUBMIT UPDATE
-===================================================== */
-
-function submitUpdate() {
-
-    const id =
-        document.getElementById(
-            "updateId"
-        ).value.trim();
-
-
-    const content =
-        document.getElementById(
-            "updateContent"
-        ).value.trim();
-
-
-    const handler =
-        document.getElementById(
-            "updateHandler"
-        ).value.trim();
-
-
-    if (!id) {
+    if (!branch) {
 
         alert(
-            "Vui lòng nhập mã sự việc."
+            "Vui lòng chọn cơ sở."
         );
 
         return;
@@ -2665,7 +2070,7 @@ function submitUpdate() {
     if (!content) {
 
         alert(
-            "Vui lòng nhập nội dung cập nhật."
+            "Vui lòng nhập nội dung vấn đề."
         );
 
         return;
@@ -2673,10 +2078,10 @@ function submitUpdate() {
     }
 
 
-    if (!formData.updateStatus) {
+    if (!need) {
 
         alert(
-            "Vui lòng chọn trạng thái xử lý."
+            "Vui lòng chọn mục cần xử lý."
         );
 
         return;
@@ -2684,72 +2089,81 @@ function submitUpdate() {
     }
 
 
-    const data = {
+    if (!reporter) {
+
+        alert(
+            "Vui lòng nhập người báo cáo."
+        );
+
+        return;
+
+    }
+
+
+    const id =
+        generateNextID();
+
+
+    /*
+     * Frontend preview.
+     *
+     * Chưa gửi dữ liệu đi đâu.
+     */
+
+    const newRecord = {
 
         id: id,
 
-        noi_dung_cap_nhat:
-            content,
+        chi_nhanh: branch,
+
+        noi_dung: content,
+
+        can_xu_ly: need,
+
+        nguoi_bao_cao: reporter,
 
         trang_thai_xu_ly:
-            formData.updateStatus,
-
-        nguoi_xu_ly:
-            handler,
+            "Chưa xử lý",
 
         thoi_gian:
-            new Date().toISOString()
+            new Date().toISOString(),
+
+        muc_do:
+            "Chưa xác định",
+
+        phuong_an_xu_ly:
+            "",
+
+        nguoi_xu_ly:
+            ""
 
     };
 
 
-    console.log(
-        "CẬP NHẬT:",
-        data
+    /*
+     * Thêm tạm vào frontend
+     * để kiểm tra giao diện.
+     */
+
+    currentRecords.unshift(
+        newRecord
     );
+
+
+    renderLogs(
+        currentRecords
+    );
+
+
+    closeNewReport();
 
 
     alert(
-        "Frontend đã nhận dữ liệu.\n\n" +
-        "Chưa kết nối hệ thống lưu dữ liệu."
+        "Đã tạo bản ghi " +
+        id +
+        " trên giao diện.\n\n" +
+        "Phần lưu dữ liệu thật sẽ nối vào backend sau."
     );
-
-
-    closeForm();
-
-}
-
-
-/* =====================================================
-   HELP
-===================================================== */
-
-function openHelp() {
-
-    document
-        .getElementById(
-            "helpModal"
-        )
-        .classList.add("active");
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-function closeHelp() {
-
-    document
-        .getElementById(
-            "helpModal"
-        )
-        .classList.remove("active");
-
-
-    document.body.style.overflow =
-        "";
 
 }
 
@@ -2768,7 +2182,9 @@ function getStatusList(value) {
 
 
     return String(value)
+
         .split(",")
+
         .map(
             function(status) {
 
@@ -2776,6 +2192,7 @@ function getStatusList(value) {
 
             }
         )
+
         .filter(
             function(status) {
 
@@ -2793,9 +2210,7 @@ function getFinalStatus(value) {
         getStatusList(value);
 
 
-    if (
-        statuses.length === 0
-    ) {
+    if (!statuses.length) {
 
         return "Chưa xử lý";
 
@@ -2824,6 +2239,17 @@ function getFinalStatus(value) {
     }
 
 
+    if (
+        statuses.includes(
+            "Không cần xử lý"
+        )
+    ) {
+
+        return "Không cần xử lý";
+
+    }
+
+
     return statuses[
         statuses.length - 1
     ];
@@ -2833,10 +2259,14 @@ function getFinalStatus(value) {
 
 function isCompleted(record) {
 
-    return (
+    const status =
         getFinalStatus(
             record.trang_thai_xu_ly
-        ) === "Đã xử lý"
+        );
+
+    return (
+        status === "Đã xử lý" ||
+        status === "Không cần xử lý"
     );
 
 }
@@ -2906,40 +2336,6 @@ function parseDate(value) {
 }
 
 
-function formatDetailDate(value) {
-
-    if (!value) {
-
-        return "";
-
-    }
-
-
-    const date =
-        parseDate(value);
-
-
-    if (!date) {
-
-        return value;
-
-    }
-
-
-    return date.toLocaleString(
-        "vi-VN",
-        {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit"
-        }
-    );
-
-}
-
-
 function formatDate(value) {
 
     if (!value) {
@@ -2991,6 +2387,76 @@ function formatDate(value) {
 }
 
 
+function formatDetailDate(value) {
+
+    if (!value) {
+
+        return "";
+
+    }
+
+
+    const date =
+        parseDate(value);
+
+
+    if (!date) {
+
+        return value;
+
+    }
+
+
+    return date.toLocaleString(
+        "vi-VN",
+        {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
 /* =====================================================
    RENDER
 ===================================================== */
@@ -3018,6 +2484,10 @@ function renderLogs(records) {
 
     completedLogs.innerHTML = "";
 
+
+    /*
+     * KHỬ ID TRÙNG
+     */
 
     const recordMap =
         new Map();
@@ -3054,6 +2524,10 @@ function renderLogs(records) {
         );
 
 
+    /*
+     * SẮP XẾP
+     */
+
     uniqueRecords.sort(
         function(a, b) {
 
@@ -3069,13 +2543,17 @@ function renderLogs(records) {
 
 
             return (
-                (dateB
-                    ? dateB.getTime()
-                    : 0)
+                (
+                    dateB
+                        ? dateB.getTime()
+                        : 0
+                )
                 -
-                (dateA
-                    ? dateA.getTime()
-                    : 0)
+                (
+                    dateA
+                        ? dateA.getTime()
+                        : 0
+                )
             );
 
         }
@@ -3110,7 +2588,9 @@ function renderLogs(records) {
         function(record) {
 
             recentLogs.appendChild(
-                createLogCard(record)
+                createLogCard(
+                    record
+                )
             );
 
         }
@@ -3121,7 +2601,9 @@ function renderLogs(records) {
         function(record) {
 
             completedLogs.appendChild(
-                createLogCard(record)
+                createLogCard(
+                    record
+                )
             );
 
         }
@@ -3219,6 +2701,16 @@ function createLogCard(record) {
 
         statusClass =
             "status-done";
+
+    }
+
+
+    if (
+        status === "Không cần xử lý"
+    ) {
+
+        statusClass =
+            "status-no-action";
 
     }
 
@@ -3475,6 +2967,10 @@ function applySectionFilter(
 
 function openLogDetail(record) {
 
+    selectedRecord =
+        record;
+
+
     const modal =
         document.getElementById(
             "detailModal"
@@ -3499,19 +2995,10 @@ function openLogDetail(record) {
         );
 
 
-    const phuongAn =
-        record.phuong_an_xu_ly ||
-        "Chưa cập nhật";
-
-
-    const nguoiXuLy =
-        record.nguoi_xu_ly ||
-        "Chưa cập nhật";
-
-
     title.textContent =
         record.id
-            ? "Chi tiết " + record.id
+            ? "Chi tiết " +
+              record.id
             : "Chi tiết sự việc";
 
 
@@ -3520,7 +3007,7 @@ function openLogDetail(record) {
         <div class="detail-row">
 
             <div class="detail-label">
-                Mã sự việc
+                ID
             </div>
 
             <div class="detail-value">
@@ -3536,7 +3023,7 @@ function openLogDetail(record) {
         <div class="detail-row">
 
             <div class="detail-label">
-                Chi nhánh
+                Cơ sở
             </div>
 
             <div class="detail-value">
@@ -3585,7 +3072,7 @@ function openLogDetail(record) {
         <div class="detail-row">
 
             <div class="detail-label">
-                Nội dung
+                Nội dung vấn đề
             </div>
 
             <div class="detail-value detail-content">
@@ -3601,23 +3088,7 @@ function openLogDetail(record) {
         <div class="detail-row">
 
             <div class="detail-label">
-                Mức độ
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(
-                    record.muc_do ||
-                    "Không xác định"
-                )}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                Cần xử lý
+                Mục cần xử lý
             </div>
 
             <div class="detail-value">
@@ -3648,12 +3119,13 @@ function openLogDetail(record) {
         <div class="detail-row">
 
             <div class="detail-label">
-                Phương án xử lý
+                Biện pháp xử lý
             </div>
 
             <div class="detail-value detail-content">
                 ${escapeHTML(
-                    phuongAn
+                    record.phuong_an_xu_ly ||
+                    "Chưa cập nhật"
                 )}
             </div>
 
@@ -3668,7 +3140,8 @@ function openLogDetail(record) {
 
             <div class="detail-value">
                 ${escapeHTML(
-                    nguoiXuLy
+                    record.nguoi_xu_ly ||
+                    "Chưa cập nhật"
                 )}
             </div>
 
@@ -3682,8 +3155,7 @@ function openLogDetail(record) {
     );
 
 
-    document.body.style.overflow =
-        "hidden";
+    lockBody();
 
 }
 
@@ -3699,44 +3171,189 @@ function closeLogDetail() {
         );
 
 
-    document.body.style.overflow =
-        "";
+    selectedRecord =
+        null;
+
+
+    unlockBody();
 
 }
 
 
 /* =====================================================
-   HTML ESCAPE
+   OPEN UPDATE
 ===================================================== */
 
-function escapeHTML(value) {
+function openUpdateFromDetail() {
 
-    return String(value)
+    if (!selectedRecord) {
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
+        return;
 
-        .replace(
-            /</g,
-            "&lt;"
-        )
+    }
 
-        .replace(
-            />/g,
-            "&gt;"
-        )
 
-        .replace(
-            /"/g,
-            "&quot;"
-        )
+    const record =
+        selectedRecord;
 
-        .replace(
-            /'/g,
-            "&#039;"
+
+    closeLogDetail();
+
+
+    document.getElementById(
+        "updateId"
+    ).textContent =
+        record.id || "—";
+
+
+    document.getElementById(
+        "updateBranch"
+    ).textContent =
+        record.chi_nhanh || "—";
+
+
+    document.getElementById(
+        "updateContent"
+    ).textContent =
+        record.noi_dung || "—";
+
+
+    document.getElementById(
+        "updateStatus"
+    ).value =
+        getFinalStatus(
+            record.trang_thai_xu_ly
         );
+
+
+    document.getElementById(
+        "updateAction"
+    ).value =
+        record.phuong_an_xu_ly || "";
+
+
+    document.getElementById(
+        "updateReporter"
+    ).value =
+        record.nguoi_bao_cao || "";
+
+
+    document
+        .getElementById(
+            "updateModal"
+        )
+        .classList.add(
+            "active"
+        );
+
+
+    lockBody();
+
+}
+
+
+function closeUpdate() {
+
+    document
+        .getElementById(
+            "updateModal"
+        )
+        .classList.remove(
+            "active"
+        );
+
+
+    unlockBody();
+
+}
+
+
+function submitUpdate() {
+
+    if (!selectedRecord) {
+
+        return;
+
+    }
+
+
+    const status =
+        document
+            .getElementById(
+                "updateStatus"
+            )
+            .value
+            .trim();
+
+
+    const action =
+        document
+            .getElementById(
+                "updateAction"
+            )
+            .value
+            .trim();
+
+
+    const reporter =
+        document
+            .getElementById(
+                "updateReporter"
+            )
+            .value
+            .trim();
+
+
+    if (!status) {
+
+        alert(
+            "Vui lòng chọn trạng thái xử lý."
+        );
+
+        return;
+
+    }
+
+
+    if (!reporter) {
+
+        alert(
+            "Vui lòng nhập người báo cáo."
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * Frontend preview.
+     */
+
+    selectedRecord.trang_thai_xu_ly =
+        status;
+
+    selectedRecord.phuong_an_xu_ly =
+        action;
+
+    selectedRecord.nguoi_bao_cao =
+        reporter;
+
+
+    renderLogs(
+        currentRecords
+    );
+
+
+    closeUpdate();
+
+
+    alert(
+        "Đã cập nhật " +
+        selectedRecord.id +
+        " trên giao diện.\n\n" +
+        "Phần lưu dữ liệu thật sẽ nối vào backend sau."
+    );
 
 }
 
@@ -3787,35 +3404,31 @@ function resetFilters() {
 
     document
         .querySelectorAll(
-            ".filter-tab"
-        )
-        .forEach(
-            function(tab) {
-
-                tab.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-
-    document
-        .querySelectorAll(
             ".filter-tabs"
         )
         .forEach(
             function(group) {
 
-                const first =
-                    group.querySelector(
+                const tabs =
+                    group.querySelectorAll(
                         ".filter-tab"
                     );
 
 
-                if (first) {
+                tabs.forEach(
+                    function(tab) {
 
-                    first.classList.add(
+                        tab.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                if (tabs[0]) {
+
+                    tabs[0].classList.add(
                         "active"
                     );
 
@@ -3833,19 +3446,9 @@ function resetFilters() {
 
 function showLoadError() {
 
-    const recentLogs =
-        document.getElementById(
-            "recentLogs"
-        );
-
-
-    const completedLogs =
-        document.getElementById(
-            "completedLogs"
-        );
-
-
-    recentLogs.innerHTML = `
+    document.getElementById(
+        "recentLogs"
+    ).innerHTML = `
 
         <div
             class="empty"
@@ -3858,7 +3461,9 @@ function showLoadError() {
     `;
 
 
-    completedLogs.innerHTML = "";
+    document.getElementById(
+        "completedLogs"
+    ).innerHTML = "";
 
 }
 
@@ -3877,7 +3482,8 @@ async function loadHuston() {
                 "?t=" +
                 Date.now(),
                 {
-                    cache: "no-store"
+                    cache:
+                        "no-store"
                 }
             );
 
@@ -3934,64 +3540,71 @@ async function loadHuston() {
 
 
 /* =====================================================
-   CLICK NGOÀI POPUP
+   CLICK OUTSIDE
 ===================================================== */
 
 document
-    .getElementById(
-        "formModal"
+    .querySelectorAll(
+        ".modal"
     )
-    .addEventListener(
-        "click",
-        function(event) {
+    .forEach(
+        function(modal) {
 
-            if (
-                event.target === this
-            ) {
+            modal.addEventListener(
+                "click",
+                function(event) {
 
-                closeForm();
+                    if (
+                        event.target !==
+                        modal
+                    ) {
 
-            }
+                        return;
 
-        }
-    );
-
-
-document
-    .getElementById(
-        "detailModal"
-    )
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === this
-            ) {
-
-                closeLogDetail();
-
-            }
-
-        }
-    );
+                    }
 
 
-document
-    .getElementById(
-        "helpModal"
-    )
-    .addEventListener(
-        "click",
-        function(event) {
+                    if (
+                        modal.id ===
+                        "newReportModal"
+                    ) {
 
-            if (
-                event.target === this
-            ) {
+                        closeNewReport();
 
-                closeHelp();
+                    }
 
-            }
+
+                    if (
+                        modal.id ===
+                        "detailModal"
+                    ) {
+
+                        closeLogDetail();
+
+                    }
+
+
+                    if (
+                        modal.id ===
+                        "updateModal"
+                    ) {
+
+                        closeUpdate();
+
+                    }
+
+
+                    if (
+                        modal.id ===
+                        "helpModal"
+                    ) {
+
+                        closeHelp();
+
+                    }
+
+                }
+            );
 
         }
     );
@@ -4006,16 +3619,22 @@ document.addEventListener(
     function(event) {
 
         if (
-            event.key === "Escape"
+            event.key !==
+            "Escape"
         ) {
 
-            closeForm();
-
-            closeHelp();
-
-            closeLogDetail();
+            return;
 
         }
+
+
+        closeNewReport();
+
+        closeLogDetail();
+
+        closeUpdate();
+
+        closeHelp();
 
     }
 );
