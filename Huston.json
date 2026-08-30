@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T04:58:04.346Z",
+  "updated_at": "2026-08-30T05:14:13.898Z",
   "records": [
     {
       "id": "TEST-001",
@@ -18,6 +18,16 @@
       "nguoi_bao_cao": "test lần thứ n",
       "noi_dung": "test",
       "muc_do": "Khẩn cấp",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z025",
+      "chi_nhanh": "69 Khương Trung",
+      "thoi_gian": "2026/08/30 12:14",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Bản test thứ n+1",
+      "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
     }
