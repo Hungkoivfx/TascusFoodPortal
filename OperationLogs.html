@@ -1003,7 +1003,7 @@ button {
 
 <header class="header">
 
-```
+
 <button
     class="back-button"
     onclick="goBack()"
@@ -1031,7 +1031,7 @@ button {
 >
     ?
 </button>
-```
+
 
 </header>
 
@@ -1041,7 +1041,7 @@ button {
 
 <section class="actions">
 
-```
+
 <button
     class="action-button"
     onclick="openForm(
@@ -1102,7 +1102,7 @@ button {
     </div>
 
 </button>
-```
+
 
 </section>
 
@@ -1112,7 +1112,7 @@ button {
 
 <section class="section">
 
-```
+
 <div class="section-header">
 
     <div class="section-title-wrap">
@@ -1183,7 +1183,7 @@ button {
 >
     Không có sự việc nào tại cửa hàng này.
 </div>
-```
+
 
 </section>
 
@@ -1193,7 +1193,7 @@ button {
 
 <section class="section">
 
-```
+
 <div class="section-header">
 
     <div class="section-title-wrap">
@@ -1265,7 +1265,7 @@ button {
     Không có sự việc nào được xử lý
     trong thời gian gần đây.
 </div>
-```
+
 
 </section>
 
@@ -1280,7 +1280,7 @@ button {
     id="formModal"
 >
 
-```
+
 <div class="form-header">
 
     <div
@@ -1307,7 +1307,7 @@ button {
     title="Lark Form"
     allow="clipboard-write"
 ></iframe>
-```
+
 
 </div>
 
@@ -1320,7 +1320,7 @@ button {
     id="helpModal"
 >
 
-```
+
 <div class="help-box">
 
     <div class="help-header">
@@ -1410,7 +1410,7 @@ button {
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -1423,7 +1423,7 @@ button {
     id="detailModal"
 >
 
-```
+
 <div class="detail-box">
 
     <div class="detail-header">
@@ -1447,7 +1447,7 @@ button {
     <div id="detailContent"></div>
 
 </div>
-```
+
 
 </div>
 
@@ -2453,7 +2453,7 @@ CHI TIẾT SỰ VIỆC
 
 function openLogDetail(record) {
 
-```
+
 const modal =
     document.getElementById("detailModal");
 
@@ -2573,7 +2573,7 @@ content.innerHTML = `
 modal.classList.add("active");
 
 document.body.style.overflow = "hidden";
-```
+
 
 }
 
@@ -2583,14 +2583,14 @@ document.body.style.overflow = "hidden";
 
 function closeLogDetail() {
 
-```
+
 const modal =
     document.getElementById("detailModal");
 
 modal.classList.remove("active");
 
 document.body.style.overflow = "";
-```
+
 
 }
 
@@ -2604,7 +2604,7 @@ document
 "click",
 function(event) {
 
-```
+
         if (event.target === this) {
 
             closeLogDetail();
@@ -2613,7 +2613,7 @@ function(event) {
 
     }
 );
-```
+
 
 loadHuston();
 
