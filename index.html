@@ -49,287 +49,7 @@
     /* =========================
        HEADER
     ========================= */
-<!-- NÚT GIỚI THIỆU -->
 
-<button class="info-button" onclick="openInfo()" aria-label="Giới thiệu cổng vận hành">
-    ?
-</button>
-
-<!-- POPUP -->
-
-<div class="info-overlay" id="infoOverlay" onclick="closeInfo(event)">
-
-```
-<div class="info-popup">
-
-    <button class="info-close" onclick="closeInfo()">
-        ×
-    </button>
-
-    <div class="info-icon">
-        ?
-    </div>
-
-    <h2>Cổng vận hành</h2>
-
-    <p>
-        Đây là nơi tập hợp những thứ nhân viên cần dùng
-        trong công việc hằng ngày tại Tascus Food.
-        Từ đặt hàng, báo cáo, ghi nhận sự cố đến xem
-        quy trình và công thức món, mọi thứ đều được gom
-        lại ở đây để dễ tìm và dễ sử dụng hơn.
-    </p>
-
-    <p>
-        Các chức năng và hướng dẫn trên cổng được thiết kế
-        để nhân viên có thể tự tìm hiểu và thực hiện
-        công việc của mình.
-    </p>
-
-</div>
-```
-
-</div>
-
-<style>
-
-/* =========================
-   NÚT ?
-========================= */
-
-.info-button {
-    position: fixed;
-
-    top: 18px;
-    right: 18px;
-
-    width: 34px;
-    height: 34px;
-
-    border-radius: 50%;
-
-    border: 1px solid #dfe1e3;
-
-    background: #fff;
-
-    color: #777;
-
-    font-size: 16px;
-    font-weight: 600;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-
-    -webkit-tap-highlight-color: transparent;
-
-    transition:
-        transform 0.12s ease,
-        background 0.12s ease;
-}
-
-.info-button:hover {
-    background: #f5f6f7;
-}
-
-.info-button:active {
-    transform: scale(0.9);
-}
-
-
-/* =========================
-   OVERLAY
-========================= */
-
-.info-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0,0,0,0.28);
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    z-index: 9999;
-}
-
-.info-overlay.show {
-    display: flex;
-}
-
-
-/* =========================
-   POPUP
-========================= */
-
-.info-popup {
-    position: relative;
-
-    width: 100%;
-    max-width: 420px;
-
-    background: #fff;
-
-    border-radius: 18px;
-
-    padding: 28px 24px 24px;
-
-    box-shadow:
-        0 18px 50px rgba(0,0,0,0.16);
-
-    animation: infoAppear 0.16s ease;
-}
-
-@keyframes infoAppear {
-
-    from {
-        opacity: 0;
-        transform: scale(0.96) translateY(6px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-
-}
-
-
-/* =========================
-   CLOSE
-========================= */
-
-.info-close {
-    position: absolute;
-
-    top: 12px;
-    right: 14px;
-
-    width: 32px;
-    height: 32px;
-
-    border: none;
-
-    background: transparent;
-
-    color: #999;
-
-    font-size: 25px;
-
-    line-height: 1;
-
-    cursor: pointer;
-}
-
-
-/* =========================
-   ICON
-========================= */
-
-.info-icon {
-    width: 42px;
-    height: 42px;
-
-    margin-bottom: 14px;
-
-    border-radius: 12px;
-
-    background: #f1f2f3;
-
-    color: #666;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-weight: 600;
-}
-
-
-/* =========================
-   TEXT
-========================= */
-
-.info-popup h2 {
-    font-size: 19px;
-
-    font-weight: 600;
-
-    margin-bottom: 12px;
-}
-
-.info-popup p {
-    font-size: 14px;
-
-    line-height: 1.6;
-
-    color: #666;
-
-    margin-bottom: 12px;
-}
-
-.info-popup p:last-child {
-    margin-bottom: 0;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 600px) {
-
-    .info-button {
-        top: 14px;
-        right: 14px;
-
-        width: 32px;
-        height: 32px;
-    }
-
-    .info-popup {
-        max-width: 360px;
-
-        padding: 25px 20px 21px;
-
-        border-radius: 16px;
-    }
-
-}
-
-</style>
-
-<script>
-
-function openInfo() {
-    document
-        .getElementById("infoOverlay")
-        .classList.add("show");
-}
-
-function closeInfo(event) {
-
-    if (
-        !event ||
-        event.target === document.getElementById("infoOverlay")
-    ) {
-        document
-            .getElementById("infoOverlay")
-            .classList.remove("show");
-    }
-
-}
-
-</script>
 
     .header {
         text-align: center;
@@ -1038,7 +758,287 @@ function closeInfo(event) {
         Trung tâm tác nghiệp dành cho nhân viên các cửa hàng<br>
         Tascus Food Khương Trung và Thái Thịnh.
     </p>
+<!-- NÚT GIỚI THIỆU -->
 
+<button class="info-button" onclick="openInfo()" aria-label="Giới thiệu cổng vận hành">
+    ?
+</button>
+
+<!-- POPUP -->
+
+<div class="info-overlay" id="infoOverlay" onclick="closeInfo(event)">
+
+```
+<div class="info-popup">
+
+    <button class="info-close" onclick="closeInfo()">
+        ×
+    </button>
+
+    <div class="info-icon">
+        ?
+    </div>
+
+    <h2>Cổng vận hành</h2>
+
+    <p>
+        Đây là nơi tập hợp những thứ nhân viên cần dùng
+        trong công việc hằng ngày tại Tascus Food.
+        Từ đặt hàng, báo cáo, ghi nhận sự cố đến xem
+        quy trình và công thức món, mọi thứ đều được gom
+        lại ở đây để dễ tìm và dễ sử dụng hơn.
+    </p>
+
+    <p>
+        Các chức năng và hướng dẫn trên cổng được thiết kế
+        để nhân viên có thể tự tìm hiểu và thực hiện
+        công việc của mình.
+    </p>
+
+</div>
+```
+
+</div>
+
+<style>
+
+/* =========================
+   NÚT ?
+========================= */
+
+.info-button {
+    position: fixed;
+
+    top: 18px;
+    right: 18px;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    border: 1px solid #dfe1e3;
+
+    background: #fff;
+
+    color: #777;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform 0.12s ease,
+        background 0.12s ease;
+}
+
+.info-button:hover {
+    background: #f5f6f7;
+}
+
+.info-button:active {
+    transform: scale(0.9);
+}
+
+
+/* =========================
+   OVERLAY
+========================= */
+
+.info-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.28);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 9999;
+}
+
+.info-overlay.show {
+    display: flex;
+}
+
+
+/* =========================
+   POPUP
+========================= */
+
+.info-popup {
+    position: relative;
+
+    width: 100%;
+    max-width: 420px;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    padding: 28px 24px 24px;
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,0.16);
+
+    animation: infoAppear 0.16s ease;
+}
+
+@keyframes infoAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+
+/* =========================
+   CLOSE
+========================= */
+
+.info-close {
+    position: absolute;
+
+    top: 12px;
+    right: 14px;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #999;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   ICON
+========================= */
+
+.info-icon {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 14px;
+
+    border-radius: 12px;
+
+    background: #f1f2f3;
+
+    color: #666;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.info-popup h2 {
+    font-size: 19px;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+.info-popup p {
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #666;
+
+    margin-bottom: 12px;
+}
+
+.info-popup p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .info-button {
+        top: 14px;
+        right: 14px;
+
+        width: 32px;
+        height: 32px;
+    }
+
+    .info-popup {
+        max-width: 360px;
+
+        padding: 25px 20px 21px;
+
+        border-radius: 16px;
+    }
+
+}
+
+</style>
+
+<script>
+
+function openInfo() {
+    document
+        .getElementById("infoOverlay")
+        .classList.add("show");
+}
+
+function closeInfo(event) {
+
+    if (
+        !event ||
+        event.target === document.getElementById("infoOverlay")
+    ) {
+        document
+            .getElementById("infoOverlay")
+            .classList.remove("show");
+    }
+
+}
+
+</script>
 </header>
 
 
