@@ -1,405 +1,1876 @@
 <!DOCTYPE html>
+
 <html lang="vi">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Nhật ký vận hành - Tascus Food</title>
+<meta charset="UTF-8">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+
+>
+
+<title>Nhật ký vận hành · Tascus Food</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: #f5f6f7;
+    color: #222;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding:
+        max(16px, env(safe-area-inset-top))
+        14px
+        max(24px, env(safe-area-inset-bottom))
+        14px;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.back-button,
+.help-button {
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #e0e2e5;
+    background: #fff;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #333;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.back-button {
+    font-size: 25px;
+    line-height: 1;
+}
+
+.help-button {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.back-button:active,
+.help-button:active {
+    transform: scale(.94);
+}
+
+.header-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.header-title {
+    font-size: 21px;
+    font-weight: 650;
+    letter-spacing: -.3px;
+}
+
+.header-subtitle {
+    margin-top: 3px;
+    font-size: 12px;
+    color: #888;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.action-button {
+
+    width: 100%;
+    min-height: 76px;
+
+    padding: 14px 15px;
+
+    background: #fff;
+
+    border: 1px solid #e1e3e5;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    color: #222;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform .12s ease,
+        box-shadow .12s ease;
+}
+
+.action-button:hover {
+    box-shadow: 0 6px 18px rgba(0,0,0,.05);
+}
+
+.action-button:active {
+    transform: scale(.985);
+    box-shadow: none;
+}
+
+.action-icon {
+
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background: #f1f2f3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    margin-right: 13px;
+}
+
+.action-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.action-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.action-description {
+    font-size: 12px;
+    color: #858585;
+    line-height: 1.4;
+}
+
+.action-arrow {
+    flex-shrink: 0;
+    margin-left: 10px;
+    color: #999;
+    font-size: 20px;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+    margin-bottom: 26px;
+}
+
+.section-header {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+.section-title-wrap {
+
+    display: flex;
+    align-items: baseline;
+
+    gap: 7px;
+
+    min-width: 0;
+}
+
+.section-title {
+
+    font-size: 14px;
+    font-weight: 650;
+
+    white-space: nowrap;
+}
+
+.section-count {
+
+    font-size: 11px;
+    color: #999;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+.filter-tabs {
+
+    display: flex;
+    gap: 3px;
+
+    padding: 3px;
+
+    background: #e9eaec;
+
+    border-radius: 10px;
+
+    flex-shrink: 0;
+}
+
+.filter-tab {
+
+    border: none;
+    background: transparent;
+
+    color: #777;
+
+    font-size: 10px;
+    font-weight: 550;
+
+    padding: 6px 8px;
+
+    min-height: 28px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+
+.filter-tab.active {
+
+    background: #fff;
+    color: #222;
+
+    box-shadow:
+        0 1px 4px rgba(0,0,0,.08);
+}
+
+
+/* =========================
+   LOG CARD
+========================= */
+
+.logs {
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.log-card {
+
+    background: #fff;
+
+    border: 1px solid #e1e3e5;
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    cursor: pointer;
+
+    transition:
+        box-shadow .12s ease,
+        transform .12s ease;
+}
+
+.log-card:hover {
+    box-shadow: 0 5px 16px rgba(0,0,0,.04);
+}
+
+.log-card:active {
+    transform: scale(.99);
+}
+
+.log-top {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+.log-meta {
+
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.log-dot {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #888;
+
+    flex-shrink: 0;
+}
+
+.log-id {
+
+    font-size: 11px;
+    font-weight: 650;
+
+    color: #555;
+
+    white-space: nowrap;
+}
+
+.separator {
+    color: #bbb;
+}
+
+.log-branch {
+
+    font-size: 12px;
+    color: #777;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.log-time {
+
+    font-size: 11px;
+    color: #999;
+
+    white-space: nowrap;
+}
+
+.status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 8px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    flex-shrink: 0;
+}
+
+.status-pending {
+    background: #f1f1f1;
+    color: #555;
+}
+
+.status-processing {
+    background: #ededed;
+    color: #444;
+}
+
+.status-done {
+    background: #e7e7e7;
+    color: #777;
+}
+
+.log-title {
+
+    font-size: 15px;
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    margin-bottom: 5px;
+}
+
+.log-content {
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    color: #6f6f6f;
+
+    display: -webkit-box;
+
+    -webkit-box-orient: vertical;
+
+    -webkit-line-clamp: 2;
+
+    overflow: hidden;
+}
+
+.log-footer {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 12px;
+
+    padding-top: 10px;
+
+    border-top: 1px solid #f0f0f0;
+}
+
+.log-level {
+    font-size: 11px;
+    color: #888;
+}
+
+.log-level strong {
+    color: #555;
+}
+
+.view-detail {
+    font-size: 11px;
+    color: #777;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty {
+
+    display: none;
+
+    padding: 25px 15px;
+
+    text-align: center;
+
+    color: #999;
+
+    font-size: 12px;
+
+    background: #fff;
+
+    border: 1px solid #e1e3e5;
+
+    border-radius: 15px;
+}
+
+
+/* =========================
+   FORM MODAL
+========================= */
+
+.form-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    background: #fff;
+
+    display: none;
+
+    flex-direction: column;
+}
+
+.form-modal.active {
+    display: flex;
+}
+
+
+/* FORM HEADER */
+
+.form-header {
+
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        0 14px
+        0 16px;
+
+    border-bottom: 1px solid #e5e5e5;
+
+    background: #fff;
+
+    padding-top:
+        env(safe-area-inset-top);
+}
+
+.form-header-title {
+
+    flex: 1;
+
+    min-width: 0;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.form-close {
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f2f3;
+
+    color: #444;
+
+    font-size: 23px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+
+/* IFRAME */
+
+.form-frame {
+
+    width: 100%;
+
+    flex: 1;
+
+    border: none;
+
+    background: #fff;
+}
+
+
+/* =========================
+   HELP MODAL
+========================= */
+
+.help-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    background: rgba(0,0,0,.42);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 16px;
+}
+
+.help-modal.active {
+    display: flex;
+}
+
+.help-box {
+
+    width: 100%;
+
+    max-width: 520px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.15);
+
+    animation:
+        helpIn .16s ease-out;
+}
+
+@keyframes helpIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.help-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 17px;
+}
+
+.help-title {
+
+    font-size: 19px;
+
+    font-weight: 650;
+}
+
+.help-close {
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f2f3;
+
+    color: #555;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+.help-content {
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: #555;
+}
+
+.help-content p {
+    margin-bottom: 13px;
+}
+
+.help-content p:last-child {
+    margin-bottom: 0;
+}
+
+.help-content strong {
+    color: #333;
+}
+
+.help-list {
+
+    margin: 5px 0 15px;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+.help-list li {
+
+    margin-bottom: 10px;
+
+    padding-left: 15px;
+
+    position: relative;
+}
+
+.help-list li::before {
+
+    content: "•";
+
+    position: absolute;
+
+    left: 0;
+
+    color: #777;
+
+    font-weight: bold;
+}
+
+.help-final {
+
+    padding-top: 13px;
+
+    margin-top: 4px;
+
+    border-top: 1px solid #eee;
+
+    color: #444;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .help-modal {
+
+        padding: 0;
+
+        align-items: flex-end;
+    }
+
+    .help-box {
+
+        max-width: none;
+
+        max-height: 88vh;
+
+        border-radius:
+            18px 18px 0 0;
+
+        padding:
+            20px 16px
+            max(22px, env(safe-area-inset-bottom))
+            16px;
+
+        animation:
+            helpSlideUp .18s ease-out;
+    }
+
+    @keyframes helpSlideUp {
+
+        from {
+            opacity: 0;
+            transform: translateY(25px);
         }
 
-        html {
-            min-height: 100%;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
-        body {
-            min-height: 100vh;
-            min-height: 100dvh;
+}
 
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Arial,
-                sans-serif;
+@media (max-width: 520px) {
 
-            background: #f5f6f7;
-            color: #222;
+    .section-header {
+        gap: 5px;
+    }
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    .section-title {
+        font-size: 13px;
+    }
 
-            padding: 24px 16px;
-        }
+    .section-count {
+        display: none;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 620px;
-        }
+    .filter-tabs {
+        max-width: 72%;
+    }
 
-        /* ===== HEADER ===== */
+    .filter-tab {
+        font-size: 9px;
+        padding: 6px;
+    }
+}
 
-        .header {
-            text-align: center;
-            margin-bottom: 28px;
-        }
+@media (max-width: 390px) {
 
-        .logo {
-            width: 58px;
-            height: 58px;
+    .filter-tab {
+        font-size: 8px;
+        padding: 5px;
+    }
 
-            margin: 0 auto 16px;
+    .log-branch {
+        max-width: 85px;
+    }
 
-            border-radius: 16px;
+    .log-time {
+        display: none;
+    }
+}
 
-            background: #ffffff;
-            border: 1px solid #e1e3e5;
+</style>
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 27px;
-        }
-
-        .header h1 {
-            font-size: 26px;
-            font-weight: 650;
-            letter-spacing: -0.4px;
-
-            margin-bottom: 8px;
-        }
-
-        .header p {
-            font-size: 14px;
-            line-height: 1.55;
-            color: #777;
-        }
-
-        /* ===== MENU ===== */
-
-        .menu {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .menu-button {
-            width: 100%;
-            min-height: 108px;
-
-            display: flex;
-            align-items: center;
-
-            padding: 22px 20px;
-
-            background: #ffffff;
-            border: 1px solid #e1e3e5;
-            border-radius: 16px;
-
-            text-decoration: none;
-            color: inherit;
-
-            transition:
-                transform 0.15s ease,
-                box-shadow 0.15s ease,
-                border-color 0.15s ease;
-
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .menu-button:hover {
-            border-color: #cfd2d5;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-            transform: translateY(-1px);
-        }
-
-        .menu-button:active {
-            transform: scale(0.985);
-            box-shadow: none;
-        }
-
-        /* ===== ICON ===== */
-
-        .button-icon {
-            width: 48px;
-            height: 48px;
-
-            flex-shrink: 0;
-
-            border-radius: 13px;
-
-            background: #f1f2f3;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 22px;
-
-            margin-right: 16px;
-        }
-
-        /* ===== TEXT ===== */
-
-        .button-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .button-title {
-            font-size: 17px;
-            font-weight: 600;
-
-            margin-bottom: 6px;
-        }
-
-        .button-description {
-            font-size: 13px;
-            line-height: 1.5;
-
-            color: #777;
-        }
-
-        .arrow {
-            flex-shrink: 0;
-
-            margin-left: 14px;
-
-            font-size: 22px;
-            color: #999;
-        }
-
-        /* ===== FOOTER ===== */
-
-        .footer {
-            text-align: center;
-
-            margin-top: 24px;
-
-            font-size: 12px;
-            color: #999;
-        }
-
-        /* ===== MOBILE ===== */
-
-        @media (max-width: 600px) {
-
-            body {
-                align-items: flex-start;
-
-                padding-top: max(32px, env(safe-area-inset-top));
-                padding-bottom: max(24px, env(safe-area-inset-bottom));
-            }
-
-            .container {
-                max-width: 480px;
-                margin: auto 0;
-            }
-
-            .header {
-                margin-bottom: 24px;
-            }
-
-            .logo {
-                width: 54px;
-                height: 54px;
-
-                margin-bottom: 14px;
-
-                border-radius: 15px;
-
-                font-size: 25px;
-            }
-
-            .header h1 {
-                font-size: 23px;
-            }
-
-            .header p {
-                font-size: 13px;
-            }
-
-            .menu {
-                gap: 12px;
-            }
-
-            .menu-button {
-                min-height: 96px;
-
-                padding: 18px 16px;
-
-                border-radius: 15px;
-            }
-
-            .button-icon {
-                width: 46px;
-                height: 46px;
-
-                margin-right: 13px;
-
-                border-radius: 12px;
-
-                font-size: 21px;
-            }
-
-            .button-title {
-                font-size: 15px;
-            }
-
-            .button-description {
-                font-size: 12.5px;
-            }
-
-            .arrow {
-                font-size: 20px;
-                margin-left: 10px;
-            }
-
-            .footer {
-                margin-top: 20px;
-            }
-        }
-
-        /* ===== SMALL PHONE ===== */
-
-        @media (max-width: 360px) {
-
-            body {
-                padding-left: 12px;
-                padding-right: 12px;
-            }
-
-            .header h1 {
-                font-size: 21px;
-            }
-
-            .header p {
-                font-size: 12.5px;
-            }
-
-            .menu-button {
-                padding: 16px 13px;
-            }
-
-            .button-icon {
-                width: 42px;
-                height: 42px;
-
-                margin-right: 11px;
-
-                font-size: 19px;
-            }
-
-            .button-title {
-                font-size: 14px;
-            }
-
-            .button-description {
-                font-size: 12px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <main class="container">
+<div class="container">
 
-        <header class="header">
 
-            <div class="logo">
-                📋
+<!-- HEADER -->
+
+<header class="header">
+
+    <button
+        class="back-button"
+        onclick="goBack()"
+        aria-label="Quay lại"
+    >
+        ‹
+    </button>
+
+
+    <div class="header-text">
+
+        <div class="header-title">
+            Nhật ký vận hành
+        </div>
+
+        <div class="header-subtitle">
+            Các sự việc được ghi nhận tại cửa hàng
+        </div>
+
+    </div>
+
+
+    <button
+        class="help-button"
+        onclick="openHelp()"
+        aria-label="Hướng dẫn"
+    >
+        ?
+    </button>
+
+</header>
+
+
+
+<!-- ACTION BUTTONS -->
+
+<section class="actions">
+
+
+    <button
+        class="action-button"
+        onclick="openForm(
+            REPORT_FORM_URL,
+            'Báo cáo vấn đề mới'
+        )"
+    >
+
+        <div class="action-icon">
+            ＋
+        </div>
+
+        <div class="action-content">
+
+            <div class="action-title">
+                Báo cáo vấn đề mới
             </div>
 
-            <h1>Nhật ký vận hành</h1>
+            <div class="action-description">
+                Ghi nhận sự việc hoặc vấn đề vừa phát sinh.
+            </div>
 
-            <p>
-                Ghi nhận và cập nhật các vấn đề<br>
-                phát sinh trong quá trình vận hành.
-            </p>
+        </div>
 
-        </header>
+        <div class="action-arrow">
+            ›
+        </div>
+
+    </button>
 
 
-        <section class="menu">
 
-            <!-- BÁO CÁO VẤN ĐỀ MỚI -->
+    <button
+        class="action-button"
+        onclick="openForm(
+            UPDATE_FORM_URL,
+            'Cập nhật vấn đề cũ'
+        )"
+    >
 
-            <a
-                class="menu-button"
-                href="DÁN-LINK-FORM-BÁO-CÁO-VÀO-ĐÂY"
+        <div class="action-icon">
+            ↻
+        </div>
+
+        <div class="action-content">
+
+            <div class="action-title">
+                Cập nhật vấn đề cũ
+            </div>
+
+            <div class="action-description">
+                Chọn một vấn đề đã ghi nhận để cập nhật.
+            </div>
+
+        </div>
+
+        <div class="action-arrow">
+            ›
+        </div>
+
+    </button>
+
+
+</section>
+
+
+
+<!-- RECENT -->
+
+<section class="section">
+
+
+    <div class="section-header">
+
+        <div class="section-title-wrap">
+
+            <div class="section-title">
+                Sự việc gần đây
+            </div>
+
+            <div
+                class="section-count"
+                id="recentCount"
             >
+                3 sự việc
+            </div>
 
-                <div class="button-icon">
-                    ＋
-                </div>
-
-                <div class="button-content">
-
-                    <div class="button-title">
-                        Báo cáo vấn đề mới
-                    </div>
-
-                    <div class="button-description">
-                        Ghi nhận sự việc hoặc vấn đề
-                        vừa phát sinh tại cửa hàng.
-                    </div>
-
-                </div>
-
-                <div class="arrow">
-                    ›
-                </div>
-
-            </a>
+        </div>
 
 
-            <!-- CẬP NHẬT VẤN ĐỀ CŨ -->
+        <div class="filter-tabs">
 
-            <a
-                class="menu-button"
-                href="DÁN-LINK-FORM-CẬP-NHẬT-VÀO-ĐÂY"
+            <button
+                class="filter-tab active"
+                onclick="filterLogs(
+                    'recent',
+                    'all',
+                    this
+                )"
             >
+                Tất cả
+            </button>
 
-                <div class="button-icon">
-                    ↻
+            <button
+                class="filter-tab"
+                onclick="filterLogs(
+                    'recent',
+                    'Khương Trung',
+                    this
+                )"
+            >
+                Khương Trung
+            </button>
+
+            <button
+                class="filter-tab"
+                onclick="filterLogs(
+                    'recent',
+                    'Thái Thịnh',
+                    this
+                )"
+            >
+                Thái Thịnh
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <div
+        class="logs"
+        id="recentLogs"
+    >
+
+
+        <article
+            class="log-card"
+            data-branch="Khương Trung"
+        >
+
+            <div class="log-top">
+
+                <div class="log-meta">
+
+                    <span class="log-dot"></span>
+
+                    <span class="log-id">
+                        VH-001
+                    </span>
+
+                    <span class="separator">
+                        ·
+                    </span>
+
+                    <span class="log-branch">
+                        Khương Trung
+                    </span>
+
+                    <span class="log-time">
+                        08:42
+                    </span>
+
                 </div>
 
-                <div class="button-content">
+                <span class="status status-pending">
+                    Chưa xử lý
+                </span>
 
-                    <div class="button-title">
-                        Cập nhật vấn đề
-                    </div>
+            </div>
 
-                    <div class="button-description">
-                        Cập nhật tình trạng các vấn đề
-                        đã được ghi nhận.
-                    </div>
+
+            <div class="log-title">
+                Tủ lạnh không lạnh
+            </div>
+
+
+            <div class="log-content">
+                Nhiệt độ tủ lạnh cao hơn bình thường,
+                thực phẩm bên trong chưa được kiểm tra.
+            </div>
+
+
+            <div class="log-footer">
+
+                <div class="log-level">
+                    Mức độ:
+                    <strong>Cao</strong>
+                </div>
+
+                <div class="view-detail">
+                    VH-001
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <article
+            class="log-card"
+            data-branch="Thái Thịnh"
+        >
+
+            <div class="log-top">
+
+                <div class="log-meta">
+
+                    <span class="log-dot"></span>
+
+                    <span class="log-id">
+                        VH-002
+                    </span>
+
+                    <span class="separator">
+                        ·
+                    </span>
+
+                    <span class="log-branch">
+                        Thái Thịnh
+                    </span>
+
+                    <span class="log-time">
+                        Hôm qua
+                    </span>
 
                 </div>
 
-                <div class="arrow">
-                    ›
+                <span class="status status-processing">
+                    Đang xử lý
+                </span>
+
+            </div>
+
+
+            <div class="log-title">
+                Máy ép nhiệt hoạt động không ổn định
+            </div>
+
+
+            <div class="log-content">
+                Máy vẫn hoạt động nhưng nhiệt độ
+                không ổn định trong quá trình ép.
+            </div>
+
+
+            <div class="log-footer">
+
+                <div class="log-level">
+                    Mức độ:
+                    <strong>Trung bình</strong>
                 </div>
 
-            </a>
+                <div class="view-detail">
+                    VH-002
+                </div>
 
-        </section>
+            </div>
+
+        </article>
 
 
-        <footer class="footer">
-            Tascus Food · Nhật ký vận hành
-        </footer>
 
-    </main>
+        <article
+            class="log-card"
+            data-branch="Khương Trung"
+        >
+
+            <div class="log-top">
+
+                <div class="log-meta">
+
+                    <span class="log-dot"></span>
+
+                    <span class="log-id">
+                        VH-003
+                    </span>
+
+                    <span class="separator">
+                        ·
+                    </span>
+
+                    <span class="log-branch">
+                        Khương Trung
+                    </span>
+
+                    <span class="log-time">
+                        29/08
+                    </span>
+
+                </div>
+
+                <span class="status status-done">
+                    Đã xử lý
+                </span>
+
+            </div>
+
+
+            <div class="log-title">
+                Thiếu túi giấy size M
+            </div>
+
+
+            <div class="log-content">
+                Kho hết túi giấy size M,
+                cần bổ sung cho ca tiếp theo.
+            </div>
+
+
+            <div class="log-footer">
+
+                <div class="log-level">
+                    Mức độ:
+                    <strong>Thấp</strong>
+                </div>
+
+                <div class="view-detail">
+                    VH-003
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <div
+        class="empty"
+        id="recentEmpty"
+    >
+        Không có sự việc nào tại cửa hàng này.
+    </div>
+
+
+</section>
+
+
+
+<!-- COMPLETED -->
+
+<section class="section">
+
+
+    <div class="section-header">
+
+        <div class="section-title-wrap">
+
+            <div class="section-title">
+                Đã xử lý xong
+            </div>
+
+            <div
+                class="section-count"
+                id="completedCount"
+            >
+                1 sự việc
+            </div>
+
+        </div>
+
+
+        <div class="filter-tabs">
+
+            <button
+                class="filter-tab active"
+                onclick="filterLogs(
+                    'completed',
+                    'all',
+                    this
+                )"
+            >
+                Tất cả
+            </button>
+
+            <button
+                class="filter-tab"
+                onclick="filterLogs(
+                    'completed',
+                    'Khương Trung',
+                    this
+                )"
+            >
+                Khương Trung
+            </button>
+
+            <button
+                class="filter-tab"
+                onclick="filterLogs(
+                    'completed',
+                    'Thái Thịnh',
+                    this
+                )"
+            >
+                Thái Thịnh
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <div
+        class="logs"
+        id="completedLogs"
+    >
+
+
+        <article
+            class="log-card"
+            data-branch="Khương Trung"
+        >
+
+            <div class="log-top">
+
+                <div class="log-meta">
+
+                    <span class="log-dot"></span>
+
+                    <span class="log-id">
+                        VH-003
+                    </span>
+
+                    <span class="separator">
+                        ·
+                    </span>
+
+                    <span class="log-branch">
+                        Khương Trung
+                    </span>
+
+                    <span class="log-time">
+                        29/08
+                    </span>
+
+                </div>
+
+                <span class="status status-done">
+                    Đã xử lý
+                </span>
+
+            </div>
+
+
+            <div class="log-title">
+                Thiếu túi giấy size M
+            </div>
+
+
+            <div class="log-content">
+                Kho hết túi giấy size M,
+                cần bổ sung cho ca tiếp theo.
+            </div>
+
+
+            <div class="log-footer">
+
+                <div class="log-level">
+                    Mức độ:
+                    <strong>Thấp</strong>
+                </div>
+
+                <div class="view-detail">
+                    VH-003
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <div
+        class="empty"
+        id="completedEmpty"
+    >
+        Không có sự việc nào được xử lý
+        trong 4 ngày gần nhất.
+    </div>
+
+
+</section>
+
+
+</div>
+
+<!-- =========================
+     LARK FORM MODAL
+========================= -->
+
+<div
+    class="form-modal"
+    id="formModal"
+>
+
+
+<div class="form-header">
+
+    <div
+        class="form-header-title"
+        id="formTitle"
+    >
+        Lark Form
+    </div>
+
+
+    <button
+        class="form-close"
+        onclick="closeForm()"
+        aria-label="Đóng"
+    >
+        ×
+    </button>
+
+</div>
+
+
+<iframe
+    class="form-frame"
+    id="formFrame"
+    src=""
+    title="Lark Form"
+    allow="clipboard-write"
+></iframe>
+
+
+</div>
+
+<!-- =========================
+     HELP MODAL
+========================= -->
+
+<div
+    class="help-modal"
+    id="helpModal"
+>
+
+
+<div class="help-box">
+
+
+    <div class="help-header">
+
+        <div class="help-title">
+            Nhật ký vận hành để làm gì?
+        </div>
+
+
+        <button
+            class="help-close"
+            onclick="closeHelp()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="help-content">
+
+
+        <p>
+            Trong lúc làm việc sẽ có những chuyện phát sinh
+            mà không phải lúc nào cũng xử lý xong ngay trong ca.
+        </p>
+
+
+        <p>
+            Ví dụ: máy có vấn đề, thiếu đồ, khách phản ánh,
+            phát hiện một việc cần sửa, hoặc có chuyện mà ca sau cần biết.
+        </p>
+
+
+        <p>
+            Thay vì chỉ nói trong nhóm Zalo rồi tin nhắn trôi mất,
+            mình ghi lại ở đây để
+            <strong>các ca sau vẫn biết chuyện gì đã xảy ra.</strong>
+        </p>
+
+
+        <ul class="help-list">
+
+            <li>
+                <strong>Báo cáo vấn đề mới:</strong>
+                Có chuyện mới xảy ra thì báo ở đây.
+            </li>
+
+            <li>
+                <strong>Cập nhật vấn đề cũ:</strong>
+                Nếu chuyện đó đã có người báo rồi,
+                vào đây để cập nhật thêm.
+            </li>
+
+            <li>
+                <strong>Sự việc gần đây:</strong>
+                Để xem cửa hàng đang có những chuyện gì cần chú ý.
+            </li>
+
+            <li>
+                <strong>Đã xử lý xong:</strong>
+                Để biết những chuyện vừa được giải quyết,
+                tránh việc ca sau không biết rồi lại báo lại từ đầu.
+            </li>
+
+        </ul>
+
+
+        <p>
+            Không cần viết dài.
+            Chỉ cần ghi
+            <strong>
+                đúng chuyện gì xảy ra và người khác cần biết điều gì.
+            </strong>
+        </p>
+
+
+        <p class="help-final">
+
+            Mục đích đơn giản là: "Cái thứ này trị bệnh óc chó" - Hưng -
+
+            <strong>
+                Ca trước biết → ca sau biết →
+                không ai phải đoán xem chuyện gì đã xảy ra.
+            </strong>
+
+        </p>
+
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+<script>
+
+
+/* =====================================================
+   CHỈ CẦN SỬA 2 LINK NÀY
+===================================================== */
+
+const REPORT_FORM_URL =
+    "DÁN-LINK-LARK-FORM-BÁO-CÁO-VÀO-ĐÂY";
+
+
+const UPDATE_FORM_URL =
+    "DÁN-LINK-LARK-FORM-CẬP-NHẬT-VÀO-ĐÂY";
+
+
+
+/* =====================================================
+   QUAY LẠI
+===================================================== */
+
+function goBack() {
+
+    if (window.history.length > 1) {
+
+        window.history.back();
+
+    } else {
+
+        window.location.href = "../index.html";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   MỞ LARK FORM
+===================================================== */
+
+function openForm(url, title) {
+
+    if (
+        !url ||
+        url.includes("DÁN-LINK")
+    ) {
+
+        alert(
+            "Chưa nhập link Lark Form trong mã HTML."
+        );
+
+        return;
+    }
+
+
+    const modal =
+        document.getElementById("formModal");
+
+    const frame =
+        document.getElementById("formFrame");
+
+    const formTitle =
+        document.getElementById("formTitle");
+
+
+    formTitle.textContent =
+        title;
+
+
+    /*
+       Gán URL cho iframe.
+       Lark Form sẽ được tải ngay bên trong
+       trang HTML hiện tại.
+    */
+
+    frame.src = url;
+
+
+    modal.classList.add("active");
+
+
+    /*
+       Khóa scroll của trang phía sau.
+    */
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+
+
+/* =====================================================
+   ĐÓNG LARK FORM
+===================================================== */
+
+function closeForm() {
+
+    const modal =
+        document.getElementById("formModal");
+
+    const frame =
+        document.getElementById("formFrame");
+
+
+    modal.classList.remove("active");
+
+
+    /*
+       Xóa src để khi mở lại form,
+       iframe tải lại từ đầu.
+    */
+
+    frame.src = "";
+
+
+    document.body.style.overflow =
+        "";
+}
+
+
+
+/* =====================================================
+   HELP
+===================================================== */
+
+function openHelp() {
+
+    document
+        .getElementById("helpModal")
+        .classList.add("active");
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+
+function closeHelp() {
+
+    document
+        .getElementById("helpModal")
+        .classList.remove("active");
+
+    document.body.style.overflow =
+        "";
+}
+
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function filterLogs(
+    type,
+    branch,
+    button
+) {
+
+
+    const section =
+        button.closest(".section");
+
+
+    section
+        .querySelectorAll(".filter-tab")
+        .forEach(function(tab) {
+
+            tab.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    const logs =
+        type === "recent"
+
+            ? document.querySelectorAll(
+                "#recentLogs .log-card"
+            )
+
+            : document.querySelectorAll(
+                "#completedLogs .log-card"
+            );
+
+
+    let count = 0;
+
+
+    logs.forEach(function(card) {
+
+        const match =
+            branch === "all" ||
+            card.dataset.branch === branch;
+
+
+        if (match) {
+
+            card.style.display = "";
+
+            count++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    const countElement =
+        type === "recent"
+
+            ? document.getElementById(
+                "recentCount"
+            )
+
+            : document.getElementById(
+                "completedCount"
+            );
+
+
+    const emptyElement =
+        type === "recent"
+
+            ? document.getElementById(
+                "recentEmpty"
+            )
+
+            : document.getElementById(
+                "completedEmpty"
+            );
+
+
+    countElement.textContent =
+        count + " sự việc";
+
+
+    emptyElement.style.display =
+        count === 0
+            ? "block"
+            : "none";
+}
+
+
+
+/* =====================================================
+   CLICK NGOÀI HELP
+===================================================== */
+
+document
+    .getElementById("helpModal")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closeHelp();
+
+            }
+
+        }
+    );
+
+
+
+/* =====================================================
+   ESC
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeForm();
+
+            closeHelp();
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
+
 </html>
