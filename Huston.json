@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T06:41:13.156Z",
+  "updated_at": "2026-08-30T06:44:12.644Z",
   "records": [
     {
       "id": "Z024",
@@ -102,6 +102,18 @@
       "muc_do": "Cần chú ý",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z026",
+      "chi_nhanh": "69 Khương Trung",
+      "thoi_gian": "2026/08/30 13:40",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Bếp bốc mùi khai không rõ từ đâu",
+      "muc_do": "Cần chú ý",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Theo dõi",
+      "phuong_an_xu_ly": "Mùi có vẻ giảm bớt",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
