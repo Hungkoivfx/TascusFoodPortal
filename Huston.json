@@ -1,16 +1,7 @@
 {
   "updated_at": "2026-08-30T05:14:13.898Z",
   "records": [
-    {
-      "id": "TEST-001",
-      "chi_nhanh": "Khương Trung",
-      "thoi_gian": "2026-08-30T11:30:00+07:00",
-      "nguoi_bao_cao": "Test",
-      "noi_dung": "Kiểm tra Huston",
-      "muc_do": "Thấp",
-      "can_xu_ly": "Có",
-      "trang_thai_xu_ly": "Chưa xử lý"
-    },
+    
     {
       "id": "Z024",
       "chi_nhanh": "122 Thái Thịnh",
