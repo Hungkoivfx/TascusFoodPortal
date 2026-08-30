@@ -1552,18 +1552,29 @@ function openForm(url, title) {
 
 function closeForm() {
 
-    const modal =
-        document.getElementById("formModal");
+```
+const modal =
+    document.getElementById("formModal");
 
-    const frame =
-        document.getElementById("formFrame");
+const frame =
+    document.getElementById("formFrame");
 
-    modal.classList.remove("active");
+modal.classList.remove("active");
 
-    frame.src = "";
+frame.src = "";
 
-    document.body.style.overflow =
-        "";
+document.body.style.overflow = "";
+
+/*
+ * Đóng popup xong → tải lại Huston.json
+ * để cập nhật ngay danh sách sự việc.
+ */
+setTimeout(function() {
+
+    loadHuston();
+
+}, 300);
+```
 
 }
 
