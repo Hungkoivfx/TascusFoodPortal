@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T04:55:35.937Z",
+  "updated_at": "2026-08-30T04:58:04.346Z",
   "records": [
     {
       "id": "TEST-001",
@@ -9,6 +9,16 @@
       "noi_dung": "Kiểm tra Huston",
       "muc_do": "Thấp",
       "can_xu_ly": "Có",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z024",
+      "chi_nhanh": "122 Thái Thịnh",
+      "thoi_gian": "2026/08/30 11:58",
+      "nguoi_bao_cao": "test lần thứ n",
+      "noi_dung": "test",
+      "muc_do": "Khẩn cấp",
+      "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
