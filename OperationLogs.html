@@ -1923,379 +1923,865 @@ function renderLogs(records) {
 
 
 /* =====================================================
-   CREATE CARD
+CHUẨN HÓA TRẠNG THÁI
 ===================================================== */
 
-function createLogCard(record) {
+function getStatusList(value) {
 
-    const article =
-        document.createElement(
-            "article"
+
+if (!value) {
+    return [];
+}
+
+return String(value)
+    .split(",")
+    .map(function(status) {
+        return status.trim();
+    })
+    .filter(function(status) {
+        return status !== "";
+    });
+
+
+}
+
+function getFinalStatus(value) {
+
+
+const statuses =
+    getStatusList(value);
+
+if (statuses.length === 0) {
+    return "Chưa xử lý";
+}
+
+/*
+ * Nếu có Đã xử lý thì ưu tiên Đã xử lý.
+ */
+if (
+    statuses.includes("Đã xử lý")
+) {
+    return "Đã xử lý";
+}
+
+/*
+ * Nếu chưa xử lý nhưng có Đang xử lý
+ */
+if (
+    statuses.includes("Đang xử lý")
+) {
+    return "Đang xử lý";
+}
+
+/*
+ * Trường hợp khác:
+ * lấy trạng thái cuối cùng
+ */
+return statuses[
+    statuses.length - 1
+];
+
+
+}
+
+/* =====================================================
+KIỂM TRA RECORD ĐÃ XỬ LÝ
+===================================================== */
+
+function isCompleted(record) {
+
+
+return getFinalStatus(
+    record.trang_thai_xu_ly
+) === "Đã xử lý";
+
+
+}
+
+/* =====================================================
+HIỂN THỊ DỮ LIỆU
+===================================================== */
+
+function renderLogs(records) {
+
+
+const recentLogs =
+    document.getElementById(
+        "recentLogs"
+    );
+
+const completedLogs =
+    document.getElementById(
+        "completedLogs"
+    );
+
+
+/*
+ * Xóa dữ liệu cũ
+ */
+recentLogs.innerHTML = "";
+completedLogs.innerHTML = "";
+
+
+/*
+ * ==========================================
+ * KHỬ RECORD TRÙNG ID
+ * ==========================================
+ *
+ * Nếu sau này JSON có lỡ xuất hiện:
+ *
+ * Z006 - Đang xử lý
+ * Z006 - Đã xử lý
+ *
+ * thì web chỉ giữ một record.
+ *
+ * Record xuất hiện sau cùng sẽ được giữ.
+ */
+
+const uniqueRecords = [];
+
+const recordMap = new Map();
+
+
+records.forEach(function(record) {
+
+    const id =
+        String(
+            record.id || ""
+        ).trim();
+
+
+    if (!id) {
+        return;
+    }
+
+
+    recordMap.set(
+        id,
+        record
+    );
+
+});
+
+
+recordMap.forEach(
+    function(record) {
+
+        uniqueRecords.push(
+            record
         );
 
-
-    article.className =
-        "log-card";
-
-
-    article.dataset.branch =
-        record.chi_nhanh || "";
+    }
+);
 
 
-    article.addEventListener(
-        "click",
-        function() {
+/*
+ * ==========================================
+ * MỚI NHẤT LÊN TRƯỚC
+ * ==========================================
+ */
 
-            openLogDetail(record);
+uniqueRecords.sort(
+    function(a, b) {
+
+        return new Date(
+            b.thoi_gian || 0
+        ) -
+        new Date(
+            a.thoi_gian || 0
+        );
+
+    }
+);
+
+
+/*
+ * ==========================================
+ * CHIA THÀNH 2 NHÓM
+ * ==========================================
+ */
+
+const completed =
+    uniqueRecords.filter(
+        function(record) {
+
+            return isCompleted(
+                record
+            );
 
         }
     );
 
 
-    const status =
-        record.trang_thai_xu_ly ||
-        "Chưa xử lý";
+const recent =
+    uniqueRecords.filter(
+        function(record) {
+
+            return !isCompleted(
+                record
+            );
+
+        }
+    );
 
 
-    let statusClass =
-        "status-pending";
+/*
+ * ==========================================
+ * RENDER
+ * ==========================================
+ */
 
+recent.forEach(
+    function(record) {
 
-    if (
-        status ===
-        "Đang xử lý"
-    ) {
-
-        statusClass =
-            "status-processing";
-
-    }
-
-
-    if (
-        status ===
-        "Đã xử lý"
-    ) {
-
-        statusClass =
-            "status-done";
-
-    }
-
-
-    const time =
-        formatDate(
-            record.thoi_gian
+        recentLogs.appendChild(
+            createLogCard(record)
         );
 
-
-    article.innerHTML = `
-
-        <div class="log-top">
-
-            <div class="log-meta">
-
-                <span class="log-dot"></span>
-
-                <span class="log-id">
-                    ${escapeHTML(
-                        record.id || ""
-                    )}
-                </span>
-
-                <span class="separator">
-                    ·
-                </span>
-
-                <span class="log-branch">
-                    ${escapeHTML(
-                        record.chi_nhanh || ""
-                    )}
-                </span>
-
-                <span class="log-time">
-                    ${escapeHTML(time)}
-                </span>
-
-            </div>
+    }
+);
 
 
-            <span class="status ${statusClass}">
-                ${escapeHTML(status)}
+completed.forEach(
+    function(record) {
+
+        completedLogs.appendChild(
+            createLogCard(record)
+        );
+
+    }
+);
+
+
+/*
+ * ==========================================
+ * COUNT
+ * ==========================================
+ */
+
+updateCount(
+    "recentCount",
+    recent.length
+);
+
+
+updateCount(
+    "completedCount",
+    completed.length
+);
+
+
+/*
+ * ==========================================
+ * EMPTY
+ * ==========================================
+ */
+
+document.getElementById(
+    "recentEmpty"
+).style.display =
+    recent.length === 0
+        ? "block"
+        : "none";
+
+
+document.getElementById(
+    "completedEmpty"
+).style.display =
+    completed.length === 0
+        ? "block"
+        : "none";
+
+
+/*
+ * ==========================================
+ * RESET FILTER
+ * ==========================================
+ */
+
+resetFilters();
+
+
+}
+
+/* =====================================================
+TẠO CARD
+===================================================== */
+
+function createLogCard(record) {
+
+
+const article =
+    document.createElement(
+        "article"
+    );
+
+
+article.className =
+    "log-card";
+
+
+/*
+ * Click card
+ */
+article.addEventListener(
+    "click",
+    function() {
+
+        openLogDetail(
+            record
+        );
+
+    }
+);
+
+
+article.dataset.branch =
+    record.chi_nhanh || "";
+
+
+/*
+ * Trạng thái hiển thị
+ */
+const status =
+    getFinalStatus(
+        record.trang_thai_xu_ly
+    );
+
+
+let statusClass =
+    "status-pending";
+
+
+if (
+    status === "Đang xử lý"
+) {
+
+    statusClass =
+        "status-processing";
+
+}
+
+
+if (
+    status === "Đã xử lý"
+) {
+
+    statusClass =
+        "status-done";
+
+}
+
+
+/*
+ * Thời gian
+ */
+const time =
+    formatDate(
+        record.thoi_gian
+    );
+
+
+/*
+ * Nội dung card
+ */
+article.innerHTML = `
+
+    <div class="log-top">
+
+        <div class="log-meta">
+
+            <span class="log-dot"></span>
+
+            <span class="log-id">
+                ${escapeHTML(
+                    record.id || ""
+                )}
+            </span>
+
+            <span class="separator">
+                ·
+            </span>
+
+            <span class="log-branch">
+                ${escapeHTML(
+                    record.chi_nhanh || ""
+                )}
+            </span>
+
+            <span class="log-time">
+                ${escapeHTML(
+                    time
+                )}
             </span>
 
         </div>
 
 
-        <div class="log-title">
+        <span class="status ${statusClass}">
             ${escapeHTML(
-                record.noi_dung ||
-                "Không có nội dung"
+                status
             )}
+        </span>
+
+    </div>
+
+
+    <div class="log-title">
+
+        ${escapeHTML(
+            record.noi_dung ||
+            "Không có nội dung"
+        )}
+
+    </div>
+
+
+    <div class="log-content">
+
+        Người báo cáo:
+        ${escapeHTML(
+            record.nguoi_bao_cao ||
+            "Không rõ"
+        )}
+
+        <br>
+
+        Cần xử lý:
+        ${escapeHTML(
+            record.can_xu_ly ||
+            "Không rõ"
+        )}
+
+    </div>
+
+
+    <div class="log-footer">
+
+        <div class="log-level">
+
+            Mức độ:
+
+            <strong>
+                ${escapeHTML(
+                    record.muc_do ||
+                    "Không xác định"
+                )}
+            </strong>
+
         </div>
 
 
-        <div class="log-content">
+        <div class="view-detail">
 
-            Người báo cáo:
             ${escapeHTML(
-                record.nguoi_bao_cao ||
-                "Không rõ"
-            )}
-
-            <br>
-
-            Cần xử lý:
-            ${escapeHTML(
-                record.can_xu_ly ||
-                "Không rõ"
+                record.id || ""
             )}
 
         </div>
 
+    </div>
 
-        <div class="log-footer">
-
-            <div class="log-level">
-
-                Mức độ:
-
-                <strong>
-                    ${escapeHTML(
-                        record.muc_do ||
-                        "Không xác định"
-                    )}
-                </strong>
-
-            </div>
+`;
 
 
-            <div class="view-detail">
+return article;
 
-                Xem chi tiết
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    return article;
 
 }
 
-
 /* =====================================================
-   FILTER
+POPUP CHI TIẾT
 ===================================================== */
 
-function filterLogs(
-    type,
-    branch,
-    button
-) {
-
-    const section =
-        button.closest(
-            ".section"
-        );
+function openLogDetail(record) {
 
 
-    section
-        .querySelectorAll(
-            ".filter-tab"
-        )
-        .forEach(
-            function(tab) {
-
-                tab.classList.remove(
-                    "active"
-                );
-
-            }
-        );
+const modal =
+    document.getElementById(
+        "detailModal"
+    );
 
 
-    button.classList.add(
+const content =
+    document.getElementById(
+        "detailContent"
+    );
+
+
+const status =
+    getFinalStatus(
+        record.trang_thai_xu_ly
+    );
+
+
+/*
+ * Nếu field chưa tồn tại
+ * thì hiển thị "Chưa cập nhật".
+ */
+
+const phuongAn =
+    record.phuong_an_xu_ly ||
+    "Chưa cập nhật";
+
+
+const nguoiXuLy =
+    record.nguoi_xu_ly ||
+    "Chưa cập nhật";
+
+
+content.innerHTML = `
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Mã sự việc
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.id ||
+                "Không có"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Chi nhánh
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.chi_nhanh ||
+                "Không có"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Thời gian
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                formatDetailDate(
+                    record.thoi_gian
+                )
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Người báo cáo
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.nguoi_bao_cao ||
+                "Không có"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Nội dung
+        </div>
+
+        <div class="detail-value detail-content">
+            ${escapeHTML(
+                record.noi_dung ||
+                "Không có"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Mức độ
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.muc_do ||
+                "Không xác định"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Cần xử lý
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.can_xu_ly ||
+                "Không có"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Trạng thái xử lý
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                status
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Phương án xử lý
+        </div>
+
+        <div class="detail-value detail-content">
+            ${escapeHTML(
+                phuongAn
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Người xử lý
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                nguoiXuLy
+            )}
+        </div>
+
+    </div>
+
+`;
+
+
+modal.classList.add(
+    "active"
+);
+
+
+document.body.style.overflow =
+    "hidden";
+
+
+}
+
+/* =====================================================
+ĐÓNG POPUP CHI TIẾT
+===================================================== */
+
+function closeLogDetail() {
+
+
+document
+    .getElementById(
+        "detailModal"
+    )
+    .classList.remove(
         "active"
     );
 
 
-    const logs =
-        type === "recent"
-
-            ? document.querySelectorAll(
-                "#recentLogs .log-card"
-            )
-
-            : document.querySelectorAll(
-                "#completedLogs .log-card"
-            );
+document.body.style.overflow =
+    "";
 
 
-    let count = 0;
+}
+
+/* =====================================================
+CLICK RA NGOÀI POPUP CHI TIẾT
+===================================================== */
+
+document
+.getElementById(
+"detailModal"
+)
+.addEventListener(
+"click",
+function(event) {
 
 
-    logs.forEach(
-        function(card) {
+        if (
+            event.target === this
+        ) {
 
-            const match =
-                branch === "all" ||
-                card.dataset.branch ===
-                branch;
-
-
-            if (match) {
-
-                card.style.display =
-                    "";
-
-                count++;
-
-            } else {
-
-                card.style.display =
-                    "none";
-
-            }
+            closeLogDetail();
 
         }
+
+    }
+);
+
+
+/* =====================================================
+FORMAT NGÀY CHI TIẾT
+===================================================== */
+
+function formatDetailDate(value) {
+
+
+if (!value) {
+    return "";
+}
+
+
+const date =
+    new Date(
+        value
     );
 
 
-    const countElement =
-        type === "recent"
+if (
+    isNaN(
+        date.getTime()
+    )
+) {
 
-            ? document.getElementById(
-                "recentCount"
-            )
-
-            : document.getElementById(
-                "completedCount"
-            );
-
-
-    const emptyElement =
-        type === "recent"
-
-            ? document.getElementById(
-                "recentEmpty"
-            )
-
-            : document.getElementById(
-                "completedEmpty"
-            );
-
-
-    countElement.textContent =
-        count +
-        " sự việc";
-
-
-    emptyElement.style.display =
-        count === 0
-            ? "block"
-            : "none";
+    return value;
 
 }
 
 
+return date.toLocaleString(
+    "vi-VN",
+    {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+    }
+);
+
+
+}
+
 /* =====================================================
-   FORMAT NGÀY
+FORMAT THỜI GIAN CARD
 ===================================================== */
 
 function formatDate(value) {
 
-    if (!value) {
 
-        return "";
-
-    }
-
-
-    const date =
-        new Date(value);
+if (!value) {
+    return "";
+}
 
 
-    if (
-        isNaN(
-            date.getTime()
-        )
-    ) {
-
-        return value;
-
-    }
+const date =
+    new Date(
+        value
+    );
 
 
-    const now =
-        new Date();
+/*
+ * Lark đang có thể gửi:
+ *
+ * 2026/08/30 11:58
+ *
+ * hoặc:
+ *
+ * 2026-08-30T11:58:00+07:00
+ *
+ * Nếu browser không parse được,
+ * thử parse dạng YYYY/MM/DD HH:mm.
+ */
 
+if (
+    isNaN(
+        date.getTime()
+    )
+) {
 
-    const today =
-        date.toDateString() ===
-        now.toDateString();
-
-
-    if (today) {
-
-        return date.toLocaleTimeString(
-            "vi-VN",
-            {
-                hour: "2-digit",
-                minute: "2-digit"
-            }
+    const match =
+        String(value).match(
+            /^(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2}):(\d{2})$/
         );
 
+
+    if (match) {
+
+        const parsed =
+            new Date(
+                Number(match[1]),
+                Number(match[2]) - 1,
+                Number(match[3]),
+                Number(match[4]),
+                Number(match[5])
+            );
+
+
+        if (
+            !isNaN(
+                parsed.getTime()
+            )
+        ) {
+
+            return formatDate(
+                parsed.toISOString()
+            );
+
+        }
+
     }
 
 
-    return date.toLocaleDateString(
-        "vi-VN",
-        {
-            day: "2-digit",
-            month: "2-digit"
-        }
-    );
+    return value;
 
 }
 
 
-/* =====================================================
-   FORMAT ĐẦY ĐỦ
-===================================================== */
-
-function formatFullDate(value) {
-
-    if (!value) {
-
-        return "Không có";
-
-    }
+const now =
+    new Date();
 
 
-    const date =
-        new Date(value);
+const today =
+    date.toDateString() ===
+    now.toDateString();
 
 
-    if (
-        isNaN(
-            date.getTime()
-        )
-    ) {
+if (today) {
 
-        return value;
-
-    }
-
-
-    return date.toLocaleString(
+    return date.toLocaleTimeString(
         "vi-VN",
         {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
             hour: "2-digit",
             minute: "2-digit"
         }
@@ -2304,316 +2790,266 @@ function formatFullDate(value) {
 }
 
 
+return date.toLocaleDateString(
+    "vi-VN",
+    {
+        day: "2-digit",
+        month: "2-digit"
+    }
+);
+
+
+}
+
 /* =====================================================
-   HTML ESCAPE
+HTML ESCAPE
 ===================================================== */
 
 function escapeHTML(value) {
 
-    return String(value)
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
+return String(value)
 
-        .replace(
-            /</g,
-            "&lt;"
-        )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
 
-        .replace(
-            />/g,
-            "&gt;"
-        )
+    .replace(
+        /</g,
+        "&lt;"
+    )
 
-        .replace(
-            /"/g,
-            "&quot;"
-        )
+    .replace(
+        />/g,
+        "&gt;"
+    )
 
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
 
 }
 
-
 /* =====================================================
-   COUNT
+COUNT
 ===================================================== */
 
 function updateCount(
-    elementId,
-    count
+elementId,
+count
 ) {
 
-    document.getElementById(
+
+document
+    .getElementById(
         elementId
-    ).textContent =
-        count +
-        " sự việc";
+    )
+    .textContent =
+    count +
+    " sự việc";
+
 
 }
 
+/* =====================================================
+RESET FILTER
+===================================================== */
+
+function resetFilters() {
+
+
+document
+    .querySelectorAll(
+        ".filter-tab"
+    )
+    .forEach(
+        function(tab) {
+
+            tab.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+/*
+ * Active lại nút "Tất cả"
+ * của từng section.
+ */
+
+document
+    .querySelectorAll(
+        ".filter-tabs"
+    )
+    .forEach(
+        function(group) {
+
+            const first =
+                group.querySelector(
+                    ".filter-tab"
+                );
+
+
+            if (first) {
+
+                first.classList.add(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+
+}
 
 /* =====================================================
-   LOAD ERROR
+LỖI TẢI DỮ LIỆU
 ===================================================== */
 
 function showLoadError() {
 
-    document.getElementById(
+
+document
+    .getElementById(
         "recentLogs"
-    ).innerHTML = `
+    )
+    .innerHTML = `
 
         <div
             class="empty"
             style="display:block"
         >
-            Không thể tải nhật ký vận hành.
+
+            Không thể tải
+            nhật ký vận hành.
+
         </div>
 
     `;
 
+
+}
+
+/* =====================================================
+HUSTON.JSON
+===================================================== */
+
+const HUSTON_URL =
+"https://raw.githubusercontent.com/Hungkoivfx/TascusFoodPortal/main/Huston.json";
+
+/* =====================================================
+TẢI NHẬT KÝ
+===================================================== */
+
+async function loadHuston() {
+
+
+try {
+
+    const response =
+        await fetch(
+            HUSTON_URL +
+            "?t=" +
+            Date.now()
+        );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Không thể tải Huston.json"
+        );
+
+    }
+
+
+    const huston =
+        await response.json();
+
+
+    const records =
+        Array.isArray(
+            huston.records
+        )
+
+            ? huston.records
+
+            : [];
+
+
+    renderLogs(
+        records
+    );
+
+
+} catch (error) {
+
+    console.error(
+        "Lỗi tải Huston:",
+        error
+    );
+
+
+    showLoadError();
+
 }
 
 
+}
+
 /* =====================================================
-   CLICK NGOÀI MODAL
+TỰ ĐỘNG TẢI LẠI
 ===================================================== */
 
-document
-    .getElementById("helpModal")
-    .addEventListener(
-        "click",
-        function(event) {
+loadHuston();
 
-            if (
-                event.target === this
-            ) {
+/*
 
-                closeHelp();
-
-            }
-
-        }
-    );
-
-
-document
-    .getElementById("detailModal")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === this
-            ) {
-
-                closeLogDetail();
-
-            }
-
-        }
-    );
-
+* Cứ 30 giây tải Huston.json một lần.
+*
+* Không cần nút Reload.
+  */
+  setInterval(
+  loadHuston,
+  30000
+  );
 
 /* =====================================================
-   ESC
+ESC
 ===================================================== */
 
 document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            closeForm();
-
-            closeHelp();
-
-            closeLogDetail();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   CHẠY HỆ THỐNG
-===================================================== */
-/* =====================================================
-CHI TIẾT SỰ VIỆC
-===================================================== */
-
-function openLogDetail(record) {
-
-
-const modal =
-    document.getElementById("detailModal");
-
-const content =
-    document.getElementById("detailContent");
-
-const status =
-    record.trang_thai_xu_ly || "Chưa xử lý";
-
-content.innerHTML = `
-
-    <div class="detail-row">
-
-        <div class="detail-label">
-            MÃ SỰ VIỆC
-        </div>
-
-        <div class="detail-value">
-            ${escapeHTML(record.id || "Không có")}
-        </div>
-
-    </div>
-
-
-    <div class="detail-row">
-
-        <div class="detail-label">
-            CHI NHÁNH
-        </div>
-
-        <div class="detail-value">
-            ${escapeHTML(record.chi_nhanh || "Không rõ")}
-        </div>
-
-    </div>
-
-
-    <div class="detail-row">
-
-        <div class="detail-label">
-            THỜI GIAN
-        </div>
-
-        <div class="detail-value">
-            ${escapeHTML(formatDate(record.thoi_gian))}
-        </div>
-
-    </div>
-
-
-    <div class="detail-row">
-
-        <div class="detail-label">
-            NGƯỜI BÁO CÁO
-        </div>
-
-        <div class="detail-value">
-            ${escapeHTML(record.nguoi_bao_cao || "Không rõ")}
-        </div>
-
-    </div>
-
-
-    <div class="detail-row">
-
-        <div class="detail-label">
-            NỘI DUNG
-        </div>
-
-        <div class="detail-value detail-content">
-            ${escapeHTML(record.noi_dung || "Không có nội dung")}
-        </div>
-
-    </div>
-
-
-    <div class="detail-row">
-
-        <div class="detail-label">
-            MỨC ĐỘ
-        </div>
-
-        <div class="detail-value">
-            ${escapeHTML(record.muc_do || "Không xác định")}
-        </div>
-
-    </div>
-
-
-    <div class="detail-row">
-
-        <div class="detail-label">
-            CẦN XỬ LÝ
-        </div>
-
-        <div class="detail-value">
-            ${escapeHTML(record.can_xu_ly || "Không rõ")}
-        </div>
-
-    </div>
-
-
-    <div class="detail-row">
-
-        <div class="detail-label">
-            TRẠNG THÁI XỬ LÝ
-        </div>
-
-        <div class="detail-value">
-            ${escapeHTML(status)}
-        </div>
-
-    </div>
-
-`;
-
-modal.classList.add("active");
-
-document.body.style.overflow = "hidden";
-
-
-}
-
-/* =====================================================
-ĐÓNG CHI TIẾT
-===================================================== */
-
-function closeLogDetail() {
-
-
-const modal =
-    document.getElementById("detailModal");
-
-modal.classList.remove("active");
-
-document.body.style.overflow = "";
-
-
-}
-
-/* =====================================================
-CLICK RA NGOÀI POPUP
-===================================================== */
-
-document
-.getElementById("detailModal")
-.addEventListener(
-"click",
+"keydown",
 function(event) {
 
 
-        if (event.target === this) {
+    if (
+        event.key === "Escape"
+    ) {
 
-            closeLogDetail();
+        closeForm();
 
-        }
+        closeHelp();
+
+        closeLogDetail();
 
     }
-);
 
+}
+
+
+);
 
 loadHuston();
 // TỰ ĐỘNG CẬP NHẬT DỮ LIỆU MỖI 60 GIÂY
