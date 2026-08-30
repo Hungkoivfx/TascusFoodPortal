@@ -2616,6 +2616,10 @@ function(event) {
 
 
 loadHuston();
+// TỰ ĐỘNG CẬP NHẬT DỮ LIỆU MỖI 60 GIÂY
+setInterval(function() {
+loadHuston();
+}, 60000);
 
 </script>
 
