@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T06:23:11.537Z",
+  "updated_at": "2026-08-30T06:27:54.623Z",
   "records": [
     {
       "id": "Z024",
@@ -44,6 +44,18 @@
       "trang_thai_xu_ly": "Theo dõi,Đã xử lý",
       "phuong_an_xu_ly": "Đánh vào đít nó,Đã test xong",
       "nguoi_xu_ly": "Hưng,Hưng"
+    },
+    {
+      "id": "Z024",
+      "chi_nhanh": "122 Thái Thịnh",
+      "thoi_gian": "2026/08/30 11:58",
+      "nguoi_bao_cao": "test lần thứ n",
+      "noi_dung": "test",
+      "muc_do": "Khẩn cấp",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Đã xử lý",
+      "phuong_an_xu_ly": "đã test xong",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
