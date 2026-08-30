@@ -1591,49 +1591,62 @@ function openForm(url, title) {
 
 function closeForm() {
 
+    const modal =
+        document.getElementById("formModal");
 
-const modal =
-    document.getElementById("formModal");
+    const frame =
+        document.getElementById("formFrame");
 
-const frame =
-    document.getElementById("formFrame");
+    /*
+     * Đóng popup
+     */
+    modal.classList.remove("active");
 
-/*
- * Đóng popup
- */
-modal.classList.remove("active");
+    /*
+     * Xóa iframe
+     */
+    frame.src = "";
 
-/*
- * Xóa iframe để Lark Form kết thúc phiên hiện tại
- */
-frame.src = "";
+    /*
+     * Cho phép cuộn lại
+     */
+    document.body.style.overflow = "";
 
-/*
- * Cho phép cuộn trang trở lại
- */
-document.body.style.overflow = "";
-
-/*
- * Tải lại dữ liệu ngay
- */
-loadHuston();
-
-/*
- * Tải lại lần nữa sau 3 giây.
- * Phòng trường hợp Automation Lark → Apps Script → GitHub
- * chưa ghi Huston.json xong ở lần đầu.
- */
-setTimeout(function() {
-
+    /*
+     * Tải dữ liệu ngay lập tức
+     */
     loadHuston();
 
-}, 3000);
+    /*
+     * Kiểm tra lại nhiều lần trong thời gian ngắn.
+     *
+     * Lý do:
+     * Lark Form → Automation → Apps Script → GitHub
+     * có thể mất vài giây mới hoàn thành.
+     */
 
+    let attempts = 0;
+
+    const maxAttempts = 8;
+
+    const reloadTimer =
+        setInterval(async function() {
+
+            attempts++;
+
+            await loadHuston();
+
+            if (attempts >= maxAttempts) {
+
+                clearInterval(
+                    reloadTimer
+                );
+
+            }
+
+        }, 2000);
 
 }
-
-
-
 /* =====================================================
    HELP
 ===================================================== */
@@ -2979,15 +2992,9 @@ KHỞI ĐỘNG
 
 loadHuston();
 
-/*
-
-* Tự động cập nhật mỗi 30 giây.
-  */
-  setInterval(function() {
-
-  loadHuston();
-
-}, 30000);
+setTimeout(function() {
+    loadHuston();
+}, 3000);
 
 /* =====================================================
 ESC
