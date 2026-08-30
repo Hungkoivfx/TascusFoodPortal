@@ -12,7 +12,7 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 
 >
 
-<title>Báo cáo vấn đề · Tascus Food</title>
+<title>Nhật ký vận hành · Tascus Food</title>
 
 <style>
 
@@ -20,12 +20,6 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-html,
-body {
-    width: 100%;
-    min-height: 100%;
 }
 
 body {
@@ -57,10 +51,6 @@ select {
     font-family: inherit;
 }
 
-button {
-    -webkit-tap-highlight-color: transparent;
-}
-
 .container {
     width: 100%;
     max-width: 620px;
@@ -76,10 +66,11 @@ button {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
 }
 
-.back-button {
+.back-button,
+.help-button {
     width: 42px;
     height: 42px;
 
@@ -98,11 +89,21 @@ button {
 
     cursor: pointer;
 
+    -webkit-tap-highlight-color: transparent;
+}
+
+.back-button {
     font-size: 25px;
     line-height: 1;
 }
 
-.back-button:active {
+.help-button {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.back-button:active,
+.help-button:active {
     transform: scale(.94);
 }
 
@@ -125,20 +126,487 @@ button {
 
 
 /* =====================================================
-   FORM CARD
+   ACTION BUTTONS
 ===================================================== */
 
-.form-card {
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.action-button {
+    width: 100%;
+    min-height: 76px;
+
+    padding: 14px 15px;
+
     background: #fff;
 
     border: 1px solid #e1e3e5;
 
-    border-radius: 18px;
+    border-radius: 15px;
 
-    padding: 18px;
+    display: flex;
+    align-items: center;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    color: #222;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform .12s ease,
+        box-shadow .12s ease;
+}
+
+.action-button:hover {
+    box-shadow: 0 6px 18px rgba(0,0,0,.05);
+}
+
+.action-button:active {
+    transform: scale(.985);
+    box-shadow: none;
+}
+
+.action-icon {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background: #f1f2f3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    margin-right: 13px;
+}
+
+.action-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.action-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.action-description {
+    font-size: 12px;
+    color: #858585;
+    line-height: 1.4;
+}
+
+.action-arrow {
+    flex-shrink: 0;
+    margin-left: 10px;
+    color: #999;
+    font-size: 20px;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section {
+    margin-bottom: 26px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+.section-title-wrap {
+    display: flex;
+    align-items: baseline;
+
+    gap: 7px;
+
+    min-width: 0;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 650;
+
+    white-space: nowrap;
+}
+
+.section-count {
+    font-size: 11px;
+    color: #999;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+.filter-tabs {
+    display: flex;
+    gap: 3px;
+
+    padding: 3px;
+
+    background: #e9eaec;
+
+    border-radius: 10px;
+
+    flex-shrink: 0;
+}
+
+.filter-tab {
+    border: none;
+    background: transparent;
+
+    color: #777;
+
+    font-size: 10px;
+    font-weight: 550;
+
+    padding: 6px 8px;
+
+    min-height: 28px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+
+.filter-tab.active {
+    background: #fff;
+    color: #222;
 
     box-shadow:
-        0 4px 18px rgba(0,0,0,.035);
+        0 1px 4px rgba(0,0,0,.08);
+}
+
+
+/* =====================================================
+   LOG CARD
+===================================================== */
+
+.logs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.log-card {
+    background: #fff;
+
+    border: 1px solid #e1e3e5;
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    cursor: pointer;
+
+    transition:
+        box-shadow .12s ease,
+        transform .12s ease;
+}
+
+.log-card:hover {
+    box-shadow: 0 5px 16px rgba(0,0,0,.04);
+}
+
+.log-card:active {
+    transform: scale(.99);
+}
+
+.log-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+.log-meta {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.log-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #888;
+
+    flex-shrink: 0;
+}
+
+.log-id {
+    font-size: 11px;
+    font-weight: 650;
+
+    color: #555;
+
+    white-space: nowrap;
+}
+
+.separator {
+    color: #bbb;
+}
+
+.log-branch {
+    font-size: 12px;
+    color: #777;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.log-time {
+    font-size: 11px;
+    color: #999;
+
+    white-space: nowrap;
+}
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 8px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    flex-shrink: 0;
+}
+
+.status-pending {
+    background: #f1f1f1;
+    color: #555;
+}
+
+.status-processing {
+    background: #ededed;
+    color: #444;
+}
+
+.status-done {
+    background: #e7e7e7;
+    color: #777;
+}
+
+.log-title {
+    font-size: 15px;
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    margin-bottom: 5px;
+}
+
+.log-content {
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    color: #6f6f6f;
+
+    display: -webkit-box;
+
+    -webkit-box-orient: vertical;
+
+    -webkit-line-clamp: 2;
+
+    overflow: hidden;
+}
+
+.log-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 12px;
+
+    padding-top: 10px;
+
+    border-top: 1px solid #f0f0f0;
+}
+
+.log-level {
+    font-size: 11px;
+    color: #888;
+}
+
+.log-level strong {
+    color: #555;
+}
+
+.view-detail {
+    font-size: 11px;
+    color: #777;
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty {
+    display: none;
+
+    padding: 25px 15px;
+
+    text-align: center;
+
+    color: #999;
+
+    font-size: 12px;
+
+    background: #fff;
+
+    border: 1px solid #e1e3e5;
+
+    border-radius: 15px;
+}
+
+
+/* =====================================================
+   FORM MODAL
+===================================================== */
+
+.form-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 12000;
+
+    background: rgba(0,0,0,.42);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 16px;
+}
+
+.form-modal.active {
+    display: flex;
+}
+
+.form-box {
+    width: 100%;
+
+    max-width: 520px;
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.18);
+
+    animation:
+        formIn .16s ease-out;
+}
+
+@keyframes formIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =====================================================
+   FORM HEADER
+===================================================== */
+
+.form-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.form-header-title {
+    font-size: 18px;
+
+    font-weight: 650;
+}
+
+.form-close {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f2f3;
+
+    color: #555;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
 }
 
 
@@ -147,17 +615,14 @@ button {
 ===================================================== */
 
 .form-group {
-    margin-bottom: 20px;
-}
-
-.form-group:last-child {
-    margin-bottom: 0;
+    margin-bottom: 18px;
 }
 
 .form-label {
     display: block;
 
     font-size: 13px;
+
     font-weight: 650;
 
     color: #333;
@@ -166,7 +631,7 @@ button {
 }
 
 .required {
-    color: #777;
+    color: #888;
 }
 
 
@@ -174,95 +639,56 @@ button {
    INPUT
 ===================================================== */
 
-.text-input,
-.textarea-input,
-.select-input {
+.form-input,
+.form-textarea,
+.form-select {
 
     width: 100%;
 
-    border: 1px solid #dfe1e4;
+    border:
+        1px solid #dfe1e4;
+
+    border-radius: 11px;
 
     background: #fafafa;
-
-    border-radius: 12px;
 
     color: #222;
 
     outline: none;
 
-    transition:
-        border-color .15s ease,
-        background .15s ease,
-        box-shadow .15s ease;
-}
-
-
-/*
- * 16px là điểm quan trọng để mobile Safari
- * không tự zoom khi focus vào ô nhập.
- */
-
-.text-input,
-.textarea-input,
-.select-input {
     font-size: 16px;
+
+    transition:
+        border-color .12s ease,
+        background .12s ease,
+        box-shadow .12s ease;
 }
 
-.text-input {
+.form-input,
+.form-select {
+
     height: 48px;
 
     padding:
         0 13px;
 }
 
-.textarea-input {
-    min-height: 125px;
+.form-textarea {
 
-    padding:
-        13px;
+    min-height: 115px;
+
+    padding: 12px 13px;
 
     resize: vertical;
 
     line-height: 1.5;
 }
 
-.select-input {
-    height: 48px;
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
 
-    padding:
-        0 40px 0 13px;
-
-    appearance: none;
-    -webkit-appearance: none;
-
-    background-image:
-        linear-gradient(
-            45deg,
-            transparent 50%,
-            #777 50%
-        ),
-        linear-gradient(
-            135deg,
-            #777 50%,
-            transparent 50%
-        );
-
-    background-position:
-        calc(100% - 17px) 20px,
-        calc(100% - 11px) 20px;
-
-    background-size:
-        6px 6px,
-        6px 6px;
-
-    background-repeat: no-repeat;
-}
-
-.text-input:focus,
-.textarea-input:focus,
-.select-input:focus {
-
-    border-color: #aaa;
+    border-color: #999;
 
     background: #fff;
 
@@ -276,25 +702,30 @@ button {
 ===================================================== */
 
 .choice-list {
+
     display: flex;
+
     flex-direction: column;
-    gap: 9px;
+
+    gap: 8px;
 }
 
 .choice-button {
 
     width: 100%;
 
-    min-height: 52px;
+    min-height: 51px;
 
-    padding: 12px 13px;
+    padding: 11px 12px;
 
     border:
         1px solid #dfe1e4;
 
-    border-radius: 12px;
+    border-radius: 11px;
 
     background: #fafafa;
+
+    color: #333;
 
     display: flex;
 
@@ -304,31 +735,34 @@ button {
 
     cursor: pointer;
 
-    color: #333;
-
-    transition:
-        border-color .12s ease,
-        background .12s ease,
-        transform .12s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .choice-button:active {
+
     transform: scale(.99);
+}
+
+.choice-button.selected {
+
+    background: #f0f0f1;
+
+    border-color: #888;
 }
 
 .choice-radio {
 
-    width: 20px;
-    height: 20px;
+    width: 19px;
+    height: 19px;
 
     border:
-        1.5px solid #bfc2c5;
+        1.5px solid #b8babd;
 
     border-radius: 50%;
 
-    margin-right: 11px;
-
     flex-shrink: 0;
+
+    margin-right: 11px;
 
     display: flex;
 
@@ -348,19 +782,6 @@ button {
     background: #333;
 
     opacity: 0;
-
-    transform: scale(.5);
-
-    transition:
-        opacity .12s ease,
-        transform .12s ease;
-}
-
-.choice-button.selected {
-
-    background: #f1f1f2;
-
-    border-color: #999;
 }
 
 .choice-button.selected
@@ -373,24 +794,29 @@ button {
 .choice-radio::after {
 
     opacity: 1;
-
-    transform: scale(1);
 }
 
 .choice-text {
+
     flex: 1;
 
     min-width: 0;
 }
 
 .choice-title {
+
+    display: block;
+
     font-size: 14px;
+
     font-weight: 600;
 
     line-height: 1.35;
 }
 
 .choice-description {
+
+    display: block;
 
     margin-top: 2px;
 
@@ -403,7 +829,7 @@ button {
 
 
 /* =====================================================
-   HINT
+   FORM HINT
 ===================================================== */
 
 .form-hint {
@@ -412,9 +838,41 @@ button {
 
     font-size: 11px;
 
-    line-height: 1.45;
-
     color: #999;
+
+    line-height: 1.45;
+}
+
+
+/* =====================================================
+   FORM ERROR
+===================================================== */
+
+.form-error {
+
+    display: none;
+
+    margin-top: 6px;
+
+    font-size: 11px;
+
+    color: #777;
+}
+
+.form-group.error
+.form-error {
+
+    display: block;
+}
+
+.form-group.error
+.form-input,
+.form-group.error
+.form-textarea,
+.form-group.error
+.form-select {
+
+    border-color: #999;
 }
 
 
@@ -428,11 +886,9 @@ button {
 
     min-height: 50px;
 
-    margin-top: 8px;
-
     border: none;
 
-    border-radius: 12px;
+    border-radius: 11px;
 
     background: #222;
 
@@ -444,82 +900,307 @@ button {
 
     cursor: pointer;
 
-    transition:
-        transform .12s ease,
-        opacity .12s ease;
+    margin-top: 4px;
 }
 
 .submit-button:active {
 
     transform: scale(.985);
-
 }
 
 .submit-button:disabled {
 
-    opacity: .45;
+    opacity: .5;
 
     cursor: default;
 }
 
 
 /* =====================================================
-   SUCCESS
+   DETAIL MODAL
 ===================================================== */
 
-.success-box {
+.detail-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 11000;
+
+    background: rgba(0,0,0,.42);
 
     display: none;
 
-    margin-top: 14px;
+    align-items: center;
 
-    padding: 13px;
+    justify-content: center;
 
-    border-radius: 12px;
-
-    background: #f0f0f0;
-
-    color: #444;
-
-    font-size: 12px;
-
-    line-height: 1.5;
-
-    text-align: center;
+    padding: 16px;
 }
 
-.success-box.active {
-    display: block;
+.detail-modal.active {
+    display: flex;
+}
+
+.detail-box {
+    width: 100%;
+
+    max-width: 520px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.15);
+
+    animation:
+        detailIn .16s ease-out;
+}
+
+@keyframes detailIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+.detail-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+.detail-title {
+    font-size: 18px;
+
+    font-weight: 650;
+}
+
+.detail-close {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f2f3;
+
+    color: #555;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+.detail-row {
+    padding: 11px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-size: 10px;
+
+    color: #999;
+
+    margin-bottom: 4px;
+}
+
+.detail-value {
+    font-size: 14px;
+
+    color: #333;
+
+    line-height: 1.5;
+}
+
+.detail-content {
+    white-space: pre-wrap;
 }
 
 
 /* =====================================================
-   ERROR
+   HELP MODAL
 ===================================================== */
 
-.field-error {
+.help-modal {
+    position: fixed;
 
-    margin-top: 6px;
+    inset: 0;
+
+    z-index: 10000;
+
+    background: rgba(0,0,0,.42);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 16px;
+}
+
+.help-modal.active {
+    display: flex;
+}
+
+.help-box {
+    width: 100%;
+
+    max-width: 520px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.15);
+
+    animation:
+        helpIn .16s ease-out;
+}
+
+@keyframes helpIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+.help-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 17px;
+}
+
+.help-title {
+    font-size: 19px;
+
+    font-weight: 650;
+}
+
+.help-close {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f2f3;
+
+    color: #555;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+.help-content {
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: #555;
+}
+
+.help-content p {
+    margin-bottom: 13px;
+}
+
+.help-content p:last-child {
+    margin-bottom: 0;
+}
+
+.help-content strong {
+    color: #333;
+}
+
+.help-list {
+    margin: 5px 0 15px;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+.help-list li {
+    margin-bottom: 10px;
+
+    padding-left: 15px;
+
+    position: relative;
+}
+
+.help-list li::before {
+    content: "•";
+
+    position: absolute;
+
+    left: 0;
 
     color: #777;
 
-    font-size: 11px;
-
-    display: none;
+    font-weight: bold;
 }
 
-.form-group.error
-.text-input,
-.form-group.error
-.textarea-input {
+.help-final {
+    padding-top: 13px;
 
-    border-color: #999;
-}
+    margin-top: 4px;
 
-.form-group.error
-.field-error {
+    border-top: 1px solid #eee;
 
-    display: block;
+    color: #444;
 }
 
 
@@ -529,20 +1210,107 @@ button {
 
 @media (max-width: 600px) {
 
-    .form-card {
-        padding: 16px;
-        border-radius: 16px;
+    .form-modal,
+    .help-modal,
+    .detail-modal {
+
+        padding: 0;
+
+        align-items: flex-end;
     }
 
+    .form-box,
+    .help-box,
+    .detail-box {
+
+        max-width: none;
+
+        max-height: 90vh;
+
+        border-radius:
+            18px 18px 0 0;
+
+        padding:
+            20px 16px
+            max(22px, env(safe-area-inset-bottom))
+            16px;
+    }
+
+    .form-box {
+
+        animation:
+            formSlideUp .18s ease-out;
+    }
+
+    @keyframes formSlideUp {
+
+        from {
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+
     /*
-     * Không cho input nhỏ hơn 16px trên mobile.
-     * Đây là phần ngăn auto-zoom khi focus.
+     * Không cho mobile tự zoom khi focus input.
      */
 
     input,
     textarea,
     select {
+
         font-size: 16px !important;
+
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .section-header {
+        gap: 5px;
+    }
+
+    .section-title {
+        font-size: 13px;
+    }
+
+    .section-count {
+        display: none;
+    }
+
+    .filter-tabs {
+        max-width: 72%;
+    }
+
+    .filter-tab {
+        font-size: 9px;
+        padding: 6px;
+    }
+
+}
+
+
+@media (max-width: 390px) {
+
+    .filter-tab {
+        font-size: 8px;
+        padding: 5px;
+    }
+
+    .log-branch {
+        max-width: 85px;
+    }
+
+    .log-time {
+        display: none;
     }
 
 }
@@ -561,56 +1329,329 @@ button {
 
 <header class="header">
 
-
 <button
-    class="back-button"
-    onclick="goBack()"
-    aria-label="Quay lại"
->
-    ‹
-</button>
+class="back-button"
+onclick="goBack()"
+aria-label="Quay lại"
 
+>
+
+
+‹
+
+
+</button>
 
 <div class="header-text">
 
-    <div class="header-title">
+
+<div class="header-title">
+    Nhật ký vận hành
+</div>
+
+<div class="header-subtitle">
+    Các sự việc được ghi nhận tại cửa hàng
+</div>
+
+
+</div>
+
+<button
+class="help-button"
+onclick="openHelp()"
+aria-label="Hướng dẫn"
+
+>
+
+
+?
+
+
+</button>
+
+</header>
+
+<!-- =====================================================
+     ACTION BUTTONS
+===================================================== -->
+
+<section class="actions">
+
+<button
+class="action-button"
+onclick="openReportForm()"
+
+>
+
+
+<div class="action-icon">
+    ＋
+</div>
+
+<div class="action-content">
+
+    <div class="action-title">
         Báo cáo vấn đề mới
     </div>
 
-    <div class="header-subtitle">
-        Ghi nhận sự việc phát sinh tại cửa hàng
+    <div class="action-description">
+        Ghi nhận sự việc hoặc vấn đề vừa phát sinh.
+    </div>
+
+</div>
+
+<div class="action-arrow">
+    ›
+</div>
+
+
+</button>
+
+<button
+class="action-button"
+onclick="openUpdateForm()"
+
+>
+
+
+<div class="action-icon">
+    ↻
+</div>
+
+<div class="action-content">
+
+    <div class="action-title">
+        Cập nhật vấn đề cũ
+    </div>
+
+    <div class="action-description">
+        Chọn một vấn đề đã ghi nhận để cập nhật.
+    </div>
+
+</div>
+
+<div class="action-arrow">
+    ›
+</div>
+
+
+</button>
+
+</section>
+
+<!-- =====================================================
+     RECENT
+===================================================== -->
+
+<section class="section">
+
+<div class="section-header">
+
+
+<div class="section-title-wrap">
+
+    <div class="section-title">
+        Sự việc gần đây
+    </div>
+
+    <div
+        class="section-count"
+        id="recentCount"
+    >
+        0 sự việc
     </div>
 
 </div>
 
 
-</header>
+<div class="filter-tabs">
+
+    <button
+        class="filter-tab active"
+        onclick="filterLogs(
+            'recent',
+            'all',
+            this
+        )"
+    >
+        Tất cả
+    </button>
+
+    <button
+        class="filter-tab"
+        onclick="filterLogs(
+            'recent',
+            'Khương Trung',
+            this
+        )"
+    >
+        Khương Trung
+    </button>
+
+    <button
+        class="filter-tab"
+        onclick="filterLogs(
+            'recent',
+            'Thái Thịnh',
+            this
+        )"
+    >
+        Thái Thịnh
+    </button>
+
+</div>
+
+
+</div>
+
+<div
+    class="logs"
+    id="recentLogs"
+></div>
+
+<div
+    class="empty"
+    id="recentEmpty"
+>
+    Không có sự việc nào tại cửa hàng này.
+</div>
+
+</section>
 
 <!-- =====================================================
-     FORM
+     COMPLETED
 ===================================================== -->
 
-<main class="form-card">
+<section class="section">
+
+<div class="section-header">
+
+
+<div class="section-title-wrap">
+
+    <div class="section-title">
+        Đã xử lý xong
+    </div>
+
+    <div
+        class="section-count"
+        id="completedCount"
+    >
+        0 sự việc
+    </div>
+
+</div>
+
+
+<div class="filter-tabs">
+
+    <button
+        class="filter-tab active"
+        onclick="filterLogs(
+            'completed',
+            'all',
+            this
+        )"
+    >
+        Tất cả
+    </button>
+
+    <button
+        class="filter-tab"
+        onclick="filterLogs(
+            'completed',
+            'Khương Trung',
+            this
+        )"
+    >
+        Khương Trung
+    </button>
+
+    <button
+        class="filter-tab"
+        onclick="filterLogs(
+            'completed',
+            'Thái Thịnh',
+            this
+        )"
+    >
+        Thái Thịnh
+    </button>
+
+</div>
+
+
+</div>
+
+<div
+    class="logs"
+    id="completedLogs"
+></div>
+
+<div
+    class="empty"
+    id="completedEmpty"
+>
+    Không có sự việc nào được xử lý
+    trong thời gian gần đây.
+</div>
+
+</section>
+
+</div>
 
 <!-- =====================================================
-     CHI NHÁNH
+     FORM MODAL
 ===================================================== -->
+
+<div
+    class="form-modal"
+    id="formModal"
+>
+
+<div class="form-box">
+
+<div class="form-header">
+
+
+<div
+    class="form-header-title"
+    id="formTitle"
+>
+    Báo cáo vấn đề mới
+</div>
+
+<button
+    class="form-close"
+    onclick="closeForm()"
+    aria-label="Đóng"
+>
+    ×
+</button>
+
+
+</div>
+
+<!-- =====================================================
+     REPORT FORM
+===================================================== -->
+
+<div id="reportForm">
 
 <div class="form-group">
 
 
 <label
     class="form-label"
-    for="branch"
+    for="reportBranch"
 >
     Chi nhánh
     <span class="required">*</span>
 </label>
 
-
 <select
-    class="select-input"
-    id="branch"
+    class="form-select"
+    id="reportBranch"
 >
 
     <option value="">
@@ -627,59 +1668,45 @@ button {
 
 </select>
 
-
-<div class="field-error">
+<div class="form-error">
     Vui lòng chọn chi nhánh.
 </div>
 
 
 </div>
 
-<!-- =====================================================
-     NỘI DUNG
-===================================================== -->
-
 <div class="form-group">
 
 
 <label
     class="form-label"
-    for="content"
+    for="reportContent"
 >
     Nội dung sự việc
     <span class="required">*</span>
 </label>
 
-
 <textarea
-    class="textarea-input"
-    id="content"
+    class="form-textarea"
+    id="reportContent"
     placeholder="Mô tả ngắn gọn chuyện gì đã xảy ra..."
 ></textarea>
-
 
 <div class="form-hint">
     Không cần viết dài. Chỉ cần ghi đúng điều người khác cần biết.
 </div>
 
-
-<div class="field-error">
+<div class="form-error">
     Vui lòng nhập nội dung sự việc.
 </div>
 
 
 </div>
 
-<!-- =====================================================
-     MỨC ĐỘ
-===================================================== -->
-
 <div class="form-group">
 
 
-<label
-    class="form-label"
->
+<label class="form-label">
     Mức độ
     <span class="required">*</span>
 </label>
@@ -768,10 +1795,6 @@ button {
 
 </div>
 
-<!-- =====================================================
-     CẦN XỬ LÝ
-===================================================== -->
-
 <div class="form-group">
 
 
@@ -799,7 +1822,7 @@ button {
             <span class="choice-title">
                 Chỉ thông báo / báo cáo
             </span>
-<br>
+
             <span class="choice-description">
                 Ghi nhận để các ca sau biết, không yêu cầu xử lý thêm.
             </span>
@@ -824,7 +1847,7 @@ button {
             <span class="choice-title">
                 Cần xử lý
             </span>
-<br>
+
             <span class="choice-description">
                 Vấn đề cần có người tiếp nhận và xử lý.
             </span>
@@ -839,10 +1862,6 @@ button {
 
 </div>
 
-<!-- =====================================================
-     NGƯỜI BÁO CÁO
-===================================================== -->
-
 <div class="form-group">
 
 
@@ -854,26 +1873,20 @@ button {
     <span class="required">*</span>
 </label>
 
-
 <input
     type="text"
-    class="text-input"
+    class="form-input"
     id="reporter"
     placeholder="Nhập tên của bạn"
     autocomplete="name"
 >
 
-
-<div class="field-error">
+<div class="form-error">
     Vui lòng nhập tên người báo cáo.
 </div>
 
 
 </div>
-
-<!-- =====================================================
-     NÚT GỬI
-===================================================== -->
 
 <button
 type="button"
@@ -888,15 +1901,299 @@ Ghi nhận sự việc
 
 </button>
 
-<div
-    class="success-box"
-    id="successBox"
->
-    Đã kiểm tra xong dữ liệu nhập.
-    Bước kết nối hệ thống sẽ được xử lý sau.
 </div>
 
-</main>
+<!-- =====================================================
+     UPDATE FORM
+===================================================== -->
+
+<div
+    id="updateForm"
+    style="display:none"
+>
+
+<div class="form-group">
+
+
+<label
+    class="form-label"
+    for="updateId"
+>
+    Mã sự việc
+    <span class="required">*</span>
+</label>
+
+<input
+    type="text"
+    class="form-input"
+    id="updateId"
+    placeholder="Ví dụ: Z026"
+    autocomplete="off"
+>
+
+<div class="form-hint">
+    Nhập mã của sự việc đã được ghi nhận.
+</div>
+
+
+</div>
+
+<div class="form-group">
+
+
+<label
+    class="form-label"
+    for="updateContent"
+>
+    Nội dung cập nhật
+    <span class="required">*</span>
+</label>
+
+<textarea
+    class="form-textarea"
+    id="updateContent"
+    placeholder="Ghi lại tình hình mới hoặc kết quả xử lý..."
+></textarea>
+
+
+</div>
+
+<div class="form-group">
+
+
+<label class="form-label">
+    Trạng thái xử lý
+    <span class="required">*</span>
+</label>
+
+
+<div class="choice-list">
+
+
+    <button
+        type="button"
+        class="choice-button"
+        data-group="updateStatus"
+        data-value="Đang xử lý"
+        onclick="selectChoice(this, 'updateStatus')"
+    >
+
+        <span class="choice-radio"></span>
+
+        <span class="choice-text">
+
+            <span class="choice-title">
+                Đang xử lý
+            </span>
+
+        </span>
+
+    </button>
+
+
+    <button
+        type="button"
+        class="choice-button"
+        data-group="updateStatus"
+        data-value="Đã xử lý"
+        onclick="selectChoice(this, 'updateStatus')"
+    >
+
+        <span class="choice-radio"></span>
+
+        <span class="choice-text">
+
+            <span class="choice-title">
+                Đã xử lý
+            </span>
+
+        </span>
+
+    </button>
+
+
+</div>
+
+
+</div>
+
+<div class="form-group">
+
+
+<label
+    class="form-label"
+    for="updateHandler"
+>
+    Người xử lý
+</label>
+
+<input
+    type="text"
+    class="form-input"
+    id="updateHandler"
+    placeholder="Nhập tên người xử lý"
+    autocomplete="name"
+>
+
+
+</div>
+
+<button
+type="button"
+class="submit-button"
+onclick="submitUpdate()"
+
+>
+
+
+Ghi nhận cập nhật
+
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     HELP MODAL
+===================================================== -->
+
+<div
+    class="help-modal"
+    id="helpModal"
+>
+
+<div class="help-box">
+
+<div class="help-header">
+
+
+<div class="help-title">
+    Nhật ký vận hành để làm gì?
+</div>
+
+<button
+    class="help-close"
+    onclick="closeHelp()"
+>
+    ×
+</button>
+
+
+</div>
+
+<div class="help-content">
+
+<p>
+    Trong lúc làm việc sẽ có những chuyện phát sinh
+    mà không phải lúc nào cũng xử lý xong ngay trong ca.
+</p>
+
+<p>
+    Ví dụ: máy có vấn đề, thiếu đồ, khách phản ánh,
+    phát hiện một việc cần sửa, hoặc có chuyện mà ca sau cần biết.
+</p>
+
+<p>
+    Thay vì chỉ nói trong nhóm Zalo rồi tin nhắn trôi mất,
+    mình ghi lại ở đây để
+    <strong>
+        các ca sau vẫn biết chuyện gì đã xảy ra.
+    </strong>
+</p>
+
+<ul class="help-list">
+
+<li>
+    <strong>Báo cáo vấn đề mới:</strong>
+    Có chuyện mới xảy ra thì báo ở đây.
+</li>
+
+<li>
+    <strong>Cập nhật vấn đề cũ:</strong>
+    Nếu chuyện đó đã có người báo rồi,
+    vào đây để cập nhật thêm.
+</li>
+
+<li>
+    <strong>Sự việc gần đây:</strong>
+    Để xem cửa hàng đang có những chuyện gì cần chú ý.
+</li>
+
+<li>
+    <strong>Đã xử lý xong:</strong>
+    Để biết những chuyện vừa được giải quyết,
+    tránh việc ca sau không biết rồi lại báo lại từ đầu.
+</li>
+
+</ul>
+
+<p>
+    Không cần viết dài.
+    Chỉ cần ghi
+    <strong>
+        đúng chuyện gì xảy ra và người khác cần biết điều gì.
+    </strong>
+</p>
+
+<p class="help-final">
+
+
+Mục đích đơn giản là:
+
+<br>
+
+<strong>
+    Ca trước biết → ca sau biết →
+    không ai phải đoán xem chuyện gì đã xảy ra.
+</strong>
+
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     DETAIL MODAL
+===================================================== -->
+
+<div
+    class="detail-modal"
+    id="detailModal"
+>
+
+<div class="detail-box">
+
+<div class="detail-header">
+
+
+<div
+    class="detail-title"
+    id="detailTitle"
+>
+    Chi tiết sự việc
+</div>
+
+<button
+    class="detail-close"
+    onclick="closeLogDetail()"
+>
+    ×
+</button>
+
+
+</div>
+
+<div id="detailContent"></div>
+
+</div>
 
 </div>
 
@@ -904,14 +2201,35 @@ Ghi nhận sự việc
 
 
 /* =====================================================
-   DỮ LIỆU FORM
+   HUSTON.JSON
 ===================================================== */
+
+const HUSTON_URL =
+    "https://raw.githubusercontent.com/Hungkoivfx/TascusFoodPortal/main/Huston.json";
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let currentRecords = [];
+
+let currentFilters = {
+
+    recent: "all",
+
+    completed: "all"
+
+};
+
 
 const formData = {
 
     level: "",
 
-    handling: ""
+    handling: "",
+
+    updateStatus: ""
 
 };
 
@@ -939,54 +2257,136 @@ function goBack() {
 
 
 /* =====================================================
-   CHỌN OPTION
+   FORM MODAL
 ===================================================== */
 
-function selectChoice(
-    button,
-    group
-) {
+function openReportForm() {
 
-    const buttons =
-        document.querySelectorAll(
-            '.choice-button[data-group="' +
-            group +
-            '"]'
-        );
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Báo cáo vấn đề mới";
 
 
-    buttons.forEach(
-        function(item) {
+    document.getElementById(
+        "reportForm"
+    ).style.display =
+        "block";
 
-            item.classList.remove(
-                "selected"
-            );
 
-        }
+    document.getElementById(
+        "updateForm"
+    ).style.display =
+        "none";
+
+
+    resetReportForm();
+
+
+    document.getElementById(
+        "formModal"
+    ).classList.add("active");
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function openUpdateForm() {
+
+    document.getElementById(
+        "formTitle"
+    ).textContent =
+        "Cập nhật vấn đề cũ";
+
+
+    document.getElementById(
+        "reportForm"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "updateForm"
+    ).style.display =
+        "block";
+
+
+    resetUpdateForm();
+
+
+    document.getElementById(
+        "formModal"
+    ).classList.add("active");
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeForm() {
+
+    document.getElementById(
+        "formModal"
+    ).classList.remove(
+        "active"
     );
 
 
-    button.classList.add(
-        "selected"
-    );
-
-
-    formData[group] =
-        button.dataset.value || "";
-
+    document.body.style.overflow =
+        "";
 
 }
 
 
 /* =====================================================
-   XÓA ERROR
+   RESET REPORT
 ===================================================== */
 
-function clearErrors() {
+function resetReportForm() {
+
+    document.getElementById(
+        "reportBranch"
+    ).value = "";
+
+
+    document.getElementById(
+        "reportContent"
+    ).value = "";
+
+
+    document.getElementById(
+        "reporter"
+    ).value = "";
+
+
+    formData.level = "";
+
+    formData.handling = "";
+
 
     document
         .querySelectorAll(
-            ".form-group.error"
+            '[data-group="level"], [data-group="handling"]'
+        )
+        .forEach(
+            function(button) {
+
+                button.classList.remove(
+                    "selected"
+                );
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            "#reportForm .form-group"
         )
         .forEach(
             function(group) {
@@ -1002,31 +2402,120 @@ function clearErrors() {
 
 
 /* =====================================================
-   KIỂM TRA FORM
+   RESET UPDATE
 ===================================================== */
 
-function validateForm() {
+function resetUpdateForm() {
 
-    clearErrors();
+    document.getElementById(
+        "updateId"
+    ).value = "";
 
-    let valid = true;
 
+    document.getElementById(
+        "updateContent"
+    ).value = "";
+
+
+    document.getElementById(
+        "updateHandler"
+    ).value = "";
+
+
+    formData.updateStatus = "";
+
+
+    document
+        .querySelectorAll(
+            '[data-group="updateStatus"]'
+        )
+        .forEach(
+            function(button) {
+
+                button.classList.remove(
+                    "selected"
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   CHOICE
+===================================================== */
+
+function selectChoice(
+    button,
+    group
+) {
+
+    document
+        .querySelectorAll(
+            '[data-group="' +
+            group +
+            '"]'
+        )
+        .forEach(
+            function(item) {
+
+                item.classList.remove(
+                    "selected"
+                );
+
+            }
+        );
+
+
+    button.classList.add(
+        "selected"
+    );
+
+
+    formData[group] =
+        button.dataset.value || "";
+
+}
+
+
+/* =====================================================
+   SUBMIT REPORT
+===================================================== */
+
+function submitReport() {
 
     const branch =
         document.getElementById(
-            "branch"
+            "reportBranch"
         );
-
 
     const content =
         document.getElementById(
-            "content"
+            "reportContent"
         );
-
 
     const reporter =
         document.getElementById(
             "reporter"
+        );
+
+
+    let valid = true;
+
+
+    document
+        .querySelectorAll(
+            "#reportForm .form-group"
+        )
+        .forEach(
+            function(group) {
+
+                group.classList.remove(
+                    "error"
+                );
+
+            }
         );
 
 
@@ -1041,9 +2530,7 @@ function validateForm() {
     }
 
 
-    if (
-        !content.value.trim()
-    ) {
+    if (!content.value.trim()) {
 
         content
             .closest(".form-group")
@@ -1082,9 +2569,7 @@ function validateForm() {
     }
 
 
-    if (
-        !reporter.value.trim()
-    ) {
+    if (!reporter.value.trim()) {
 
         reporter
             .closest(".form-group")
@@ -1095,18 +2580,7 @@ function validateForm() {
     }
 
 
-    return valid;
-
-}
-
-
-/* =====================================================
-   GỬI FORM
-===================================================== */
-
-function submitReport() {
-
-    if (!validateForm()) {
+    if (!valid) {
 
         return;
 
@@ -1116,14 +2590,10 @@ function submitReport() {
     const data = {
 
         chi_nhanh:
-            document.getElementById(
-                "branch"
-            ).value,
+            branch.value,
 
         noi_dung:
-            document.getElementById(
-                "content"
-            ).value.trim(),
+            content.value.trim(),
 
         muc_do:
             formData.level,
@@ -1132,9 +2602,7 @@ function submitReport() {
             formData.handling,
 
         nguoi_bao_cao:
-            document.getElementById(
-                "reporter"
-            ).value.trim(),
+            reporter.value.trim(),
 
         thoi_gian:
             new Date().toISOString()
@@ -1143,115 +2611,1432 @@ function submitReport() {
 
 
     console.log(
-        "FORM DATA:",
+        "BÁO CÁO MỚI:",
         data
     );
 
 
+    alert(
+        "Frontend đã nhận dữ liệu.\n\n" +
+        "Chưa kết nối hệ thống lưu dữ liệu."
+    );
+
+
+    closeForm();
+
+}
+
+
+/* =====================================================
+   SUBMIT UPDATE
+===================================================== */
+
+function submitUpdate() {
+
+    const id =
+        document.getElementById(
+            "updateId"
+        ).value.trim();
+
+
+    const content =
+        document.getElementById(
+            "updateContent"
+        ).value.trim();
+
+
+    const handler =
+        document.getElementById(
+            "updateHandler"
+        ).value.trim();
+
+
+    if (!id) {
+
+        alert(
+            "Vui lòng nhập mã sự việc."
+        );
+
+        return;
+
+    }
+
+
+    if (!content) {
+
+        alert(
+            "Vui lòng nhập nội dung cập nhật."
+        );
+
+        return;
+
+    }
+
+
+    if (!formData.updateStatus) {
+
+        alert(
+            "Vui lòng chọn trạng thái xử lý."
+        );
+
+        return;
+
+    }
+
+
+    const data = {
+
+        id: id,
+
+        noi_dung_cap_nhat:
+            content,
+
+        trang_thai_xu_ly:
+            formData.updateStatus,
+
+        nguoi_xu_ly:
+            handler,
+
+        thoi_gian:
+            new Date().toISOString()
+
+    };
+
+
+    console.log(
+        "CẬP NHẬT:",
+        data
+    );
+
+
+    alert(
+        "Frontend đã nhận dữ liệu.\n\n" +
+        "Chưa kết nối hệ thống lưu dữ liệu."
+    );
+
+
+    closeForm();
+
+}
+
+
+/* =====================================================
+   HELP
+===================================================== */
+
+function openHelp() {
+
     document
         .getElementById(
-            "successBox"
+            "helpModal"
         )
-        .classList.add(
+        .classList.add("active");
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeHelp() {
+
+    document
+        .getElementById(
+            "helpModal"
+        )
+        .classList.remove("active");
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function getStatusList(value) {
+
+    if (!value) {
+
+        return [];
+
+    }
+
+
+    return String(value)
+        .split(",")
+        .map(
+            function(status) {
+
+                return status.trim();
+
+            }
+        )
+        .filter(
+            function(status) {
+
+                return status !== "";
+
+            }
+        );
+
+}
+
+
+function getFinalStatus(value) {
+
+    const statuses =
+        getStatusList(value);
+
+
+    if (
+        statuses.length === 0
+    ) {
+
+        return "Chưa xử lý";
+
+    }
+
+
+    if (
+        statuses.includes(
+            "Đã xử lý"
+        )
+    ) {
+
+        return "Đã xử lý";
+
+    }
+
+
+    if (
+        statuses.includes(
+            "Đang xử lý"
+        )
+    ) {
+
+        return "Đang xử lý";
+
+    }
+
+
+    return statuses[
+        statuses.length - 1
+    ];
+
+}
+
+
+function isCompleted(record) {
+
+    return (
+        getFinalStatus(
+            record.trang_thai_xu_ly
+        ) === "Đã xử lý"
+    );
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function parseDate(value) {
+
+    if (!value) {
+
+        return null;
+
+    }
+
+
+    let date =
+        new Date(value);
+
+
+    if (
+        !isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return date;
+
+    }
+
+
+    const match =
+        String(value).match(
+            /^(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2}):(\d{2})$/
+        );
+
+
+    if (match) {
+
+        date =
+            new Date(
+                Number(match[1]),
+                Number(match[2]) - 1,
+                Number(match[3]),
+                Number(match[4]),
+                Number(match[5])
+            );
+
+
+        if (
+            !isNaN(
+                date.getTime()
+            )
+        ) {
+
+            return date;
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+function formatDetailDate(value) {
+
+    if (!value) {
+
+        return "";
+
+    }
+
+
+    const date =
+        parseDate(value);
+
+
+    if (!date) {
+
+        return value;
+
+    }
+
+
+    return date.toLocaleString(
+        "vi-VN",
+        {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        }
+    );
+
+}
+
+
+function formatDate(value) {
+
+    if (!value) {
+
+        return "";
+
+    }
+
+
+    const date =
+        parseDate(value);
+
+
+    if (!date) {
+
+        return value;
+
+    }
+
+
+    const now =
+        new Date();
+
+
+    if (
+        date.toDateString() ===
+        now.toDateString()
+    ) {
+
+        return date.toLocaleTimeString(
+            "vi-VN",
+            {
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        );
+
+    }
+
+
+    return date.toLocaleDateString(
+        "vi-VN",
+        {
+            day: "2-digit",
+            month: "2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderLogs(records) {
+
+    const recentLogs =
+        document.getElementById(
+            "recentLogs"
+        );
+
+    const completedLogs =
+        document.getElementById(
+            "completedLogs"
+        );
+
+
+    currentRecords =
+        Array.isArray(records)
+            ? records
+            : [];
+
+
+    recentLogs.innerHTML = "";
+
+    completedLogs.innerHTML = "";
+
+
+    const recordMap =
+        new Map();
+
+
+    currentRecords.forEach(
+        function(record) {
+
+            const id =
+                String(
+                    record.id || ""
+                ).trim();
+
+
+            if (!id) {
+
+                return;
+
+            }
+
+
+            recordMap.set(
+                id,
+                record
+            );
+
+        }
+    );
+
+
+    const uniqueRecords =
+        Array.from(
+            recordMap.values()
+        );
+
+
+    uniqueRecords.sort(
+        function(a, b) {
+
+            const dateA =
+                parseDate(
+                    a.thoi_gian
+                );
+
+            const dateB =
+                parseDate(
+                    b.thoi_gian
+                );
+
+
+            return (
+                (dateB
+                    ? dateB.getTime()
+                    : 0)
+                -
+                (dateA
+                    ? dateA.getTime()
+                    : 0)
+            );
+
+        }
+    );
+
+
+    const completed =
+        uniqueRecords.filter(
+            function(record) {
+
+                return isCompleted(
+                    record
+                );
+
+            }
+        );
+
+
+    const recent =
+        uniqueRecords.filter(
+            function(record) {
+
+                return !isCompleted(
+                    record
+                );
+
+            }
+        );
+
+
+    recent.forEach(
+        function(record) {
+
+            recentLogs.appendChild(
+                createLogCard(record)
+            );
+
+        }
+    );
+
+
+    completed.forEach(
+        function(record) {
+
+            completedLogs.appendChild(
+                createLogCard(record)
+            );
+
+        }
+    );
+
+
+    updateCount(
+        "recentCount",
+        recent.length
+    );
+
+
+    updateCount(
+        "completedCount",
+        completed.length
+    );
+
+
+    document.getElementById(
+        "recentEmpty"
+    ).style.display =
+        recent.length === 0
+            ? "block"
+            : "none";
+
+
+    document.getElementById(
+        "completedEmpty"
+    ).style.display =
+        completed.length === 0
+            ? "block"
+            : "none";
+
+
+    applyFilters();
+
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+function createLogCard(record) {
+
+    const article =
+        document.createElement(
+            "article"
+        );
+
+
+    article.className =
+        "log-card";
+
+
+    article.dataset.branch =
+        record.chi_nhanh || "";
+
+
+    article.addEventListener(
+        "click",
+        function() {
+
+            openLogDetail(
+                record
+            );
+
+        }
+    );
+
+
+    const status =
+        getFinalStatus(
+            record.trang_thai_xu_ly
+        );
+
+
+    let statusClass =
+        "status-pending";
+
+
+    if (
+        status === "Đang xử lý"
+    ) {
+
+        statusClass =
+            "status-processing";
+
+    }
+
+
+    if (
+        status === "Đã xử lý"
+    ) {
+
+        statusClass =
+            "status-done";
+
+    }
+
+
+    article.innerHTML = `
+
+        <div class="log-top">
+
+            <div class="log-meta">
+
+                <span class="log-dot"></span>
+
+                <span class="log-id">
+                    ${escapeHTML(
+                        record.id || ""
+                    )}
+                </span>
+
+                <span class="separator">
+                    ·
+                </span>
+
+                <span class="log-branch">
+                    ${escapeHTML(
+                        record.chi_nhanh || ""
+                    )}
+                </span>
+
+                <span class="log-time">
+                    ${escapeHTML(
+                        formatDate(
+                            record.thoi_gian
+                        )
+                    )}
+                </span>
+
+            </div>
+
+
+            <span class="status ${statusClass}">
+                ${escapeHTML(
+                    status
+                )}
+            </span>
+
+        </div>
+
+
+        <div class="log-title">
+
+            ${escapeHTML(
+                record.noi_dung ||
+                "Không có nội dung"
+            )}
+
+        </div>
+
+
+        <div class="log-content">
+
+            Người báo cáo:
+            ${escapeHTML(
+                record.nguoi_bao_cao ||
+                "Không rõ"
+            )}
+
+            <br>
+
+            Cần xử lý:
+            ${escapeHTML(
+                record.can_xu_ly ||
+                "Không rõ"
+            )}
+
+        </div>
+
+
+        <div class="log-footer">
+
+            <div class="log-level">
+
+                Mức độ:
+
+                <strong>
+                    ${escapeHTML(
+                        record.muc_do ||
+                        "Không xác định"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="view-detail">
+
+                ${escapeHTML(
+                    record.id || ""
+                )}
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    return article;
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function filterLogs(
+    section,
+    branch,
+    button
+) {
+
+    currentFilters[
+        section
+    ] = branch;
+
+
+    const parent =
+        button.closest(
+            ".filter-tabs"
+        );
+
+
+    if (parent) {
+
+        parent
+            .querySelectorAll(
+                ".filter-tab"
+            )
+            .forEach(
+                function(tab) {
+
+                    tab.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+        button.classList.add(
             "active"
+        );
+
+    }
+
+
+    applyFilters();
+
+}
+
+
+function applyFilters() {
+
+    applySectionFilter(
+        "recent",
+        currentFilters.recent
+    );
+
+
+    applySectionFilter(
+        "completed",
+        currentFilters.completed
+    );
+
+}
+
+
+function applySectionFilter(
+    section,
+    branch
+) {
+
+    const container =
+        document.getElementById(
+            section === "recent"
+                ? "recentLogs"
+                : "completedLogs"
+        );
+
+
+    const empty =
+        document.getElementById(
+            section === "recent"
+                ? "recentEmpty"
+                : "completedEmpty"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    const cards =
+        container.querySelectorAll(
+            ".log-card"
+        );
+
+
+    let visibleCount = 0;
+
+
+    cards.forEach(
+        function(card) {
+
+            const cardBranch =
+                card.dataset.branch || "";
+
+
+            const visible =
+                branch === "all" ||
+                cardBranch === branch;
+
+
+            card.style.display =
+                visible
+                    ? ""
+                    : "none";
+
+
+            if (visible) {
+
+                visibleCount++;
+
+            }
+
+        }
+    );
+
+
+    empty.style.display =
+        visibleCount === 0
+            ? "block"
+            : "none";
+
+}
+
+
+/* =====================================================
+   DETAIL
+===================================================== */
+
+function openLogDetail(record) {
+
+    const modal =
+        document.getElementById(
+            "detailModal"
+        );
+
+
+    const content =
+        document.getElementById(
+            "detailContent"
+        );
+
+
+    const title =
+        document.getElementById(
+            "detailTitle"
+        );
+
+
+    const status =
+        getFinalStatus(
+            record.trang_thai_xu_ly
+        );
+
+
+    const phuongAn =
+        record.phuong_an_xu_ly ||
+        "Chưa cập nhật";
+
+
+    const nguoiXuLy =
+        record.nguoi_xu_ly ||
+        "Chưa cập nhật";
+
+
+    title.textContent =
+        record.id
+            ? "Chi tiết " + record.id
+            : "Chi tiết sự việc";
+
+
+    content.innerHTML = `
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Mã sự việc
+            </div>
+
+            <div class="detail-value">
+                ${escapeHTML(
+                    record.id ||
+                    "Không có"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Chi nhánh
+            </div>
+
+            <div class="detail-value">
+                ${escapeHTML(
+                    record.chi_nhanh ||
+                    "Không có"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Thời gian
+            </div>
+
+            <div class="detail-value">
+                ${escapeHTML(
+                    formatDetailDate(
+                        record.thoi_gian
+                    )
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Người báo cáo
+            </div>
+
+            <div class="detail-value">
+                ${escapeHTML(
+                    record.nguoi_bao_cao ||
+                    "Không có"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Nội dung
+            </div>
+
+            <div class="detail-value detail-content">
+                ${escapeHTML(
+                    record.noi_dung ||
+                    "Không có"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Mức độ
+            </div>
+
+            <div class="detail-value">
+                ${escapeHTML(
+                    record.muc_do ||
+                    "Không xác định"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Cần xử lý
+            </div>
+
+            <div class="detail-value">
+                ${escapeHTML(
+                    record.can_xu_ly ||
+                    "Không có"
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Trạng thái xử lý
+            </div>
+
+            <div class="detail-value">
+                ${escapeHTML(
+                    status
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Phương án xử lý
+            </div>
+
+            <div class="detail-value detail-content">
+                ${escapeHTML(
+                    phuongAn
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Người xử lý
+            </div>
+
+            <div class="detail-value">
+                ${escapeHTML(
+                    nguoiXuLy
+                )}
+            </div>
+
+        </div>
+
+    `;
+
+
+    modal.classList.add(
+        "active"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeLogDetail() {
+
+    document
+        .getElementById(
+            "detailModal"
+        )
+        .classList.remove(
+            "active"
+        );
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
         );
 
 }
 
 
 /* =====================================================
-   XÓA ERROR KHI NGƯỜI DÙNG BẮT ĐẦU NHẬP
+   COUNT
+===================================================== */
+
+function updateCount(
+    elementId,
+    count
+) {
+
+    const element =
+        document.getElementById(
+            elementId
+        );
+
+
+    if (!element) {
+
+        return;
+
+    }
+
+
+    element.textContent =
+        count +
+        " sự việc";
+
+}
+
+
+/* =====================================================
+   RESET FILTER
+===================================================== */
+
+function resetFilters() {
+
+    currentFilters = {
+
+        recent: "all",
+
+        completed: "all"
+
+    };
+
+
+    document
+        .querySelectorAll(
+            ".filter-tab"
+        )
+        .forEach(
+            function(tab) {
+
+                tab.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            ".filter-tabs"
+        )
+        .forEach(
+            function(group) {
+
+                const first =
+                    group.querySelector(
+                        ".filter-tab"
+                    );
+
+
+                if (first) {
+
+                    first.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   LOAD ERROR
+===================================================== */
+
+function showLoadError() {
+
+    const recentLogs =
+        document.getElementById(
+            "recentLogs"
+        );
+
+
+    const completedLogs =
+        document.getElementById(
+            "completedLogs"
+        );
+
+
+    recentLogs.innerHTML = `
+
+        <div
+            class="empty"
+            style="display:block"
+        >
+            Không thể tải
+            nhật ký vận hành.
+        </div>
+
+    `;
+
+
+    completedLogs.innerHTML = "";
+
+}
+
+
+/* =====================================================
+   LOAD HUSTON
+===================================================== */
+
+async function loadHuston() {
+
+    try {
+
+        const response =
+            await fetch(
+                HUSTON_URL +
+                "?t=" +
+                Date.now(),
+                {
+                    cache: "no-store"
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Không thể tải Huston.json"
+            );
+
+        }
+
+
+        const huston =
+            await response.json();
+
+
+        const records =
+            Array.isArray(
+                huston.records
+            )
+                ? huston.records
+                : [];
+
+
+        renderLogs(
+            records
+        );
+
+
+        console.log(
+            "Huston đã cập nhật:",
+            new Date().toLocaleTimeString(
+                "vi-VN"
+            ),
+            records.length,
+            "record"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Lỗi tải Huston:",
+            error
+        );
+
+
+        showLoadError();
+
+    }
+
+}
+
+
+/* =====================================================
+   CLICK NGOÀI POPUP
 ===================================================== */
 
 document
-    .getElementById("branch")
+    .getElementById(
+        "formModal"
+    )
     .addEventListener(
-        "change",
-        function() {
+        "click",
+        function(event) {
 
-            this
-                .closest(".form-group")
-                .classList.remove("error");
+            if (
+                event.target === this
+            ) {
+
+                closeForm();
+
+            }
 
         }
     );
 
 
 document
-    .getElementById("content")
+    .getElementById(
+        "detailModal"
+    )
     .addEventListener(
-        "input",
-        function() {
+        "click",
+        function(event) {
 
-            this
-                .closest(".form-group")
-                .classList.remove("error");
+            if (
+                event.target === this
+            ) {
+
+                closeLogDetail();
+
+            }
 
         }
     );
 
 
 document
-    .getElementById("reporter")
+    .getElementById(
+        "helpModal"
+    )
     .addEventListener(
-        "input",
-        function() {
+        "click",
+        function(event) {
 
-            this
-                .closest(".form-group")
-                .classList.remove("error");
+            if (
+                event.target === this
+            ) {
+
+                closeHelp();
+
+            }
 
         }
     );
 
 
 /* =====================================================
-   XÓA ERROR KHI CHỌN OPTION
+   ESC
 ===================================================== */
 
-document
-    .querySelectorAll(
-        '.choice-button[data-group="level"]'
-    )
-    .forEach(
-        function(button) {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-            button.addEventListener(
-                "click",
-                function() {
+        if (
+            event.key === "Escape"
+        ) {
 
-                    this
-                        .closest(".form-group")
-                        .classList.remove("error");
+            closeForm();
 
-                }
-            );
+            closeHelp();
+
+            closeLogDetail();
 
         }
-    );
+
+    }
+);
 
 
-document
-    .querySelectorAll(
-        '.choice-button[data-group="handling"]'
-    )
-    .forEach(
-        function(button) {
+/* =====================================================
+   KHỞI ĐỘNG
+===================================================== */
 
-            button.addEventListener(
-                "click",
-                function() {
+resetFilters();
 
-                    this
-                        .closest(".form-group")
-                        .classList.remove("error");
+loadHuston();
 
-                }
-            );
+setTimeout(
+    function() {
 
-        }
-    );
+        loadHuston();
 
+    },
+    3000
+);
 
 </script>
 
