@@ -44,8 +44,15 @@ body {
         14px;
 }
 
-button {
+button,
+input,
+select,
+textarea {
     font-family: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
 }
 
 .container {
@@ -85,8 +92,6 @@ button {
     color: #333;
 
     cursor: pointer;
-
-    -webkit-tap-highlight-color: transparent;
 }
 
 .back-button {
@@ -153,8 +158,6 @@ button {
     cursor: pointer;
 
     color: #222;
-
-    -webkit-tap-highlight-color: transparent;
 
     transition:
         transform .12s ease,
@@ -226,32 +229,26 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 8px;
-
     margin-bottom: 10px;
 }
 
 .section-title-wrap {
     display: flex;
     align-items: baseline;
-
     gap: 7px;
-
     min-width: 0;
 }
 
 .section-title {
     font-size: 14px;
     font-weight: 650;
-
     white-space: nowrap;
 }
 
 .section-count {
     font-size: 11px;
     color: #999;
-
     white-space: nowrap;
 }
 
@@ -369,9 +366,7 @@ button {
 .log-id {
     font-size: 11px;
     font-weight: 650;
-
     color: #555;
-
     white-space: nowrap;
 }
 
@@ -391,7 +386,6 @@ button {
 .log-time {
     font-size: 11px;
     color: #999;
-
     white-space: nowrap;
 }
 
@@ -503,6 +497,221 @@ button {
 
 
 /* =====================================================
+   NATIVE MODAL
+===================================================== */
+
+dialog {
+    width: min(520px, calc(100vw - 28px));
+    max-height: min(90vh, 760px);
+
+    border: none;
+    border-radius: 18px;
+
+    padding: 0;
+
+    background: #fff;
+
+    color: #222;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.22);
+}
+
+dialog::backdrop {
+    background: rgba(0,0,0,.42);
+}
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+
+    max-height: min(90vh, 760px);
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 18px 18px 15px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.dialog-title {
+    font-size: 18px;
+    font-weight: 650;
+}
+
+.dialog-close {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f1f2f3;
+
+    color: #555;
+
+    font-size: 21px;
+
+    cursor: pointer;
+}
+
+.dialog-body {
+    padding: 18px;
+
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #444;
+}
+
+.form-label .required {
+    color: #999;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+
+    border: 1px solid #dfe1e4;
+
+    border-radius: 11px;
+
+    background: #fafafa;
+
+    color: #222;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color .12s ease,
+        background .12s ease,
+        box-shadow .12s ease;
+}
+
+.form-input,
+.form-select {
+    min-height: 45px;
+    padding: 10px 12px;
+}
+
+.form-textarea {
+    min-height: 100px;
+
+    padding: 11px 12px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    border-color: #999;
+    background: #fff;
+
+    box-shadow:
+        0 0 0 3px rgba(0,0,0,.045);
+}
+
+.form-hint {
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: #999;
+
+    line-height: 1.4;
+}
+
+.dialog-footer {
+    display: flex;
+
+    gap: 9px;
+
+    padding: 14px 18px 18px;
+
+    border-top: 1px solid #eee;
+}
+
+.dialog-button {
+    flex: 1;
+
+    min-height: 45px;
+
+    border-radius: 11px;
+
+    border: 1px solid #dedfe1;
+
+    background: #fff;
+
+    color: #444;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.dialog-button.primary {
+    border-color: #222;
+    background: #222;
+    color: #fff;
+}
+
+.dialog-button:active {
+    transform: scale(.985);
+}
+
+.update-record-info {
+    margin-bottom: 16px;
+
+    padding: 12px;
+
+    border-radius: 11px;
+
+    background: #f5f6f7;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    color: #666;
+}
+
+.update-record-info strong {
+    color: #333;
+}
+
+
+/* =====================================================
    HELP MODAL
 ===================================================== */
 
@@ -545,23 +754,6 @@ button {
 
     box-shadow:
         0 20px 50px rgba(0,0,0,.15);
-
-    animation:
-        helpIn .16s ease-out;
-}
-
-@keyframes helpIn {
-
-    from {
-        opacity: 0;
-        transform: scale(.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-
 }
 
 .help-header {
@@ -578,7 +770,6 @@ button {
 
 .help-title {
     font-size: 19px;
-
     font-weight: 650;
 }
 
@@ -703,23 +894,6 @@ button {
 
     box-shadow:
         0 20px 50px rgba(0,0,0,.15);
-
-    animation:
-        detailIn .16s ease-out;
-}
-
-@keyframes detailIn {
-
-    from {
-        opacity: 0;
-        transform: scale(.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-
 }
 
 .detail-header {
@@ -796,6 +970,23 @@ button {
 
 @media (max-width: 600px) {
 
+    dialog {
+        width: 100vw;
+
+        max-width: none;
+
+        max-height: 92vh;
+
+        margin: auto 0 0;
+
+        border-radius:
+            18px 18px 0 0;
+    }
+
+    .dialog-content {
+        max-height: 92vh;
+    }
+
     .help-modal,
     .detail-modal {
         padding: 0;
@@ -816,44 +1007,6 @@ button {
             20px 16px
             max(22px, env(safe-area-inset-bottom))
             16px;
-    }
-
-    .help-box {
-        animation:
-            helpSlideUp .18s ease-out;
-    }
-
-    .detail-box {
-        animation:
-            detailSlideUp .18s ease-out;
-    }
-
-    @keyframes helpSlideUp {
-
-        from {
-            opacity: 0;
-            transform: translateY(25px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-    }
-
-    @keyframes detailSlideUp {
-
-        from {
-            opacity: 0;
-            transform: translateY(25px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
     }
 
 }
@@ -921,15 +1074,15 @@ aria-label="Quay lại"
 
 >
 
-```
+
 ‹
-```
+
 
 </button>
 
 <div class="header-text">
 
-```
+
 <div class="header-title">
     Nhật ký vận hành
 </div>
@@ -937,7 +1090,7 @@ aria-label="Quay lại"
 <div class="header-subtitle">
     Các sự việc được ghi nhận tại cửa hàng
 </div>
-```
+
 
 </div>
 
@@ -948,9 +1101,9 @@ aria-label="Hướng dẫn"
 
 >
 
-```
+
 ?
-```
+
 
 </button>
 
@@ -964,12 +1117,11 @@ aria-label="Hướng dẫn"
 
 <button
 class="action-button"
-type="button"
-onclick="openReportForm()"
+onclick="openReportPopup()"
 
 >
 
-```
+
 <div class="action-icon">
     ＋
 </div>
@@ -989,18 +1141,17 @@ onclick="openReportForm()"
 <div class="action-arrow">
     ›
 </div>
-```
+
 
 </button>
 
 <button
 class="action-button"
-type="button"
-onclick="openUpdateForm()"
+onclick="openUpdatePopup()"
 
 >
 
-```
+
 <div class="action-icon">
     ↻
 </div>
@@ -1020,7 +1171,7 @@ onclick="openUpdateForm()"
 <div class="action-arrow">
     ›
 </div>
-```
+
 
 </button>
 
@@ -1034,7 +1185,7 @@ onclick="openUpdateForm()"
 
 <div class="section-header">
 
-```
+
 <div class="section-title-wrap">
 
     <div class="section-title">
@@ -1049,6 +1200,7 @@ onclick="openUpdateForm()"
     </div>
 
 </div>
+
 
 <div class="filter-tabs">
 
@@ -1086,7 +1238,7 @@ onclick="openUpdateForm()"
     </button>
 
 </div>
-```
+
 
 </div>
 
@@ -1112,7 +1264,7 @@ onclick="openUpdateForm()"
 
 <div class="section-header">
 
-```
+
 <div class="section-title-wrap">
 
     <div class="section-title">
@@ -1127,6 +1279,7 @@ onclick="openUpdateForm()"
     </div>
 
 </div>
+
 
 <div class="filter-tabs">
 
@@ -1164,7 +1317,7 @@ onclick="openUpdateForm()"
     </button>
 
 </div>
-```
+
 
 </div>
 
@@ -1186,6 +1339,359 @@ onclick="openUpdateForm()"
 </div>
 
 <!-- =====================================================
+     POPUP: BÁO CÁO VẤN ĐỀ MỚI
+===================================================== -->
+
+<dialog id="reportDialog">
+
+<div class="dialog-content">
+
+
+<div class="dialog-header">
+
+    <div class="dialog-title">
+        Báo cáo vấn đề mới
+    </div>
+
+    <button
+        type="button"
+        class="dialog-close"
+        onclick="closeReportPopup()"
+    >
+        ×
+    </button>
+
+</div>
+
+
+<form
+    class="dialog-body"
+    id="reportForm"
+    onsubmit="submitReport(event)"
+>
+
+
+    <div class="form-group">
+
+        <label
+            class="form-label"
+            for="reportBranch"
+        >
+            Chi nhánh <span class="required">*</span>
+        </label>
+
+        <select
+            class="form-select"
+            id="reportBranch"
+            required
+        >
+
+            <option value="">
+                Chọn chi nhánh
+            </option>
+
+            <option value="Khương Trung">
+                Khương Trung
+            </option>
+
+            <option value="Thái Thịnh">
+                Thái Thịnh
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label
+            class="form-label"
+            for="reporter"
+        >
+            Người báo cáo <span class="required">*</span>
+        </label>
+
+        <input
+            class="form-input"
+            id="reporter"
+            type="text"
+            placeholder="Nhập tên người báo cáo"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label
+            class="form-label"
+            for="reportContent"
+        >
+            Nội dung sự việc <span class="required">*</span>
+        </label>
+
+        <textarea
+            class="form-textarea"
+            id="reportContent"
+            placeholder="Có chuyện gì xảy ra?"
+            required
+        ></textarea>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label
+            class="form-label"
+            for="reportLevel"
+        >
+            Mức độ <span class="required">*</span>
+        </label>
+
+        <select
+            class="form-select"
+            id="reportLevel"
+            required
+        >
+
+            <option value="">
+                Chọn mức độ
+            </option>
+
+            <option value="Thấp">
+                Thấp
+            </option>
+
+            <option value="Trung bình">
+                Trung bình
+            </option>
+
+            <option value="Cao">
+                Cao
+            </option>
+
+            <option value="Khẩn cấp">
+                Khẩn cấp
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label
+            class="form-label"
+            for="reportNeed"
+        >
+            Cần xử lý <span class="required">*</span>
+        </label>
+
+        <textarea
+            class="form-textarea"
+            id="reportNeed"
+            placeholder="Người khác cần làm gì hoặc cần biết điều gì?"
+            required
+        ></textarea>
+
+    </div>
+
+
+    <div class="dialog-footer">
+
+        <button
+            type="button"
+            class="dialog-button"
+            onclick="closeReportPopup()"
+        >
+            Hủy
+        </button>
+
+        <button
+            type="submit"
+            class="dialog-button primary"
+        >
+            Ghi nhận
+        </button>
+
+    </div>
+
+</form>
+
+
+</div>
+
+</dialog>
+
+<!-- =====================================================
+     POPUP: CẬP NHẬT VẤN ĐỀ CŨ
+===================================================== -->
+
+<dialog id="updateDialog">
+
+<div class="dialog-content">
+
+
+<div class="dialog-header">
+
+    <div class="dialog-title">
+        Cập nhật vấn đề cũ
+    </div>
+
+    <button
+        type="button"
+        class="dialog-close"
+        onclick="closeUpdatePopup()"
+    >
+        ×
+    </button>
+
+</div>
+
+
+<form
+    class="dialog-body"
+    id="updateForm"
+    onsubmit="submitUpdate(event)"
+>
+
+
+    <div class="form-group">
+
+        <label
+            class="form-label"
+            for="updateRecord"
+        >
+            Sự việc cần cập nhật
+        </label>
+
+        <select
+            class="form-select"
+            id="updateRecord"
+            required
+            onchange="showSelectedRecord()"
+        >
+
+            <option value="">
+                Chọn sự việc
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div
+        class="update-record-info"
+        id="updateRecordInfo"
+        style="display:none"
+    ></div>
+
+
+    <div class="form-group">
+
+        <label
+            class="form-label"
+            for="updateStatus"
+        >
+            Trạng thái xử lý <span class="required">*</span>
+        </label>
+
+        <select
+            class="form-select"
+            id="updateStatus"
+            required
+        >
+
+            <option value="">
+                Chọn trạng thái
+            </option>
+
+            <option value="Theo dõi">
+                Theo dõi
+            </option>
+
+            <option value="Đang xử lý">
+                Đang xử lý
+            </option>
+
+            <option value="Đã xử lý">
+                Đã xử lý
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label
+            class="form-label"
+            for="updateSolution"
+        >
+            Phương án xử lý
+        </label>
+
+        <textarea
+            class="form-textarea"
+            id="updateSolution"
+            placeholder="Đã xử lý như thế nào?"
+        ></textarea>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label
+            class="form-label"
+            for="updateHandler"
+        >
+            Người xử lý
+        </label>
+
+        <input
+            class="form-input"
+            id="updateHandler"
+            type="text"
+            placeholder="Nhập tên người xử lý"
+        >
+
+    </div>
+
+
+    <div class="dialog-footer">
+
+        <button
+            type="button"
+            class="dialog-button"
+            onclick="closeUpdatePopup()"
+        >
+            Hủy
+        </button>
+
+        <button
+            type="submit"
+            class="dialog-button primary"
+        >
+            Cập nhật
+        </button>
+
+    </div>
+
+</form>
+
+
+</div>
+
+</dialog>
+
+<!-- =====================================================
      HELP MODAL
 ===================================================== -->
 
@@ -1196,7 +1702,7 @@ onclick="openUpdateForm()"
 
 <div class="help-box">
 
-```
+
 <div class="help-header">
 
     <div class="help-title">
@@ -1282,7 +1788,7 @@ onclick="openUpdateForm()"
     </p>
 
 </div>
-```
+
 
 </div>
 
@@ -1299,7 +1805,7 @@ onclick="openUpdateForm()"
 
 <div class="detail-box">
 
-```
+
 <div class="detail-header">
 
     <div
@@ -1319,7 +1825,7 @@ onclick="openUpdateForm()"
 </div>
 
 <div id="detailContent"></div>
-```
+
 
 </div>
 
@@ -1336,7 +1842,7 @@ const HUSTON_URL =
 
 
 /* =====================================================
-   BIẾN DỮ LIỆU HIỆN TẠI
+   BIẾN DỮ LIỆU
 ===================================================== */
 
 let currentRecords = [];
@@ -1345,36 +1851,6 @@ let currentFilters = {
     recent: "all",
     completed: "all"
 };
-
-
-/* =====================================================
-   HAI NÚT FRONTEND MỚI
-===================================================== */
-
-/*
- * Hiện tại chưa mở popup.
- *
- * Hai hàm này được tạo riêng để sau này
- * gắn popup frontend vào mà không phải sửa
- * lại phần giao diện nút.
- */
-
-function openReportForm() {
-
-    console.log(
-        "Mở popup: Báo cáo vấn đề mới"
-    );
-
-}
-
-
-function openUpdateForm() {
-
-    console.log(
-        "Mở popup: Cập nhật vấn đề cũ"
-    );
-
-}
 
 
 /* =====================================================
@@ -1397,14 +1873,439 @@ function goBack() {
 
 
 /* =====================================================
+   REPORT POPUP
+===================================================== */
+
+function openReportPopup() {
+
+    const dialog =
+        document.getElementById(
+            "reportDialog"
+        );
+
+    if (!dialog.open) {
+
+        dialog.showModal();
+
+    }
+
+}
+
+
+function closeReportPopup() {
+
+    const dialog =
+        document.getElementById(
+            "reportDialog"
+        );
+
+    if (dialog.open) {
+
+        dialog.close();
+
+    }
+
+}
+
+
+/* =====================================================
+   UPDATE POPUP
+===================================================== */
+
+function openUpdatePopup() {
+
+    populateUpdateRecords();
+
+    const dialog =
+        document.getElementById(
+            "updateDialog"
+        );
+
+    if (!dialog.open) {
+
+        dialog.showModal();
+
+    }
+
+}
+
+
+function closeUpdatePopup() {
+
+    const dialog =
+        document.getElementById(
+            "updateDialog"
+        );
+
+    if (dialog.open) {
+
+        dialog.close();
+
+    }
+
+}
+
+
+/* =====================================================
+   ĐIỀN DANH SÁCH SỰ VIỆC
+===================================================== */
+
+function populateUpdateRecords() {
+
+    const select =
+        document.getElementById(
+            "updateRecord"
+        );
+
+    select.innerHTML = `
+
+        <option value="">
+            Chọn sự việc
+        </option>
+
+    `;
+
+
+    const records =
+        getUniqueRecords(
+            currentRecords
+        );
+
+
+    records
+        .filter(function(record) {
+
+            return !isCompleted(record);
+
+        })
+        .forEach(function(record) {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value =
+                record.id || "";
+
+            option.textContent =
+                (
+                    record.id || "Không có mã"
+                ) +
+                " · " +
+                (
+                    record.noi_dung ||
+                    "Không có nội dung"
+                );
+
+
+            select.appendChild(
+                option
+            );
+
+        });
+
+
+    document.getElementById(
+        "updateRecordInfo"
+    ).style.display = "none";
+
+}
+
+
+/* =====================================================
+   HIỂN THỊ RECORD ĐANG CHỌN
+===================================================== */
+
+function showSelectedRecord() {
+
+    const select =
+        document.getElementById(
+            "updateRecord"
+        );
+
+    const info =
+        document.getElementById(
+            "updateRecordInfo"
+        );
+
+
+    const id =
+        select.value;
+
+
+    if (!id) {
+
+        info.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    const record =
+        currentRecords.find(
+            function(item) {
+
+                return String(
+                    item.id || ""
+                ) === String(id);
+
+            }
+        );
+
+
+    if (!record) {
+
+        info.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    info.innerHTML = `
+
+        <strong>
+            ${escapeHTML(
+                record.id || ""
+            )}
+        </strong>
+
+        ·
+
+        ${escapeHTML(
+            record.chi_nhanh || ""
+        )}
+
+        <br>
+
+        ${escapeHTML(
+            record.noi_dung ||
+            "Không có nội dung"
+        )}
+
+    `;
+
+
+    info.style.display =
+        "block";
+
+
+    const currentStatus =
+        getFinalStatus(
+            record.trang_thai_xu_ly
+        );
+
+
+    const statusSelect =
+        document.getElementById(
+            "updateStatus"
+        );
+
+
+    const validStatuses = [
+        "Theo dõi",
+        "Đang xử lý",
+        "Đã xử lý"
+    ];
+
+
+    if (
+        validStatuses.includes(
+            currentStatus
+        )
+    ) {
+
+        statusSelect.value =
+            currentStatus;
+
+    }
+
+
+    document.getElementById(
+        "updateSolution"
+    ).value =
+        record.phuong_an_xu_ly || "";
+
+
+    document.getElementById(
+        "updateHandler"
+    ).value =
+        record.nguoi_xu_ly || "";
+
+}
+
+
+/* =====================================================
+   FRONTEND SUBMIT REPORT
+===================================================== */
+
+function submitReport(event) {
+
+    event.preventDefault();
+
+
+    const data = {
+
+        chi_nhanh:
+            document.getElementById(
+                "reportBranch"
+            ).value,
+
+        nguoi_bao_cao:
+            document.getElementById(
+                "reporter"
+            ).value.trim(),
+
+        noi_dung:
+            document.getElementById(
+                "reportContent"
+            ).value.trim(),
+
+        muc_do:
+            document.getElementById(
+                "reportLevel"
+            ).value,
+
+        can_xu_ly:
+            document.getElementById(
+                "reportNeed"
+            ).value.trim()
+
+    };
+
+
+    /*
+     * FRONTEND ONLY
+     *
+     * Chưa gửi dữ liệu đi đâu.
+     * Tạm thời chỉ kiểm tra form.
+     */
+
+    console.log(
+        "BÁO CÁO MỚI:",
+        data
+    );
+
+
+    alert(
+        "Đã nhận dữ liệu trên giao diện.\n\n" +
+        "Backend sẽ được nối ở bước tiếp theo."
+    );
+
+
+    document
+        .getElementById(
+            "reportForm"
+        )
+        .reset();
+
+
+    closeReportPopup();
+
+}
+
+
+/* =====================================================
+   FRONTEND SUBMIT UPDATE
+===================================================== */
+
+function submitUpdate(event) {
+
+    event.preventDefault();
+
+
+    const id =
+        document.getElementById(
+            "updateRecord"
+        ).value;
+
+
+    if (!id) {
+
+        alert(
+            "Vui lòng chọn sự việc cần cập nhật."
+        );
+
+        return;
+
+    }
+
+
+    const data = {
+
+        id: id,
+
+        trang_thai_xu_ly:
+            document.getElementById(
+                "updateStatus"
+            ).value,
+
+        phuong_an_xu_ly:
+            document.getElementById(
+                "updateSolution"
+            ).value.trim(),
+
+        nguoi_xu_ly:
+            document.getElementById(
+                "updateHandler"
+            ).value.trim()
+
+    };
+
+
+    /*
+     * FRONTEND ONLY
+     *
+     * Chưa gửi dữ liệu đi đâu.
+     */
+
+    console.log(
+        "CẬP NHẬT:",
+        data
+    );
+
+
+    alert(
+        "Đã nhận dữ liệu trên giao diện.\n\n" +
+        "Backend sẽ được nối ở bước tiếp theo."
+    );
+
+
+    document
+        .getElementById(
+            "updateForm"
+        )
+        .reset();
+
+
+    document.getElementById(
+        "updateRecordInfo"
+    ).style.display =
+        "none";
+
+
+    closeUpdatePopup();
+
+}
+
+
+/* =====================================================
    HELP
 ===================================================== */
 
 function openHelp() {
 
     document
-        .getElementById("helpModal")
-        .classList.add("active");
+        .getElementById(
+            "helpModal"
+        )
+        .classList.add(
+            "active"
+        );
 
     document.body.style.overflow =
         "hidden";
@@ -1415,8 +2316,12 @@ function openHelp() {
 function closeHelp() {
 
     document
-        .getElementById("helpModal")
-        .classList.remove("active");
+        .getElementById(
+            "helpModal"
+        )
+        .classList.remove(
+            "active"
+        );
 
     document.body.style.overflow =
         "";
@@ -1481,6 +2386,15 @@ function getFinalStatus(value) {
     }
 
 
+    if (
+        statuses.includes("Theo dõi")
+    ) {
+
+        return "Theo dõi";
+
+    }
+
+
     return statuses[
         statuses.length - 1
     ];
@@ -1498,6 +2412,46 @@ function isCompleted(record) {
         getFinalStatus(
             record.trang_thai_xu_ly
         ) === "Đã xử lý"
+    );
+
+}
+
+
+/* =====================================================
+   KHỬ RECORD TRÙNG ID
+===================================================== */
+
+function getUniqueRecords(records) {
+
+    const map =
+        new Map();
+
+
+    records.forEach(
+        function(record) {
+
+            const id =
+                String(
+                    record.id || ""
+                ).trim();
+
+
+            if (!id) {
+                return;
+            }
+
+
+            map.set(
+                id,
+                record
+            );
+
+        }
+    );
+
+
+    return Array.from(
+        map.values()
     );
 
 }
@@ -1589,50 +2543,14 @@ function renderLogs(records) {
 
 
     recentLogs.innerHTML = "";
-
     completedLogs.innerHTML = "";
 
 
-    /*
-     * KHỬ RECORD TRÙNG ID
-     */
-
-    const recordMap =
-        new Map();
-
-
-    currentRecords.forEach(
-        function(record) {
-
-            const id =
-                String(
-                    record.id || ""
-                ).trim();
-
-
-            if (!id) {
-                return;
-            }
-
-
-            recordMap.set(
-                id,
-                record
-            );
-
-        }
-    );
-
-
     const uniqueRecords =
-        Array.from(
-            recordMap.values()
+        getUniqueRecords(
+            currentRecords
         );
 
-
-    /*
-     * SẮP XẾP MỚI NHẤT TRƯỚC
-     */
 
     uniqueRecords.sort(
         function(a, b) {
@@ -1662,10 +2580,6 @@ function renderLogs(records) {
     );
 
 
-    /*
-     * CHIA 2 NHÓM
-     */
-
     const completed =
         uniqueRecords.filter(
             function(record) {
@@ -1690,10 +2604,6 @@ function renderLogs(records) {
         );
 
 
-    /*
-     * RENDER
-     */
-
     recent.forEach(
         function(record) {
 
@@ -1716,10 +2626,6 @@ function renderLogs(records) {
     );
 
 
-    /*
-     * COUNT
-     */
-
     updateCount(
         "recentCount",
         recent.length
@@ -1730,10 +2636,6 @@ function renderLogs(records) {
         completed.length
     );
 
-
-    /*
-     * EMPTY
-     */
 
     document.getElementById(
         "recentEmpty"
@@ -1998,10 +2900,6 @@ function applyFilters() {
 
 }
 
-
-/* =====================================================
-   FILTER TỪNG SECTION
-===================================================== */
 
 function applySectionFilter(
     section,
@@ -2291,10 +3189,6 @@ function openLogDetail(record) {
 }
 
 
-/* =====================================================
-   ĐÓNG POPUP
-===================================================== */
-
 function closeLogDetail() {
 
     document
@@ -2311,10 +3205,6 @@ function closeLogDetail() {
 
 }
 
-
-/* =====================================================
-   CLICK RA NGOÀI POPUP
-===================================================== */
 
 document
     .getElementById(
@@ -2337,7 +3227,7 @@ document
 
 
 /* =====================================================
-   FORMAT NGÀY CHI TIẾT
+   FORMAT NGÀY
 ===================================================== */
 
 function formatDetailDate(value) {
@@ -2369,10 +3259,6 @@ function formatDetailDate(value) {
 
 }
 
-
-/* =====================================================
-   FORMAT THỜI GIAN CARD
-===================================================== */
 
 function formatDate(value) {
 
@@ -2669,6 +3555,30 @@ document.addEventListener(
 
 
 /* =====================================================
+   CLICK NGOÀI HELP
+===================================================== */
+
+document
+    .getElementById(
+        "helpModal"
+    )
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closeHelp();
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
    KHỞI ĐỘNG
 ===================================================== */
 
@@ -2676,11 +3586,14 @@ resetFilters();
 
 loadHuston();
 
-setTimeout(function() {
+setTimeout(
+    function() {
 
-    loadHuston();
+        loadHuston();
 
-}, 3000);
+    },
+    3000
+);
 
 </script>
 
