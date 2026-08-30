@@ -1868,7 +1868,410 @@ document.addEventListener(
 
     }
 );
+/* =====================================================
+   HUSTON.JSON
+===================================================== */
 
+const HUSTON_URL =
+    "https://raw.githubusercontent.com/Hungkoivfx/TascusFoodPortal/main/Huston.json";
+
+
+/* =====================================================
+   TẢI NHẬT KÝ TỪ HUSTON
+===================================================== */
+
+async function loadHuston() {
+
+    try {
+
+        const response = await fetch(
+            HUSTON_URL + "?t=" + Date.now()
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                "Không thể tải Huston.json"
+            );
+        }
+
+        const huston = await response.json();
+
+        const records =
+            Array.isArray(huston.records)
+                ? huston.records
+                : [];
+
+        renderLogs(records);
+
+    } catch (error) {
+
+        console.error(
+            "Lỗi tải Huston:",
+            error
+        );
+
+        showLoadError();
+
+    }
+
+}
+
+
+/* =====================================================
+   HIỂN THỊ DỮ LIỆU
+===================================================== */
+
+function renderLogs(records) {
+
+    const recentLogs =
+        document.getElementById(
+            "recentLogs"
+        );
+
+    const completedLogs =
+        document.getElementById(
+            "completedLogs"
+        );
+
+    recentLogs.innerHTML = "";
+    completedLogs.innerHTML = "";
+
+
+    /*
+       Mới nhất lên trước
+    */
+
+    records.sort(function(a, b) {
+
+        return new Date(
+            b.thoi_gian || 0
+        ) - new Date(
+            a.thoi_gian || 0
+        );
+
+    });
+
+
+    /*
+       Sự việc đã xử lý
+    */
+
+    const completed =
+        records.filter(function(record) {
+
+            return record.trang_thai_xu_ly ===
+                "Đã xử lý";
+
+        });
+
+
+    /*
+       Sự việc chưa xử lý / đang xử lý
+    */
+
+    const recent =
+        records.filter(function(record) {
+
+            return record.trang_thai_xu_ly !==
+                "Đã xử lý";
+
+        });
+
+
+    recent.forEach(function(record) {
+
+        recentLogs.appendChild(
+            createLogCard(record)
+        );
+
+    });
+
+
+    completed.forEach(function(record) {
+
+        completedLogs.appendChild(
+            createLogCard(record)
+        );
+
+    });
+
+
+    updateCount(
+        "recentCount",
+        recent.length
+    );
+
+    updateCount(
+        "completedCount",
+        completed.length
+    );
+
+
+    document.getElementById(
+        "recentEmpty"
+    ).style.display =
+        recent.length === 0
+            ? "block"
+            : "none";
+
+
+    document.getElementById(
+        "completedEmpty"
+    ).style.display =
+        completed.length === 0
+            ? "block"
+            : "none";
+
+}
+
+
+/* =====================================================
+   TẠO CARD
+===================================================== */
+
+function createLogCard(record) {
+
+    const article =
+        document.createElement("article");
+
+    article.className =
+        "log-card";
+
+    article.dataset.branch =
+        record.chi_nhanh || "";
+
+
+    const status =
+        record.trang_thai_xu_ly ||
+        "Chưa xử lý";
+
+
+    let statusClass =
+        "status-pending";
+
+
+    if (status === "Đang xử lý") {
+
+        statusClass =
+            "status-processing";
+
+    }
+
+    if (status === "Đã xử lý") {
+
+        statusClass =
+            "status-done";
+
+    }
+
+
+    const time =
+        formatDate(record.thoi_gian);
+
+
+    article.innerHTML = `
+
+        <div class="log-top">
+
+            <div class="log-meta">
+
+                <span class="log-dot"></span>
+
+                <span class="log-id">
+                    ${escapeHTML(
+                        record.id || ""
+                    )}
+                </span>
+
+                <span class="separator">
+                    ·
+                </span>
+
+                <span class="log-branch">
+                    ${escapeHTML(
+                        record.chi_nhanh || ""
+                    )}
+                </span>
+
+                <span class="log-time">
+                    ${escapeHTML(time)}
+                </span>
+
+            </div>
+
+            <span class="status ${statusClass}">
+                ${escapeHTML(status)}
+            </span>
+
+        </div>
+
+
+        <div class="log-title">
+            ${escapeHTML(
+                record.noi_dung || "Không có nội dung"
+            )}
+        </div>
+
+
+        <div class="log-content">
+
+            Người báo cáo:
+            ${escapeHTML(
+                record.nguoi_bao_cao || "Không rõ"
+            )}
+
+            <br>
+
+            Cần xử lý:
+            ${escapeHTML(
+                record.can_xu_ly || "Không rõ"
+            )}
+
+        </div>
+
+
+        <div class="log-footer">
+
+            <div class="log-level">
+
+                Mức độ:
+                <strong>
+                    ${escapeHTML(
+                        record.muc_do || "Không xác định"
+                    )}
+                </strong>
+
+            </div>
+
+            <div class="view-detail">
+
+                ${escapeHTML(
+                    record.id || ""
+                )}
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    return article;
+
+}
+
+
+/* =====================================================
+   FORMAT THỜI GIAN
+===================================================== */
+
+function formatDate(value) {
+
+    if (!value) {
+        return "";
+    }
+
+    const date =
+        new Date(value);
+
+    if (isNaN(date.getTime())) {
+        return value;
+    }
+
+
+    const now =
+        new Date();
+
+
+    const today =
+        date.toDateString() ===
+        now.toDateString();
+
+
+    if (today) {
+
+        return date.toLocaleTimeString(
+            "vi-VN",
+            {
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        );
+
+    }
+
+
+    return date.toLocaleDateString(
+        "vi-VN",
+        {
+            day: "2-digit",
+            month: "2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   COUNT
+===================================================== */
+
+function updateCount(
+    elementId,
+    count
+) {
+
+    document.getElementById(
+        elementId
+    ).textContent =
+        count + " sự việc";
+
+}
+
+
+/* =====================================================
+   LỖI TẢI DỮ LIỆU
+===================================================== */
+
+function showLoadError() {
+
+    document.getElementById(
+        "recentLogs"
+    ).innerHTML = `
+
+        <div class="empty"
+             style="display:block">
+
+            Không thể tải nhật ký vận hành.
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   CHẠY
+===================================================== */
+
+loadHuston();
 </script>
 
 </body>
