@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T08:18:02.881Z",
+  "updated_at": "2026-08-30T08:27:06.833Z",
   "records": [
     {
       "id": "Z024",
@@ -65,6 +65,16 @@
       "id": "Z027",
       "chi_nhanh": "69 Khương Trung",
       "thoi_gian": "2026/08/30 15:18",
+      "nguoi_bao_cao": "TEST BACKEND",
+      "noi_dung": "Test kết nối backend mới",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Chỉ thông báo / báo cáo",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z028",
+      "chi_nhanh": "69 Khương Trung",
+      "thoi_gian": "2026/08/30 15:27",
       "nguoi_bao_cao": "TEST BACKEND",
       "noi_dung": "Test kết nối backend mới",
       "muc_do": "Thông thường",
