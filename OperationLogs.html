@@ -2447,6 +2447,173 @@ document.addEventListener(
 /* =====================================================
    CHẠY HỆ THỐNG
 ===================================================== */
+/* =====================================================
+CHI TIẾT SỰ VIỆC
+===================================================== */
+
+function openLogDetail(record) {
+
+```
+const modal =
+    document.getElementById("detailModal");
+
+const content =
+    document.getElementById("detailContent");
+
+const status =
+    record.trang_thai_xu_ly || "Chưa xử lý";
+
+content.innerHTML = `
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            MÃ SỰ VIỆC
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(record.id || "Không có")}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            CHI NHÁNH
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(record.chi_nhanh || "Không rõ")}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            THỜI GIAN
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(formatDate(record.thoi_gian))}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            NGƯỜI BÁO CÁO
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(record.nguoi_bao_cao || "Không rõ")}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            NỘI DUNG
+        </div>
+
+        <div class="detail-value detail-content">
+            ${escapeHTML(record.noi_dung || "Không có nội dung")}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            MỨC ĐỘ
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(record.muc_do || "Không xác định")}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            CẦN XỬ LÝ
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(record.can_xu_ly || "Không rõ")}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            TRẠNG THÁI XỬ LÝ
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(status)}
+        </div>
+
+    </div>
+
+`;
+
+modal.classList.add("active");
+
+document.body.style.overflow = "hidden";
+```
+
+}
+
+/* =====================================================
+ĐÓNG CHI TIẾT
+===================================================== */
+
+function closeLogDetail() {
+
+```
+const modal =
+    document.getElementById("detailModal");
+
+modal.classList.remove("active");
+
+document.body.style.overflow = "";
+```
+
+}
+
+/* =====================================================
+CLICK RA NGOÀI POPUP
+===================================================== */
+
+document
+.getElementById("detailModal")
+.addEventListener(
+"click",
+function(event) {
+
+```
+        if (event.target === this) {
+
+            closeLogDetail();
+
+        }
+
+    }
+);
+```
 
 loadHuston();
 
