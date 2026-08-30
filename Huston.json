@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T06:37:13.694Z",
+  "updated_at": "2026-08-30T06:37:14.531Z",
   "records": [
     {
       "id": "Z024",
@@ -82,16 +82,16 @@
       "nguoi_xu_ly": "Hưng"
     },
     {
-      "id": "Z025",
+      "id": "Z006",
       "chi_nhanh": "69 Khương Trung",
-      "thoi_gian": "2026/08/30 12:14",
+      "thoi_gian": "2026/08/28 23:52",
       "nguoi_bao_cao": "Hưng",
-      "noi_dung": "Bản test thứ n+1",
-      "muc_do": "Thông thường",
+      "noi_dung": "Mất mạng internet",
+      "muc_do": "Khẩn cấp",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Đã xử lý,Đã xử lý",
-      "phuong_an_xu_ly": "Đánh vào đít nó,Đã test xong",
-      "nguoi_xu_ly": "Hưng,Hưng"
+      "phuong_an_xu_ly": "Đã tụt quần búng chim cái router",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
