@@ -503,138 +503,6 @@ button {
 
 
 /* =====================================================
-   FORM MODAL
-===================================================== */
-
-.form-modal {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    background: #fff;
-
-    display: none;
-
-    flex-direction: column;
-}
-
-.form-modal.active {
-    display: flex;
-}
-
-/* HEADER LUÔN NẰM TRÊN IFRAME */
-
-.form-header {
-height: 58px;
-
-flex-shrink: 0;
-
-position: relative;
-
-z-index: 10;
-
-display: flex;
-
-align-items: center;
-
-gap: 10px;
-
-padding:
-    0 14px
-    0 16px;
-
-border-bottom: 1px solid #e5e5e5;
-
-background: #fff;
-
-padding-top:
-    env(safe-area-inset-top);
-
-}
-
-.form-header-title {
-flex: 1;
-
-min-width: 0;
-
-font-size: 15px;
-
-font-weight: 600;
-
-white-space: nowrap;
-
-overflow: hidden;
-
-text-overflow: ellipsis;
-
-}
-
-.form-close {
-width: 38px;
-height: 38px;
-
-position: relative;
-
-z-index: 20;
-
-border: none;
-
-border-radius: 50%;
-
-background: #f1f2f3;
-
-color: #444;
-
-font-size: 23px;
-
-line-height: 1;
-
-cursor: pointer;
-
-flex-shrink: 0;
-
-pointer-events: auto;
-
-}
-
-.form-frame {
-width: 100%;
-
-flex: 1;
-
-min-height: 0;
-
-border: none;
-
-background: #fff;
-
-position: relative;
-
-z-index: 1;
-
-}
-.form-header-title {
-    flex: 1;
-
-    min-width: 0;
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
-
-
-
-/* =====================================================
    HELP MODAL
 ===================================================== */
 
@@ -1046,35 +914,45 @@ z-index: 1;
 
 <header class="header">
 
-
 <button
-    class="back-button"
-    onclick="goBack()"
-    aria-label="Quay lại"
+class="back-button"
+onclick="goBack()"
+aria-label="Quay lại"
+
 >
-    ‹
+
+```
+‹
+```
+
 </button>
 
 <div class="header-text">
 
-    <div class="header-title">
-        Nhật ký vận hành
-    </div>
+```
+<div class="header-title">
+    Nhật ký vận hành
+</div>
 
-    <div class="header-subtitle">
-        Các sự việc được ghi nhận tại cửa hàng
-    </div>
+<div class="header-subtitle">
+    Các sự việc được ghi nhận tại cửa hàng
+</div>
+```
 
 </div>
 
 <button
-    class="help-button"
-    onclick="openHelp()"
-    aria-label="Hướng dẫn"
->
-    ?
-</button>
+class="help-button"
+onclick="openHelp()"
+aria-label="Hướng dẫn"
 
+>
+
+```
+?
+```
+
+</button>
 
 </header>
 
@@ -1084,68 +962,67 @@ z-index: 1;
 
 <section class="actions">
 
-
 <button
-    class="action-button"
-    onclick="openForm(
-        REPORT_FORM_URL,
-        'Báo cáo vấn đề mới'
-    )"
+class="action-button"
+type="button"
+onclick="openReportForm()"
+
 >
 
-    <div class="action-icon">
-        ＋
+```
+<div class="action-icon">
+    ＋
+</div>
+
+<div class="action-content">
+
+    <div class="action-title">
+        Báo cáo vấn đề mới
     </div>
 
-    <div class="action-content">
-
-        <div class="action-title">
-            Báo cáo vấn đề mới
-        </div>
-
-        <div class="action-description">
-            Ghi nhận sự việc hoặc vấn đề vừa phát sinh.
-        </div>
-
+    <div class="action-description">
+        Ghi nhận sự việc hoặc vấn đề vừa phát sinh.
     </div>
 
-    <div class="action-arrow">
-        ›
-    </div>
+</div>
+
+<div class="action-arrow">
+    ›
+</div>
+```
 
 </button>
 
-
 <button
-    class="action-button"
-    onclick="openForm(
-        UPDATE_FORM_URL,
-        'Cập nhật vấn đề cũ'
-    )"
+class="action-button"
+type="button"
+onclick="openUpdateForm()"
+
 >
 
-    <div class="action-icon">
-        ↻
+```
+<div class="action-icon">
+    ↻
+</div>
+
+<div class="action-content">
+
+    <div class="action-title">
+        Cập nhật vấn đề cũ
     </div>
 
-    <div class="action-content">
-
-        <div class="action-title">
-            Cập nhật vấn đề cũ
-        </div>
-
-        <div class="action-description">
-            Chọn một vấn đề đã ghi nhận để cập nhật.
-        </div>
-
+    <div class="action-description">
+        Chọn một vấn đề đã ghi nhận để cập nhật.
     </div>
 
-    <div class="action-arrow">
-        ›
-    </div>
+</div>
+
+<div class="action-arrow">
+    ›
+</div>
+```
 
 </button>
-
 
 </section>
 
@@ -1155,70 +1032,68 @@ z-index: 1;
 
 <section class="section">
 
-
 <div class="section-header">
 
-    <div class="section-title-wrap">
+```
+<div class="section-title-wrap">
 
-        <div class="section-title">
-            Sự việc gần đây
-        </div>
-
-        <div
-            class="section-count"
-            id="recentCount"
-        >
-            0 sự việc
-        </div>
-
+    <div class="section-title">
+        Sự việc gần đây
     </div>
 
-
-    <div class="filter-tabs">
-
-        <button
-            class="filter-tab active"
-            onclick="filterLogs(
-                'recent',
-                'all',
-                this
-            )"
-        >
-            Tất cả
-        </button>
-
-        <button
-            class="filter-tab"
-            onclick="filterLogs(
-                'recent',
-                'Khương Trung',
-                this
-            )"
-        >
-            Khương Trung
-        </button>
-
-        <button
-            class="filter-tab"
-            onclick="filterLogs(
-                'recent',
-                'Thái Thịnh',
-                this
-            )"
-        >
-            Thái Thịnh
-        </button>
-
+    <div
+        class="section-count"
+        id="recentCount"
+    >
+        0 sự việc
     </div>
 
 </div>
 
+<div class="filter-tabs">
+
+    <button
+        class="filter-tab active"
+        onclick="filterLogs(
+            'recent',
+            'all',
+            this
+        )"
+    >
+        Tất cả
+    </button>
+
+    <button
+        class="filter-tab"
+        onclick="filterLogs(
+            'recent',
+            'Khương Trung',
+            this
+        )"
+    >
+        Khương Trung
+    </button>
+
+    <button
+        class="filter-tab"
+        onclick="filterLogs(
+            'recent',
+            'Thái Thịnh',
+            this
+        )"
+    >
+        Thái Thịnh
+    </button>
+
+</div>
+```
+
+</div>
 
 <div
     class="logs"
     id="recentLogs"
 ></div>
-
 
 <div
     class="empty"
@@ -1226,7 +1101,6 @@ z-index: 1;
 >
     Không có sự việc nào tại cửa hàng này.
 </div>
-
 
 </section>
 
@@ -1236,70 +1110,68 @@ z-index: 1;
 
 <section class="section">
 
-
 <div class="section-header">
 
-    <div class="section-title-wrap">
+```
+<div class="section-title-wrap">
 
-        <div class="section-title">
-            Đã xử lý xong
-        </div>
-
-        <div
-            class="section-count"
-            id="completedCount"
-        >
-            0 sự việc
-        </div>
-
+    <div class="section-title">
+        Đã xử lý xong
     </div>
 
-
-    <div class="filter-tabs">
-
-        <button
-            class="filter-tab active"
-            onclick="filterLogs(
-                'completed',
-                'all',
-                this
-            )"
-        >
-            Tất cả
-        </button>
-
-        <button
-            class="filter-tab"
-            onclick="filterLogs(
-                'completed',
-                'Khương Trung',
-                this
-            )"
-        >
-            Khương Trung
-        </button>
-
-        <button
-            class="filter-tab"
-            onclick="filterLogs(
-                'completed',
-                'Thái Thịnh',
-                this
-            )"
-        >
-            Thái Thịnh
-        </button>
-
+    <div
+        class="section-count"
+        id="completedCount"
+    >
+        0 sự việc
     </div>
 
 </div>
 
+<div class="filter-tabs">
+
+    <button
+        class="filter-tab active"
+        onclick="filterLogs(
+            'completed',
+            'all',
+            this
+        )"
+    >
+        Tất cả
+    </button>
+
+    <button
+        class="filter-tab"
+        onclick="filterLogs(
+            'completed',
+            'Khương Trung',
+            this
+        )"
+    >
+        Khương Trung
+    </button>
+
+    <button
+        class="filter-tab"
+        onclick="filterLogs(
+            'completed',
+            'Thái Thịnh',
+            this
+        )"
+    >
+        Thái Thịnh
+    </button>
+
+</div>
+```
+
+</div>
 
 <div
     class="logs"
     id="completedLogs"
 ></div>
-
 
 <div
     class="empty"
@@ -1309,48 +1181,7 @@ z-index: 1;
     trong thời gian gần đây.
 </div>
 
-
 </section>
-
-</div>
-
-<!-- =====================================================
-     LARK FORM MODAL
-===================================================== -->
-
-<div
-    class="form-modal"
-    id="formModal"
->
-
-
-<div class="form-header">
-
-    <div
-        class="form-header-title"
-        id="formTitle"
-    >
-        Lark Form
-    </div>
-
-    <button
-        class="form-close"
-        onclick="closeForm()"
-        aria-label="Đóng"
-    >
-        ×
-    </button>
-
-</div>
-
-<iframe
-    class="form-frame"
-    id="formFrame"
-    src=""
-    title="Lark Form"
-    allow="clipboard-write"
-></iframe>
-
 
 </div>
 
@@ -1363,97 +1194,97 @@ z-index: 1;
     id="helpModal"
 >
 
-
 <div class="help-box">
 
-    <div class="help-header">
+```
+<div class="help-header">
 
-        <div class="help-title">
-            Nhật ký vận hành để làm gì?
-        </div>
-
-        <button
-            class="help-close"
-            onclick="closeHelp()"
-        >
-            ×
-        </button>
-
+    <div class="help-title">
+        Nhật ký vận hành để làm gì?
     </div>
 
-
-    <div class="help-content">
-
-        <p>
-            Trong lúc làm việc sẽ có những chuyện phát sinh
-            mà không phải lúc nào cũng xử lý xong ngay trong ca.
-        </p>
-
-        <p>
-            Ví dụ: máy có vấn đề, thiếu đồ, khách phản ánh,
-            phát hiện một việc cần sửa, hoặc có chuyện mà ca sau cần biết.
-        </p>
-
-        <p>
-            Thay vì chỉ nói trong nhóm Zalo rồi tin nhắn trôi mất,
-            mình ghi lại ở đây để
-            <strong>
-                các ca sau vẫn biết chuyện gì đã xảy ra.
-            </strong>
-        </p>
-
-        <ul class="help-list">
-
-            <li>
-                <strong>Báo cáo vấn đề mới:</strong>
-                Có chuyện mới xảy ra thì báo ở đây.
-            </li>
-
-            <li>
-                <strong>Cập nhật vấn đề cũ:</strong>
-                Nếu chuyện đó đã có người báo rồi,
-                vào đây để cập nhật thêm.
-            </li>
-
-            <li>
-                <strong>Sự việc gần đây:</strong>
-                Để xem cửa hàng đang có những chuyện gì cần chú ý.
-            </li>
-
-            <li>
-                <strong>Đã xử lý xong:</strong>
-                Để biết những chuyện vừa được giải quyết,
-                tránh việc ca sau không biết rồi lại báo lại từ đầu.
-            </li>
-
-        </ul>
-
-        <p>
-            Không cần viết dài.
-            Chỉ cần ghi
-            <strong>
-                đúng chuyện gì xảy ra và người khác cần biết điều gì.
-            </strong>
-        </p>
-
-        <p class="help-final">
-
-            Mục đích đơn giản là:
-            "Cái thứ này trị bệnh óc chó" - Hưng -
-
-            <br>
-
-            <strong>
-                Ca trước biết → ca sau biết →
-                không ai phải đoán xem chuyện gì đã xảy ra.
-            </strong>
-
-        </p>
-
-    </div>
+    <button
+        class="help-close"
+        onclick="closeHelp()"
+    >
+        ×
+    </button>
 
 </div>
 
+
+<div class="help-content">
+
+    <p>
+        Trong lúc làm việc sẽ có những chuyện phát sinh
+        mà không phải lúc nào cũng xử lý xong ngay trong ca.
+    </p>
+
+    <p>
+        Ví dụ: máy có vấn đề, thiếu đồ, khách phản ánh,
+        phát hiện một việc cần sửa, hoặc có chuyện mà ca sau cần biết.
+    </p>
+
+    <p>
+        Thay vì chỉ nói trong nhóm Zalo rồi tin nhắn trôi mất,
+        mình ghi lại ở đây để
+        <strong>
+            các ca sau vẫn biết chuyện gì đã xảy ra.
+        </strong>
+    </p>
+
+    <ul class="help-list">
+
+        <li>
+            <strong>Báo cáo vấn đề mới:</strong>
+            Có chuyện mới xảy ra thì báo ở đây.
+        </li>
+
+        <li>
+            <strong>Cập nhật vấn đề cũ:</strong>
+            Nếu chuyện đó đã có người báo rồi,
+            vào đây để cập nhật thêm.
+        </li>
+
+        <li>
+            <strong>Sự việc gần đây:</strong>
+            Để xem cửa hàng đang có những chuyện gì cần chú ý.
+        </li>
+
+        <li>
+            <strong>Đã xử lý xong:</strong>
+            Để biết những chuyện vừa được giải quyết,
+            tránh việc ca sau không biết rồi lại báo lại từ đầu.
+        </li>
+
+    </ul>
+
+    <p>
+        Không cần viết dài.
+        Chỉ cần ghi
+        <strong>
+            đúng chuyện gì xảy ra và người khác cần biết điều gì.
+        </strong>
+    </p>
+
+    <p class="help-final">
+
+        Mục đích đơn giản là:
+        "Cái thứ này trị bệnh óc chó" - Hưng -
+
+        <br>
+
+        <strong>
+            Ca trước biết → ca sau biết →
+            không ai phải đoán xem chuyện gì đã xảy ra.
+        </strong>
+
+    </p>
+
+</div>
+```
+
+</div>
 
 </div>
 
@@ -1466,46 +1297,35 @@ z-index: 1;
     id="detailModal"
 >
 
-
 <div class="detail-box">
 
-    <div class="detail-header">
+```
+<div class="detail-header">
 
-        <div
-            class="detail-title"
-            id="detailTitle"
-        >
-            Chi tiết sự việc
-        </div>
-
-        <button
-            class="detail-close"
-            onclick="closeLogDetail()"
-        >
-            ×
-        </button>
-
+    <div
+        class="detail-title"
+        id="detailTitle"
+    >
+        Chi tiết sự việc
     </div>
 
-    <div id="detailContent"></div>
+    <button
+        class="detail-close"
+        onclick="closeLogDetail()"
+    >
+        ×
+    </button>
 
 </div>
 
+<div id="detailContent"></div>
+```
+
+</div>
 
 </div>
 
 <script>
-
-/* =====================================================
-   LINK LARK FORM
-===================================================== */
-
-const REPORT_FORM_URL =
-    "https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgmFRzxPJUpX0Cts8ZNc4lGg";
-
-const UPDATE_FORM_URL =
-    "https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgSSQ3JdUxSPfCTYLCBlKEb1";
-
 
 /* =====================================================
    HUSTON.JSON
@@ -1528,6 +1348,36 @@ let currentFilters = {
 
 
 /* =====================================================
+   HAI NÚT FRONTEND MỚI
+===================================================== */
+
+/*
+ * Hiện tại chưa mở popup.
+ *
+ * Hai hàm này được tạo riêng để sau này
+ * gắn popup frontend vào mà không phải sửa
+ * lại phần giao diện nút.
+ */
+
+function openReportForm() {
+
+    console.log(
+        "Mở popup: Báo cáo vấn đề mới"
+    );
+
+}
+
+
+function openUpdateForm() {
+
+    console.log(
+        "Mở popup: Cập nhật vấn đề cũ"
+    );
+
+}
+
+
+/* =====================================================
    QUAY LẠI
 ===================================================== */
 
@@ -1546,107 +1396,6 @@ function goBack() {
 }
 
 
-/* =====================================================
-   MỞ LARK FORM
-===================================================== */
-
-function openForm(url, title) {
-
-    if (!url) {
-
-        alert(
-            "Chưa nhập link Lark Form."
-        );
-
-        return;
-
-    }
-
-    const modal =
-        document.getElementById("formModal");
-
-    const frame =
-        document.getElementById("formFrame");
-
-    const formTitle =
-        document.getElementById("formTitle");
-
-    formTitle.textContent =
-        title;
-
-    frame.src =
-        url;
-
-    modal.classList.add("active");
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-/* =====================================================
-   ĐÓNG LARK FORM
-===================================================== */
-
-function closeForm() {
-
-    const modal =
-        document.getElementById("formModal");
-
-    const frame =
-        document.getElementById("formFrame");
-
-    /*
-     * Đóng popup
-     */
-    modal.classList.remove("active");
-
-    /*
-     * Xóa iframe
-     */
-    frame.src = "";
-
-    /*
-     * Cho phép cuộn lại
-     */
-    document.body.style.overflow = "";
-
-    /*
-     * Tải dữ liệu ngay lập tức
-     */
-    loadHuston();
-
-    /*
-     * Kiểm tra lại nhiều lần trong thời gian ngắn.
-     *
-     * Lý do:
-     * Lark Form → Automation → Apps Script → GitHub
-     * có thể mất vài giây mới hoàn thành.
-     */
-
-    let attempts = 0;
-
-    const maxAttempts = 8;
-
-    const reloadTimer =
-        setInterval(async function() {
-
-            attempts++;
-
-            await loadHuston();
-
-            if (attempts >= maxAttempts) {
-
-                clearInterval(
-                    reloadTimer
-                );
-
-            }
-
-        }, 2000);
-
-}
 /* =====================================================
    HELP
 ===================================================== */
@@ -1714,10 +1463,6 @@ function getFinalStatus(value) {
     }
 
 
-    /*
-     * Nếu có Đã xử lý thì ưu tiên Đã xử lý.
-     */
-
     if (
         statuses.includes("Đã xử lý")
     ) {
@@ -1727,10 +1472,6 @@ function getFinalStatus(value) {
     }
 
 
-    /*
-     * Nếu chưa hoàn thành nhưng đang xử lý.
-     */
-
     if (
         statuses.includes("Đang xử lý")
     ) {
@@ -1739,11 +1480,6 @@ function getFinalStatus(value) {
 
     }
 
-
-    /*
-     * Trường hợp khác:
-     * lấy trạng thái cuối cùng.
-     */
 
     return statuses[
         statuses.length - 1
@@ -1792,12 +1528,6 @@ function parseDate(value) {
 
     }
 
-
-    /*
-     * Hỗ trợ dạng:
-     *
-     * 2026/08/30 11:58
-     */
 
     const match =
         String(value).match(
@@ -1852,19 +1582,11 @@ function renderLogs(records) {
         );
 
 
-    /*
-     * Lưu dữ liệu hiện tại.
-     */
-
     currentRecords =
         Array.isArray(records)
             ? records
             : [];
 
-
-    /*
-     * Xóa giao diện cũ.
-     */
 
     recentLogs.innerHTML = "";
 
@@ -1872,16 +1594,7 @@ function renderLogs(records) {
 
 
     /*
-     * =================================================
      * KHỬ RECORD TRÙNG ID
-     * =================================================
-     *
-     * Nếu JSON có:
-     *
-     * Z006 - bản cũ
-     * Z006 - bản cập nhật
-     *
-     * thì chỉ giữ bản xuất hiện sau cùng.
      */
 
     const recordMap =
@@ -1918,9 +1631,7 @@ function renderLogs(records) {
 
 
     /*
-     * =================================================
      * SẮP XẾP MỚI NHẤT TRƯỚC
-     * =================================================
      */
 
     uniqueRecords.sort(
@@ -1952,9 +1663,7 @@ function renderLogs(records) {
 
 
     /*
-     * =================================================
      * CHIA 2 NHÓM
-     * =================================================
      */
 
     const completed =
@@ -1982,9 +1691,7 @@ function renderLogs(records) {
 
 
     /*
-     * =================================================
      * RENDER
-     * =================================================
      */
 
     recent.forEach(
@@ -2010,9 +1717,7 @@ function renderLogs(records) {
 
 
     /*
-     * =================================================
      * COUNT
-     * =================================================
      */
 
     updateCount(
@@ -2027,9 +1732,7 @@ function renderLogs(records) {
 
 
     /*
-     * =================================================
      * EMPTY
-     * =================================================
      */
 
     document.getElementById(
@@ -2047,10 +1750,6 @@ function renderLogs(records) {
             ? "block"
             : "none";
 
-
-    /*
-     * Áp dụng lại filter đang chọn.
-     */
 
     applyFilters();
 
@@ -2245,10 +1944,6 @@ function filterLogs(
     ] = branch;
 
 
-    /*
-     * Chỉ đổi active trong đúng nhóm filter.
-     */
-
     const parent =
         button.closest(
             ".filter-tabs"
@@ -2406,11 +2101,6 @@ function openLogDetail(record) {
             record.trang_thai_xu_ly
         );
 
-
-    /*
-     * Các field mới có thể chưa tồn tại
-     * ở những bản ghi cũ.
-     */
 
     const phuongAn =
         record.phuong_an_xu_ly ||
@@ -2968,8 +2658,6 @@ document.addEventListener(
             event.key === "Escape"
         ) {
 
-            closeForm();
-
             closeHelp();
 
             closeLogDetail();
@@ -2986,37 +2674,13 @@ document.addEventListener(
 
 resetFilters();
 
-/* =====================================================
-KHỞI ĐỘNG
-===================================================== */
-
 loadHuston();
 
 setTimeout(function() {
+
     loadHuston();
+
 }, 3000);
-
-/* =====================================================
-ESC
-===================================================== */
-
-document.addEventListener(
-"keydown",
-function(event) {
-
-
-    if (event.key === "Escape") {
-
-        closeForm();
-        closeHelp();
-        closeLogDetail();
-
-    }
-
-}
-
-
-);
 
 </script>
 
