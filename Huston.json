@@ -1,4 +1,15 @@
 {
-"updated_at": null,
-"records": []
+  "updated_at": "2026-08-30T04:55:35.937Z",
+  "records": [
+    {
+      "id": "TEST-001",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026-08-30T11:30:00+07:00",
+      "nguoi_bao_cao": "Test",
+      "noi_dung": "Kiểm tra Huston",
+      "muc_do": "Thấp",
+      "can_xu_ly": "Có",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    }
+  ]
 }
