@@ -1134,6 +1134,21 @@ textarea {
     }
 
 }
+.update-button:disabled {
+
+```
+background: #e5e5e5;
+
+color: #999;
+
+cursor: not-allowed;
+
+transform: none;
+
+opacity: 1;
+```
+
+}
 
 </style>
 
@@ -3374,213 +3389,258 @@ function applySectionFilter(
 
 function openLogDetail(record) {
 
-    selectedRecord =
-        record;
+```
+selectedRecord =
+    record;
 
 
-    const modal =
-        document.getElementById(
-            "detailModal"
-        );
-
-
-    const content =
-        document.getElementById(
-            "detailContent"
-        );
-
-
-    const title =
-        document.getElementById(
-            "detailTitle"
-        );
-
-
-    const status =
-        getFinalStatus(
-            record.trang_thai_xu_ly
-        );
-
-
-    title.textContent =
-        record.id
-            ? "Chi tiết " +
-              record.id
-            : "Chi tiết sự việc";
-
-
-    content.innerHTML = `
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                ID
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(
-                    record.id ||
-                    "Không có"
-                )}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                Cơ sở
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(
-                    record.chi_nhanh ||
-                    "Không có"
-                )}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                Thời gian
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(
-                    formatDetailDate(
-                        record.thoi_gian
-                    )
-                )}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                Người báo cáo
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(
-                    record.nguoi_bao_cao ||
-                    "Không có"
-                )}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                Nội dung vấn đề
-            </div>
-
-            <div class="detail-value detail-content">
-                ${escapeHTML(
-                    record.noi_dung ||
-                    "Không có"
-                )}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                Mục cần xử lý
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(
-                    record.can_xu_ly ||
-                    "Không có"
-                )}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                Mức độ
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(
-                    record.muc_do ||
-                    "Chưa xác định"
-                )}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                Trạng thái xử lý
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(
-                    status
-                )}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                Biện pháp xử lý
-            </div>
-
-            <div class="detail-value detail-content">
-                ${escapeHTML(
-                    record.phuong_an_xu_ly ||
-                    "Chưa cập nhật"
-                )}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                Người xử lý
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(
-                    record.nguoi_xu_ly ||
-                    "Chưa cập nhật"
-                )}
-            </div>
-
-        </div>
-
-    `;
-
-
-    modal.classList.add(
-        "active"
+const modal =
+    document.getElementById(
+        "detailModal"
     );
 
 
-    lockBody();
+const content =
+    document.getElementById(
+        "detailContent"
+    );
+
+
+const title =
+    document.getElementById(
+        "detailTitle"
+    );
+
+
+const updateButton =
+    document.querySelector(
+        "#detailModal .update-button"
+    );
+
+
+const status =
+    getFinalStatus(
+        record.trang_thai_xu_ly
+    );
+
+
+/*
+ * XÁC ĐỊNH ĐÃ HOÀN THÀNH
+ *
+ * Đã xử lý
+ * hoặc
+ * Không cần xử lý
+ */
+
+const completed =
+    isCompleted(record);
+
+
+title.textContent =
+    record.id
+        ? "Chi tiết " +
+          record.id
+        : "Chi tiết sự việc";
+
+
+content.innerHTML = `
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            ID
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.id ||
+                "Không có"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Cơ sở
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.chi_nhanh ||
+                "Không có"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Thời gian
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                formatDetailDate(
+                    record.thoi_gian
+                )
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Người báo cáo
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.nguoi_bao_cao ||
+                "Không có"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Nội dung vấn đề
+        </div>
+
+        <div class="detail-value detail-content">
+            ${escapeHTML(
+                record.noi_dung ||
+                "Không có"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Mục cần xử lý
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.can_xu_ly ||
+                "Không có"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Mức độ
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.muc_do ||
+                "Chưa xác định"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Trạng thái xử lý
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                status
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Biện pháp xử lý
+        </div>
+
+        <div class="detail-value detail-content">
+            ${escapeHTML(
+                record.phuong_an_xu_ly ||
+                "Chưa cập nhật"
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="detail-row">
+
+        <div class="detail-label">
+            Người xử lý
+        </div>
+
+        <div class="detail-value">
+            ${escapeHTML(
+                record.nguoi_xu_ly ||
+                "Chưa cập nhật"
+            )}
+        </div>
+
+    </div>
+
+`;
+
+
+/*
+ * NÚT CẬP NHẬT
+ */
+
+if (updateButton) {
+
+    updateButton.disabled =
+        completed;
+
+    if (completed) {
+
+        updateButton.textContent =
+            "Đã hoàn thành";
+
+    } else {
+
+        updateButton.textContent =
+            "Cập nhật vấn đề";
+
+    }
 
 }
+
+
+modal.classList.add(
+    "active"
+);
+
+
+lockBody();
+```
+
+}
+
 
 
 
