@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T04:27:04.574Z",
+  "updated_at": "2026-08-31T04:27:27.298Z",
   "records": [
     {
       "id": "Z024",
@@ -33,7 +33,8 @@
       "noi_dung": "Thằng dở hơi không chịu ăn cháo",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "phuong_an_xu_ly": "Oánh bỏ mẹ nó"
     }
   ]
 }
