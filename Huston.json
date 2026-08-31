@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T15:31:12.397Z",
+  "updated_at": "2026-08-31T15:42:42.528Z",
   "records": [
     {
       "id": "Z024",
@@ -80,6 +80,16 @@
       "trang_thai_xu_ly": "Cần theo dõi thêm",
       "phuong_an_xu_ly": "Test thông báo\nNhân viên đang quỳ xuống ăn vạ xin lỗi khách",
       "nguoi_xu_ly": ""
+    },
+    {
+      "id": "Z031",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/08/31 22:42",
+      "nguoi_bao_cao": "Test - Duyên",
+      "noi_dung": "Test thông báo zalo\nRò nước khắp nơi",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
