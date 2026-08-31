@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T06:29:27.758Z",
+  "updated_at": "2026-08-31T06:49:24.420Z",
   "records": [
     {
       "id": "Z024",
@@ -46,6 +46,16 @@
       "can_xu_ly": "Chỉ thông báo / báo cáo",
       "trang_thai_xu_ly": "Đang xử lý",
       "phuong_an_xu_ly": "XU"
+    },
+    {
+      "id": "Z028",
+      "chi_nhanh": "Thái Thịnh",
+      "thoi_gian": "2026/08/31 13:49",
+      "nguoi_bao_cao": "Thư",
+      "noi_dung": "Quạt trần rơi vào đầu khách",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Chỉ thông báo / báo cáo",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
