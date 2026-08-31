@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T15:42:42.528Z",
+  "updated_at": "2026-08-31T15:43:35.787Z",
   "records": [
     {
       "id": "Z024",
@@ -89,7 +89,8 @@
       "noi_dung": "Test thông báo zalo\nRò nước khắp nơi",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Cần theo dõi thêm",
+      "phuong_an_xu_ly": "Đã bịt bằng băng dính"
     }
   ]
 }
