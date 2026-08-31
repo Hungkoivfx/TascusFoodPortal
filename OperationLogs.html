@@ -2624,10 +2624,8 @@ function isCompleted(record) {
         );
 
 
-    return (
-        status === "Đã xử lý" ||
-        status === "Cần theo dõi thêm"
-    );
+    return
+        status === "Đã xử lý";
 
 }
 
@@ -3059,15 +3057,23 @@ function createLogCard(record) {
     }
 
 
-    if (
-        status === "Đã xử lý" ||
-        status === "Cần theo dõi thêm"
-    ) {
+   if (
+    status === "Đã xử lý"
+) {
 
-        statusClass =
-            "status-done";
+    statusClass =
+        "status-done";
 
-    }
+}
+
+if (
+    status === "Cần theo dõi thêm"
+) {
+
+    statusClass =
+        "status-processing";
+
+}
 
 
     if (
