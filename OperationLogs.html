@@ -1168,7 +1168,7 @@ textarea {
 
 <header class="header">
 
-```
+
 <button
     class="back-button"
     onclick="goBack()"
@@ -1196,7 +1196,7 @@ textarea {
 >
     ?
 </button>
-```
+
 
 </header>
 
@@ -1206,7 +1206,7 @@ textarea {
 
 <section class="actions">
 
-```
+
 <button
     class="action-button"
     onclick="openNewReport()"
@@ -1233,7 +1233,7 @@ textarea {
     </div>
 
 </button>
-```
+
 
 </section>
 
@@ -1243,7 +1243,7 @@ textarea {
 
 <section class="section">
 
-```
+
 <div class="section-header">
 
     <div class="section-title-wrap">
@@ -1313,7 +1313,7 @@ textarea {
 >
     Không có sự việc nào tại cửa hàng này.
 </div>
-```
+
 
 </section>
 
@@ -1323,7 +1323,7 @@ textarea {
 
 <section class="section">
 
-```
+
 <div class="section-header">
 
     <div class="section-title-wrap">
@@ -1395,7 +1395,7 @@ textarea {
     Không có sự việc nào được xử lý
     trong thời gian gần đây.
 </div>
-```
+
 
 </section>
 
@@ -1410,7 +1410,7 @@ textarea {
     id="newReportModal"
 >
 
-```
+
 <div class="form-box">
 
     <div class="form-header">
@@ -1541,7 +1541,7 @@ textarea {
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -1554,7 +1554,7 @@ textarea {
     id="detailModal"
 >
 
-```
+
 <div class="detail-box">
 
     <div class="detail-header">
@@ -1587,7 +1587,7 @@ textarea {
     </button>
 
 </div>
-```
+
 
 </div>
 
@@ -1600,7 +1600,7 @@ textarea {
     id="updateModal"
 >
 
-```
+
 <div class="form-box">
 
     <div class="form-header">
@@ -1705,8 +1705,8 @@ textarea {
                 Đã xử lý
             </option>
 
-            <option value="Không cần xử lý">
-                Không cần xử lý
+            <option value="Cần theo dõi thêm">
+                Cần theo dõi thêm
             </option>
 
         </select>
@@ -1751,14 +1751,14 @@ textarea {
 
 
     <!-- =================================================
-         NGƯỜI CHỈNH SỬA
+         Người xử lý / theo dõi vấn đê
          TỰ HIỆN NGƯỜI GẦN NHẤT
     ================================================== -->
 
     <div class="form-field">
 
         <label class="form-label">
-            Người chỉnh sửa
+            Người xử lý / theo dõi vấn đê
             <span class="required">*</span>
         </label>
 
@@ -1766,7 +1766,7 @@ textarea {
             class="form-input"
             id="updateEditor"
             type="text"
-            placeholder="Nhập tên người chỉnh sửa"
+            placeholder="Nhập tên Người xử lý / theo dõi vấn đê"
             autocomplete="name"
         >
 
@@ -1792,7 +1792,7 @@ textarea {
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -1805,7 +1805,7 @@ textarea {
     id="helpModal"
 >
 
-```
+
 <div class="help-box">
 
     <div class="help-header">
@@ -1892,7 +1892,7 @@ textarea {
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -2600,11 +2600,11 @@ function getFinalStatus(value) {
 
     if (
         statuses.includes(
-            "Không cần xử lý"
+            "Cần theo dõi thêm"
         )
     ) {
 
-        return "Không cần xử lý";
+        return "Cần theo dõi thêm";
 
     }
 
@@ -2626,7 +2626,7 @@ function isCompleted(record) {
 
     return (
         status === "Đã xử lý" ||
-        status === "Không cần xử lý"
+        status === "Cần theo dõi thêm"
     );
 
 }
@@ -3061,7 +3061,7 @@ function createLogCard(record) {
 
     if (
         status === "Đã xử lý" ||
-        status === "Không cần xử lý"
+        status === "Cần theo dõi thêm"
     ) {
 
         statusClass =
@@ -3530,7 +3530,7 @@ function openLogDetail(record) {
         <div class="detail-row">
 
             <div class="detail-label">
-                Người chỉnh sửa gần nhất
+                Người xử lý / theo dõi vấn đê gần nhất
             </div>
 
             <div class="detail-value">
@@ -3679,9 +3679,9 @@ function openUpdateFromDetail() {
 
 
     /*
-     * NGƯỜI CHỈNH SỬA
+     * Người xử lý / theo dõi vấn đê
      *
-     * LẤY NGƯỜI CHỈNH SỬA
+     * LẤY Người xử lý / theo dõi vấn đê
      * GẦN NHẤT TỪ BẢN GHI.
      *
      * Nếu chưa từng có thì để trống.
@@ -3790,7 +3790,7 @@ async function submitUpdate() {
 
 
     /*
-     * NGƯỜI CHỈNH SỬA
+     * Người xử lý / theo dõi vấn đê
      *
      * Đây là người thực hiện
      * lần cập nhật hiện tại.
@@ -3819,7 +3819,7 @@ async function submitUpdate() {
     if (!editor) {
 
         alert(
-            "Vui lòng nhập người chỉnh sửa."
+            "Vui lòng nhập Người xử lý / theo dõi vấn đê."
         );
 
         return;
@@ -3860,7 +3860,7 @@ async function submitUpdate() {
          * Người báo cáo được giữ nguyên
          * ở backend.
          *
-         * Chỉ ghi người chỉnh sửa mới nhất.
+         * Chỉ ghi Người xử lý / theo dõi vấn đê mới nhất.
          */
 
         const result =
