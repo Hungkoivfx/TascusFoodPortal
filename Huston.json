@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T13:58:40.397Z",
+  "updated_at": "2026-08-31T14:00:09.311Z",
   "records": [
     {
       "id": "Z024",
@@ -66,7 +66,8 @@
       "noi_dung": "Trứng vỡ khá nhiều",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đang xử lý",
+      "phuong_an_xu_ly": "Đã rán trước những quả thấy được. Ca sau kiểm tra nốt khay phía dưới"
     }
   ]
 }
