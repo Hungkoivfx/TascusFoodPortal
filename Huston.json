@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T06:29:05.474Z",
+  "updated_at": "2026-08-31T06:29:27.758Z",
   "records": [
     {
       "id": "Z024",
@@ -44,7 +44,7 @@
       "noi_dung": "abc",
       "muc_do": "Thông thường",
       "can_xu_ly": "Chỉ thông báo / báo cáo",
-      "trang_thai_xu_ly": "Chưa xử lý",
+      "trang_thai_xu_ly": "Đang xử lý",
       "phuong_an_xu_ly": "XU"
     }
   ]
