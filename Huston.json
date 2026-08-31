@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T02:12:00.997Z",
+  "updated_at": "2026-08-31T04:27:04.574Z",
   "records": [
     {
       "id": "Z024",
@@ -24,6 +24,16 @@
       "trang_thai_xu_ly": "Đã xử lý",
       "phuong_an_xu_ly": "Đã test API",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z026",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/08/31 11:27",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Thằng dở hơi không chịu ăn cháo",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
