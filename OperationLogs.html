@@ -1849,16 +1849,14 @@ textarea {
 
 <script>
 
-
-<script>
-
 /* =====================================================
    TASCUS FOOD · NHẬT KÝ VẬN HÀNH
-   API
+   HUSTON API
 ===================================================== */
 
 const API_URL =
-    "https://script.google.com/macros/s/AKfycbwd6hrdfUGmSGxwyZJDGpF8FoXve3AJ5q7oy1aZaU74pY1WjEbVb2gTXrqjVjQmeAvnXQ/exec";
+    "https://YOUR-HUSTON-API-URL";
+
 
 
 /* =====================================================
@@ -1868,14 +1866,12 @@ const API_URL =
 let currentRecords = [];
 
 let currentFilters = {
-
     recent: "all",
-
     completed: "all"
-
 };
 
 let selectedRecord = null;
+
 
 
 /* =====================================================
@@ -1884,23 +1880,22 @@ let selectedRecord = null;
 
 async function apiRequest(payload) {
 
-    const response =
-        await fetch(
-            API_URL,
-            {
-                method: "POST",
+    const response = await fetch(
+        API_URL,
+        {
+            method: "POST",
 
-                redirect: "follow",
+            redirect: "follow",
 
-                headers: {
-                    "Content-Type":
-                        "text/plain;charset=utf-8"
-                },
+            headers: {
+                "Content-Type":
+                    "text/plain;charset=utf-8"
+            },
 
-                body:
-                    JSON.stringify(payload)
-            }
-        );
+            body:
+                JSON.stringify(payload)
+        }
+    );
 
 
     if (!response.ok) {
@@ -1927,11 +1922,22 @@ async function apiRequest(payload) {
 
     } catch (error) {
 
+        console.error(
+            "API RAW RESPONSE:",
+            text
+        );
+
         throw new Error(
             "API trả về dữ liệu không hợp lệ."
         );
 
     }
+
+
+    console.log(
+        "Huston API response:",
+        result
+    );
 
 
     if (!result.success) {
@@ -1947,6 +1953,7 @@ async function apiRequest(payload) {
     return result;
 
 }
+
 
 
 /* =====================================================
@@ -2009,6 +2016,7 @@ async function loadHuston() {
 }
 
 
+
 /* =====================================================
    LOADING
 ===================================================== */
@@ -2044,13 +2052,12 @@ function showLoadingState() {
 }
 
 
+
 /* =====================================================
    LOAD ERROR
 ===================================================== */
 
-function showLoadError(
-    message
-) {
+function showLoadError(message) {
 
     document.getElementById(
         "recentLogs"
@@ -2060,8 +2067,7 @@ function showLoadError(
             class="empty"
             style="display:block"
         >
-            Không thể tải
-            nhật ký vận hành.
+            Không thể tải nhật ký vận hành.
             <br><br>
             ${escapeHTML(
                 message ||
@@ -2091,6 +2097,7 @@ function showLoadError(
 }
 
 
+
 /* =====================================================
    QUAY LẠI
 ===================================================== */
@@ -2111,6 +2118,7 @@ function goBack() {
     }
 
 }
+
 
 
 /* =====================================================
@@ -2137,6 +2145,7 @@ function closeHelp() {
     unlockBody();
 
 }
+
 
 
 /* =====================================================
@@ -2169,6 +2178,7 @@ function unlockBody() {
 }
 
 
+
 /* =====================================================
    NEW REPORT
 ===================================================== */
@@ -2193,6 +2203,7 @@ function closeNewReport() {
     unlockBody();
 
 }
+
 
 
 /* =====================================================
@@ -2298,16 +2309,14 @@ async function submitNewReport() {
 
 
         /*
-         * API create bắt buộc:
+         * Gửi đúng cấu trúc API đã test:
          *
+         * action
          * chi_nhanh
          * nguoi_bao_cao
          * noi_dung
          * muc_do
          * can_xu_ly
-         *
-         * Form hiện tại chưa có trường
-         * mức độ nên dùng mặc định.
          */
 
         const result =
@@ -2318,6 +2327,9 @@ async function submitNewReport() {
 
                 chi_nhanh:
                     branch,
+
+                thoi_gian:
+                    getCurrentDateTime(),
 
                 nguoi_bao_cao:
                     reporter,
@@ -2334,12 +2346,14 @@ async function submitNewReport() {
             });
 
 
+        console.log(
+            "CREATE SUCCESS:",
+            result
+        );
+
+
         closeNewReport();
 
-
-        /*
-         * Reset form
-         */
 
         document.getElementById(
             "newBranch"
@@ -2360,10 +2374,6 @@ async function submitNewReport() {
             "newReporter"
         ).value = "";
 
-
-        /*
-         * Tải lại dữ liệu thật
-         */
 
         await loadHuston();
 
@@ -2409,13 +2419,78 @@ async function submitNewReport() {
 }
 
 
+
+/* =====================================================
+   CURRENT DATETIME
+===================================================== */
+
+function getCurrentDateTime() {
+
+    const now =
+        new Date();
+
+
+    const year =
+        now.getFullYear();
+
+
+    const month =
+        String(
+            now.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const day =
+        String(
+            now.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const hour =
+        String(
+            now.getHours()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const minute =
+        String(
+            now.getMinutes()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return (
+        year +
+        "/" +
+        month +
+        "/" +
+        day +
+        " " +
+        hour +
+        ":" +
+        minute
+    );
+
+}
+
+
+
 /* =====================================================
    STATUS
 ===================================================== */
 
-function getStatusList(
-    value
-) {
+function getStatusList(value) {
 
     if (!value) {
 
@@ -2447,9 +2522,7 @@ function getStatusList(
 }
 
 
-function getFinalStatus(
-    value
-) {
+function getFinalStatus(value) {
 
     const statuses =
         getStatusList(
@@ -2497,6 +2570,17 @@ function getFinalStatus(
     }
 
 
+    if (
+        statuses.includes(
+            "Không cần xử lý"
+        )
+    ) {
+
+        return "Không cần xử lý";
+
+    }
+
+
     return statuses[
         statuses.length - 1
     ];
@@ -2504,9 +2588,7 @@ function getFinalStatus(
 }
 
 
-function isCompleted(
-    record
-) {
+function isCompleted(record) {
 
     const status =
         getFinalStatus(
@@ -2515,19 +2597,19 @@ function isCompleted(
 
 
     return (
-        status === "Đã xử lý"
+        status === "Đã xử lý" ||
+        status === "Không cần xử lý"
     );
 
 }
+
 
 
 /* =====================================================
    DATE
 ===================================================== */
 
-function parseDate(
-    value
-) {
+function parseDate(value) {
 
     if (!value) {
 
@@ -2587,9 +2669,7 @@ function parseDate(
 }
 
 
-function formatDate(
-    value
-) {
+function formatDate(value) {
 
     if (!value) {
 
@@ -2640,9 +2720,7 @@ function formatDate(
 }
 
 
-function formatDetailDate(
-    value
-) {
+function formatDetailDate(value) {
 
     if (!value) {
 
@@ -2676,13 +2754,12 @@ function formatDetailDate(
 }
 
 
+
 /* =====================================================
    ESCAPE HTML
 ===================================================== */
 
-function escapeHTML(
-    value
-) {
+function escapeHTML(value) {
 
     return String(value)
 
@@ -2714,13 +2791,12 @@ function escapeHTML(
 }
 
 
+
 /* =====================================================
    RENDER
 ===================================================== */
 
-function renderLogs(
-    records
-) {
+function renderLogs(records) {
 
     const recentLogs =
         document.getElementById(
@@ -2788,7 +2864,7 @@ function renderLogs(
 
 
     /*
-     * SẮP XẾP MỚI NHẤT TRƯỚC
+     * MỚI NHẤT TRƯỚC
      */
 
     uniqueRecords.sort(
@@ -2907,13 +2983,12 @@ function renderLogs(
 }
 
 
+
 /* =====================================================
    CARD
 ===================================================== */
 
-function createLogCard(
-    record
-) {
+function createLogCard(record) {
 
     const article =
         document.createElement(
@@ -2962,7 +3037,8 @@ function createLogCard(
 
 
     if (
-        status === "Đã xử lý"
+        status === "Đã xử lý" ||
+        status === "Không cần xử lý"
     ) {
 
         statusClass =
@@ -3088,6 +3164,7 @@ function createLogCard(
     return article;
 
 }
+
 
 
 /* =====================================================
@@ -3229,13 +3306,12 @@ function applySectionFilter(
 }
 
 
+
 /* =====================================================
    DETAIL
 ===================================================== */
 
-function openLogDetail(
-    record
-) {
+function openLogDetail(record) {
 
     selectedRecord =
         record;
@@ -3446,6 +3522,11 @@ function openLogDetail(
 }
 
 
+
+/* =====================================================
+   CLOSE DETAIL
+===================================================== */
+
 function closeLogDetail() {
 
     document
@@ -3457,16 +3538,10 @@ function closeLogDetail() {
         );
 
 
-    /*
-     * KHÔNG xoá selectedRecord ở đây.
-     *
-     * openUpdateFromDetail()
-     * vẫn cần record này.
-     */
-
     unlockBody();
 
 }
+
 
 
 /* =====================================================
@@ -3547,6 +3622,7 @@ function openUpdateFromDetail() {
 }
 
 
+
 function closeUpdate() {
 
     document
@@ -3565,6 +3641,7 @@ function closeUpdate() {
     unlockBody();
 
 }
+
 
 
 /* =====================================================
@@ -3685,12 +3762,14 @@ async function submitUpdate() {
             });
 
 
+        console.log(
+            "UPDATE SUCCESS:",
+            result
+        );
+
+
         closeUpdate();
 
-
-        /*
-         * Tải lại dữ liệu thật từ backend.
-         */
 
         await loadHuston();
 
@@ -3736,6 +3815,7 @@ async function submitUpdate() {
 }
 
 
+
 /* =====================================================
    COUNT
 ===================================================== */
@@ -3763,6 +3843,7 @@ function updateCount(
         " sự việc";
 
 }
+
 
 
 /* =====================================================
@@ -3818,6 +3899,7 @@ function resetFilters() {
         );
 
 }
+
 
 
 /* =====================================================
@@ -3891,6 +3973,7 @@ document
     );
 
 
+
 /* =====================================================
    ESC
 ===================================================== */
@@ -3921,6 +4004,7 @@ document.addEventListener(
 );
 
 
+
 /* =====================================================
    KHỞI ĐỘNG
 ===================================================== */
@@ -3930,7 +4014,6 @@ resetFilters();
 loadHuston();
 
 </script>
-
 
 
 </body>
