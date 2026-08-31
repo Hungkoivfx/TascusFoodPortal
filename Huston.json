@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T16:08:03.739Z",
+  "updated_at": "2026-08-31T16:10:21.991Z",
   "records": [
     {
       "id": "Z024",
@@ -89,8 +89,8 @@
       "noi_dung": "Test thông báo zalo\nRò nước khắp nơi",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Đang xử lý",
-      "phuong_an_xu_ly": "Đang khoá vòi nước",
+      "trang_thai_xu_ly": "Đã xử lý",
+      "phuong_an_xu_ly": "Thay vòi mới",
       "nguoi_xu_ly": "Hưng"
     }
   ]
