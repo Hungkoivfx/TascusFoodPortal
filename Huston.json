@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T06:28:04.826Z",
+  "updated_at": "2026-08-31T06:29:05.474Z",
   "records": [
     {
       "id": "Z024",
@@ -40,11 +40,12 @@
       "id": "Z027",
       "chi_nhanh": "Khương Trung",
       "thoi_gian": "2026/08/31 13:28",
-      "nguoi_bao_cao": "Duyên",
+      "nguoi_bao_cao": "Định",
       "noi_dung": "abc",
       "muc_do": "Thông thường",
       "can_xu_ly": "Chỉ thông báo / báo cáo",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Chưa xử lý",
+      "phuong_an_xu_ly": "XU"
     }
   ]
 }
