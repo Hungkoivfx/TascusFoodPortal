@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T15:24:34.422Z",
+  "updated_at": "2026-08-31T15:31:12.397Z",
   "records": [
     {
       "id": "Z024",
@@ -77,8 +77,9 @@
       "noi_dung": "Test thử chức năng tin nhắn\nQuạt trần rụng và rơi vào đầu khách",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Đang xử lý",
-      "phuong_an_xu_ly": "Test thông báo\nNhân viên đang quỳ xuống ăn vạ xin lỗi khách"
+      "trang_thai_xu_ly": "Cần theo dõi thêm",
+      "phuong_an_xu_ly": "Test thông báo\nNhân viên đang quỳ xuống ăn vạ xin lỗi khách",
+      "nguoi_xu_ly": ""
     }
   ]
 }
