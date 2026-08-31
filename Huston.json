@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T08:27:06.833Z",
+  "updated_at": "2026-08-31T02:11:05.541Z",
   "records": [
     {
       "id": "Z024",
@@ -12,6 +12,16 @@
       "trang_thai_xu_ly": "Đã xử lý",
       "phuong_an_xu_ly": "đã test xong",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z025",
+      "chi_nhanh": "69 Khương Trung",
+      "thoi_gian": "2026/08/31 09:11",
+      "nguoi_bao_cao": "TEST",
+      "noi_dung": "Test kết nối API",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Chỉ thông báo / báo cáo",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
