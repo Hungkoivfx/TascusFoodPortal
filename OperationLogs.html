@@ -1855,7 +1855,68 @@ textarea {
 ===================================================== */
 
 const API_URL =
-    "https://YOUR-HUSTON-API-URL";
+"https://script.google.com/macros/s/AKfycbwd6hrdfUGmSGxwyZJDGpF8FoXve3AJ5q7oy1aZaU74pY1WjEbVb2gTXrqjVjQmeAvnXQ/exec";
+
+async function loadLogs() {
+
+try {
+
+```
+const response =
+  await fetch(
+    API_URL + "?action=list",
+    {
+      method: "GET",
+      cache: "no-store"
+    }
+  );
+
+if (!response.ok) {
+
+  throw new Error(
+    "HTTP " + response.status
+  );
+
+}
+
+const data =
+  await response.json();
+
+console.log(
+  "API RESPONSE:",
+  data
+);
+
+if (
+  !data.success ||
+  !Array.isArray(data.records)
+) {
+
+  throw new Error(
+    data.error ||
+    "API không trả về records."
+  );
+
+}
+
+return data.records;
+```
+
+} catch (error) {
+
+```
+console.error(
+  "Không thể tải nhật ký vận hành:",
+  error
+);
+
+throw error;
+```
+
+}
+
+}
+
 
 
 
