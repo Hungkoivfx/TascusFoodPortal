@@ -3535,7 +3535,7 @@ function openLogDetail(record) {
 
             <div class="detail-value">
                 ${escapeHTML(
-                    record.nguoi_chinh_sua ||
+                    record.nguoi_xu_ly ||
                     "Chưa cập nhật"
                 )}
             </div>
@@ -3690,7 +3690,7 @@ function openUpdateFromDetail() {
     document.getElementById(
         "updateEditor"
     ).value =
-        record.nguoi_chinh_sua || "";
+        record.nguoi_xu_ly || "";
 
 
     /*
@@ -3878,7 +3878,7 @@ async function submitUpdate() {
                 phuong_an_xu_ly:
                     action,
 
-                nguoi_chinh_sua:
+                nguoi_xu_ly:
                     editor
 
             });
@@ -3894,7 +3894,7 @@ async function submitUpdate() {
          * Cập nhật record hiện tại ngay lập tức.
          */
 
-        selectedRecord.nguoi_chinh_sua =
+        selectedRecord.nguoi_xu_ly =
             editor;
 
         selectedRecord.trang_thai_xu_ly =
