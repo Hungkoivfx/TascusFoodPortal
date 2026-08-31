@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T06:49:24.420Z",
+  "updated_at": "2026-08-31T06:50:16.481Z",
   "records": [
     {
       "id": "Z024",
@@ -55,7 +55,8 @@
       "noi_dung": "Quạt trần rơi vào đầu khách",
       "muc_do": "Thông thường",
       "can_xu_ly": "Chỉ thông báo / báo cáo",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "phuong_an_xu_ly": "Xin lỗi khách là xong"
     }
   ]
 }
