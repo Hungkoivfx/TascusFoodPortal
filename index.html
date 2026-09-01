@@ -727,11 +727,108 @@
 
 </style>
 
+<style>
+    body {
+        visibility: hidden;
+    }
 
+    body.zalo-allowed {
+        visibility: visible;
+    }
+
+    #zaloBlocked {
+        display: none;
+    }
+
+    body.not-zalo {
+        visibility: visible;
+    }
+
+    body.not-zalo > *:not(#zaloBlocked) {
+        display: none !important;
+    }
+
+    body.not-zalo #zaloBlocked {
+        display: flex;
+    }
+
+    #zaloBlocked {
+        position: fixed;
+        inset: 0;
+        background: #f5f6f7;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Arial,
+            sans-serif;
+        text-align: center;
+    }
+
+    .zalo-blocked-box {
+        width: 100%;
+        max-width: 380px;
+        background: #fff;
+        border: 1px solid #e1e3e5;
+        border-radius: 18px;
+        padding: 30px 24px;
+        box-shadow: 0 8px 30px rgba(0,0,0,.06);
+    }
+
+    .zalo-blocked-icon {
+        font-size: 40px;
+        margin-bottom: 16px;
+    }
+
+    .zalo-blocked-box h2 {
+        font-size: 19px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .zalo-blocked-box p {
+        font-size: 14px;
+        line-height: 1.55;
+        color: #777;
+    }
+</style>
+
+<script>
+(function () {
+
+    const userAgent = navigator.userAgent || "";
+
+    const isZaloBrowser = /zalo/i.test(userAgent);
+
+    document.documentElement.classList.add(
+        isZaloBrowser ? "zalo-browser" : "not-zalo-browser"
+    );
 </head>
 
 <body>
+<div id="zaloBlocked">
 
+    <div class="zalo-blocked-box">
+
+        <div class="zalo-blocked-icon">
+            🔒
+        </div>
+
+        <h2>
+            Không thể truy cập
+        </h2>
+
+        <p>
+            Truy cập bị chặn.
+        </p>
+
+    </div>
+
+</div>
 <main class="container">
 
 
@@ -1016,7 +1113,25 @@
 }
 
 </style>
+<script>
+(function () {
 
+    const userAgent = navigator.userAgent || "";
+
+    const isZaloBrowser = /zalo/i.test(userAgent);
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        if (isZaloBrowser) {
+            document.body.classList.add("zalo-allowed");
+        } else {
+            document.body.classList.add("not-zalo");
+        }
+
+    });
+
+})();
+</script>
 <script>
 
 function openInfo() {
