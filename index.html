@@ -735,77 +735,6 @@ body {
 
 
 /* =========================
-   ZALO BLOCK SCREEN
-========================= */
-
-#zaloBlocked {
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    background: #f5f6f7;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 24px;
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-
-    text-align: center;
-
-    z-index: 999999;
-}
-
-.zalo-blocked-box {
-    width: 100%;
-
-    max-width: 380px;
-
-    background: #fff;
-
-    border: 1px solid #e1e3e5;
-
-    border-radius: 18px;
-
-    padding: 30px 24px;
-
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.06);
-}
-
-.zalo-blocked-icon {
-    font-size: 40px;
-
-    margin-bottom: 16px;
-}
-
-.zalo-blocked-box h2 {
-    font-size: 19px;
-
-    font-weight: 600;
-
-    margin-bottom: 10px;
-}
-
-.zalo-blocked-box p {
-    font-size: 14px;
-
-    line-height: 1.55;
-
-    color: #777;
-}
-
-
-/* =========================
    MOBILE
 ========================= */
 
@@ -986,27 +915,22 @@ body {
 
 <script>
 
-/*
+/* =====================================================
+   KIỂM TRA TRÌNH DUYỆT ZALO
 =====================================================
-   CẤU HÌNH KIỂM TRA ZALO
-=====================================================
 
-false = chỉ cho trình duyệt Zalo truy cập
+   false = chỉ cho trình duyệt Zalo truy cập
 
-true = bỏ kiểm tra để debug trên máy tính
+   true = bỏ kiểm tra để debug trên máy tính
 
-Khi deploy chính thức:
-BYPASS_ZALO_CHECK = false
-*/
+   Nếu không phải trình duyệt Zalo:
+   → chuyển sang trang đích bên dưới.
+===================================================== */
 
 const BYPASS_ZALO_CHECK = false;
 
+const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
 
-/*
-=====================================================
-   KIỂM TRA USER AGENT
-=====================================================
-*/
 
 (function () {
 
@@ -1019,14 +943,17 @@ const BYPASS_ZALO_CHECK = false;
     const isZaloBrowser =
         /Zalo/i.test(userAgent);
 
-    const allowed =
-        BYPASS_ZALO_CHECK || isZaloBrowser;
 
-    document.documentElement.classList.add(
-        allowed
-            ? "zalo-browser"
-            : "not-zalo-browser"
-    );
+    if (
+        !BYPASS_ZALO_CHECK &&
+        !isZaloBrowser
+    ) {
+
+        window.location.replace(
+            NON_ZALO_REDIRECT
+        );
+
+    }
 
 })();
 
@@ -1035,32 +962,6 @@ const BYPASS_ZALO_CHECK = false;
 </head>
 
 <body>
-
-<!-- =========================
-     CHẶN TRÌNH DUYỆT KHÁC
-========================= -->
-
-<div id="zaloBlocked">
-
-
-<div class="zalo-blocked-box">
-
-    <div class="zalo-blocked-icon">
-        🔒
-    </div>
-
-    <h2>
-        Không thể truy cập
-    </h2>
-
-    <p>
-        Deny Everything Except Ones.
-    </p>
-
-</div>
-
-
-</div>
 
 <!-- =========================
      NỘI DUNG CHÍNH
@@ -1074,13 +975,14 @@ const BYPASS_ZALO_CHECK = false;
 
 <header class="header">
 
-
 <div class="logo">
 
-    <img
-        src="./tascuslogofinal-png-07.png"
-        alt="Tascus Food"
-    >
+```
+<img
+    src="./tascuslogofinal-png-07.png"
+    alt="Tascus Food"
+>
+```
 
 </div>
 
@@ -1093,17 +995,20 @@ const BYPASS_ZALO_CHECK = false;
     Tascus Food Khương Trung và Thái Thịnh.
 </p>
 
-
 <!-- NÚT GIỚI THIỆU -->
 
 <button
-    class="info-button"
-    onclick="openInfo()"
-    aria-label="Giới thiệu cổng vận hành"
->
-    ?
-</button>
+class="info-button"
+onclick="openInfo()"
+aria-label="Giới thiệu cổng vận hành"
 
+>
+
+```
+?
+```
+
+</button>
 
 <!-- POPUP GIỚI THIỆU -->
 
@@ -1113,41 +1018,42 @@ const BYPASS_ZALO_CHECK = false;
     onclick="closeInfo(event)"
 >
 
-    <div class="info-popup">
+```
+<div class="info-popup">
 
-        <button
-            class="info-close"
-            onclick="closeInfo()"
-        >
-            ×
-        </button>
+    <button
+        class="info-close"
+        onclick="closeInfo()"
+    >
+        ×
+    </button>
 
-        <div class="info-icon">
-            ?
-        </div>
-
-        <h2>
-            Cổng vận hành
-        </h2>
-
-        <p>
-            Đây là nơi tập hợp những thứ nhân viên cần dùng
-            trong công việc hằng ngày tại Tascus Food.
-            Từ đặt hàng, báo cáo, ghi nhận sự cố đến xem
-            quy trình và công thức món, mọi thứ đều được gom
-            lại ở đây để dễ tìm và dễ sử dụng hơn.
-        </p>
-
-        <p>
-            Các chức năng và hướng dẫn trên cổng được thiết kế
-            để nhân viên có thể tự tìm hiểu và thực hiện
-            công việc của mình.
-        </p>
-
+    <div class="info-icon">
+        ?
     </div>
 
-</div>
+    <h2>
+        Cổng vận hành
+    </h2>
 
+    <p>
+        Đây là nơi tập hợp những thứ nhân viên cần dùng
+        trong công việc hằng ngày tại Tascus Food.
+        Từ đặt hàng, báo cáo, ghi nhận sự cố đến xem
+        quy trình và công thức món, mọi thứ đều được gom
+        lại ở đây để dễ tìm và dễ sử dụng hơn.
+    </p>
+
+    <p>
+        Các chức năng và hướng dẫn trên cổng được thiết kế
+        để nhân viên có thể tự tìm hiểu và thực hiện
+        công việc của mình.
+    </p>
+
+</div>
+```
+
+</div>
 
 </header>
 
@@ -1157,110 +1063,109 @@ const BYPASS_ZALO_CHECK = false;
 
 <section class="section">
 
-
 <div class="section-title">
     <span>Tác nghiệp</span>
 </div>
 
 <div class="menu">
 
+```
+<!-- ĐẶT RAU BÁNH -->
 
-    <!-- ĐẶT RAU BÁNH -->
+<a
+    class="menu-button"
+    href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation"
+    data-lark="Đặt rau, bánh"
+>
 
-    <a
-        class="menu-button"
-        href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation"
-        data-lark="Đặt rau, bánh"
-    >
+    <div class="button-icon yellow">
+        🥬
+    </div>
 
-        <div class="button-icon yellow">
-            🥬
+    <div class="button-content">
+
+        <div class="button-title">
+            Đặt rau, bánh
         </div>
 
-        <div class="button-content">
-
-            <div class="button-title">
-                Đặt rau, bánh
-            </div>
-
-            <div class="button-description">
-                Tạo lệnh đặt hàng bánh và rau
-                cho cửa hàng.
-            </div>
-
+        <div class="button-description">
+            Tạo lệnh đặt hàng bánh và rau
+            cho cửa hàng.
         </div>
 
-        <div class="arrow">
-            ›
+    </div>
+
+    <div class="arrow">
+        ›
+    </div>
+
+</a>
+
+
+<!-- XÁC NHẬN BÁNH -->
+
+<a
+    class="menu-button"
+    href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgdDj2XyZrIQqfrdH9nySoOg"
+    data-lark="Xác nhận bánh"
+>
+
+    <div class="button-icon orange">
+        ✓
+    </div>
+
+    <div class="button-content">
+
+        <div class="button-title">
+            Xác nhận bánh
         </div>
 
-    </a>
-
-
-    <!-- XÁC NHẬN BÁNH -->
-
-    <a
-        class="menu-button"
-        href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgdDj2XyZrIQqfrdH9nySoOg"
-        data-lark="Xác nhận bánh"
-    >
-
-        <div class="button-icon orange">
-            ✓
+        <div class="button-description">
+            Xác nhận số lượng bánh đã nhận
+            tại cửa hàng.
         </div>
 
-        <div class="button-content">
+    </div>
 
-            <div class="button-title">
-                Xác nhận bánh
-            </div>
+    <div class="arrow">
+        ›
+    </div>
 
-            <div class="button-description">
-                Xác nhận số lượng bánh đã nhận
-                tại cửa hàng.
-            </div>
+</a>
 
+
+<!-- BẬT / TẮT MÓN -->
+
+<a
+    class="menu-button"
+    href="./autoOnOff.html"
+>
+
+    <div class="button-icon">
+        ⚡
+    </div>
+
+    <div class="button-content">
+
+        <div class="button-title">
+            Bật/Tắt món tự động trên app
         </div>
 
-        <div class="arrow">
-            ›
+        <div class="button-description">
+            Quản lý trạng thái món bán trên các
+            ứng dụng đặt hàng.
         </div>
 
-    </a>
+    </div>
 
+    <div class="coming-soon-badge">
+        ĐANG XÂY DỰNG
+    </div>
 
-    <!-- BẬT / TẮT MÓN -->
-
-    <a
-        class="menu-button"
-        href="./autoOnOff.html"
-    >
-
-        <div class="button-icon">
-            ⚡
-        </div>
-
-        <div class="button-content">
-
-            <div class="button-title">
-                Bật/Tắt món tự động trên app
-            </div>
-
-            <div class="button-description">
-                Quản lý trạng thái món bán trên các
-                ứng dụng đặt hàng.
-            </div>
-
-        </div>
-
-        <div class="coming-soon-badge">
-            ĐANG XÂY DỰNG
-        </div>
-
-    </a>
+</a>
+```
 
 </div>
-
 
 </section>
 
@@ -1270,79 +1175,78 @@ const BYPASS_ZALO_CHECK = false;
 
 <section class="section">
 
-
 <div class="section-title">
     <span>Báo cáo</span>
 </div>
 
 <div class="menu">
 
+```
+<!-- DOANH THU -->
 
-    <!-- DOANH THU -->
+<a
+    class="menu-button"
+    href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb"
+    data-lark="Báo cáo doanh thu"
+>
 
-    <a
-        class="menu-button"
-        href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb"
-        data-lark="Báo cáo doanh thu"
-    >
+    <div class="button-icon orange">
+        ₫
+    </div>
 
-        <div class="button-icon orange">
-            ₫
+    <div class="button-content">
+
+        <div class="button-title">
+            Báo cáo doanh thu
         </div>
 
-        <div class="button-content">
-
-            <div class="button-title">
-                Báo cáo doanh thu
-            </div>
-
-            <div class="button-description">
-                Gửi báo cáo doanh thu của
-                cửa hàng.
-            </div>
-
+        <div class="button-description">
+            Gửi báo cáo doanh thu của
+            cửa hàng.
         </div>
 
-        <div class="arrow">
-            ›
+    </div>
+
+    <div class="arrow">
+        ›
+    </div>
+
+</a>
+
+
+<!-- HUỶ NGUYÊN VẬT LIỆU -->
+
+<a
+    class="menu-button"
+    href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd"
+    data-lark="Báo cáo huỷ nguyên vật liệu"
+>
+
+    <div class="button-icon red">
+        !
+    </div>
+
+    <div class="button-content">
+
+        <div class="button-title">
+            Báo cáo huỷ nguyên vật liệu
         </div>
 
-    </a>
-
-
-    <!-- HUỶ NGUYÊN VẬT LIỆU -->
-
-    <a
-        class="menu-button"
-        href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd"
-        data-lark="Báo cáo huỷ nguyên vật liệu"
-    >
-
-        <div class="button-icon red">
-            !
+        <div class="button-description">
+            Ghi nhận nguyên vật liệu bị huỷ
+            trong quá trình vận hành.
         </div>
 
-        <div class="button-content">
+    </div>
 
-            <div class="button-title">
-                Báo cáo huỷ nguyên vật liệu
-            </div>
+    <div class="arrow">
+        ›
+    </div>
 
-            <div class="button-description">
-                Ghi nhận nguyên vật liệu bị huỷ
-                trong quá trình vận hành.
-            </div>
-
-        </div>
-
-        <div class="arrow">
-            ›
-        </div>
-
-    </a>
+</a>
+```
 
 </div>
-
 
 </section>
 
@@ -1352,43 +1256,43 @@ const BYPASS_ZALO_CHECK = false;
 
 <section class="section">
 
-
 <div class="section-title">
     <span>Vận hành</span>
 </div>
 
 <div class="menu">
 
-    <a
-        class="menu-button"
-        href="./OperationLogs.html"
-    >
+```
+<a
+    class="menu-button"
+    href="./OperationLogs.html"
+>
 
-        <div class="button-icon">
-            ◷
+    <div class="button-icon">
+        ◷
+    </div>
+
+    <div class="button-content">
+
+        <div class="button-title">
+            Nhật ký vận hành
         </div>
 
-        <div class="button-content">
-
-            <div class="button-title">
-                Nhật ký vận hành
-            </div>
-
-            <div class="button-description">
-                Ghi nhận và cập nhật các vấn đề
-                phát sinh trong vận hành.
-            </div>
-
+        <div class="button-description">
+            Ghi nhận và cập nhật các vấn đề
+            phát sinh trong vận hành.
         </div>
 
-        <div class="arrow">
-            ›
-        </div>
+    </div>
 
-    </a>
+    <div class="arrow">
+        ›
+    </div>
+
+</a>
+```
 
 </div>
-
 
 </section>
 
@@ -1398,75 +1302,74 @@ const BYPASS_ZALO_CHECK = false;
 
 <section class="section">
 
-
 <div class="section-title">
     <span>Quy trình vận hành tiêu chuẩn</span>
 </div>
 
 <div class="menu">
 
+```
+<!-- KHƯƠNG TRUNG -->
 
-    <!-- KHƯƠNG TRUNG -->
+<a
+    class="menu-button sop-button"
+    href="https://rjtj1yaw65k.sg.larksuite.com/wiki/UE0wwgqeSi2pKskkDgalSbTjgJd?from=from_copylink"
+>
 
-    <a
-        class="menu-button sop-button"
-        href="https://rjtj1yaw65k.sg.larksuite.com/wiki/UE0wwgqeSi2pKskkDgalSbTjgJd?from=from_copylink"
-    >
+    <div class="button-icon">
+        ≡
+    </div>
 
-        <div class="button-icon">
-            ≡
+    <div class="button-content">
+
+        <div class="button-title">
+            Quy trình vận hành · 69 Khương Trung
         </div>
 
-        <div class="button-content">
-
-            <div class="button-title">
-                Quy trình vận hành · 69 Khương Trung
-            </div>
-
-            <div class="button-description">
-                Quy trình vận hành cửa hàng
-            </div>
-
+        <div class="button-description">
+            Quy trình vận hành cửa hàng
         </div>
 
-        <div class="arrow">
-            ↗
+    </div>
+
+    <div class="arrow">
+        ↗
+    </div>
+
+</a>
+
+
+<!-- THÁI THỊNH -->
+
+<a
+    class="menu-button sop-button"
+    href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd"
+>
+
+    <div class="button-icon">
+        ≡
+    </div>
+
+    <div class="button-content">
+
+        <div class="button-title">
+            Quy trình vận hành · 122 Thái Thịnh
         </div>
 
-    </a>
-
-
-    <!-- THÁI THỊNH -->
-
-    <a
-        class="menu-button sop-button"
-        href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd"
-    >
-
-        <div class="button-icon">
-            ≡
+        <div class="button-description">
+            Quy trình vận hành cửa hàng
         </div>
 
-        <div class="button-content">
+    </div>
 
-            <div class="button-title">
-                Quy trình vận hành · 122 Thái Thịnh
-            </div>
+    <div class="arrow">
+        ↗
+    </div>
 
-            <div class="button-description">
-                Quy trình vận hành cửa hàng
-            </div>
-
-        </div>
-
-        <div class="arrow">
-            ↗
-        </div>
-
-    </a>
+</a>
+```
 
 </div>
-
 
 </section>
 
@@ -1476,43 +1379,43 @@ const BYPASS_ZALO_CHECK = false;
 
 <section class="section">
 
-
 <div class="section-title">
     <span>Thư viện</span>
 </div>
 
 <div class="menu">
 
-    <a
-        class="menu-button"
-        href="./Thu-vien.html"
-    >
+```
+<a
+    class="menu-button"
+    href="./Thu-vien.html"
+>
 
-        <div class="button-icon yellow">
-            ▤
+    <div class="button-icon yellow">
+        ▤
+    </div>
+
+    <div class="button-content">
+
+        <div class="button-title">
+            Thư viện công thức
         </div>
 
-        <div class="button-content">
-
-            <div class="button-title">
-                Thư viện công thức
-            </div>
-
-            <div class="button-description">
-                Tra cứu công thức và hình ảnh công thức
-                các món tại Tascus Food.
-            </div>
-
+        <div class="button-description">
+            Tra cứu công thức và hình ảnh công thức
+            các món tại Tascus Food.
         </div>
 
-        <div class="arrow">
-            ›
-        </div>
+    </div>
 
-    </a>
+    <div class="arrow">
+        ›
+    </div>
+
+</a>
+```
 
 </div>
-
 
 </section>
 
@@ -1522,71 +1425,70 @@ const BYPASS_ZALO_CHECK = false;
 
 <section class="section">
 
-
 <div class="section-title">
     <span>Nhân viên</span>
 </div>
 
 <div class="menu">
 
+```
+<!-- SỔ TAY -->
 
-    <!-- SỔ TAY -->
+<div class="menu-button coming-soon">
 
-    <div class="menu-button coming-soon">
+    <div class="button-icon">
+        +
+    </div>
 
-        <div class="button-icon">
-            +
+    <div class="button-content">
+
+        <div class="button-title">
+            Sổ tay nhân viên
         </div>
 
-        <div class="button-content">
-
-            <div class="button-title">
-                Sổ tay nhân viên
-            </div>
-
-            <div class="button-description">
-                Tài liệu hướng dẫn dành cho nhân viên
-                Tascus Food.
-            </div>
-
-        </div>
-
-        <div class="coming-soon-badge">
-            SẮP RA MẮT
+        <div class="button-description">
+            Tài liệu hướng dẫn dành cho nhân viên
+            Tascus Food.
         </div>
 
     </div>
 
-
-    <!-- ĐÀO TẠO -->
-
-    <div class="menu-button coming-soon">
-
-        <div class="button-icon">
-            ✓
-        </div>
-
-        <div class="button-content">
-
-            <div class="button-title">
-                Đào tạo / Kiểm tra
-            </div>
-
-            <div class="button-description">
-                Học quy trình và kiểm tra kiến thức
-                vận hành của nhân viên.
-            </div>
-
-        </div>
-
-        <div class="coming-soon-badge">
-            SẮP RA MẮT
-        </div>
-
+    <div class="coming-soon-badge">
+        SẮP RA MẮT
     </div>
 
 </div>
 
+
+<!-- ĐÀO TẠO -->
+
+<div class="menu-button coming-soon">
+
+    <div class="button-icon">
+        ✓
+    </div>
+
+    <div class="button-content">
+
+        <div class="button-title">
+            Đào tạo / Kiểm tra
+        </div>
+
+        <div class="button-description">
+            Học quy trình và kiểm tra kiến thức
+            vận hành của nhân viên.
+        </div>
+
+    </div>
+
+    <div class="coming-soon-badge">
+        SẮP RA MẮT
+    </div>
+
+</div>
+```
+
+</div>
 
 </section>
 
@@ -1610,7 +1512,6 @@ const BYPASS_ZALO_CHECK = false;
     aria-hidden="true"
 >
 
-
 <div
     class="lark-window"
     role="dialog"
@@ -1618,96 +1519,41 @@ const BYPASS_ZALO_CHECK = false;
     aria-labelledby="larkTitle"
 >
 
-    <div class="lark-header">
+```
+<div class="lark-header">
 
-        <div
-            id="larkTitle"
-            class="lark-title"
-        >
-            Lark Form
-        </div>
-
-        <button
-            id="larkClose"
-            class="lark-close"
-            type="button"
-            aria-label="Đóng"
-        >
-            ×
-        </button>
-
+    <div
+        id="larkTitle"
+        class="lark-title"
+    >
+        Lark Form
     </div>
 
-    <iframe
-        id="larkFrame"
-        class="lark-frame"
-        src="about:blank"
-        loading="eager"
-        allow="clipboard-read; clipboard-write"
-    ></iframe>
+    <button
+        id="larkClose"
+        class="lark-close"
+        type="button"
+        aria-label="Đóng"
+    >
+        ×
+    </button>
 
 </div>
 
+<iframe
+    id="larkFrame"
+    class="lark-frame"
+    src="about:blank"
+    loading="eager"
+    allow="clipboard-read; clipboard-write"
+></iframe>
+```
+
+</div>
 
 </div>
 
 <script>
-
-/* =====================================================
-   HIỂN THỊ / CHẶN THEO TRÌNH DUYỆT
-===================================================== */
-
-(function () {
-
-    const userAgent =
-        navigator.userAgent ||
-        navigator.vendor ||
-        window.opera ||
-        "";
-
-    const isZaloBrowser =
-        /Zalo/i.test(userAgent);
-
-    const allowed =
-        BYPASS_ZALO_CHECK ||
-        isZaloBrowser;
-
-
-    const mainContent =
-        document.querySelector("body > .container");
-
-    const zaloBlocked =
-        document.getElementById("zaloBlocked");
-
-
-    if (allowed) {
-
-        document.body.classList.add("zalo-allowed");
-
-        if (mainContent) {
-            mainContent.style.display = "";
-        }
-
-        if (zaloBlocked) {
-            zaloBlocked.style.display = "none";
-        }
-
-    } else {
-
-        document.body.classList.add("not-zalo");
-
-        if (mainContent) {
-            mainContent.style.display = "none";
-        }
-
-        if (zaloBlocked) {
-            zaloBlocked.style.display = "flex";
-        }
-
-    }
-
-})();
-
 
 /* =====================================================
    INFO POPUP
