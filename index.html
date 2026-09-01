@@ -9,10 +9,6 @@
 
 <title>Cổng vận hành - Tascus Food</title>
 
-<!-- =====================================================
-     CSS CHÍNH
-===================================================== -->
-
 <style>
 
 * {
@@ -96,7 +92,9 @@ body {
 
 .header p {
     font-size: 14px;
+
     line-height: 1.55;
+
     color: #777;
 }
 
@@ -120,6 +118,7 @@ body {
     gap: 10px;
 
     margin-bottom: 10px;
+
     padding-left: 3px;
 }
 
@@ -154,7 +153,9 @@ body {
 
 .menu {
     display: flex;
+
     flex-direction: column;
+
     gap: 12px;
 }
 
@@ -175,9 +176,11 @@ body {
     padding: 20px;
 
     display: flex;
+
     align-items: center;
 
     text-decoration: none;
+
     color: inherit;
 
     cursor: pointer;
@@ -224,6 +227,7 @@ body {
     background: #f1f2f3;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -263,6 +267,7 @@ body {
 
 .button-content {
     flex: 1;
+
     min-width: 0;
 }
 
@@ -307,6 +312,7 @@ body {
 
 .menu-button:hover .arrow {
     color: #666;
+
     transform: translateX(2px);
 }
 
@@ -333,6 +339,7 @@ body {
 
 .sop-button .button-title {
     font-size: 14px;
+
     margin-bottom: 3px;
 }
 
@@ -347,6 +354,7 @@ body {
 
 .coming-soon {
     background: #fafafa;
+
     cursor: default;
 }
 
@@ -366,6 +374,7 @@ body {
 
 .coming-soon .button-icon {
     background: #f1f2f3;
+
     color: #999;
 }
 
@@ -406,143 +415,6 @@ body {
 
 
 /* =========================
-   LARK POPUP
-========================= */
-
-.lark-modal {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    background: rgba(0, 0, 0, 0.45);
-
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-}
-
-.lark-modal.active {
-    display: flex;
-}
-
-.lark-window {
-    width: min(100%, 900px);
-
-    height: min(92vh, 850px);
-
-    background: #fff;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.22);
-
-    display: flex;
-
-    flex-direction: column;
-
-    animation: modalIn 0.16s ease-out;
-}
-
-@keyframes modalIn {
-
-    from {
-        opacity: 0;
-        transform:
-            scale(0.97)
-            translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            scale(1)
-            translateY(0);
-    }
-
-}
-
-.lark-header {
-    height: 54px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 14px 0 18px;
-
-    border-bottom: 1px solid #e8e8e8;
-
-    background: #fff;
-}
-
-.lark-title {
-    font-size: 14px;
-
-    font-weight: 600;
-
-    color: #333;
-}
-
-.lark-close {
-    width: 36px;
-    height: 36px;
-
-    border: 0;
-
-    border-radius: 10px;
-
-    background: transparent;
-
-    color: #777;
-
-    font-size: 25px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    -webkit-tap-highlight-color: transparent;
-}
-
-.lark-close:hover {
-    background: #f1f2f3;
-    color: #333;
-}
-
-.lark-frame {
-    flex: 1;
-
-    width: 100%;
-    height: 100%;
-
-    border: 0;
-
-    display: block;
-
-    background: #fff;
-}
-
-
-/* =========================
    INFO BUTTON
 ========================= */
 
@@ -567,14 +439,12 @@ body {
     font-weight: 600;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     cursor: pointer;
 
-    box-shadow:
-        0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 
     -webkit-tap-highlight-color: transparent;
 
@@ -610,7 +480,7 @@ body {
 
     padding: 20px;
 
-    z-index: 10000;
+    z-index: 9999;
 }
 
 .info-overlay.show {
@@ -644,16 +514,12 @@ body {
 
     from {
         opacity: 0;
-        transform:
-            scale(0.96)
-            translateY(6px);
+        transform: scale(0.96) translateY(6px);
     }
 
     to {
         opacity: 1;
-        transform:
-            scale(1)
-            translateY(0);
+        transform: scale(1) translateY(0);
     }
 
 }
@@ -693,7 +559,6 @@ body {
     color: #666;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -724,15 +589,185 @@ body {
 
 
 /* =========================
-   ZALO BLOCK
+   LARK POPUP
+========================= */
+
+.lark-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(3px);
+
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.lark-modal.active {
+    display: flex;
+}
+
+.lark-window {
+    width: min(100%, 900px);
+
+    height: min(92vh, 850px);
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.22);
+
+    display: flex;
+
+    flex-direction: column;
+
+    animation: modalIn 0.16s ease-out;
+}
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.97)
+            translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+
+}
+
+.lark-header {
+    height: 54px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 14px 0 18px;
+
+    border-bottom: 1px solid #e8e8e8;
+
+    background: #fff;
+}
+
+.lark-title {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #333;
+}
+
+.lark-close {
+    width: 36px;
+
+    height: 36px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #777;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.lark-close:hover {
+    background: #f1f2f3;
+
+    color: #333;
+}
+
+.lark-frame {
+    flex: 1;
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    display: block;
+
+    background: #fff;
+}
+
+
+/* =========================
+   ZALO BLOCK SCREEN
 ========================= */
 
 #zaloBlocked {
     display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: #f5f6f7;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    text-align: center;
+
+    z-index: 999999;
 }
 
 .zalo-blocked-box {
     width: 100%;
+
     max-width: 380px;
 
     background: #fff;
@@ -743,14 +778,13 @@ body {
 
     padding: 30px 24px;
 
-    text-align: center;
-
     box-shadow:
         0 8px 30px rgba(0,0,0,.06);
 }
 
 .zalo-blocked-icon {
     font-size: 40px;
+
     margin-bottom: 16px;
 }
 
@@ -863,27 +897,6 @@ body {
         height: 43px;
     }
 
-    .lark-modal {
-        padding: 0;
-    }
-
-    .lark-window {
-        width: 100%;
-        height: 100%;
-        max-height: none;
-        border-radius: 0;
-    }
-
-    .lark-header {
-        height: 52px;
-        padding-left: 15px;
-    }
-
-    .lark-close {
-        width: 38px;
-        height: 38px;
-    }
-
     .info-button {
         top: 14px;
         right: 14px;
@@ -895,10 +908,35 @@ body {
     .info-popup {
         max-width: 360px;
 
-        padding:
-            25px 20px 21px;
+        padding: 25px 20px 21px;
 
         border-radius: 16px;
+    }
+
+    .lark-modal {
+        padding: 0;
+    }
+
+    .lark-window {
+        width: 100%;
+
+        height: 100%;
+
+        max-height: none;
+
+        border-radius: 0;
+    }
+
+    .lark-header {
+        height: 52px;
+
+        padding-left: 15px;
+    }
+
+    .lark-close {
+        width: 38px;
+
+        height: 38px;
     }
 
 }
@@ -946,57 +984,61 @@ body {
 
 </style>
 
-<!-- =====================================================
-     CSS CHO CƠ CHẾ ZALO
-===================================================== -->
-
-<style>
+<script>
 
 /*
- * Ban đầu giấu toàn bộ trang.
- * Script cuối body sẽ quyết định có hiện hay không.
- */
+=====================================================
+   CẤU HÌNH KIỂM TRA ZALO
+=====================================================
 
-body {
-    visibility: hidden;
-}
+false = chỉ cho trình duyệt Zalo truy cập
 
-body.zalo-allowed {
-    visibility: visible;
-}
+true = bỏ kiểm tra để debug trên máy tính
 
-body.not-zalo {
-    visibility: visible;
-}
+Khi deploy chính thức:
+BYPASS_ZALO_CHECK = false
+*/
 
-body.not-zalo > *:not(#zaloBlocked) {
-    display: none !important;
-}
+const BYPASS_ZALO_CHECK = false;
 
-body.not-zalo #zaloBlocked {
-    display: flex;
 
-    position: fixed;
+/*
+=====================================================
+   KIỂM TRA USER AGENT
+=====================================================
+*/
 
-    inset: 0;
+(function () {
 
-    align-items: center;
-    justify-content: center;
+    const userAgent =
+        navigator.userAgent ||
+        navigator.vendor ||
+        window.opera ||
+        "";
 
-    padding: 24px;
+    const isZaloBrowser =
+        /Zalo/i.test(userAgent);
 
-    background: #f5f6f7;
-}
+    const allowed =
+        BYPASS_ZALO_CHECK || isZaloBrowser;
 
-</style>
+    document.documentElement.classList.add(
+        allowed
+            ? "zalo-browser"
+            : "not-zalo-browser"
+    );
+
+})();
+
+</script>
 
 </head>
 
 <body>
 
-<!-- =====================================================
-     MÀN HÌNH CHẶN
-===================================================== -->
+<!-- =========================
+     CHẶN TRÌNH DUYỆT KHÁC
+========================= -->
 
 <div id="zaloBlocked">
 
@@ -1012,7 +1054,7 @@ body.not-zalo #zaloBlocked {
     </h2>
 
     <p>
-        Truy cập bị chặn.
+        Deny Everything.
     </p>
 
 </div>
@@ -1020,9 +1062,9 @@ body.not-zalo #zaloBlocked {
 
 </div>
 
-<!-- =====================================================
-     CỔNG VẬN HÀNH
-===================================================== -->
+<!-- =========================
+     NỘI DUNG CHÍNH
+========================= -->
 
 <main class="container">
 
@@ -1076,7 +1118,6 @@ body.not-zalo #zaloBlocked {
         <button
             class="info-close"
             onclick="closeInfo()"
-            aria-label="Đóng"
         >
             ×
         </button>
@@ -1559,9 +1600,9 @@ body.not-zalo #zaloBlocked {
 
 </main>
 
-<!-- =====================================================
+<!-- =========================
      LARK FORM POPUP
-===================================================== -->
+========================= -->
 
 <div
     id="larkModal"
@@ -1610,67 +1651,58 @@ body.not-zalo #zaloBlocked {
 
 </div>
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
 
 /* =====================================================
-   ZALO ACCESS CONTROL
+   HIỂN THỊ / CHẶN THEO TRÌNH DUYỆT
 ===================================================== */
 
 (function () {
 
     const userAgent =
-        navigator.userAgent || "";
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    /*
-     * Nhận diện trình duyệt Zalo.
-     */
+        navigator.userAgent ||
+        navigator.vendor ||
+        window.opera ||
+        "";
 
     const isZaloBrowser =
-        /zalo/i.test(userAgent);
+        /Zalo/i.test(userAgent);
 
-    /*
-     * Chìa khóa debug.
-     *
-     * Đổi chuỗi này thành chuỗi riêng của bạn.
-     */
-
-    const DEV_KEY =
-        "7Kx29Qm8";
-
-    const isDeveloper =
-        params.get("dev") === DEV_KEY;
+    const allowed =
+        BYPASS_ZALO_CHECK ||
+        isZaloBrowser;
 
 
-    /*
-     * Cho phép:
-     *
-     * 1. Trình duyệt Zalo
-     * 2. Máy tính có dev key
-     */
+    const mainContent =
+        document.querySelector("body > .container");
 
-    if (
-        isZaloBrowser ||
-        isDeveloper
-    ) {
+    const zaloBlocked =
+        document.getElementById("zaloBlocked");
 
-        document.body.classList.add(
-            "zalo-allowed"
-        );
+
+    if (allowed) {
+
+        document.body.classList.add("zalo-allowed");
+
+        if (mainContent) {
+            mainContent.style.display = "";
+        }
+
+        if (zaloBlocked) {
+            zaloBlocked.style.display = "none";
+        }
 
     } else {
 
-        document.body.classList.add(
-            "not-zalo"
-        );
+        document.body.classList.add("not-zalo");
+
+        if (mainContent) {
+            mainContent.style.display = "none";
+        }
+
+        if (zaloBlocked) {
+            zaloBlocked.style.display = "flex";
+        }
 
     }
 
@@ -1693,18 +1725,14 @@ function openInfo() {
 function closeInfo(event) {
 
     const overlay =
-        document.getElementById(
-            "infoOverlay"
-        );
+        document.getElementById("infoOverlay");
 
     if (
         !event ||
         event.target === overlay
     ) {
 
-        overlay.classList.remove(
-            "show"
-        );
+        overlay.classList.remove("show");
 
     }
 
@@ -1716,30 +1744,17 @@ function closeInfo(event) {
 ===================================================== */
 
 const larkModal =
-    document.getElementById(
-        "larkModal"
-    );
+    document.getElementById("larkModal");
 
 const larkFrame =
-    document.getElementById(
-        "larkFrame"
-    );
+    document.getElementById("larkFrame");
 
 const larkTitle =
-    document.getElementById(
-        "larkTitle"
-    );
+    document.getElementById("larkTitle");
 
 const larkClose =
-    document.getElementById(
-        "larkClose"
-    );
+    document.getElementById("larkClose");
 
-
-/*
- * Tất cả link có data-lark
- * sẽ mở trong popup.
- */
 
 document
     .querySelectorAll("[data-lark]")
@@ -1747,31 +1762,23 @@ document
 
         button.addEventListener(
             "click",
-            function (event) {
+            function(event) {
 
                 event.preventDefault();
 
                 const url =
-                    this.getAttribute(
-                        "href"
-                    );
+                    this.getAttribute("href");
 
                 const title =
-                    this.getAttribute(
-                        "data-lark"
-                    );
+                    this.getAttribute("data-lark");
 
                 if (!url) return;
 
-                larkTitle.textContent =
-                    title;
+                larkTitle.textContent = title;
 
-                larkFrame.src =
-                    url;
+                larkFrame.src = url;
 
-                larkModal.classList.add(
-                    "active"
-                );
+                larkModal.classList.add("active");
 
                 larkModal.setAttribute(
                     "aria-hidden",
@@ -1787,24 +1794,18 @@ document
     });
 
 
-/*
- * Đóng popup Lark.
- */
+/* =====================================================
+   ĐÓNG LARK POPUP
+===================================================== */
 
 function closeLarkModal() {
 
-    larkModal.classList.remove(
-        "active"
-    );
+    larkModal.classList.remove("active");
 
     larkModal.setAttribute(
         "aria-hidden",
         "true"
     );
-
-    /*
-     * Xoá iframe sau khi đóng.
-     */
 
     larkFrame.src =
         "about:blank";
@@ -1821,13 +1822,13 @@ larkClose.addEventListener(
 );
 
 
-/*
- * Click vùng tối để đóng.
- */
+/* =====================================================
+   CLICK RA NGOÀI POPUP
+===================================================== */
 
 larkModal.addEventListener(
     "click",
-    function (event) {
+    function(event) {
 
         if (
             event.target === larkModal
@@ -1841,19 +1842,17 @@ larkModal.addEventListener(
 );
 
 
-/*
- * ESC để đóng trên máy tính.
- */
+/* =====================================================
+   ESC
+===================================================== */
 
 document.addEventListener(
     "keydown",
-    function (event) {
+    function(event) {
 
         if (
             event.key === "Escape" &&
-            larkModal.classList.contains(
-                "active"
-            )
+            larkModal.classList.contains("active")
         ) {
 
             closeLarkModal();
