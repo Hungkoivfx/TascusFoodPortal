@@ -4,903 +4,546 @@
 
 <head>
 
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Cổng vận hành - Tascus Food</title>
 
+<!-- =====================================================
+     CSS CHÍNH
+===================================================== -->
+
 <style>
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: #f5f6f7;
+    color: #222;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 24px 16px;
+}
+
+.container {
+    width: 100%;
+    max-width: 620px;
+}
 
-    body {
-        font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Arial,
-            sans-serif;
-
-        background: #f5f6f7;
-        color: #222;
-
-        min-height: 100vh;
-        min-height: 100dvh;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        padding: 24px 16px;
-    }
-
-    .container {
-        width: 100%;
-        max-width: 620px;
-    }
-
-
-    /* =========================
-       HEADER
-    ========================= */
-
-
-    .header {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .logo {
-        width: 58px;
-        height: 58px;
-
-        margin: 0 auto 16px;
-
-        border-radius: 16px;
-
-        background: #fff;
-        border: 1px solid #e1e3e5;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        overflow: hidden;
-    }
-
-    .logo img {
-        width: 100%;
-        height: 100%;
-
-        object-fit: contain;
-
-        border-radius: 15px;
-    }
-
-    .header h1 {
-        font-size: 25px;
-        font-weight: 600;
-
-        letter-spacing: -0.4px;
-
-        margin-bottom: 8px;
-    }
-
-    .header p {
-        font-size: 14px;
-
-        line-height: 1.55;
-
-        color: #777;
-    }
-
-
-    /* =========================
-       SECTION
-    ========================= */
-
-    .section {
-        margin-bottom: 25px;
-    }
-
-    .section:last-of-type {
-        margin-bottom: 0;
-    }
-
-    .section-title {
-        display: flex;
-        align-items: center;
-
-        gap: 10px;
-
-        margin-bottom: 10px;
-
-        padding-left: 3px;
-    }
-
-    .section-title span {
-        font-size: 11px;
-
-        font-weight: 600;
-
-        color: #888;
-
-        letter-spacing: 0.8px;
-
-        text-transform: uppercase;
-
-        white-space: nowrap;
-    }
-
-    .section-title::after {
-        content: "";
-
-        flex: 1;
-
-        height: 1px;
-
-        background: #e2e4e6;
-    }
-
-
-    /* =========================
-       MENU
-    ========================= */
-
-    .menu {
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 12px;
-    }
-
-
-    /* =========================
-       BUTTON
-    ========================= */
-
-    .menu-button {
-        width: 100%;
-
-        background: #fff;
-
-        border: 1px solid #e1e3e5;
-
-        border-radius: 16px;
-
-        padding: 20px;
-
-        display: flex;
-
-        align-items: center;
-
-        text-decoration: none;
-
-        color: inherit;
-
-        cursor: pointer;
-
-        -webkit-tap-highlight-color: transparent;
-
-        touch-action: manipulation;
-
-        transition:
-            transform 0.1s ease,
-            box-shadow 0.1s ease,
-            border-color 0.1s ease;
-    }
-
-    .menu-button:hover {
-        border-color: #cfd2d5;
-
-        box-shadow:
-            0 7px 20px rgba(0, 0, 0, 0.06);
-
-        transform: translateY(-1px);
-    }
-
-    .menu-button:active {
-        transform: scale(0.975);
-
-        box-shadow:
-            0 2px 6px rgba(0, 0, 0, 0.04);
-    }
-
-
-    /* =========================
-       ICON
-    ========================= */
-
-    .button-icon {
-        width: 48px;
-        height: 48px;
-
-        flex-shrink: 0;
-
-        border-radius: 13px;
-
-        background: #f1f2f3;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        font-size: 22px;
-
-        margin-right: 16px;
-
-        color: #333;
-
-        line-height: 1;
-    }
-
-
-    /* =========================
-       ACCENTS
-    ========================= */
-
-    .button-icon.yellow {
-        background: #faf6df;
-        color: #9b8420;
-    }
-
-    .button-icon.orange {
-        background: #fcf0e8;
-        color: #c5632c;
-    }
-
-    .button-icon.red {
-        background: #faecea;
-        color: #b94b42;
-    }
-
-
-    /* =========================
-       CONTENT
-    ========================= */
-
-    .button-content {
-        flex: 1;
-
-        min-width: 0;
-    }
-
-    .button-title {
-        font-size: 16px;
-
-        font-weight: 600;
-
-        line-height: 1.3;
-
-        margin-bottom: 5px;
-    }
-
-    .button-description {
-        font-size: 13px;
-
-        line-height: 1.45;
-
-        color: #777;
-    }
-
-
-    /* =========================
-       ARROW
-    ========================= */
-
-    .arrow {
-        flex-shrink: 0;
-
-        margin-left: 12px;
-
-        font-size: 21px;
-
-        line-height: 1;
-
-        color: #999;
-
-        transition:
-            transform 0.1s ease,
-            color 0.1s ease;
-    }
-
-    .menu-button:hover .arrow {
-        color: #666;
-
-        transform: translateX(2px);
-    }
-
-
-    /* =========================
-       SOP
-    ========================= */
-
-    .sop-button {
-        min-height: 76px;
-
-        padding-top: 16px;
-        padding-bottom: 16px;
-    }
-
-    .sop-button .button-icon {
-        width: 44px;
-        height: 44px;
-
-        margin-right: 14px;
-
-        font-size: 17px;
-    }
-
-    .sop-button .button-title {
-        font-size: 14px;
-
-        margin-bottom: 3px;
-    }
-
-    .sop-button .button-description {
-        font-size: 12px;
-    }
-
-
-    /* =========================
-       COMING SOON
-    ========================= */
-
-    .coming-soon {
-        background: #fafafa;
-
-        cursor: default;
-    }
-
-    .coming-soon:hover {
-        transform: none;
-
-        border-color: #e1e3e5;
-
-        box-shadow: none;
-    }
-
-    .coming-soon:active {
-        transform: none;
-
-        box-shadow: none;
-    }
-
-    .coming-soon .button-icon {
-        background: #f1f2f3;
-
-        color: #999;
-    }
-
-    .coming-soon-badge {
-        flex-shrink: 0;
-
-        margin-left: 12px;
-
-        padding: 6px 9px;
-
-        border-radius: 8px;
-
-        background: #f0f1f2;
-
-        color: #999;
-
-        font-size: 10px;
-
-        font-weight: 600;
-
-        white-space: nowrap;
-    }
-
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    .footer {
-        text-align: center;
-
-        margin-top: 25px;
-
-        font-size: 12px;
-
-        color: #999;
-    }
-
-
-    /* =========================
-       LARK POPUP
-    ========================= */
-
-    .lark-modal {
-        position: fixed;
-
-        inset: 0;
-
-        z-index: 9999;
-
-        display: none;
-
-        align-items: center;
-
-        justify-content: center;
-
-        padding: 20px;
-
-        background: rgba(0, 0, 0, 0.45);
-
-        backdrop-filter: blur(3px);
-
-        -webkit-backdrop-filter: blur(3px);
-    }
-
-    .lark-modal.active {
-        display: flex;
-    }
-
-    .lark-window {
-        width: min(100%, 900px);
-
-        height: min(92vh, 850px);
-
-        background: #fff;
-
-        border-radius: 18px;
-
-        overflow: hidden;
-
-        box-shadow:
-            0 20px 60px rgba(0, 0, 0, 0.22);
-
-        display: flex;
-
-        flex-direction: column;
-
-        animation: modalIn 0.16s ease-out;
-    }
-
-    @keyframes modalIn {
-
-        from {
-            opacity: 0;
-
-            transform:
-                scale(0.97)
-                translateY(8px);
-        }
-
-        to {
-            opacity: 1;
-
-            transform:
-                scale(1)
-                translateY(0);
-        }
-
-    }
-
-    .lark-header {
-        height: 54px;
-
-        flex-shrink: 0;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        padding: 0 14px 0 18px;
-
-        border-bottom: 1px solid #e8e8e8;
-
-        background: #fff;
-    }
-
-    .lark-title {
-        font-size: 14px;
-
-        font-weight: 600;
-
-        color: #333;
-    }
-
-    .lark-close {
-        width: 36px;
-
-        height: 36px;
-
-        border: 0;
-
-        border-radius: 10px;
-
-        background: transparent;
-
-        color: #777;
-
-        font-size: 25px;
-
-        line-height: 1;
-
-        cursor: pointer;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .lark-close:hover {
-        background: #f1f2f3;
-
-        color: #333;
-    }
-
-    .lark-frame {
-        flex: 1;
-
-        width: 100%;
-
-        height: 100%;
-
-        border: 0;
-
-        display: block;
-
-        background: #fff;
-    }
-
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 600px) {
-
-        body {
-            align-items: flex-start;
-
-            padding:
-                max(28px, env(safe-area-inset-top))
-                16px
-                max(24px, env(safe-area-inset-bottom));
-        }
-
-        .container {
-            max-width: 480px;
-
-            margin: auto 0;
-        }
-
-        .header {
-            margin-bottom: 25px;
-        }
-
-        .logo {
-            width: 54px;
-            height: 54px;
-
-            border-radius: 15px;
-
-            margin-bottom: 14px;
-        }
-
-        .logo img {
-            border-radius: 14px;
-        }
-
-        .header h1 {
-            font-size: 23px;
-        }
-
-        .header p {
-            font-size: 13px;
-        }
-
-        .section {
-            margin-bottom: 22px;
-        }
-
-        .menu {
-            gap: 11px;
-        }
-
-        .menu-button {
-            min-height: 96px;
-
-            padding: 18px 16px;
-
-            border-radius: 15px;
-        }
-
-        .button-icon {
-            width: 46px;
-            height: 46px;
-
-            margin-right: 13px;
-
-            border-radius: 12px;
-        }
-
-        .button-title {
-            font-size: 15px;
-        }
-
-        .button-description {
-            font-size: 12.5px;
-        }
-
-        .arrow {
-            font-size: 19px;
-        }
-
-        .sop-button {
-            min-height: 72px;
-        }
-
-        .sop-button .button-icon {
-            width: 43px;
-            height: 43px;
-        }
-
-
-        /* POPUP MOBILE */
-
-        .lark-modal {
-            padding: 0;
-        }
-
-        .lark-window {
-            width: 100%;
-
-            height: 100%;
-
-            max-height: none;
-
-            border-radius: 0;
-        }
-
-        .lark-header {
-            height: 52px;
-
-            padding-left: 15px;
-        }
-
-        .lark-close {
-            width: 38px;
-            height: 38px;
-        }
-
-    }
-
-
-    /* =========================
-       SMALL PHONES
-    ========================= */
-
-    @media (max-width: 360px) {
-
-        body {
-            padding-left: 12px;
-            padding-right: 12px;
-        }
-
-        .header h1 {
-            font-size: 21px;
-        }
-
-        .menu-button {
-            padding: 16px 13px;
-        }
-
-        .button-icon {
-            width: 42px;
-            height: 42px;
-
-            font-size: 19px;
-
-            margin-right: 11px;
-        }
-
-        .button-description {
-            font-size: 12px;
-        }
-
-        .coming-soon-badge {
-            padding: 5px 7px;
-
-            font-size: 9px;
-        }
-
-    }
-
-</style>
-
-<style>
-    body {
-        visibility: hidden;
-    }
-
-    body.zalo-allowed {
-        visibility: visible;
-    }
-
-    #zaloBlocked {
-        display: none;
-    }
-
-    body.not-zalo {
-        visibility: visible;
-    }
-
-    body.not-zalo > *:not(#zaloBlocked) {
-        display: none !important;
-    }
-
-    body.not-zalo #zaloBlocked {
-        display: flex;
-    }
-
-    #zaloBlocked {
-        position: fixed;
-        inset: 0;
-        background: #f5f6f7;
-        align-items: center;
-        justify-content: center;
-        padding: 24px;
-        font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Arial,
-            sans-serif;
-        text-align: center;
-    }
-
-    .zalo-blocked-box {
-        width: 100%;
-        max-width: 380px;
-        background: #fff;
-        border: 1px solid #e1e3e5;
-        border-radius: 18px;
-        padding: 30px 24px;
-        box-shadow: 0 8px 30px rgba(0,0,0,.06);
-    }
-
-    .zalo-blocked-icon {
-        font-size: 40px;
-        margin-bottom: 16px;
-    }
-
-    .zalo-blocked-box h2 {
-        font-size: 19px;
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
-
-    .zalo-blocked-box p {
-        font-size: 14px;
-        line-height: 1.55;
-        color: #777;
-    }
-</style>
-
-<script>
-(function () {
-
-    const userAgent = navigator.userAgent || "";
-
-    const isZaloBrowser = /zalo/i.test(userAgent);
-
-    document.documentElement.classList.add(
-        isZaloBrowser ? "zalo-browser" : "not-zalo-browser"
-    );
-</head>
-
-<body>
-<div id="zaloBlocked">
-
-    <div class="zalo-blocked-box">
-
-        <div class="zalo-blocked-icon">
-            🔒
-        </div>
-
-        <h2>
-            Không thể truy cập
-        </h2>
-
-        <p>
-            Truy cập bị chặn.
-        </p>
-
-    </div>
-
-</div>
-<main class="container">
-
-
-<!-- =========================
-     HEADER
-========================== -->
-
-<header class="header">
-
-    <div class="logo">
-
-        <img
-            src="./tascuslogofinal-png-07.png"
-            alt="Tascus Food"
-        >
-
-    </div>
-
-    <h1>
-        Cổng vận hành
-    </h1>
-
-    <p>
-        Trung tâm tác nghiệp dành cho nhân viên các cửa hàng<br>
-        Tascus Food Khương Trung và Thái Thịnh.
-    </p>
-<!-- NÚT GIỚI THIỆU -->
-
-<button class="info-button" onclick="openInfo()" aria-label="Giới thiệu cổng vận hành">
-    ?
-</button>
-
-<!-- POPUP -->
-
-<div class="info-overlay" id="infoOverlay" onclick="closeInfo(event)">
-
-```
-<div class="info-popup">
-
-    <button class="info-close" onclick="closeInfo()">
-        ×
-    </button>
-
-    <div class="info-icon">
-        ?
-    </div>
-
-    <h2>Cổng vận hành</h2>
-
-    <p>
-        Đây là nơi tập hợp những thứ nhân viên cần dùng
-        trong công việc hằng ngày tại Tascus Food.
-        Từ đặt hàng, báo cáo, ghi nhận sự cố đến xem
-        quy trình và công thức món, mọi thứ đều được gom
-        lại ở đây để dễ tìm và dễ sử dụng hơn.
-    </p>
-
-    <p>
-        Các chức năng và hướng dẫn trên cổng được thiết kế
-        để nhân viên có thể tự tìm hiểu và thực hiện
-        công việc của mình.
-    </p>
-
-</div>
-```
-
-</div>
-
-<style>
 
 /* =========================
-   NÚT ?
+   HEADER
+========================= */
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 16px;
+
+    border-radius: 16px;
+
+    background: #fff;
+    border: 1px solid #e1e3e5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 15px;
+}
+
+.header h1 {
+    font-size: 25px;
+    font-weight: 600;
+
+    letter-spacing: -0.4px;
+
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #777;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+    margin-bottom: 25px;
+}
+
+.section:last-of-type {
+    margin-bottom: 0;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+    padding-left: 3px;
+}
+
+.section-title span {
+    font-size: 11px;
+
+    font-weight: 600;
+
+    color: #888;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.section-title::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #e2e4e6;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.menu-button {
+    width: 100%;
+
+    background: #fff;
+
+    border: 1px solid #e1e3e5;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    color: inherit;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+
+    touch-action: manipulation;
+
+    transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        border-color 0.1s ease;
+}
+
+.menu-button:hover {
+    border-color: #cfd2d5;
+
+    box-shadow:
+        0 7px 20px rgba(0, 0, 0, 0.06);
+
+    transform: translateY(-1px);
+}
+
+.menu-button:active {
+    transform: scale(0.975);
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================
+   ICON
+========================= */
+
+.button-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    border-radius: 13px;
+
+    background: #f1f2f3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    margin-right: 16px;
+
+    color: #333;
+
+    line-height: 1;
+}
+
+
+/* =========================
+   ACCENTS
+========================= */
+
+.button-icon.yellow {
+    background: #faf6df;
+    color: #9b8420;
+}
+
+.button-icon.orange {
+    background: #fcf0e8;
+    color: #c5632c;
+}
+
+.button-icon.red {
+    background: #faecea;
+    color: #b94b42;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.button-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.button-title {
+    font-size: 16px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    margin-bottom: 5px;
+}
+
+.button-description {
+    font-size: 13px;
+
+    line-height: 1.45;
+
+    color: #777;
+}
+
+
+/* =========================
+   ARROW
+========================= */
+
+.arrow {
+    flex-shrink: 0;
+
+    margin-left: 12px;
+
+    font-size: 21px;
+
+    line-height: 1;
+
+    color: #999;
+
+    transition:
+        transform 0.1s ease,
+        color 0.1s ease;
+}
+
+.menu-button:hover .arrow {
+    color: #666;
+    transform: translateX(2px);
+}
+
+
+/* =========================
+   SOP
+========================= */
+
+.sop-button {
+    min-height: 76px;
+
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.sop-button .button-icon {
+    width: 44px;
+    height: 44px;
+
+    margin-right: 14px;
+
+    font-size: 17px;
+}
+
+.sop-button .button-title {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.sop-button .button-description {
+    font-size: 12px;
+}
+
+
+/* =========================
+   COMING SOON
+========================= */
+
+.coming-soon {
+    background: #fafafa;
+    cursor: default;
+}
+
+.coming-soon:hover {
+    transform: none;
+
+    border-color: #e1e3e5;
+
+    box-shadow: none;
+}
+
+.coming-soon:active {
+    transform: none;
+
+    box-shadow: none;
+}
+
+.coming-soon .button-icon {
+    background: #f1f2f3;
+    color: #999;
+}
+
+.coming-soon-badge {
+    flex-shrink: 0;
+
+    margin-left: 12px;
+
+    padding: 6px 9px;
+
+    border-radius: 8px;
+
+    background: #f0f1f2;
+
+    color: #999;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+
+    margin-top: 25px;
+
+    font-size: 12px;
+
+    color: #999;
+}
+
+
+/* =========================
+   LARK POPUP
+========================= */
+
+.lark-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.lark-modal.active {
+    display: flex;
+}
+
+.lark-window {
+    width: min(100%, 900px);
+
+    height: min(92vh, 850px);
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.22);
+
+    display: flex;
+
+    flex-direction: column;
+
+    animation: modalIn 0.16s ease-out;
+}
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+        transform:
+            scale(0.97)
+            translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            scale(1)
+            translateY(0);
+    }
+
+}
+
+.lark-header {
+    height: 54px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 14px 0 18px;
+
+    border-bottom: 1px solid #e8e8e8;
+
+    background: #fff;
+}
+
+.lark-title {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #333;
+}
+
+.lark-close {
+    width: 36px;
+    height: 36px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #777;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.lark-close:hover {
+    background: #f1f2f3;
+    color: #333;
+}
+
+.lark-frame {
+    flex: 1;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    display: block;
+
+    background: #fff;
+}
+
+
+/* =========================
+   INFO BUTTON
 ========================= */
 
 .info-button {
@@ -924,12 +567,14 @@
     font-weight: 600;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     cursor: pointer;
 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.04);
 
     -webkit-tap-highlight-color: transparent;
 
@@ -948,7 +593,7 @@
 
 
 /* =========================
-   OVERLAY
+   INFO OVERLAY
 ========================= */
 
 .info-overlay {
@@ -965,7 +610,7 @@
 
     padding: 20px;
 
-    z-index: 9999;
+    z-index: 10000;
 }
 
 .info-overlay.show {
@@ -974,7 +619,7 @@
 
 
 /* =========================
-   POPUP
+   INFO POPUP
 ========================= */
 
 .info-popup {
@@ -999,20 +644,19 @@
 
     from {
         opacity: 0;
-        transform: scale(0.96) translateY(6px);
+        transform:
+            scale(0.96)
+            translateY(6px);
     }
 
     to {
         opacity: 1;
-        transform: scale(1) translateY(0);
+        transform:
+            scale(1)
+            translateY(0);
     }
 
 }
-
-
-/* =========================
-   CLOSE
-========================= */
 
 .info-close {
     position: absolute;
@@ -1036,11 +680,6 @@
     cursor: pointer;
 }
 
-
-/* =========================
-   ICON
-========================= */
-
 .info-icon {
     width: 42px;
     height: 42px;
@@ -1054,16 +693,12 @@
     color: #666;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     font-weight: 600;
 }
-
-
-/* =========================
-   TEXT
-========================= */
 
 .info-popup h2 {
     font-size: 19px;
@@ -1089,10 +724,165 @@
 
 
 /* =========================
+   ZALO BLOCK
+========================= */
+
+#zaloBlocked {
+    display: none;
+}
+
+.zalo-blocked-box {
+    width: 100%;
+    max-width: 380px;
+
+    background: #fff;
+
+    border: 1px solid #e1e3e5;
+
+    border-radius: 18px;
+
+    padding: 30px 24px;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.06);
+}
+
+.zalo-blocked-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.zalo-blocked-box h2 {
+    font-size: 19px;
+
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+
+.zalo-blocked-box p {
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    color: #777;
+}
+
+
+/* =========================
    MOBILE
 ========================= */
 
 @media (max-width: 600px) {
+
+    body {
+        align-items: flex-start;
+
+        padding:
+            max(28px, env(safe-area-inset-top))
+            16px
+            max(24px, env(safe-area-inset-bottom));
+    }
+
+    .container {
+        max-width: 480px;
+
+        margin: auto 0;
+    }
+
+    .header {
+        margin-bottom: 25px;
+    }
+
+    .logo {
+        width: 54px;
+        height: 54px;
+
+        border-radius: 15px;
+
+        margin-bottom: 14px;
+    }
+
+    .logo img {
+        border-radius: 14px;
+    }
+
+    .header h1 {
+        font-size: 23px;
+    }
+
+    .header p {
+        font-size: 13px;
+    }
+
+    .section {
+        margin-bottom: 22px;
+    }
+
+    .menu {
+        gap: 11px;
+    }
+
+    .menu-button {
+        min-height: 96px;
+
+        padding: 18px 16px;
+
+        border-radius: 15px;
+    }
+
+    .button-icon {
+        width: 46px;
+        height: 46px;
+
+        margin-right: 13px;
+
+        border-radius: 12px;
+    }
+
+    .button-title {
+        font-size: 15px;
+    }
+
+    .button-description {
+        font-size: 12.5px;
+    }
+
+    .arrow {
+        font-size: 19px;
+    }
+
+    .sop-button {
+        min-height: 72px;
+    }
+
+    .sop-button .button-icon {
+        width: 43px;
+        height: 43px;
+    }
+
+    .lark-modal {
+        padding: 0;
+    }
+
+    .lark-window {
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        border-radius: 0;
+    }
+
+    .lark-header {
+        height: 52px;
+        padding-left: 15px;
+    }
+
+    .lark-close {
+        width: 38px;
+        height: 38px;
+    }
 
     .info-button {
         top: 14px;
@@ -1105,499 +895,667 @@
     .info-popup {
         max-width: 360px;
 
-        padding: 25px 20px 21px;
+        padding:
+            25px 20px 21px;
 
         border-radius: 16px;
     }
 
 }
 
-</style>
-<script>
-(function () {
 
-    const userAgent = navigator.userAgent || "";
+/* =========================
+   SMALL PHONES
+========================= */
 
-    const isZaloBrowser = /zalo/i.test(userAgent);
+@media (max-width: 360px) {
 
-    document.addEventListener("DOMContentLoaded", function () {
+    body {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 
-        if (isZaloBrowser) {
-            document.body.classList.add("zalo-allowed");
-        } else {
-            document.body.classList.add("not-zalo");
-        }
+    .header h1 {
+        font-size: 21px;
+    }
 
-    });
+    .menu-button {
+        padding: 16px 13px;
+    }
 
-})();
-</script>
-<script>
+    .button-icon {
+        width: 42px;
+        height: 42px;
 
-function openInfo() {
-    document
-        .getElementById("infoOverlay")
-        .classList.add("show");
-}
+        font-size: 19px;
 
-function closeInfo(event) {
+        margin-right: 11px;
+    }
 
-    if (
-        !event ||
-        event.target === document.getElementById("infoOverlay")
-    ) {
-        document
-            .getElementById("infoOverlay")
-            .classList.remove("show");
+    .button-description {
+        font-size: 12px;
+    }
+
+    .coming-soon-badge {
+        padding: 5px 7px;
+
+        font-size: 9px;
     }
 
 }
 
-</script>
-</header>
+</style>
 
+<!-- =====================================================
+     CSS CHO CƠ CHẾ ZALO
+===================================================== -->
+
+<style>
+
+/*
+ * Ban đầu giấu toàn bộ trang.
+ * Script cuối body sẽ quyết định có hiện hay không.
+ */
+
+body {
+    visibility: hidden;
+}
+
+body.zalo-allowed {
+    visibility: visible;
+}
+
+body.not-zalo {
+    visibility: visible;
+}
+
+body.not-zalo > *:not(#zaloBlocked) {
+    display: none !important;
+}
+
+body.not-zalo #zaloBlocked {
+    display: flex;
+
+    position: fixed;
+
+    inset: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: #f5f6f7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     MÀN HÌNH CHẶN
+===================================================== -->
+
+<div id="zaloBlocked">
+
+```
+<div class="zalo-blocked-box">
+
+    <div class="zalo-blocked-icon">
+        🔒
+    </div>
+
+    <h2>
+        Không thể truy cập
+    </h2>
+
+    <p>
+        Truy cập bị chặn.
+    </p>
+
+</div>
+```
+
+</div>
+
+<!-- =====================================================
+     CỔNG VẬN HÀNH
+===================================================== -->
+
+<main class="container">
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+```
+<div class="logo">
+
+    <img
+        src="./tascuslogofinal-png-07.png"
+        alt="Tascus Food"
+    >
+
+</div>
+
+<h1>
+    Cổng vận hành
+</h1>
+
+<p>
+    Trung tâm tác nghiệp dành cho nhân viên các cửa hàng<br>
+    Tascus Food Khương Trung và Thái Thịnh.
+</p>
+
+
+<!-- NÚT GIỚI THIỆU -->
+
+<button
+    class="info-button"
+    onclick="openInfo()"
+    aria-label="Giới thiệu cổng vận hành"
+>
+    ?
+</button>
+
+
+<!-- POPUP GIỚI THIỆU -->
+
+<div
+    class="info-overlay"
+    id="infoOverlay"
+    onclick="closeInfo(event)"
+>
+
+    <div class="info-popup">
+
+        <button
+            class="info-close"
+            onclick="closeInfo()"
+            aria-label="Đóng"
+        >
+            ×
+        </button>
+
+        <div class="info-icon">
+            ?
+        </div>
+
+        <h2>
+            Cổng vận hành
+        </h2>
+
+        <p>
+            Đây là nơi tập hợp những thứ nhân viên cần dùng
+            trong công việc hằng ngày tại Tascus Food.
+            Từ đặt hàng, báo cáo, ghi nhận sự cố đến xem
+            quy trình và công thức món, mọi thứ đều được gom
+            lại ở đây để dễ tìm và dễ sử dụng hơn.
+        </p>
+
+        <p>
+            Các chức năng và hướng dẫn trên cổng được thiết kế
+            để nhân viên có thể tự tìm hiểu và thực hiện
+            công việc của mình.
+        </p>
+
+    </div>
+
+</div>
+```
+
+</header>
 
 <!-- =========================
      TÁC NGHIỆP
-========================== -->
+========================= -->
 
 <section class="section">
 
-    <div class="section-title">
-        <span>Tác nghiệp</span>
-    </div>
+```
+<div class="section-title">
+    <span>Tác nghiệp</span>
+</div>
 
-    <div class="menu">
+<div class="menu">
 
 
-        <!-- ĐẶT RAU BÁNH -->
+    <!-- ĐẶT RAU BÁNH -->
 
-        <a
-            class="menu-button"
-            href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation"
-            data-lark="Đặt rau, bánh"
-        >
+    <a
+        class="menu-button"
+        href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation"
+        data-lark="Đặt rau, bánh"
+    >
 
-            <div class="button-icon yellow">
-                🥬
+        <div class="button-icon yellow">
+            🥬
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Đặt rau, bánh
             </div>
 
-            <div class="button-content">
-
-                <div class="button-title">
-                    Đặt rau, bánh
-                </div>
-
-                <div class="button-description">
-                    Tạo lệnh đặt hàng bánh và rau
-                    cho cửa hàng.
-                </div>
-
+            <div class="button-description">
+                Tạo lệnh đặt hàng bánh và rau
+                cho cửa hàng.
             </div>
 
-            <div class="arrow">
-                ›
+        </div>
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </a>
+
+
+    <!-- XÁC NHẬN BÁNH -->
+
+    <a
+        class="menu-button"
+        href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgdDj2XyZrIQqfrdH9nySoOg"
+        data-lark="Xác nhận bánh"
+    >
+
+        <div class="button-icon orange">
+            ✓
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Xác nhận bánh
             </div>
 
-        </a>
-
-
-        <!-- XÁC NHẬN BÁNH -->
-
-        <a
-            class="menu-button"
-            href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgdDj2XyZrIQqfrdH9nySoOg"
-            data-lark="Xác nhận bánh"
-        >
-
-            <div class="button-icon orange">
-                ✓
+            <div class="button-description">
+                Xác nhận số lượng bánh đã nhận
+                tại cửa hàng.
             </div>
 
-            <div class="button-content">
+        </div>
 
-                <div class="button-title">
-                    Xác nhận bánh
-                </div>
+        <div class="arrow">
+            ›
+        </div>
 
-                <div class="button-description">
-                    Xác nhận số lượng bánh đã nhận
-                    tại cửa hàng.
-                </div>
+    </a>
 
+
+    <!-- BẬT / TẮT MÓN -->
+
+    <a
+        class="menu-button"
+        href="./autoOnOff.html"
+    >
+
+        <div class="button-icon">
+            ⚡
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Bật/Tắt món tự động trên app
             </div>
 
-            <div class="arrow">
-                ›
+            <div class="button-description">
+                Quản lý trạng thái món bán trên các
+                ứng dụng đặt hàng.
             </div>
 
-        </a>
+        </div>
 
+        <div class="coming-soon-badge">
+            ĐANG XÂY DỰNG
+        </div>
 
-        <!-- BẬT / TẮT MÓN -->
+    </a>
 
-        <a
-            class="menu-button"
-            href="./autoOnOff.html"
-        >
-
-            <div class="button-icon">
-                ⚡
-            </div>
-
-            <div class="button-content">
-
-                <div class="button-title">
-                    Bật/Tắt món tự động trên app
-                </div>
-
-                <div class="button-description">
-                    Quản lý trạng thái món bán trên các
-                    ứng dụng đặt hàng.
-                </div>
-
-            </div>
-
-            <div class="coming-soon-badge">
-                ĐANG XÂY DỰNG
-            </div>
-
-        </a>
-
-    </div>
+</div>
+```
 
 </section>
-
 
 <!-- =========================
      BÁO CÁO
-========================== -->
+========================= -->
 
 <section class="section">
 
-    <div class="section-title">
-        <span>Báo cáo</span>
-    </div>
+```
+<div class="section-title">
+    <span>Báo cáo</span>
+</div>
 
-    <div class="menu">
+<div class="menu">
 
 
-        <!-- DOANH THU -->
+    <!-- DOANH THU -->
 
-        <a
-            class="menu-button"
-            href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb"
-            data-lark="Báo cáo doanh thu"
-        >
+    <a
+        class="menu-button"
+        href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb"
+        data-lark="Báo cáo doanh thu"
+    >
 
-            <div class="button-icon orange">
-                ₫
+        <div class="button-icon orange">
+            ₫
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Báo cáo doanh thu
             </div>
 
-            <div class="button-content">
-
-                <div class="button-title">
-                    Báo cáo doanh thu
-                </div>
-
-                <div class="button-description">
-                    Gửi báo cáo doanh thu của
-                    cửa hàng.
-                </div>
-
+            <div class="button-description">
+                Gửi báo cáo doanh thu của
+                cửa hàng.
             </div>
 
-            <div class="arrow">
-                ›
+        </div>
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </a>
+
+
+    <!-- HUỶ NGUYÊN VẬT LIỆU -->
+
+    <a
+        class="menu-button"
+        href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd"
+        data-lark="Báo cáo huỷ nguyên vật liệu"
+    >
+
+        <div class="button-icon red">
+            !
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Báo cáo huỷ nguyên vật liệu
             </div>
 
-        </a>
-
-
-        <!-- HUỶ NGUYÊN VẬT LIỆU -->
-
-        <a
-            class="menu-button"
-            href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd"
-            data-lark="Báo cáo huỷ nguyên vật liệu"
-        >
-
-            <div class="button-icon red">
-                !
+            <div class="button-description">
+                Ghi nhận nguyên vật liệu bị huỷ
+                trong quá trình vận hành.
             </div>
 
-            <div class="button-content">
+        </div>
 
-                <div class="button-title">
-                    Báo cáo huỷ nguyên vật liệu
-                </div>
+        <div class="arrow">
+            ›
+        </div>
 
-                <div class="button-description">
-                    Ghi nhận nguyên vật liệu bị huỷ
-                    trong quá trình vận hành.
-                </div>
+    </a>
 
-            </div>
-
-            <div class="arrow">
-                ›
-            </div>
-
-        </a>
-
-    </div>
+</div>
+```
 
 </section>
-
 
 <!-- =========================
      VẬN HÀNH
-========================== -->
+========================= -->
 
 <section class="section">
 
-    <div class="section-title">
-        <span>Vận hành</span>
-    </div>
+```
+<div class="section-title">
+    <span>Vận hành</span>
+</div>
 
-    <div class="menu">
+<div class="menu">
 
-        <a
-            class="menu-button"
-            href="./OperationLogs.html"
-        >
+    <a
+        class="menu-button"
+        href="./OperationLogs.html"
+    >
 
-            <div class="button-icon">
-                ◷
+        <div class="button-icon">
+            ◷
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Nhật ký vận hành
             </div>
 
-            <div class="button-content">
-
-                <div class="button-title">
-                    Nhật ký vận hành
-                </div>
-
-                <div class="button-description">
-                    Ghi nhận và cập nhật các vấn đề
-                    phát sinh trong vận hành.
-                </div>
-
+            <div class="button-description">
+                Ghi nhận và cập nhật các vấn đề
+                phát sinh trong vận hành.
             </div>
 
-            <div class="arrow">
-                ›
-            </div>
+        </div>
 
-        </a>
+        <div class="arrow">
+            ›
+        </div>
 
-    </div>
+    </a>
+
+</div>
+```
 
 </section>
-
 
 <!-- =========================
      QUY TRÌNH
-========================== -->
+========================= -->
 
 <section class="section">
 
-    <div class="section-title">
-        <span>Quy trình vận hành tiêu chuẩn</span>
-    </div>
+```
+<div class="section-title">
+    <span>Quy trình vận hành tiêu chuẩn</span>
+</div>
 
-    <div class="menu">
+<div class="menu">
 
 
-        <!-- KHƯƠNG TRUNG -->
+    <!-- KHƯƠNG TRUNG -->
 
-        <a
-            class="menu-button sop-button"
-            href="https://rjtj1yaw65k.sg.larksuite.com/wiki/UE0wwgqeSi2pKskkDgalSbTjgJd?from=from_copylink"
-        >
+    <a
+        class="menu-button sop-button"
+        href="https://rjtj1yaw65k.sg.larksuite.com/wiki/UE0wwgqeSi2pKskkDgalSbTjgJd?from=from_copylink"
+    >
 
-            <div class="button-icon">
-                ≡
+        <div class="button-icon">
+            ≡
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Quy trình vận hành · 69 Khương Trung
             </div>
 
-            <div class="button-content">
-
-                <div class="button-title">
-                    Quy trình vận hành · 69 Khương Trung
-                </div>
-
-                <div class="button-description">
-                    Quy trình vận hành cửa hàng
-                </div>
-
+            <div class="button-description">
+                Quy trình vận hành cửa hàng
             </div>
 
-            <div class="arrow">
-                ↗
+        </div>
+
+        <div class="arrow">
+            ↗
+        </div>
+
+    </a>
+
+
+    <!-- THÁI THỊNH -->
+
+    <a
+        class="menu-button sop-button"
+        href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd"
+    >
+
+        <div class="button-icon">
+            ≡
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Quy trình vận hành · 122 Thái Thịnh
             </div>
 
-        </a>
-
-
-        <!-- THÁI THỊNH -->
-
-        <a
-            class="menu-button sop-button"
-            href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd"
-        >
-
-            <div class="button-icon">
-                ≡
+            <div class="button-description">
+                Quy trình vận hành cửa hàng
             </div>
 
-            <div class="button-content">
+        </div>
 
-                <div class="button-title">
-                    Quy trình vận hành · 122 Thái Thịnh
-                </div>
+        <div class="arrow">
+            ↗
+        </div>
 
-                <div class="button-description">
-                    Quy trình vận hành cửa hàng
-                </div>
+    </a>
 
-            </div>
-
-            <div class="arrow">
-                ↗
-            </div>
-
-        </a>
-
-    </div>
+</div>
+```
 
 </section>
-
 
 <!-- =========================
      THƯ VIỆN
-========================== -->
+========================= -->
 
 <section class="section">
 
-    <div class="section-title">
-        <span>Thư viện</span>
-    </div>
+```
+<div class="section-title">
+    <span>Thư viện</span>
+</div>
 
-    <div class="menu">
+<div class="menu">
 
-        <a
-            class="menu-button"
-            href="./Thu-vien.html"
-        >
+    <a
+        class="menu-button"
+        href="./Thu-vien.html"
+    >
 
-            <div class="button-icon yellow">
-                ▤
+        <div class="button-icon yellow">
+            ▤
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Thư viện công thức
             </div>
 
-            <div class="button-content">
-
-                <div class="button-title">
-                    Thư viện công thức
-                </div>
-
-                <div class="button-description">
-                    Tra cứu công thức và hình ảnh công thức
-                    các món tại Tascus Food.
-                </div>
-
+            <div class="button-description">
+                Tra cứu công thức và hình ảnh công thức
+                các món tại Tascus Food.
             </div>
 
-            <div class="arrow">
-                ›
-            </div>
+        </div>
 
-        </a>
+        <div class="arrow">
+            ›
+        </div>
 
-    </div>
+    </a>
+
+</div>
+```
 
 </section>
-
 
 <!-- =========================
      NHÂN VIÊN
-========================== -->
+========================= -->
 
 <section class="section">
 
-    <div class="section-title">
-        <span>Nhân viên</span>
-    </div>
+```
+<div class="section-title">
+    <span>Nhân viên</span>
+</div>
 
-    <div class="menu">
+<div class="menu">
 
 
-        <!-- SỔ TAY -->
+    <!-- SỔ TAY -->
 
-        <div class="menu-button coming-soon">
+    <div class="menu-button coming-soon">
 
-            <div class="button-icon">
-                +
+        <div class="button-icon">
+            +
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Sổ tay nhân viên
             </div>
 
-            <div class="button-content">
-
-                <div class="button-title">
-                    Sổ tay nhân viên
-                </div>
-
-                <div class="button-description">
-                    Tài liệu hướng dẫn dành cho nhân viên
-                    Tascus Food.
-                </div>
-
-            </div>
-
-            <div class="coming-soon-badge">
-                SẮP RA MẮT
+            <div class="button-description">
+                Tài liệu hướng dẫn dành cho nhân viên
+                Tascus Food.
             </div>
 
         </div>
 
+        <div class="coming-soon-badge">
+            SẮP RA MẮT
+        </div>
 
-        <!-- ĐÀO TẠO -->
+    </div>
 
-        <div class="menu-button coming-soon">
 
-            <div class="button-icon">
-                ✓
+    <!-- ĐÀO TẠO -->
+
+    <div class="menu-button coming-soon">
+
+        <div class="button-icon">
+            ✓
+        </div>
+
+        <div class="button-content">
+
+            <div class="button-title">
+                Đào tạo / Kiểm tra
             </div>
 
-            <div class="button-content">
-
-                <div class="button-title">
-                    Đào tạo / Kiểm tra
-                </div>
-
-                <div class="button-description">
-                    Học quy trình và kiểm tra kiến thức
-                    vận hành của nhân viên.
-                </div>
-
-            </div>
-
-            <div class="coming-soon-badge">
-                SẮP RA MẮT
+            <div class="button-description">
+                Học quy trình và kiểm tra kiến thức
+                vận hành của nhân viên.
             </div>
 
         </div>
 
+        <div class="coming-soon-badge">
+            SẮP RA MẮT
+        </div>
+
     </div>
+
+</div>
+```
 
 </section>
 
-
 <!-- =========================
      FOOTER
-========================== -->
+========================= -->
 
 <footer class="footer">
     Tascus Food · Cổng vận hành
 </footer>
-
 
 </main>
 
@@ -1611,7 +1569,7 @@ function closeInfo(event) {
     aria-hidden="true"
 >
 
-
+```
 <div
     class="lark-window"
     role="dialog"
@@ -1639,7 +1597,6 @@ function closeInfo(event) {
 
     </div>
 
-
     <iframe
         id="larkFrame"
         class="lark-frame"
@@ -1649,135 +1606,262 @@ function closeInfo(event) {
     ></iframe>
 
 </div>
-
+```
 
 </div>
 
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
 
-    const larkModal =
-        document.getElementById("larkModal");
+/* =====================================================
+   ZALO ACCESS CONTROL
+===================================================== */
 
-    const larkFrame =
-        document.getElementById("larkFrame");
+(function () {
 
-    const larkTitle =
-        document.getElementById("larkTitle");
+    const userAgent =
+        navigator.userAgent || "";
 
-    const larkClose =
-        document.getElementById("larkClose");
-
-
-    /*
-     * Tất cả link có data-lark sẽ mở
-     * trong popup thay vì chuyển trang.
-     */
-
-    document
-        .querySelectorAll("[data-lark]")
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                function(event) {
-
-                    event.preventDefault();
-
-                    const url =
-                        this.getAttribute("href");
-
-                    const title =
-                        this.getAttribute("data-lark");
-
-                    if (!url) return;
-
-                    larkTitle.textContent = title;
-
-                    larkFrame.src = url;
-
-                    larkModal.classList.add("active");
-
-                    larkModal.setAttribute(
-                        "aria-hidden",
-                        "false"
-                    );
-
-                    document.body.style.overflow = "hidden";
-
-                }
-            );
-
-        });
-
-
-    /*
-     * Đóng popup
-     */
-
-    function closeLarkModal() {
-
-        larkModal.classList.remove("active");
-
-        larkModal.setAttribute(
-            "aria-hidden",
-            "true"
+    const params =
+        new URLSearchParams(
+            window.location.search
         );
 
-        /*
-         * Xoá iframe sau khi đóng.
-         * Lần sau mở sẽ tải lại Form.
-         */
+    /*
+     * Nhận diện trình duyệt Zalo.
+     */
 
-        larkFrame.src = "about:blank";
+    const isZaloBrowser =
+        /zalo/i.test(userAgent);
 
-        document.body.style.overflow = "";
+    /*
+     * Chìa khóa debug.
+     *
+     * Đổi chuỗi này thành chuỗi riêng của bạn.
+     */
+
+    const DEV_KEY =
+        "7Kx29Qm8";
+
+    const isDeveloper =
+        params.get("dev") === DEV_KEY;
+
+
+    /*
+     * Cho phép:
+     *
+     * 1. Trình duyệt Zalo
+     * 2. Máy tính có dev key
+     */
+
+    if (
+        isZaloBrowser ||
+        isDeveloper
+    ) {
+
+        document.body.classList.add(
+            "zalo-allowed"
+        );
+
+    } else {
+
+        document.body.classList.add(
+            "not-zalo"
+        );
 
     }
 
+})();
 
-    larkClose.addEventListener(
-        "click",
-        closeLarkModal
+
+/* =====================================================
+   INFO POPUP
+===================================================== */
+
+function openInfo() {
+
+    document
+        .getElementById("infoOverlay")
+        .classList.add("show");
+
+}
+
+
+function closeInfo(event) {
+
+    const overlay =
+        document.getElementById(
+            "infoOverlay"
+        );
+
+    if (
+        !event ||
+        event.target === overlay
+    ) {
+
+        overlay.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   LARK POPUP
+===================================================== */
+
+const larkModal =
+    document.getElementById(
+        "larkModal"
+    );
+
+const larkFrame =
+    document.getElementById(
+        "larkFrame"
+    );
+
+const larkTitle =
+    document.getElementById(
+        "larkTitle"
+    );
+
+const larkClose =
+    document.getElementById(
+        "larkClose"
     );
 
 
-    /*
-     * Click ra vùng tối để đóng.
-     */
+/*
+ * Tất cả link có data-lark
+ * sẽ mở trong popup.
+ */
 
-    larkModal.addEventListener(
-        "click",
-        function(event) {
+document
+    .querySelectorAll("[data-lark]")
+    .forEach(button => {
 
-            if (event.target === larkModal) {
+        button.addEventListener(
+            "click",
+            function (event) {
 
-                closeLarkModal();
+                event.preventDefault();
+
+                const url =
+                    this.getAttribute(
+                        "href"
+                    );
+
+                const title =
+                    this.getAttribute(
+                        "data-lark"
+                    );
+
+                if (!url) return;
+
+                larkTitle.textContent =
+                    title;
+
+                larkFrame.src =
+                    url;
+
+                larkModal.classList.add(
+                    "active"
+                );
+
+                larkModal.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+
+                document.body.style.overflow =
+                    "hidden";
 
             }
+        );
 
-        }
+    });
+
+
+/*
+ * Đóng popup Lark.
+ */
+
+function closeLarkModal() {
+
+    larkModal.classList.remove(
+        "active"
     );
 
+    larkModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
 
     /*
-     * Bấm ESC trên máy tính để đóng.
+     * Xoá iframe sau khi đóng.
      */
 
-    document.addEventListener(
-        "keydown",
-        function(event) {
+    larkFrame.src =
+        "about:blank";
 
-            if (
-                event.key === "Escape" &&
-                larkModal.classList.contains("active")
-            ) {
+    document.body.style.overflow =
+        "";
 
-                closeLarkModal();
+}
 
-            }
+
+larkClose.addEventListener(
+    "click",
+    closeLarkModal
+);
+
+
+/*
+ * Click vùng tối để đóng.
+ */
+
+larkModal.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            event.target === larkModal
+        ) {
+
+            closeLarkModal();
 
         }
-    );
+
+    }
+);
+
+
+/*
+ * ESC để đóng trên máy tính.
+ */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            larkModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            closeLarkModal();
+
+        }
+
+    }
+);
 
 </script>
 
