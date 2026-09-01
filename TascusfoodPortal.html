@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cổng vận hành · Tascus Food</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: #f5f6f7;
+    color: #222;
+
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    transition:
+        background 3s ease,
+        color 3s ease;
+}
+
+.page {
+    width: min(620px, calc(100% - 32px));
+    margin: auto;
+    padding: 45px 0 80px;
+
+    transition:
+        opacity 4s ease,
+        filter 4s ease,
+        transform 4s ease;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    text-align: center;
+    margin-bottom: 34px;
+}
+
+.logo {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 16px;
+
+    border-radius: 16px;
+
+    background: #fff;
+    border: 1px solid #e1e3e5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    transition:
+        transform 2s ease,
+        border-radius 3s ease,
+        filter 3s ease;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.header h1 {
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: -.4px;
+    margin-bottom: 8px;
+
+    transition:
+        letter-spacing 3s ease,
+        opacity 3s ease,
+        transform 3s ease;
+}
+
+.header p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #777;
+
+    transition:
+        color 3s ease,
+        opacity 3s ease;
+}
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section {
+    margin-bottom: 25px;
+
+    transition:
+        opacity 4s ease,
+        transform 4s ease;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 10px;
+    padding-left: 3px;
+}
+
+.section-title span {
+    font-size: 10px;
+    font-weight: 600;
+    color: #888;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    transition:
+        color 3s ease,
+        letter-spacing 3s ease;
+}
+
+.section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e2e4e6;
+
+    transition:
+        background 3s ease;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.menu-button {
+    width: 100%;
+    min-height: 82px;
+
+    padding: 18px;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    background: #fff;
+    border: 1px solid #e1e3e5;
+    border-radius: 15px;
+
+    text-decoration: none;
+    color: inherit;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        background 3s ease,
+        border-color 3s ease,
+        box-shadow 2s ease,
+        border-radius 3s ease;
+}
+
+.menu-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+}
+
+.icon {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+    margin-right: 14px;
+
+    border-radius: 12px;
+
+    background: #f1f2f3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    transition:
+        transform 2s ease,
+        border-radius 3s ease,
+        background 3s ease,
+        color 3s ease;
+}
+
+.content {
+    flex: 1;
+    min-width: 0;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+
+    transition:
+        color 2s ease,
+        letter-spacing 2s ease;
+}
+
+.description {
+    font-size: 12px;
+    line-height: 1.45;
+    color: #777;
+
+    transition:
+        color 3s ease,
+        opacity 2s ease;
+}
+
+.arrow {
+    flex-shrink: 0;
+    margin-left: 12px;
+
+    color: #999;
+    font-size: 20px;
+
+    transition:
+        transform 2s ease,
+        color 2s ease;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status {
+    position: fixed;
+
+    left: 50%;
+    bottom: 13px;
+
+    transform: translateX(-50%);
+
+    font-size: 9px;
+    letter-spacing: 1.2px;
+
+    color: #aaa;
+
+    white-space: nowrap;
+
+    z-index: 100;
+
+    transition:
+        color 2s ease,
+        opacity 2s ease;
+}
+
+/* =====================================================
+   SECRET MESSAGE
+===================================================== */
+
+.secret {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    width: min(520px, calc(100% - 40px));
+
+    transform:
+        translate(-50%, -50%)
+        scale(.94);
+
+    text-align: center;
+
+    z-index: 300;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transition:
+        opacity 2s ease,
+        transform 2s ease;
+}
+
+.secret.visible {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+.secret-small {
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    color: #777;
+    margin-bottom: 18px;
+
+    transition: color 2s ease;
+}
+
+.secret-main {
+    font-size: clamp(22px, 6vw, 39px);
+    line-height: 1.25;
+
+    font-weight: 500;
+
+    color: #222;
+
+    transition:
+        color 2s ease,
+        letter-spacing 2s ease;
+}
+
+.secret-sub {
+    margin-top: 17px;
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    color: #777;
+
+    transition: color 2s ease;
+}
+
+/* =====================================================
+   DARK
+===================================================== */
+
+body.dark {
+    background: #111;
+    color: #ddd;
+}
+
+body.dark .page {
+    opacity: .13;
+
+    filter:
+        grayscale(.85)
+        contrast(1.15);
+}
+
+body.dark .menu-button {
+    background: #171717;
+    border-color: #292929;
+}
+
+body.dark .icon {
+    background: #222;
+}
+
+body.dark .section-title::after {
+    background: #292929;
+}
+
+body.dark .section-title span,
+body.dark .description,
+body.dark .header p {
+    color: #555;
+}
+
+body.dark .logo {
+    background: #151515;
+    border-color: #292929;
+}
+
+body.dark .secret-main {
+    color: #ddd;
+}
+
+body.dark .secret-sub,
+body.dark .secret-small {
+    color: #666;
+}
+
+/* =====================================================
+   DISTORTION
+===================================================== */
+
+body.distorted .menu-button:nth-child(1) {
+    transform:
+        translateX(-3px)
+        skewX(-1deg);
+}
+
+body.distorted .menu-button:nth-child(2) {
+    transform:
+        translateX(4px)
+        skewX(2deg);
+}
+
+body.distorted .menu-button:nth-child(3) {
+    transform:
+        translateX(-2px)
+        skewX(-2deg);
+}
+
+body.distorted .menu-button:nth-child(4) {
+    transform:
+        translateX(3px)
+        skewX(1deg);
+}
+
+body.distorted .icon {
+    border-radius:
+        43% 57%
+        58% 42%;
+}
+
+body.distorted .arrow {
+    transform: rotate(180deg);
+}
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+body.final {
+    background: #070707;
+}
+
+body.final .page {
+    opacity: .025;
+
+    filter:
+        blur(.4px)
+        grayscale(1)
+        contrast(1.4);
+
+    transform: scale(.97);
+}
+
+body.final .secret {
+    pointer-events: auto;
+}
+
+/* =====================================================
+   GLITCH
+===================================================== */
+
+.glitch {
+    animation: glitch 4.5s infinite;
+}
+
+@keyframes glitch {
+
+    0%,
+    93%,
+    100% {
+        transform: translate(0);
+    }
+
+    94% {
+        transform: translate(-2px, 1px);
+    }
+
+    95% {
+        transform: translate(3px, -1px);
+    }
+
+    96% {
+        transform: translate(-1px, 2px);
+    }
+}
+
+/* =====================================================
+   FLICKER
+===================================================== */
+
+.flicker {
+    animation: flicker 1.8s infinite;
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    48% {
+        opacity: 1;
+    }
+
+    49% {
+        opacity: .25;
+    }
+
+    50% {
+        opacity: .9;
+    }
+
+    51% {
+        opacity: .35;
+    }
+
+    52% {
+        opacity: 1;
+    }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .page {
+        padding-top: 30px;
+    }
+
+    .menu-button {
+        min-height: 88px;
+        padding: 16px;
+    }
+
+    .secret-main {
+        font-size: 27px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<main class="page" id="page">
+
+<header class="header">
+
+```
+<div class="logo" id="logo">
+    <img
+        src="./tascuslogofinal-png-07.png"
+        alt="Tascus Food"
+    >
+</div>
+
+<h1 id="portalTitle">
+    Cổng vận hành
+</h1>
+
+<p id="headerText">
+    Trung tâm tác nghiệp dành cho nhân viên các cửa hàng
+    Tascus Food.
+</p>
+```
+
+</header>
+
+<section class="section">
+
+```
+<div class="section-title">
+    <span>Tác nghiệp</span>
+</div>
+
+<div class="menu">
+
+    <a class="menu-button" href="#">
+        <div class="icon">🥬</div>
+
+        <div class="content">
+            <div class="title">Đặt rau, bánh</div>
+            <div class="description">
+                Tạo lệnh đặt hàng cho cửa hàng.
+            </div>
+        </div>
+
+        <div class="arrow">›</div>
+    </a>
+
+
+    <a class="menu-button" href="#">
+        <div class="icon">✓</div>
+
+        <div class="content">
+            <div class="title">Xác nhận bánh</div>
+            <div class="description">
+                Xác nhận số lượng bánh đã nhận.
+            </div>
+        </div>
+
+        <div class="arrow">›</div>
+    </a>
+
+
+    <a class="menu-button" href="#">
+        <div class="icon">⚡</div>
+
+        <div class="content">
+            <div class="title">Bật / Tắt món</div>
+            <div class="description">
+                Quản lý trạng thái món bán.
+            </div>
+        </div>
+
+        <div class="arrow">›</div>
+    </a>
+
+</div>
+```
+
+</section>
+
+<section class="section">
+
+```
+<div class="section-title">
+    <span>Báo cáo</span>
+</div>
+
+<div class="menu">
+
+    <a class="menu-button" href="#">
+        <div class="icon">₫</div>
+
+        <div class="content">
+            <div class="title">Báo cáo doanh thu</div>
+            <div class="description">
+                Gửi báo cáo doanh thu của cửa hàng.
+            </div>
+        </div>
+
+        <div class="arrow">›</div>
+    </a>
+
+
+    <a class="menu-button" href="#">
+        <div class="icon">!</div>
+
+        <div class="content">
+            <div class="title">
+                Báo cáo huỷ nguyên vật liệu
+            </div>
+
+            <div class="description">
+                Ghi nhận nguyên vật liệu bị huỷ.
+            </div>
+        </div>
+
+        <div class="arrow">›</div>
+    </a>
+
+</div>
+```
+
+</section>
+
+<section class="section">
+
+```
+<div class="section-title">
+    <span>Vận hành</span>
+</div>
+
+<div class="menu">
+
+    <a class="menu-button" href="#">
+        <div class="icon">◷</div>
+
+        <div class="content">
+            <div class="title">
+                Nhật ký vận hành
+            </div>
+
+            <div class="description">
+                Ghi nhận các vấn đề phát sinh.
+            </div>
+        </div>
+
+        <div class="arrow">›</div>
+    </a>
+
+</div>
+```
+
+</section>
+
+<section class="section">
+
+```
+<div class="section-title">
+    <span>Quy trình</span>
+</div>
+
+<div class="menu">
+
+    <a class="menu-button" href="#">
+        <div class="icon">≡</div>
+
+        <div class="content">
+            <div class="title">
+                Quy trình vận hành
+            </div>
+
+            <div class="description">
+                Tài liệu vận hành cửa hàng.
+            </div>
+        </div>
+
+        <div class="arrow">↗</div>
+    </a>
+
+</div>
+```
+
+</section>
+
+<section class="section">
+
+```
+<div class="section-title">
+    <span>Thư viện</span>
+</div>
+
+<div class="menu">
+
+    <a class="menu-button" href="#">
+        <div class="icon">▤</div>
+
+        <div class="content">
+            <div class="title">
+                Thư viện công thức
+            </div>
+
+            <div class="description">
+                Tra cứu công thức các món.
+            </div>
+        </div>
+
+        <div class="arrow">›</div>
+    </a>
+
+</div>
+```
+
+</section>
+
+</main>
+
+<div class="secret" id="secret">
+
+```
+<div class="secret-small" id="secretSmall">
+    HỆ THỐNG ĐANG HOẠT ĐỘNG
+</div>
+
+<div class="secret-main" id="secretMain">
+    ĐỪNG ĐÓNG TRANG NÀY.
+</div>
+
+<div class="secret-sub" id="secretSub">
+    Có một số thứ không nên được nhìn thấy.
+</div>
+```
+
+</div>
+
+<div class="status" id="status">
+    HỆ THỐNG ĐANG HOẠT ĐỘNG
+</div>
+
+<script>
+
+/* =====================================================
+   TASCUS FOOD PORTAL
+   2 MINUTE HORROR SEQUENCE
+===================================================== */
+
+const body =
+    document.body;
+
+const page =
+    document.getElementById("page");
+
+const secret =
+    document.getElementById("secret");
+
+const secretSmall =
+    document.getElementById("secretSmall");
+
+const secretMain =
+    document.getElementById("secretMain");
+
+const secretSub =
+    document.getElementById("secretSub");
+
+const status =
+    document.getElementById("status");
+
+const portalTitle =
+    document.getElementById("portalTitle");
+
+const headerText =
+    document.getElementById("headerText");
+
+const logo =
+    document.getElementById("logo");
+
+const buttons =
+    document.querySelectorAll(".menu-button");
+
+const titles =
+    document.querySelectorAll(".title");
+
+const descriptions =
+    document.querySelectorAll(".description");
+
+let stage = 0;
+let idleTimer;
+let horrorStarted = false;
+
+
+/* =====================================================
+   TIME
+===================================================== */
+
+function nowTime() {
+
+    const d = new Date();
+
+    return d.toLocaleTimeString(
+        "vi-VN",
+        {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SECRET MESSAGE
+===================================================== */
+
+function showSecret(
+    small,
+    main,
+    sub,
+    duration = 3200
+) {
+
+    secretSmall.textContent = small;
+    secretMain.textContent = main;
+    secretSub.textContent = sub;
+
+    secret.classList.add("visible");
+
+    if (duration > 0) {
+
+        setTimeout(() => {
+
+            secret.classList.remove("visible");
+
+        }, duration);
+
+    }
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function setStatus(text) {
+
+    status.textContent = text;
+
+}
+
+
+/* =====================================================
+   INITIAL SYSTEM CHECK
+===================================================== */
+
+setTimeout(() => {
+
+    setStatus(
+        "ĐANG KIỂM TRA KẾT NỐI..."
+    );
+
+}, 6500);
+
+
+setTimeout(() => {
+
+    setStatus(
+        "KẾT NỐI BÌNH THƯỜNG"
+    );
+
+}, 8200);
+
+
+setTimeout(() => {
+
+    setStatus(
+        "HỆ THỐNG ĐANG HOẠT ĐỘNG"
+    );
+
+}, 10500);
+
+
+/* =====================================================
+   STAGE 1
+   SOMETHING IS SLIGHTLY WRONG
+===================================================== */
+
+setTimeout(() => {
+
+    horrorStarted = true;
+
+    setStatus(
+        "ĐANG ĐỒNG BỘ PHIÊN TRUY CẬP..."
+    );
+
+}, 14500);
+
+
+setTimeout(() => {
+
+    headerText.innerHTML =
+        "Trung tâm tác nghiệp dành cho nhân viên các cửa hàng.<br>" +
+        "<span style='color:#777'>Phiên truy cập đang được ghi nhận.</span>";
+
+}, 17000);
+
+
+setTimeout(() => {
+
+    showSecret(
+        "KIỂM TRA HỆ THỐNG",
+        "KHÔNG CÓ GÌ BẤT THƯỜNG.",
+        "Bạn có thể tiếp tục sử dụng.",
+        3000
+    );
+
+}, 19500);
+
+
+/* =====================================================
+   STAGE 2
+   SYSTEM STARTS REMEMBERING
+===================================================== */
+
+setTimeout(() => {
+
+    setStatus(
+        "PHIÊN TRUY CẬP ĐANG HOẠT ĐỘNG"
+    );
+
+}, 23500);
+
+
+setTimeout(() => {
+
+    const time = nowTime();
+
+    descriptions[5].textContent =
+        time +
+        " · Đang ghi nhận hoạt động.";
+
+}, 26500);
+
+
+setTimeout(() => {
+
+    descriptions[5].textContent =
+        "Có 1 vấn đề chưa được xử lý.";
+
+    buttons[5].classList.add("flicker");
+
+}, 28500);
+
+
+/* =====================================================
+   STAGE 3
+   FIRST REAL DISCOMFORT
+===================================================== */
+
+setTimeout(() => {
+
+    showSecret(
+        "PHIÊN TRUY CẬP",
+        "BẠN ĐÃ QUAY LẠI.",
+        "Hệ thống nhớ lần trước.",
+        3800
+    );
+
+}, 33000);
+
+
+setTimeout(() => {
+
+    setStatus(
+        "ĐANG GHI NHẬN LỊCH SỬ TRUY CẬP..."
+    );
+
+}, 37000);
+
+
+setTimeout(() => {
+
+    setStatus(
+        "KHÔNG XÁC ĐỊNH ĐƯỢC NGƯỜI DÙNG"
+    );
+
+}, 40500);
+
+
+/* =====================================================
+   STAGE 4
+   SMALL CORRUPTIONS
+===================================================== */
+
+setTimeout(() => {
+
+    body.classList.add("distorted");
+
+    setStatus(
+        "ĐANG ĐỒNG BỘ DỮ LIỆU..."
+    );
+
+}, 44000);
+
+
+setTimeout(() => {
+
+    titles[0].textContent =
+        "Đừng đặt nữa";
+
+}, 46000);
+
+
+setTimeout(() => {
+
+    titles[0].textContent =
+        "Đặt rau, bánh";
+
+    titles[1].textContent =
+        "Đã xác nhận";
+
+}, 48500);
+
+
+setTimeout(() => {
+
+    titles[1].textContent =
+        "Xác nhận bánh";
+
+    descriptions[2].textContent =
+        "Không cần bật nữa.";
+
+}, 51500);
+
+
+setTimeout(() => {
+
+    descriptions[2].textContent =
+        "Quản lý trạng thái món bán.";
+
+}, 54000);
+
+
+/* =====================================================
+   STAGE 5
+   RANDOM CORRUPTION
+===================================================== */
+
+const corruptionMessages = [
+
+    "Đừng mở cái này",
+    "Bạn vẫn còn ở đây",
+    "Không cần phải xem",
+    "Đã ghi nhận",
+    "Không có quyền",
+    "Đang chờ",
+    "Không phải mục này",
+    "Quay lại",
+    "Tôi thấy bạn",
+    "Không phải bạn",
+    "Đừng nhấn nữa",
+    "Đang kiểm tra"
+];
+
+function randomCorruption() {
+
+    if (!horrorStarted) {
+        return;
+    }
+
+    const index =
+        Math.floor(
+            Math.random() *
+            titles.length
+        );
+
+    const old =
+        titles[index].textContent;
+
+    titles[index].textContent =
+        corruptionMessages[
+            Math.floor(
+                Math.random() *
+                corruptionMessages.length
+            )
+        ];
+
+    setTimeout(() => {
+
+        titles[index].textContent = old;
+
+    }, 1300);
+
+}
+
+
+const corruptionInterval =
+    setInterval(
+        randomCorruption,
+        4700
+    );
+
+
+/* =====================================================
+   STAGE 6
+   SYSTEM KNOWS THE TIME
+===================================================== */
+
+setTimeout(() => {
+
+    const time = nowTime();
+
+    showSecret(
+        "NHẬT KÝ HỆ THỐNG",
+        time,
+        "Bạn đã ở đây lâu hơn dự kiến.",
+        3600
+    );
+
+}, 61000);
+
+
+setTimeout(() => {
+
+    setStatus(
+        "THỜI GIAN PHIÊN: " +
+        nowTime()
+    );
+
+}, 65000);
+
+
+/* =====================================================
+   STAGE 7
+   IDENTITY
+===================================================== */
+
+setTimeout(() => {
+
+    showSecret(
+        "TASCUS FOOD · INTERNAL",
+        "AI ĐÓ ĐÃ MỞ TRANG NÀY.",
+        "Không phải bạn.",
+        4000
+    );
+
+}, 70000);
+
+
+setTimeout(() => {
+
+    setStatus(
+        "KHÔNG CÓ PHIÊN ĐĂNG NHẬP"
+    );
+
+}, 75000);
+
+
+setTimeout(() => {
+
+    portalTitle.textContent =
+        "Cổng vận hành";
+
+    headerText.innerHTML =
+        "Không xác định được phiên người dùng.";
+
+}, 78000);
+
+
+/* =====================================================
+   STAGE 8
+   DARKEN
+===================================================== */
+
+setTimeout(() => {
+
+    body.classList.add("dark");
+
+    setStatus(
+        "KẾT NỐI VẪN ĐANG MỞ"
+    );
+
+}, 82000);
+
+
+setTimeout(() => {
+
+    showSecret(
+        "KHÔNG CÓ PHIÊN ĐĂNG NHẬP",
+        "VẬY AI ĐANG ĐĂNG NHẬP?",
+        "Đừng trả lời.",
+        5000
+    );
+
+}, 85000);
+
+
+/* =====================================================
+   STAGE 9
+   PAGE FADES
+===================================================== */
+
+setTimeout(() => {
+
+    setStatus(
+        "ĐANG CHỜ..."
+    );
+
+}, 91000);
+
+
+setTimeout(() => {
+
+    body.classList.add("final");
+
+}, 95000);
+
+
+/* =====================================================
+   STAGE 10
+   PERSONAL MEMORY
+===================================================== */
+
+setTimeout(() => {
+
+    showSecret(
+        "PHIÊN TRUY CẬP",
+        "BẠN ĐÃ TỪNG ĐẾN ĐÂY.",
+        "Lần này bạn ở lại lâu hơn.",
+        5000
+    );
+
+}, 101000);
+
+
+/* =====================================================
+   STAGE 11
+   SYSTEM STOPS PRETENDING
+===================================================== */
+
+setTimeout(() => {
+
+    showSecret(
+        "NHẬT KÝ HỆ THỐNG",
+        "TÔI BIẾT BẠN VẪN ĐANG NHÌN.",
+        "Không cần di chuyển chuột.",
+        5500
+    );
+
+}, 109000);
+
+
+setTimeout(() => {
+
+    setStatus(
+        "ĐANG QUAN SÁT..."
+    );
+
+}, 114000);
+
+
+/* =====================================================
+   STAGE 12
+   FINAL MESSAGE
+===================================================== */
+
+setTimeout(() => {
+
+    secret.classList.add("visible");
+
+    secretSmall.textContent =
+        "HỆ THỐNG";
+
+    secretMain.textContent =
+        "ĐỪNG NHÌN PHÍA SAU.";
+
+    secretSub.textContent =
+        "";
+
+}, 119000);
+
+
+/* =====================================================
+   FINAL CHANGE
+===================================================== */
+
+setTimeout(() => {
+
+    secretSmall.textContent =
+        "TASCUS FOOD";
+
+    secretMain.textContent =
+        "BẠN VẪN CÒN Ở ĐÂY.";
+
+    secretSub.textContent =
+        "Tôi cũng vậy.";
+
+    setStatus(
+        "KẾT NỐI VẪN ĐANG MỞ"
+    );
+
+}, 124000);
+
+
+/* =====================================================
+   IDLE
+===================================================== */
+
+function resetIdle() {
+
+    clearTimeout(idleTimer);
+
+    idleTimer = setTimeout(() => {
+
+        if (horrorStarted) {
+
+            setStatus(
+                "BẠN VẪN CÒN Ở ĐÓ."
+            );
+
+        }
+
+    }, 12000);
+
+}
+
+document.addEventListener(
+    "mousemove",
+    resetIdle
+);
+
+document.addEventListener(
+    "touchstart",
+    resetIdle
+);
+
+document.addEventListener(
+    "keydown",
+    resetIdle
+);
+
+resetIdle();
+
+
+/* =====================================================
+   BUTTON INTERACTION
+===================================================== */
+
+buttons.forEach(
+    (button, index) => {
+
+        button.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                if (!horrorStarted) {
+
+                    setStatus(
+                        "ĐANG MỞ..."
+                    );
+
+                    return;
+                }
+
+
+                if (index === 5) {
+
+                    showSecret(
+                        "NHẬT KÝ HỆ THỐNG",
+                        "CÓ MỘT VẤN ĐỀ.",
+                        nowTime() +
+                        " · Bạn đã mở nhật ký.",
+                        4500
+                    );
+
+                    setStatus(
+                        "ĐÃ GHI NHẬN"
+                    );
+
+                    return;
+                }
+
+
+                const responses = [
+
+                    "Không cần nữa.",
+
+                    "Đã xác nhận.",
+
+                    "Đừng thay đổi.",
+
+                    "Đã ghi nhận.",
+
+                    "Không có gì để huỷ.",
+
+                    "Bạn vẫn đang ở đây.",
+
+                    "Không phải mục này.",
+
+                    "Quay lại."
+
+                ];
+
+                showSecret(
+                    "HỆ THỐNG",
+                    responses[
+                        index % responses.length
+                    ],
+                    "Phiên truy cập vẫn đang mở.",
+                    2800
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   TAB TITLE
+===================================================== */
+
+setTimeout(() => {
+
+    document.title =
+        "Cổng vận hành · Tascus Food";
+
+}, 6000);
+
+
+setTimeout(() => {
+
+    document.title =
+        "Cổng vận hành · ...";
+
+}, 30000);
+
+
+setTimeout(() => {
+
+    document.title =
+        "ĐỪNG ĐÓNG";
+
+}, 80000);
+
+
+setTimeout(() => {
+
+    document.title =
+        "VẬY AI ĐANG ĐĂNG NHẬP?";
+
+}, 110000);
+
+
+/* =====================================================
+   RANDOM STATUS
+===================================================== */
+
+const statuses = [
+
+    "HỆ THỐNG ĐANG HOẠT ĐỘNG",
+    "ĐANG CHỜ",
+    "ĐANG ĐỒNG BỘ",
+    "ĐANG GHI NHẬN",
+    "KẾT NỐI BÌNH THƯỜNG",
+    "KHÔNG CÓ VẤN ĐỀ",
+    "CÓ VẤN ĐỀ",
+    "ĐANG CHỜ BẠN"
+];
+
+setInterval(() => {
+
+    if (
+        horrorStarted &&
+        !body.classList.contains("final")
+    ) {
+
+        setStatus(
+            statuses[
+                Math.floor(
+                    Math.random() *
+                    statuses.length
+                )
+            ]
+        );
+
+    }
+
+}, 6200);
+
+
+/* =====================================================
+   LOGO DISTORTION
+===================================================== */
+
+setInterval(() => {
+
+    if (horrorStarted) {
+
+        logo.style.transform =
+            "rotate(" +
+            (Math.random() * 8 - 4) +
+            "deg) scale(" +
+            (
+                .96 +
+                Math.random() * .08
+            ) +
+            ")";
+
+        setTimeout(() => {
+
+            logo.style.transform = "";
+
+        }, 700);
+
+    }
+
+}, 6300);
+
+
+/* =====================================================
+   ESCAPE ATTEMPT
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            horrorStarted
+        ) {
+
+            showSecret(
+                "ESCAPE",
+                "KHÔNG CÓ GÌ XẢY RA.",
+                "Bạn vẫn đang ở đây.",
+                3000
+            );
+
+            setStatus(
+                "ESCAPE KHÔNG KHẢ DỤNG"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   RETURN VISITOR
+===================================================== */
+
+let visits =
+    Number(
+        sessionStorage.getItem(
+            "tascus_horror_visits"
+        ) || 0
+    );
+
+visits++;
+
+sessionStorage.setItem(
+    "tascus_horror_visits",
+    visits
+);
+
+if (visits > 1) {
+
+    setTimeout(() => {
+
+        setStatus(
+            "CHÀO MỪNG TRỞ LẠI."
+        );
+
+    }, 4000);
+
+
+    setTimeout(() => {
+
+        headerText.textContent =
+            "Bạn đã truy cập cổng này trước đây.";
+
+    }, 9000);
+
+}
+
+</script>
+
+</body>
+</html>
