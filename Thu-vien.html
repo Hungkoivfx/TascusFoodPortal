@@ -711,12 +711,18 @@ body {
 >
     🍝 Mỳ Ý
 </button>
-
+<button
+    type="button"
+    class="category"
+    onclick="showCategory('Banhmychao', this)"
+>
+    🥘 Bánh mỳ chảo
+</button>
 
 <button
     type="button"
     class="category"
-    onclick="showCategory('drink', this)"
+    onclick="showCategory('bmchao', this)"
 >
     🍹 Đồ uống
 </button>
@@ -858,7 +864,7 @@ const recipes = {
 
             {
                 name: "Burger",
-                image: "burger.png"
+                image: "Burger.png"
             }
 
         ]
@@ -989,6 +995,24 @@ const recipes = {
             {
                 name: "Mỳ Ý xúc xích bò bằm",
                 image: "Pasta-MyYsotbobam.png"
+            }
+
+        ]
+
+    },
+ /* =====================================
+       Bánh mỳ chao
+    ===================================== */
+
+    bmchao: {
+
+        title: "Bánh mỳ chảo",
+
+        items: [
+
+            {
+                name: "Bánh mỳ chảo",
+                image: "Banhmychao.png"
             }
 
         ]
