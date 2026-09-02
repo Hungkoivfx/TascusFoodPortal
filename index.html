@@ -589,152 +589,6 @@ body {
 
 
 /* =========================
-   LARK POPUP
-========================= */
-
-.lark-modal {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-    background: rgba(0, 0, 0, 0.45);
-
-    backdrop-filter: blur(3px);
-
-    -webkit-backdrop-filter: blur(3px);
-}
-
-.lark-modal.active {
-    display: flex;
-}
-
-.lark-window {
-    width: min(100%, 900px);
-
-    height: min(92vh, 850px);
-
-    background: #fff;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.22);
-
-    display: flex;
-
-    flex-direction: column;
-
-    animation: modalIn 0.16s ease-out;
-}
-
-@keyframes modalIn {
-
-    from {
-        opacity: 0;
-
-        transform:
-            scale(0.97)
-            translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            scale(1)
-            translateY(0);
-    }
-
-}
-
-.lark-header {
-    height: 54px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 0 14px 0 18px;
-
-    border-bottom: 1px solid #e8e8e8;
-
-    background: #fff;
-}
-
-.lark-title {
-    font-size: 14px;
-
-    font-weight: 600;
-
-    color: #333;
-}
-
-.lark-close {
-    width: 36px;
-
-    height: 36px;
-
-    border: 0;
-
-    border-radius: 10px;
-
-    background: transparent;
-
-    color: #777;
-
-    font-size: 25px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    -webkit-tap-highlight-color: transparent;
-}
-
-.lark-close:hover {
-    background: #f1f2f3;
-
-    color: #333;
-}
-
-.lark-frame {
-    flex: 1;
-
-    width: 100%;
-
-    height: 100%;
-
-    border: 0;
-
-    display: block;
-
-    background: #fff;
-}
-
-
-/* =========================
    MOBILE
 ========================= */
 
@@ -840,32 +694,6 @@ body {
         padding: 25px 20px 21px;
 
         border-radius: 16px;
-    }
-
-    .lark-modal {
-        padding: 0;
-    }
-
-    .lark-window {
-        width: 100%;
-
-        height: 100%;
-
-        max-height: none;
-
-        border-radius: 0;
-    }
-
-    .lark-header {
-        height: 52px;
-
-        padding-left: 15px;
-    }
-
-    .lark-close {
-        width: 38px;
-
-        height: 38px;
     }
 
 }
@@ -977,12 +805,11 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
 
 <div class="logo">
 
-
 <img
-    src="./tascuslogofinal-png-07.png"
-    alt="Tascus Food"
->
+src="./tascuslogofinal-png-07.png"
+alt="Tascus Food"
 
+>
 
 </div>
 
@@ -1004,9 +831,9 @@ aria-label="Giới thiệu cổng vận hành"
 
 >
 
-
+```
 ?
-
+```
 
 </button>
 
@@ -1018,40 +845,40 @@ aria-label="Giới thiệu cổng vận hành"
     onclick="closeInfo(event)"
 >
 
-
 <div class="info-popup">
 
-    <button
-        class="info-close"
-        onclick="closeInfo()"
-    >
-        ×
-    </button>
+```
+<button
+    class="info-close"
+    onclick="closeInfo()"
+>
+    ×
+</button>
 
-    <div class="info-icon">
-        ?
-    </div>
-
-    <h2>
-        Cổng vận hành
-    </h2>
-
-    <p>
-        Đây là nơi tập hợp những thứ nhân viên cần dùng
-        trong công việc hằng ngày tại Tascus Food.
-        Từ đặt hàng, báo cáo, ghi nhận sự cố đến xem
-        quy trình và công thức món, mọi thứ đều được gom
-        lại ở đây để dễ tìm và dễ sử dụng hơn.
-    </p>
-
-    <p>
-        Các chức năng và hướng dẫn trên cổng được thiết kế
-        để nhân viên có thể tự tìm hiểu và thực hiện
-        công việc của mình.
-    </p>
-
+<div class="info-icon">
+    ?
 </div>
 
+<h2>
+    Cổng vận hành
+</h2>
+
+<p>
+    Đây là nơi tập hợp những thứ nhân viên cần dùng
+    trong công việc hằng ngày tại Tascus Food.
+    Từ đặt hàng, báo cáo, ghi nhận sự cố đến xem
+    quy trình và công thức món, mọi thứ đều được gom
+    lại ở đây để dễ tìm và dễ sử dụng hơn.
+</p>
+
+<p>
+    Các chức năng và hướng dẫn trên cổng được thiết kế
+    để nhân viên có thể tự tìm hiểu và thực hiện
+    công việc của mình.
+</p>
+```
+
+</div>
 
 </div>
 
@@ -1069,101 +896,108 @@ aria-label="Giới thiệu cổng vận hành"
 
 <div class="menu">
 
-
 <!-- ĐẶT RAU BÁNH -->
 
 <a
-    class="menu-button"
-    href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation"
-    data-lark="Đặt rau, bánh"
+class="menu-button"
+href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation"
+target="_blank"
+rel="noopener"
+
 >
 
-    <div class="button-icon yellow">
-        🥬
+```
+<div class="button-icon yellow">
+    🥬
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Đặt rau, bánh
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Đặt rau, bánh
-        </div>
-
-        <div class="button-description">
-            Tạo lệnh đặt hàng bánh và rau
-            cho cửa hàng.
-        </div>
-
+    <div class="button-description">
+        Tạo lệnh đặt hàng bánh và rau
+        cho cửa hàng.
     </div>
 
-    <div class="arrow">
-        ›
-    </div>
+</div>
+
+<div class="arrow">
+    ↗
+</div>
+```
 
 </a>
-
 
 <!-- XÁC NHẬN BÁNH -->
 
 <a
-    class="menu-button"
-    href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgdDj2XyZrIQqfrdH9nySoOg"
-    data-lark="Xác nhận bánh"
+class="menu-button"
+href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgdDj2XyZrIQqfrdH9nySoOg"
+target="_blank"
+rel="noopener"
+
 >
 
-    <div class="button-icon orange">
-        ✓
+```
+<div class="button-icon orange">
+    ✓
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Xác nhận bánh
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Xác nhận bánh
-        </div>
-
-        <div class="button-description">
-            Xác nhận số lượng bánh đã nhận
-            tại cửa hàng.
-        </div>
-
+    <div class="button-description">
+        Xác nhận số lượng bánh đã nhận
+        tại cửa hàng.
     </div>
 
-    <div class="arrow">
-        ›
-    </div>
+</div>
+
+<div class="arrow">
+    ↗
+</div>
+```
 
 </a>
-
 
 <!-- BẬT / TẮT MÓN -->
 
 <a
-    class="menu-button"
-    href="./autoOnOff.html"
+class="menu-button"
+href="./autoOnOff.html"
+
 >
 
-    <div class="button-icon">
-        ⚡
+```
+<div class="button-icon">
+    ⚡
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Bật/Tắt món tự động trên app
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Bật/Tắt món tự động trên app
-        </div>
-
-        <div class="button-description">
-            Quản lý trạng thái món bán trên các
-            ứng dụng đặt hàng.
-        </div>
-
+    <div class="button-description">
+        Quản lý trạng thái món bán trên các
+        ứng dụng đặt hàng.
     </div>
 
-    <div class="coming-soon-badge">
-        ĐANG XÂY DỰNG
-    </div>
+</div>
+
+<div class="coming-soon-badge">
+    ĐANG XÂY DỰNG
+</div>
+```
 
 </a>
-
 
 </div>
 
@@ -1181,70 +1015,75 @@ aria-label="Giới thiệu cổng vận hành"
 
 <div class="menu">
 
-
 <!-- DOANH THU -->
 
 <a
-    class="menu-button"
-    href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb"
-    data-lark="Báo cáo doanh thu"
+class="menu-button"
+href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb"
+target="_blank"
+rel="noopener"
+
 >
 
-    <div class="button-icon orange">
-        ₫
+```
+<div class="button-icon orange">
+    ₫
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Báo cáo doanh thu
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Báo cáo doanh thu
-        </div>
-
-        <div class="button-description">
-            Gửi báo cáo doanh thu của
-            cửa hàng.
-        </div>
-
+    <div class="button-description">
+        Gửi báo cáo doanh thu của
+        cửa hàng.
     </div>
 
-    <div class="arrow">
-        ›
-    </div>
+</div>
+
+<div class="arrow">
+    ↗
+</div>
+```
 
 </a>
-
 
 <!-- HUỶ NGUYÊN VẬT LIỆU -->
 
 <a
-    class="menu-button"
-    href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd"
-    data-lark="Báo cáo huỷ nguyên vật liệu"
+class="menu-button"
+href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd"
+target="_blank"
+rel="noopener"
+
 >
 
-    <div class="button-icon red">
-        !
+```
+<div class="button-icon red">
+    !
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Báo cáo huỷ nguyên vật liệu
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Báo cáo huỷ nguyên vật liệu
-        </div>
-
-        <div class="button-description">
-            Ghi nhận nguyên vật liệu bị huỷ
-            trong quá trình vận hành.
-        </div>
-
+    <div class="button-description">
+        Ghi nhận nguyên vật liệu bị huỷ
+        trong quá trình vận hành.
     </div>
 
-    <div class="arrow">
-        ›
-    </div>
+</div>
+
+<div class="arrow">
+    ↗
+</div>
+```
 
 </a>
-
 
 </div>
 
@@ -1262,35 +1101,36 @@ aria-label="Giới thiệu cổng vận hành"
 
 <div class="menu">
 
-
 <a
-    class="menu-button"
-    href="./OperationLogs.html"
+class="menu-button"
+href="./OperationLogs.html"
+
 >
 
-    <div class="button-icon">
-        ◷
+```
+<div class="button-icon">
+    ◷
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Nhật ký vận hành
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Nhật ký vận hành
-        </div>
-
-        <div class="button-description">
-            Ghi nhận và cập nhật các vấn đề
-            phát sinh trong vận hành.
-        </div>
-
+    <div class="button-description">
+        Ghi nhận và cập nhật các vấn đề
+        phát sinh trong vận hành.
     </div>
 
-    <div class="arrow">
-        ›
-    </div>
+</div>
+
+<div class="arrow">
+    ›
+</div>
+```
 
 </a>
-
 
 </div>
 
@@ -1308,66 +1148,73 @@ aria-label="Giới thiệu cổng vận hành"
 
 <div class="menu">
 
-
 <!-- KHƯƠNG TRUNG -->
 
 <a
-    class="menu-button sop-button"
-    href="https://rjtj1yaw65k.sg.larksuite.com/wiki/UE0wwgqeSi2pKskkDgalSbTjgJd?from=from_copylink"
+class="menu-button sop-button"
+href="https://rjtj1yaw65k.sg.larksuite.com/wiki/UE0wwgqeSi2pKskkDgalSbTjgJd?from=from_copylink"
+target="_blank"
+rel="noopener"
+
 >
 
-    <div class="button-icon">
-        ≡
+```
+<div class="button-icon">
+    ≡
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Quy trình vận hành · 69 Khương Trung
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Quy trình vận hành · 69 Khương Trung
-        </div>
-
-        <div class="button-description">
-            Quy trình vận hành cửa hàng
-        </div>
-
+    <div class="button-description">
+        Quy trình vận hành cửa hàng
     </div>
 
-    <div class="arrow">
-        ↗
-    </div>
+</div>
+
+<div class="arrow">
+    ↗
+</div>
+```
 
 </a>
-
 
 <!-- THÁI THỊNH -->
 
 <a
-    class="menu-button sop-button"
-    href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd"
+class="menu-button sop-button"
+href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd"
+target="_blank"
+rel="noopener"
+
 >
 
-    <div class="button-icon">
-        ≡
+```
+<div class="button-icon">
+    ≡
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Quy trình vận hành · 122 Thái Thịnh
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Quy trình vận hành · 122 Thái Thịnh
-        </div>
-
-        <div class="button-description">
-            Quy trình vận hành cửa hàng
-        </div>
-
+    <div class="button-description">
+        Quy trình vận hành cửa hàng
     </div>
 
-    <div class="arrow">
-        ↗
-    </div>
+</div>
+
+<div class="arrow">
+    ↗
+</div>
+```
 
 </a>
-
 
 </div>
 
@@ -1385,35 +1232,36 @@ aria-label="Giới thiệu cổng vận hành"
 
 <div class="menu">
 
-
 <a
-    class="menu-button"
-    href="./Thu-vien.html"
+class="menu-button"
+href="./Thu-vien.html"
+
 >
 
-    <div class="button-icon yellow">
-        ▤
+```
+<div class="button-icon yellow">
+    ▤
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Thư viện công thức
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Thư viện công thức
-        </div>
-
-        <div class="button-description">
-            Tra cứu công thức và hình ảnh công thức
-            các món tại Tascus Food.
-        </div>
-
+    <div class="button-description">
+        Tra cứu công thức và hình ảnh công thức
+        các món tại Tascus Food.
     </div>
 
-    <div class="arrow">
-        ›
-    </div>
+</div>
+
+<div class="arrow">
+    ›
+</div>
+```
 
 </a>
-
 
 </div>
 
@@ -1431,62 +1279,63 @@ aria-label="Giới thiệu cổng vận hành"
 
 <div class="menu">
 
-
 <!-- SỔ TAY -->
 
 <div class="menu-button coming-soon">
 
-    <div class="button-icon">
-        +
+```
+<div class="button-icon">
+    +
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Sổ tay nhân viên
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Sổ tay nhân viên
-        </div>
-
-        <div class="button-description">
-            Tài liệu hướng dẫn dành cho nhân viên
-            Tascus Food.
-        </div>
-
-    </div>
-
-    <div class="coming-soon-badge">
-        SẮP RA MẮT
+    <div class="button-description">
+        Tài liệu hướng dẫn dành cho nhân viên
+        Tascus Food.
     </div>
 
 </div>
 
+<div class="coming-soon-badge">
+    SẮP RA MẮT
+</div>
+```
+
+</div>
 
 <!-- ĐÀO TẠO -->
 
 <div class="menu-button coming-soon">
 
-    <div class="button-icon">
-        ✓
+```
+<div class="button-icon">
+    ✓
+</div>
+
+<div class="button-content">
+
+    <div class="button-title">
+        Đào tạo / Kiểm tra
     </div>
 
-    <div class="button-content">
-
-        <div class="button-title">
-            Đào tạo / Kiểm tra
-        </div>
-
-        <div class="button-description">
-            Học quy trình và kiểm tra kiến thức
-            vận hành của nhân viên.
-        </div>
-
-    </div>
-
-    <div class="coming-soon-badge">
-        SẮP RA MẮT
+    <div class="button-description">
+        Học quy trình và kiểm tra kiến thức
+        vận hành của nhân viên.
     </div>
 
 </div>
 
+<div class="coming-soon-badge">
+    SẮP RA MẮT
+</div>
+```
+
+</div>
 
 </div>
 
@@ -1499,59 +1348,6 @@ aria-label="Giới thiệu cổng vận hành"
 <footer class="footer">
     Tascus Food · Cổng vận hành
 </footer>
-
-</main>
-
-<!-- =========================
-     LARK FORM POPUP
-========================= -->
-
-<div
-    id="larkModal"
-    class="lark-modal"
-    aria-hidden="true"
->
-
-<div
-    class="lark-window"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="larkTitle"
->
-
-
-<div class="lark-header">
-
-    <div
-        id="larkTitle"
-        class="lark-title"
-    >
-        Lark Form
-    </div>
-
-    <button
-        id="larkClose"
-        class="lark-close"
-        type="button"
-        aria-label="Đóng"
-    >
-        ×
-    </button>
-
-</div>
-
-<iframe
-    id="larkFrame"
-    class="lark-frame"
-    src="about:blank"
-    loading="eager"
-    allow="clipboard-read; clipboard-write"
-></iframe>
-
-
-</div>
-
-</div>
 
 <script>
 
@@ -1586,110 +1382,7 @@ function closeInfo(event) {
 
 
 /* =====================================================
-   LARK POPUP
-===================================================== */
-
-const larkModal =
-    document.getElementById("larkModal");
-
-const larkFrame =
-    document.getElementById("larkFrame");
-
-const larkTitle =
-    document.getElementById("larkTitle");
-
-const larkClose =
-    document.getElementById("larkClose");
-
-
-document
-    .querySelectorAll("[data-lark]")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                const url =
-                    this.getAttribute("href");
-
-                const title =
-                    this.getAttribute("data-lark");
-
-                if (!url) return;
-
-                larkTitle.textContent = title;
-
-                larkFrame.src = url;
-
-                larkModal.classList.add("active");
-
-                larkModal.setAttribute(
-                    "aria-hidden",
-                    "false"
-                );
-
-                document.body.style.overflow =
-                    "hidden";
-
-            }
-        );
-
-    });
-
-
-/* =====================================================
-   ĐÓNG LARK POPUP
-===================================================== */
-
-function closeLarkModal() {
-
-    larkModal.classList.remove("active");
-
-    larkModal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-    larkFrame.src =
-        "about:blank";
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-larkClose.addEventListener(
-    "click",
-    closeLarkModal
-);
-
-
-/* =====================================================
-   CLICK RA NGOÀI POPUP
-===================================================== */
-
-larkModal.addEventListener(
-    "click",
-    function(event) {
-
-        if (
-            event.target === larkModal
-        ) {
-
-            closeLarkModal();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   ESC
+   ESC ĐÓNG INFO POPUP
 ===================================================== */
 
 document.addEventListener(
@@ -1697,11 +1390,12 @@ document.addEventListener(
     function(event) {
 
         if (
-            event.key === "Escape" &&
-            larkModal.classList.contains("active")
+            event.key === "Escape"
         ) {
 
-            closeLarkModal();
+            document
+                .getElementById("infoOverlay")
+                .classList.remove("show");
 
         }
 
