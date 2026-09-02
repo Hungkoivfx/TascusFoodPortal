@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T16:10:21.991Z",
+  "updated_at": "2026-09-02T11:37:55.655Z",
   "records": [
     {
       "id": "Z024",
@@ -92,6 +92,16 @@
       "trang_thai_xu_ly": "Đã xử lý",
       "phuong_an_xu_ly": "Thay vòi mới",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z032",
+      "chi_nhanh": "Thái Thịnh",
+      "thoi_gian": "2026/09/02 18:37",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Tối 02/09 Xịt thuốc diệt gián, mai ca sáng chú ý quét dọn gián",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
