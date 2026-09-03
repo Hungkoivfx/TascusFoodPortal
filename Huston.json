@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T09:39:05.089Z",
+  "updated_at": "2026-09-03T15:15:49.719Z",
   "records": [
     {
       "id": "Z024",
@@ -131,6 +131,16 @@
       "thoi_gian_xu_ly": "2026/09/03 10:31",
       "phuong_an_xu_ly": "Đã bổ sung một lựa chọn mới \"Mỳ sợi khô\"",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z035",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/03 22:15",
+      "nguoi_bao_cao": "Gia Định Trần",
+      "noi_dung": "1 chai hibiscus bị vỡ nắp em để trong tủ đứng",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Chỉ thông báo / báo cáo",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
