@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T03:09:11.300Z",
+  "updated_at": "2026-09-03T03:31:59.899Z",
   "records": [
     {
       "id": "Z024",
@@ -123,7 +123,10 @@
       "noi_dung": "Phần huỷ nguyên liệu chưa có \"mỳ ý\"",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/03 10:31",
+      "phuong_an_xu_ly": "Đã bổ sung một lựa chọn mới \"Mỳ sợi khô\"",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
