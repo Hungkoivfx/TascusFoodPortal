@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T03:34:23.529Z",
+  "updated_at": "2026-09-03T09:39:05.089Z",
   "records": [
     {
       "id": "Z024",
@@ -114,9 +114,10 @@
       "noi_dung": "Điều hòa hỏng",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Đang xử lý",
-      "phuong_an_xu_ly": "Đã đặt mua điều hòa mới. Trong thời gian chờ các bạn chịu khó xin khách thứ lỗi",
-      "nguoi_xu_ly": "Hưng"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "phuong_an_xu_ly": "Đã thay điều hòa mát rượi căn phòng, nhưng tôi muốn buốt cơ",
+      "nguoi_xu_ly": "Hưng",
+      "thoi_gian_xu_ly": "2026/09/03 16:39"
     },
     {
       "id": "Z034",
