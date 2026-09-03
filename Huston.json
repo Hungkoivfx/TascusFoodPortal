@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T02:02:57.521Z",
+  "updated_at": "2026-09-03T03:09:11.300Z",
   "records": [
     {
       "id": "Z024",
@@ -114,6 +114,16 @@
       "trang_thai_xu_ly": "Đang xử lý",
       "phuong_an_xu_ly": "Đã đặt mua điều hòa mới. Trong thời gian chờ các bạn chịu khó xin khách thứ lỗi",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z034",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/03 10:09",
+      "nguoi_bao_cao": "Vy",
+      "noi_dung": "Phần huỷ nguyên liệu chưa có \"mỳ ý\"",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
