@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T15:15:49.719Z",
+  "updated_at": "2026-09-04T01:38:00.766Z",
   "records": [
     {
       "id": "Z024",
@@ -140,7 +140,10 @@
       "noi_dung": "1 chai hibiscus bị vỡ nắp em để trong tủ đứng",
       "muc_do": "Thông thường",
       "can_xu_ly": "Chỉ thông báo / báo cáo",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/04 08:38",
+      "phuong_an_xu_ly": "Đã chú ý, đã thay nắp mới",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
