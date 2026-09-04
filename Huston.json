@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-04T13:44:31.348Z",
+  "updated_at": "2026-09-04T15:00:46.968Z",
   "records": [
     {
       "id": "Z024",
@@ -177,6 +177,16 @@
       "phuong_an_xu_ly": "Đã gọi gas....\n450k\nBao giờ gas đến thì nhắn thì yêu cầu đưa số tài khoản Hưng thanh toán\nLắp gas xong ca tối đóng sự kiện",
       "nguoi_xu_ly": "Hưng",
       "thoi_gian_xu_ly": "2026/09/04 20:44"
+    },
+    {
+      "id": "Z039",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/04 22:00",
+      "nguoi_bao_cao": "Định",
+      "noi_dung": "Hết pate bò, sốt tiêu đen, sốt chảo, thịt nặn burger\nCòn 4 gói sốt bò bằm",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
