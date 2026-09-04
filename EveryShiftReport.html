@@ -1,1 +1,1692 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+<title>Báo cáo doanh thu · Tascus Food</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f5f6f7;
+    color: #171717;
+    padding: 18px 12px 30px;
+}
+
+.container {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #e1e2e4;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 16px 14px;
+    border-bottom: 1px solid #ececed;
+}
+
+.header-btn {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border: 1px solid #dedfe1;
+    border-radius: 12px;
+    background: #fff;
+    color: #222;
+    font-size: 25px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.header-btn:active {
+    transform: scale(.97);
+    background: #f5f5f5;
+}
+
+.header-title {
+    flex: 1;
+    min-width: 0;
+}
+
+.header-title h1 {
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -.3px;
+}
+
+.header-title p {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #777;
+}
+
+.form {
+    padding: 18px 16px 20px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 9px;
+    color: #333;
+}
+
+.field {
+    margin-bottom: 13px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid #dedfe1;
+    border-radius: 11px;
+    background: #f7f7f8;
+    color: #171717;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .15s, background .15s;
+}
+
+input,
+select {
+    height: 46px;
+    padding: 0 13px;
+}
+
+textarea {
+    min-height: 115px;
+    resize: vertical;
+    padding: 12px 13px;
+    line-height: 1.5;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #aaa;
+    background: #fff;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #777 50%),
+        linear-gradient(135deg, #777 50%, transparent 50%);
+    background-position:
+        calc(100% - 17px) 20px,
+        calc(100% - 12px) 20px;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 36px;
+}
+
+.shift-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+}
+
+.shift-option {
+    position: relative;
+}
+
+.shift-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.shift-option label {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dedfe1;
+    border-radius: 11px;
+    background: #f7f7f8;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s;
+}
+
+.shift-option input:checked + label {
+    border-color: #222;
+    background: #222;
+    color: #fff;
+}
+
+.shift-section {
+    display: none;
+    animation: fadeIn .18s ease;
+}
+
+.shift-section.active {
+    display: block;
+}
+
+.money-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.money-result {
+    margin-top: 5px;
+    padding: 14px;
+    border: 1px solid #dedfe1;
+    border-radius: 11px;
+    background: #f1f1f2;
+}
+
+.money-result-label {
+    font-size: 11px;
+    color: #777;
+    margin-bottom: 4px;
+}
+
+.money-result-value {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -.3px;
+}
+
+.apps-total {
+    margin-top: 7px;
+    padding: 14px;
+    border: 1px solid #dedfe1;
+    border-radius: 11px;
+    background: #f1f1f2;
+}
+
+.apps-total-label {
+    font-size: 11px;
+    color: #777;
+    margin-bottom: 4px;
+}
+
+.apps-total-value {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.camera-box {
+    margin-top: 8px;
+}
+
+.camera-button {
+    width: 100%;
+    height: 52px;
+    border: 1px solid #222;
+    border-radius: 12px;
+    background: #222;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 650;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.camera-button:active {
+    transform: scale(.99);
+    background: #111;
+}
+
+.camera-input {
+    display: none;
+}
+
+.photo-preview {
+    display: none;
+    margin-top: 10px;
+    border: 1px solid #dedfe1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f7f7f8;
+}
+
+.photo-preview.active {
+    display: block;
+}
+
+.photo-preview img {
+    width: 100%;
+    max-height: 360px;
+    object-fit: contain;
+    display: block;
+    background: #eee;
+}
+
+.photo-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 11px;
+    font-size: 11px;
+    color: #666;
+}
+
+.remove-photo {
+    border: 0;
+    background: transparent;
+    color: #555;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.divider {
+    height: 1px;
+    background: #ececed;
+    margin: 21px 0;
+}
+
+.submit-button {
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 12px;
+    background: #171717;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.submit-button:active {
+    transform: scale(.99);
+    background: #000;
+}
+
+.submit-button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.note {
+    margin-top: 11px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #888;
+}
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(4px);
+}
+
+.loading-overlay.active {
+    display: flex;
+}
+
+.loading-box {
+    width: calc(100% - 40px);
+    max-width: 320px;
+    padding: 22px;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 12px 40px rgba(0,0,0,.12);
+    text-align: center;
+}
+
+.spinner {
+    width: 28px;
+    height: 28px;
+    margin: 0 auto 12px;
+    border: 3px solid #ddd;
+    border-top-color: #222;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+}
+
+.loading-text {
+    font-size: 13px;
+    color: #444;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,.38);
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 360px;
+    background: #fff;
+    border-radius: 17px;
+    padding: 22px;
+    box-shadow: 0 18px 60px rgba(0,0,0,.2);
+}
+
+.modal-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.modal-text {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #666;
+}
+
+.modal-button {
+    width: 100%;
+    height: 44px;
+    margin-top: 18px;
+    border: 0;
+    border-radius: 10px;
+    background: #171717;
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.help-list {
+    margin-top: 12px;
+    padding-left: 18px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #555;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(3px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 10px 8px 24px;
+    }
+
+    .form {
+        padding: 16px 13px 18px;
+    }
+
+    .money-row,
+    .app-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+
+            <button
+                class="header-btn"
+                type="button"
+                onclick="goBack()"
+                aria-label="Quay lại"
+            >
+                ‹
+            </button>
+
+            <div class="header-title">
+                <h1>Báo cáo doanh thu</h1>
+                <p>Ghi nhận doanh thu và tình hình ca trực</p>
+            </div>
+
+            <button
+                class="header-btn"
+                type="button"
+                onclick="openHelp()"
+                aria-label="Hướng dẫn"
+            >
+                ?
+            </button>
+
+        </div>
+
+        <form class="form" id="revenueForm">
+
+            <div class="section">
+
+                <div class="section-title">Thông tin ca trực</div>
+
+                <div class="field">
+                    <label class="label" for="reporter">
+                        Tên người báo cáo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="reporter"
+                        placeholder="Nhập tên"
+                        autocomplete="name"
+                    >
+                </div>
+
+                <div class="field">
+                    <label class="label" for="branch">
+                        Chi nhánh
+                    </label>
+
+                    <select id="branch">
+                        <option value="">Chọn chi nhánh</option>
+                        <option value="Thái Thịnh">Thái Thịnh</option>
+                        <option value="Khương Trung">Khương Trung</option>
+                    </select>
+                </div>
+
+                <div class="field">
+
+                    <label class="label">
+                        Ca làm việc
+                    </label>
+
+                    <div class="shift-options">
+
+                        <div class="shift-option">
+                            <input
+                                type="radio"
+                                id="shiftMorning"
+                                name="shift"
+                                value="Ca sáng"
+                                onchange="changeShift()"
+                            >
+                            <label for="shiftMorning">
+                                Ca sáng
+                            </label>
+                        </div>
+
+                        <div class="shift-option">
+                            <input
+                                type="radio"
+                                id="shiftEvening"
+                                name="shift"
+                                value="Ca tối"
+                                onchange="changeShift()"
+                            >
+                            <label for="shiftEvening">
+                                Ca tối
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================== CA SÁNG ==================== -->
+
+            <div
+                class="shift-section"
+                id="morningSection"
+            >
+
+                <div class="divider"></div>
+
+                <div class="section">
+
+                    <div class="section-title">
+                        Doanh thu ca sáng
+                    </div>
+
+                    <div class="money-row">
+
+                        <div class="field">
+                            <label class="label" for="morningCash">
+                                Tiền mặt kiểm đếm
+                            </label>
+
+                            <input
+                                type="number"
+                                id="morningCash"
+                                min="0"
+                                step="1"
+                                inputmode="numeric"
+                                placeholder="0"
+                                oninput="calculateMorning()"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="morningExpense">
+                                Chi
+                            </label>
+
+                            <input
+                                type="number"
+                                id="morningExpense"
+                                min="0"
+                                step="1"
+                                inputmode="numeric"
+                                placeholder="0"
+                                oninput="calculateMorning()"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="money-result">
+
+                        <div class="money-result-label">
+                            Tiền mặt thực tế
+                        </div>
+
+                        <div
+                            class="money-result-value"
+                            id="morningCashTotal"
+                        >
+                            0 đ
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section">
+
+                    <div class="section-title">
+                        Ghi chú
+                    </div>
+
+                    <div class="field">
+
+                        <label class="label" for="morningNote">
+                            Mô tả
+                        </label>
+
+                        <textarea
+                            id="morningNote"
+                            placeholder="Mô tả rõ các khoản chi, hoặc sự cố xuất hiện trong ca trực"
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section">
+
+                    <div class="section-title">
+                        Chụp báo cáo
+                    </div>
+
+                    <div class="camera-box">
+
+                        <input
+                            class="camera-input"
+                            type="file"
+                            id="morningPhoto"
+                            accept="image/*"
+                            capture="environment"
+                            onchange="handlePhoto(this, 'morning')"
+                        >
+
+                        <button
+                            class="camera-button"
+                            type="button"
+                            onclick="document.getElementById('morningPhoto').click()"
+                        >
+                            📷
+                            <span>Chụp ảnh báo cáo</span>
+                        </button>
+
+                        <div
+                            class="photo-preview"
+                            id="morningPreview"
+                        >
+                            <img id="morningPreviewImage" alt="Ảnh báo cáo ca sáng">
+
+                            <div class="photo-info">
+                                <span id="morningPhotoName">
+                                    Đã chụp ảnh
+                                </span>
+
+                                <button
+                                    type="button"
+                                    class="remove-photo"
+                                    onclick="removePhoto('morning')"
+                                >
+                                    Xóa ảnh
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================== CA TỐI ==================== -->
+
+            <div
+                class="shift-section"
+                id="eveningSection"
+            >
+
+                <div class="divider"></div>
+
+                <div class="section">
+
+                    <div class="section-title">
+                        Doanh thu ca tối
+                    </div>
+
+                    <div class="money-row">
+
+                        <div class="field">
+                            <label class="label" for="eveningCash">
+                                Tiền mặt kiểm đếm
+                            </label>
+
+                            <input
+                                type="number"
+                                id="eveningCash"
+                                min="0"
+                                step="1"
+                                inputmode="numeric"
+                                placeholder="0"
+                                oninput="calculateEvening()"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="eveningExpense">
+                                Chi
+                            </label>
+
+                            <input
+                                type="number"
+                                id="eveningExpense"
+                                min="0"
+                                step="1"
+                                inputmode="numeric"
+                                placeholder="0"
+                                oninput="calculateEvening()"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="money-result">
+
+                        <div class="money-result-label">
+                            Tiền mặt thực tế
+                        </div>
+
+                        <div
+                            class="money-result-value"
+                            id="eveningCashTotal"
+                        >
+                            0 đ
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section">
+
+                    <div class="section-title">
+                        Doanh thu ứng dụng
+                    </div>
+
+                    <div class="app-grid">
+
+                        <div class="field">
+                            <label class="label" for="shopee">
+                                Shopee Food
+                            </label>
+
+                            <input
+                                type="number"
+                                id="shopee"
+                                min="0"
+                                step="1"
+                                inputmode="numeric"
+                                placeholder="0"
+                                oninput="calculateApps()"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="grab">
+                                Grab Food
+                            </label>
+
+                            <input
+                                type="number"
+                                id="grab"
+                                min="0"
+                                step="1"
+                                inputmode="numeric"
+                                placeholder="0"
+                                oninput="calculateApps()"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="be">
+                                Be Food
+                            </label>
+
+                            <input
+                                type="number"
+                                id="be"
+                                min="0"
+                                step="1"
+                                inputmode="numeric"
+                                placeholder="0"
+                                oninput="calculateApps()"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="xanhNgon">
+                                Xanh Ngon
+                            </label>
+
+                            <input
+                                type="number"
+                                id="xanhNgon"
+                                min="0"
+                                step="1"
+                                inputmode="numeric"
+                                placeholder="0"
+                                oninput="calculateApps()"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="apps-total">
+
+                        <div class="apps-total-label">
+                            Tổng doanh thu app
+                        </div>
+
+                        <div
+                            class="apps-total-value"
+                            id="appsTotal"
+                        >
+                            0 đ
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section">
+
+                    <div class="section-title">
+                        Ghi chú
+                    </div>
+
+                    <div class="field">
+
+                        <label class="label" for="eveningNote">
+                            Mô tả
+                        </label>
+
+                        <textarea
+                            id="eveningNote"
+                            placeholder="Mô tả rõ các khoản chi, hoặc sự cố xuất hiện trong ca trực"
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section">
+
+                    <div class="section-title">
+                        Chụp báo cáo
+                    </div>
+
+                    <div class="camera-box">
+
+                        <input
+                            class="camera-input"
+                            type="file"
+                            id="eveningPhoto"
+                            accept="image/*"
+                            capture="environment"
+                            onchange="handlePhoto(this, 'evening')"
+                        >
+
+                        <button
+                            class="camera-button"
+                            type="button"
+                            onclick="document.getElementById('eveningPhoto').click()"
+                        >
+                            📷
+                            <span>Chụp ảnh báo cáo</span>
+                        </button>
+
+                        <div
+                            class="photo-preview"
+                            id="eveningPreview"
+                        >
+                            <img id="eveningPreviewImage" alt="Ảnh báo cáo ca tối">
+
+                            <div class="photo-info">
+                                <span id="eveningPhotoName">
+                                    Đã chụp ảnh
+                                </span>
+
+                                <button
+                                    type="button"
+                                    class="remove-photo"
+                                    onclick="removePhoto('evening')"
+                                >
+                                    Xóa ảnh
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-button"
+            >
+                Gửi báo cáo
+            </button>
+
+            <div class="note">
+                Kiểm tra lại số liệu và ảnh báo cáo trước khi gửi.
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ==================== LOADING ==================== -->
+
+<div
+    class="loading-overlay"
+    id="loadingOverlay"
+>
+    <div class="loading-box">
+
+        <div class="spinner"></div>
+
+        <div class="loading-text">
+            Đang gửi báo cáo...
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ==================== HELP ==================== -->
+
+<div
+    class="modal"
+    id="helpModal"
+    onclick="closeHelp(event)"
+>
+
+    <div
+        class="modal-box"
+        onclick="event.stopPropagation()"
+    >
+
+        <div class="modal-title">
+            Hướng dẫn báo cáo
+        </div>
+
+        <div class="modal-text">
+
+            <ul class="help-list">
+
+                <li>
+                    Chọn đúng chi nhánh và ca làm việc.
+                </li>
+
+                <li>
+                    Nhập số tiền mặt kiểm đếm và các khoản chi.
+                </li>
+
+                <li>
+                    Ca tối nhập thêm doanh thu của từng ứng dụng.
+                </li>
+
+                <li>
+                    Chụp rõ toàn bộ trang báo cáo trong sổ doanh thu.
+                </li>
+
+                <li>
+                    Kiểm tra lại thông tin trước khi gửi.
+                </li>
+
+            </ul>
+
+        </div>
+
+        <button
+            type="button"
+            class="modal-button"
+            onclick="closeHelp()"
+        >
+            Đã hiểu
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================== SUCCESS ==================== -->
+
+<div
+    class="modal"
+    id="successModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+            Đã gửi báo cáo
+        </div>
+
+        <div
+            class="modal-text"
+            id="successText"
+        >
+            Báo cáo doanh thu đã được ghi nhận.
+        </div>
+
+        <button
+            type="button"
+            class="modal-button"
+            onclick="closeSuccess()"
+        >
+            Đóng
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const API_URL =
+    "https://script.google.com/macros/s/AKfycbwd6hrdfUGmSGxwyZJDGpF8FoXve3AJ5q7oy1aZaU74pY1WjEbVb2gTXrqjVjQmeAvnXQ/exec";
+
+
+let morningPhotoFile = null;
+let eveningPhotoFile = null;
+
+
+/* ==================== ĐỊNH DẠNG TIỀN ==================== */
+
+function formatMoney(value) {
+
+    const number = Number(value) || 0;
+
+    return number.toLocaleString("vi-VN") + " đ";
+
+}
+
+
+/* ==================== CA ==================== */
+
+function changeShift() {
+
+    const shift =
+        document.querySelector(
+            'input[name="shift"]:checked'
+        )?.value;
+
+    document
+        .getElementById("morningSection")
+        .classList.toggle(
+            "active",
+            shift === "Ca sáng"
+        );
+
+    document
+        .getElementById("eveningSection")
+        .classList.toggle(
+            "active",
+            shift === "Ca tối"
+        );
+
+}
+
+
+/* ==================== TIỀN MẶT CA SÁNG ==================== */
+
+function calculateMorning() {
+
+    const cash =
+        Number(
+            document.getElementById("morningCash").value
+        ) || 0;
+
+    const expense =
+        Number(
+            document.getElementById("morningExpense").value
+        ) || 0;
+
+    const total = cash + expense;
+
+    document.getElementById(
+        "morningCashTotal"
+    ).textContent = formatMoney(total);
+
+}
+
+
+/* ==================== TIỀN MẶT CA TỐI ==================== */
+
+function calculateEvening() {
+
+    const cash =
+        Number(
+            document.getElementById("eveningCash").value
+        ) || 0;
+
+    const expense =
+        Number(
+            document.getElementById("eveningExpense").value
+        ) || 0;
+
+    const total = cash + expense;
+
+    document.getElementById(
+        "eveningCashTotal"
+    ).textContent = formatMoney(total);
+
+}
+
+
+/* ==================== TỔNG APP ==================== */
+
+function calculateApps() {
+
+    const shopee =
+        Number(
+            document.getElementById("shopee").value
+        ) || 0;
+
+    const grab =
+        Number(
+            document.getElementById("grab").value
+        ) || 0;
+
+    const be =
+        Number(
+            document.getElementById("be").value
+        ) || 0;
+
+    const xanhNgon =
+        Number(
+            document.getElementById("xanhNgon").value
+        ) || 0;
+
+    const total =
+        shopee +
+        grab +
+        be +
+        xanhNgon;
+
+    document.getElementById(
+        "appsTotal"
+    ).textContent = formatMoney(total);
+
+}
+
+
+/* ==================== ẢNH ==================== */
+
+function handlePhoto(input, type) {
+
+    const file = input.files?.[0];
+
+    if (!file) {
+        return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+        alert("Vui lòng chọn ảnh.");
+        input.value = "";
+        return;
+    }
+
+    if (type === "morning") {
+        morningPhotoFile = file;
+    } else {
+        eveningPhotoFile = file;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+
+        const preview =
+            document.getElementById(
+                type + "Preview"
+            );
+
+        const image =
+            document.getElementById(
+                type + "PreviewImage"
+            );
+
+        const name =
+            document.getElementById(
+                type + "PhotoName"
+            );
+
+        image.src = event.target.result;
+
+        name.textContent =
+            file.name ||
+            "Đã chụp ảnh";
+
+        preview.classList.add("active");
+
+    };
+
+    reader.readAsDataURL(file);
+
+}
+
+
+function removePhoto(type) {
+
+    const input =
+        document.getElementById(
+            type + "Photo"
+        );
+
+    const preview =
+        document.getElementById(
+            type + "Preview"
+        );
+
+    const image =
+        document.getElementById(
+            type + "PreviewImage"
+        );
+
+    if (type === "morning") {
+        morningPhotoFile = null;
+    } else {
+        eveningPhotoFile = null;
+    }
+
+    input.value = "";
+    image.src = "";
+    preview.classList.remove("active");
+
+}
+
+
+/* ==================== SUBMIT ==================== */
+
+document
+    .getElementById("revenueForm")
+    .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const reporter =
+            document
+                .getElementById("reporter")
+                .value
+                .trim();
+
+        const branch =
+            document
+                .getElementById("branch")
+                .value;
+
+        const shift =
+            document.querySelector(
+                'input[name="shift"]:checked'
+            )?.value;
+
+
+        if (!reporter) {
+            alert("Vui lòng nhập tên người báo cáo.");
+            return;
+        }
+
+        if (!branch) {
+            alert("Vui lòng chọn chi nhánh.");
+            return;
+        }
+
+        if (!shift) {
+            alert("Vui lòng chọn ca làm việc.");
+            return;
+        }
+
+
+        let payload = {
+
+            action: "create_revenue_report",
+
+            thoi_gian: getCurrentDateTime(),
+
+            nguoi_bao_cao: reporter,
+
+            chi_nhanh: branch,
+
+            ca: shift
+
+        };
+
+
+        if (shift === "Ca sáng") {
+
+            const cash =
+                Number(
+                    document.getElementById("morningCash").value
+                ) || 0;
+
+            const expense =
+                Number(
+                    document.getElementById("morningExpense").value
+                ) || 0;
+
+            payload.tien_mat_kiem_dem = cash;
+
+            payload.chi = expense;
+
+            payload.tien_mat_thuc_te =
+                cash + expense;
+
+            payload.mo_ta =
+                document
+                    .getElementById("morningNote")
+                    .value
+                    .trim();
+
+            /*
+             * Ảnh hiện tại chỉ được giữ trong trình duyệt.
+             * Backend upload sẽ làm ở bước sau.
+             */
+            payload.co_anh =
+                !!morningPhotoFile;
+
+        }
+
+
+        if (shift === "Ca tối") {
+
+            const cash =
+                Number(
+                    document.getElementById("eveningCash").value
+                ) || 0;
+
+            const expense =
+                Number(
+                    document.getElementById("eveningExpense").value
+                ) || 0;
+
+            const shopee =
+                Number(
+                    document.getElementById("shopee").value
+                ) || 0;
+
+            const grab =
+                Number(
+                    document.getElementById("grab").value
+                ) || 0;
+
+            const be =
+                Number(
+                    document.getElementById("be").value
+                ) || 0;
+
+            const xanhNgon =
+                Number(
+                    document.getElementById("xanhNgon").value
+                ) || 0;
+
+            payload.tien_mat_kiem_dem = cash;
+
+            payload.chi = expense;
+
+            payload.tien_mat_thuc_te =
+                cash + expense;
+
+            payload.shopee_food = shopee;
+
+            payload.grab_food = grab;
+
+            payload.be_food = be;
+
+            payload.xanh_ngon = xanhNgon;
+
+            payload.tong_doanh_thu_app =
+                shopee +
+                grab +
+                be +
+                xanhNgon;
+
+            payload.mo_ta =
+                document
+                    .getElementById("eveningNote")
+                    .value
+                    .trim();
+
+            payload.co_anh =
+                !!eveningPhotoFile;
+
+        }
+
+
+        showLoading();
+
+
+        try {
+
+            /*
+             * Tạm thời chưa gửi request thật.
+             *
+             * Khi backend hoàn thiện,
+             * ảnh + payload sẽ được gửi trong
+             * cùng một request.
+             */
+
+            console.log(
+                "PAYLOAD",
+                payload
+            );
+
+
+            await new Promise(
+                resolve => setTimeout(resolve, 700)
+            );
+
+
+            hideLoading();
+
+            document.getElementById(
+                "successText"
+            ).textContent =
+                "Báo cáo " +
+                shift.toLowerCase() +
+                " đã được ghi nhận.";
+
+            document
+                .getElementById("successModal")
+                .classList.add("active");
+
+
+        } catch (error) {
+
+            hideLoading();
+
+            console.error(error);
+
+            alert(
+                "Không thể gửi báo cáo. Vui lòng thử lại."
+            );
+
+        }
+
+    });
+
+
+/* ==================== THỜI GIAN ==================== */
+
+function getCurrentDateTime() {
+
+    const now = new Date();
+
+    const year =
+        now.getFullYear();
+
+    const month =
+        String(
+            now.getMonth() + 1
+        ).padStart(2, "0");
+
+    const day =
+        String(
+            now.getDate()
+        ).padStart(2, "0");
+
+    const hours =
+        String(
+            now.getHours()
+        ).padStart(2, "0");
+
+    const minutes =
+        String(
+            now.getMinutes()
+        ).padStart(2, "0");
+
+    const seconds =
+        String(
+            now.getSeconds()
+        ).padStart(2, "0");
+
+    return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
+
+}
+
+
+/* ==================== LOADING ==================== */
+
+function showLoading() {
+
+    document
+        .getElementById("loadingOverlay")
+        .classList.add("active");
+
+}
+
+
+function hideLoading() {
+
+    document
+        .getElementById("loadingOverlay")
+        .classList.remove("active");
+
+}
+
+
+/* ==================== HELP ==================== */
+
+function openHelp() {
+
+    document
+        .getElementById("helpModal")
+        .classList.add("active");
+
+}
+
+
+function closeHelp(event) {
+
+    if (
+        event &&
+        event.target !== event.currentTarget
+    ) {
+        return;
+    }
+
+    document
+        .getElementById("helpModal")
+        .classList.remove("active");
+
+}
+
+
+/* ==================== SUCCESS ==================== */
+
+function closeSuccess() {
+
+    document
+        .getElementById("successModal")
+        .classList.remove("active");
+
+}
+
+
+/* ==================== BACK ==================== */
+
+function goBack() {
+
+    if (history.length > 1) {
+        history.back();
+    } else {
+        window.location.href = "../index.html";
+    }
+
+}
+
+
+/* ==================== KHÓA CUỘN KHI MODAL ==================== */
+
+function updateBodyLock() {
+
+    const modalOpen =
+        document.querySelector(
+            ".modal.active"
+        ) ||
+        document
+            .getElementById("loadingOverlay")
+            .classList.contains("active");
+
+    document.body.style.overflow =
+        modalOpen
+            ? "hidden"
+            : "";
+
+}
+
+
+const observer =
+    new MutationObserver(
+        updateBodyLock
+    );
+
+observer.observe(
+    document.body,
+    {
+        attributes: true,
+        subtree: true,
+        attributeFilter: ["class"]
+    }
+);
+
+</script>
+
+</body>
+</html>
