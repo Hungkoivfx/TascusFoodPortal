@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Đặt bánh & Xác nhận bánh · Tascus Food</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --orange: #e88932;
+    --orange-dark: #c96d19;
+    --orange-light: #fff4e8;
+    --border: #e5e5e5;
+    --border-dark: #d4d4d4;
+    --text: #242424;
+    --muted: #777;
+    --bg: #f7f7f7;
+    --white: #ffffff;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar {
+    height: 58px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 16px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.topbar-left,
+.topbar-right {
+    width: 42px;
+    display: flex;
+    align-items: center;
+}
+
+.topbar-right {
+    justify-content: flex-end;
+}
+
+.back-btn,
+.help-btn {
+    width: 36px;
+    height: 36px;
+
+    border: 1px solid var(--border);
+    background: #fff;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    color: #333;
+
+    transition: 0.15s ease;
+}
+
+.back-btn:hover,
+.help-btn:hover {
+    background: #f5f5f5;
+}
+
+.back-btn {
+    font-size: 21px;
+    line-height: 1;
+}
+
+.help-btn {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.topbar-title {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto;
+
+    padding: 18px 18px 40px;
+}
+
+/* =========================
+   FILTERS
+========================= */
+
+.filters {
+    background: #fff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    margin-bottom: 14px;
+}
+
+.filter-row {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    min-height: 38px;
+}
+
+.filter-row + .filter-row {
+    margin-top: 8px;
+}
+
+.filter-label {
+    width: 82px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: #666;
+
+    flex-shrink: 0;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 7px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+.filter-buttons::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    border: 1px solid var(--border-dark);
+
+    background: #fff;
+
+    color: #444;
+
+    border-radius: 8px;
+
+    min-height: 34px;
+
+    padding: 0 13px;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+.filter-btn:hover {
+    background: #fafafa;
+}
+
+.filter-btn.active {
+    background: var(--orange-light);
+
+    border-color: var(--orange);
+
+    color: var(--orange-dark);
+
+    font-weight: 700;
+}
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+}
+
+.summary-card {
+    background: #fff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 13px 15px;
+}
+
+.summary-title {
+    font-size: 11px;
+    font-weight: 800;
+
+    color: #777;
+
+    margin-bottom: 9px;
+
+    letter-spacing: 0.4px;
+}
+
+.summary-values {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 8px;
+}
+
+.summary-item {
+    text-align: center;
+}
+
+.summary-number {
+    font-size: 22px;
+    font-weight: 800;
+
+    line-height: 1.1;
+}
+
+.summary-label {
+    font-size: 11px;
+    color: #777;
+
+    margin-top: 3px;
+}
+
+/* =========================
+   TABLE WRAPPER
+========================= */
+
+.table-card {
+    background: #fff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.table-scroll {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: visible;
+
+    scrollbar-width: thin;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+
+    width: max-content;
+
+    min-width: 1240px;
+
+    font-size: 13px;
+}
+
+th,
+td {
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    padding: 0 10px;
+
+    height: 50px;
+
+    white-space: nowrap;
+
+    background: #fff;
+}
+
+th {
+    font-weight: 700;
+}
+
+/* =========================
+   GROUP HEADER
+========================= */
+
+thead tr.group-row th {
+    height: 38px;
+
+    background: #f7f7f7;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.3px;
+
+    color: #555;
+
+    text-align: center;
+}
+
+thead tr.group-row th.order-group {
+    background: #fff4e8;
+
+    color: #a65d18;
+}
+
+thead tr.group-row th.confirm-group {
+    background: #f4f4f4;
+
+    color: #555;
+}
+
+thead tr.column-row th {
+    height: 42px;
+
+    background: #fafafa;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+thead tr.column-row th.order-column {
+    background: #fffaf5;
+}
+
+thead tr.column-row th.confirm-column {
+    background: #f8f8f8;
+}
+
+/* =========================
+   FIXED LEFT COLUMNS
+========================= */
+
+.sticky-col {
+    position: sticky;
+
+    z-index: 20;
+
+    background: #fff;
+}
+
+.col-date {
+    left: 0;
+    width: 118px;
+    min-width: 118px;
+}
+
+.col-time {
+    left: 118px;
+    width: 118px;
+    min-width: 118px;
+}
+
+.col-branch {
+    left: 236px;
+    width: 108px;
+    min-width: 108px;
+}
+
+.col-person {
+    left: 344px;
+    width: 115px;
+    min-width: 115px;
+}
+
+/*
+    Bóng nhẹ sau nhóm cột cố định
+*/
+
+.col-person {
+    box-shadow: 5px 0 8px -8px rgba(0,0,0,0.45);
+}
+
+/* =========================
+   BODY
+========================= */
+
+tbody tr:hover td {
+    background: #fcfcfc;
+}
+
+tbody tr:hover .sticky-col {
+    background: #fcfcfc;
+}
+
+tbody td.number {
+    text-align: center;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    width: 100px;
+    min-width: 100px;
+}
+
+tbody td.order-number {
+    background: #fffdf9;
+}
+
+tbody td.confirm-number {
+    background: #fafafa;
+}
+
+tbody td.date {
+    font-weight: 650;
+}
+
+tbody td.time {
+    color: #555;
+}
+
+.branch {
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 25px;
+
+    padding: 0 8px;
+
+    border-radius: 6px;
+
+    background: #f3f3f3;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.branch.kt {
+    background: #fff0df;
+    color: #a95e19;
+}
+
+.branch.tt {
+    background: #f0f0f0;
+    color: #555;
+}
+
+.person {
+    font-weight: 600;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    width: 110px;
+    min-width: 110px;
+
+    text-align: center;
+}
+
+.status span {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 27px;
+
+    padding: 0 9px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.status.confirmed span {
+    background: #eeeeee;
+    color: #444;
+}
+
+.status.pending span {
+    background: #fff1df;
+    color: #a85c15;
+}
+
+/* =========================
+   NOTE
+========================= */
+
+.note {
+    width: 180px;
+    min-width: 180px;
+
+    color: #666;
+
+    font-size: 12px;
+}
+
+/* =========================
+   TOTAL ROW
+========================= */
+
+tfoot td {
+    height: 48px;
+
+    background: #fafafa;
+
+    font-weight: 800;
+}
+
+tfoot td.number {
+    text-align: center;
+
+    font-size: 15px;
+}
+
+tfoot .total-label {
+    text-align: right;
+
+    color: #555;
+
+    font-size: 12px;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty {
+    display: none;
+
+    padding: 45px 20px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+/* =========================
+   HELP MODAL
+========================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.28);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 500;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 430px;
+
+    background: #fff;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    box-shadow: 0 15px 45px rgba(0,0,0,0.18);
+}
+
+.modal-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.modal-close {
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+
+    background: #f2f2f2;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 17px;
+}
+
+.modal-content {
+    color: #555;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+.modal-content strong {
+    color: #222;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        height: 54px;
+
+        padding: 0 12px;
+    }
+
+    .topbar-title {
+        font-size: 14px;
+    }
+
+    .page {
+        padding: 10px 10px 30px;
+    }
+
+    .filters {
+        padding: 10px;
+
+        border-radius: 10px;
+    }
+
+    .filter-row {
+        align-items: center;
+    }
+
+    .filter-label {
+        width: 68px;
+
+        font-size: 11px;
+    }
+
+    .filter-btn {
+        min-height: 32px;
+
+        padding: 0 11px;
+
+        font-size: 12px;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+    .summary-card {
+        padding: 11px 12px;
+    }
+
+    .summary-number {
+        font-size: 20px;
+    }
+
+    .table-card {
+        border-radius: 10px;
+    }
+
+    table {
+        min-width: 1240px;
+    }
+
+    th,
+    td {
+        padding: 0 9px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<header class="topbar">
+
+
+<div class="topbar-left">
+
+    <button
+        class="back-btn"
+        type="button"
+        onclick="history.back()"
+        aria-label="Quay lại"
+    >
+        ‹
+    </button>
+
+</div>
+
+<div class="topbar-title">
+    Đặt bánh & Xác nhận bánh
+</div>
+
+<div class="topbar-right">
+
+    <button
+        class="help-btn"
+        type="button"
+        onclick="openHelp()"
+        aria-label="Hướng dẫn"
+    >
+        ?
+    </button>
+
+</div>
+
+
+</header>
+
+<main class="page">
+
+
+<!-- =========================
+     FILTERS
+========================= -->
+
+<section class="filters">
+
+    <div class="filter-row">
+
+        <div class="filter-label">
+            Thời gian
+        </div>
+
+        <div class="filter-buttons">
+
+            <button
+                class="filter-btn active"
+                data-time="all"
+                onclick="setTimeFilter('all', this)"
+            >
+                Tất cả
+            </button>
+
+            <button
+                class="filter-btn"
+                data-time="current"
+                onclick="setTimeFilter('current', this)"
+            >
+                Tháng này
+            </button>
+
+            <button
+                class="filter-btn"
+                data-time="previous"
+                onclick="setTimeFilter('previous', this)"
+            >
+                Tháng trước
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="filter-row">
+
+        <div class="filter-label">
+            Cơ sở
+        </div>
+
+        <div class="filter-buttons">
+
+            <button
+                class="filter-btn active"
+                data-branch="all"
+                onclick="setBranchFilter('all', this)"
+            >
+                Tất cả cơ sở
+            </button>
+
+            <button
+                class="filter-btn"
+                data-branch="Khương Trung"
+                onclick="setBranchFilter('Khương Trung', this)"
+            >
+                Khương Trung
+            </button>
+
+            <button
+                class="filter-btn"
+                data-branch="Thái Thịnh"
+                onclick="setBranchFilter('Thái Thịnh', this)"
+            >
+                Thái Thịnh
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SUMMARY
+========================= -->
+
+<section class="summary">
+
+    <div class="summary-card">
+
+        <div class="summary-title">
+            TỔNG ĐẶT BÁNH
+        </div>
+
+        <div class="summary-values">
+
+            <div class="summary-item">
+                <div
+                    class="summary-number"
+                    id="orderBurger"
+                >
+                    0
+                </div>
+
+                <div class="summary-label">
+                    Burger
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div
+                    class="summary-number"
+                    id="orderSandwich"
+                >
+                    0
+                </div>
+
+                <div class="summary-label">
+                    Sanwich
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div
+                    class="summary-number"
+                    id="orderLong"
+                >
+                    0
+                </div>
+
+                <div class="summary-label">
+                    Bánh mỳ dài
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-title">
+            TỔNG XÁC NHẬN
+        </div>
+
+        <div class="summary-values">
+
+            <div class="summary-item">
+                <div
+                    class="summary-number"
+                    id="confirmBurger"
+                >
+                    0
+                </div>
+
+                <div class="summary-label">
+                    Burger
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div
+                    class="summary-number"
+                    id="confirmSandwich"
+                >
+                    0
+                </div>
+
+                <div class="summary-label">
+                    Sanwich
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div
+                    class="summary-number"
+                    id="confirmLong"
+                >
+                    0
+                </div>
+
+                <div class="summary-label">
+                    Bánh mỳ dài
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DATA TABLE
+========================= -->
+
+<section class="table-card">
+
+    <div class="table-scroll">
+
+        <table>
+
+            <thead>
+
+                <tr class="group-row">
+
+                    <th
+                        rowspan="2"
+                        class="sticky-col col-date"
+                    >
+                        Ngày nhận
+                    </th>
+
+                    <th
+                        rowspan="2"
+                        class="sticky-col col-time"
+                    >
+                        Thời gian nhận
+                    </th>
+
+                    <th
+                        rowspan="2"
+                        class="sticky-col col-branch"
+                    >
+                        Cơ sở
+                    </th>
+
+                    <th
+                        rowspan="2"
+                        class="sticky-col col-person"
+                    >
+                        Người đặt
+                    </th>
+
+                    <th
+                        colspan="3"
+                        class="order-group"
+                    >
+                        Đặt bánh
+                    </th>
+
+                    <th
+                        colspan="3"
+                        class="confirm-group"
+                    >
+                        Xác nhận
+                    </th>
+
+                    <th
+                        rowspan="2"
+                        class="status"
+                    >
+                        Trạng thái
+                    </th>
+
+                    <th
+                        rowspan="2"
+                        class="note"
+                    >
+                        Ghi chú
+                    </th>
+
+                </tr>
+
+
+                <tr class="column-row">
+
+                    <th class="order-column">
+                        Burger
+                    </th>
+
+                    <th class="order-column">
+                        Sanwich
+                    </th>
+
+                    <th class="order-column">
+                        Bánh mỳ dài
+                    </th>
+
+                    <th class="confirm-column">
+                        Burger
+                    </th>
+
+                    <th class="confirm-column">
+                        Sanwich
+                    </th>
+
+                    <th class="confirm-column">
+                        Bánh mỳ dài
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="tableBody">
+            </tbody>
+
+
+            <tfoot>
+
+                <tr>
+
+                    <td
+                        colspan="4"
+                        class="sticky-col col-person total-label"
+                    >
+                        TỔNG
+                    </td>
+
+                    <td
+                        class="number"
+                        id="totalOrderBurger"
+                    >
+                        0
+                    </td>
+
+                    <td
+                        class="number"
+                        id="totalOrderSandwich"
+                    >
+                        0
+                    </td>
+
+                    <td
+                        class="number"
+                        id="totalOrderLong"
+                    >
+                        0
+                    </td>
+
+                    <td
+                        class="number"
+                        id="totalConfirmBurger"
+                    >
+                        0
+                    </td>
+
+                    <td
+                        class="number"
+                        id="totalConfirmSandwich"
+                    >
+                        0
+                    </td>
+
+                    <td
+                        class="number"
+                        id="totalConfirmLong"
+                    >
+                        0
+                    </td>
+
+                    <td></td>
+                    <td></td>
+
+                </tr>
+
+            </tfoot>
+
+        </table>
+
+
+        <div
+            class="empty"
+            id="empty"
+        >
+            Không có dữ liệu phù hợp với bộ lọc.
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+<!-- =========================
+     HELP MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="helpModal"
+    onclick="closeHelpOutside(event)"
+>
+
+
+<div
+    class="modal-box"
+    onclick="event.stopPropagation()"
+>
+
+    <div class="modal-header">
+
+        <div class="modal-title">
+            Hướng dẫn
+        </div>
+
+        <button
+            class="modal-close"
+            onclick="closeHelp()"
+        >
+            ×
+        </button>
+
+    </div>
+
+    <div class="modal-content">
+
+        <p>
+            Bảng này dùng để theo dõi số lượng bánh
+            <strong>đặt</strong> và số lượng bánh
+            <strong>xác nhận</strong> theo từng cơ sở.
+        </p>
+
+        <br>
+
+        <p>
+            Trên điện thoại, kéo bảng
+            <strong>sang trái / phải</strong>
+            để xem các cột số lượng.
+        </p>
+
+        <br>
+
+        <p>
+            Các cột Ngày nhận, Thời gian nhận,
+            Cơ sở và Người đặt được cố định khi kéo ngang.
+        </p>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<script>
+
+/* =====================================================
+   DỮ LIỆU MẪU
+===================================================== */
+
+const data = [
+
+    {
+        date: "05/09/2026",
+        time: "Sáng ngày 05/09",
+        branch: "Khương Trung",
+        person: "Nguyễn Lan",
+
+        orderBurger: 20,
+        orderSandwich: 10,
+        orderLong: 15,
+
+        confirmBurger: 20,
+        confirmSandwich: 10,
+        confirmLong: 15,
+
+        status: "confirmed",
+
+        note: ""
+    },
+
+    {
+        date: "05/09/2026",
+        time: "Sáng ngày 05/09",
+        branch: "Thái Thịnh",
+        person: "Trần Minh",
+
+        orderBurger: 15,
+        orderSandwich: 8,
+        orderLong: 10,
+
+        confirmBurger: 15,
+        confirmSandwich: 7,
+        confirmLong: 10,
+
+        status: "confirmed",
+
+        note: "Thiếu 1 Sanwich"
+    },
+
+    {
+        date: "05/09/2026",
+        time: "Chiều ngày 05/09",
+        branch: "Khương Trung",
+        person: "Lê Hoa",
+
+        orderBurger: 25,
+        orderSandwich: 12,
+        orderLong: 20,
+
+        confirmBurger: 0,
+        confirmSandwich: 0,
+        confirmLong: 0,
+
+        status: "pending",
+
+        note: ""
+    },
+
+    {
+        date: "06/09/2026",
+        time: "Sáng ngày 06/09",
+        branch: "Thái Thịnh",
+        person: "Phạm Việt",
+
+        orderBurger: 18,
+        orderSandwich: 10,
+        orderLong: 12,
+
+        confirmBurger: 18,
+        confirmSandwich: 10,
+        confirmLong: 12,
+
+        status: "confirmed",
+
+        note: ""
+    },
+
+    {
+        date: "07/09/2026",
+        time: "Sáng ngày 07/09",
+        branch: "Khương Trung",
+        person: "Nguyễn Trang",
+
+        orderBurger: 30,
+        orderSandwich: 15,
+        orderLong: 18,
+
+        confirmBurger: 30,
+        confirmSandwich: 15,
+        confirmLong: 18,
+
+        status: "confirmed",
+
+        note: ""
+    },
+
+    {
+        date: "12/09/2026",
+        time: "Chiều ngày 12/09",
+        branch: "Thái Thịnh",
+        person: "Hoàng Linh",
+
+        orderBurger: 12,
+        orderSandwich: 6,
+        orderLong: 10,
+
+        confirmBurger: 0,
+        confirmSandwich: 0,
+        confirmLong: 0,
+
+        status: "pending",
+
+        note: "Chờ xác nhận"
+    },
+
+    {
+        date: "15/08/2026",
+        time: "Sáng ngày 15/08",
+        branch: "Khương Trung",
+        person: "Nguyễn Minh",
+
+        orderBurger: 22,
+        orderSandwich: 9,
+        orderLong: 14,
+
+        confirmBurger: 22,
+        confirmSandwich: 9,
+        confirmLong: 14,
+
+        status: "confirmed",
+
+        note: ""
+    },
+
+    {
+        date: "20/08/2026",
+        time: "Chiều ngày 20/08",
+        branch: "Thái Thịnh",
+        person: "Trần Huế",
+
+        orderBurger: 16,
+        orderSandwich: 7,
+        orderLong: 11,
+
+        confirmBurger: 16,
+        confirmSandwich: 7,
+        confirmLong: 11,
+
+        status: "confirmed",
+
+        note: ""
+    }
+
+];
+
+
+/* =====================================================
+   FILTER STATE
+===================================================== */
+
+let currentTimeFilter = "all";
+
+let currentBranchFilter = "all";
+
+
+/* =====================================================
+   GET MONTH FROM DATE
+===================================================== */
+
+function parseDate(dateString) {
+
+    const parts = dateString.split("/");
+
+    return new Date(
+        Number(parts[2]),
+        Number(parts[1]) - 1,
+        Number(parts[0])
+    );
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function getFilteredData() {
+
+    const now = new Date();
+
+    const currentMonth = now.getMonth();
+
+    const currentYear = now.getFullYear();
+
+    return data.filter(item => {
+
+        const itemDate = parseDate(item.date);
+
+        const itemMonth = itemDate.getMonth();
+
+        const itemYear = itemDate.getFullYear();
+
+
+        let timeMatch = true;
+
+
+        if (currentTimeFilter === "current") {
+
+            timeMatch =
+                itemMonth === currentMonth &&
+                itemYear === currentYear;
+
+        }
+
+
+        if (currentTimeFilter === "previous") {
+
+            const previousDate =
+                new Date(
+                    currentYear,
+                    currentMonth - 1,
+                    1
+                );
+
+            timeMatch =
+                itemMonth === previousDate.getMonth() &&
+                itemYear === previousDate.getFullYear();
+
+        }
+
+
+        let branchMatch = true;
+
+
+        if (currentBranchFilter !== "all") {
+
+            branchMatch =
+                item.branch === currentBranchFilter;
+
+        }
+
+
+        return timeMatch && branchMatch;
+
+    });
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function render() {
+
+    const rows = getFilteredData();
+
+    const tbody =
+        document.getElementById("tableBody");
+
+    tbody.innerHTML = "";
+
+
+    let totals = {
+
+        orderBurger: 0,
+        orderSandwich: 0,
+        orderLong: 0,
+
+        confirmBurger: 0,
+        confirmSandwich: 0,
+        confirmLong: 0
+
+    };
+
+
+    rows.forEach(item => {
+
+        totals.orderBurger += item.orderBurger;
+        totals.orderSandwich += item.orderSandwich;
+        totals.orderLong += item.orderLong;
+
+        totals.confirmBurger += item.confirmBurger;
+        totals.confirmSandwich += item.confirmSandwich;
+        totals.confirmLong += item.confirmLong;
+
+
+        const tr =
+            document.createElement("tr");
+
+
+        const branchClass =
+            item.branch === "Khương Trung"
+                ? "kt"
+                : "tt";
+
+
+        const statusClass =
+            item.status === "confirmed"
+                ? "confirmed"
+                : "pending";
+
+
+        const statusText =
+            item.status === "confirmed"
+                ? "Đã xác nhận"
+                : "Chưa xác nhận";
+
+
+        tr.innerHTML = `
+
+            <td class="sticky-col col-date date">
+                ${item.date}
+            </td>
+
+            <td class="sticky-col col-time time">
+                ${item.time}
+            </td>
+
+            <td class="sticky-col col-branch">
+                <span class="branch ${branchClass}">
+                    ${item.branch}
+                </span>
+            </td>
+
+            <td class="sticky-col col-person person">
+                ${item.person}
+            </td>
+
+
+            <td class="number order-number">
+                ${item.orderBurger}
+            </td>
+
+            <td class="number order-number">
+                ${item.orderSandwich}
+            </td>
+
+            <td class="number order-number">
+                ${item.orderLong}
+            </td>
+
+
+            <td class="number confirm-number">
+                ${item.confirmBurger || "–"}
+            </td>
+
+            <td class="number confirm-number">
+                ${item.confirmSandwich || "–"}
+            </td>
+
+            <td class="number confirm-number">
+                ${item.confirmLong || "–"}
+            </td>
+
+
+            <td class="status ${statusClass}">
+                <span>
+                    ${statusText}
+                </span>
+            </td>
+
+            <td class="note">
+                ${item.note || "–"}
+            </td>
+
+        `;
+
+
+        tbody.appendChild(tr);
+
+    });
+
+
+    document.getElementById("empty").style.display =
+        rows.length === 0
+            ? "block"
+            : "none";
+
+
+    updateTotals(totals);
+
+}
+
+
+/* =====================================================
+   UPDATE TOTALS
+===================================================== */
+
+function updateTotals(t) {
+
+    document.getElementById("orderBurger").textContent =
+        t.orderBurger;
+
+    document.getElementById("orderSandwich").textContent =
+        t.orderSandwich;
+
+    document.getElementById("orderLong").textContent =
+        t.orderLong;
+
+
+    document.getElementById("confirmBurger").textContent =
+        t.confirmBurger;
+
+    document.getElementById("confirmSandwich").textContent =
+        t.confirmSandwich;
+
+    document.getElementById("confirmLong").textContent =
+        t.confirmLong;
+
+
+    document.getElementById("totalOrderBurger").textContent =
+        t.orderBurger;
+
+    document.getElementById("totalOrderSandwich").textContent =
+        t.orderSandwich;
+
+    document.getElementById("totalOrderLong").textContent =
+        t.orderLong;
+
+
+    document.getElementById("totalConfirmBurger").textContent =
+        t.confirmBurger;
+
+    document.getElementById("totalConfirmSandwich").textContent =
+        t.confirmSandwich;
+
+    document.getElementById("totalConfirmLong").textContent =
+        t.confirmLong;
+
+}
+
+
+/* =====================================================
+   TIME FILTER
+===================================================== */
+
+function setTimeFilter(value, button) {
+
+    currentTimeFilter = value;
+
+
+    document
+        .querySelectorAll("[data-time]")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    render();
+
+}
+
+
+/* =====================================================
+   BRANCH FILTER
+===================================================== */
+
+function setBranchFilter(value, button) {
+
+    currentBranchFilter = value;
+
+
+    document
+        .querySelectorAll("[data-branch]")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    render();
+
+}
+
+
+/* =====================================================
+   HELP
+===================================================== */
+
+function openHelp() {
+
+    document
+        .getElementById("helpModal")
+        .classList.add("show");
+
+}
+
+
+function closeHelp() {
+
+    document
+        .getElementById("helpModal")
+        .classList.remove("show");
+
+}
+
+
+function closeHelpOutside(event) {
+
+    if (
+        event.target.id === "helpModal"
+    ) {
+
+        closeHelp();
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIAL RENDER
+===================================================== */
+
+render();
+
+</script>
+
+</body>
+</html>
