@@ -1,2376 +1,584 @@
-<!DOCTYPE html>
-<html lang="vi">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>Đặt & Xác nhận bánh · Tascus Food</title>
-
-<style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html,
-body {
-    width: 100%;
-    min-height: 100%;
-}
-
-body {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background: #f7f7f5;
-    color: #242424;
-
-    -webkit-font-smoothing: antialiased;
-}
-
-
-/* =========================================================
-   PAGE
-========================================================= */
-
-.page {
-    width: 100%;
-    min-height: 100vh;
-}
-
-.container {
-    width: calc(100% - 48px);
-    max-width: 1480px;
-
-    margin: 0 auto;
-    padding: 24px 0 45px;
-}
-
-
-/* =========================================================
-   TOP
-========================================================= */
-
-.topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 25px;
-}
-
-.back-button,
-.help-button {
-    width: 36px;
-    height: 36px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid #dcdcd8;
-    border-radius: 8px;
-
-    background: #fff;
-    color: #4d4d4d;
-
-    cursor: pointer;
-
-    transition:
-        border-color .15s ease,
-        background .15s ease;
-}
-
-.back-button {
-    font-size: 19px;
-}
-
-.help-button {
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.back-button:hover,
-.help-button:hover {
-    background: #fafafa;
-    border-color: #c9c9c4;
-}
-
-
-/* =========================================================
-   TITLE
-========================================================= */
-
-.heading {
-    margin-bottom: 23px;
-}
-
-.heading h1 {
-    font-size: 24px;
-    line-height: 1.2;
-
-    font-weight: 800;
-    letter-spacing: -.4px;
-
-    color: #222;
-}
-
-.heading p {
-    margin-top: 6px;
-
-    color: #888;
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   FILTER AREA
-========================================================= */
-
-.filters {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 22px;
-
-    padding-bottom: 15px;
-
-    border-bottom: 1px solid #dfdfdb;
-}
-
-.filter-group {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-}
-
-.filter-group + .filter-group {
-    margin-left: auto;
-}
-
-.filter-label {
-    margin-right: 5px;
-
-    color: #888;
-
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.filter-button {
-    height: 31px;
-
-    padding: 0 12px;
-
-    border: 1px solid #d9d9d5;
-    border-radius: 6px;
-
-    background: #fff;
-    color: #666;
-
-    font-size: 11px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition:
-        background .15s ease,
-        border-color .15s ease,
-        color .15s ease;
-}
-
-.filter-button:hover {
-    border-color: #c8c8c3;
-}
-
-.filter-button.active {
-    background: #fdf0e2;
-    border-color: #d9822b;
-    color: #b96820;
-}
-
-
-/* =========================================================
-   SUMMARY AREA
-========================================================= */
-
-.summary {
-    display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(470px, .65fr);
-
-    min-height: 124px;
-
-    margin-bottom: 26px;
-
-    border-top: 1px solid #dcdcd8;
-    border-bottom: 1px solid #dcdcd8;
-
-    background: #fff;
-}
-
-
-/* =========================================================
-   CONFIRM TOTAL
-========================================================= */
-
-.summary-total {
-    padding: 19px 24px 17px 0;
-}
-
-.summary-heading {
-    margin-bottom: 17px;
-
-    color: #777;
-
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .8px;
-}
-
-.total-list {
-    display: flex;
-    align-items: flex-end;
-    gap: 60px;
-}
-
-.total-item {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.total-name {
-    color: #777;
-
-    font-size: 11px;
-}
-
-.total-value {
-    color: #d27625;
-
-    font-size: 27px;
-    line-height: 1;
-
-    font-weight: 800;
-    letter-spacing: -.5px;
-}
-
-
-/* =========================================================
-   PRICES
-========================================================= */
-
-.summary-price {
-    padding: 19px 0 17px 25px;
-
-    border-left: 1px solid #e0e0dc;
-}
-
-.price-list {
-    display: flex;
-    align-items: flex-start;
-
-    gap: 22px;
-}
-
-.price-item {
-    width: 135px;
-}
-
-.price-name {
-    display: block;
-
-    margin-bottom: 6px;
-
-    color: #777;
-
-    font-size: 11px;
-}
-
-.price-input-row {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.price-input {
-    width: 108px;
-    height: 32px;
-
-    padding: 0 9px;
-
-    border: 1px solid #d5d5d0;
-    border-radius: 5px;
-
-    background: #fafaf8;
-
-    color: #222;
-
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 700;
-
-    outline: none;
-}
-
-.price-input:focus {
-    background: #fff;
-
-    border-color: #d9822b;
-}
-
-.price-unit {
-    color: #999;
-    font-size: 10px;
-}
-
-
-/* =========================================================
-   TABLE HEADER AREA
-========================================================= */
-
-.table-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 10px;
-}
-
-.table-title {
-    display: flex;
-    align-items: baseline;
-    gap: 9px;
-}
-
-.table-title h2 {
-    font-size: 14px;
-    font-weight: 800;
-
-    color: #2c2c2c;
-}
-
-.table-count {
-    color: #999;
-    font-size: 10px;
-}
-
-.money-button {
-    height: 32px;
-
-    padding: 0 13px;
-
-    border: 1px solid #d9822b;
-    border-radius: 6px;
-
-    background: #fff;
-
-    color: #b96820;
-
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .2px;
-
-    cursor: pointer;
-
-    transition:
-        background .15s ease,
-        color .15s ease;
-}
-
-.money-button:hover {
-    background: #d9822b;
-    color: #fff;
-}
-
-
-/* =========================================================
-   TABLE
-========================================================= */
-
-.table-shell {
-    width: 100%;
-
-    overflow-x: auto;
-
-    border-top: 1px solid #d5d5d1;
-    border-bottom: 1px solid #d5d5d1;
-
-    background: #fff;
-
-    scrollbar-width: thin;
-}
-
-.orders-table {
-    width: max-content;
-    min-width: 1320px;
-
-    border-collapse: separate;
-    border-spacing: 0;
-
-    font-size: 11px;
-}
-
-.orders-table th,
-.orders-table td {
-    height: 43px;
-
-    padding: 7px 10px;
-
-    border-right: 1px solid #e7e7e3;
-    border-bottom: 1px solid #e7e7e3;
-
-    white-space: nowrap;
-
-    text-align: center;
-
-    background: #fff;
-}
-
-
-/* =========================================================
-   COLUMN WIDTHS
-========================================================= */
-
-.col-date {
-    width: 105px;
-    min-width: 105px;
-}
-
-.col-time {
-    width: 125px;
-    min-width: 125px;
-}
-
-.col-branch {
-    width: 110px;
-    min-width: 110px;
-}
-
-.col-person {
-    width: 105px;
-    min-width: 105px;
-}
-
-.col-quantity {
-    width: 105px;
-    min-width: 105px;
-}
-
-.col-status {
-    width: 105px;
-    min-width: 105px;
-}
-
-.col-note {
-    width: 190px;
-    min-width: 190px;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.orders-table thead th {
-    color: #555;
-
-    font-size: 10px;
-    font-weight: 700;
-
-    background: #f8f8f6;
-}
-
-.orders-table thead tr:first-child th {
-    height: 32px;
-
-    border-bottom: 1px solid #dcdcd8;
-
-    color: #777;
-
-    font-size: 9px;
-    letter-spacing: .7px;
-}
-
-.orders-table thead tr:nth-child(2) th {
-    height: 38px;
-
-    background: #fbfbfa;
-}
-
-.orders-table th.group-order {
-    background: #fff7ee !important;
-    color: #b96820;
-}
-
-.orders-table th.group-confirm {
-    background: #f4f4f2 !important;
-    color: #555;
-}
-
-
-/* =========================================================
-   STICKY COLUMNS
-========================================================= */
-
-.sticky-1,
-.sticky-2,
-.sticky-3,
-.sticky-4 {
-    position: sticky;
-    z-index: 4;
-}
-
-.sticky-1 {
-    left: 0;
-}
-
-.sticky-2 {
-    left: 105px;
-}
-
-.sticky-3 {
-    left: 230px;
-}
-
-.sticky-4 {
-    left: 340px;
-
-    box-shadow:
-        7px 0 9px -9px rgba(0,0,0,.55);
-}
-
-.orders-table thead .sticky-1,
-.orders-table thead .sticky-2,
-.orders-table thead .sticky-3,
-.orders-table thead .sticky-4 {
-    z-index: 10;
-}
-
-
-/* =========================================================
-   BODY
-========================================================= */
-
-.orders-table tbody tr:hover td {
-    background: #fcfcfa;
-}
-
-.orders-table tbody tr:hover .sticky-1,
-.orders-table tbody tr:hover .sticky-2,
-.orders-table tbody tr:hover .sticky-3,
-.orders-table tbody tr:hover .sticky-4 {
-    background: #fcfcfa;
-}
-
-.number {
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.order-number {
-    color: #666;
-}
-
-.confirm-number {
-    color: #303030;
-}
-
-.note {
-    color: #777;
-    text-align: left !important;
-}
-
-
-/* =========================================================
-   STATUS
-========================================================= */
-
-.status {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    min-width: 82px;
-    height: 23px;
-
-    padding: 0 8px;
-
-    border-radius: 5px;
-
-    font-size: 9px;
-    font-weight: 700;
-}
-
-.status-confirmed {
-    background: #f1f1ef;
-    color: #555;
-}
-
-.status-pending {
-    background: #fff1df;
-    color: #b96820;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.orders-table tfoot td {
-    height: 43px;
-
-    border-bottom: 0;
-
-    background: #f7f7f5;
-
-    font-weight: 700;
-}
-
-.orders-table tfoot .total-label {
-    text-align: left;
-
-    color: #555;
-}
-
-.total-number {
-    color: #d27625;
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   EMPTY
-========================================================= */
-
-.empty-row td {
-    height: 100px;
-
-    color: #999;
-}
-
-
-/* =========================================================
-   MODALS
-========================================================= */
-
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    background: rgba(0,0,0,.38);
-
-    z-index: 1000;
-}
-
-.modal-overlay.show {
-    display: flex;
-}
-
-.modal {
-    width: 100%;
-    max-width: 470px;
-
-    background: #fff;
-
-    border-radius: 10px;
-
-    border: 1px solid #dcdcd8;
-
-    box-shadow:
-        0 18px 50px rgba(0,0,0,.18);
-
-    overflow: hidden;
-}
-
-.modal-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 15px 17px;
-
-    border-bottom: 1px solid #e3e3df;
-}
-
-.modal-title {
-    font-size: 13px;
-    font-weight: 800;
-}
-
-.modal-close {
-    width: 29px;
-    height: 29px;
-
-    border: 0;
-    border-radius: 5px;
-
-    background: #f2f2f0;
-
-    color: #555;
-
-    font-size: 17px;
-
-    cursor: pointer;
-}
-
-.modal-body {
-    padding: 17px;
-}
-
-
-/* =========================================================
-   MONEY MODAL
-========================================================= */
-
-.money-filter {
-    margin-bottom: 15px;
-
-    color: #999;
-
-    font-size: 10px;
-}
-
-.money-list {
-    display: flex;
-    flex-direction: column;
-
-    border-top: 1px solid #e5e5e1;
-}
-
-.money-row {
-    display: grid;
-    grid-template-columns: 115px 1fr;
-
-    min-height: 42px;
-
-    align-items: center;
-
-    border-bottom: 1px solid #e8e8e4;
-}
-
-.money-product {
-    color: #666;
-
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.money-value {
-    color: #333;
-
-    text-align: right;
-
-    font-size: 11px;
-}
-
-.money-total {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-top: 17px;
-    padding-top: 14px;
-
-    border-top: 1px solid #d8d8d3;
-}
-
-.money-total span:first-child {
-    font-size: 12px;
-    font-weight: 800;
-}
-
-.money-total span:last-child {
-    color: #d27625;
-
-    font-size: 19px;
-    font-weight: 800;
-}
-
-
-/* =========================================================
-   HELP
-========================================================= */
-
-.help-text {
-    color: #666;
-
-    font-size: 11px;
-    line-height: 1.65;
-}
-
-.help-text p + p {
-    margin-top: 11px;
-}
-
-.help-text strong {
-    color: #333;
-}
-
-
-/* =========================================================
-   MOBILE DEVICE ALERT
-========================================================= */
-
-.device-alert-overlay {
-    position: fixed;
-    inset: 0;
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    background: rgba(0,0,0,.35);
-
-    z-index: 2000;
-}
-
-.device-alert {
-    width: 100%;
-    max-width: 330px;
-
-    padding: 23px 21px 19px;
-
-    border: 1px solid #ddd;
-
-    border-radius: 10px;
-
-    background: #fff;
-
-    text-align: center;
-
-    box-shadow:
-        0 15px 45px rgba(0,0,0,.18);
-}
-
-.device-alert-icon {
-    width: 38px;
-    height: 38px;
-
-    margin: 0 auto 12px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #fff4e8;
-    color: #d27625;
-
-    font-size: 18px;
-}
-
-.device-alert-title {
-    font-size: 15px;
-    font-weight: 800;
-}
-
-.device-alert-text {
-    margin-top: 8px;
-
-    color: #777;
-
-    font-size: 12px;
-    line-height: 1.55;
-}
-
-.device-alert-button {
-    width: 100%;
-    height: 36px;
-
-    margin-top: 17px;
-
-    border: 0;
-    border-radius: 6px;
-
-    background: #d27625;
-    color: #fff;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 899px) {
-
-    .device-alert-overlay {
-        display: flex;
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE MODAL
-========================================================= */
-
-@media (max-width: 600px) {
-
-    .modal-overlay {
-        align-items: flex-end;
-
-        padding: 0;
-    }
-
-    .modal {
-        max-width: none;
-
-        border-radius: 10px 10px 0 0;
-    }
-
-}
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<div class="page">
-
-    <div class="container">
-
-
-        <!-- =================================================
-             TOPBAR
-        ================================================== -->
-
-        <div class="topbar">
-
-            <button
-                class="back-button"
-                onclick="goBack()"
-                title="Quay lại"
-            >
-                ←
-            </button>
-
-            <button
-                class="help-button"
-                onclick="openHelp()"
-                title="Hướng dẫn"
-            >
-                ?
-            </button>
-
+<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> <title>Đặt & Xác nhận bánh · Tascus Food</title> <style> * { box-sizing: border-box; margin: 0; padding: 0; } :root { --orange: #d9822b; --orange-dark: #b9671d; --orange-light: #fff5e9; --border: #dedede; --border-dark: #c9c9c9; --bg: #f5f5f5; --text: #252525; --muted: #777; --white: #ffffff; } html, body { width: 100%; min-height: 100%; } body { font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; } /* ========================= TOP BAR ========================= */ .topbar { height: 62px; background: #fff; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 18px; position: sticky; top: 0; z-index: 100; } .topbar-left { display: flex; align-items: center; gap: 12px; } .back-btn { width: 38px; height: 38px; border: 1px solid var(--border); background: #fff; border-radius: 8px; cursor: pointer; font-size: 20px; color: #444; transition: .15s; } .back-btn:hover { border-color: var(--orange); color: var(--orange); } .page-title { font-size: 18px; font-weight: 700; } .page-subtitle { font-size: 12px; color: var(--muted); margin-top: 3px; } .help-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: #fff; font-size: 16px; font-weight: bold; cursor: pointer; color: #555; } .help-btn:hover { border-color: var(--orange); color: var(--orange); } /* ========================= PAGE ========================= */ .page { max-width: 1500px; margin: 0 auto; padding: 18px; } /* ========================= FILTERS ========================= */ .filter-box { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 12px; } .filter-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; } .filter-row + .filter-row { margin-top: 10px; } .filter-label { width: 80px; font-size: 12px; font-weight: 700; color: #666; text-transform: uppercase; } .filter-btn { border: 1px solid var(--border); background: #fff; color: #444; padding: 8px 15px; border-radius: 7px; cursor: pointer; font-size: 13px; transition: .15s; } .filter-btn:hover { border-color: var(--orange); } .filter-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; font-weight: 600; } /* ========================= SUMMARY ========================= */ .summary-box { background: #fff; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; } .summary-title { padding: 11px 14px; border-bottom: 1px solid var(--border); font-size: 12px; font-weight: 700; color: #666; text-transform: uppercase; } .summary-grid { display: grid; grid-template-columns: 1fr 1fr; } .summary-group { padding: 13px 15px; } .summary-group + .summary-group { border-left: 1px solid var(--border); } .summary-group-title { font-size: 12px; font-weight: 700; margin-bottom: 9px; color: #555; } .summary-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; } .summary-item { border: 1px solid #e4e4e4; background: #fafafa; border-radius: 7px; padding: 9px 10px; } .summary-name { color: #777; font-size: 11px; } .summary-value { font-size: 18px; font-weight: 700; margin-top: 4px; } /* ========================= PRICE ========================= */ .price-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; } .price-field label { display: block; font-size: 11px; font-weight: 600; color: #555; margin-bottom: 5px; } .price-input-wrap { display: flex; align-items: center; } .price-input { width: 100%; height: 38px; border: 1px solid var(--border); border-radius: 7px 0 0 7px; padding: 0 10px; font-size: 14px; outline: none; } .price-input:focus { border-color: var(--orange); } .unit { height: 38px; padding: 0 9px; display: flex; align-items: center; background: #f5f5f5; border: 1px solid var(--border); border-left: 0; border-radius: 0 7px 7px 0; white-space: nowrap; color: #777; font-size: 11px; } /* ========================= TABLE ========================= */ .table-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; } .table-heading { padding: 13px 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; } .table-heading-left { display: flex; align-items: center; gap: 12px; } .table-heading strong { font-size: 13px; } .table-heading span { font-size: 12px; color: var(--muted); } .money-btn { height: 36px; padding: 0 17px; border: 1px solid var(--orange); background: var(--orange); color: #fff; border-radius: 7px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: .15s; } .money-btn:hover { background: var(--orange-dark); } .table-scroll { width: 100%; overflow-x: auto; overflow-y: visible; } table { border-collapse: separate; border-spacing: 0; width: max-content; min-width: 1240px; } th, td { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); white-space: nowrap; } thead th { background: #f4f4f4; font-weight: 700; text-align: center; } thead tr:first-child th { height: 38px; font-size: 11px; color: #555; } thead tr:nth-child(2) th { height: 34px; font-size: 12px; } .group-order { background: #fff7ef !important; color: #a85d18 !important; } .group-confirm { background: #f5f5f5 !important; color: #555 !important; } th.fixed, td.fixed { position: sticky; z-index: 4; background: #fff; } thead th.fixed { z-index: 8; background: #f4f4f4; } .fixed-1 { left: 0; width: 115px; min-width: 115px; } .fixed-2 { left: 115px; width: 110px; min-width: 110px; } .fixed-3 { left: 225px; width: 110px; min-width: 110px; } .fixed-4 { left: 335px; width: 125px; min-width: 125px; box-shadow: 5px 0 7px rgba(0,0,0,.06); } .qty { width: 92px; min-width: 92px; text-align: center; } .status { width: 105px; min-width: 105px; text-align: center; } .note { width: 180px; min-width: 180px; } tbody td { height: 43px; padding: 7px 9px; font-size: 13px; } tbody tr:hover td { background: #fafafa; } tbody tr:hover td.fixed { background: #fafafa; } .number { text-align: center; font-weight: 600; } .status-text { display: inline-block; padding: 4px 8px; border-radius: 5px; background: #f2f2f2; font-size: 11px; color: #555; } .footer-row td { background: #f8f8f8; font-weight: 700; } .footer-row td.fixed { background: #f8f8f8; } .total-label { text-align: right; } /* ========================= MODAL ========================= */ .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.42); display: none; align-items: center; justify-content: center; padding: 18px; z-index: 500; } .modal-overlay.show { display: flex; } .money-modal { width: 100%; max-width: 470px; background: #fff; border-radius: 13px; box-shadow: 0 18px 55px rgba(0,0,0,.2); overflow: hidden; animation: modalIn .18s ease-out; } @keyframes modalIn { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } } .modal-header { padding: 17px 18px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; } .modal-title { font-size: 16px; font-weight: 700; } .modal-close { width: 32px; height: 32px; border: 0; background: #f2f2f2; border-radius: 50%; font-size: 18px; color: #555; cursor: pointer; } .modal-body { padding: 18px; } .modal-filter { font-size: 12px; color: var(--muted); margin-bottom: 15px; } .money-line { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #ededed; } .money-info { min-width: 0; } .money-name { font-weight: 700; font-size: 13px; } .money-calculation { color: #777; font-size: 11px; margin-top: 4px; } .money-value { font-size: 14px; font-weight: 700; margin-left: 15px; white-space: nowrap; } .grand-total { display: flex; justify-content: space-between; align-items: center; padding: 18px 0 4px; } .grand-total-label { font-size: 15px; font-weight: 700; } .grand-total-value { font-size: 22px; font-weight: 800; color: var(--orange-dark); } .modal-footer { padding: 0 18px 18px; } .close-button { width: 100%; height: 39px; border: 1px solid var(--border); background: #fff; border-radius: 7px; cursor: pointer; font-size: 13px; } /* ========================= HELP ========================= */ .help-modal { max-width: 430px; } .help-content { font-size: 13px; line-height: 1.6; color: #555; } .help-content p + p { margin-top: 10px; } /* ========================= EMPTY ========================= */ .empty { padding: 35px; text-align: center; color: #888; } /* ========================= MOBILE WARNING ========================= */ .mobile-warning { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 1000; } .mobile-warning.show { display: flex; } .mobile-warning-box { width: 100%; max-width: 360px; background: #fff; border-radius: 12px; padding: 22px; text-align: center; box-shadow: 0 18px 55px rgba(0,0,0,.22); } .mobile-warning-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; } .mobile-warning-text { font-size: 13px; line-height: 1.55; color: #666; } .mobile-warning-btn { width: 100%; height: 39px; margin-top: 18px; border: 1px solid var(--orange); background: var(--orange); color: #fff; border-radius: 7px; cursor: pointer; font-size: 13px; font-weight: 600; } /* ========================= MOBILE ========================= */ @media (max-width: 700px) { body { font-size: 13px; } .topbar { height: 56px; padding: 0 12px; } .page { padding: 10px; } .page-title { font-size: 16px; } .page-subtitle { display: none; } .filter-box, .summary-box, .table-card { border-radius: 8px; } .filter-label { width: 100%; margin-bottom: 1px; } .filter-row { gap: 6px; } .filter-row + .filter-row { margin-top: 13px; } .filter-btn { padding: 7px 11px; font-size: 12px; } .summary-grid { grid-template-columns: 1fr; } .summary-group + .summary-group { border-left: 0; border-top: 1px solid var(--border); } .summary-items { gap: 6px; } .summary-item { padding: 8px; } .summary-value { font-size: 16px; } .table-heading { padding: 11px 12px; } .table-heading-left { gap: 8px; } .table-heading span { display: none; } .money-btn { height: 34px; padding: 0 12px; font-size: 12px; } .modal-overlay { align-items: flex-end; padding: 0; } .money-modal { max-width: none; border-radius: 14px 14px 0 0; max-height: 90vh; overflow-y: auto; } } </style> </head> <body> <header class="topbar">
+<div class="topbar-left">
+
+    <button
+        class="back-btn"
+        onclick="history.back()"
+        aria-label="Quay lại">
+        ‹
+    </button>
+
+    <div>
+        <div class="page-title">
+            ĐẶT & XÁC NHẬN BÁNH
         </div>
 
-
-        <!-- =================================================
-             HEADING
-        ================================================== -->
-
-        <div class="heading">
-
-            <h1>
-                ĐẶT & XÁC NHẬN BÁNH
-            </h1>
-
-            <p>
-                Tascus Food · Theo dõi số lượng bánh
-            </p>
-
+        <div class="page-subtitle">
+            Tascus Food · Theo dõi số lượng bánh
         </div>
-
-
-        <!-- =================================================
-             FILTERS
-        ================================================== -->
-
-        <div class="filters">
-
-
-            <div class="filter-group">
-
-                <span class="filter-label">
-                    Thời gian
-                </span>
-
-                <button
-                    class="filter-button active"
-                    data-time="all"
-                    onclick="setTimeFilter('all', this)"
-                >
-                    Tất cả
-                </button>
-
-                <button
-                    class="filter-button"
-                    data-time="thisMonth"
-                    onclick="setTimeFilter('thisMonth', this)"
-                >
-                    Tháng này
-                </button>
-
-                <button
-                    class="filter-button"
-                    data-time="lastMonth"
-                    onclick="setTimeFilter('lastMonth', this)"
-                >
-                    Tháng trước
-                </button>
-
-            </div>
-
-
-            <div class="filter-group">
-
-                <span class="filter-label">
-                    Cơ sở
-                </span>
-
-                <button
-                    class="filter-button active"
-                    data-branch="all"
-                    onclick="setBranchFilter('all', this)"
-                >
-                    Tất cả cơ sở
-                </button>
-
-                <button
-                    class="filter-button"
-                    data-branch="Khương Trung"
-                    onclick="setBranchFilter('Khương Trung', this)"
-                >
-                    Khương Trung
-                </button>
-
-                <button
-                    class="filter-button"
-                    data-branch="Thái Thịnh"
-                    onclick="setBranchFilter('Thái Thịnh', this)"
-                >
-                    Thái Thịnh
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             SUMMARY
-        ================================================== -->
-
-        <div class="summary">
-
-
-            <!-- TỔNG XÁC NHẬN -->
-
-            <div class="summary-total">
-
-                <div class="summary-heading">
-                    TỔNG XÁC NHẬN
-                </div>
-
-                <div class="total-list">
-
-
-                    <div class="total-item">
-
-                        <span class="total-name">
-                            Burger
-                        </span>
-
-                        <span
-                            class="total-value"
-                            id="totalBurger"
-                        >
-                            0
-                        </span>
-
-                    </div>
-
-
-                    <div class="total-item">
-
-                        <span class="total-name">
-                            Sanwich
-                        </span>
-
-                        <span
-                            class="total-value"
-                            id="totalSanwich"
-                        >
-                            0
-                        </span>
-
-                    </div>
-
-
-                    <div class="total-item">
-
-                        <span class="total-name">
-                            Bánh mỳ dài
-                        </span>
-
-                        <span
-                            class="total-value"
-                            id="totalBread"
-                        >
-                            0
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-            <!-- ĐƠN GIÁ -->
-
-            <div class="summary-price">
-
-                <div class="summary-heading">
-                    ĐƠN GIÁ
-                </div>
-
-                <div class="price-list">
-
-
-                    <div class="price-item">
-
-                        <label
-                            class="price-name"
-                            for="priceBurger"
-                        >
-                            Burger
-                        </label>
-
-                        <div class="price-input-row">
-
-                            <input
-                                id="priceBurger"
-                                class="price-input"
-                                type="number"
-                                min="0"
-                                step="100"
-                                value="12000"
-                            >
-
-                            <span class="price-unit">
-                                /chiếc
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="price-item">
-
-                        <label
-                            class="price-name"
-                            for="priceSanwich"
-                        >
-                            Sanwich
-                        </label>
-
-                        <div class="price-input-row">
-
-                            <input
-                                id="priceSanwich"
-                                class="price-input"
-                                type="number"
-                                min="0"
-                                step="100"
-                                value="15000"
-                            >
-
-                            <span class="price-unit">
-                                /túi
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="price-item">
-
-                        <label
-                            class="price-name"
-                            for="priceBread"
-                        >
-                            Bánh mỳ dài
-                        </label>
-
-                        <div class="price-input-row">
-
-                            <input
-                                id="priceBread"
-                                class="price-input"
-                                type="number"
-                                min="0"
-                                step="100"
-                                value="8000"
-                            >
-
-                            <span class="price-unit">
-                                /chiếc
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- =================================================
-             TABLE TITLE
-        ================================================== -->
-
-        <div class="table-title-row">
-
-            <div class="table-title">
-
-                <h2>
-                    Chi tiết đơn bánh
-                </h2>
-
-                <span
-                    class="table-count"
-                    id="tableCount"
-                >
-                    0 đơn
-                </span>
-
-            </div>
-
-
-            <button
-                class="money-button"
-                onclick="openMoney()"
-            >
-                💰 TÍNH TIỀN
-            </button>
-
-        </div>
-
-
-        <!-- =================================================
-             TABLE
-        ================================================== -->
-
-        <div class="table-shell">
-
-            <table class="orders-table">
-
-
-                <thead>
-
-                    <tr>
-
-                        <th
-                            rowspan="2"
-                            class="col-date sticky-1"
-                        >
-                            Ngày nhận
-                        </th>
-
-                        <th
-                            rowspan="2"
-                            class="col-time sticky-2"
-                        >
-                            Thời gian nhận
-                        </th>
-
-                        <th
-                            rowspan="2"
-                            class="col-branch sticky-3"
-                        >
-                            Cơ sở
-                        </th>
-
-                        <th
-                            rowspan="2"
-                            class="col-person sticky-4"
-                        >
-                            Người đặt
-                        </th>
-
-
-                        <th
-                            colspan="3"
-                            class="group-order"
-                        >
-                            ĐẶT BÁNH
-                        </th>
-
-
-                        <th
-                            colspan="3"
-                            class="group-confirm"
-                        >
-                            XÁC NHẬN
-                        </th>
-
-
-                        <th
-                            rowspan="2"
-                            class="col-status"
-                        >
-                            Trạng thái
-                        </th>
-
-
-                        <th
-                            rowspan="2"
-                            class="col-note"
-                        >
-                            Ghi chú
-                        </th>
-
-                    </tr>
-
-
-                    <tr>
-
-                        <th class="col-quantity">
-                            Burger
-                        </th>
-
-                        <th class="col-quantity">
-                            Sanwich
-                        </th>
-
-                        <th class="col-quantity">
-                            Bánh mỳ dài
-                        </th>
-
-
-                        <th class="col-quantity">
-                            Burger
-                        </th>
-
-                        <th class="col-quantity">
-                            Sanwich
-                        </th>
-
-                        <th class="col-quantity">
-                            Bánh mỳ dài
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="tableBody">
-                </tbody>
-
-
-                <tfoot id="tableFoot">
-                </tfoot>
-
-
-            </table>
-
-        </div>
-
-
     </div>
 
 </div>
 
+<button
+    class="help-btn"
+    onclick="openHelp()">
+    ?
+</button>
+</header> <main class="page">
+<!-- FILTER -->
 
-<!-- =========================================================
-     MONEY MODAL
-========================================================== -->
+<section class="filter-box">
 
-<div
-    class="modal-overlay"
-    id="moneyModal"
-    onclick="closeMoneyOutside(event)"
->
+    <div class="filter-row">
 
-    <div
-        class="modal"
-        onclick="event.stopPropagation()"
-    >
-
-        <div class="modal-head">
-
-            <div class="modal-title">
-                TÍNH TIỀN
-            </div>
-
-            <button
-                class="modal-close"
-                onclick="closeMoney()"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="modal-body">
-
-            <div
-                class="money-filter"
-                id="moneyFilter"
-            >
-                Tất cả thời gian · Tất cả cơ sở
-            </div>
-
-
-            <div class="money-list">
-
-
-                <div class="money-row">
-
-                    <span class="money-product">
-                        Burger
-                    </span>
-
-                    <span
-                        class="money-value"
-                        id="moneyBurger"
-                    >
-                        0 chiếc × 12.000đ = 0đ
-                    </span>
-
-                </div>
-
-
-                <div class="money-row">
-
-                    <span class="money-product">
-                        Sanwich
-                    </span>
-
-                    <span
-                        class="money-value"
-                        id="moneySanwich"
-                    >
-                        0 túi × 15.000đ = 0đ
-                    </span>
-
-                </div>
-
-
-                <div class="money-row">
-
-                    <span class="money-product">
-                        Bánh mỳ dài
-                    </span>
-
-                    <span
-                        class="money-value"
-                        id="moneyBread"
-                    >
-                        0 chiếc × 8.000đ = 0đ
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="money-total">
-
-                <span>
-                    TỔNG
-                </span>
-
-                <span id="moneyTotal">
-                    0đ
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     HELP MODAL
-========================================================== -->
-
-<div
-    class="modal-overlay"
-    id="helpModal"
-    onclick="closeHelpOutside(event)"
->
-
-    <div
-        class="modal"
-        onclick="event.stopPropagation()"
-    >
-
-        <div class="modal-head">
-
-            <div class="modal-title">
-                HƯỚNG DẪN
-            </div>
-
-            <button
-                class="modal-close"
-                onclick="closeHelp()"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="modal-body">
-
-            <div class="help-text">
-
-                <p>
-                    <strong>Thời gian:</strong>
-                    chọn Tất cả, Tháng này hoặc Tháng trước.
-                </p>
-
-                <p>
-                    <strong>Cơ sở:</strong>
-                    lọc riêng Khương Trung hoặc Thái Thịnh.
-                    Hai bộ lọc có thể sử dụng đồng thời.
-                </p>
-
-                <p>
-                    <strong>Bảng:</strong>
-                    bốn cột đầu được cố định. Kéo ngang để
-                    xem các cột số lượng bánh.
-                </p>
-
-                <p>
-                    <strong>Tính tiền:</strong>
-                    nhập đơn giá ở phía trên. Hệ thống tính
-                    tiền dựa trên số lượng trong cột
-                    <strong>XÁC NHẬN</strong>.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     MOBILE ALERT
-========================================================== -->
-
-<div
-    class="device-alert-overlay"
-    id="deviceAlert"
->
-
-    <div class="device-alert">
-
-        <div class="device-alert-icon">
-            ⚠
-        </div>
-
-        <div class="device-alert-title">
-            Trang này dành cho máy tính
-        </div>
-
-        <div class="device-alert-text">
-            Bảng đặt và xác nhận bánh khá rộng,
-            điện thoại không hiển thị đầy đủ.
-            Vui lòng sử dụng máy tính để xem trang này.
+        <div class="filter-label">
+            Thời gian
         </div>
 
         <button
-            class="device-alert-button"
-            onclick="closeDeviceAlert()"
-        >
-            Đã hiểu
+            class="filter-btn active"
+            data-time="all"
+            onclick="setTimeFilter('all', this)">
+            Tất cả
+        </button>
+
+        <button
+            class="filter-btn"
+            data-time="thisMonth"
+            onclick="setTimeFilter('thisMonth', this)">
+            Tháng này
+        </button>
+
+        <button
+            class="filter-btn"
+            data-time="lastMonth"
+            onclick="setTimeFilter('lastMonth', this)">
+            Tháng trước
+        </button>
+
+    </div>
+
+
+    <div class="filter-row">
+
+        <div class="filter-label">
+            Cơ sở
+        </div>
+
+        <button
+            class="filter-btn active"
+            data-branch="all"
+            onclick="setBranchFilter('all', this)">
+            Tất cả cơ sở
+        </button>
+
+        <button
+            class="filter-btn"
+            data-branch="Khương Trung"
+            onclick="setBranchFilter('Khương Trung', this)">
+            Khương Trung
+        </button>
+
+        <button
+            class="filter-btn"
+            data-branch="Thái Thịnh"
+            onclick="setBranchFilter('Thái Thịnh', this)">
+            Thái Thịnh
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- SUMMARY -->
+
+<section class="summary-box">
+
+    <div class="summary-title">
+        Tổng hợp theo bộ lọc hiện tại
+    </div>
+
+    <div class="summary-grid">
+
+        <!-- XÁC NHẬN -->
+
+        <div class="summary-group">
+
+            <div class="summary-group-title">
+                TỔNG XÁC NHẬN
+            </div>
+
+            <div class="summary-items">
+
+                <div class="summary-item">
+
+                    <div class="summary-name">
+                        Burger
+                    </div>
+
+                    <div
+                        class="summary-value"
+                        id="sumConfirmBurger">
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <div class="summary-name">
+                        Sanwich
+                    </div>
+
+                    <div
+                        class="summary-value"
+                        id="sumConfirmSanwich">
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <div class="summary-name">
+                        Bánh mỳ dài
+                    </div>
+
+                    <div
+                        class="summary-value"
+                        id="sumConfirmBread">
+                        0
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ĐƠN GIÁ -->
+
+        <div class="summary-group">
+
+            <div class="summary-group-title">
+                ĐƠN GIÁ
+            </div>
+
+            <div class="price-fields">
+
+                <div class="price-field">
+
+                    <label>
+                        Burger
+                    </label>
+
+                    <div class="price-input-wrap">
+
+                        <input
+                            id="priceBurger"
+                            class="price-input"
+                            type="number"
+                            value="12000"
+                            min="0"
+                            step="100">
+
+                        <div class="unit">
+                            /chiếc
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="price-field">
+
+                    <label>
+                        Sanwich
+                    </label>
+
+                    <div class="price-input-wrap">
+
+                        <input
+                            id="priceSanwich"
+                            class="price-input"
+                            type="number"
+                            value="15000"
+                            min="0"
+                            step="100">
+
+                        <div class="unit">
+                            /túi
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="price-field">
+
+                    <label>
+                        Bánh mỳ dài
+                    </label>
+
+                    <div class="price-input-wrap">
+
+                        <input
+                            id="priceBread"
+                            class="price-input"
+                            type="number"
+                            value="8000"
+                            min="0"
+                            step="100">
+
+                        <div class="unit">
+                            /chiếc
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TABLE -->
+
+<section class="table-card">
+
+    <div class="table-heading">
+
+        <div class="table-heading-left">
+
+            <strong>
+                Chi tiết đơn bánh
+            </strong>
+
+            <span id="resultCount">
+                0 dòng
+            </span>
+
+        </div>
+
+
+        <button
+            class="money-btn"
+            onclick="openMoneyModal()">
+            💰 Tính tiền
+        </button>
+
+    </div>
+
+
+    <div class="table-scroll">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th
+                        class="fixed fixed-1"
+                        rowspan="2">
+                        Ngày nhận
+                    </th>
+
+                    <th
+                        class="fixed fixed-2"
+                        rowspan="2">
+                        Thời gian nhận
+                    </th>
+
+                    <th
+                        class="fixed fixed-3"
+                        rowspan="2">
+                        Cơ sở
+                    </th>
+
+                    <th
+                        class="fixed fixed-4"
+                        rowspan="2">
+                        Người đặt
+                    </th>
+
+                    <th
+                        class="group-order"
+                        colspan="3">
+                        ĐẶT BÁNH
+                    </th>
+
+                    <th
+                        class="group-confirm"
+                        colspan="3">
+                        XÁC NHẬN
+                    </th>
+
+                    <th
+                        rowspan="2"
+                        class="status">
+                        Trạng thái
+                    </th>
+
+                    <th
+                        rowspan="2"
+                        class="note">
+                        Ghi chú
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <th class="qty group-order">
+                        Burger
+                    </th>
+
+                    <th class="qty group-order">
+                        Sanwich
+                    </th>
+
+                    <th class="qty group-order">
+                        Bánh mỳ dài
+                    </th>
+
+
+                    <th class="qty group-confirm">
+                        Burger
+                    </th>
+
+                    <th class="qty group-confirm">
+                        Sanwich
+                    </th>
+
+                    <th class="qty group-confirm">
+                        Bánh mỳ dài
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="tableBody"></tbody>
+
+        </table>
+
+    </div>
+
+</section>
+</main> <!-- MONEY MODAL --> <div class="modal-overlay" id="moneyModal">
+<div class="money-modal">
+
+    <div class="modal-header">
+
+        <div class="modal-title">
+            TÍNH TIỀN
+        </div>
+
+        <button
+            class="modal-close"
+            onclick="closeMoneyModal()">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+        <div
+            class="modal-filter"
+            id="moneyFilterText">
+            Theo bộ lọc hiện tại
+        </div>
+
+
+        <div class="money-line">
+
+            <div class="money-info">
+
+                <div class="money-name">
+                    Burger
+                </div>
+
+                <div
+                    class="money-calculation"
+                    id="calcBurger">
+                    0 chiếc × 0đ
+                </div>
+
+            </div>
+
+            <div
+                class="money-value"
+                id="moneyBurger">
+                0đ
+            </div>
+
+        </div>
+
+
+        <div class="money-line">
+
+            <div class="money-info">
+
+                <div class="money-name">
+                    Sanwich
+                </div>
+
+                <div
+                    class="money-calculation"
+                    id="calcSanwich">
+                    0 túi × 0đ
+                </div>
+
+            </div>
+
+            <div
+                class="money-value"
+                id="moneySanwich">
+                0đ
+            </div>
+
+        </div>
+
+
+        <div class="money-line">
+
+            <div class="money-info">
+
+                <div class="money-name">
+                    Bánh mỳ dài
+                </div>
+
+                <div
+                    class="money-calculation"
+                    id="calcBread">
+                    0 chiếc × 0đ
+                </div>
+
+            </div>
+
+            <div
+                class="money-value"
+                id="moneyBread">
+                0đ
+            </div>
+
+        </div>
+
+
+        <div class="grand-total">
+
+            <div class="grand-total-label">
+                TỔNG
+            </div>
+
+            <div
+                class="grand-total-value"
+                id="grandTotal">
+                0đ
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+
+        <button
+            class="close-button"
+            onclick="closeMoneyModal()">
+            Đóng
         </button>
 
     </div>
 
 </div>
+</div> <!-- HELP MODAL --> <div class="modal-overlay" id="helpModal">
+<div class="money-modal help-modal">
 
+    <div class="modal-header">
 
-<script>
+        <div class="modal-title">
+            HƯỚNG DẪN
+        </div>
 
-/* =========================================================
-   DATA
-========================================================= */
+        <button
+            class="modal-close"
+            onclick="closeHelp()">
+            ×
+        </button>
 
-const data = [
+    </div>
 
-    {
-        date: "05/09/2026",
-        dateObj: "2026-09-05",
-        time: "Sáng ngày 05/09",
-        branch: "Khương Trung",
-        person: "Hoa",
 
-        orderBurger: 25,
-        orderSanwich: 15,
-        orderBread: 10,
+    <div class="modal-body help-content">
 
-        confirmBurger: 25,
-        confirmSanwich: 15,
-        confirmBread: 10,
+        <p>
+            Chọn bộ lọc thời gian và cơ sở để xem đúng nhóm dữ liệu cần kiểm tra.
+        </p>
 
-        status: "Đã xác nhận",
-        note: ""
-    },
+        <p>
+            Bốn cột đầu được cố định.
+            Kéo ngang bảng để xem số lượng ĐẶT BÁNH và XÁC NHẬN.
+        </p>
 
-    {
-        date: "06/09/2026",
-        dateObj: "2026-09-06",
-        time: "Sáng ngày 06/09",
-        branch: "Thái Thịnh",
-        person: "Linh",
+        <p>
+            Nhập đơn giá của 3 loại bánh rồi bấm
+            <strong>Tính tiền</strong>.
+            Tiền được tính dựa trên số lượng
+            <strong>XÁC NHẬN</strong>
+            theo bộ lọc hiện tại.
+        </p>
 
-        orderBurger: 30,
-        orderSanwich: 20,
-        orderBread: 15,
+    </div>
 
-        confirmBurger: 28,
-        confirmSanwich: 20,
-        confirmBread: 15,
 
-        status: "Đã xác nhận",
-        note: "Thiếu 2 Burger"
-    },
+    <div class="modal-footer">
 
-    {
-        date: "07/09/2026",
-        dateObj: "2026-09-07",
-        time: "Sáng ngày 07/09",
-        branch: "Khương Trung",
-        person: "Trang",
+        <button
+            class="close-button"
+            onclick="closeHelp()">
+            Đóng
+        </button>
 
-        orderBurger: 20,
-        orderSanwich: 12,
-        orderBread: 8,
+    </div>
 
-        confirmBurger: 20,
-        confirmSanwich: 12,
-        confirmBread: 8,
+</div>
+</div> <!-- MOBILE WARNING --> <div class="mobile-warning" id="mobileWarning">
+<div class="mobile-warning-box">
 
-        status: "Đã xác nhận",
-        note: ""
-    },
+    <div class="mobile-warning-title">
+        Trang này dành cho máy tính
+    </div>
 
-    {
-        date: "12/09/2026",
-        dateObj: "2026-09-12",
-        time: "Sáng ngày 12/09",
-        branch: "Thái Thịnh",
-        person: "Việt Anh",
+    <div class="mobile-warning-text">
+        Bảng đặt và xác nhận bánh khá rộng,
+        điện thoại không hiển thị đầy đủ.
+        Vui lòng sử dụng máy tính để xem trang này.
+    </div>
 
-        orderBurger: 35,
-        orderSanwich: 18,
-        orderBread: 12,
+    <button
+        class="mobile-warning-btn"
+        onclick="closeMobileWarning()">
+        Đã hiểu
+    </button>
 
-        confirmBurger: 34,
-        confirmSanwich: 17,
-        confirmBread: 12,
-
-        status: "Đã xác nhận",
-        note: "Thiếu 1 Burger, 1 Sanwich"
-    },
-
-    {
-        date: "15/08/2026",
-        dateObj: "2026-08-15",
-        time: "Sáng ngày 15/08",
-        branch: "Khương Trung",
-        person: "Hoa",
-
-        orderBurger: 22,
-        orderSanwich: 14,
-        orderBread: 9,
-
-        confirmBurger: 22,
-        confirmSanwich: 14,
-        confirmBread: 9,
-
-        status: "Đã xác nhận",
-        note: ""
-    },
-
-    {
-        date: "20/08/2026",
-        dateObj: "2026-08-20",
-        time: "Sáng ngày 20/08",
-        branch: "Thái Thịnh",
-        person: "Lệ",
-
-        orderBurger: 28,
-        orderSanwich: 16,
-        orderBread: 11,
-
-        confirmBurger: 27,
-        confirmSanwich: 16,
-        confirmBread: 11,
-
-        status: "Đã xác nhận",
-        note: "Thiếu 1 Burger"
-    },
-
-    {
-        date: "24/08/2026",
-        dateObj: "2026-08-24",
-        time: "Sáng ngày 24/08",
-        branch: "Khương Trung",
-        person: "Trang",
-
-        orderBurger: 26,
-        orderSanwich: 13,
-        orderBread: 10,
-
-        confirmBurger: 25,
-        confirmSanwich: 13,
-        confirmBread: 10,
-
-        status: "Đã xác nhận",
-        note: "Thiếu 1 Burger"
-    },
-
-    {
-        date: "29/08/2026",
-        dateObj: "2026-08-29",
-        time: "Sáng ngày 29/08",
-        branch: "Thái Thịnh",
-        person: "Huế",
-
-        orderBurger: 31,
-        orderSanwich: 19,
-        orderBread: 13,
-
-        confirmBurger: 30,
-        confirmSanwich: 18,
-        confirmBread: 13,
-
-        status: "Đã xác nhận",
-        note: "Thiếu 1 Burger, 1 Sanwich"
-    }
-
-];
-
-
-/* =========================================================
-   FILTER STATE
-========================================================= */
-
-let currentTimeFilter = "all";
-let currentBranchFilter = "all";
-
-
-/* =========================================================
-   NUMBER FORMAT
-========================================================= */
-
-function numberFormat(value) {
-
-    return Number(value || 0)
-        .toLocaleString("vi-VN");
-
-}
-
-function moneyFormat(value) {
-
-    return numberFormat(value) + "đ";
-
-}
-
-
-/* =========================================================
-   FILTER
-========================================================= */
-
-function getFilteredData() {
-
-    return data.filter(item => {
-
-        let timeMatch = true;
-        let branchMatch = true;
-
-
-        if (currentTimeFilter === "thisMonth") {
-
-            timeMatch =
-                item.dateObj >= "2026-09-01" &&
-                item.dateObj <= "2026-09-30";
-
-        }
-
-
-        if (currentTimeFilter === "lastMonth") {
-
-            timeMatch =
-                item.dateObj >= "2026-08-01" &&
-                item.dateObj <= "2026-08-31";
-
-        }
-
-
-        if (currentBranchFilter !== "all") {
-
-            branchMatch =
-                item.branch === currentBranchFilter;
-
-        }
-
-
-        return timeMatch && branchMatch;
-
-    });
-
-}
-
-
-/* =========================================================
-   TOTALS
-========================================================= */
-
-function calculateTotals(items) {
-
-    const totals = {
-
-        orderBurger: 0,
-        orderSanwich: 0,
-        orderBread: 0,
-
-        confirmBurger: 0,
-        confirmSanwich: 0,
-        confirmBread: 0
-
-    };
-
-
-    items.forEach(item => {
-
-        totals.orderBurger += item.orderBurger;
-        totals.orderSanwich += item.orderSanwich;
-        totals.orderBread += item.orderBread;
-
-        totals.confirmBurger += item.confirmBurger;
-        totals.confirmSanwich += item.confirmSanwich;
-        totals.confirmBread += item.confirmBread;
-
-    });
-
-
-    return totals;
-
-}
-
-
-/* =========================================================
-   RENDER
-========================================================= */
-
-function render() {
-
-    const items = getFilteredData();
-    const totals = calculateTotals(items);
-
-    const tbody =
-        document.getElementById("tableBody");
-
-    const tfoot =
-        document.getElementById("tableFoot");
-
-
-    tbody.innerHTML = "";
-
-
-    if (!items.length) {
-
-        tbody.innerHTML = `
-
-            <tr class="empty-row">
-
-                <td colspan="12">
-                    Không có đơn bánh trong bộ lọc hiện tại.
-                </td>
-
-            </tr>
-
-        `;
-
-    } else {
-
-        items.forEach(item => {
-
-            const row =
-                document.createElement("tr");
-
-
-            const statusClass =
-                item.status === "Đã xác nhận"
-                    ? "status-confirmed"
-                    : "status-pending";
-
-
-            row.innerHTML = `
-
-                <td class="col-date sticky-1">
-                    ${item.date}
-                </td>
-
-                <td class="col-time sticky-2">
-                    ${item.time}
-                </td>
-
-                <td class="col-branch sticky-3">
-                    ${item.branch}
-                </td>
-
-                <td class="col-person sticky-4">
-                    ${item.person}
-                </td>
-
-
-                <td class="col-quantity order-number">
-                    <span class="number">
-                        ${item.orderBurger}
-                    </span>
-                </td>
-
-                <td class="col-quantity order-number">
-                    <span class="number">
-                        ${item.orderSanwich}
-                    </span>
-                </td>
-
-                <td class="col-quantity order-number">
-                    <span class="number">
-                        ${item.orderBread}
-                    </span>
-                </td>
-
-
-                <td class="col-quantity confirm-number">
-                    <span class="number">
-                        ${item.confirmBurger}
-                    </span>
-                </td>
-
-                <td class="col-quantity confirm-number">
-                    <span class="number">
-                        ${item.confirmSanwich}
-                    </span>
-                </td>
-
-                <td class="col-quantity confirm-number">
-                    <span class="number">
-                        ${item.confirmBread}
-                    </span>
-                </td>
-
-
-                <td class="col-status">
-
-                    <span class="status ${statusClass}">
-                        ${item.status}
-                    </span>
-
-                </td>
-
-
-                <td class="col-note note">
-                    ${item.note || "—"}
-                </td>
-
-            `;
-
-
-            tbody.appendChild(row);
-
-        });
-
-    }
-
-
-    /* FOOTER */
-
-    tfoot.innerHTML = `
-
-        <tr>
-
-            <td
-                colspan="4"
-                class="total-label sticky-1"
-            >
-                TỔNG
-            </td>
-
-
-            <td class="total-number">
-                ${numberFormat(totals.orderBurger)}
-            </td>
-
-            <td class="total-number">
-                ${numberFormat(totals.orderSanwich)}
-            </td>
-
-            <td class="total-number">
-                ${numberFormat(totals.orderBread)}
-            </td>
-
-
-            <td class="total-number">
-                ${numberFormat(totals.confirmBurger)}
-            </td>
-
-            <td class="total-number">
-                ${numberFormat(totals.confirmSanwich)}
-            </td>
-
-            <td class="total-number">
-                ${numberFormat(totals.confirmBread)}
-            </td>
-
-
-            <td></td>
-
-            <td></td>
-
-        </tr>
-
-    `;
-
-
-    document.getElementById("totalBurger").textContent =
-        numberFormat(totals.confirmBurger);
-
-    document.getElementById("totalSanwich").textContent =
-        numberFormat(totals.confirmSanwich);
-
-    document.getElementById("totalBread").textContent =
-        numberFormat(totals.confirmBread);
-
-
-    document.getElementById("tableCount").textContent =
-        `${items.length} đơn`;
-
-}
-
-
-/* =========================================================
-   TIME FILTER
-========================================================= */
-
-function setTimeFilter(filter, button) {
-
-    currentTimeFilter = filter;
-
-
-    document
-        .querySelectorAll("[data-time]")
-        .forEach(btn => {
-
-            btn.classList.remove("active");
-
-        });
-
-
-    button.classList.add("active");
-
-    render();
-
-}
-
-
-/* =========================================================
-   BRANCH FILTER
-========================================================= */
-
-function setBranchFilter(filter, button) {
-
-    currentBranchFilter = filter;
-
-
-    document
-        .querySelectorAll("[data-branch]")
-        .forEach(btn => {
-
-            btn.classList.remove("active");
-
-        });
-
-
-    button.classList.add("active");
-
-    render();
-
-}
-
-
-/* =========================================================
-   FILTER DESCRIPTION
-========================================================= */
-
-function getFilterText() {
-
-    let timeText =
-        "Tất cả thời gian";
-
-    let branchText =
-        "Tất cả cơ sở";
-
-
-    if (currentTimeFilter === "thisMonth") {
-        timeText = "Tháng này";
-    }
-
-    if (currentTimeFilter === "lastMonth") {
-        timeText = "Tháng trước";
-    }
-
-    if (currentBranchFilter !== "all") {
-        branchText = currentBranchFilter;
-    }
-
-
-    return `${timeText} · ${branchText}`;
-
-}
-
-
-/* =========================================================
-   MONEY
-========================================================= */
-
-function openMoney() {
-
-    const items = getFilteredData();
-    const totals = calculateTotals(items);
-
-
-    const priceBurger =
-        Number(
-            document.getElementById("priceBurger").value
-        ) || 0;
-
-
-    const priceSanwich =
-        Number(
-            document.getElementById("priceSanwich").value
-        ) || 0;
-
-
-    const priceBread =
-        Number(
-            document.getElementById("priceBread").value
-        ) || 0;
-
-
-    const moneyBurger =
-        totals.confirmBurger * priceBurger;
-
-
-    const moneySanwich =
-        totals.confirmSanwich * priceSanwich;
-
-
-    const moneyBread =
-        totals.confirmBread * priceBread;
-
-
-    const total =
-        moneyBurger +
-        moneySanwich +
-        moneyBread;
-
-
-    document.getElementById("moneyFilter").textContent =
-        getFilterText();
-
-
-    document.getElementById("moneyBurger").textContent =
-        `${numberFormat(totals.confirmBurger)} chiếc × ${moneyFormat(priceBurger)} = ${moneyFormat(moneyBurger)}`;
-
-
-    document.getElementById("moneySanwich").textContent =
-        `${numberFormat(totals.confirmSanwich)} túi × ${moneyFormat(priceSanwich)} = ${moneyFormat(moneySanwich)}`;
-
-
-    document.getElementById("moneyBread").textContent =
-        `${numberFormat(totals.confirmBread)} chiếc × ${moneyFormat(priceBread)} = ${moneyFormat(moneyBread)}`;
-
-
-    document.getElementById("moneyTotal").textContent =
-        moneyFormat(total);
-
-
-    document
-        .getElementById("moneyModal")
-        .classList.add("show");
-
-}
-
-
-function closeMoney() {
-
-    document
-        .getElementById("moneyModal")
-        .classList.remove("show");
-
-}
-
-
-function closeMoneyOutside(event) {
-
-    if (
-        event.target ===
-        document.getElementById("moneyModal")
-    ) {
-
-        closeMoney();
-
-    }
-
-}
-
-
-/* =========================================================
-   HELP
-========================================================= */
-
-function openHelp() {
-
-    document
-        .getElementById("helpModal")
-        .classList.add("show");
-
-}
-
-
-function closeHelp() {
-
-    document
-        .getElementById("helpModal")
-        .classList.remove("show");
-
-}
-
-
-function closeHelpOutside(event) {
-
-    if (
-        event.target ===
-        document.getElementById("helpModal")
-    ) {
-
-        closeHelp();
-
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE ALERT
-========================================================= */
-
-function closeDeviceAlert() {
-
-    document
-        .getElementById("deviceAlert")
-        .style.display = "none";
-
-}
-
-
-/* =========================================================
-   BACK
-========================================================= */
-
-function goBack() {
-
-    if (window.history.length > 1) {
-
-        window.history.back();
-
-    } else {
-
-        window.location.href = "/";
-
-    }
-
-}
-
-
-/* =========================================================
-   ESC
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Escape") {
-
-            closeMoney();
-            closeHelp();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   INITIAL
-========================================================= */
-
-render();
-
-</script>
-
-
-</body>
-
-</html>
+</div>
+</div> <script> /* ========================================================= DỮ LIỆU MẪU ========================================================= */ const data = [ { date: "05/09/2026", time: "Sáng ngày 05/09", branch: "Khương Trung", person: "Hoa", orderBurger: 25, orderSanwich: 15, orderBread: 10, confirmBurger: 25, confirmSanwich: 15, confirmBread: 10, status: "Đã xác nhận", note: "" }, { date: "06/09/2026", time: "Sáng ngày 06/09", branch: "Thái Thịnh", person: "Linh", orderBurger: 30, orderSanwich: 20, orderBread: 15, confirmBurger: 28, confirmSanwich: 20, confirmBread: 15, status: "Đã xác nhận", note: "Thiếu 2 Burger" }, { date: "07/09/2026", time: "Sáng ngày 07/09", branch: "Khương Trung", person: "Trang", orderBurger: 20, orderSanwich: 12, orderBread: 8, confirmBurger: 20, confirmSanwich: 12, confirmBread: 8, status: "Đã xác nhận", note: "" }, { date: "12/09/2026", time: "Sáng ngày 12/09", branch: "Thái Thịnh", person: "Việt Anh", orderBurger: 35, orderSanwich: 18, orderBread: 12, confirmBurger: 34, confirmSanwich: 17, confirmBread: 12, status: "Đã xác nhận", note: "Thiếu 1 Burger, 1 Sanwich" }, { date: "15/08/2026", time: "Sáng ngày 15/08", branch: "Khương Trung", person: "Hoa", orderBurger: 22, orderSanwich: 14, orderBread: 9, confirmBurger: 22, confirmSanwich: 14, confirmBread: 9, status: "Đã xác nhận", note: "" }, { date: "20/08/2026", time: "Sáng ngày 20/08", branch: "Thái Thịnh", person: "Lệ", orderBurger: 28, orderSanwich: 16, orderBread: 11, confirmBurger: 27, confirmSanwich: 16, confirmBread: 11, status: "Đã xác nhận", note: "Thiếu 1 Burger" }, { date: "24/08/2026", time: "Sáng ngày 24/08", branch: "Khương Trung", person: "Trang", orderBurger: 26, orderSanwich: 13, orderBread: 10, confirmBurger: 25, confirmSanwich: 13, confirmBread: 10, status: "Đã xác nhận", note: "Thiếu 1 Burger" }, { date: "29/08/2026", time: "Sáng ngày 29/08", branch: "Thái Thịnh", person: "Huế", orderBurger: 31, orderSanwich: 19, orderBread: 13, confirmBurger: 30, confirmSanwich: 18, confirmBread: 13, status: "Đã xác nhận", note: "Thiếu 1 Burger, 1 Sanwich" } ]; /* ========================================================= FILTER STATE ========================================================= */ let timeFilter = "all"; let branchFilter = "all"; /* ========================================================= DATE ========================================================= */ function parseDate(dateString) { const parts = dateString.split("/"); return new Date( Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]) ); } /* ========================================================= FILTER BUTTONS ========================================================= */ function setTimeFilter(value, button) { timeFilter = value; document .querySelectorAll("[data-time]") .forEach(btn => btn.classList.remove("active")); button.classList.add("active"); render(); } function setBranchFilter(value, button) { branchFilter = value; document .querySelectorAll("[data-branch]") .forEach(btn => btn.classList.remove("active")); button.classList.add("active"); render(); } /* ========================================================= FILTER DATA ========================================================= */ function getFilteredData() { const now = new Date(); return data.filter(item => { const itemDate = parseDate(item.date); let timeOK = true; if (timeFilter === "thisMonth") { timeOK = itemDate.getMonth() === now.getMonth() && itemDate.getFullYear() === now.getFullYear(); } if (timeFilter === "lastMonth") { const previousMonth = new Date( now.getFullYear(), now.getMonth() - 1, 1 ); timeOK = itemDate.getMonth() === previousMonth.getMonth() && itemDate.getFullYear() === previousMonth.getFullYear(); } const branchOK = branchFilter === "all" || item.branch === branchFilter; return timeOK && branchOK; }); } /* ========================================================= FORMAT ========================================================= */ function formatNumber(value) { return Number(value || 0).toLocaleString("vi-VN"); } function formatMoney(value) { return Number(value || 0).toLocaleString("vi-VN") + "đ"; } /* ========================================================= TOTALS ========================================================= */ function calculateTotals(items) { return items.reduce( (total, item) => { total.orderBurger += item.orderBurger; total.orderSanwich += item.orderSanwich; total.orderBread += item.orderBread; total.confirmBurger += item.confirmBurger; total.confirmSanwich += item.confirmSanwich; total.confirmBread += item.confirmBread; return total; }, { orderBurger: 0, orderSanwich: 0, orderBread: 0, confirmBurger: 0, confirmSanwich: 0, confirmBread: 0 } ); } /* ========================================================= RENDER TABLE ========================================================= */ function render() { const filtered = getFilteredData(); const tbody = document.getElementById("tableBody"); tbody.innerHTML = ""; if (filtered.length === 0) { tbody.innerHTML = ` <tr> <td colspan="12"> <div class="empty"> Không có dữ liệu phù hợp với bộ lọc. </div> </td> </tr> `; } else { filtered.forEach(item => { const tr = document.createElement("tr"); tr.innerHTML = ` <td class="fixed fixed-1"> ${item.date} </td> <td class="fixed fixed-2"> ${item.time} </td> <td class="fixed fixed-3"> ${item.branch} </td> <td class="fixed fixed-4"> ${item.person} </td> <td class="qty number"> ${formatNumber(item.orderBurger)} </td> <td class="qty number"> ${formatNumber(item.orderSanwich)} </td> <td class="qty number"> ${formatNumber(item.orderBread)} </td> <td class="qty number"> ${formatNumber(item.confirmBurger)} </td> <td class="qty number"> ${formatNumber(item.confirmSanwich)} </td> <td class="qty number"> ${formatNumber(item.confirmBread)} </td> <td class="status"> <span class="status-text"> ${item.status} </span> </td> <td class="note"> ${item.note || ""} </td> `; tbody.appendChild(tr); }); const totals = calculateTotals(filtered); const tr = document.createElement("tr"); tr.className = "footer-row"; tr.innerHTML = ` <td class="fixed fixed-1"></td> <td class="fixed fixed-2"></td> <td class="fixed fixed-3"></td> <td class="fixed fixed-4 total-label"> TỔNG </td> <td class="qty number"> ${formatNumber(totals.orderBurger)} </td> <td class="qty number"> ${formatNumber(totals.orderSanwich)} </td> <td class="qty number"> ${formatNumber(totals.orderBread)} </td> <td class="qty number"> ${formatNumber(totals.confirmBurger)} </td> <td class="qty number"> ${formatNumber(totals.confirmSanwich)} </td> <td class="qty number"> ${formatNumber(totals.confirmBread)} </td> <td class="status"></td> <td class="note"></td> `; tbody.appendChild(tr); } updateSummary(filtered); document.getElementById("resultCount").textContent = filtered.length + " dòng"; } /* ========================================================= SUMMARY ========================================================= */ function updateSummary(items) { const totals = calculateTotals(items); document.getElementById("sumConfirmBurger").textContent = formatNumber(totals.confirmBurger); document.getElementById("sumConfirmSanwich").textContent = formatNumber(totals.confirmSanwich); document.getElementById("sumConfirmBread").textContent = formatNumber(totals.confirmBread); } /* ========================================================= MONEY ========================================================= */ function openMoneyModal() { const filtered = getFilteredData(); const totals = calculateTotals(filtered); const priceBurger = Number(document.getElementById("priceBurger").value) || 0; const priceSanwich = Number(document.getElementById("priceSanwich").value) || 0; const priceBread = Number(document.getElementById("priceBread").value) || 0; const moneyBurger = totals.confirmBurger * priceBurger; const moneySanwich = totals.confirmSanwich * priceSanwich; const moneyBread = totals.confirmBread * priceBread; const grandTotal = moneyBurger + moneySanwich + moneyBread; document.getElementById("calcBurger").textContent = formatNumber(totals.confirmBurger) + " chiếc × " + formatMoney(priceBurger); document.getElementById("calcSanwich").textContent = formatNumber(totals.confirmSanwich) + " túi × " + formatMoney(priceSanwich); document.getElementById("calcBread").textContent = formatNumber(totals.confirmBread) + " chiếc × " + formatMoney(priceBread); document.getElementById("moneyBurger").textContent = formatMoney(moneyBurger); document.getElementById("moneySanwich").textContent = formatMoney(moneySanwich); document.getElementById("moneyBread").textContent = formatMoney(moneyBread); document.getElementById("grandTotal").textContent = formatMoney(grandTotal); updateMoneyFilterText(); document .getElementById("moneyModal") .classList.add("show"); } /* ========================================================= MONEY FILTER TEXT ========================================================= */ function updateMoneyFilterText() { let text = "Theo bộ lọc hiện tại"; let timeText = ""; if (timeFilter === "thisMonth") { timeText = "Tháng này"; } if (timeFilter === "lastMonth") { timeText = "Tháng trước"; } const branchText = branchFilter === "all" ? "Tất cả cơ sở" : branchFilter; if (timeFilter === "all") { text = branchText; } else { text = timeText + " · " + branchText; } document.getElementById("moneyFilterText").textContent = text; } /* ========================================================= MONEY MODAL ========================================================= */ function closeMoneyModal() { document .getElementById("moneyModal") .classList.remove("show"); } /* ========================================================= HELP ========================================================= */ function openHelp() { document .getElementById("helpModal") .classList.add("show"); } function closeHelp() { document .getElementById("helpModal") .classList.remove("show"); } /* ========================================================= CLOSE MODAL OUTSIDE ========================================================= */ document .getElementById("moneyModal") .addEventListener("click", function(event) { if (event.target === this) { closeMoneyModal(); } }); document .getElementById("helpModal") .addEventListener("click", function(event) { if (event.target === this) { closeHelp(); } }); /* ========================================================= ESC ========================================================= */ document.addEventListener("keydown", function(event) { if (event.key === "Escape") { closeMoneyModal(); closeHelp(); } }); /* ========================================================= MOBILE WARNING ========================================================= */ function closeMobileWarning() { document .getElementById("mobileWarning") .classList.remove("show"); } function checkMobile() { if (window.innerWidth <= 700) { document .getElementById("mobileWarning") .classList.add("show"); } } /* ========================================================= INITIAL ========================================================= */ render(); checkMobile(); </script> </body> </html>
