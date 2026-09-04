@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-04T11:31:00.808Z",
+  "updated_at": "2026-09-04T11:33:36.159Z",
   "records": [
     {
       "id": "Z024",
@@ -151,6 +151,16 @@
       "thoi_gian": "2026/09/04 18:31",
       "nguoi_bao_cao": "Hưng",
       "noi_dung": "Các mảnh thoi trang trí cửa hàng đang rụng lả tả từ lâu mà chưa gắn. Cần mang súng bắn keo đi sửa lại vấn đề",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z037",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/04 18:33",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Tạo món Salad trên fabi\nChốt phương án tặng trà",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
