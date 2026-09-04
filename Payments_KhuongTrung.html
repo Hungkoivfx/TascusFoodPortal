@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<title>Sổ thanh toán · 69 Khương Trung</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    background: #f5f6f7;
+    color: #17181a;
+
+    padding:
+        max(18px, env(safe-area-inset-top))
+        14px
+        max(28px, env(safe-area-inset-bottom))
+        14px;
+}
+
+.container {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 14px;
+}
+
+.back-button,
+.help-button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+
+    border: 1px solid #dedfe1;
+    background: #fff;
+
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    color: #17181a;
+
+    transition: .15s ease;
+}
+
+.back-button {
+    font-size: 23px;
+    line-height: 1;
+}
+
+.help-button {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.back-button:active,
+.help-button:active {
+    transform: scale(.95);
+}
+
+.header-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.header-main h1 {
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.header-main p {
+    margin-top: 3px;
+
+    font-size: 11px;
+    color: #777a7e;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-bottom: 12px;
+}
+
+.month-switcher {
+    display: flex;
+    align-items: center;
+
+    height: 40px;
+
+    border: 1px solid #dedfe1;
+
+    background: #fff;
+
+    border-radius: 11px;
+
+    overflow: hidden;
+}
+
+.month-arrow {
+    width: 36px;
+    height: 40px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #55575a;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.month-arrow:active {
+    background: #f1f1f2;
+}
+
+.month-label {
+    min-width: 82px;
+
+    text-align: center;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.create-button {
+    height: 40px;
+
+    padding: 0 13px;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    background: #17181a;
+
+    color: #fff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition: .15s ease;
+}
+
+.create-button:active {
+    transform: scale(.97);
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary {
+    background: #fff;
+
+    border: 1px solid #e1e2e4;
+
+    border-radius: 15px;
+
+    padding: 14px 15px;
+
+    margin-bottom: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.summary-label {
+    font-size: 11px;
+    color: #777a7e;
+}
+
+.summary-period {
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    color: #a0a2a5;
+}
+
+.summary-value {
+    font-size: 22px;
+    font-weight: 700;
+
+    letter-spacing: -.02em;
+}
+
+
+/* =========================
+   LIST CARD
+========================= */
+
+.list-card {
+    background: #fff;
+
+    border: 1px solid #e1e2e4;
+
+    border-radius: 15px;
+
+    padding: 13px;
+
+    margin-bottom: 12px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1px 1px 10px;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.record-count {
+    font-size: 10px;
+    color: #85878a;
+}
+
+
+/* =========================
+   PAYMENT LIST
+========================= */
+
+.payment-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.payment-item {
+    border: 1px solid #e4e5e7;
+
+    border-radius: 11px;
+
+    padding: 11px 12px;
+
+    background: #fff;
+}
+
+.payment-top {
+    display: flex;
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+.payment-content {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.payment-name {
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1.35;
+
+    word-break: break-word;
+}
+
+.payment-date {
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    color: #85878a;
+}
+
+.payment-amount {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.payment-meta {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-top: 8px;
+}
+
+.meta-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 4px 6px;
+
+    border-radius: 6px;
+
+    background: #f2f2f3;
+
+    color: #626467;
+
+    font-size: 9px;
+}
+
+.transaction {
+    font-family: monospace;
+
+    word-break: break-all;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty {
+    padding: 35px 10px;
+
+    text-align: center;
+
+    color: #85878a;
+}
+
+.empty-icon {
+    font-size: 26px;
+
+    margin-bottom: 7px;
+}
+
+.empty-title {
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #5d5f62;
+}
+
+.empty-text {
+    margin-top: 3px;
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: none;
+
+    align-items: flex-end;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, .4);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal {
+    width: 100%;
+    max-width: 620px;
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border-radius: 19px 19px 0 0;
+
+    padding:
+        17px
+        15px
+        max(22px, env(safe-area-inset-bottom))
+        15px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+.close-button {
+    width: 35px;
+    height: 35px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: #f1f1f2;
+
+    font-size: 20px;
+
+    color: #45474a;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-label {
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+
+    border: 1px solid #dedfe1;
+
+    background: #fafafa;
+
+    border-radius: 10px;
+
+    padding: 0 11px;
+
+    color: #17181a;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+.form-input {
+    height: 44px;
+}
+
+.form-textarea {
+    min-height: 78px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    resize: vertical;
+
+    line-height: 1.45;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    background: #fff;
+
+    border-color: #999b9e;
+}
+
+
+/* =========================
+   PAYMENT TYPE
+========================= */
+
+.payment-types {
+    display: flex;
+
+    gap: 7px;
+}
+
+.payment-type {
+    flex: 1;
+
+    position: relative;
+}
+
+.payment-type input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.payment-type label {
+    min-height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 7px;
+
+    border: 1px solid #dedfe1;
+
+    background: #fafafa;
+
+    border-radius: 10px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .15s ease;
+}
+
+.payment-type input:checked + label {
+    background: #17181a;
+
+    border-color: #17181a;
+
+    color: #fff;
+}
+
+.transaction-note {
+    display: none;
+
+    margin-top: 5px;
+
+    font-size: 10px;
+
+    color: #85878a;
+}
+
+.transaction-note.show {
+    display: block;
+}
+
+
+/* =========================
+   MODAL BUTTONS
+========================= */
+
+.modal-actions {
+    display: flex;
+
+    gap: 7px;
+
+    margin-top: 16px;
+}
+
+.cancel-button,
+.submit-button {
+    height: 45px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.cancel-button {
+    width: 35%;
+
+    border: 1px solid #dedfe1;
+
+    background: #fff;
+
+    color: #444649;
+}
+
+.submit-button {
+    flex: 1;
+
+    border: 0;
+
+    background: #17181a;
+
+    color: #fff;
+}
+
+
+/* =========================
+   HELP
+========================= */
+
+.help-content {
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color: #55575a;
+}
+
+.help-content strong {
+    color: #17181a;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 200;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.72);
+
+    backdrop-filter: blur(3px);
+}
+
+.loading.show {
+    display: flex;
+}
+
+.loading-box {
+    background: #fff;
+
+    border: 1px solid #dedfe1;
+
+    border-radius: 13px;
+
+    padding: 16px 19px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.12);
+
+    text-align: center;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+
+    margin: 0 auto 8px;
+
+    border: 3px solid #dedfe1;
+
+    border-top-color: #17181a;
+
+    border-radius: 50%;
+
+    animation: spin .7s linear infinite;
+}
+
+.loading-text {
+    font-size: 11px;
+
+    color: #55575a;
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    position: fixed;
+
+    left: 50%;
+
+    bottom:
+        max(20px, env(safe-area-inset-bottom));
+
+    transform:
+        translate(-50%, 20px);
+
+    z-index: 300;
+
+    background: #17181a;
+
+    color: #fff;
+
+    padding: 9px 14px;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .2s ease;
+
+    white-space: nowrap;
+}
+
+.toast.show {
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 420px) {
+
+    .create-button {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .month-label {
+        min-width: 74px;
+    }
+
+    .payment-item {
+        padding: 10px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <button
+            type="button"
+            class="back-button"
+            onclick="goBack()"
+            aria-label="Quay lại"
+        >
+            ‹
+        </button>
+
+
+        <div class="header-main">
+
+            <h1>
+                Sổ thanh toán
+            </h1>
+
+            <p>
+                Kế toán · 69 Khương Trung
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="help-button"
+            onclick="openHelp()"
+            aria-label="Trợ giúp"
+        >
+            ?
+        </button>
+
+    </div>
+
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+
+
+        <div class="month-switcher">
+
+            <button
+                type="button"
+                class="month-arrow"
+                onclick="changeMonth(-1)"
+            >
+                ‹
+            </button>
+
+
+            <div
+                class="month-label"
+                id="monthLabel"
+            >
+                09 / 2026
+            </div>
+
+
+            <button
+                type="button"
+                class="month-arrow"
+                onclick="changeMonth(1)"
+            >
+                ›
+            </button>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="create-button"
+            onclick="openCreateModal()"
+        >
+            ＋ Tạo thanh toán
+        </button>
+
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="summary">
+
+        <div>
+
+            <div class="summary-label">
+                Tổng thanh toán
+            </div>
+
+            <div
+                class="summary-period"
+                id="summaryPeriod"
+            >
+                Tháng 09 / 2026
+            </div>
+
+        </div>
+
+
+        <div
+            class="summary-value"
+            id="totalAmount"
+        >
+            0
+        </div>
+
+    </div>
+
+
+    <!-- LIST -->
+
+    <div class="list-card">
+
+
+        <div class="section-header">
+
+            <div class="section-title">
+                Lịch sử thanh toán
+            </div>
+
+            <div
+                class="record-count"
+                id="recordCount"
+            >
+                0 khoản
+            </div>
+
+        </div>
+
+
+        <div
+            class="payment-list"
+            id="paymentList"
+        ></div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================
+     CREATE MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="createModal"
+    onclick="closeModalByOverlay(event)"
+>
+
+    <div
+        class="modal"
+        onclick="event.stopPropagation()"
+    >
+
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                Tạo thanh toán
+            </div>
+
+            <button
+                type="button"
+                class="close-button"
+                onclick="closeCreateModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form
+            id="paymentForm"
+            onsubmit="submitPayment(event)"
+        >
+
+
+            <div class="form-group">
+
+                <label
+                    class="form-label"
+                    for="paymentContent"
+                >
+                    Nội dung thanh toán
+                </label>
+
+                <input
+                    type="text"
+                    id="paymentContent"
+                    class="form-input"
+                    placeholder="Ví dụ: Thanh toán tiền rau"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label
+                    class="form-label"
+                    for="paymentAmount"
+                >
+                    Số tiền
+                </label>
+
+                <input
+                    type="text"
+                    id="paymentAmount"
+                    class="form-input"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    placeholder="Ví dụ: 1250000"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label
+                    class="form-label"
+                    for="paymentDate"
+                >
+                    Ngày chuyển khoản
+                </label>
+
+                <input
+                    type="date"
+                    id="paymentDate"
+                    class="form-input"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label class="form-label">
+                    Hình thức thanh toán
+                </label>
+
+
+                <div class="payment-types">
+
+
+                    <div class="payment-type">
+
+                        <input
+                            type="radio"
+                            id="typeBank"
+                            name="paymentType"
+                            value="Chuyển khoản ngân hàng"
+                            checked
+                            onchange="updateTransactionField()"
+                        >
+
+                        <label for="typeBank">
+                            🏦 Chuyển khoản
+                        </label>
+
+                    </div>
+
+
+                    <div class="payment-type">
+
+                        <input
+                            type="radio"
+                            id="typeCash"
+                            name="paymentType"
+                            value="Tiền mặt"
+                            onchange="updateTransactionField()"
+                        >
+
+                        <label for="typeCash">
+                            💵 Tiền mặt
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="form-group"
+                id="transactionGroup"
+            >
+
+                <label
+                    class="form-label"
+                    for="transactionCode"
+                >
+                    Mã giao dịch
+                </label>
+
+                <input
+                    type="text"
+                    id="transactionCode"
+                    class="form-input"
+                    placeholder="Nhập mã giao dịch"
+                >
+
+                <div
+                    class="transaction-note"
+                    id="transactionNote"
+                >
+                    Thanh toán tiền mặt không có mã giao dịch.
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    onclick="closeCreateModal()"
+                >
+                    Hủy
+                </button>
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+                    Tạo thanh toán
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HELP MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="helpModal"
+    onclick="closeHelp(event)"
+>
+
+    <div
+        class="modal"
+        onclick="event.stopPropagation()"
+    >
+
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                Sổ thanh toán
+            </div>
+
+            <button
+                type="button"
+                class="close-button"
+                onclick="closeHelp()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="help-content">
+
+            Đây là sổ thanh toán của
+            <strong>69 Khương Trung</strong>.
+
+            <br><br>
+
+            Các khoản thanh toán được hệ thống
+            ghi nhận tự động sẽ xuất hiện tại đây.
+
+            <br><br>
+
+            Sử dụng <strong>＋ Tạo thanh toán</strong>
+            khi cần nhập thủ công một khoản tiền mặt
+            hoặc khi hệ thống tự động ghi nhận bị lỗi.
+
+            <br><br>
+
+            Số tiền nhập bằng đầy đủ đơn vị đồng.
+            Ví dụ:
+
+            <strong>1250000</strong>
+
+            sẽ được hiển thị là
+
+            <strong>1.250.000</strong>.
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- LOADING -->
+
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="loading-box">
+
+        <div class="spinner"></div>
+
+        <div class="loading-text">
+            Đang xử lý...
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<script>
+
+
+/* =====================================================
+   CONFIG
+===================================================== */
+
+const API_URL =
+    "https://script.google.com/macros/s/AKfycbwd6hrdfUGmSGxwyZJDGpF8FoXve3AJ5q7oy1aZaU74pY1WjEbVb2gTXrqjVjQmeAvnXQ/exec";
+
+
+const BRANCH =
+    "69 Khương Trung";
+
+
+/* =====================================================
+   CURRENT MONTH
+===================================================== */
+
+let currentDate =
+    new Date(
+        2026,
+        8,
+        1
+    );
+
+
+/* =====================================================
+   DEMO DATA
+===================================================== */
+
+let payments = [
+
+    {
+        noi_dung:
+            "Thanh toán tiền rau củ quả",
+        so_tien:
+            1250000,
+        ngay:
+            "2026-09-01",
+        hinh_thuc:
+            "Chuyển khoản ngân hàng",
+        ma_giao_dich:
+            "FT2609010018"
+    },
+
+    {
+        noi_dung:
+            "Thanh toán tiền bánh",
+        so_tien:
+            980000,
+        ngay:
+            "2026-09-02",
+        hinh_thuc:
+            "Chuyển khoản ngân hàng",
+        ma_giao_dich:
+            "FT2609020041"
+    },
+
+    {
+        noi_dung:
+            "Mua đá",
+        so_tien:
+            320000,
+        ngay:
+            "2026-09-03",
+        hinh_thuc:
+            "Tiền mặt",
+        ma_giao_dich:
+            ""
+    },
+
+    {
+        noi_dung:
+            "Mua dầu ăn",
+        so_tien:
+            760000,
+        ngay:
+            "2026-09-04",
+        hinh_thuc:
+            "Chuyển khoản ngân hàng",
+        ma_giao_dich:
+            "FT2609040087"
+    },
+
+    {
+        noi_dung:
+            "Thanh toán tiền điện",
+        so_tien:
+            1840000,
+        ngay:
+            "2026-09-05",
+        hinh_thuc:
+            "Chuyển khoản ngân hàng",
+        ma_giao_dich:
+            "FT2609050112"
+    },
+
+    {
+        noi_dung:
+            "Mua bao bì và túi giấy",
+        so_tien:
+            685000,
+        ngay:
+            "2026-09-06",
+        hinh_thuc:
+            "Tiền mặt",
+        ma_giao_dich:
+            ""
+    },
+
+    {
+        noi_dung:
+            "Thanh toán nguyên vật liệu",
+        so_tien:
+            2150000,
+        ngay:
+            "2026-09-08",
+        hinh_thuc:
+            "Chuyển khoản ngân hàng",
+        ma_giao_dich:
+            "FT2609080193"
+    },
+
+    {
+        noi_dung:
+            "Mua rau mùi và xà lách",
+        so_tien:
+            540000,
+        ngay:
+            "2026-09-10",
+        hinh_thuc:
+            "Tiền mặt",
+        ma_giao_dich:
+            ""
+    },
+
+    {
+        noi_dung:
+            "Thanh toán tiền nước",
+        so_tien:
+            420000,
+        ngay:
+            "2026-09-11",
+        hinh_thuc:
+            "Chuyển khoản ngân hàng",
+        ma_giao_dich:
+            "FT2609110237"
+    },
+
+    {
+        noi_dung:
+            "Sửa chữa tủ mát",
+        so_tien:
+            1350000,
+        ngay:
+            "2026-09-13",
+        hinh_thuc:
+            "Tiền mặt",
+        ma_giao_dich:
+            ""
+    },
+
+    {
+        noi_dung:
+            "Thanh toán tiền bánh đợt 2",
+        so_tien:
+            1120000,
+        ngay:
+            "2026-09-15",
+        hinh_thuc:
+            "Chuyển khoản ngân hàng",
+        ma_giao_dich:
+            "FT2609150315"
+    },
+
+    {
+        noi_dung:
+            "Mua hóa chất vệ sinh",
+        so_tien:
+            375000,
+        ngay:
+            "2026-09-17",
+        hinh_thuc:
+            "Tiền mặt",
+        ma_giao_dich:
+            ""
+    },
+
+    {
+        noi_dung:
+            "Thanh toán tiền rau củ quả",
+        so_tien:
+            1480000,
+        ngay:
+            "2026-09-20",
+        hinh_thuc:
+            "Chuyển khoản ngân hàng",
+        ma_giao_dich:
+            "FT2609200472"
+    },
+
+    {
+        noi_dung:
+            "Mua gas bếp",
+        so_tien:
+            495000,
+        ngay:
+            "2026-09-22",
+        hinh_thuc:
+            "Tiền mặt",
+        ma_giao_dich:
+            ""
+    },
+
+    {
+        noi_dung:
+            "Thanh toán chi phí bảo trì thiết bị",
+        so_tien:
+            890000,
+        ngay:
+            "2026-09-25",
+        hinh_thuc:
+            "Chuyển khoản ngân hàng",
+        ma_giao_dich:
+            "FT2609250619"
+    }
+
+];
+
+
+/* =====================================================
+   MONTH FUNCTIONS
+===================================================== */
+
+function getMonth() {
+
+    return currentDate.getMonth();
+
+}
+
+
+function getYear() {
+
+    return currentDate.getFullYear();
+
+}
+
+
+function changeMonth(direction) {
+
+    currentDate.setMonth(
+        currentDate.getMonth() +
+        direction
+    );
+
+
+    updateMonthLabel();
+
+    renderPayments();
+
+}
+
+
+/* =====================================================
+   MONTH LABEL
+===================================================== */
+
+function updateMonthLabel() {
+
+    const month =
+        String(
+            getMonth() + 1
+        ).padStart(2, "0");
+
+
+    const year =
+        getYear();
+
+
+    document.getElementById(
+        "monthLabel"
+    ).textContent =
+        `${month} / ${year}`;
+
+
+    document.getElementById(
+        "summaryPeriod"
+    ).textContent =
+        `Tháng ${month} / ${year}`;
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function getFilteredPayments() {
+
+    const month =
+        getMonth();
+
+
+    const year =
+        getYear();
+
+
+    return payments.filter(
+        payment => {
+
+            const date =
+                new Date(
+                    payment.ngay +
+                    "T00:00:00"
+                );
+
+
+            return (
+
+                date.getMonth()
+                ===
+                month
+
+                &&
+
+                date.getFullYear()
+                ===
+                year
+
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderPayments() {
+
+    const list =
+        document.getElementById(
+            "paymentList"
+        );
+
+
+    const filtered =
+        getFilteredPayments();
+
+
+    list.innerHTML = "";
+
+
+    let total = 0;
+
+
+    filtered.forEach(
+        payment => {
+
+            total +=
+                Number(
+                    payment.so_tien
+                ) || 0;
+
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "payment-item";
+
+
+            const paymentType =
+                payment.hinh_thuc
+                ===
+                "Tiền mặt"
+
+                    ? "💵 Tiền mặt"
+
+                    : "🏦 Chuyển khoản";
+
+
+            const transaction =
+                payment.ma_giao_dich
+
+                    ? `
+                        <span class="meta-badge transaction">
+                            GD: ${escapeHtml(
+                                payment.ma_giao_dich
+                            )}
+                        </span>
+                      `
+
+                    : "";
+
+
+            item.innerHTML = `
+
+                <div class="payment-top">
+
+                    <div class="payment-content">
+
+                        <div class="payment-name">
+                            ${escapeHtml(
+                                payment.noi_dung
+                            )}
+                        </div>
+
+                        <div class="payment-date">
+                            ${formatDate(
+                                payment.ngay
+                            )}
+                        </div>
+
+                    </div>
+
+                    <div class="payment-amount">
+                        ${formatMoney(
+                            payment.so_tien
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="payment-meta">
+
+                    <span class="meta-badge">
+                        ${paymentType}
+                    </span>
+
+                    ${transaction}
+
+                </div>
+
+            `;
+
+
+            list.appendChild(
+                item
+            );
+
+        }
+    );
+
+
+    if (
+        filtered.length === 0
+    ) {
+
+        list.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    💳
+                </div>
+
+                <div class="empty-title">
+                    Chưa có khoản thanh toán
+                </div>
+
+                <div class="empty-text">
+                    Không có dữ liệu trong tháng này.
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    document.getElementById(
+        "recordCount"
+    ).textContent =
+        `${filtered.length} khoản`;
+
+
+    document.getElementById(
+        "totalAmount"
+    ).textContent =
+        formatMoney(total);
+
+}
+
+
+/* =====================================================
+   FORMAT MONEY
+===================================================== */
+
+function formatMoney(value) {
+
+    return new Intl.NumberFormat(
+        "vi-VN"
+    ).format(
+        Number(value) || 0
+    );
+
+}
+
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(value) {
+
+    if (!value) {
+
+        return "";
+
+    }
+
+
+    const date =
+        new Date(
+            value +
+            "T00:00:00"
+        );
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return value;
+
+    }
+
+
+    return (
+
+        String(
+            date.getDate()
+        ).padStart(2, "0")
+
+        +
+
+        "/"
+
+        +
+
+        String(
+            date.getMonth() + 1
+        ).padStart(2, "0")
+
+        +
+
+        "/"
+
+        +
+
+        date.getFullYear()
+
+    );
+
+}
+
+
+/* =====================================================
+   CREATE MODAL
+===================================================== */
+
+function openCreateModal() {
+
+    document.getElementById(
+        "paymentForm"
+    ).reset();
+
+
+    document.getElementById(
+        "paymentDate"
+    ).value =
+        getToday();
+
+
+    document.getElementById(
+        "typeBank"
+    ).checked =
+        true;
+
+
+    updateTransactionField();
+
+
+    document.getElementById(
+        "createModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+function closeCreateModal() {
+
+    document.getElementById(
+        "createModal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+function closeModalByOverlay(event) {
+
+    if (
+        event.target.id
+        ===
+        "createModal"
+    ) {
+
+        closeCreateModal();
+
+    }
+
+}
+
+
+/* =====================================================
+   PAYMENT TYPE
+===================================================== */
+
+function updateTransactionField() {
+
+    const bank =
+        document.getElementById(
+            "typeBank"
+        ).checked;
+
+
+    const input =
+        document.getElementById(
+            "transactionCode"
+        );
+
+
+    const note =
+        document.getElementById(
+            "transactionNote"
+        );
+
+
+    if (bank) {
+
+        input.disabled =
+            false;
+
+        input.required =
+            true;
+
+        input.placeholder =
+            "Nhập mã giao dịch";
+
+        note.classList.remove(
+            "show"
+        );
+
+    } else {
+
+        input.disabled =
+            true;
+
+        input.required =
+            false;
+
+        input.value =
+            "";
+
+        input.placeholder =
+            "Không áp dụng";
+
+        note.classList.add(
+            "show"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+async function submitPayment(event) {
+
+    event.preventDefault();
+
+
+    const content =
+        document.getElementById(
+            "paymentContent"
+        ).value.trim();
+
+
+    const amountRaw =
+        document.getElementById(
+            "paymentAmount"
+        ).value
+            .replace(
+                /[^\d]/g,
+                ""
+            );
+
+
+    const date =
+        document.getElementById(
+            "paymentDate"
+        ).value;
+
+
+    const type =
+        document.querySelector(
+            'input[name="paymentType"]:checked'
+        ).value;
+
+
+    const transaction =
+        document.getElementById(
+            "transactionCode"
+        ).value.trim();
+
+
+    if (!content) {
+
+        showToast(
+            "Vui lòng nhập nội dung thanh toán"
+        );
+
+        return;
+
+    }
+
+
+    if (!amountRaw) {
+
+        showToast(
+            "Vui lòng nhập số tiền"
+        );
+
+        return;
+
+    }
+
+
+    if (!date) {
+
+        showToast(
+            "Vui lòng chọn ngày"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        type ===
+        "Chuyển khoản ngân hàng"
+        &&
+        !transaction
+    ) {
+
+        showToast(
+            "Vui lòng nhập mã giao dịch"
+        );
+
+        return;
+
+    }
+
+
+    const amount =
+        Number(
+            amountRaw
+        );
+
+
+    /*
+        Payload thật sẽ gửi về Apps Script.
+
+        Chi nhánh luôn cố định.
+    */
+
+    const payload = {
+
+        action:
+            "create_payment",
+
+        chi_nhanh:
+            BRANCH,
+
+        noi_dung:
+            content,
+
+        so_tien:
+            amount,
+
+        ngay_chuyen_khoan:
+            date,
+
+        hinh_thuc_thanh_toan:
+            type,
+
+        ma_giao_dich:
+            type ===
+            "Tiền mặt"
+
+                ? ""
+
+                : transaction,
+
+        nguon:
+            "Thu cong"
+
+    };
+
+
+    showLoading();
+
+
+    try {
+
+        /*
+        Khi backend đã sẵn sàng,
+        bỏ comment đoạn fetch này:
+
+        const response =
+            await fetch(
+                API_URL,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            payload
+                        )
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!result.success) {
+
+            throw new Error(
+                result.message ||
+                "Không thể tạo thanh toán"
+            );
+
+        }
+        */
+
+
+        /*
+            Demo:
+            thêm trực tiếp vào danh sách.
+        */
+
+        payments.unshift({
+
+            noi_dung:
+                content,
+
+            so_tien:
+                amount,
+
+            ngay:
+                date,
+
+            hinh_thuc:
+                type,
+
+            ma_giao_dich:
+                transaction
+
+        });
+
+
+        closeCreateModal();
+
+        renderPayments();
+
+        showToast(
+            "Đã tạo thanh toán"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            error
+        );
+
+        showToast(
+            error.message ||
+            "Không thể tạo thanh toán"
+        );
+
+    } finally {
+
+        hideLoading();
+
+    }
+
+}
+
+
+/* =====================================================
+   TODAY
+===================================================== */
+
+function getToday() {
+
+    const now =
+        new Date();
+
+
+    const year =
+        now.getFullYear();
+
+
+    const month =
+        String(
+            now.getMonth() + 1
+        ).padStart(2, "0");
+
+
+    const day =
+        String(
+            now.getDate()
+        ).padStart(2, "0");
+
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+/* =====================================================
+   HELP
+===================================================== */
+
+function openHelp() {
+
+    document.getElementById(
+        "helpModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+function closeHelp(event) {
+
+    if (
+        event &&
+        event.target.id
+        !==
+        "helpModal"
+    ) {
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "helpModal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   BACK
+===================================================== */
+
+function goBack() {
+
+    if (
+        window.history.length > 1
+    ) {
+
+        window.history.back();
+
+    } else {
+
+        window.location.href =
+            "../index.html";
+
+    }
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+function showLoading() {
+
+    document.getElementById(
+        "loading"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+function hideLoading() {
+
+    document.getElementById(
+        "loading"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2500
+        );
+
+}
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHtml(value) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        value ?? "";
+
+
+    return div.innerHTML;
+
+}
+
+
+/* =====================================================
+   AMOUNT INPUT
+===================================================== */
+
+document
+    .getElementById(
+        "paymentAmount"
+    )
+    .addEventListener(
+        "input",
+        function() {
+
+            this.value =
+                this.value.replace(
+                    /[^\d]/g,
+                    ""
+                );
+
+        }
+    );
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+updateMonthLabel();
+
+renderPayments();
+
+
+document.getElementById(
+    "paymentDate"
+).value =
+    getToday();
+
+</script>
+
+</body>
+
+</html>
