@@ -1,0 +1,302 @@
+<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> <title>Cổng điều hành · Tascus Food</title> <style> * { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-height: 100%; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; background: #f5f6f7; color: #17181a; padding: max(18px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom)); } .container { width: 100%; max-width: 620px; margin: 0 auto; } /* HEADER */ .header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; } .back-btn, .help-btn { width: 42px; height: 42px; flex: 0 0 42px; border: 1px solid #dedfe2; border-radius: 12px; background: #fff; color: #17181a; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 21px; cursor: pointer; transition: background .15s ease, transform .1s ease; } .back-btn:active, .help-btn:active, .function-card:active, .pin-btn:active { transform: scale(.98); } .back-btn:hover, .help-btn:hover { background: #f0f1f2; } .header-title { flex: 1; min-width: 0; } .header-title h1 { font-size: 21px; line-height: 1.2; font-weight: 700; letter-spacing: -.3px; } .header-title p { margin-top: 3px; font-size: 12px; color: #74777c; } /* SECTION */ .section-label { margin: 0 4px 9px; font-size: 11px; font-weight: 700; color: #85888d; text-transform: uppercase; letter-spacing: .7px; } .function-list { display: flex; flex-direction: column; gap: 10px; } /* FUNCTION CARD */ .function-card { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 78px; padding: 14px 16px; background: #fff; border: 1px solid #e0e1e3; border-radius: 15px; color: #17181a; text-decoration: none; cursor: pointer; transition: background .15s ease, border-color .15s ease, transform .1s ease; } .function-card:hover { background: #fafafa; border-color: #d6d7d9; } .icon { width: 44px; height: 44px; flex: 0 0 44px; border-radius: 12px; background: #f1f2f3; display: flex; align-items: center; justify-content: center; font-size: 21px; } .card-content { flex: 1; min-width: 0; } .card-title { font-size: 15px; font-weight: 650; line-height: 1.3; } .card-desc { margin-top: 4px; font-size: 12px; line-height: 1.4; color: #7b7e83; } .arrow { color: #a0a3a7; font-size: 20px; margin-left: 4px; } /* CHƯA CÓ TRANG */ .disabled-card { cursor: default; } .disabled-card:hover { background: #fff; border-color: #e0e1e3; } .disabled-card .arrow { color: #c2c4c7; } /* KHU VỰC RIÊNG */ .restricted-section { margin-top: 125px; } .restricted-card { position: relative; } .restricted-label { display: inline-flex; align-items: center; margin-top: 6px; padding: 3px 7px; border-radius: 6px; background: #f0f0f0; color: #777a7e; font-size: 10px; font-weight: 600; } /* FOOTER */ .footer { margin-top: 34px; text-align: center; font-size: 10px; color: #a1a4a8; } /* MODAL */ .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(0, 0, 0, .42); z-index: 1000; } .modal.show { display: flex; } .modal-box { width: 100%; max-width: 360px; background: #fff; border-radius: 18px; padding: 22px; box-shadow: 0 18px 50px rgba(0, 0, 0, .18); animation: modalIn .16s ease-out; } @keyframes modalIn { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } } .modal-icon { width: 44px; height: 44px; margin-bottom: 14px; border-radius: 12px; background: #f1f2f3; display: flex; align-items: center; justify-content: center; font-size: 20px; } .modal-box h2 { font-size: 18px; line-height: 1.3; } .modal-box p { margin-top: 5px; font-size: 12px; line-height: 1.45; color: #777a7f; } .pin-input { width: 100%; height: 50px; margin-top: 17px; border: 1px solid #dcdde0; border-radius: 11px; background: #f7f8f9; padding: 0 14px; font-size: 20px; font-weight: 600; letter-spacing: 7px; text-align: center; outline: none; } .pin-input:focus { border-color: #aeb1b5; background: #fff; } .pin-error { min-height: 17px; margin-top: 7px; font-size: 11px; color: #777; text-align: center; } .modal-actions { display: flex; gap: 9px; margin-top: 13px; } .modal-btn { height: 44px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; } .cancel-btn { flex: 1; border: 1px solid #dedfe1; background: #fff; color: #55585c; } .pin-btn { flex: 1.4; border: 1px solid #17181a; background: #17181a; color: #fff; } .cancel-btn:hover { background: #f5f5f5; } /* HELP */ .help-content { font-size: 13px; line-height: 1.6; color: #55585c; } .help-content strong { color: #17181a; } .help-close { width: 100%; height: 44px; margin-top: 17px; border: 0; border-radius: 10px; background: #17181a; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; } /* MOBILE */ @media (max-width: 480px) { body { padding-left: 13px; padding-right: 13px; } .header-title h1 { font-size: 20px; } .restricted-section { margin-top: 115px; } .function-card { min-height: 74px; } } </style> </head> <body> <div class="container">
+<header class="header">
+
+    <a href="./index.html"
+       class="back-btn"
+       aria-label="Cổng vận hành">
+        ‹
+    </a>
+
+    <div class="header-title">
+        <h1>Cổng điều hành</h1>
+        <p>Quản lý · Tascus Food</p>
+    </div>
+
+    <button class="help-btn"
+            id="helpBtn"
+            aria-label="Trợ giúp">
+        ?
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     NHÓM CHỨC NĂNG CHÍNH
+     ===================================================== -->
+
+<div class="section-label">
+    Chức năng điều hành
+</div>
+
+<div class="function-list">
+
+
+    <!-- SỔ THANH TOÁN -->
+
+    <a href="./Payments_KhuongTrung.html"
+       class="function-card">
+
+        <div class="icon">
+            💳
+        </div>
+
+        <div class="card-content">
+
+            <div class="card-title">
+                Sổ thanh toán
+            </div>
+
+            <div class="card-desc">
+                Kế toán · 69 Khương Trung
+            </div>
+
+        </div>
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </a>
+
+
+    <!-- BẢNG THỐNG KÊ BÁNH -->
+
+    <a href="./Demothongkebanh.html"
+       class="function-card">
+
+        <div class="icon">
+            🥖
+        </div>
+
+        <div class="card-content">
+
+            <div class="card-title">
+                Bảng thống kê bánh
+            </div>
+
+            <div class="card-desc">
+                Theo dõi số lượng bánh
+            </div>
+
+        </div>
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </a>
+
+
+    <!-- BÁO CÁO DOANH THU -->
+
+    <a href="./EveryShiftReport.html"
+       class="function-card">
+
+        <div class="icon">
+            📊
+        </div>
+
+        <div class="card-content">
+
+            <div class="card-title">
+                Xem báo cáo doanh thu
+            </div>
+
+            <div class="card-desc">
+                Báo cáo doanh thu theo ca
+            </div>
+
+        </div>
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </a>
+
+
+    <!-- BÁO CÁO HỦY ĐỒ -->
+
+    <a href="#"
+       class="function-card disabled-card"
+       onclick="return false;">
+
+        <div class="icon">
+            🗑️
+        </div>
+
+        <div class="card-content">
+
+            <div class="card-title">
+                Báo cáo hủy đồ
+            </div>
+
+            <div class="card-desc">
+                Theo dõi nguyên vật liệu và sản phẩm hủy
+            </div>
+
+        </div>
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </a>
+
+
+    <!-- QUẢN LÝ NHẮC NHỞ -->
+
+    <a href="#"
+       class="function-card disabled-card"
+       onclick="return false;">
+
+        <div class="icon">
+            🔔
+        </div>
+
+        <div class="card-content">
+
+            <div class="card-title">
+                Quản lý nhắc nhở công việc tự động
+            </div>
+
+            <div class="card-desc">
+                Quản lý các công việc và lịch nhắc tự động
+            </div>
+
+        </div>
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </a>
+
+</div>
+
+
+<!-- =====================================================
+     KHU VỰC QUẢN LÝ MẪU THÔNG BÁO
+     ===================================================== -->
+
+<div class="restricted-section">
+
+    <div class="section-label">
+        Khu vực quản lý
+    </div>
+
+    <div class="function-card restricted-card"
+         id="templateCard"
+         role="button"
+         tabindex="0">
+
+        <div class="icon">
+            📝
+        </div>
+
+        <div class="card-content">
+
+            <div class="card-title">
+                Quản lý mẫu thông báo
+            </div>
+
+            <div class="card-desc">
+                Chỉnh sửa nội dung thông báo
+            </div>
+
+            <div class="restricted-label">
+                🔒 Không phận sự miễn vào
+            </div>
+
+        </div>
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="footer">
+    Tascus Food · Cổng điều hành
+</div>
+</div> <!-- ========================================================= PIN MODAL ========================================================= --> <div class="modal" id="pinModal">
+<div class="modal-box">
+
+    <div class="modal-icon">
+        🔐
+    </div>
+
+    <h2>Khu vực quản lý</h2>
+
+    <p>
+        Nhập mã PIN để truy cập quản lý mẫu thông báo.
+    </p>
+
+    <input
+        type="password"
+        id="pinInput"
+        class="pin-input"
+        inputmode="numeric"
+        maxlength="4"
+        autocomplete="off"
+        placeholder="••••"
+    >
+
+    <div class="pin-error" id="pinError"></div>
+
+    <div class="modal-actions">
+
+        <button
+            type="button"
+            class="modal-btn cancel-btn"
+            id="cancelPin">
+            Hủy
+        </button>
+
+        <button
+            type="button"
+            class="modal-btn pin-btn"
+            id="submitPin">
+            Xác nhận
+        </button>
+
+    </div>
+
+</div>
+</div> <!-- ========================================================= HELP MODAL ========================================================= --> <div class="modal" id="helpModal">
+<div class="modal-box">
+
+    <div class="modal-icon">
+        ℹ️
+    </div>
+
+    <h2>Cổng điều hành</h2>
+
+    <div class="help-content">
+
+        <p>
+            Đây là khu vực dành cho các chức năng quản lý
+            và theo dõi nội bộ của <strong>Tascus Food</strong>.
+        </p>
+
+        <p style="margin-top:10px;">
+            Các chức năng đang được sử dụng nằm ở nhóm phía trên.
+            Khu vực <strong>Quản lý mẫu thông báo</strong> được
+            khóa bằng mã PIN để tránh truy cập nhầm.
+        </p>
+
+    </div>
+
+    <button
+        type="button"
+        class="help-close"
+        id="closeHelp">
+        Đã hiểu
+    </button>
+
+</div>
+</div> <script> /* ========================================================= CẤU HÌNH ========================================================= */ const PIN = "0606"; const TEMPLATE_PAGE = "./n-o-t-i-f-i-c-a-t-i-o-n.html"; /* ========================================================= ELEMENTS ========================================================= */ const templateCard = document.getElementById("templateCard"); const pinModal = document.getElementById("pinModal"); const pinInput = document.getElementById("pinInput"); const pinError = document.getElementById("pinError"); const cancelPin = document.getElementById("cancelPin"); const submitPin = document.getElementById("submitPin"); const helpBtn = document.getElementById("helpBtn"); const helpModal = document.getElementById("helpModal"); const closeHelp = document.getElementById("closeHelp"); /* ========================================================= PIN ========================================================= */ function openPinModal() { pinInput.value = ""; pinError.textContent = ""; pinModal.classList.add("show"); setTimeout(function() { pinInput.focus(); }, 100); } function closePinModal() { pinModal.classList.remove("show"); pinInput.value = ""; pinError.textContent = ""; } function checkPin() { const enteredPin = pinInput.value.trim(); if (enteredPin === PIN) { closePinModal(); window.location.href = TEMPLATE_PAGE; return; } pinError.textContent = "Mã PIN không đúng."; pinInput.value = ""; pinInput.focus(); } /* ========================================================= TEMPLATE CARD ========================================================= */ templateCard.addEventListener( "click", openPinModal ); templateCard.addEventListener( "keydown", function(e) { if ( e.key === "Enter" || e.key === " " ) { e.preventDefault(); openPinModal(); } } ); /* ========================================================= PIN BUTTONS ========================================================= */ cancelPin.addEventListener( "click", closePinModal ); submitPin.addEventListener( "click", checkPin ); pinInput.addEventListener( "keydown", function(e) { if (e.key === "Enter") { checkPin(); } if (e.key === "Escape") { closePinModal(); } } ); /* ========================================================= HELP ========================================================= */ helpBtn.addEventListener( "click", function() { helpModal.classList.add("show"); } ); closeHelp.addEventListener( "click", function() { helpModal.classList.remove("show"); } ); /* ========================================================= CLICK RA NGOÀI MODAL ========================================================= */ pinModal.addEventListener( "click", function(e) { if (e.target === pinModal) { closePinModal(); } } ); helpModal.addEventListener( "click", function(e) { if (e.target === helpModal) { helpModal.classList.remove("show"); } } ); /* ========================================================= ESC ========================================================= */ document.addEventListener( "keydown", function(e) { if (e.key !== "Escape") { return; } if ( pinModal.classList.contains("show") ) { closePinModal(); } if ( helpModal.classList.contains("show") ) { helpModal.classList.remove("show"); } } ); </script> </body> </html>
