@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<title>Xác nhận bánh · Tascus Food</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: #f5f6f7;
+    color: #17181a;
+
+    padding:
+        max(18px, env(safe-area-inset-top))
+        16px
+        max(24px, env(safe-area-inset-bottom));
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.page {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.back-button,
+.help-button {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+
+    border: 1px solid #e1e2e4;
+    border-radius: 12px;
+
+    background: #ffffff;
+    color: #17181a;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background .15s ease,
+        transform .1s ease;
+}
+
+.back-button {
+    font-size: 25px;
+    line-height: 1;
+}
+
+.help-button {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.back-button:active,
+.help-button:active {
+    transform: scale(.96);
+    background: #f1f2f3;
+}
+
+.header-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.header-title {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.3px;
+}
+
+.header-subtitle {
+    margin-top: 3px;
+
+    font-size: 12px;
+    line-height: 1.4;
+
+    color: #777b80;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+    background: #ffffff;
+
+    border: 1px solid #e1e2e4;
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.025);
+}
+
+.card-title {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.card-description {
+    margin-top: 5px;
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    color: #777b80;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group {
+    margin-top: 18px;
+}
+
+.form-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: #44474b;
+}
+
+.required {
+    color: #d97706;
+}
+
+.input,
+.select {
+    width: 100%;
+    height: 46px;
+
+    border: 1px solid #e1e2e4;
+    border-radius: 11px;
+
+    background: #f7f8f9;
+    color: #17181a;
+
+    padding: 0 13px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition:
+        border-color .15s ease,
+        background .15s ease,
+        box-shadow .15s ease;
+}
+
+.input:focus,
+.select:focus {
+    background: #ffffff;
+    border-color: #aeb1b5;
+
+    box-shadow:
+        0 0 0 3px rgba(0,0,0,.045);
+}
+
+.select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding-right: 42px;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, #777 50%),
+        linear-gradient(135deg, #777 50%, transparent 50%);
+
+    background-position:
+        calc(100% - 18px) 20px,
+        calc(100% - 13px) 20px;
+
+    background-size:
+        5px 5px,
+        5px 5px;
+
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   ORDER CONTENT
+========================================================= */
+
+.order-content {
+    display: none;
+
+    margin-top: 18px;
+
+    border: 1px solid #e1e2e4;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    background: #fafafa;
+}
+
+.order-content.visible {
+    display: block;
+}
+
+.order-content-header {
+    padding: 11px 13px;
+
+    border-bottom: 1px solid #e5e6e8;
+
+    background: #f3f4f5;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    color: #55585c;
+
+    text-transform: uppercase;
+    letter-spacing: .3px;
+}
+
+.order-content-body {
+    padding: 4px 13px;
+}
+
+.order-line {
+    min-height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #ececee;
+}
+
+.order-line:last-child {
+    border-bottom: none;
+}
+
+.order-line-name {
+    font-size: 13px;
+    color: #44474b;
+}
+
+.order-line-quantity {
+    font-size: 13px;
+    font-weight: 700;
+    color: #17181a;
+}
+
+
+/* =========================================================
+   RECEIVE SECTION
+========================================================= */
+
+.receive-section {
+    display: none;
+
+    margin-top: 20px;
+}
+
+.receive-section.visible {
+    display: block;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+    color: #44474b;
+}
+
+.items {
+    border: 1px solid #e1e2e4;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+.item-row {
+    min-height: 60px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 9px 12px;
+
+    border-bottom: 1px solid #e7e8ea;
+}
+
+.item-row:last-child {
+    border-bottom: none;
+}
+
+.item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.item-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.item-unit {
+    margin-top: 2px;
+
+    font-size: 11px;
+    color: #888c91;
+}
+
+.quantity-input {
+    width: 92px;
+    height: 40px;
+
+    border: 1px solid #dfe1e4;
+    border-radius: 9px;
+
+    background: #f7f8f9;
+
+    text-align: center;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    outline: none;
+}
+
+.quantity-input:focus {
+    background: #ffffff;
+    border-color: #aeb1b5;
+
+    box-shadow:
+        0 0 0 3px rgba(0,0,0,.045);
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+
+/* =========================================================
+   REPORTER
+========================================================= */
+
+.reporter-section {
+    display: none;
+    margin-top: 18px;
+}
+
+.reporter-section.visible {
+    display: block;
+}
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.submit-section {
+    display: none;
+    margin-top: 20px;
+}
+
+.submit-section.visible {
+    display: block;
+}
+
+.submit-button {
+    width: 100%;
+    height: 48px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: #17181a;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        transform .1s ease,
+        opacity .15s ease;
+}
+
+.submit-button:active {
+    transform: scale(.985);
+}
+
+.submit-button:disabled {
+    opacity: .55;
+    cursor: default;
+}
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.bottom-note {
+    margin-top: 12px;
+
+    text-align: center;
+
+    font-size: 11px;
+    line-height: 1.5;
+
+    color: #8a8d91;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error-message {
+    display: none;
+
+    margin-top: 10px;
+    padding: 10px 12px;
+
+    border-radius: 9px;
+
+    background: #fdf2f2;
+    border: 1px solid #f0d4d4;
+
+    color: #a33a3a;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.error-message.visible {
+    display: block;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.28);
+
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.loading-overlay.visible {
+    display: flex;
+}
+
+.loading-box {
+    width: min(300px, 100%);
+
+    padding: 24px 20px;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.15);
+}
+
+.spinner {
+    width: 28px;
+    height: 28px;
+
+    margin: 0 auto 13px;
+
+    border: 3px solid #e4e5e7;
+    border-top-color: #17181a;
+
+    border-radius: 50%;
+
+    animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.loading-title {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.loading-text {
+    margin-top: 4px;
+
+    font-size: 11px;
+    color: #85898d;
+}
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1100;
+
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+
+    padding: 16px;
+    padding-bottom:
+        max(16px, env(safe-area-inset-bottom));
+
+    background: rgba(0,0,0,.3);
+
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-box {
+    width: min(620px, 100%);
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.18);
+}
+
+.modal-title {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.modal-text {
+    margin-top: 10px;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    color: #55585c;
+}
+
+.modal-close {
+    width: 100%;
+    height: 44px;
+
+    margin-top: 18px;
+
+    border: 1px solid #e1e2e4;
+    border-radius: 10px;
+
+    background: #f5f6f7;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.success-icon {
+    width: 46px;
+    height: 46px;
+
+    margin-bottom: 12px;
+
+    border-radius: 50%;
+
+    background: #17181a;
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .card {
+        padding: 17px;
+    }
+
+    .header-title {
+        font-size: 20px;
+    }
+
+    .quantity-input {
+        width: 82px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <button
+            type="button"
+            class="back-button"
+            onclick="goBack()"
+            aria-label="Quay lại"
+        >
+            ‹
+        </button>
+
+        <div class="header-text">
+
+            <div class="header-title">
+                Xác nhận bánh
+            </div>
+
+            <div class="header-subtitle">
+                Xác nhận số lượng bánh thực tế đã nhận
+            </div>
+
+        </div>
+
+        <button
+            type="button"
+            class="help-button"
+            onclick="openHelp()"
+            aria-label="Hướng dẫn"
+        >
+            ?
+        </button>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="card">
+
+        <div class="card-title">
+            Xác nhận số lượng bánh
+        </div>
+
+        <div class="card-description">
+            Chọn đơn hàng, kiểm tra nội dung đặt bánh và nhập số lượng thực tế nhận được.
+        </div>
+
+
+        <!-- ORDER SELECT -->
+
+        <div class="form-group">
+
+            <label
+                class="form-label"
+                for="orderSelect"
+            >
+                Đơn hàng <span class="required">*</span>
+            </label>
+
+            <select
+                id="orderSelect"
+                class="select"
+                onchange="selectOrder()"
+            >
+
+                <option value="">
+                    Đang tải đơn hàng...
+                </option>
+
+            </select>
+
+            <div
+                id="errorMessage"
+                class="error-message"
+            ></div>
+
+        </div>
+
+
+        <!-- ORIGINAL ORDER -->
+
+        <div
+            id="orderContent"
+            class="order-content"
+        >
+
+            <div class="order-content-header">
+                Nội dung đặt bánh
+            </div>
+
+            <div
+                id="orderContentBody"
+                class="order-content-body"
+            ></div>
+
+        </div>
+
+
+        <!-- RECEIVED QUANTITY -->
+
+        <div
+            id="receiveSection"
+            class="receive-section"
+        >
+
+            <div class="section-title">
+                Số lượng thực nhận
+            </div>
+
+            <div class="items">
+
+
+                <!-- BURGER -->
+
+                <div class="item-row">
+
+                    <div class="item-info">
+
+                        <div class="item-name">
+                            Burger
+                        </div>
+
+                        <div class="item-unit">
+                            Số cái thực nhận
+                        </div>
+
+                    </div>
+
+                    <input
+                        id="burger"
+                        class="quantity-input"
+                        type="number"
+                        min="0"
+                        step="1"
+                        inputmode="numeric"
+                        placeholder="0"
+                    >
+
+                </div>
+
+
+                <!-- SANDWICH -->
+
+                <div class="item-row">
+
+                    <div class="item-info">
+
+                        <div class="item-name">
+                            Sandwich
+                        </div>
+
+                        <div class="item-unit">
+                            Số cái thực nhận
+                        </div>
+
+                    </div>
+
+                    <input
+                        id="sandwich"
+                        class="quantity-input"
+                        type="number"
+                        min="0"
+                        step="1"
+                        inputmode="numeric"
+                        placeholder="0"
+                    >
+
+                </div>
+
+
+                <!-- LONG BREAD -->
+
+                <div class="item-row">
+
+                    <div class="item-info">
+
+                        <div class="item-name">
+                            Bánh mỳ dài
+                        </div>
+
+                        <div class="item-unit">
+                            Số cái thực nhận
+                        </div>
+
+                    </div>
+
+                    <input
+                        id="longBread"
+                        class="quantity-input"
+                        type="number"
+                        min="0"
+                        step="1"
+                        inputmode="numeric"
+                        placeholder="0"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- REPORTER -->
+
+        <div
+            id="reporterSection"
+            class="reporter-section"
+        >
+
+            <label
+                class="form-label"
+                for="reporter"
+            >
+                Người xác nhận <span class="required">*</span>
+            </label>
+
+            <input
+                id="reporter"
+                class="input"
+                type="text"
+                placeholder="Nhập tên người xác nhận"
+                autocomplete="name"
+            >
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <div
+            id="submitSection"
+            class="submit-section"
+        >
+
+            <button
+                id="submitButton"
+                type="button"
+                class="submit-button"
+                onclick="submitConfirmation()"
+            >
+                Xác nhận bánh
+            </button>
+
+        </div>
+
+
+        <div class="bottom-note">
+            Số lượng thực nhận là số lượng được ghi nhận để tính tiền.
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- LOADING -->
+
+<div
+    id="loadingOverlay"
+    class="loading-overlay"
+>
+
+    <div class="loading-box">
+
+        <div class="spinner"></div>
+
+        <div
+            id="loadingTitle"
+            class="loading-title"
+        >
+            Đang xử lý...
+        </div>
+
+        <div class="loading-text">
+            Vui lòng chờ một chút.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- HELP -->
+
+<div
+    id="helpModal"
+    class="modal"
+    onclick="closeHelpOutside(event)"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+            Hướng dẫn xác nhận bánh
+        </div>
+
+        <div class="modal-text">
+
+            <strong>1.</strong>
+            Chọn đúng đơn hàng cần xác nhận.<br><br>
+
+            <strong>2.</strong>
+            Kiểm tra nội dung đặt bánh được hiển thị tự động.<br><br>
+
+            <strong>3.</strong>
+            Nhập số lượng thực tế đã nhận, tên người xác nhận rồi gửi.
+
+        </div>
+
+        <button
+            type="button"
+            class="modal-close"
+            onclick="closeHelp()"
+        >
+            Đã hiểu
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SUCCESS -->
+
+<div
+    id="successModal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <div class="modal-title">
+            Đã xác nhận
+        </div>
+
+        <div
+            id="successText"
+            class="modal-text"
+        >
+            Số lượng bánh đã được ghi nhận.
+        </div>
+
+        <button
+            type="button"
+            class="modal-close"
+            onclick="closeSuccess()"
+        >
+            Đóng
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================================================
+   API
+========================================================= */
+
+const API_URL =
+    "https://script.google.com/macros/s/AKfycbwd6hrdfUGmSGxwyZJDGpF8FoXve3AJ5q7oy1aZaU74pY1WjEbVb2gTXrqjVjQmeAvnXQ/exec";
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let orders = [];
+
+let selectedOrder = null;
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadOrders();
+
+    }
+);
+
+
+/* =========================================================
+   API REQUEST
+========================================================= */
+
+async function apiRequest(payload) {
+
+    const response =
+        await fetch(
+            API_URL,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+                },
+
+                body:
+                    JSON.stringify(payload)
+            }
+        );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            `HTTP ${response.status}`
+        );
+
+    }
+
+
+    const result =
+        await response.json();
+
+
+    if (!result.success) {
+
+        throw new Error(
+            result.message ||
+            "API trả về lỗi."
+        );
+
+    }
+
+
+    return result;
+
+}
+
+
+/* =========================================================
+   LOAD ORDERS
+========================================================= */
+
+async function loadOrders() {
+
+    try {
+
+        setLoading(
+            true,
+            "Đang tải đơn hàng..."
+        );
+
+
+        const result =
+            await apiRequest({
+                action:
+                    "list_bread_orders"
+            });
+
+
+        orders =
+            Array.isArray(result.orders)
+                ? result.orders
+                : [];
+
+
+        renderOrderSelect();
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Lỗi tải đơn hàng:",
+            error
+        );
+
+
+        const select =
+            document.getElementById(
+                "orderSelect"
+            );
+
+
+        select.innerHTML = "";
+
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+
+        option.value = "";
+
+        option.textContent =
+            "Không tải được đơn hàng";
+
+
+        select.appendChild(
+            option
+        );
+
+
+        showError(
+            "Không thể tải danh sách đơn hàng. Vui lòng tải lại trang."
+        );
+
+    }
+
+    finally {
+
+        setLoading(false);
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER ORDER SELECT
+========================================================= */
+
+function renderOrderSelect() {
+
+    const select =
+        document.getElementById(
+            "orderSelect"
+        );
+
+
+    select.innerHTML = "";
+
+
+    const defaultOption =
+        document.createElement(
+            "option"
+        );
+
+
+    defaultOption.value = "";
+
+
+    if (orders.length > 0) {
+
+        defaultOption.textContent =
+            "Vui lòng chọn đơn hàng";
+
+    }
+
+    else {
+
+        defaultOption.textContent =
+            "Không có đơn hàng chờ xác nhận";
+
+    }
+
+
+    select.appendChild(
+        defaultOption
+    );
+
+
+    orders.forEach(
+        order => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                order.id;
+
+
+            option.textContent =
+                order.ten_don_hang ||
+                order.name ||
+                "Đơn hàng";
+
+
+            select.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SELECT ORDER
+========================================================= */
+
+async function selectOrder() {
+
+    hideError();
+
+
+    const select =
+        document.getElementById(
+            "orderSelect"
+        );
+
+
+    const orderId =
+        select.value;
+
+
+    if (!orderId) {
+
+        resetOrderDisplay();
+
+        return;
+
+    }
+
+
+    try {
+
+        setLoading(
+            true,
+            "Đang tải nội dung đơn hàng..."
+        );
+
+
+        const result =
+            await apiRequest({
+                action:
+                    "get_bread_order",
+
+                id:
+                    orderId
+            });
+
+
+        selectedOrder =
+            result.order;
+
+
+        if (!selectedOrder) {
+
+            throw new Error(
+                "Không tìm thấy đơn hàng."
+            );
+
+        }
+
+
+        renderOrderContent(
+            selectedOrder
+        );
+
+
+        showReceiveForm();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Lỗi lấy đơn hàng:",
+            error
+        );
+
+
+        resetOrderDisplay();
+
+
+        showError(
+            error.message ||
+            "Không thể tải nội dung đơn hàng."
+        );
+
+    }
+
+    finally {
+
+        setLoading(false);
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER ORIGINAL ORDER
+========================================================= */
+
+function renderOrderContent(order) {
+
+    const body =
+        document.getElementById(
+            "orderContentBody"
+        );
+
+
+    const burger =
+        toNumber(
+            order.burger
+        );
+
+
+    const sandwich =
+        toNumber(
+            order.sandwich
+        );
+
+
+    const longBread =
+        toNumber(
+            order.banh_my_dai ??
+            order.long_bread ??
+            order.banhMyDai
+        );
+
+
+    body.innerHTML = `
+
+        <div class="order-line">
+
+            <div class="order-line-name">
+                Burger
+            </div>
+
+            <div class="order-line-quantity">
+                ${formatQuantity(burger)} cái
+            </div>
+
+        </div>
+
+
+        <div class="order-line">
+
+            <div class="order-line-name">
+                Sandwich
+            </div>
+
+            <div class="order-line-quantity">
+                ${formatQuantity(sandwich)} cái
+            </div>
+
+        </div>
+
+
+        <div class="order-line">
+
+            <div class="order-line-name">
+                Bánh mỳ dài
+            </div>
+
+            <div class="order-line-quantity">
+                ${formatQuantity(longBread)} cái
+            </div>
+
+        </div>
+
+    `;
+
+
+    document
+        .getElementById(
+            "orderContent"
+        )
+        .classList.add(
+            "visible"
+        );
+
+}
+
+
+/* =========================================================
+   SHOW RECEIVE FORM
+========================================================= */
+
+function showReceiveForm() {
+
+    document
+        .getElementById(
+            "receiveSection"
+        )
+        .classList.add(
+            "visible"
+        );
+
+
+    document
+        .getElementById(
+            "reporterSection"
+        )
+        .classList.add(
+            "visible"
+        );
+
+
+    document
+        .getElementById(
+            "submitSection"
+        )
+        .classList.add(
+            "visible"
+        );
+
+
+    document.getElementById(
+        "burger"
+    ).value = "";
+
+
+    document.getElementById(
+        "sandwich"
+    ).value = "";
+
+
+    document.getElementById(
+        "longBread"
+    ).value = "";
+
+
+    document.getElementById(
+        "reporter"
+    ).value = "";
+
+}
+
+
+/* =========================================================
+   SUBMIT CONFIRMATION
+========================================================= */
+
+async function submitConfirmation() {
+
+    hideError();
+
+
+    if (!selectedOrder) {
+
+        showError(
+            "Vui lòng chọn đơn hàng."
+        );
+
+        return;
+
+    }
+
+
+    const burger =
+        getQuantity("burger");
+
+
+    const sandwich =
+        getQuantity("sandwich");
+
+
+    const longBread =
+        getQuantity("longBread");
+
+
+    const reporter =
+        document
+            .getElementById(
+                "reporter"
+            )
+            .value
+            .trim();
+
+
+    if (!reporter) {
+
+        showError(
+            "Vui lòng nhập tên người xác nhận."
+        );
+
+
+        document
+            .getElementById(
+                "reporter"
+            )
+            .focus();
+
+
+        return;
+
+    }
+
+
+    const inputs = [
+
+        document
+            .getElementById(
+                "burger"
+            )
+            .value,
+
+        document
+            .getElementById(
+                "sandwich"
+            )
+            .value,
+
+        document
+            .getElementById(
+                "longBread"
+            )
+            .value
+
+    ];
+
+
+    const hasInput =
+        inputs.some(
+            value =>
+                value !== ""
+        );
+
+
+    if (!hasInput) {
+
+        showError(
+            "Vui lòng nhập số lượng bánh thực nhận."
+        );
+
+        return;
+
+    }
+
+
+    const confirmedOrderId =
+        selectedOrder.id;
+
+
+    const payload = {
+
+        action:
+            "confirm_bread",
+
+        id:
+            confirmedOrderId,
+
+        thoi_gian:
+            getCurrentDateTime(),
+
+        nguoi_xac_nhan:
+            reporter,
+
+        burger:
+            burger,
+
+        sandwich:
+            sandwich,
+
+        banh_my_dai:
+            longBread
+
+    };
+
+
+    try {
+
+        setLoading(
+            true,
+            "Đang gửi xác nhận..."
+        );
+
+
+        await apiRequest(
+            payload
+        );
+
+
+        /*
+         * QUAN TRỌNG:
+         *
+         * Xóa ngay đơn vừa xác nhận khỏi
+         * danh sách hiện tại.
+         */
+
+        orders =
+            orders.filter(
+                order =>
+                    String(order.id) !==
+                    String(confirmedOrderId)
+            );
+
+
+        /*
+         * Dựng lại dropdown.
+         *
+         * Đơn vừa xác nhận sẽ biến mất.
+         */
+
+        renderOrderSelect();
+
+
+        const orderName =
+            selectedOrder.ten_don_hang ||
+            selectedOrder.name ||
+            "Đơn hàng";
+
+
+        document
+            .getElementById(
+                "successText"
+            )
+            .textContent =
+                `${orderName} đã được xác nhận. Số lượng thực nhận đã được ghi nhận để tính tiền.`;
+
+
+        document
+            .getElementById(
+                "successModal"
+            )
+            .classList.add(
+                "visible"
+            );
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Lỗi xác nhận bánh:",
+            error
+        );
+
+
+        showError(
+            error.message ||
+            "Không thể gửi xác nhận."
+        );
+
+    }
+
+    finally {
+
+        setLoading(false);
+
+    }
+
+}
+
+
+/* =========================================================
+   RESET AFTER SUCCESS
+========================================================= */
+
+function closeSuccess() {
+
+    document
+        .getElementById(
+            "successModal"
+        )
+        .classList.remove(
+            "visible"
+        );
+
+
+    resetForm();
+
+}
+
+
+/* =========================================================
+   RESET FORM
+========================================================= */
+
+function resetForm() {
+
+    selectedOrder = null;
+
+
+    document
+        .getElementById(
+            "orderSelect"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "orderContent"
+        )
+        .classList.remove(
+            "visible"
+        );
+
+
+    document
+        .getElementById(
+            "receiveSection"
+        )
+        .classList.remove(
+            "visible"
+        );
+
+
+    document
+        .getElementById(
+            "reporterSection"
+        )
+        .classList.remove(
+            "visible"
+        );
+
+
+    document
+        .getElementById(
+            "submitSection"
+        )
+        .classList.remove(
+            "visible"
+        );
+
+
+    document.getElementById(
+        "burger"
+    ).value = "";
+
+
+    document.getElementById(
+        "sandwich"
+    ).value = "";
+
+
+    document.getElementById(
+        "longBread"
+    ).value = "";
+
+
+    document.getElementById(
+        "reporter"
+    ).value = "";
+
+
+    hideError();
+
+
+    /*
+     * Không gọi loadOrders() ở đây.
+     *
+     * Vì orders đã được cập nhật ngay sau
+     * khi xác nhận thành công.
+     *
+     * Như vậy không cần gọi API thêm lần nữa.
+     */
+
+    renderOrderSelect();
+
+}
+
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+function getQuantity(id) {
+
+    const value =
+        parseInt(
+            document
+                .getElementById(id)
+                .value,
+            10
+        );
+
+
+    if (
+        Number.isNaN(value) ||
+        value < 0
+    ) {
+
+        return 0;
+
+    }
+
+
+    return value;
+
+}
+
+
+function toNumber(value) {
+
+    const number =
+        Number(value);
+
+
+    if (
+        Number.isNaN(number) ||
+        number < 0
+    ) {
+
+        return 0;
+
+    }
+
+
+    return number;
+
+}
+
+
+function formatQuantity(value) {
+
+    if (
+        Number.isInteger(value)
+    ) {
+
+        return value.toString();
+
+    }
+
+
+    return value.toLocaleString(
+        "vi-VN"
+    );
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function showError(message) {
+
+    const element =
+        document.getElementById(
+            "errorMessage"
+        );
+
+
+    element.textContent =
+        message;
+
+
+    element.classList.add(
+        "visible"
+    );
+
+}
+
+
+function hideError() {
+
+    document
+        .getElementById(
+            "errorMessage"
+        )
+        .classList.remove(
+            "visible"
+        );
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+function setLoading(
+    visible,
+    text = "Đang xử lý..."
+) {
+
+    const overlay =
+        document.getElementById(
+            "loadingOverlay"
+        );
+
+
+    document
+        .getElementById(
+            "loadingTitle"
+        )
+        .textContent =
+            text;
+
+
+    overlay.classList.toggle(
+        "visible",
+        visible
+    );
+
+
+    document
+        .getElementById(
+            "submitButton"
+        )
+        .disabled =
+            visible;
+
+}
+
+
+/* =========================================================
+   DATE TIME
+========================================================= */
+
+function getCurrentDateTime() {
+
+    const now =
+        new Date();
+
+
+    const year =
+        now.getFullYear();
+
+
+    const month =
+        String(
+            now.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const day =
+        String(
+            now.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const hours =
+        String(
+            now.getHours()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const minutes =
+        String(
+            now.getMinutes()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return `${year}/${month}/${day} ${hours}:${minutes}`;
+
+}
+
+
+/* =========================================================
+   HELP
+========================================================= */
+
+function openHelp() {
+
+    document
+        .getElementById(
+            "helpModal"
+        )
+        .classList.add(
+            "visible"
+        );
+
+}
+
+
+function closeHelp() {
+
+    document
+        .getElementById(
+            "helpModal"
+        )
+        .classList.remove(
+            "visible"
+        );
+
+}
+
+
+function closeHelpOutside(event) {
+
+    if (
+        event.target.id ===
+        "helpModal"
+    ) {
+
+        closeHelp();
+
+    }
+
+}
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+function goBack() {
+
+    if (
+        document.referrer &&
+        document.referrer.includes(
+            window.location.hostname
+        )
+    ) {
+
+        history.back();
+
+        return;
+
+    }
+
+
+    window.location.href =
+        "../index.html";
+
+}
+
+
+/* =========================================================
+   ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeHelp();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
