@@ -36,8 +36,10 @@ body {
         Helvetica,
         sans-serif;
 
-    background: #f5f5f3;
-    color: #262626;
+    background: #f7f7f5;
+    color: #242424;
+
+    -webkit-font-smoothing: antialiased;
 }
 
 
@@ -51,63 +53,61 @@ body {
 }
 
 .container {
-    width: calc(100% - 40px);
-    max-width: 1500px;
+    width: calc(100% - 48px);
+    max-width: 1480px;
+
     margin: 0 auto;
-    padding: 22px 0 40px;
+    padding: 24px 0 45px;
 }
 
 
 /* =========================================================
-   TOP BAR
+   TOP
 ========================================================= */
 
 .topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 18px;
-}
 
-.topbar-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    margin-bottom: 25px;
 }
 
 .back-button,
 .help-button {
-    width: 38px;
-    height: 38px;
-
-    border: 1px solid #d9d9d9;
-    border-radius: 8px;
-
-    background: #fff;
-    color: #333;
+    width: 36px;
+    height: 36px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    border: 1px solid #dcdcd8;
+    border-radius: 8px;
+
+    background: #fff;
+    color: #4d4d4d;
+
     cursor: pointer;
 
-    font-size: 18px;
-
     transition:
-        background .15s ease,
-        border-color .15s ease;
+        border-color .15s ease,
+        background .15s ease;
+}
+
+.back-button {
+    font-size: 19px;
+}
+
+.help-button {
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .back-button:hover,
 .help-button:hover {
     background: #fafafa;
-    border-color: #c8c8c8;
-}
-
-.help-button {
-    font-size: 16px;
-    font-weight: 700;
+    border-color: #c9c9c4;
 }
 
 
@@ -115,68 +115,75 @@ body {
    TITLE
 ========================================================= */
 
-.title-area {
-    margin-bottom: 20px;
+.heading {
+    margin-bottom: 23px;
 }
 
-.title {
-    font-size: 25px;
+.heading h1 {
+    font-size: 24px;
     line-height: 1.2;
+
     font-weight: 800;
-    letter-spacing: -.3px;
+    letter-spacing: -.4px;
+
+    color: #222;
 }
 
-.subtitle {
-    margin-top: 5px;
-    color: #777;
-    font-size: 13px;
+.heading p {
+    margin-top: 6px;
+
+    color: #888;
+    font-size: 12px;
 }
 
 
 /* =========================================================
-   FILTERS
+   FILTER AREA
 ========================================================= */
 
 .filters {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
 
-    margin-bottom: 16px;
+    margin-bottom: 22px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #dfdfdb;
 }
 
-.filter-row {
+.filter-group {
     display: flex;
     align-items: center;
     gap: 7px;
 }
 
-.filter-label {
-    width: 88px;
-    flex: 0 0 88px;
+.filter-group + .filter-group {
+    margin-left: auto;
+}
 
-    color: #777;
-    font-size: 12px;
+.filter-label {
+    margin-right: 5px;
+
+    color: #888;
+
+    font-size: 11px;
     font-weight: 600;
 }
 
-.filter-buttons {
-    display: flex;
-    gap: 7px;
-}
-
 .filter-button {
-    height: 34px;
+    height: 31px;
 
-    padding: 0 14px;
+    padding: 0 12px;
 
-    border: 1px solid #d8d8d8;
-    border-radius: 7px;
+    border: 1px solid #d9d9d5;
+    border-radius: 6px;
 
     background: #fff;
-    color: #555;
+    color: #666;
 
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
 
     cursor: pointer;
@@ -188,191 +195,196 @@ body {
 }
 
 .filter-button:hover {
-    border-color: #c6c6c6;
+    border-color: #c8c8c3;
 }
 
 .filter-button.active {
-    background: #fff4e8;
+    background: #fdf0e2;
     border-color: #d9822b;
-    color: #b9671d;
+    color: #b96820;
 }
 
 
 /* =========================================================
-   DASHBOARD STRIP
+   SUMMARY AREA
 ========================================================= */
 
-.dashboard-strip {
+.summary {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: minmax(0, 1.35fr) minmax(470px, .65fr);
 
-    margin-bottom: 20px;
-}
+    min-height: 124px;
 
-.dashboard-block {
-    min-height: 108px;
+    margin-bottom: 26px;
 
-    padding: 15px 17px;
+    border-top: 1px solid #dcdcd8;
+    border-bottom: 1px solid #dcdcd8;
 
     background: #fff;
-
-    border: 1px solid #dedede;
-    border-radius: 9px;
 }
 
-.section-mini-title {
-    margin-bottom: 13px;
 
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .7px;
+/* =========================================================
+   CONFIRM TOTAL
+========================================================= */
+
+.summary-total {
+    padding: 19px 24px 17px 0;
+}
+
+.summary-heading {
+    margin-bottom: 17px;
 
     color: #777;
-}
 
-
-/* =========================================================
-   CONFIRMATION TOTAL
-========================================================= */
-
-.confirm-items {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-}
-
-.confirm-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    min-width: 0;
-}
-
-.confirm-label {
-    color: #666;
-    font-size: 12px;
-}
-
-.confirm-number {
-    font-size: 22px;
-    line-height: 1;
+    font-size: 10px;
     font-weight: 800;
+    letter-spacing: .8px;
+}
 
-    color: #d9822b;
+.total-list {
+    display: flex;
+    align-items: flex-end;
+    gap: 60px;
+}
+
+.total-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.total-name {
+    color: #777;
+
+    font-size: 11px;
+}
+
+.total-value {
+    color: #d27625;
+
+    font-size: 27px;
+    line-height: 1;
+
+    font-weight: 800;
+    letter-spacing: -.5px;
 }
 
 
 /* =========================================================
-   PRICE
+   PRICES
 ========================================================= */
 
-.price-inline-fields {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+.summary-price {
+    padding: 19px 0 17px 25px;
+
+    border-left: 1px solid #e0e0dc;
 }
 
-.price-field {
-    min-width: 0;
+.price-list {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 22px;
 }
 
-.price-label {
+.price-item {
+    width: 135px;
+}
+
+.price-name {
     display: block;
 
     margin-bottom: 6px;
 
-    color: #666;
+    color: #777;
+
     font-size: 11px;
 }
 
-.price-control {
+.price-input-row {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
 .price-input {
-    width: 100%;
-    height: 34px;
-
-    min-width: 0;
+    width: 108px;
+    height: 32px;
 
     padding: 0 9px;
 
-    border: 1px solid #d5d5d5;
-    border-radius: 6px;
+    border: 1px solid #d5d5d0;
+    border-radius: 5px;
 
-    background: #fafafa;
+    background: #fafaf8;
 
     color: #222;
 
-    font-size: 13px;
-    font-weight: 600;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
 
     outline: none;
 }
 
 .price-input:focus {
-    border-color: #d9822b;
     background: #fff;
+
+    border-color: #d9822b;
 }
 
 .price-unit {
-    flex: 0 0 auto;
-
-    color: #888;
-    font-size: 11px;
+    color: #999;
+    font-size: 10px;
 }
 
 
 /* =========================================================
-   TABLE HEADING
+   TABLE HEADER AREA
 ========================================================= */
 
-.table-heading {
+.table-title-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 9px;
+    margin-bottom: 10px;
 }
 
-.table-heading-left {
+.table-title {
     display: flex;
     align-items: baseline;
-    gap: 10px;
+    gap: 9px;
 }
 
-.table-heading-title {
-    font-size: 15px;
+.table-title h2 {
+    font-size: 14px;
     font-weight: 800;
+
+    color: #2c2c2c;
 }
 
 .table-count {
     color: #999;
-    font-size: 11px;
+    font-size: 10px;
 }
 
-
-/* =========================================================
-   MONEY BUTTON
-========================================================= */
-
 .money-button {
-    height: 34px;
+    height: 32px;
 
-    padding: 0 14px;
+    padding: 0 13px;
 
     border: 1px solid #d9822b;
-    border-radius: 7px;
+    border-radius: 6px;
 
-    background: #fff4e8;
-    color: #b9671d;
+    background: #fff;
 
-    font-size: 12px;
-    font-weight: 700;
+    color: #b96820;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .2px;
 
     cursor: pointer;
 
@@ -388,91 +400,46 @@ body {
 
 
 /* =========================================================
-   TABLE WRAPPER
-========================================================= */
-
-.table-wrapper {
-    width: 100%;
-
-    overflow-x: auto;
-    overflow-y: visible;
-
-    background: #fff;
-
-    border: 1px solid #dcdcdc;
-    border-radius: 9px;
-
-    -webkit-overflow-scrolling: touch;
-}
-
-
-/* =========================================================
    TABLE
 ========================================================= */
 
+.table-shell {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-top: 1px solid #d5d5d1;
+    border-bottom: 1px solid #d5d5d1;
+
+    background: #fff;
+
+    scrollbar-width: thin;
+}
+
 .orders-table {
     width: max-content;
-    min-width: 1250px;
+    min-width: 1320px;
 
     border-collapse: separate;
     border-spacing: 0;
 
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .orders-table th,
 .orders-table td {
-    height: 46px;
+    height: 43px;
 
     padding: 7px 10px;
 
-    border-right: 1px solid #e4e4e4;
-    border-bottom: 1px solid #e4e4e4;
-
-    text-align: center;
+    border-right: 1px solid #e7e7e3;
+    border-bottom: 1px solid #e7e7e3;
 
     white-space: nowrap;
 
+    text-align: center;
+
     background: #fff;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.orders-table thead th {
-    background: #f8f8f7;
-
-    color: #555;
-
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.orders-table thead tr:first-child th {
-    height: 37px;
-
-    background: #f3f3f1;
-
-    color: #666;
-
-    font-size: 10px;
-    letter-spacing: .5px;
-}
-
-.orders-table thead tr:nth-child(2) th {
-    height: 40px;
-}
-
-.orders-table th.group-order {
-    background: #fff5e9;
-    color: #b9671d;
-}
-
-.orders-table th.group-confirm {
-    background: #f5f5f5;
-    color: #555;
 }
 
 
@@ -491,8 +458,8 @@ body {
 }
 
 .col-branch {
-    width: 115px;
-    min-width: 115px;
+    width: 110px;
+    min-width: 110px;
 }
 
 .col-person {
@@ -517,7 +484,48 @@ body {
 
 
 /* =========================================================
-   STICKY LEFT COLUMNS
+   HEADER
+========================================================= */
+
+.orders-table thead th {
+    color: #555;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    background: #f8f8f6;
+}
+
+.orders-table thead tr:first-child th {
+    height: 32px;
+
+    border-bottom: 1px solid #dcdcd8;
+
+    color: #777;
+
+    font-size: 9px;
+    letter-spacing: .7px;
+}
+
+.orders-table thead tr:nth-child(2) th {
+    height: 38px;
+
+    background: #fbfbfa;
+}
+
+.orders-table th.group-order {
+    background: #fff7ee !important;
+    color: #b96820;
+}
+
+.orders-table th.group-confirm {
+    background: #f4f4f2 !important;
+    color: #555;
+}
+
+
+/* =========================================================
+   STICKY COLUMNS
 ========================================================= */
 
 .sticky-1,
@@ -525,7 +533,7 @@ body {
 .sticky-3,
 .sticky-4 {
     position: sticky;
-    z-index: 3;
+    z-index: 4;
 }
 
 .sticky-1 {
@@ -541,69 +549,51 @@ body {
 }
 
 .sticky-4 {
-    left: 345px;
+    left: 340px;
+
+    box-shadow:
+        7px 0 9px -9px rgba(0,0,0,.55);
 }
-
-
-/*
-   Shadow after fixed area
-*/
-
-.sticky-4 {
-    box-shadow: 5px 0 7px -7px rgba(0,0,0,.45);
-}
-
-
-/*
-   Header needs higher z-index
-*/
 
 .orders-table thead .sticky-1,
 .orders-table thead .sticky-2,
 .orders-table thead .sticky-3,
 .orders-table thead .sticky-4 {
-    z-index: 8;
-}
-
-
-/*
-   Footer needs higher z-index
-*/
-
-.orders-table tfoot .sticky-1,
-.orders-table tfoot .sticky-2,
-.orders-table tfoot .sticky-3,
-.orders-table tfoot .sticky-4 {
-    z-index: 5;
+    z-index: 10;
 }
 
 
 /* =========================================================
-   TABLE CONTENT
+   BODY
 ========================================================= */
 
 .orders-table tbody tr:hover td {
-    background: #fcfcfb;
+    background: #fcfcfa;
 }
 
 .orders-table tbody tr:hover .sticky-1,
 .orders-table tbody tr:hover .sticky-2,
 .orders-table tbody tr:hover .sticky-3,
 .orders-table tbody tr:hover .sticky-4 {
-    background: #fcfcfb;
+    background: #fcfcfa;
 }
 
 .number {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
 }
 
-.confirm-number-cell {
-    color: #333;
+.order-number {
+    color: #666;
 }
 
-.order-number-cell {
-    color: #666;
+.confirm-number {
+    color: #303030;
+}
+
+.note {
+    color: #777;
+    text-align: left !important;
 }
 
 
@@ -617,59 +607,51 @@ body {
     justify-content: center;
 
     min-width: 82px;
-    height: 25px;
+    height: 23px;
 
     padding: 0 8px;
 
     border-radius: 5px;
 
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
 }
 
-.status.confirmed {
-    background: #f1f1f1;
+.status-confirmed {
+    background: #f1f1ef;
     color: #555;
 }
 
-.status.pending {
-    background: #fff4e8;
-    color: #b9671d;
+.status-pending {
+    background: #fff1df;
+    color: #b96820;
 }
 
 
 /* =========================================================
-   NOTE
-========================================================= */
-
-.note {
-    color: #777;
-    text-align: left !important;
-}
-
-
-/* =========================================================
-   FOOTER TOTAL
+   FOOTER
 ========================================================= */
 
 .orders-table tfoot td {
-    height: 42px;
+    height: 43px;
+
+    border-bottom: 0;
 
     background: #f7f7f5;
 
     font-weight: 700;
-
-    border-bottom: 0;
 }
 
 .orders-table tfoot .total-label {
     text-align: left;
+
     color: #555;
 }
 
-.orders-table tfoot .total-number {
-    color: #d9822b;
-    font-size: 14px;
+.total-number {
+    color: #d27625;
+
+    font-size: 13px;
 }
 
 
@@ -681,13 +663,11 @@ body {
     height: 100px;
 
     color: #999;
-
-    text-align: center;
 }
 
 
 /* =========================================================
-   MONEY MODAL
+   MODALS
 ========================================================= */
 
 .modal-overlay {
@@ -700,100 +680,110 @@ body {
 
     padding: 20px;
 
-    background: rgba(0,0,0,.4);
+    background: rgba(0,0,0,.38);
 
-    z-index: 900;
+    z-index: 1000;
 }
 
 .modal-overlay.show {
     display: flex;
 }
 
-.money-modal {
+.modal {
     width: 100%;
     max-width: 470px;
 
     background: #fff;
 
-    border: 1px solid #ddd;
-    border-radius: 11px;
+    border-radius: 10px;
 
-    box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    border: 1px solid #dcdcd8;
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.18);
 
     overflow: hidden;
 }
 
-.modal-header {
+.modal-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 16px 18px;
+    padding: 15px 17px;
 
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e3e3df;
 }
 
 .modal-title {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 800;
 }
 
 .modal-close {
-    width: 30px;
-    height: 30px;
+    width: 29px;
+    height: 29px;
 
     border: 0;
-    border-radius: 6px;
+    border-radius: 5px;
 
-    background: #f2f2f2;
+    background: #f2f2f0;
 
     color: #555;
 
-    cursor: pointer;
+    font-size: 17px;
 
-    font-size: 18px;
+    cursor: pointer;
 }
 
 .modal-body {
-    padding: 18px;
+    padding: 17px;
 }
+
+
+/* =========================================================
+   MONEY MODAL
+========================================================= */
 
 .money-filter {
-    margin-bottom: 16px;
+    margin-bottom: 15px;
 
-    color: #888;
+    color: #999;
 
-    font-size: 11px;
+    font-size: 10px;
 }
 
-.money-lines {
+.money-list {
     display: flex;
     flex-direction: column;
-    gap: 11px;
+
+    border-top: 1px solid #e5e5e1;
 }
 
-.money-line {
+.money-row {
     display: grid;
-    grid-template-columns: 110px 1fr;
+    grid-template-columns: 115px 1fr;
+
+    min-height: 42px;
 
     align-items: center;
 
-    padding-bottom: 11px;
-
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e8e8e4;
 }
 
 .money-product {
-    color: #555;
-    font-size: 12px;
+    color: #666;
+
+    font-size: 11px;
     font-weight: 700;
 }
 
-.money-calculation {
+.money-value {
+    color: #333;
+
     text-align: right;
 
-    color: #333;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .money-total {
@@ -801,63 +791,47 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    margin-top: 18px;
-    padding-top: 15px;
+    margin-top: 17px;
+    padding-top: 14px;
 
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #d8d8d3;
 }
 
-.money-total-label {
-    font-size: 13px;
+.money-total span:first-child {
+    font-size: 12px;
     font-weight: 800;
 }
 
-.money-total-value {
-    color: #d9822b;
+.money-total span:last-child {
+    color: #d27625;
 
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 800;
 }
 
 
 /* =========================================================
-   HELP MODAL
+   HELP
 ========================================================= */
 
-.help-modal {
-    width: 100%;
-    max-width: 450px;
-
-    background: #fff;
-
-    border: 1px solid #ddd;
-    border-radius: 11px;
-
-    box-shadow: 0 20px 60px rgba(0,0,0,.2);
-
-    overflow: hidden;
-}
-
-.help-content {
-    padding: 18px;
-
+.help-text {
     color: #666;
 
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.65;
 }
 
-.help-content p + p {
+.help-text p + p {
     margin-top: 11px;
 }
 
-.help-content strong {
+.help-text strong {
     color: #333;
 }
 
 
 /* =========================================================
-   DEVICE ALERT
+   MOBILE DEVICE ALERT
 ========================================================= */
 
 .device-alert-overlay {
@@ -870,88 +844,82 @@ body {
 
     padding: 20px;
 
-    background: rgba(0,0,0,.38);
+    background: rgba(0,0,0,.35);
 
-    z-index: 1200;
+    z-index: 2000;
 }
 
 .device-alert {
     width: 100%;
-    max-width: 340px;
+    max-width: 330px;
 
-    padding: 25px 22px 20px;
+    padding: 23px 21px 19px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
 
     background: #fff;
 
-    border: 1px solid #dedede;
-    border-radius: 12px;
-
     text-align: center;
 
-    box-shadow: 0 15px 45px rgba(0,0,0,.18);
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.18);
 }
 
 .device-alert-icon {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
 
-    margin: 0 auto 14px;
-
-    border-radius: 50%;
-
-    background: #fff5e9;
-    color: #d9822b;
+    margin: 0 auto 12px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 20px;
+    border-radius: 50%;
+
+    background: #fff4e8;
+    color: #d27625;
+
+    font-size: 18px;
 }
 
 .device-alert-title {
-    font-size: 16px;
-    font-weight: 700;
-
-    color: #252525;
+    font-size: 15px;
+    font-weight: 800;
 }
 
 .device-alert-text {
-    margin-top: 9px;
+    margin-top: 8px;
 
     color: #777;
 
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 12px;
+    line-height: 1.55;
 }
 
 .device-alert-button {
     width: 100%;
-    height: 38px;
+    height: 36px;
 
-    margin-top: 19px;
+    margin-top: 17px;
 
-    border: 1px solid #d9822b;
-    border-radius: 7px;
+    border: 0;
+    border-radius: 6px;
 
-    background: #d9822b;
+    background: #d27625;
     color: #fff;
 
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 700;
 
     cursor: pointer;
-}
-
-.device-alert-button:hover {
-    background: #b9671d;
 }
 
 
 /* =========================================================
    MOBILE
-   Trang vẫn giữ kích thước desktop.
-   Chỉ hiện cảnh báo.
 ========================================================= */
 
 @media (max-width: 899px) {
@@ -971,44 +939,14 @@ body {
 
     .modal-overlay {
         align-items: flex-end;
+
         padding: 0;
     }
 
-    .money-modal,
-    .help-modal {
+    .modal {
         max-width: none;
 
-        border-radius: 12px 12px 0 0;
-
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-
-}
-
-
-/* =========================================================
-   DESKTOP ONLY TWEAKS
-========================================================= */
-
-@media (min-width: 900px) {
-
-    .money-modal {
-        animation: modalIn .16s ease-out;
-    }
-
-}
-
-@keyframes modalIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+        border-radius: 10px 10px 0 0;
     }
 
 }
@@ -1027,26 +965,22 @@ body {
 
 
         <!-- =================================================
-             TOP BAR
+             TOPBAR
         ================================================== -->
 
         <div class="topbar">
 
-            <div class="topbar-left">
-
-                <button
-                    class="back-button"
-                    onclick="goBack()"
-                    title="Quay lại"
-                >
-                    ←
-                </button>
-
-            </div>
+            <button
+                class="back-button"
+                onclick="goBack()"
+                title="Quay lại"
+            >
+                ←
+            </button>
 
             <button
                 class="help-button"
-                onclick="openHelpModal()"
+                onclick="openHelp()"
                 title="Hướng dẫn"
             >
                 ?
@@ -1056,18 +990,18 @@ body {
 
 
         <!-- =================================================
-             TITLE
+             HEADING
         ================================================== -->
 
-        <div class="title-area">
+        <div class="heading">
 
-            <div class="title">
+            <h1>
                 ĐẶT & XÁC NHẬN BÁNH
-            </div>
+            </h1>
 
-            <div class="subtitle">
+            <p>
                 Tascus Food · Theo dõi số lượng bánh
-            </div>
+            </p>
 
         </div>
 
@@ -1079,76 +1013,68 @@ body {
         <div class="filters">
 
 
-            <div class="filter-row">
+            <div class="filter-group">
 
-                <div class="filter-label">
+                <span class="filter-label">
                     Thời gian
-                </div>
+                </span>
 
-                <div class="filter-buttons">
+                <button
+                    class="filter-button active"
+                    data-time="all"
+                    onclick="setTimeFilter('all', this)"
+                >
+                    Tất cả
+                </button>
 
-                    <button
-                        class="filter-button active"
-                        data-time="all"
-                        onclick="setTimeFilter('all', this)"
-                    >
-                        Tất cả
-                    </button>
+                <button
+                    class="filter-button"
+                    data-time="thisMonth"
+                    onclick="setTimeFilter('thisMonth', this)"
+                >
+                    Tháng này
+                </button>
 
-                    <button
-                        class="filter-button"
-                        data-time="thisMonth"
-                        onclick="setTimeFilter('thisMonth', this)"
-                    >
-                        Tháng này
-                    </button>
-
-                    <button
-                        class="filter-button"
-                        data-time="lastMonth"
-                        onclick="setTimeFilter('lastMonth', this)"
-                    >
-                        Tháng trước
-                    </button>
-
-                </div>
+                <button
+                    class="filter-button"
+                    data-time="lastMonth"
+                    onclick="setTimeFilter('lastMonth', this)"
+                >
+                    Tháng trước
+                </button>
 
             </div>
 
 
-            <div class="filter-row">
+            <div class="filter-group">
 
-                <div class="filter-label">
+                <span class="filter-label">
                     Cơ sở
-                </div>
+                </span>
 
-                <div class="filter-buttons">
+                <button
+                    class="filter-button active"
+                    data-branch="all"
+                    onclick="setBranchFilter('all', this)"
+                >
+                    Tất cả cơ sở
+                </button>
 
-                    <button
-                        class="filter-button active"
-                        data-branch="all"
-                        onclick="setBranchFilter('all', this)"
-                    >
-                        Tất cả cơ sở
-                    </button>
+                <button
+                    class="filter-button"
+                    data-branch="Khương Trung"
+                    onclick="setBranchFilter('Khương Trung', this)"
+                >
+                    Khương Trung
+                </button>
 
-                    <button
-                        class="filter-button"
-                        data-branch="Khương Trung"
-                        onclick="setBranchFilter('Khương Trung', this)"
-                    >
-                        Khương Trung
-                    </button>
-
-                    <button
-                        class="filter-button"
-                        data-branch="Thái Thịnh"
-                        onclick="setBranchFilter('Thái Thịnh', this)"
-                    >
-                        Thái Thịnh
-                    </button>
-
-                </div>
+                <button
+                    class="filter-button"
+                    data-branch="Thái Thịnh"
+                    onclick="setBranchFilter('Thái Thịnh', this)"
+                >
+                    Thái Thịnh
+                </button>
 
             </div>
 
@@ -1156,31 +1082,32 @@ body {
 
 
         <!-- =================================================
-             DASHBOARD
+             SUMMARY
         ================================================== -->
 
-        <div class="dashboard-strip">
+        <div class="summary">
 
 
             <!-- TỔNG XÁC NHẬN -->
 
-            <div class="dashboard-block">
+            <div class="summary-total">
 
-                <div class="section-mini-title">
+                <div class="summary-heading">
                     TỔNG XÁC NHẬN
                 </div>
 
-                <div class="confirm-items">
+                <div class="total-list">
 
-                    <div class="confirm-item">
 
-                        <span class="confirm-label">
+                    <div class="total-item">
+
+                        <span class="total-name">
                             Burger
                         </span>
 
                         <span
-                            class="confirm-number"
-                            id="confirmBurger"
+                            class="total-value"
+                            id="totalBurger"
                         >
                             0
                         </span>
@@ -1188,15 +1115,15 @@ body {
                     </div>
 
 
-                    <div class="confirm-item">
+                    <div class="total-item">
 
-                        <span class="confirm-label">
+                        <span class="total-name">
                             Sanwich
                         </span>
 
                         <span
-                            class="confirm-number"
-                            id="confirmSanwich"
+                            class="total-value"
+                            id="totalSanwich"
                         >
                             0
                         </span>
@@ -1204,20 +1131,21 @@ body {
                     </div>
 
 
-                    <div class="confirm-item">
+                    <div class="total-item">
 
-                        <span class="confirm-label">
+                        <span class="total-name">
                             Bánh mỳ dài
                         </span>
 
                         <span
-                            class="confirm-number"
-                            id="confirmBread"
+                            class="total-value"
+                            id="totalBread"
                         >
                             0
                         </span>
 
                     </div>
+
 
                 </div>
 
@@ -1226,25 +1154,25 @@ body {
 
             <!-- ĐƠN GIÁ -->
 
-            <div class="dashboard-block">
+            <div class="summary-price">
 
-                <div class="section-mini-title">
+                <div class="summary-heading">
                     ĐƠN GIÁ
                 </div>
 
-                <div class="price-inline-fields">
+                <div class="price-list">
 
 
-                    <div class="price-field">
+                    <div class="price-item">
 
                         <label
-                            class="price-label"
+                            class="price-name"
                             for="priceBurger"
                         >
                             Burger
                         </label>
 
-                        <div class="price-control">
+                        <div class="price-input-row">
 
                             <input
                                 id="priceBurger"
@@ -1264,16 +1192,16 @@ body {
                     </div>
 
 
-                    <div class="price-field">
+                    <div class="price-item">
 
                         <label
-                            class="price-label"
+                            class="price-name"
                             for="priceSanwich"
                         >
                             Sanwich
                         </label>
 
-                        <div class="price-control">
+                        <div class="price-input-row">
 
                             <input
                                 id="priceSanwich"
@@ -1293,16 +1221,16 @@ body {
                     </div>
 
 
-                    <div class="price-field">
+                    <div class="price-item">
 
                         <label
-                            class="price-label"
+                            class="price-name"
                             for="priceBread"
                         >
                             Bánh mỳ dài
                         </label>
 
-                        <div class="price-control">
+                        <div class="price-input-row">
 
                             <input
                                 id="priceBread"
@@ -1331,30 +1259,30 @@ body {
 
 
         <!-- =================================================
-             TABLE HEADING
+             TABLE TITLE
         ================================================== -->
 
-        <div class="table-heading">
+        <div class="table-title-row">
 
-            <div class="table-heading-left">
+            <div class="table-title">
 
-                <div class="table-heading-title">
+                <h2>
                     Chi tiết đơn bánh
-                </div>
+                </h2>
 
-                <div
+                <span
                     class="table-count"
                     id="tableCount"
                 >
                     0 đơn
-                </div>
+                </span>
 
             </div>
 
 
             <button
                 class="money-button"
-                onclick="openMoneyModal()"
+                onclick="openMoney()"
             >
                 💰 TÍNH TIỀN
             </button>
@@ -1366,14 +1294,12 @@ body {
              TABLE
         ================================================== -->
 
-        <div class="table-wrapper">
+        <div class="table-shell">
 
             <table class="orders-table">
 
 
                 <thead>
-
-                    <!-- GROUP HEADER -->
 
                     <tr>
 
@@ -1405,12 +1331,14 @@ body {
                             Người đặt
                         </th>
 
+
                         <th
                             colspan="3"
                             class="group-order"
                         >
                             ĐẶT BÁNH
                         </th>
+
 
                         <th
                             colspan="3"
@@ -1419,12 +1347,14 @@ body {
                             XÁC NHẬN
                         </th>
 
+
                         <th
                             rowspan="2"
                             class="col-status"
                         >
                             Trạng thái
                         </th>
+
 
                         <th
                             rowspan="2"
@@ -1435,8 +1365,6 @@ body {
 
                     </tr>
 
-
-                    <!-- CHILD HEADER -->
 
                     <tr>
 
@@ -1451,6 +1379,7 @@ body {
                         <th class="col-quantity">
                             Bánh mỳ dài
                         </th>
+
 
                         <th class="col-quantity">
                             Burger
@@ -1494,15 +1423,15 @@ body {
 <div
     class="modal-overlay"
     id="moneyModal"
-    onclick="closeMoneyModalOutside(event)"
+    onclick="closeMoneyOutside(event)"
 >
 
     <div
-        class="money-modal"
+        class="modal"
         onclick="event.stopPropagation()"
     >
 
-        <div class="modal-header">
+        <div class="modal-head">
 
             <div class="modal-title">
                 TÍNH TIỀN
@@ -1510,7 +1439,7 @@ body {
 
             <button
                 class="modal-close"
-                onclick="closeMoneyModal()"
+                onclick="closeMoney()"
             >
                 ×
             </button>
@@ -1522,59 +1451,59 @@ body {
 
             <div
                 class="money-filter"
-                id="moneyFilterText"
+                id="moneyFilter"
             >
-                Tất cả
+                Tất cả thời gian · Tất cả cơ sở
             </div>
 
 
-            <div class="money-lines">
+            <div class="money-list">
 
 
-                <div class="money-line">
+                <div class="money-row">
 
-                    <div class="money-product">
+                    <span class="money-product">
                         Burger
-                    </div>
+                    </span>
 
-                    <div
-                        class="money-calculation"
+                    <span
+                        class="money-value"
                         id="moneyBurger"
                     >
                         0 chiếc × 12.000đ = 0đ
-                    </div>
+                    </span>
 
                 </div>
 
 
-                <div class="money-line">
+                <div class="money-row">
 
-                    <div class="money-product">
+                    <span class="money-product">
                         Sanwich
-                    </div>
+                    </span>
 
-                    <div
-                        class="money-calculation"
+                    <span
+                        class="money-value"
                         id="moneySanwich"
                     >
                         0 túi × 15.000đ = 0đ
-                    </div>
+                    </span>
 
                 </div>
 
 
-                <div class="money-line">
+                <div class="money-row">
 
-                    <div class="money-product">
+                    <span class="money-product">
                         Bánh mỳ dài
-                    </div>
+                    </span>
 
-                    <div
-                        class="money-calculation"
+                    <span
+                        class="money-value"
                         id="moneyBread"
                     >
                         0 chiếc × 8.000đ = 0đ
-                    </div>
+                    </span>
 
                 </div>
 
@@ -1584,16 +1513,13 @@ body {
 
             <div class="money-total">
 
-                <div class="money-total-label">
+                <span>
                     TỔNG
-                </div>
+                </span>
 
-                <div
-                    class="money-total-value"
-                    id="moneyTotal"
-                >
+                <span id="moneyTotal">
                     0đ
-                </div>
+                </span>
 
             </div>
 
@@ -1611,15 +1537,15 @@ body {
 <div
     class="modal-overlay"
     id="helpModal"
-    onclick="closeHelpModalOutside(event)"
+    onclick="closeHelpOutside(event)"
 >
 
     <div
-        class="help-modal"
+        class="modal"
         onclick="event.stopPropagation()"
     >
 
-        <div class="modal-header">
+        <div class="modal-head">
 
             <div class="modal-title">
                 HƯỚNG DẪN
@@ -1627,7 +1553,7 @@ body {
 
             <button
                 class="modal-close"
-                onclick="closeHelpModal()"
+                onclick="closeHelp()"
             >
                 ×
             </button>
@@ -1635,40 +1561,35 @@ body {
         </div>
 
 
-        <div class="help-content">
+        <div class="modal-body">
 
-            <p>
-                <strong>1. Bộ lọc thời gian</strong><br>
-                Chọn Tất cả, Tháng này hoặc Tháng trước.
-            </p>
+            <div class="help-text">
 
-            <p>
-                <strong>2. Bộ lọc cơ sở</strong><br>
-                Có thể kết hợp với bộ lọc thời gian để
-                xem riêng từng cơ sở.
-            </p>
+                <p>
+                    <strong>Thời gian:</strong>
+                    chọn Tất cả, Tháng này hoặc Tháng trước.
+                </p>
 
-            <p>
-                <strong>3. Bảng bánh</strong><br>
-                Bốn cột thông tin đầu tiên được cố định.
-                Các cột số lượng bánh có thể kéo ngang
-                để xem.
-            </p>
+                <p>
+                    <strong>Cơ sở:</strong>
+                    lọc riêng Khương Trung hoặc Thái Thịnh.
+                    Hai bộ lọc có thể sử dụng đồng thời.
+                </p>
 
-            <p>
-                <strong>4. Tổng xác nhận</strong><br>
-                Số liệu được tính từ cột
-                <strong>XÁC NHẬN</strong>, theo đúng
-                bộ lọc đang chọn.
-            </p>
+                <p>
+                    <strong>Bảng:</strong>
+                    bốn cột đầu được cố định. Kéo ngang để
+                    xem các cột số lượng bánh.
+                </p>
 
-            <p>
-                <strong>5. Tính tiền</strong><br>
-                Nhập đơn giá ở phía trên, sau đó bấm
-                <strong>TÍNH TIỀN</strong>.
-                Tiền được tính dựa trên số lượng
-                <strong>XÁC NHẬN</strong>.
-            </p>
+                <p>
+                    <strong>Tính tiền:</strong>
+                    nhập đơn giá ở phía trên. Hệ thống tính
+                    tiền dựa trên số lượng trong cột
+                    <strong>XÁC NHẬN</strong>.
+                </p>
+
+            </div>
 
         </div>
 
@@ -1697,8 +1618,9 @@ body {
         </div>
 
         <div class="device-alert-text">
-            Vui lòng sử dụng máy tính để xem đầy đủ
-            bảng đặt và xác nhận bánh.
+            Bảng đặt và xác nhận bánh khá rộng,
+            điện thoại không hiển thị đầy đủ.
+            Vui lòng sử dụng máy tính để xem trang này.
         </div>
 
         <button
@@ -1716,7 +1638,7 @@ body {
 <script>
 
 /* =========================================================
-   SAMPLE DATA
+   DATA
 ========================================================= */
 
 const data = [
@@ -1885,29 +1807,25 @@ let currentBranchFilter = "all";
 
 
 /* =========================================================
-   FORMAT NUMBER
+   NUMBER FORMAT
 ========================================================= */
 
-function formatNumber(number) {
+function numberFormat(value) {
 
-    return Number(number || 0).toLocaleString("vi-VN");
+    return Number(value || 0)
+        .toLocaleString("vi-VN");
+
+}
+
+function moneyFormat(value) {
+
+    return numberFormat(value) + "đ";
 
 }
 
 
 /* =========================================================
-   FORMAT MONEY
-========================================================= */
-
-function formatMoney(number) {
-
-    return formatNumber(number) + "đ";
-
-}
-
-
-/* =========================================================
-   FILTER DATA
+   FILTER
 ========================================================= */
 
 function getFilteredData() {
@@ -1917,8 +1835,6 @@ function getFilteredData() {
         let timeMatch = true;
         let branchMatch = true;
 
-
-        /* TIME */
 
         if (currentTimeFilter === "thisMonth") {
 
@@ -1938,8 +1854,6 @@ function getFilteredData() {
         }
 
 
-        /* BRANCH */
-
         if (currentBranchFilter !== "all") {
 
             branchMatch =
@@ -1956,7 +1870,7 @@ function getFilteredData() {
 
 
 /* =========================================================
-   CALCULATE TOTALS
+   TOTALS
 ========================================================= */
 
 function calculateTotals(items) {
@@ -1993,7 +1907,7 @@ function calculateTotals(items) {
 
 
 /* =========================================================
-   RENDER TABLE
+   RENDER
 ========================================================= */
 
 function render() {
@@ -2011,7 +1925,7 @@ function render() {
     tbody.innerHTML = "";
 
 
-    if (items.length === 0) {
+    if (!items.length) {
 
         tbody.innerHTML = `
 
@@ -2029,17 +1943,17 @@ function render() {
 
         items.forEach(item => {
 
-            const tr =
+            const row =
                 document.createElement("tr");
 
 
             const statusClass =
                 item.status === "Đã xác nhận"
-                    ? "confirmed"
-                    : "pending";
+                    ? "status-confirmed"
+                    : "status-pending";
 
 
-            tr.innerHTML = `
+            row.innerHTML = `
 
                 <td class="col-date sticky-1">
                     ${item.date}
@@ -2058,38 +1972,38 @@ function render() {
                 </td>
 
 
-                <td class="col-quantity order-number-cell">
+                <td class="col-quantity order-number">
                     <span class="number">
                         ${item.orderBurger}
                     </span>
                 </td>
 
-                <td class="col-quantity order-number-cell">
+                <td class="col-quantity order-number">
                     <span class="number">
                         ${item.orderSanwich}
                     </span>
                 </td>
 
-                <td class="col-quantity order-number-cell">
+                <td class="col-quantity order-number">
                     <span class="number">
                         ${item.orderBread}
                     </span>
                 </td>
 
 
-                <td class="col-quantity confirm-number-cell">
+                <td class="col-quantity confirm-number">
                     <span class="number">
                         ${item.confirmBurger}
                     </span>
                 </td>
 
-                <td class="col-quantity confirm-number-cell">
+                <td class="col-quantity confirm-number">
                     <span class="number">
                         ${item.confirmSanwich}
                     </span>
                 </td>
 
-                <td class="col-quantity confirm-number-cell">
+                <td class="col-quantity confirm-number">
                     <span class="number">
                         ${item.confirmBread}
                     </span>
@@ -2112,16 +2026,14 @@ function render() {
             `;
 
 
-            tbody.appendChild(tr);
+            tbody.appendChild(row);
 
         });
 
     }
 
 
-    /* =====================================================
-       FOOTER TOTAL
-    ====================================================== */
+    /* FOOTER */
 
     tfoot.innerHTML = `
 
@@ -2136,28 +2048,28 @@ function render() {
 
 
             <td class="total-number">
-                ${formatNumber(totals.orderBurger)}
+                ${numberFormat(totals.orderBurger)}
             </td>
 
             <td class="total-number">
-                ${formatNumber(totals.orderSanwich)}
+                ${numberFormat(totals.orderSanwich)}
             </td>
 
             <td class="total-number">
-                ${formatNumber(totals.orderBread)}
+                ${numberFormat(totals.orderBread)}
             </td>
 
 
             <td class="total-number">
-                ${formatNumber(totals.confirmBurger)}
+                ${numberFormat(totals.confirmBurger)}
             </td>
 
             <td class="total-number">
-                ${formatNumber(totals.confirmSanwich)}
+                ${numberFormat(totals.confirmSanwich)}
             </td>
 
             <td class="total-number">
-                ${formatNumber(totals.confirmBread)}
+                ${numberFormat(totals.confirmBread)}
             </td>
 
 
@@ -2170,39 +2082,18 @@ function render() {
     `;
 
 
-    updateConfirmationSummary(totals);
+    document.getElementById("totalBurger").textContent =
+        numberFormat(totals.confirmBurger);
 
-    updateTableCount(items.length);
+    document.getElementById("totalSanwich").textContent =
+        numberFormat(totals.confirmSanwich);
 
-}
+    document.getElementById("totalBread").textContent =
+        numberFormat(totals.confirmBread);
 
-
-/* =========================================================
-   UPDATE CONFIRMATION SUMMARY
-========================================================= */
-
-function updateConfirmationSummary(totals) {
-
-    document.getElementById("confirmBurger").textContent =
-        formatNumber(totals.confirmBurger);
-
-    document.getElementById("confirmSanwich").textContent =
-        formatNumber(totals.confirmSanwich);
-
-    document.getElementById("confirmBread").textContent =
-        formatNumber(totals.confirmBread);
-
-}
-
-
-/* =========================================================
-   TABLE COUNT
-========================================================= */
-
-function updateTableCount(count) {
 
     document.getElementById("tableCount").textContent =
-        `${count} đơn`;
+        `${items.length} đơn`;
 
 }
 
@@ -2258,13 +2149,16 @@ function setBranchFilter(filter, button) {
 
 
 /* =========================================================
-   FILTER TEXT
+   FILTER DESCRIPTION
 ========================================================= */
 
 function getFilterText() {
 
-    let timeText = "Tất cả thời gian";
-    let branchText = "Tất cả cơ sở";
+    let timeText =
+        "Tất cả thời gian";
+
+    let branchText =
+        "Tất cả cơ sở";
 
 
     if (currentTimeFilter === "thisMonth") {
@@ -2274,7 +2168,6 @@ function getFilterText() {
     if (currentTimeFilter === "lastMonth") {
         timeText = "Tháng trước";
     }
-
 
     if (currentBranchFilter !== "all") {
         branchText = currentBranchFilter;
@@ -2287,10 +2180,10 @@ function getFilterText() {
 
 
 /* =========================================================
-   MONEY MODAL
+   MONEY
 ========================================================= */
 
-function openMoneyModal() {
+function openMoney() {
 
     const items = getFilteredData();
     const totals = calculateTotals(items);
@@ -2332,24 +2225,24 @@ function openMoneyModal() {
         moneyBread;
 
 
-    document.getElementById("moneyFilterText").textContent =
+    document.getElementById("moneyFilter").textContent =
         getFilterText();
 
 
     document.getElementById("moneyBurger").textContent =
-        `${formatNumber(totals.confirmBurger)} chiếc × ${formatMoney(priceBurger)} = ${formatMoney(moneyBurger)}`;
+        `${numberFormat(totals.confirmBurger)} chiếc × ${moneyFormat(priceBurger)} = ${moneyFormat(moneyBurger)}`;
 
 
     document.getElementById("moneySanwich").textContent =
-        `${formatNumber(totals.confirmSanwich)} túi × ${formatMoney(priceSanwich)} = ${formatMoney(moneySanwich)}`;
+        `${numberFormat(totals.confirmSanwich)} túi × ${moneyFormat(priceSanwich)} = ${moneyFormat(moneySanwich)}`;
 
 
     document.getElementById("moneyBread").textContent =
-        `${formatNumber(totals.confirmBread)} chiếc × ${formatMoney(priceBread)} = ${formatMoney(moneyBread)}`;
+        `${numberFormat(totals.confirmBread)} chiếc × ${moneyFormat(priceBread)} = ${moneyFormat(moneyBread)}`;
 
 
     document.getElementById("moneyTotal").textContent =
-        formatMoney(total);
+        moneyFormat(total);
 
 
     document
@@ -2359,11 +2252,7 @@ function openMoneyModal() {
 }
 
 
-/* =========================================================
-   CLOSE MONEY MODAL
-========================================================= */
-
-function closeMoneyModal() {
+function closeMoney() {
 
     document
         .getElementById("moneyModal")
@@ -2372,14 +2261,14 @@ function closeMoneyModal() {
 }
 
 
-function closeMoneyModalOutside(event) {
+function closeMoneyOutside(event) {
 
     if (
         event.target ===
         document.getElementById("moneyModal")
     ) {
 
-        closeMoneyModal();
+        closeMoney();
 
     }
 
@@ -2387,10 +2276,10 @@ function closeMoneyModalOutside(event) {
 
 
 /* =========================================================
-   HELP MODAL
+   HELP
 ========================================================= */
 
-function openHelpModal() {
+function openHelp() {
 
     document
         .getElementById("helpModal")
@@ -2399,7 +2288,7 @@ function openHelpModal() {
 }
 
 
-function closeHelpModal() {
+function closeHelp() {
 
     document
         .getElementById("helpModal")
@@ -2408,14 +2297,14 @@ function closeHelpModal() {
 }
 
 
-function closeHelpModalOutside(event) {
+function closeHelpOutside(event) {
 
     if (
         event.target ===
         document.getElementById("helpModal")
     ) {
 
-        closeHelpModal();
+        closeHelp();
 
     }
 
@@ -2455,7 +2344,7 @@ function goBack() {
 
 
 /* =========================================================
-   ESCAPE KEY
+   ESC
 ========================================================= */
 
 document.addEventListener(
@@ -2464,8 +2353,8 @@ document.addEventListener(
 
         if (event.key === "Escape") {
 
-            closeMoneyModal();
-            closeHelpModal();
+            closeMoney();
+            closeHelp();
 
         }
 
@@ -2474,41 +2363,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   PRICE INPUT
-   Recalculate modal if it is already open.
-========================================================= */
-
-[
-    "priceBurger",
-    "priceSanwich",
-    "priceBread"
-].forEach(id => {
-
-    document
-        .getElementById(id)
-        .addEventListener(
-            "input",
-            function() {
-
-                const modal =
-                    document.getElementById("moneyModal");
-
-                if (
-                    modal.classList.contains("show")
-                ) {
-
-                    openMoneyModal();
-
-                }
-
-            }
-        );
-
-});
-
-
-/* =========================================================
-   INITIAL RENDER
+   INITIAL
 ========================================================= */
 
 render();
