@@ -1,482 +1,533 @@
-<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Đặt bánh, rau - Tascus Food</title> <style> /* ========================= RESET ========================= */ * { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-height: 100%; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f6f7; color: #222; min-height: 100vh; min-height: 100dvh; padding: 24px 16px; } /* ========================= CONTAINER ========================= */ .container { width: 100%; max-width: 620px; margin: 0 auto; } /* ========================= HEADER ========================= */ .header { text-align: center; margin-bottom: 25px; } .logo { width: 58px; height: 58px; margin: 0 auto 16px; border-radius: 16px; background: #fff; border: 1px solid #e1e3e5; display: flex; align-items: center; justify-content: center; overflow: hidden; } .logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 15px; } .header h1 { font-size: 25px; font-weight: 600; letter-spacing: -0.4px; margin-bottom: 8px; } .header p { font-size: 14px; line-height: 1.55; color: #777; } /* ========================= FORM ========================= */ .form-box { background: #fff; border: 1px solid #e1e3e5; border-radius: 16px; padding: 24px 22px; } /* ========================= FORM TITLE ========================= */ .form-title { font-size: 18px; font-weight: 600; line-height: 1.4; margin-bottom: 22px; } /* ========================= FIELD ========================= */ .field { margin-bottom: 20px; } .field:last-child { margin-bottom: 0; } .field-label { display: block; font-size: 12px; font-weight: 600; color: #666; margin-bottom: 8px; } .required { color: #c5632c; } /* ========================= INPUT / SELECT ========================= */ select, input[type="text"], input[type="number"] { width: 100%; height: 44px; padding: 0 12px; border: 1px solid #e1e3e5; border-radius: 10px; background: #fff; color: #222; font-family: inherit; font-size: 14px; outline: none; transition: border-color 0.12s ease, box-shadow 0.12s ease; } select { cursor: pointer; } select:focus, input[type="text"]:focus, input[type="number"]:focus { border-color: #f28c28; box-shadow: 0 0 0 3px rgba(242, 140, 40, 0.10); } /* ========================= ORDER SECTION ========================= */ .order-section { display: none; margin-top: 24px; padding-top: 22px; border-top: 1px solid #e2e4e6; } .order-section.show { display: block; } /* ========================= SECTION TITLE ========================= */ .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-left: 2px; } .section-title span { font-size: 11px; font-weight: 600; color: #888; letter-spacing: 0.8px; text-transform: uppercase; white-space: nowrap; } .section-title::after { content: ""; flex: 1; height: 1px; background: #e2e4e6; } /* ========================= QUANTITY LIST ========================= */ .quantity-list { display: flex; flex-direction: column; gap: 10px; } .quantity-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; padding: 8px 10px; border: 1px solid #e1e3e5; border-radius: 10px; background: #fff; } .quantity-name { flex: 1; min-width: 0; font-size: 14px; color: #333; } .quantity-input { width: 120px !important; flex-shrink: 0; text-align: center; } /* ========================= PERSON ========================= */ .person-field { margin-top: 20px; } /* ========================= SUBMIT ========================= */ .submit-area { margin-top: 22px; padding-top: 20px; border-top: 1px solid #e2e4e6; } .submit-button { width: 100%; height: 46px; border: none; border-radius: 11px; background: #f28c28; color: #fff; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: transform 0.1s ease, background 0.1s ease, box-shadow 0.1s ease; } .submit-button:hover { background: #e98220; box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08); } .submit-button:active { transform: scale(0.975); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); } /* ========================= SUCCESS ========================= */ .success-box { display: none; margin-top: 16px; padding: 13px 15px; border: 1px solid #ead8ca; border-radius: 10px; background: #fcf0e8; color: #a65325; font-size: 13px; line-height: 1.5; } .success-box.show { display: block; } /* ========================= INFO BUTTON ========================= */ .info-button { position: fixed; top: 18px; right: 18px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid #dfe1e3; background: #fff; color: #777; font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); -webkit-tap-highlight-color: transparent; transition: transform 0.12s ease, background 0.12s ease; } .info-button:hover { background: #f5f6f7; } .info-button:active { transform: scale(0.9); } /* ========================= INFO OVERLAY ========================= */ .info-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.28); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 9999; } .info-overlay.show { display: flex; } /* ========================= INFO POPUP ========================= */ .info-popup { position: relative; width: 100%; max-width: 420px; background: #fff; border-radius: 18px; padding: 28px 24px 24px; box-shadow: 0 18px 50px rgba(0,0,0,0.16); animation: infoAppear 0.16s ease; } @keyframes infoAppear { from { opacity: 0; transform: scale(0.96) translateY(6px); } to { opacity: 1; transform: scale(1) translateY(0); } } .info-close { position: absolute; top: 12px; right: 14px; width: 32px; height: 32px; border: none; background: transparent; color: #999; font-size: 25px; line-height: 1; cursor: pointer; } .info-icon { width: 42px; height: 42px; margin-bottom: 14px; border-radius: 12px; background: #f1f2f3; color: #666; display: flex; align-items: center; justify-content: center; font-weight: 600; } .info-popup h2 { font-size: 19px; font-weight: 600; margin-bottom: 12px; } .info-popup p { font-size: 14px; line-height: 1.6; color: #666; margin-bottom: 12px; } .info-popup p:last-child { margin-bottom: 0; } /* ========================= LOADING ========================= */ .loading-overlay { position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center; background: rgba(245, 246, 247, 0.78); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); } .loading-box { width: min(88%, 320px); padding: 22px 20px; background: #fff; border: 1px solid #e1e3e5; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); text-align: center; } .loading-spinner { width: 30px; height: 30px; margin: 0 auto 14px; border: 3px solid #e5e5e5; border-top-color: #f28c28; border-radius: 50%; animation: loading-spin 0.8s linear infinite; } .loading-title { font-size: 15px; font-weight: 700; color: #222; line-height: 1.4; } .loading-text { margin-top: 5px; font-size: 13px; color: #777; line-height: 1.4; } @keyframes loading-spin { to { transform: rotate(360deg); } } /* ========================= FOOTER ========================= */ .footer { text-align: center; margin-top: 20px; font-size: 12px; color: #999; } /* ========================= MOBILE ========================= */ @media (max-width: 600px) { body { align-items: flex-start; padding: max(28px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom)); } .container { max-width: 480px; margin: auto 0; } .header { margin-bottom: 22px; } .logo { width: 54px; height: 54px; border-radius: 15px; margin-bottom: 14px; } .logo img { border-radius: 14px; } .header h1 { font-size: 23px; } .header p { font-size: 13px; } .form-box { padding: 20px 16px; border-radius: 15px; } .form-title { font-size: 17px; } .quantity-row { padding: 8px; gap: 10px; } .quantity-input { width: 100px !important; } .info-button { top: 14px; right: 14px; width: 32px; height: 32px; } .info-popup { max-width: 360px; padding: 25px 20px 21px; border-radius: 16px; } } /* ========================= SMALL PHONES ========================= */ @media (max-width: 360px) { body { padding-left: 12px; padding-right: 12px; } .header h1 { font-size: 21px; } .form-box { padding: 18px 13px; } .quantity-row { padding: 7px; } .quantity-name { font-size: 13px; } .quantity-input { width: 88px !important; } } </style> </head> <body> <!-- ========================= LOADING ========================= --> <div class="loading-overlay" id="loadingOverlay" >
-<div class="loading-box">
+<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8">
 
-    <div class="loading-spinner"></div>
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 
-    <div class="loading-title">
-        Dev code ngu nên load hơi chậm
-    </div>
-
-    <div class="loading-text">
-        Web đang tải trang, vui lòng chờ
-    </div>
-
-</div>
-</div> <!-- ========================= INFO BUTTON ========================= -->
+<title>Đặt bánh / rau · Tascus Food</title> <style> * { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-height: 100%; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f6f7; color: #222; min-height: 100vh; min-height: 100dvh; padding: max(16px, env(safe-area-inset-top)) 14px max(24px, env(safe-area-inset-bottom)) 14px; } button, input, select, textarea { font-family: inherit; } input, select, textarea { font-size: 16px; } .container { width: 100%; max-width: 620px; margin: 0 auto; } /* ===================================================== HEADER ===================================================== */ .header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; } .back-button, .help-button { width: 42px; height: 42px; flex-shrink: 0; border: 1px solid #e0e2e5; background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #333; cursor: pointer; -webkit-tap-highlight-color: transparent; } .back-button { font-size: 25px; line-height: 1; } .help-button { font-size: 15px; font-weight: 700; } .back-button:active, .help-button:active { transform: scale(.94); } .header-text { flex: 1; min-width: 0; } .header-title { font-size: 21px; font-weight: 650; letter-spacing: -.3px; } .header-subtitle { margin-top: 3px; font-size: 12px; color: #888; } /* ===================================================== FORM BOX ===================================================== */ .form-box { width: 100%; background: #fff; border: 1px solid #e1e3e5; border-radius: 15px; padding: 20px; box-shadow: 0 5px 16px rgba(0,0,0,.025); } .form-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 20px; } .form-title { font-size: 19px; font-weight: 650; } .form-description { margin-top: 5px; font-size: 12px; line-height: 1.5; color: #888; } /* ===================================================== FORM FIELD ===================================================== */ .form-field { margin-bottom: 16px; } .form-label { display: block; margin-bottom: 7px; font-size: 12px; font-weight: 600; color: #555; } .form-label .required { color: #999; } .form-input, .form-select { width: 100%; height: 46px; padding: 0 13px; border: 1px solid #dedfe1; background: #fafafa; color: #222; border-radius: 11px; outline: none; transition: border-color .12s ease, background .12s ease; } .form-input:focus, .form-select:focus { border-color: #aaa; background: #fff; } /* ===================================================== ORDER SECTION ===================================================== */ .order-section { display: none; margin-top: 20px; padding-top: 18px; border-top: 1px solid #eee; } .order-section.active { display: block; } .order-section-title { font-size: 14px; font-weight: 650; margin-bottom: 14px; } .quantity-grid { display: flex; flex-direction: column; gap: 10px; } .quantity-row { display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 8px 10px; background: #fafafa; border: 1px solid #e5e6e8; border-radius: 11px; } .quantity-name { flex: 1; min-width: 0; font-size: 14px; font-weight: 550; color: #333; } .quantity-input { width: 90px; height: 42px; padding: 0 10px; border: 1px solid #dedfe1; border-radius: 9px; background: #fff; color: #222; font-size: 16px; text-align: center; outline: none; } .quantity-input:focus { border-color: #aaa; } /* ===================================================== PERSON ===================================================== */ .person-field { margin-top: 18px; } /* ===================================================== FORM ACTIONS ===================================================== */ .form-actions { display: flex; gap: 9px; margin-top: 20px; } .form-button { flex: 1; min-height: 46px; border-radius: 11px; border: 1px solid #ddd; background: #f1f2f3; color: #333; font-size: 14px; font-weight: 600; cursor: pointer; } .form-button.primary { background: #222; color: #fff; border-color: #222; } .form-button:active { transform: scale(.985); } .form-button:disabled { background: #e5e5e5; color: #999; border-color: #e5e5e5; cursor: not-allowed; transform: none; opacity: 1; } /* ===================================================== HELP MODAL ===================================================== */ .modal { position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,.42); display: none; align-items: center; justify-content: center; padding: 16px; } .modal.active { display: flex; } .help-box { width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; background: #fff; border-radius: 18px; padding: 22px; box-shadow: 0 20px 50px rgba(0,0,0,.15); animation: modalIn .16s ease-out; } @keyframes modalIn { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } } .help-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 17px; } .help-title { font-size: 19px; font-weight: 650; } .help-content { font-size: 13px; line-height: 1.6; color: #555; } .help-content p { margin-bottom: 13px; } .help-content p:last-child { margin-bottom: 0; } .help-content strong { color: #333; } .help-list { margin: 5px 0 15px; padding: 0; list-style: none; } .help-list li { margin-bottom: 10px; padding-left: 15px; position: relative; } .help-list li::before { content: "•"; position: absolute; left: 0; color: #777; font-weight: bold; } .help-final { padding-top: 13px; margin-top: 4px; border-top: 1px solid #eee; color: #444; } .close-button { width: 34px; height: 34px; border: none; border-radius: 50%; background: #f1f2f3; color: #555; font-size: 21px; cursor: pointer; flex-shrink: 0; } /* ===================================================== SUCCESS MODAL ===================================================== */ .success-box { width: 100%; max-width: 420px; background: #fff; border-radius: 18px; padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,.15); text-align: center; animation: modalIn .16s ease-out; } .success-icon { width: 50px; height: 50px; margin: 0 auto 14px; border-radius: 14px; background: #f1f2f3; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #333; } .success-title { font-size: 19px; font-weight: 650; margin-bottom: 7px; } .success-text { font-size: 13px; line-height: 1.5; color: #777; margin-bottom: 18px; } /* ===================================================== LOADING ===================================================== */ .loading-overlay { position: fixed; inset: 0; z-index: 20000; background: rgba(245,246,247,.82); display: none; align-items: center; justify-content: center; padding: 20px; } .loading-overlay.active { display: flex; } .loading-box { width: 100%; max-width: 300px; padding: 22px; background: #fff; border: 1px solid #e1e3e5; border-radius: 16px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,.08); } .spinner { width: 28px; height: 28px; margin: 0 auto 12px; border: 3px solid #e5e5e5; border-top-color: #222; border-radius: 50%; animation: spin .7s linear infinite; } @keyframes spin { to { transform: rotate(360deg); } } .loading-title { font-size: 14px; font-weight: 600; color: #333; } .loading-description { margin-top: 4px; font-size: 11px; color: #999; line-height: 1.5; } /* ===================================================== MOBILE ===================================================== */ @media (max-width: 600px) { .modal { padding: 0; align-items: flex-end; } .help-box, .success-box { max-width: none; max-height: 90vh; max-height: 90dvh; border-radius: 18px 18px 0 0; padding: 20px 16px max(22px, env(safe-area-inset-bottom)) 16px; animation: slideUp .18s ease-out; } @keyframes slideUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } } } @media (max-width: 390px) { .quantity-input { width: 78px; } } @media (max-width: 600px) { input, select, textarea { font-size: 16px !important; } } </style> </head> <body> <div class="container"> <!-- ===================================================== HEADER ===================================================== --> <header class="header">
 
 <button
-class="info-button"
-onclick="openInfo()"
+class="back-button"
+onclick="goBack()"
+aria-label="Quay lại"
+
+‹
+</button> <div class="header-text">
+<div class="header-title">
+    Đặt bánh / rau
+</div>
+
+<div class="header-subtitle">
+    Tạo lệnh đặt hàng hàng ngày tại các cơ sở Tascus Food
+</div>
+</div>
+
+<button
+class="help-button"
+onclick="openHelp()"
 aria-label="Hướng dẫn"
 
 ?
-</button> <!-- ========================= INFO POPUP ========================= --> <div class="info-overlay" id="infoOverlay" onclick="closeInfo(event)" >
-<div class="info-popup">
+</button> </header> <!-- ===================================================== FORM ===================================================== --> <section class="form-box">
+<div class="form-header">
+
+    <div>
+
+        <div class="form-title">
+            Tạo lệnh đặt bánh/rau
+        </div>
+
+        <div class="form-description">
+            Chọn cơ sở và mặt hàng cần đặt.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     CHI NHÁNH
+================================================== -->
+
+<div class="form-field">
+
+    <label
+        class="form-label"
+        for="branch"
+    >
+        Chi nhánh
+        <span class="required">*</span>
+    </label>
+
+    <select
+        class="form-select"
+        id="branch"
+    >
+
+        <option value="">
+            Vui lòng chọn
+        </option>
+
+        <option value="Thái Thịnh">
+            Thái Thịnh
+        </option>
+
+        <option value="Khương Trung">
+            Khương Trung
+        </option>
+
+    </select>
+
+</div>
+
+
+<!-- =================================================
+     MẶT HÀNG
+================================================== -->
+
+<div class="form-field">
+
+    <label
+        class="form-label"
+        for="orderType"
+    >
+        Mặt hàng cần đặt
+        <span class="required">*</span>
+    </label>
+
+    <select
+        class="form-select"
+        id="orderType"
+        onchange="changeOrderType()"
+    >
+
+        <option value="">
+            Vui lòng chọn
+        </option>
+
+        <option value="rau">
+            Đặt rau
+        </option>
+
+        <option value="banh">
+            Đặt bánh
+        </option>
+
+    </select>
+
+</div>
+
+
+<!-- =================================================
+     ĐẶT BÁNH
+================================================== -->
+
+<div
+    class="order-section"
+    id="breadSection"
+>
+
+    <div class="order-section-title">
+        Số lượng bánh cần đặt
+    </div>
+
+
+    <div class="quantity-grid">
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-name">
+                Burger
+            </div>
+
+            <input
+                class="quantity-input"
+                id="burger"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+            >
+
+        </div>
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-name">
+                Sandwich
+            </div>
+
+            <input
+                class="quantity-input"
+                id="sandwich"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+            >
+
+        </div>
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-name">
+                Bánh mỳ dài
+            </div>
+
+            <input
+                class="quantity-input"
+                id="longBread"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+            >
+
+        </div>
+
+
+    </div>
+
+
+    <div class="form-field person-field">
+
+        <label
+            class="form-label"
+            for="breadReporter"
+        >
+            Tên người đặt
+            <span class="required">*</span>
+        </label>
+
+        <input
+            class="form-input"
+            id="breadReporter"
+            type="text"
+            placeholder="Nhập tên người đặt"
+            autocomplete="name"
+        >
+
+    </div>
+
+
+    <div class="form-actions">
+
+        <button
+            class="form-button"
+            type="button"
+            onclick="resetForm()"
+        >
+            Xóa
+        </button>
+
+        <button
+            class="form-button primary"
+            type="button"
+            onclick="submitOrder()"
+        >
+            Gửi lệnh
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     ĐẶT RAU
+================================================== -->
+
+<div
+    class="order-section"
+    id="vegetableSection"
+>
+
+    <div class="order-section-title">
+        Số lượng rau cần đặt
+    </div>
+
+
+    <div class="quantity-grid">
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-name">
+                Cà chua
+            </div>
+
+            <input
+                class="quantity-input"
+                id="tomato"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+            >
+
+        </div>
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-name">
+                Quất (Tắc)
+            </div>
+
+            <input
+                class="quantity-input"
+                id="kumquat"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+            >
+
+        </div>
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-name">
+                Xà lách
+            </div>
+
+            <input
+                class="quantity-input"
+                id="lettuce"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+            >
+
+        </div>
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-name">
+                Dưa chuột
+            </div>
+
+            <input
+                class="quantity-input"
+                id="cucumber"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+            >
+
+        </div>
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-name">
+                Chanh
+            </div>
+
+            <input
+                class="quantity-input"
+                id="lemon"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+            >
+
+        </div>
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-name">
+                Hành tây
+            </div>
+
+            <input
+                class="quantity-input"
+                id="onion"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+            >
+
+        </div>
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-name">
+                Rau mùi
+            </div>
+
+            <input
+                class="quantity-input"
+                id="coriander"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="0"
+            >
+
+        </div>
+
+
+    </div>
+
+
+    <div class="form-field person-field">
+
+        <label
+            class="form-label"
+            for="vegetableReporter"
+        >
+            Tên người đặt
+            <span class="required">*</span>
+        </label>
+
+        <input
+            class="form-input"
+            id="vegetableReporter"
+            type="text"
+            placeholder="Nhập tên người đặt"
+            autocomplete="name"
+        >
+
+    </div>
+
+
+    <div class="form-actions">
+
+        <button
+            class="form-button"
+            type="button"
+            onclick="resetForm()"
+        >
+            Xóa
+        </button>
+
+        <button
+            class="form-button primary"
+            type="button"
+            onclick="submitOrder()"
+        >
+            Gửi lệnh
+        </button>
+
+    </div>
+
+</div>
+</section> </div> <!-- ===================================================== HELP MODAL ===================================================== --> <div class="modal" id="helpModal" > <div class="help-box">
+<div class="help-header">
+
+    <div class="help-title">
+        Đặt bánh / rau để làm gì?
+    </div>
 
     <button
-        class="info-close"
-        onclick="closeInfo()"
+        class="close-button"
+        onclick="closeHelp()"
         aria-label="Đóng"
     >
         ×
     </button>
 
-    <div class="info-icon">
-        ?
-    </div>
+</div>
 
-    <h2>
-        Đặt bánh / rau
-    </h2>
+
+<div class="help-content">
 
     <p>
-        Sử dụng biểu mẫu này để tạo lệnh đặt
-        bánh hoặc rau hàng ngày cho cửa hàng.
+        Đây là nơi tạo lệnh đặt bánh và rau hàng ngày
+        cho từng cơ sở Tascus Food.
     </p>
 
-    <p>
-        Vui lòng chọn đúng chi nhánh, loại hàng
-        cần đặt và nhập chính xác số lượng trước
-        khi gửi.
+    <ul class="help-list">
+
+        <li>
+            Chọn đúng <strong>chi nhánh</strong>.
+        </li>
+
+        <li>
+            Chọn <strong>Đặt bánh</strong> hoặc
+            <strong>Đặt rau</strong>.
+        </li>
+
+        <li>
+            Nhập số lượng cần đặt cho từng mặt hàng.
+        </li>
+
+        <li>
+            Nhập <strong>tên người đặt</strong>.
+        </li>
+
+        <li>
+            Kiểm tra lại số lượng trước khi gửi.
+        </li>
+
+    </ul>
+
+    <p class="help-final">
+
+        Lệnh đã gửi là căn cứ để xử lý đặt hàng.
+
+        <br>
+
+        <strong>
+            Chọn đúng cơ sở → nhập đúng số lượng → gửi lệnh.
+        </strong>
+
     </p>
 
 </div>
-</div> <!-- ========================= MAIN ========================= --> <main class="container">
-<!-- =========================
-     HEADER
-========================== -->
-
-<header class="header">
-
-    <div class="logo">
-
-        <img
-            src="./tascuslogofinal-png-07.png"
-            alt="Tascus Food"
-        >
-
-    </div>
-
-    <h1>
-        Đặt bánh, rau
-    </h1>
-
-    <p>
-        Tạo lệnh đặt hàng hàng ngày cho các cơ sở<br>
-        Tascus Food Khương Trung và Thái Thịnh.
-    </p>
-
-</header>
-
-
-<!-- =========================
-     FORM
-========================== -->
-
-<section class="form-box">
-
-
-    <div class="form-title">
-        Tạo lệnh đặt bánh/rau hàng ngày tại các cơ sở Tascus Food
-    </div>
-
-
-    <!-- =========================
-         CHI NHÁNH
-    ========================== -->
-
-    <div class="field">
-
-        <label
-            class="field-label"
-            for="branch"
-        >
-            Chi nhánh <span class="required">*</span>
-        </label>
-
-        <select id="branch">
-
-            <option value="">
-                Vui lòng chọn
-            </option>
-
-            <option value="Thái Thịnh">
-                Thái Thịnh
-            </option>
-
-            <option value="Khương Trung">
-                Khương Trung
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <!-- =========================
-         MẶT HÀNG
-    ========================== -->
-
-    <div class="field">
-
-        <label
-            class="field-label"
-            for="orderType"
-        >
-            Mặt hàng cần đặt <span class="required">*</span>
-        </label>
-
-        <select id="orderType">
-
-            <option value="">
-                Vui lòng chọn
-            </option>
-
-            <option value="bread">
-                Đặt bánh
-            </option>
-
-            <option value="vegetable">
-                Đặt rau
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <!-- =========================
-         ĐẶT BÁNH
-    ========================== -->
-
-    <section
-        class="order-section"
-        id="breadSection"
-    >
-
-        <div class="section-title">
-
-            <span>
-                Đặt bánh
-            </span>
-
-        </div>
-
-
-        <div class="quantity-list">
-
-
-            <div class="quantity-row">
-
-                <div class="quantity-name">
-                    Burger
-                </div>
-
-                <input
-                    class="quantity-input"
-                    id="burger"
-                    type="number"
-                    min="0"
-                    step="1"
-                    inputmode="numeric"
-                    placeholder="Số"
-                >
-
-            </div>
-
-
-            <div class="quantity-row">
-
-                <div class="quantity-name">
-                    Sandwich
-                </div>
-
-                <input
-                    class="quantity-input"
-                    id="sandwich"
-                    type="number"
-                    min="0"
-                    step="1"
-                    inputmode="numeric"
-                    placeholder="Số"
-                >
-
-            </div>
-
-
-            <div class="quantity-row">
-
-                <div class="quantity-name">
-                    Bánh mỳ dài
-                </div>
-
-                <input
-                    class="quantity-input"
-                    id="longBread"
-                    type="number"
-                    min="0"
-                    step="1"
-                    inputmode="numeric"
-                    placeholder="Số"
-                >
-
-            </div>
-
-
-        </div>
-
-
-        <div class="person-field field">
-
-            <label
-                class="field-label"
-                for="breadPerson"
-            >
-                Tên người đặt <span class="required">*</span>
-            </label>
-
-            <input
-                id="breadPerson"
-                type="text"
-                placeholder="Nhập tên người đặt"
-                autocomplete="name"
-            >
-
-        </div>
-
-
-        <div class="submit-area">
-
-            <button
-                class="submit-button"
-                type="button"
-                onclick="submitBread()"
-            >
-                Gửi
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         ĐẶT RAU
-    ========================== -->
-
-    <section
-        class="order-section"
-        id="vegetableSection"
-    >
-
-        <div class="section-title">
-
-            <span>
-                Đặt rau
-            </span>
-
-        </div>
-
-
-        <div class="quantity-list">
-
-
-            <div class="quantity-row">
-
-                <div class="quantity-name">
-                    Cà chua
-                </div>
-
-                <input
-                    class="quantity-input"
-                    id="tomato"
-                    type="number"
-                    min="0"
-                    step="1"
-                    inputmode="numeric"
-                    placeholder="Số"
-                >
-
-            </div>
-
-
-            <div class="quantity-row">
-
-                <div class="quantity-name">
-                    Quất (Tắc)
-                </div>
-
-                <input
-                    class="quantity-input"
-                    id="kumquat"
-                    type="number"
-                    min="0"
-                    step="1"
-                    inputmode="numeric"
-                    placeholder="Số"
-                >
-
-            </div>
-
-
-            <div class="quantity-row">
-
-                <div class="quantity-name">
-                    Xà lách
-                </div>
-
-                <input
-                    class="quantity-input"
-                    id="lettuce"
-                    type="number"
-                    min="0"
-                    step="1"
-                    inputmode="numeric"
-                    placeholder="Số"
-                >
-
-            </div>
-
-
-            <div class="quantity-row">
-
-                <div class="quantity-name">
-                    Dưa chuột
-                </div>
-
-                <input
-                    class="quantity-input"
-                    id="cucumber"
-                    type="number"
-                    min="0"
-                    step="1"
-                    inputmode="numeric"
-                    placeholder="Số"
-                >
-
-            </div>
-
-
-            <div class="quantity-row">
-
-                <div class="quantity-name">
-                    Chanh
-                </div>
-
-                <input
-                    class="quantity-input"
-                    id="lemon"
-                    type="number"
-                    min="0"
-                    step="1"
-                    inputmode="numeric"
-                    placeholder="Số"
-                >
-
-            </div>
-
-
-            <div class="quantity-row">
-
-                <div class="quantity-name">
-                    Hành tây
-                </div>
-
-                <input
-                    class="quantity-input"
-                    id="onion"
-                    type="number"
-                    min="0"
-                    step="1"
-                    inputmode="numeric"
-                    placeholder="Số"
-                >
-
-            </div>
-
-
-            <div class="quantity-row">
-
-                <div class="quantity-name">
-                    Rau mùi
-                </div>
-
-                <input
-                    class="quantity-input"
-                    id="coriander"
-                    type="number"
-                    min="0"
-                    step="1"
-                    inputmode="numeric"
-                    placeholder="Số"
-                >
-
-            </div>
-
-
-        </div>
-
-
-        <div class="person-field field">
-
-            <label
-                class="field-label"
-                for="vegetablePerson"
-            >
-                Tên người đặt <span class="required">*</span>
-            </label>
-
-            <input
-                id="vegetablePerson"
-                type="text"
-                placeholder="Nhập tên người đặt"
-                autocomplete="name"
-            >
-
-        </div>
-
-
-        <div class="submit-area">
-
-            <button
-                class="submit-button"
-                type="button"
-                onclick="submitVegetable()"
-            >
-                Gửi
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         SUCCESS
-    ========================== -->
-
-    <div
-        class="success-box"
-        id="successBox"
-    >
-        Lệnh đặt đã được ghi nhận.
-    </div>
-
-
-</section>
-
-
-<footer class="footer">
-    Tascus Food · Cổng vận hành
-</footer>
-</main> <script> /* ===================================================== MẶT HÀNG CẦN ĐẶT ===================================================== */ const orderType = document.getElementById("orderType"); const breadSection = document.getElementById("breadSection"); const vegetableSection = document.getElementById("vegetableSection"); orderType.addEventListener( "change", function () { breadSection.classList.remove("show"); vegetableSection.classList.remove("show"); if (this.value === "bread") { breadSection.classList.add("show"); } if (this.value === "vegetable") { vegetableSection.classList.add("show"); } document .getElementById("successBox") .classList.remove("show"); } ); /* ===================================================== KIỂM TRA CHI NHÁNH ===================================================== */ function getBranch() { const branch = document.getElementById("branch"); if (!branch.value) { alert("Vui lòng chọn chi nhánh."); branch.focus(); return null; } return branch.value; } /* ===================================================== GỬI ĐẶT BÁNH ===================================================== */ function submitBread() { const branch = getBranch(); if (!branch) { return; } const burger = document.getElementById("burger").value; const sandwich = document.getElementById("sandwich").value; const longBread = document.getElementById("longBread").value; const person = document .getElementById("breadPerson") .value .trim(); if ( burger === "" && sandwich === "" && longBread === "" ) { alert( "Vui lòng nhập ít nhất một số lượng bánh." ); return; } if (!person) { alert( "Vui lòng nhập tên người đặt." ); document .getElementById("breadPerson") .focus(); return; } const data = { chiNhanh: branch, loaiDat: "Đặt bánh", burger: Number(burger || 0), sandwich: Number(sandwich || 0), banhMyDai: Number(longBread || 0), tenNguoiDat: person }; console.log( "DỮ LIỆU ĐẶT BÁNH:", data ); showSuccess(); } /* ===================================================== GỬI ĐẶT RAU ===================================================== */ function submitVegetable() { const branch = getBranch(); if (!branch) { return; } const tomato = document.getElementById("tomato").value; const kumquat = document.getElementById("kumquat").value; const lettuce = document.getElementById("lettuce").value; const cucumber = document.getElementById("cucumber").value; const lemon = document.getElementById("lemon").value; const onion = document.getElementById("onion").value; const coriander = document.getElementById("coriander").value; const person = document .getElementById("vegetablePerson") .value .trim(); if ( tomato === "" && kumquat === "" && lettuce === "" && cucumber === "" && lemon === "" && onion === "" && coriander === "" ) { alert( "Vui lòng nhập ít nhất một số lượng rau." ); return; } if (!person) { alert( "Vui lòng nhập tên người đặt." ); document .getElementById("vegetablePerson") .focus(); return; } const data = { chiNhanh: branch, loaiDat: "Đặt rau", caChua: Number(tomato || 0), quatTac: Number(kumquat || 0), xaLach: Number(lettuce || 0), duaChuot: Number(cucumber || 0), chanh: Number(lemon || 0), hanhTay: Number(onion || 0), rauMui: Number(coriander || 0), tenNguoiDat: person }; console.log( "DỮ LIỆU ĐẶT RAU:", data ); showSuccess(); } /* ===================================================== THÔNG BÁO THÀNH CÔNG ===================================================== */ function showSuccess() { const successBox = document.getElementById("successBox"); successBox.classList.add("show"); successBox.scrollIntoView({ behavior: "smooth", block: "nearest" }); } /* ===================================================== INFO POPUP ===================================================== */ function openInfo() { document .getElementById("infoOverlay") .classList.add("show"); } function closeInfo(event) { const overlay = document.getElementById("infoOverlay"); if ( !event || event.target === overlay ) { overlay.classList.remove("show"); } } /* ===================================================== ESC ĐÓNG POPUP ===================================================== */ document.addEventListener( "keydown", function(event) { if (event.key === "Escape") { document .getElementById("infoOverlay") .classList.remove("show"); } } ); /* ===================================================== LOADING KHI CHUYỂN TRANG ===================================================== */ document.addEventListener( "DOMContentLoaded", function() { const loadingOverlay = document.getElementById( "loadingOverlay" ); document .querySelectorAll("a[href]") .forEach(function(link) { link.addEventListener( "click", function() { const href = link.getAttribute("href"); if ( !href || href === "#" || href.startsWith("javascript:") || link.target === "_blank" || link.hasAttribute("download") ) { return; } loadingOverlay.style.display = "flex"; } ); }); } ); </script> </body> </html>
+</div> </div> <!-- ===================================================== SUCCESS MODAL ===================================================== --> <div class="modal" id="successModal" > <div class="success-box">
+<div class="success-icon">
+    ✓
+</div>
+
+<div class="success-title">
+    Đã gửi lệnh
+</div>
+
+<div
+    class="success-text"
+    id="successText"
+>
+    Lệnh đặt hàng đã được ghi nhận.
+</div>
+
+<button
+    class="form-button primary"
+    onclick="closeSuccess()"
+>
+    Đóng
+</button>
+</div> </div> <!-- ===================================================== LOADING ===================================================== --> <div class="loading-overlay" id="loadingOverlay" > <div class="loading-box">
+<div class="spinner"></div>
+
+<div class="loading-title">
+    Đang gửi lệnh...
+</div>
+
+<div class="loading-description">
+    Vui lòng chờ một chút.
+</div>
+</div> </div> <script> /* ===================================================== TASCUS FOOD · ĐẶT BÁNH / RAU HUSTON API ===================================================== */ const API_URL = "https://script.google.com/macros/s/AKfycbwd6hrdfUGmSGxwyZJDGpF8FoXve3AJ5q7oy1aZaU74pY1WjEbVb2gTXrqjVjQmeAvnXQ/exec"; /* ===================================================== API REQUEST ===================================================== */ async function apiRequest(payload) { const response = await fetch( API_URL, { method: "POST", redirect: "follow", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) } ); if (!response.ok) { throw new Error( "API HTTP " + response.status ); } const text = await response.text(); let result; try { result = JSON.parse(text); } catch (error) { console.error( "API RAW RESPONSE:", text ); throw new Error( "API trả về dữ liệu không hợp lệ." ); } console.log( "Huston API response:", result ); if (!result.success) { throw new Error( result.error || "API xử lý thất bại." ); } return result; } /* ===================================================== QUAY LẠI ===================================================== */ function goBack() { if ( window.history.length > 1 ) { window.history.back(); } else { window.location.href = "../index.html"; } } /* ===================================================== HELP ===================================================== */ function openHelp() { document .getElementById("helpModal") .classList.add("active"); lockBody(); } function closeHelp() { document .getElementById("helpModal") .classList.remove("active"); unlockBody(); } /* ===================================================== SUCCESS ===================================================== */ function openSuccess(message) { document.getElementById( "successText" ).textContent = message || "Lệnh đặt hàng đã được ghi nhận."; document .getElementById("successModal") .classList.add("active"); lockBody(); } function closeSuccess() { document .getElementById("successModal") .classList.remove("active"); unlockBody(); } /* ===================================================== BODY LOCK ===================================================== */ function lockBody() { document.body.style.overflow = "hidden"; } function unlockBody() { const anyOpen = document.querySelector( ".modal.active" ); const loading = document .getElementById( "loadingOverlay" ); if ( !anyOpen && !loading.classList.contains("active") ) { document.body.style.overflow = ""; } } /* ===================================================== LOADING ===================================================== */ function showLoading() { document .getElementById( "loadingOverlay" ) .classList.add( "active" ); lockBody(); } function hideLoading() { document .getElementById( "loadingOverlay" ) .classList.remove( "active" ); unlockBody(); } /* ===================================================== CHANGE ORDER TYPE ===================================================== */ function changeOrderType() { const type = document .getElementById( "orderType" ) .value; const breadSection = document.getElementById( "breadSection" ); const vegetableSection = document.getElementById( "vegetableSection" ); breadSection.classList.remove( "active" ); vegetableSection.classList.remove( "active" ); if ( type === "banh" ) { breadSection.classList.add( "active" ); } if ( type === "rau" ) { vegetableSection.classList.add( "active" ); } } /* ===================================================== NUMBER ===================================================== */ function getNumber(id) { const element = document.getElementById(id); if (!element) { return 0; } const value = Number( element.value ); if ( !Number.isFinite(value) || value < 0 ) { return 0; } return Math.floor(value); } /* ===================================================== CHECK QUANTITY ===================================================== */ function hasAnyQuantity(items) { return Object.values(items) .some( function(value) { return Number(value) > 0; } ); } /* ===================================================== SUBMIT ===================================================== */ async function submitOrder() { const branch = document .getElementById("branch") .value .trim(); const orderType = document .getElementById("orderType") .value .trim(); if (!branch) { alert( "Vui lòng chọn chi nhánh." ); return; } if (!orderType) { alert( "Vui lòng chọn mặt hàng cần đặt." ); return; } let reporter = ""; let items = {}; if ( orderType === "banh" ) { reporter = document .getElementById( "breadReporter" ) .value .trim(); items = { Burger: getNumber("burger"), Sandwich: getNumber("sandwich"), "Bánh mỳ dài": getNumber("longBread") }; } if ( orderType === "rau" ) { reporter = document .getElementById( "vegetableReporter" ) .value .trim(); items = { "Cà chua": getNumber("tomato"), "Quất (Tắc)": getNumber("kumquat"), "Xà lách": getNumber("lettuce"), "Dưa chuột": getNumber("cucumber"), "Chanh": getNumber("lemon"), "Hành tây": getNumber("onion"), "Rau mùi": getNumber("coriander") }; } if (!hasAnyQuantity(items)) { alert( "Vui lòng nhập ít nhất một mặt hàng cần đặt." ); return; } if (!reporter) { alert( "Vui lòng nhập tên người đặt." ); return; } const orderName = orderType === "banh" ? "Đặt bánh" : "Đặt rau"; const payload = { action: "create_order", chi_nhanh: branch, loai_dat: orderName, thoi_gian: getCurrentDateTime(), nguoi_dat: reporter, hang_hoa: items }; try { showLoading(); const result = await apiRequest( payload ); console.log( "CREATE ORDER SUCCESS:", result ); hideLoading(); resetForm(); openSuccess( "Lệnh " + orderName.toLowerCase() + " cho cơ sở " + branch + " đã được ghi nhận." ); } catch (error) { console.error( "Lỗi tạo lệnh:", error ); hideLoading(); alert( "Không thể gửi lệnh.\n\n" + error.message ); } } /* ===================================================== RESET ===================================================== */ function resetForm() { document.getElementById( "branch" ).value = ""; document.getElementById( "orderType" ).value = ""; document.getElementById( "breadSection" ).classList.remove( "active" ); document.getElementById( "vegetableSection" ).classList.remove( "active" ); const inputs = document.querySelectorAll( ".quantity-input" ); inputs.forEach( function(input) { input.value = ""; } ); document.getElementById( "breadReporter" ).value = ""; document.getElementById( "vegetableReporter" ).value = ""; } /* ===================================================== CURRENT DATETIME ===================================================== */ function getCurrentDateTime() { const now = new Date(); const year = now.getFullYear(); const month = String( now.getMonth() + 1 ).padStart( 2, "0" ); const day = String( now.getDate() ).padStart( 2, "0" ); const hour = String( now.getHours() ).padStart( 2, "0" ); const minute = String( now.getMinutes() ).padStart( 2, "0" ); return ( year + "/" + month + "/" + day + " " + hour + ":" + minute ); } /* ===================================================== CLICK OUTSIDE ===================================================== */ document .querySelectorAll( ".modal" ) .forEach( function(modal) { modal.addEventListener( "click", function(event) { if ( event.target !== modal ) { return; } if ( modal.id === "helpModal" ) { closeHelp(); } if ( modal.id === "successModal" ) { closeSuccess(); } } ); } ); /* ===================================================== ESC ===================================================== */ document.addEventListener( "keydown", function(event) { if ( event.key !== "Escape" ) { return; } closeHelp(); closeSuccess(); } ); </script> </body> </html>
