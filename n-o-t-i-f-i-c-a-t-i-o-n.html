@@ -52,6 +52,7 @@ body {
     margin: 0 auto;
 }
 
+
 /* =========================
    HEADER
 ========================= */
@@ -108,6 +109,7 @@ body {
     color: #777a7e;
 }
 
+
 /* =========================
    CARD
 ========================= */
@@ -123,8 +125,9 @@ body {
     margin-bottom: 14px;
 }
 
+
 /* =========================
-   SECTION
+   SECTION LABEL
 ========================= */
 
 .section-label {
@@ -139,6 +142,7 @@ body {
     margin-bottom: 8px;
 }
 
+
 /* =========================
    TEMPLATE LIST
 ========================= */
@@ -146,7 +150,6 @@ body {
 .template-list {
     display: flex;
     flex-direction: column;
-
     gap: 8px;
 }
 
@@ -227,6 +230,7 @@ body {
     color: #c8c9ca;
 }
 
+
 /* =========================
    EDITOR HEADER
 ========================= */
@@ -238,7 +242,7 @@ body {
 
     gap: 10px;
 
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .editor-title {
@@ -265,6 +269,7 @@ body {
 .reset-button:hover {
     color: #17181a;
 }
+
 
 /* =========================
    TOOLBAR
@@ -296,23 +301,28 @@ body {
     font-weight: 600;
 
     cursor: pointer;
+
+    transition: .12s ease;
 }
 
 .tool-button:hover {
-    background: #f5f5f5;
+    background: #f4f4f4;
 }
 
 .tool-button:active {
     transform: scale(.97);
 }
 
+
 /* =========================
    TEXTAREA
 ========================= */
 
 textarea {
+    display: block;
+
     width: 100%;
-    min-height: 390px;
+    min-height: 430px;
 
     resize: vertical;
 
@@ -348,6 +358,7 @@ textarea:focus {
 
     border-color: #999b9e;
 }
+
 
 /* =========================
    VARIABLES
@@ -410,6 +421,7 @@ textarea:focus {
     transform: scale(.96);
 }
 
+
 /* =========================
    PREVIEW
 ========================= */
@@ -450,14 +462,13 @@ textarea:focus {
     color: #17181a;
 
     word-break: break-word;
-}
 
-.preview-content hr {
-    border: 0;
-
-    border-top: 1px solid #cfd0d2;
-
-    margin: 9px 0;
+    /*
+       Quan trọng:
+       giữ nguyên xuống dòng
+       và khoảng trắng từ textarea
+    */
+    white-space: pre-wrap;
 }
 
 .preview-content b,
@@ -469,6 +480,17 @@ textarea:focus {
 .preview-content em {
     font-style: italic;
 }
+
+.preview-content hr {
+    border: 0;
+
+    border-top: 1px solid #cfd0d2;
+
+    margin: 10px 0;
+
+    height: 0;
+}
+
 
 /* =========================
    SAVE
@@ -514,6 +536,7 @@ textarea:focus {
     min-height: 16px;
 }
 
+
 /* =========================
    HELP MODAL
 ========================= */
@@ -526,6 +549,7 @@ textarea:focus {
     background: rgba(0,0,0,.38);
 
     display: none;
+
     align-items: center;
     justify-content: center;
 
@@ -585,6 +609,7 @@ textarea:focus {
     cursor: pointer;
 }
 
+
 /* =========================
    MOBILE
 ========================= */
@@ -604,7 +629,7 @@ textarea:focus {
     }
 
     textarea {
-        min-height: 360px;
+        min-height: 380px;
     }
 
     .editor-header {
@@ -621,6 +646,7 @@ textarea:focus {
 <body>
 
 <div class="container">
+
 
     <!-- HEADER -->
 
@@ -696,29 +722,25 @@ textarea:focus {
         <div class="toolbar">
 
             <button
+                type="button"
                 class="tool-button"
-                onclick="insertTag('<b></b>')"
+                onclick="insertBold()"
             >
-                B Đậm
+                <b>B</b> Đậm
             </button>
 
             <button
+                type="button"
                 class="tool-button"
-                onclick="insertTag('<i></i>')"
+                onclick="insertItalic()"
             >
-                I Nghiêng
+                <i>I</i> Nghiêng
             </button>
 
             <button
+                type="button"
                 class="tool-button"
-                onclick="insertTag('<br>')"
-            >
-                ↵ Xuống dòng
-            </button>
-
-            <button
-                class="tool-button"
-                onclick="insertTag('<hr>')"
+                onclick="insertHorizontalRule()"
             >
                 ─ Đường kẻ
             </button>
@@ -774,6 +796,7 @@ textarea:focus {
     <!-- SAVE -->
 
     <button
+        type="button"
         class="save-button"
         onclick="saveCurrentTemplate()"
     >
@@ -788,7 +811,7 @@ textarea:focus {
 </div>
 
 
-<!-- HELP MODAL -->
+<!-- HELP -->
 
 <div
     class="modal-overlay"
@@ -810,30 +833,25 @@ textarea:focus {
             Chọn loại thông báo ở phía trên,
             sau đó sửa nội dung trong ô
             <strong>Nội dung mẫu</strong>.
-            
+
             <br><br>
 
-            Những phần như
+            Các phần có dạng
             <strong>{{chi_nhanh}}</strong>
-            hoặc
-            <strong>{{tong_doanh_thu}}</strong>
             là dữ liệu được hệ thống tự động
-            điền vào khi tạo thông báo.
-            
+            điền vào.
+
             <br><br>
 
-            Có thể sử dụng các nút định dạng
-            phía trên ô nhập để tạo chữ
-            <strong>in đậm</strong>,
-            <i>in nghiêng</i>,
-            xuống dòng hoặc đường kẻ.
+            Có thể chọn một đoạn văn bản rồi
+            bấm <strong>B Đậm</strong> hoặc
+            <i>I Nghiêng</i> để định dạng.
 
             <br><br>
 
             Phần <strong>Xem trước</strong>
-            hiển thị cách mẫu thông báo sẽ
-            trông như thế nào sau khi dữ liệu
-            được thay vào.
+            giữ nguyên xuống dòng và bố cục
+            giống nội dung anh đang soạn.
 
             <br><br>
 
@@ -843,6 +861,7 @@ textarea:focus {
         </p>
 
         <button
+            type="button"
             class="modal-close"
             onclick="closeHelp()"
         >
@@ -856,11 +875,17 @@ textarea:focus {
 
 <script>
 
+
 /* =====================================================
    MẪU MẶC ĐỊNH
 ===================================================== */
 
 const DEFAULT_TEMPLATES = {
+
+
+    /* =========================
+       ĐẶT BÁNH
+    ========================= */
 
     order_bread: {
 
@@ -872,12 +897,14 @@ const DEFAULT_TEMPLATES = {
             "Thông báo khi tạo đơn đặt bánh",
 
         variables: [
+
             "{{chi_nhanh}}",
             "{{thoi_gian}}",
             "{{burger}}",
             "{{sandwich}}",
             "{{banh_my_dai}}",
             "{{nguoi_dat}}"
+
         ],
 
         content:
@@ -895,8 +922,13 @@ const DEFAULT_TEMPLATES = {
 <hr>
 
 🙋 Người đặt: <b>{{nguoi_dat}}</b>`
+
     },
 
+
+    /* =========================
+       XÁC NHẬN BÁNH
+    ========================= */
 
     confirm_bread: {
 
@@ -908,14 +940,19 @@ const DEFAULT_TEMPLATES = {
             "Thông báo khi xác nhận số lượng bánh",
 
         variables: [
+
             "{{thoi_gian}}",
             "{{chi_nhanh}}",
+
             "{{burger_thuc_te}}",
             "{{burger_dat}}",
+
             "{{sandwich_thuc_te}}",
             "{{sandwich_dat}}",
+
             "{{banh_my_dai_thuc_te}}",
             "{{banh_my_dai_dat}}"
+
         ],
 
         content:
@@ -933,8 +970,13 @@ Chi nhánh: <b>{{chi_nhanh}}</b>
 <hr>
 
 Số liệu đã được cập nhật vào cơ sở dữ liệu`
+
     },
 
+
+    /* =========================
+       ĐẶT RAU
+    ========================= */
 
     order_vegetables: {
 
@@ -946,8 +988,10 @@ Số liệu đã được cập nhật vào cơ sở dữ liệu`
             "Thông báo đơn đặt rau củ quả",
 
         variables: [
+
             "{{chi_nhanh}}",
             "{{ngay_dat}}",
+
             "{{ca_chua}}",
             "{{quat}}",
             "{{xa_lach}}",
@@ -955,6 +999,7 @@ Số liệu đã được cập nhật vào cơ sở dữ liệu`
             "{{dua_chuot}}",
             "{{chanh_xanh}}",
             "{{rau_mui}}"
+
         ],
 
         content:
@@ -982,8 +1027,13 @@ Rau mùi (ngò): <b>{{rau_mui}}</b>
 - Vui lòng điền tích kê chi tiết giá tiền, số lượng cho mỗi loại rau.
 - Phía cung cấp vui lòng xác nhận đơn đặt hàng này bằng cách phản hồi lại như thả tim hoặc tin nhắn văn bản.
 - Vui lòng giao hàng sớm nhất có thể.`
+
     },
 
+
+    /* =========================
+       DOANH THU TỐI
+    ========================= */
 
     revenue_evening: {
 
@@ -995,18 +1045,24 @@ Rau mùi (ngò): <b>{{rau_mui}}</b>
             "Thông báo doanh thu ca tối",
 
         variables: [
+
             "{{chi_nhanh}}",
             "{{ngay}}",
+
             "{{tien_mat}}",
             "{{chi}}",
             "{{doanh_thu_tien_mat}}",
+
             "{{grab}}",
             "{{shopeefood}}",
             "{{be}}",
             "{{xanh_sm}}",
+
             "{{tong_doanh_thu}}",
+
             "{{ghi_chu}}",
             "{{nguoi_bao_cao}}"
+
         ],
 
         content:
@@ -1040,8 +1096,13 @@ Ghi chú: (Mua bán, phát sinh vấn đề)
 <hr>
 
 👤 Người báo cáo: <b>{{nguoi_bao_cao}}</b>`
+
     },
 
+
+    /* =========================
+       DOANH THU SÁNG
+    ========================= */
 
     revenue_morning: {
 
@@ -1053,14 +1114,19 @@ Ghi chú: (Mua bán, phát sinh vấn đề)
             "Thông báo doanh thu ca sáng",
 
         variables: [
+
             "{{chi_nhanh}}",
             "{{ngay}}",
+
             "{{tien_mat}}",
             "{{chi}}",
             "{{doanh_thu_tien_mat}}",
+
             "{{tong_doanh_thu}}",
+
             "{{ghi_chu}}",
             "{{nguoi_bao_cao}}"
+
         ],
 
         content:
@@ -1087,6 +1153,7 @@ Ghi chú: (Mua bán, phát sinh vấn đề)
 <hr>
 
 👤 Người báo cáo: <b>{{nguoi_bao_cao}}</b>`
+
     }
 
 };
@@ -1098,11 +1165,12 @@ Ghi chú: (Mua bán, phát sinh vấn đề)
 
 let templates = {};
 
-let currentTemplate = "order_bread";
+let currentTemplate =
+    "revenue_morning";
 
 
 /* =====================================================
-   LOAD
+   LOAD LOCAL
 ===================================================== */
 
 function loadTemplates() {
@@ -1112,17 +1180,23 @@ function loadTemplates() {
             "tascus_notification_templates"
         );
 
+
     const defaults =
         JSON.parse(
-            JSON.stringify(DEFAULT_TEMPLATES)
+            JSON.stringify(
+                DEFAULT_TEMPLATES
+            )
         );
+
 
     if (!saved) {
 
         templates = defaults;
 
         return;
+
     }
+
 
     try {
 
@@ -1130,18 +1204,22 @@ function loadTemplates() {
             JSON.parse(saved);
 
         templates = {
+
             ...defaults,
+
             ...parsed
+
         };
 
     } catch (error) {
 
         console.error(
-            "Không thể đọc mẫu đã lưu:",
+            "Không thể đọc mẫu:",
             error
         );
 
         templates = defaults;
+
     }
 
 }
@@ -1154,15 +1232,20 @@ function loadTemplates() {
 function saveTemplates() {
 
     localStorage.setItem(
+
         "tascus_notification_templates",
-        JSON.stringify(templates)
+
+        JSON.stringify(
+            templates
+        )
+
     );
 
 }
 
 
 /* =====================================================
-   RENDER DANH SÁCH
+   RENDER TEMPLATE LIST
 ===================================================== */
 
 function renderTemplateList() {
@@ -1172,17 +1255,26 @@ function renderTemplateList() {
             "templateList"
         );
 
+
     container.innerHTML = "";
 
-    Object.keys(templates).forEach(key => {
+
+    Object.keys(
+        templates
+    ).forEach(key => {
 
         const template =
             templates[key];
 
+
         const button =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
+
 
         button.type = "button";
+
 
         button.className =
             "template-button" +
@@ -1192,6 +1284,7 @@ function renderTemplateList() {
                     : ""
             );
 
+
         button.onclick = () => {
 
             selectTemplate(key);
@@ -1200,22 +1293,31 @@ function renderTemplateList() {
 
 
         const icon =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         icon.className =
             "template-icon";
+
 
         icon.textContent =
             template.icon;
 
 
         const info =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         info.className =
             "template-info";
 
+
         info.innerHTML = `
+
             <div class="template-name">
                 ${escapeHtml(template.name)}
             </div>
@@ -1223,6 +1325,7 @@ function renderTemplateList() {
             <div class="template-description">
                 ${escapeHtml(template.description)}
             </div>
+
         `;
 
 
@@ -1238,25 +1341,30 @@ function renderTemplateList() {
 
 
 /* =====================================================
-   CHỌN TEMPLATE
+   SELECT
 ===================================================== */
 
 function selectTemplate(key) {
 
     currentTemplate = key;
 
+
     const template =
         templates[key];
 
+
     document.getElementById(
         "editor"
-    ).value = template.content;
+    ).value =
+        template.content;
+
 
     renderTemplateList();
 
     renderVariables();
 
     updatePreview();
+
 
     document.getElementById(
         "saveStatus"
@@ -1266,7 +1374,7 @@ function selectTemplate(key) {
 
 
 /* =====================================================
-   RENDER BIẾN
+   VARIABLES
 ===================================================== */
 
 function renderVariables() {
@@ -1276,32 +1384,50 @@ function renderVariables() {
             "variableList"
         );
 
+
     container.innerHTML = "";
 
+
     const variables =
-        templates[currentTemplate]
-            .variables || [];
+        templates[
+            currentTemplate
+        ].variables || [];
+
 
     variables.forEach(variable => {
 
         const button =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
+
 
         button.type = "button";
 
         button.className =
             "variable";
 
+
         button.textContent =
             variable;
 
+
+        button.title =
+            "Bấm để chèn";
+
+
         button.onclick = () => {
 
-            insertText(variable);
+            insertText(
+                variable
+            );
 
         };
 
-        container.appendChild(button);
+
+        container.appendChild(
+            button
+        );
 
     });
 
@@ -1309,7 +1435,7 @@ function renderVariables() {
 
 
 /* =====================================================
-   CHÈN TEXT TẠI VỊ TRÍ CON TRỎ
+   INSERT TEXT
 ===================================================== */
 
 function insertText(text) {
@@ -1319,30 +1445,51 @@ function insertText(text) {
             "editor"
         );
 
+
     const start =
         editor.selectionStart;
+
 
     const end =
         editor.selectionEnd;
 
+
     const current =
         editor.value;
 
+
     editor.value =
-        current.substring(0, start) +
-        text +
-        current.substring(end);
+
+        current.substring(
+            0,
+            start
+        )
+
+        +
+
+        text
+
+        +
+
+        current.substring(
+            end
+        );
+
 
     editor.focus();
 
-    const newPosition =
+
+    const position =
         start + text.length;
 
+
     editor.selectionStart =
-        newPosition;
+        position;
+
 
     editor.selectionEnd =
-        newPosition;
+        position;
+
 
     updatePreview();
 
@@ -1350,21 +1497,24 @@ function insertText(text) {
 
 
 /* =====================================================
-   TOOLBAR
+   BOLD
 ===================================================== */
 
-function insertTag(tag) {
+function insertBold() {
 
     const editor =
         document.getElementById(
             "editor"
         );
 
+
     const start =
         editor.selectionStart;
 
+
     const end =
         editor.selectionEnd;
+
 
     const selected =
         editor.value.substring(
@@ -1373,29 +1523,70 @@ function insertTag(tag) {
         );
 
 
-    let output = tag;
+    const text =
+        selected ||
+        "nội dung";
 
 
-    if (tag === "<b></b>") {
+    insertText(
+        "<b>" +
+        text +
+        "</b>"
+    );
 
-        output =
-            "<b>" +
-            (selected || "nội dung") +
-            "</b>";
-
-    }
-
-    if (tag === "<i></i>") {
-
-        output =
-            "<i>" +
-            (selected || "nội dung") +
-            "</i>";
-
-    }
+}
 
 
-    insertText(output);
+/* =====================================================
+   ITALIC
+===================================================== */
+
+function insertItalic() {
+
+    const editor =
+        document.getElementById(
+            "editor"
+        );
+
+
+    const start =
+        editor.selectionStart;
+
+
+    const end =
+        editor.selectionEnd;
+
+
+    const selected =
+        editor.value.substring(
+            start,
+            end
+        );
+
+
+    const text =
+        selected ||
+        "nội dung";
+
+
+    insertText(
+        "<i>" +
+        text +
+        "</i>"
+    );
+
+}
+
+
+/* =====================================================
+   HORIZONTAL RULE
+===================================================== */
+
+function insertHorizontalRule() {
+
+    insertText(
+        "\n<hr>\n"
+    );
 
 }
 
@@ -1411,114 +1602,151 @@ function updatePreview() {
             "editor"
         ).value;
 
+
     const replaced =
-        replacePreviewVariables(value);
+        replacePreviewVariables(
+            value
+        );
+
 
     document.getElementById(
         "preview"
     ).innerHTML =
-        sanitizeTemplateHTML(replaced);
+        sanitizeTemplateHTML(
+            replaced
+        );
 
 }
 
 
 /* =====================================================
-   THAY BIẾN BẰNG DỮ LIỆU MẪU
+   PREVIEW DATA
 ===================================================== */
 
 function replacePreviewVariables(text) {
 
     const sample = {
 
+
         "{{chi_nhanh}}":
             "122 Thái Thịnh",
+
 
         "{{thoi_gian}}":
             "Sáng ngày 05/09",
 
+
         "{{ngay}}":
             "04/09/2026",
+
 
         "{{ngay_dat}}":
             "03/09",
 
+
         "{{burger}}":
             "20",
+
 
         "{{sandwich}}":
             "10",
 
+
         "{{banh_my_dai}}":
             "40",
+
 
         "{{burger_thuc_te}}":
             "35",
 
+
         "{{burger_dat}}":
             "40",
+
 
         "{{sandwich_thuc_te}}":
             "4",
 
+
         "{{sandwich_dat}}":
             "4",
+
 
         "{{banh_my_dai_thuc_te}}":
             "25",
 
+
         "{{banh_my_dai_dat}}":
             "20",
+
 
         "{{nguoi_dat}}":
             "Hưng",
 
+
         "{{nguoi_bao_cao}}":
             "Lợi",
+
 
         "{{ca_chua}}":
             "2",
 
+
         "{{quat}}":
             "0",
+
 
         "{{xa_lach}}":
             "2",
 
+
         "{{hanh_tay}}":
             "0",
+
 
         "{{dua_chuot}}":
             "0",
 
+
         "{{chanh_xanh}}":
             "0",
+
 
         "{{rau_mui}}":
             "0.5",
 
+
         "{{tien_mat}}":
             "178",
+
 
         "{{chi}}":
             "32",
 
+
         "{{doanh_thu_tien_mat}}":
             "210",
+
 
         "{{grab}}":
             "752",
 
+
         "{{shopeefood}}":
             "541",
+
 
         "{{be}}":
             "0",
 
+
         "{{xanh_sm}}":
             "0",
 
+
         "{{tong_doanh_thu}}":
             "1503",
+
 
         "{{ghi_chu}}":
             "32 đá"
@@ -1528,7 +1756,10 @@ function replacePreviewVariables(text) {
 
     let result = text;
 
-    Object.keys(sample).forEach(key => {
+
+    Object.keys(
+        sample
+    ).forEach(key => {
 
         result =
             result.replaceAll(
@@ -1538,24 +1769,27 @@ function replacePreviewVariables(text) {
 
     });
 
+
     return result;
 
 }
 
 
 /* =====================================================
-   SANITIZE HTML CHO PREVIEW
+   SANITIZE TEMPLATE HTML
 ===================================================== */
 
 function sanitizeTemplateHTML(html) {
 
     const allowedTags = [
+
         "B",
         "STRONG",
         "I",
         "EM",
         "BR",
         "HR"
+
     ];
 
 
@@ -1564,13 +1798,17 @@ function sanitizeTemplateHTML(html) {
             "div"
         );
 
+
     temp.innerHTML = html;
 
 
     function clean(node) {
 
         const children =
-            Array.from(node.children);
+            Array.from(
+                node.children
+            );
+
 
         children.forEach(child => {
 
@@ -1585,9 +1823,14 @@ function sanitizeTemplateHTML(html) {
                         child.textContent
                     );
 
-                child.replaceWith(text);
+
+                child.replaceWith(
+                    text
+                );
+
 
             } else {
+
 
                 Array.from(
                     child.attributes
@@ -1599,6 +1842,7 @@ function sanitizeTemplateHTML(html) {
 
                 });
 
+
                 clean(child);
 
             }
@@ -1609,6 +1853,7 @@ function sanitizeTemplateHTML(html) {
 
 
     clean(temp);
+
 
     return temp.innerHTML;
 
@@ -1626,42 +1871,12 @@ function escapeHtml(text) {
             "div"
         );
 
-    div.textContent = text;
+
+    div.textContent =
+        text;
+
 
     return div.innerHTML;
-
-}
-
-
-/* =====================================================
-   SAVE CURRENT
-===================================================== */
-
-function saveCurrentTemplate() {
-
-    templates[currentTemplate].content =
-        document.getElementById(
-            "editor"
-        ).value;
-
-
-    saveTemplates();
-
-
-    const status =
-        document.getElementById(
-            "saveStatus"
-        );
-
-    status.textContent =
-        "Đã lưu thay đổi";
-
-
-    setTimeout(() => {
-
-        status.textContent = "";
-
-    }, 2500);
 
 }
 
@@ -1677,6 +1892,7 @@ function resetCurrentTemplate() {
             "Khôi phục mẫu này về nội dung mặc định?"
         );
 
+
     if (!confirmed) {
 
         return;
@@ -1689,7 +1905,9 @@ function resetCurrentTemplate() {
 
 
     templates[key].content =
-        DEFAULT_TEMPLATES[key].content;
+        DEFAULT_TEMPLATES[
+            key
+        ].content;
 
 
     document.getElementById(
@@ -1699,6 +1917,7 @@ function resetCurrentTemplate() {
 
 
     updatePreview();
+
 
     saveTemplates();
 
@@ -1712,14 +1931,55 @@ function resetCurrentTemplate() {
 
 
 /* =====================================================
+   SAVE
+===================================================== */
+
+function saveCurrentTemplate() {
+
+    templates[
+        currentTemplate
+    ].content =
+
+        document.getElementById(
+            "editor"
+        ).value;
+
+
+    saveTemplates();
+
+
+    const status =
+        document.getElementById(
+            "saveStatus"
+        );
+
+
+    status.textContent =
+        "Đã lưu thay đổi";
+
+
+    setTimeout(() => {
+
+        status.textContent = "";
+
+    }, 2500);
+
+}
+
+
+/* =====================================================
    HELP
 ===================================================== */
 
 function openHelp() {
 
     document
-        .getElementById("helpModal")
-        .classList.add("show");
+        .getElementById(
+            "helpModal"
+        )
+        .classList.add(
+            "show"
+        );
 
 }
 
@@ -1740,8 +2000,12 @@ function closeHelp(event) {
 
 
     document
-        .getElementById("helpModal")
-        .classList.remove("show");
+        .getElementById(
+            "helpModal"
+        )
+        .classList.remove(
+            "show"
+        );
 
 }
 
@@ -1776,7 +2040,9 @@ loadTemplates();
 
 renderTemplateList();
 
-selectTemplate(currentTemplate);
+selectTemplate(
+    currentTemplate
+);
 
 </script>
 
