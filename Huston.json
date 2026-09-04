@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-04T13:01:21.917Z",
+  "updated_at": "2026-09-04T13:03:56.739Z",
   "records": [
     {
       "id": "Z024",
@@ -173,7 +173,9 @@
       "noi_dung": "bình hết gas",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đang xử lý",
+      "phuong_an_xu_ly": "Đã gọi gas....\n450k\nBao giờ gas đến thì nhắn thì yêu cầu đưa số tài khoản Hưng thanh toán\nLắp gas xong ca tối đóng sự kiện",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
