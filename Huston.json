@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T01:23:11.925Z",
+  "updated_at": "2026-09-06T01:24:36.802Z",
   "records": [
     {
       "id": "Z024",
@@ -190,6 +190,16 @@
       "phuong_an_xu_ly": "\"Kho\" đang còn 3 sốt tiêu, 1 sốt chảo, 1 sốt bò bằm\nSáng mai 05/09 sẽ đem tới\nCập nhật: đã mang đủ số lượng",
       "nguoi_xu_ly": "Hưng",
       "thoi_gian_xu_ly": "2026/09/06 08:23"
+    },
+    {
+      "id": "Z040",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/06 08:24",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Vung nồi mất tích",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
