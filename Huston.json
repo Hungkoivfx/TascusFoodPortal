@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-04T15:32:47.191Z",
+  "updated_at": "2026-09-06T01:23:11.925Z",
   "records": [
     {
       "id": "Z024",
@@ -186,9 +186,10 @@
       "noi_dung": "Hết pate bò, sốt tiêu đen, sốt chảo, thịt nặn burger\nCòn 4 gói sốt bò bằm",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Đang xử lý",
-      "phuong_an_xu_ly": "\"Kho\" đang còn 3 sốt tiêu, 1 sốt chảo, 1 sốt bò bằm\nSáng mai 05/09 sẽ đem tới",
-      "nguoi_xu_ly": "Hưng"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "phuong_an_xu_ly": "\"Kho\" đang còn 3 sốt tiêu, 1 sốt chảo, 1 sốt bò bằm\nSáng mai 05/09 sẽ đem tới\nCập nhật: đã mang đủ số lượng",
+      "nguoi_xu_ly": "Hưng",
+      "thoi_gian_xu_ly": "2026/09/06 08:23"
     }
   ]
 }
