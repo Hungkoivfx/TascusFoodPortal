@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T17:47:59.530Z",
+  "updated_at": "2026-09-06T17:55:24.459Z",
   "records": [
     {
       "id": "Z024",
@@ -163,7 +163,10 @@
       "noi_dung": "Tạo món Salad trên fabi\nChốt phương án tặng trà",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/07 00:55",
+      "phuong_an_xu_ly": "Đã xử lý. Món tặng và Salad đã lên fabi",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z038",
