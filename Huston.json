@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T01:24:36.802Z",
+  "updated_at": "2026-09-06T01:25:13.889Z",
   "records": [
     {
       "id": "Z024",
@@ -199,7 +199,9 @@
       "noi_dung": "Vung nồi mất tích",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Cần theo dõi thêm",
+      "phuong_an_xu_ly": "Ca sáng tạm thời mò chưa thấy, các ca sau lưu ý tìm nhé",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
