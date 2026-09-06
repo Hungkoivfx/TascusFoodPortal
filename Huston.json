@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T01:25:13.889Z",
+  "updated_at": "2026-09-06T13:44:51.921Z",
   "records": [
     {
       "id": "Z024",
@@ -202,6 +202,16 @@
       "trang_thai_xu_ly": "Cần theo dõi thêm",
       "phuong_an_xu_ly": "Ca sáng tạm thời mò chưa thấy, các ca sau lưu ý tìm nhé",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z041",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/06 20:44",
+      "nguoi_bao_cao": "Trần Gia Định",
+      "noi_dung": "hết pate bò+heo",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
