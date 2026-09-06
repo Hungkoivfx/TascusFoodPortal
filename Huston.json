@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T13:51:29.423Z",
+  "updated_at": "2026/09/07 00:26:53",
   "records": [
     {
       "id": "Z024",
@@ -210,6 +210,16 @@
       "thoi_gian": "2026/09/06 20:44",
       "nguoi_bao_cao": "Trần Gia Định",
       "noi_dung": "hết pate bò+heo",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z042",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/07 00:26:53",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Test",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
