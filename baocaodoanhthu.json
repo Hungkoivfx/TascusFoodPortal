@@ -1,5 +1,26 @@
 {
   "version": 1,
-  "updated_at": "",
-  "data": []
+  "updated_at": "2026/09/06 23:43:46",
+  "data": [
+    {
+      "id": "DT-20260906-001",
+      "thoi_gian": "2026/09/06",
+      "nguoi_bao_cao": "Hưng Nguyễn",
+      "chi_nhanh": "Khương Trung",
+      "ca": "Ca sáng",
+      "tien_mat_kiem_dem": 221,
+      "chi": 628,
+      "tien_mat_thuc_te": 849,
+      "shopee_food": 0,
+      "grab_food": 0,
+      "be_food": 0,
+      "xanh_ngon": 0,
+      "tong_doanh_thu_app": 0,
+      "mo_ta": "Chả có gì",
+      "co_anh": false,
+      "trang_thai": "active",
+      "so_lan_sua": 0,
+      "lich_su_sua": []
+    }
+  ]
 }
