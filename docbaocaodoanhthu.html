@@ -660,6 +660,32 @@ tbody tr:last-child td {
 }
 
 /* =========================
+   ERROR
+========================= */
+
+.error-box {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.error-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.error-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.error-message {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #777;
+}
+
+/* =========================
    RESPONSIVE
 ========================= */
 
@@ -715,6 +741,7 @@ tbody tr:last-child td {
 }
 
 @media (min-width: 701px) {
+
     .detail-modal {
         border-radius: 20px;
         margin: 20px;
@@ -924,7 +951,7 @@ tbody tr:last-child td {
         <div class="detail-section">
 
             <div class="detail-row">
-                <span class="detail-label">Tiền mặt thực tế</span>
+                <span class="detail-label">Tiền mặt kiểm đếm</span>
                 <span class="detail-value detail-money" id="dCash"></span>
             </div>
 
@@ -934,7 +961,7 @@ tbody tr:last-child td {
             </div>
 
             <div class="detail-row">
-                <span class="detail-label">Doanh thu tiền mặt</span>
+                <span class="detail-label">Tiền mặt thực tế</span>
                 <span class="detail-value detail-money" id="dCashRevenue"></span>
             </div>
 
@@ -959,8 +986,13 @@ tbody tr:last-child td {
             </div>
 
             <div class="detail-row">
-                <span class="detail-label">Xanh SM</span>
+                <span class="detail-label">Xanh Ngon</span>
                 <span class="detail-value" id="dXanh"></span>
+            </div>
+
+            <div class="detail-row detail-total">
+                <span class="detail-label">Tổng doanh thu app</span>
+                <span class="detail-value detail-money" id="dAppTotal"></span>
             </div>
 
             <div class="detail-row detail-total">
@@ -974,7 +1006,7 @@ tbody tr:last-child td {
         <div class="detail-section">
 
             <div
-                class="note-content"
+                class="detail-note"
                 id="dNote"
             ></div>
 
@@ -1081,215 +1113,6 @@ tbody tr:last-child td {
 const API_URL =
     "https://script.google.com/macros/s/AKfycbwd6hrdfUGmSGxwyZJDGpF8FoXve3AJ5q7oy1aZaU74pY1WjEbVb2gTXrqjVjQmeAvnXQ/exec";
 
-const USE_DEMO_DATA = true;
-
-
-/* =========================================================
-   DEMO DATA
-========================================================= */
-
-const DEMO_DATA = [
-
-    {
-        id: "RV001",
-        ngay: "2026-09-01",
-        chi_nhanh: "69 Khương Trung",
-        ca: "Ca sáng",
-        tien_mat: 456,
-        chi: 47,
-        doanh_thu_tien_mat: 503,
-        grab: 0,
-        shopee: 0,
-        be: 0,
-        xanh: 0,
-        tong_doanh_thu: 503,
-        ghi_chu: "15 chuối\n32 đá",
-        nguoi_bao_cao: "Hưng",
-        trang_thai_kiem_tra: "Khớp"
-    },
-
-    {
-        id: "RV002",
-        ngay: "2026-09-02",
-        chi_nhanh: "122 Thái Thịnh",
-        ca: "Ca tối",
-        tien_mat: 178,
-        chi: 32,
-        doanh_thu_tien_mat: 210,
-        grab: 752,
-        shopee: 541,
-        be: 0,
-        xanh: 0,
-        tong_doanh_thu: 1503,
-        ghi_chu: "32 đá",
-        nguoi_bao_cao: "Lợi",
-        trang_thai_kiem_tra: ""
-    },
-
-    {
-        id: "RV003",
-        ngay: "2026-09-03",
-        chi_nhanh: "69 Khương Trung",
-        ca: "Ca sáng",
-        tien_mat: 382,
-        chi: 25,
-        doanh_thu_tien_mat: 407,
-        grab: 0,
-        shopee: 0,
-        be: 0,
-        xanh: 0,
-        tong_doanh_thu: 407,
-        ghi_chu: "Mua thêm túi giấy",
-        nguoi_bao_cao: "Trang",
-        trang_thai_kiem_tra: ""
-    },
-
-    {
-        id: "RV004",
-        ngay: "2026-09-03",
-        chi_nhanh: "69 Khương Trung",
-        ca: "Ca tối",
-        tien_mat: 531,
-        chi: 41,
-        doanh_thu_tien_mat: 572,
-        grab: 612,
-        shopee: 408,
-        be: 95,
-        xanh: 0,
-        tong_doanh_thu: 1687,
-        ghi_chu: "",
-        nguoi_bao_cao: "Minh",
-        trang_thai_kiem_tra: "Sai"
-    },
-
-    {
-        id: "RV005",
-        ngay: "2026-09-04",
-        chi_nhanh: "122 Thái Thịnh",
-        ca: "Ca sáng",
-        tien_mat: 421,
-        chi: 33,
-        doanh_thu_tien_mat: 454,
-        grab: 0,
-        shopee: 0,
-        be: 0,
-        xanh: 0,
-        tong_doanh_thu: 454,
-        ghi_chu: "Hết rau mùi cuối ca",
-        nguoi_bao_cao: "Hoa",
-        trang_thai_kiem_tra: "Khớp"
-    },
-
-    {
-        id: "RV006",
-        ngay: "2026-09-04",
-        chi_nhanh: "122 Thái Thịnh",
-        ca: "Ca tối",
-        tien_mat: 178,
-        chi: 32,
-        doanh_thu_tien_mat: 210,
-        grab: 752,
-        shopee: 541,
-        be: 0,
-        xanh: 0,
-        tong_doanh_thu: 1503,
-        ghi_chu: "32 đá",
-        nguoi_bao_cao: "Lợi",
-        trang_thai_kiem_tra: ""
-    },
-
-    {
-        id: "RV007",
-        ngay: "2026-09-05",
-        chi_nhanh: "69 Khương Trung",
-        ca: "Ca sáng",
-        tien_mat: 492,
-        chi: 36,
-        doanh_thu_tien_mat: 528,
-        grab: 0,
-        shopee: 0,
-        be: 0,
-        xanh: 0,
-        tong_doanh_thu: 528,
-        ghi_chu: "",
-        nguoi_bao_cao: "Hưng",
-        trang_thai_kiem_tra: ""
-    },
-
-    {
-        id: "RV008",
-        ngay: "2026-09-05",
-        chi_nhanh: "69 Khương Trung",
-        ca: "Ca tối",
-        tien_mat: 603,
-        chi: 48,
-        doanh_thu_tien_mat: 651,
-        grab: 821,
-        shopee: 633,
-        be: 102,
-        xanh: 0,
-        tong_doanh_thu: 2207,
-        ghi_chu: "Mua đá và bổ sung bao bì",
-        nguoi_bao_cao: "Linh",
-        trang_thai_kiem_tra: ""
-    },
-
-    {
-        id: "RV009",
-        ngay: "2026-09-06",
-        chi_nhanh: "69 Khương Trung",
-        ca: "Ca sáng",
-        tien_mat: 516,
-        chi: 29,
-        doanh_thu_tien_mat: 545,
-        grab: 0,
-        shopee: 0,
-        be: 0,
-        xanh: 0,
-        tong_doanh_thu: 545,
-        ghi_chu: "15 chuối",
-        nguoi_bao_cao: "Hưng",
-        trang_thai_kiem_tra: ""
-    },
-
-    {
-        id: "RV010",
-        ngay: "2026-09-06",
-        chi_nhanh: "122 Thái Thịnh",
-        ca: "Ca sáng",
-        tien_mat: 438,
-        chi: 27,
-        doanh_thu_tien_mat: 465,
-        grab: 0,
-        shopee: 0,
-        be: 0,
-        xanh: 0,
-        tong_doanh_thu: 465,
-        ghi_chu: "",
-        nguoi_bao_cao: "Hoa",
-        trang_thai_kiem_tra: ""
-    },
-
-    {
-        id: "RV011",
-        ngay: "2026-09-06",
-        chi_nhanh: "122 Thái Thịnh",
-        ca: "Ca tối",
-        tien_mat: 391,
-        chi: 42,
-        doanh_thu_tien_mat: 433,
-        grab: 705,
-        shopee: 488,
-        be: 72,
-        xanh: 0,
-        tong_doanh_thu: 1698,
-        ghi_chu: "32 đá",
-        nguoi_bao_cao: "Lợi",
-        trang_thai_kiem_tra: ""
-    }
-
-];
-
 
 /* =========================================================
    STATE
@@ -1297,6 +1120,7 @@ const DEMO_DATA = [
 
 let allReports = [];
 let filteredReports = [];
+
 let currentFilter = "today";
 let selectedReportId = null;
 
@@ -1306,12 +1130,14 @@ let selectedReportId = null;
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
+
     loadReports();
+
 });
 
 
 /* =========================================================
-   LOAD
+   LOAD REAL DATA
 ========================================================= */
 
 async function loadReports() {
@@ -1320,36 +1146,74 @@ async function loadReports() {
 
     try {
 
-        if (USE_DEMO_DATA) {
+        const response = await fetch(
+            API_URL,
+            {
+                method: "POST",
 
-            await new Promise(resolve => setTimeout(resolve, 250));
+                headers: {
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+                },
 
-            allReports = DEMO_DATA.map(item => ({
-                ...item
-            }));
+                body: JSON.stringify({
+                    action: "list_revenue_reports"
+                })
+            }
+        );
 
-        } else {
 
-            const response = await fetch(
-                API_URL +
-                "?action=list_revenue_reports"
+        const text =
+            await response.text();
+
+
+        let data;
+
+        try {
+
+            data = JSON.parse(text);
+
+        } catch (error) {
+
+            throw new Error(
+                "Apps Script không trả về JSON hợp lệ."
             );
-
-            const data = await response.json();
-
-            allReports = normalizeReports(data);
 
         }
 
+
+        if (
+            data &&
+            data.success === false
+        ) {
+
+            throw new Error(
+                data.error ||
+                data.message ||
+                "Không thể tải báo cáo doanh thu."
+            );
+
+        }
+
+
+        allReports =
+            normalizeReports(data);
+
+
         applyFilter();
+
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Lỗi tải báo cáo:",
+            error
+        );
 
         allReports = [];
+        filteredReports = [];
 
-        render();
+        renderError(error.message);
 
     } finally {
 
@@ -1361,123 +1225,215 @@ async function loadReports() {
 
 
 /* =========================================================
-   NORMALIZE
+   NORMALIZE REAL REVENUE JSON
 ========================================================= */
 
 function normalizeReports(data) {
 
     let rows = [];
 
+
+    /*
+     * Backend có thể trả:
+     *
+     * {
+     *   success: true,
+     *   data: [...]
+     * }
+     *
+     * hoặc:
+     *
+     * [...]
+     */
+
     if (Array.isArray(data)) {
+
         rows = data;
-    } else if (Array.isArray(data.data)) {
+
+    } else if (
+        data &&
+        Array.isArray(data.data)
+    ) {
+
         rows = data.data;
-    } else if (Array.isArray(data.records)) {
+
+    } else if (
+        data &&
+        Array.isArray(data.records)
+    ) {
+
         rows = data.records;
+
     }
+
 
     return rows.map((r, index) => {
 
-        const cash = number(
-            r.tien_mat ??
-            r.tien_mat_thuc_te ??
-            r.tien_mat_kiem_dem ??
-            r.cash
-        );
 
-        const expense = number(
-            r.chi ??
-            r.chi_trong_ca ??
-            r.expense
-        );
+        const cash =
+            number(
+                r.tien_mat_kiem_dem
+            );
 
-        const cashRevenue = number(
-            r.doanh_thu_tien_mat ??
-            r.tien_mat_thuc_te_doanh_thu ??
-            (cash + expense)
-        );
 
-        const grab = number(
-            r.grab ??
-            r.grab_food
-        );
+        const expense =
+            number(
+                r.chi
+            );
 
-        const shopee = number(
-            r.shopee ??
-            r.shopee_food
-        );
 
-        const be = number(
-            r.be ??
-            r.be_food
-        );
+        const actualCash =
+            number(
+                r.tien_mat_thuc_te
+            );
 
-        const xanh = number(
-            r.xanh ??
-            r.xanh_sm ??
-            r.xanh_ngon
-        );
 
-        const total = number(
-            r.tong_doanh_thu ??
-            r.tong_doanh_thu_ca ??
-            (cashRevenue + grab + shopee + be + xanh)
-        );
+        const grab =
+            number(
+                r.grab_food
+            );
+
+
+        const shopee =
+            number(
+                r.shopee_food
+            );
+
+
+        const be =
+            number(
+                r.be_food
+            );
+
+
+        const xanh =
+            number(
+                r.xanh_ngon
+            );
+
+
+        const appTotal =
+            number(
+                r.tong_doanh_thu_app
+            );
+
+
+        /*
+         * Tổng doanh thu:
+         *
+         * tiền mặt thực tế
+         * +
+         * tổng doanh thu app
+         */
+
+        const total =
+            actualCash +
+            appTotal;
+
 
         return {
 
-            id: String(
-                r.id ??
-                r.ID ??
-                index
-            ),
+            id:
+                String(
+                    r.id ??
+                    `REPORT-${index}`
+                ),
 
-            ngay: normalizeDate(
-                r.ngay ??
-                r.thoi_gian ??
-                r.date
-            ),
+
+            ngay:
+                normalizeDate(
+                    r.thoi_gian
+                ),
+
 
             chi_nhanh:
-                r.chi_nhanh ??
-                r.chiNhanh ??
-                r.branch ??
-                "",
+                String(
+                    r.chi_nhanh ??
+                    ""
+                ),
+
 
             ca:
-                r.ca ??
-                r.ca_lam_viec ??
-                r.shift ??
-                "",
+                String(
+                    r.ca ??
+                    ""
+                ),
 
-            tien_mat: cash,
 
-            chi: expense,
+            tien_mat:
+                cash,
 
-            doanh_thu_tien_mat: cashRevenue,
 
-            grab,
-            shopee,
-            be,
-            xanh,
+            chi:
+                expense,
 
-            tong_doanh_thu: total,
+
+            doanh_thu_tien_mat:
+                actualCash,
+
+
+            grab:
+                grab,
+
+
+            shopee:
+                shopee,
+
+
+            be:
+                be,
+
+
+            xanh:
+                xanh,
+
+
+            tong_doanh_thu_app:
+                appTotal,
+
+
+            tong_doanh_thu:
+                total,
+
 
             ghi_chu:
-                r.ghi_chu ??
-                r.note ??
-                "",
+                String(
+                    r.mo_ta ??
+                    ""
+                ),
+
 
             nguoi_bao_cao:
-                r.nguoi_bao_cao ??
-                r.nguoiBaoCao ??
-                r.reporter ??
-                "",
+                String(
+                    r.nguoi_bao_cao ??
+                    ""
+                ),
+
 
             trang_thai_kiem_tra:
-                r.trang_thai_kiem_tra ??
-                r.status ??
-                ""
+                String(
+                    r.trang_thai_kiem_tra ??
+                    ""
+                ),
+
+
+            co_anh:
+                r.co_anh === true ||
+                r.co_anh === "true",
+
+
+            so_lan_sua:
+                number(
+                    r.so_lan_sua
+                ),
+
+
+            lich_su_sua:
+                Array.isArray(
+                    r.lich_su_sua
+                )
+                    ? r.lich_su_sua
+                    : []
 
         };
 
@@ -1490,17 +1446,29 @@ function normalizeReports(data) {
    FILTER
 ========================================================= */
 
-function setFilter(filter, button) {
+function setFilter(
+    filter,
+    button
+) {
 
     currentFilter = filter;
+
 
     document
         .querySelectorAll(".filter-btn")
         .forEach(btn => {
-            btn.classList.remove("active");
+
+            btn.classList.remove(
+                "active"
+            );
+
         });
 
-    button.classList.add("active");
+
+    button.classList.add(
+        "active"
+    );
+
 
     applyFilter();
 
@@ -1509,79 +1477,146 @@ function setFilter(filter, button) {
 
 function applyFilter() {
 
-    const now = new Date();
+    const now =
+        new Date();
 
-    filteredReports = allReports.filter(
-        report => dateMatchesFilter(report.ngay, currentFilter, now)
-    );
+
+    filteredReports =
+        allReports.filter(
+            report =>
+                dateMatchesFilter(
+                    report.ngay,
+                    currentFilter,
+                    now
+                )
+        );
+
 
     filteredReports.sort(
         (a, b) =>
-            new Date(b.ngay) - new Date(a.ngay)
+            new Date(
+                b.ngay +
+                "T12:00:00"
+            ) -
+            new Date(
+                a.ngay +
+                "T12:00:00"
+            )
     );
+
 
     render();
 
 }
 
 
-function dateMatchesFilter(dateString, filter, now) {
+/* =========================================================
+   DATE FILTER
+========================================================= */
 
-    const date = new Date(dateString + "T12:00:00");
+function dateMatchesFilter(
+    dateString,
+    filter,
+    now
+) {
 
-    if (isNaN(date.getTime())) {
+    const date =
+        new Date(
+            dateString +
+            "T12:00:00"
+        );
+
+
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
         return false;
+
     }
 
-    const today = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate()
-    );
 
-    const target = new Date(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate()
-    );
+    const today =
+        new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate()
+        );
+
+
+    const target =
+        new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate()
+        );
 
 
     if (filter === "today") {
 
-        return sameDay(target, today);
+        return sameDay(
+            target,
+            today
+        );
 
     }
 
 
     if (filter === "yesterday") {
 
-        const yesterday = new Date(today);
-        yesterday.setDate(yesterday.getDate() - 1);
+        const yesterday =
+            new Date(today);
 
-        return sameDay(target, yesterday);
+        yesterday.setDate(
+            yesterday.getDate() - 1
+        );
+
+        return sameDay(
+            target,
+            yesterday
+        );
 
     }
 
 
     if (filter === "thisWeek") {
 
-        const start = startOfWeek(today);
-        const end = new Date(start);
-        end.setDate(end.getDate() + 6);
+        const start =
+            startOfWeek(today);
 
-        return target >= start && target <= end;
+        const end =
+            new Date(start);
+
+        end.setDate(
+            end.getDate() + 6
+        );
+
+        return (
+            target >= start &&
+            target <= end
+        );
 
     }
 
 
     if (filter === "lastWeek") {
 
-        const end = startOfWeek(today);
-        end.setDate(end.getDate() - 1);
+        const end =
+            startOfWeek(today);
 
-        const start = startOfWeek(end);
+        end.setDate(
+            end.getDate() - 1
+        );
 
-        return target >= start && target <= end;
+        const start =
+            startOfWeek(end);
+
+        return (
+            target >= start &&
+            target <= end
+        );
 
     }
 
@@ -1589,8 +1624,11 @@ function dateMatchesFilter(dateString, filter, now) {
     if (filter === "thisMonth") {
 
         return (
-            target.getFullYear() === today.getFullYear() &&
-            target.getMonth() === today.getMonth()
+            target.getFullYear() ===
+                today.getFullYear() &&
+
+            target.getMonth() ===
+                today.getMonth()
         );
 
     }
@@ -1598,21 +1636,27 @@ function dateMatchesFilter(dateString, filter, now) {
 
     if (filter === "lastMonth") {
 
-        const start = new Date(
-            today.getFullYear(),
-            today.getMonth() - 1,
-            1
-        );
+        const start =
+            new Date(
+                today.getFullYear(),
+                today.getMonth() - 1,
+                1
+            );
 
-        const end = new Date(
-            today.getFullYear(),
-            today.getMonth(),
-            0
-        );
+        const end =
+            new Date(
+                today.getFullYear(),
+                today.getMonth(),
+                0
+            );
 
-        return target >= start && target <= end;
+        return (
+            target >= start &&
+            target <= end
+        );
 
     }
+
 
     return true;
 
@@ -1621,13 +1665,24 @@ function dateMatchesFilter(dateString, filter, now) {
 
 function startOfWeek(date) {
 
-    const result = new Date(date);
+    const result =
+        new Date(date);
 
-    const day = result.getDay();
 
-    const diff = day === 0 ? -6 : 1 - day;
+    const day =
+        result.getDay();
 
-    result.setDate(result.getDate() + diff);
+
+    const diff =
+        day === 0
+            ? -6
+            : 1 - day;
+
+
+    result.setDate(
+        result.getDate() + diff
+    );
+
 
     return new Date(
         result.getFullYear(),
@@ -1641,9 +1696,14 @@ function startOfWeek(date) {
 function sameDay(a, b) {
 
     return (
-        a.getFullYear() === b.getFullYear() &&
-        a.getMonth() === b.getMonth() &&
-        a.getDate() === b.getDate()
+        a.getFullYear() ===
+            b.getFullYear() &&
+
+        a.getMonth() ===
+            b.getMonth() &&
+
+        a.getDate() ===
+            b.getDate()
     );
 
 }
@@ -1670,39 +1730,58 @@ function render() {
 
 function renderSummary() {
 
-    const count = filteredReports.length;
+    const count =
+        filteredReports.length;
 
-    const total = filteredReports.reduce(
-        (sum, item) =>
-            sum + number(item.tong_doanh_thu),
-        0
-    );
+
+    const total =
+        filteredReports.reduce(
+            (sum, item) =>
+                sum +
+                number(
+                    item.tong_doanh_thu
+                ),
+            0
+        );
+
 
     const average =
         count > 0
             ? total / count
             : 0;
 
-    document.getElementById("summaryCount").textContent =
+
+    document.getElementById(
+        "summaryCount"
+    ).textContent =
         count;
 
-    document.getElementById("summaryTotal").textContent =
+
+    document.getElementById(
+        "summaryTotal"
+    ).textContent =
         formatMoney(total);
 
-    document.getElementById("summaryAverage").textContent =
+
+    document.getElementById(
+        "summaryAverage"
+    ).textContent =
         formatMoney(average);
 
 }
 
 
 /* =========================================================
-   TABLE
+   DESKTOP TABLE
 ========================================================= */
 
 function renderTable() {
 
     const body =
-        document.getElementById("tableBody");
+        document.getElementById(
+            "tableBody"
+        );
+
 
     if (!filteredReports.length) {
 
@@ -1722,47 +1801,81 @@ function renderTable() {
 
 
     body.innerHTML =
-        filteredReports.map(report => {
+        filteredReports
+            .map(report => {
 
-            return `
+                return `
 
-                <tr onclick="openDetail('${escapeAttr(report.id)}')">
+                    <tr
+                        onclick="openDetail('${escapeAttr(report.id)}')"
+                    >
 
-                    <td>${formatDate(report.ngay)}</td>
+                        <td>
+                            ${formatDate(report.ngay)}
+                        </td>
 
-                    <td>${escapeHtml(report.chi_nhanh)}</td>
+                        <td>
+                            ${escapeHtml(report.chi_nhanh)}
+                        </td>
 
-                    <td>${escapeHtml(report.ca)}</td>
+                        <td>
+                            ${escapeHtml(report.ca)}
+                        </td>
 
-                    <td>${formatMoney(report.tien_mat)}</td>
+                        <td>
+                            ${formatMoney(report.tien_mat)}
+                        </td>
 
-                    <td>${formatMoney(report.chi)}</td>
+                        <td>
+                            ${formatMoney(report.chi)}
+                        </td>
 
-                    <td>${formatMoney(report.doanh_thu_tien_mat)}</td>
+                        <td>
+                            ${formatMoney(
+                                report.doanh_thu_tien_mat
+                            )}
+                        </td>
 
-                    <td>${formatMoney(report.grab)}</td>
+                        <td>
+                            ${formatMoney(report.grab)}
+                        </td>
 
-                    <td>${formatMoney(report.shopee)}</td>
+                        <td>
+                            ${formatMoney(report.shopee)}
+                        </td>
 
-                    <td>${formatMoney(report.be)}</td>
+                        <td>
+                            ${formatMoney(report.be)}
+                        </td>
 
-                    <td>${formatMoney(report.xanh)}</td>
+                        <td>
+                            ${formatMoney(report.xanh)}
+                        </td>
 
-                    <td class="total-cell">
-                        ${formatMoney(report.tong_doanh_thu)}
-                    </td>
+                        <td class="total-cell">
+                            ${formatMoney(
+                                report.tong_doanh_thu
+                            )}
+                        </td>
 
-                    <td>${escapeHtml(report.nguoi_bao_cao)}</td>
+                        <td>
+                            ${escapeHtml(
+                                report.nguoi_bao_cao
+                            )}
+                        </td>
 
-                    <td class="status-cell">
-                        ${statusHtml(report.trang_thai_kiem_tra)}
-                    </td>
+                        <td class="status-cell">
+                            ${statusHtml(
+                                report.trang_thai_kiem_tra
+                            )}
+                        </td>
 
-                </tr>
+                    </tr>
 
-            `;
+                `;
 
-        }).join("");
+            })
+            .join("");
 
 }
 
@@ -1774,7 +1887,10 @@ function renderTable() {
 function renderMobile() {
 
     const container =
-        document.getElementById("mobileList");
+        document.getElementById(
+            "mobileList"
+        );
+
 
     if (!filteredReports.length) {
 
@@ -1792,136 +1908,177 @@ function renderMobile() {
 
 
     container.innerHTML =
-        filteredReports.map(report => {
+        filteredReports
+            .map(report => {
 
-            return `
+                return `
 
-                <article
-                    class="report-card"
-                    onclick="openDetail('${escapeAttr(report.id)}')"
-                >
+                    <article
+                        class="report-card"
+                        onclick="openDetail('${escapeAttr(report.id)}')"
+                    >
 
-                    <div class="report-top">
+                        <div class="report-top">
 
-                        <div class="report-heading">
+                            <div class="report-heading">
 
-                            <div class="report-branch">
-                                ${escapeHtml(report.chi_nhanh)}
-                            </div>
+                                <div class="report-branch">
+                                    ${escapeHtml(
+                                        report.chi_nhanh
+                                    )}
+                                </div>
 
-                            <div class="report-meta">
-                                ${formatDate(report.ngay)}
-                                ·
-                                ${escapeHtml(report.ca)}
-                            </div>
+                                <div class="report-meta">
 
-                        </div>
+                                    ${formatDate(
+                                        report.ngay
+                                    )}
 
-                        <div class="report-arrow">
-                            ›
-                        </div>
+                                    ·
 
-                    </div>
-
-
-                    <div class="report-numbers">
-
-                        <div class="number-box">
-
-                            <div class="number-label">
-                                Doanh thu tiền mặt
-                            </div>
-
-                            <div class="number-value">
-                                ${formatMoney(report.doanh_thu_tien_mat)}
-                            </div>
-
-                        </div>
-
-
-                        <div class="number-box">
-
-                            <div class="number-label">
-                                Tổng doanh thu
-                            </div>
-
-                            <div class="number-value">
-                                ${formatMoney(report.tong_doanh_thu)}
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="apps">
-
-                        <div class="apps-title">
-                            Doanh thu app
-                        </div>
-
-                        <div class="app-line">
-                            <span>Grab Food</span>
-                            <span>${formatMoney(report.grab)}</span>
-                        </div>
-
-                        <div class="app-line">
-                            <span>Shopee Food</span>
-                            <span>${formatMoney(report.shopee)}</span>
-                        </div>
-
-                        <div class="app-line">
-                            <span>Be Food</span>
-                            <span>${formatMoney(report.be)}</span>
-                        </div>
-
-                        <div class="app-line">
-                            <span>Xanh SM</span>
-                            <span>${formatMoney(report.xanh)}</span>
-                        </div>
-
-                    </div>
-
-
-                    ${
-                        report.ghi_chu
-                            ? `
-                                <div class="note">
-
-                                    <div class="note-label">
-                                        Ghi chú
-                                    </div>
-
-                                    <div class="note-content">
-                                        ${escapeHtml(report.ghi_chu)}
-                                    </div>
+                                    ${escapeHtml(
+                                        report.ca
+                                    )}
 
                                 </div>
-                            `
-                            : ""
-                    }
+
+                            </div>
 
 
-                    <div class="report-footer">
+                            <div class="report-arrow">
+                                ›
+                            </div>
 
-                        <div class="reporter">
-                            Người báo cáo:
-                            <strong>
-                                ${escapeHtml(report.nguoi_bao_cao)}
-                            </strong>
                         </div>
 
-                        <div class="card-status">
-                            ${statusHtml(report.trang_thai_kiem_tra)}
+
+                        <div class="report-numbers">
+
+                            <div class="number-box">
+
+                                <div class="number-label">
+                                    Doanh thu tiền mặt
+                                </div>
+
+                                <div class="number-value">
+                                    ${formatMoney(
+                                        report.doanh_thu_tien_mat
+                                    )}
+                                </div>
+
+                            </div>
+
+
+                            <div class="number-box">
+
+                                <div class="number-label">
+                                    Tổng doanh thu
+                                </div>
+
+                                <div class="number-value">
+                                    ${formatMoney(
+                                        report.tong_doanh_thu
+                                    )}
+                                </div>
+
+                            </div>
+
                         </div>
 
-                    </div>
 
-                </article>
+                        <div class="apps">
 
-            `;
+                            <div class="apps-title">
+                                Doanh thu app
+                            </div>
 
-        }).join("");
+
+                            <div class="app-line">
+                                <span>Grab Food</span>
+                                <span>
+                                    ${formatMoney(report.grab)}
+                                </span>
+                            </div>
+
+
+                            <div class="app-line">
+                                <span>Shopee Food</span>
+                                <span>
+                                    ${formatMoney(report.shopee)}
+                                </span>
+                            </div>
+
+
+                            <div class="app-line">
+                                <span>Be Food</span>
+                                <span>
+                                    ${formatMoney(report.be)}
+                                </span>
+                            </div>
+
+
+                            <div class="app-line">
+                                <span>Xanh Ngon</span>
+                                <span>
+                                    ${formatMoney(report.xanh)}
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        ${
+                            report.ghi_chu
+                                ? `
+
+                                    <div class="note">
+
+                                        <div class="note-label">
+                                            Ghi chú
+                                        </div>
+
+                                        <div class="note-content">
+                                            ${escapeHtml(
+                                                report.ghi_chu
+                                            )}
+                                        </div>
+
+                                    </div>
+
+                                `
+                                : ""
+                        }
+
+
+                        <div class="report-footer">
+
+                            <div class="reporter">
+
+                                Người báo cáo:
+
+                                <strong>
+                                    ${escapeHtml(
+                                        report.nguoi_bao_cao
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="card-status">
+                                ${statusHtml(
+                                    report.trang_thai_kiem_tra
+                                )}
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                `;
+
+            })
+            .join("");
 
 }
 
@@ -1942,6 +2099,7 @@ function statusHtml(status) {
 
     }
 
+
     if (status === "Sai") {
 
         return `
@@ -1951,6 +2109,7 @@ function statusHtml(status) {
         `;
 
     }
+
 
     return `
         <span class="status pending">
@@ -1968,65 +2127,145 @@ function statusHtml(status) {
 function openDetail(id) {
 
     const report =
-        allReports.find(item =>
-            String(item.id) === String(id)
+        allReports.find(
+            item =>
+                String(item.id) ===
+                String(id)
         );
+
 
     if (!report) {
         return;
     }
 
-    selectedReportId = report.id;
 
-    document.getElementById("detailSubtitle").textContent =
-        `${formatDate(report.ngay)} · ${report.ca}`;
+    selectedReportId =
+        report.id;
 
-    document.getElementById("dBranch").textContent =
+
+    document.getElementById(
+        "detailSubtitle"
+    ).textContent =
+        `${report.id} · ${formatDate(report.ngay)} · ${report.ca}`;
+
+
+    document.getElementById(
+        "dBranch"
+    ).textContent =
         report.chi_nhanh;
 
-    document.getElementById("dDate").textContent =
+
+    document.getElementById(
+        "dDate"
+    ).textContent =
         formatDate(report.ngay);
 
-    document.getElementById("dShift").textContent =
+
+    document.getElementById(
+        "dShift"
+    ).textContent =
         report.ca;
 
-    document.getElementById("dReporter").textContent =
+
+    document.getElementById(
+        "dReporter"
+    ).textContent =
         report.nguoi_bao_cao;
 
-    document.getElementById("dCash").textContent =
-        formatMoney(report.tien_mat);
 
-    document.getElementById("dExpense").textContent =
-        formatMoney(report.chi);
+    document.getElementById(
+        "dCash"
+    ).textContent =
+        formatMoney(
+            report.tien_mat
+        );
 
-    document.getElementById("dCashRevenue").textContent =
-        formatMoney(report.doanh_thu_tien_mat);
 
-    document.getElementById("dGrab").textContent =
-        formatMoney(report.grab);
+    document.getElementById(
+        "dExpense"
+    ).textContent =
+        formatMoney(
+            report.chi
+        );
 
-    document.getElementById("dShopee").textContent =
-        formatMoney(report.shopee);
 
-    document.getElementById("dBe").textContent =
-        formatMoney(report.be);
+    document.getElementById(
+        "dCashRevenue"
+    ).textContent =
+        formatMoney(
+            report.doanh_thu_tien_mat
+        );
 
-    document.getElementById("dXanh").textContent =
-        formatMoney(report.xanh);
 
-    document.getElementById("dTotal").textContent =
-        formatMoney(report.tong_doanh_thu);
+    document.getElementById(
+        "dGrab"
+    ).textContent =
+        formatMoney(
+            report.grab
+        );
 
-    document.getElementById("dNote").textContent =
-        report.ghi_chu || "Không có ghi chú.";
 
-    updateDetailStatus(report.trang_thai_kiem_tra);
+    document.getElementById(
+        "dShopee"
+    ).textContent =
+        formatMoney(
+            report.shopee
+        );
+
+
+    document.getElementById(
+        "dBe"
+    ).textContent =
+        formatMoney(
+            report.be
+        );
+
+
+    document.getElementById(
+        "dXanh"
+    ).textContent =
+        formatMoney(
+            report.xanh
+        );
+
+
+    document.getElementById(
+        "dAppTotal"
+    ).textContent =
+        formatMoney(
+            report.tong_doanh_thu_app
+        );
+
+
+    document.getElementById(
+        "dTotal"
+    ).textContent =
+        formatMoney(
+            report.tong_doanh_thu
+        );
+
+
+    document.getElementById(
+        "dNote"
+    ).textContent =
+        report.ghi_chu ||
+        "Không có ghi chú.";
+
+
+    updateDetailStatus(
+        report.trang_thai_kiem_tra
+    );
+
 
     document
-        .getElementById("detailOverlay")
+        .getElementById(
+            "detailOverlay"
+        )
         .classList.add("show");
 
-    document.body.style.overflow = "hidden";
+
+    document.body.style.overflow =
+        "hidden";
 
 }
 
@@ -2034,12 +2273,18 @@ function openDetail(id) {
 function closeDetail() {
 
     document
-        .getElementById("detailOverlay")
+        .getElementById(
+            "detailOverlay"
+        )
         .classList.remove("show");
 
-    document.body.style.overflow = "";
 
-    selectedReportId = null;
+    document.body.style.overflow =
+        "";
+
+
+    selectedReportId =
+        null;
 
 }
 
@@ -2048,9 +2293,13 @@ function overlayClick(event) {
 
     if (
         event.target ===
-        document.getElementById("detailOverlay")
+        document.getElementById(
+            "detailOverlay"
+        )
     ) {
+
         closeDetail();
+
     }
 
 }
@@ -2060,16 +2309,20 @@ function overlayClick(event) {
    CHECK STATUS
 ========================================================= */
 
-async function setReportStatus(status) {
+function setReportStatus(status) {
 
     if (!selectedReportId) {
         return;
     }
 
+
     const report =
-        allReports.find(item =>
-            String(item.id) === String(selectedReportId)
+        allReports.find(
+            item =>
+                String(item.id) ===
+                String(selectedReportId)
         );
+
 
     if (!report) {
         return;
@@ -2077,37 +2330,22 @@ async function setReportStatus(status) {
 
 
     /*
-        Cập nhật ngay trên giao diện.
-        Backend thật sẽ nối vào đây.
-    */
+     * Hiện tại chỉ cập nhật giao diện.
+     *
+     * Chưa ghi trạng thái kiểm tra
+     * ngược vào JSON.
+     */
 
-    report.trang_thai_kiem_tra = status;
+    report.trang_thai_kiem_tra =
+        status;
 
-    updateDetailStatus(status);
+
+    updateDetailStatus(
+        status
+    );
+
 
     render();
-
-
-    /*
-    // Khi backend đã sẵn sàng:
-
-    try {
-
-        await fetch(API_URL, {
-            method: "POST",
-            body: JSON.stringify({
-                action: "update_revenue_check",
-                id: report.id,
-                trang_thai_kiem_tra: status
-            })
-        });
-
-    } catch (error) {
-
-        console.error(error);
-
-    }
-    */
 
 }
 
@@ -2115,22 +2353,39 @@ async function setReportStatus(status) {
 function updateDetailStatus(status) {
 
     const ok =
-        document.getElementById("btnCheckOk");
+        document.getElementById(
+            "btnCheckOk"
+        );
+
 
     const wrong =
-        document.getElementById("btnCheckWrong");
+        document.getElementById(
+            "btnCheckWrong"
+        );
 
-    ok.classList.remove("selected-ok");
 
-    wrong.classList.remove("selected-wrong");
+    ok.classList.remove(
+        "selected-ok"
+    );
+
+
+    wrong.classList.remove(
+        "selected-wrong"
+    );
 
 
     if (status === "Khớp") {
 
-        ok.classList.add("selected-ok");
+        ok.classList.add(
+            "selected-ok"
+        );
 
-        document.getElementById("detailStatus").textContent =
+
+        document.getElementById(
+            "detailStatus"
+        ).textContent =
             "Đã xác nhận: Báo cáo khớp";
+
 
         return;
 
@@ -2139,17 +2394,25 @@ function updateDetailStatus(status) {
 
     if (status === "Sai") {
 
-        wrong.classList.add("selected-wrong");
+        wrong.classList.add(
+            "selected-wrong"
+        );
 
-        document.getElementById("detailStatus").textContent =
+
+        document.getElementById(
+            "detailStatus"
+        ).textContent =
             "Báo cáo sai · Yêu cầu báo cáo lại";
+
 
         return;
 
     }
 
 
-    document.getElementById("detailStatus").textContent =
+    document.getElementById(
+        "detailStatus"
+    ).textContent =
         "Chưa kiểm tra";
 
 }
@@ -2162,10 +2425,14 @@ function updateDetailStatus(status) {
 function openHelp() {
 
     document
-        .getElementById("helpOverlay")
+        .getElementById(
+            "helpOverlay"
+        )
         .classList.add("show");
 
-    document.body.style.overflow = "hidden";
+
+    document.body.style.overflow =
+        "hidden";
 
 }
 
@@ -2175,16 +2442,25 @@ function closeHelp(event) {
     if (
         event &&
         event.target !==
-        document.getElementById("helpOverlay")
+        document.getElementById(
+            "helpOverlay"
+        )
     ) {
+
         return;
+
     }
 
+
     document
-        .getElementById("helpOverlay")
+        .getElementById(
+            "helpOverlay"
+        )
         .classList.remove("show");
 
-    document.body.style.overflow = "";
+
+    document.body.style.overflow =
+        "";
 
 }
 
@@ -2202,32 +2478,99 @@ function goBack() {
 
 
 /* =========================================================
-   FORMAT
+   DATE
 ========================================================= */
 
-function formatMoney(value) {
+function normalizeDate(value) {
 
-    const numberValue =
-        Number(value) || 0;
-
-    /*
-        Doanh thu đang dùng đơn vị kinh doanh
-        của báo cáo ca.
-
-        Không thêm:
-        đ
-        k
-        nghìn
-        dấu chấm phân cách
-    */
-
-    if (Number.isInteger(numberValue)) {
-        return String(numberValue);
+    if (!value) {
+        return "";
     }
 
-    return String(
-        Number(numberValue.toFixed(2))
-    );
+
+    value =
+        String(value).trim();
+
+
+    /*
+     * Backend hiện tại:
+     *
+     * yyyy/MM/dd
+     *
+     * Ví dụ:
+     * 2026/09/07
+     */
+
+    let match =
+        value.match(
+            /^(\d{4})\/(\d{2})\/(\d{2})/
+        );
+
+
+    if (match) {
+
+        return (
+            `${match[1]}-${match[2]}-${match[3]}`
+        );
+
+    }
+
+
+    /*
+     * Cho phép yyyy-MM-dd
+     */
+
+    match =
+        value.match(
+            /^(\d{4})-(\d{2})-(\d{2})/
+        );
+
+
+    if (match) {
+
+        return (
+            `${match[1]}-${match[2]}-${match[3]}`
+        );
+
+    }
+
+
+    /*
+     * Fallback cho ISO date
+     */
+
+    const date =
+        new Date(value);
+
+
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "";
+
+    }
+
+
+    const y =
+        date.getFullYear();
+
+
+    const m =
+        String(
+            date.getMonth() + 1
+        ).padStart(2, "0");
+
+
+    const d =
+        String(
+            date.getDate()
+        ).padStart(2, "0");
+
+
+    return `${y}-${m}-${d}`;
 
 }
 
@@ -2238,56 +2581,30 @@ function formatDate(value) {
         return "";
     }
 
-    const date =
-        new Date(value + "T12:00:00");
 
-    if (isNaN(date.getTime())) {
-        return value;
+    const match =
+        String(value).match(
+            /^(\d{4})-(\d{2})-(\d{2})/
+        );
+
+
+    if (match) {
+
+        return (
+            `${match[3]}/${match[2]}/${match[1]}`
+        );
+
     }
 
-    const day =
-        String(date.getDate()).padStart(2, "0");
 
-    const month =
-        String(date.getMonth() + 1).padStart(2, "0");
-
-    const year =
-        date.getFullYear();
-
-    return `${day}/${month}/${year}`;
+    return value;
 
 }
 
 
-function normalizeDate(value) {
-
-    if (!value) {
-        return "";
-    }
-
-    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-        return value;
-    }
-
-    const date = new Date(value);
-
-    if (isNaN(date.getTime())) {
-        return "";
-    }
-
-    const y =
-        date.getFullYear();
-
-    const m =
-        String(date.getMonth() + 1).padStart(2, "0");
-
-    const d =
-        String(date.getDate()).padStart(2, "0");
-
-    return `${y}-${m}-${d}`;
-
-}
-
+/* =========================================================
+   NUMBER
+========================================================= */
 
 function number(value) {
 
@@ -2296,8 +2613,11 @@ function number(value) {
         value === undefined ||
         value === ""
     ) {
+
         return 0;
+
     }
+
 
     const parsed =
         Number(
@@ -2305,6 +2625,7 @@ function number(value) {
                 .replace(/,/g, "")
                 .trim()
         );
+
 
     return isNaN(parsed)
         ? 0
@@ -2314,26 +2635,144 @@ function number(value) {
 
 
 /* =========================================================
-   SECURITY / HTML
+   MONEY
+========================================================= */
+
+function formatMoney(value) {
+
+    const n =
+        number(value);
+
+
+    return new Intl.NumberFormat(
+        "vi-VN"
+    ).format(n);
+
+}
+
+
+/* =========================================================
+   HTML SECURITY
 ========================================================= */
 
 function escapeHtml(value) {
 
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    return String(
+        value ?? ""
+    )
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
 function escapeAttr(value) {
 
-    return String(value ?? "")
-        .replace(/\\/g, "\\\\")
-        .replace(/'/g, "\\'");
+    return String(
+        value ?? ""
+    )
+        .replace(
+            /\\/g,
+            "\\\\"
+        )
+        .replace(
+            /'/g,
+            "\\'"
+        );
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function renderError(message) {
+
+    document.getElementById(
+        "tableBody"
+    ).innerHTML = `
+        <tr>
+            <td colspan="13">
+
+                <div class="error-box">
+
+                    <div class="error-icon">
+                        ⚠️
+                    </div>
+
+                    <div class="error-title">
+                        Không tải được báo cáo
+                    </div>
+
+                    <div class="error-message">
+                        ${escapeHtml(message)}
+                    </div>
+
+                </div>
+
+            </td>
+        </tr>
+    `;
+
+
+    document.getElementById(
+        "mobileList"
+    ).innerHTML = `
+        <div class="report-card">
+
+            <div class="error-box">
+
+                <div class="error-icon">
+                    ⚠️
+                </div>
+
+                <div class="error-title">
+                    Không tải được báo cáo
+                </div>
+
+                <div class="error-message">
+                    ${escapeHtml(message)}
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+
+    document.getElementById(
+        "summaryCount"
+    ).textContent = "0";
+
+
+    document.getElementById(
+        "summaryTotal"
+    ).textContent = "0";
+
+
+    document.getElementById(
+        "summaryAverage"
+    ).textContent = "0";
+
 }
 
 
@@ -2344,7 +2783,9 @@ function escapeAttr(value) {
 function showLoading() {
 
     document
-        .getElementById("loading")
+        .getElementById(
+            "loading"
+        )
         .classList.add("show");
 
 }
@@ -2353,31 +2794,43 @@ function showLoading() {
 function hideLoading() {
 
     document
-        .getElementById("loading")
+        .getElementById(
+            "loading"
+        )
         .classList.remove("show");
 
 }
 
 
 /* =========================================================
-   ESC KEY
+   ESC
 ========================================================= */
 
-document.addEventListener("keydown", event => {
+document.addEventListener(
+    "keydown",
+    event => {
 
-    if (event.key === "Escape") {
+        if (
+            event.key === "Escape"
+        ) {
 
-        closeDetail();
+            closeDetail();
 
-        document
-            .getElementById("helpOverlay")
-            .classList.remove("show");
+            document
+                .getElementById(
+                    "helpOverlay"
+                )
+                .classList.remove(
+                    "show"
+                );
 
-        document.body.style.overflow = "";
+            document.body.style.overflow =
+                "";
+
+        }
 
     }
-
-});
+);
 
 </script>
 
