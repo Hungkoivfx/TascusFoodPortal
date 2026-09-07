@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-07T01:48:22.392Z",
+  "updated_at": "2026-09-07T02:14:01.521Z",
   "records": [
     {
       "id": "R000",
@@ -17,6 +17,24 @@
       "xanh_ngon": 0,
       "tong_doanh_thu_app": 0,
       "mo_ta": "111111",
+      "co_anh": "false",
+      "trang_thai_doi_chieu": "Chưa đối chiếu"
+    },
+    {
+      "id": "R001",
+      "thoi_gian": "2026/09/07 09:14",
+      "nguoi_bao_cao": "Jfjdjs",
+      "chi_nhanh": "Khương Trung",
+      "ca": "Ca tối",
+      "tien_mat_kiem_dem": 13132,
+      "chi": 44586,
+      "tien_mat_thuc_te": 57718,
+      "shopee_food": 8,
+      "grab_food": 7,
+      "be_food": 77,
+      "xanh_ngon": 88,
+      "tong_doanh_thu_app": 180,
+      "mo_ta": "Akala",
       "co_anh": "false",
       "trang_thai_doi_chieu": "Chưa đối chiếu"
     }
