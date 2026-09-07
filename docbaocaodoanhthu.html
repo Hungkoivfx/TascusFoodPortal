@@ -1,99 +1,180 @@
-<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> <title>Xem báo cáo doanh thu · Tascus Food</title> <style> * { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-height: 100%; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f6f8; color: #202124; } button, select { font: inherit; } button { cursor: pointer; } .app { width: 100%; min-height: 100vh; } .header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 18px 24px; position: sticky; top: 0; z-index: 20; } .header-inner { max-width: 1400px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; } .brand h1 { font-size: 21px; font-weight: 700; color: #111827; } .brand p { margin-top: 4px; font-size: 13px; color: #6b7280; } .header-actions { display: flex; align-items: center; gap: 8px; } .btn { border: 1px solid #d9dde3; background: #fff; color: #374151; padding: 9px 14px; border-radius: 9px; font-size: 13px; font-weight: 600; transition: .15s; } .btn:hover { background: #f8f9fa; } .btn-primary { background: #f28c28; border-color: #f28c28; color: #fff; } .btn-primary:hover { background: #df7b1d; } .container { width: min(1400px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 50px; } .filters { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 14px; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; } .filter-btn { border: 1px solid #e1e4e8; background: #fff; color: #4b5563; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; } .filter-btn:hover { background: #f8f9fa; } .filter-btn.active { background: #f28c28; color: #fff; border-color: #f28c28; } .summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; } .summary-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 18px; } .summary-label { color: #6b7280; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; } .summary-value { margin-top: 7px; font-size: 25px; font-weight: 750; color: #111827; } .summary-value.money { font-size: 22px; } .table-wrap { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; overflow: hidden; } .table-scroll { width: 100%; overflow-x: auto; } table { width: 100%; border-collapse: collapse; min-width: 1180px; } thead { background: #f8f9fa; } th { padding: 12px 11px; border-bottom: 1px solid #e5e7eb; color: #6b7280; font-size: 11px; font-weight: 700; text-align: left; white-space: nowrap; } td { padding: 13px 11px; border-bottom: 1px solid #f0f1f3; font-size: 12px; white-space: nowrap; vertical-align: middle; } tbody tr:hover { background: #fafafa; } tbody tr:last-child td { border-bottom: 0; } .money-cell { font-weight: 650; } .total-cell { font-weight: 750; } .reporter { max-width: 130px; overflow: hidden; text-overflow: ellipsis; } .status { display: inline-flex; align-items: center; gap: 5px; padding: 5px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; white-space: nowrap; } .status.pending { background: #f3f4f6; color: #6b7280; } .status.ok { background: #eaf7ee; color: #22863a; } .status.bad { background: #fff0f0; color: #c53030; } .detail-btn { border: 0; background: #f3f4f6; color: #374151; padding: 6px 9px; border-radius: 7px; font-size: 11px; font-weight: 700; } .detail-btn:hover { background: #e5e7eb; } .mobile-list { display: none; } .mobile-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 15px; margin-bottom: 10px; } .mobile-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; } .mobile-date { font-size: 13px; font-weight: 700; color: #111827; } .mobile-branch { margin-top: 3px; font-size: 12px; color: #6b7280; } .mobile-total { text-align: right; font-size: 15px; font-weight: 750; } .mobile-total-label { display: block; margin-bottom: 2px; color: #9ca3af; font-size: 10px; font-weight: 600; } .mobile-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; margin-top: 14px; } .mobile-item { background: #f8f9fa; border-radius: 9px; padding: 9px; } .mobile-item-label { color: #6b7280; font-size: 10px; } .mobile-item-value { margin-top: 3px; font-size: 12px; font-weight: 650; } .mobile-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; padding-top: 11px; border-top: 1px solid #f0f1f3; } .mobile-reporter { min-width: 0; color: #6b7280; font-size: 11px; overflow: hidden; text-overflow: ellipsis; } .empty { text-align: center; padding: 60px 20px; color: #6b7280; } .empty-icon { font-size: 32px; margin-bottom: 10px; } .empty-title { color: #374151; font-weight: 700; font-size: 15px; } .empty-text { margin-top: 5px; font-size: 12px; } .loading { text-align: center; padding: 70px 20px; color: #6b7280; } .spinner { width: 30px; height: 30px; border: 3px solid #e5e7eb; border-top-color: #f28c28; border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 13px; } @keyframes spin { to { transform: rotate(360deg); } } .error-box { display: none; background: #fff; border: 1px solid #f0caca; border-radius: 14px; padding: 20px; margin-bottom: 18px; } .error-title { color: #b42318; font-weight: 750; font-size: 15px; } .error-message { margin-top: 7px; color: #6b7280; font-size: 13px; line-height: 1.5; word-break: break-word; } .error-help { margin-top: 12px; color: #6b7280; font-size: 12px; line-height: 1.5; } .modal-overlay { position: fixed; inset: 0; background: rgba(17, 24, 39, .45); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; } .modal-overlay.show { display: flex; } .modal { width: min(650px, 100%); max-height: calc(100vh - 40px); overflow-y: auto; background: #fff; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.2); } .modal-header { position: sticky; top: 0; background: #fff; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 17px 19px; border-bottom: 1px solid #e5e7eb; } .modal-title { font-size: 17px; font-weight: 750; } .close-btn { width: 32px; height: 32px; border: 0; border-radius: 50%; background: #f3f4f6; color: #4b5563; font-size: 18px; } .modal-body { padding: 19px; } .detail-section { margin-bottom: 20px; } .detail-section:last-child { margin-bottom: 0; } .detail-section-title { font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: .05em; font-weight: 750; margin-bottom: 9px; } .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #e5e7eb; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; } .detail-item { background: #fff; padding: 10px 12px; } .detail-label { font-size: 10px; color: #6b7280; } .detail-value { margin-top: 3px; font-size: 13px; font-weight: 650; color: #111827; word-break: break-word; } .note-box { background: #f8f9fa; border-radius: 10px; padding: 12px; font-size: 12px; line-height: 1.5; color: #4b5563; white-space: pre-wrap; } .check-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; } .check-btn { padding: 11px; border-radius: 9px; font-size: 12px; font-weight: 700; border: 1px solid #dfe3e8; background: #fff; } .check-btn.ok:hover, .check-btn.ok.selected { background: #eaf7ee; border-color: #8bd3a0; color: #22863a; } .check-btn.bad:hover, .check-btn.bad.selected { background: #fff0f0; border-color: #efaaaa; color: #c53030; } .help-content { color: #4b5563; font-size: 13px; line-height: 1.65; } .help-content p { margin-bottom: 12px; } .help-content p:last-child { margin-bottom: 0; } .footer { text-align: center; color: #9ca3af; font-size: 11px; padding: 0 20px 30px; } @media (max-width: 900px) { .header { padding: 15px; } .header-inner { align-items: flex-start; } .brand h1 { font-size: 18px; } .brand p { font-size: 12px; } .container { width: calc(100% - 20px); padding-top: 15px; } .summary { gap: 8px; } .summary-card { padding: 13px; } .summary-value { font-size: 20px; } .summary-value.money { font-size: 16px; } .table-wrap { display: none; } .mobile-list { display: block; } } @media (max-width: 560px) { .header-actions .btn { padding: 8px 10px; } .header-actions .btn-help { display: none; } .summary { grid-template-columns: repeat(3, 1fr); } .summary-label { font-size: 9px; } .summary-value { font-size: 17px; } .summary-value.money { font-size: 13px; } .filters { padding: 10px; gap: 6px; } .filter-btn { flex: 1 1 calc(33.333% - 6px); padding: 8px 5px; font-size: 11px; } .modal-overlay { padding: 10px; } .modal { max-height: calc(100vh - 20px); border-radius: 14px; } .detail-grid { grid-template-columns: 1fr 1fr; } } </style> </head> <body> <div class="app">
-<header class="header">
-    <div class="header-inner">
+<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> <title>Xem báo cáo doanh thu · Tascus Food</title> <style> * { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-height: 100%; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f6f8; color: #202124; } button, select { font: inherit; } button { cursor: pointer; } .app { width: 100%; min-height: 100vh; } /* HEADER */ .header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 18px 24px; position: sticky; top: 0; z-index: 20; } .header-inner { max-width: 1400px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; } .brand h1 { font-size: 21px; font-weight: 700; color: #111827; } .brand p { margin-top: 4px; font-size: 13px; color: #6b7280; } .header-actions { display: flex; align-items: center; gap: 8px; } .btn { border: 1px solid #d9dde3; background: #fff; color: #374151; padding: 9px 14px; border-radius: 9px; font-size: 13px; font-weight: 600; transition: .15s; } .btn:hover { background: #f3f4f6; } /* CONTAINER */ .container { width: min(1400px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 50px; } /* FILTER */ .filters { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 14px; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; } .filter-btn { border: 1px solid #e1e4e8; background: #fff; color: #4b5563; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; } .filter-btn:hover { background: #f8f9fa; } .filter-btn.active { background: #374151; color: #fff; border-color: #374151; } /* SUMMARY */ .summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; } .summary-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 18px; } .summary-label { color: #6b7280; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; } .summary-value { margin-top: 7px; font-size: 25px; font-weight: 750; color: #111827; } .summary-value.money { font-size: 22px; } /* TABLE */ .table-wrap { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; overflow: hidden; } .table-scroll { width: 100%; overflow-x: auto; } table { width: 100%; border-collapse: collapse; min-width: 1180px; } thead { background: #f8f9fa; } th { padding: 12px 11px; border-bottom: 1px solid #e5e7eb; color: #6b7280; font-size: 11px; font-weight: 700; text-align: left; white-space: nowrap; } td { padding: 13px 11px; border-bottom: 1px solid #f0f1f3; font-size: 12px; white-space: nowrap; vertical-align: middle; } tbody tr:hover { background: #fafafa; } tbody tr:last-child td { border-bottom: 0; } .money-cell { font-weight: 650; } .total-cell { font-weight: 750; } .reporter { max-width: 130px; overflow: hidden; text-overflow: ellipsis; } .detail-btn { border: 0; background: #f3f4f6; color: #374151; padding: 6px 9px; border-radius: 7px; font-size: 11px; font-weight: 700; } .detail-btn:hover { background: #e5e7eb; } /* STATUS */ .status { display: inline-flex; align-items: center; gap: 5px; padding: 5px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; white-space: nowrap; } .status.pending { background: #f3f4f6; color: #6b7280; } .status.ok { background: #eaf7ee; color: #22863a; } .status.bad { background: #fff0f0; color: #c53030; } /* MOBILE */ .mobile-list { display: none; } .mobile-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 15px; margin-bottom: 10px; } .mobile-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; } .mobile-date { font-size: 13px; font-weight: 700; color: #111827; } .mobile-branch { margin-top: 3px; font-size: 12px; color: #6b7280; } .mobile-total { text-align: right; font-size: 15px; font-weight: 750; } .mobile-total-label { display: block; margin-bottom: 2px; color: #9ca3af; font-size: 10px; font-weight: 600; } .mobile-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; margin-top: 14px; } .mobile-item { background: #f8f9fa; border-radius: 9px; padding: 9px; } .mobile-item-label { color: #6b7280; font-size: 10px; } .mobile-item-value { margin-top: 3px; font-size: 12px; font-weight: 650; } .mobile-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; padding-top: 11px; border-top: 1px solid #f0f1f3; } .mobile-reporter { min-width: 0; color: #6b7280; font-size: 11px; overflow: hidden; text-overflow: ellipsis; } /* EMPTY */ .empty { text-align: center; padding: 60px 20px; color: #6b7280; } .empty-icon { font-size: 32px; margin-bottom: 10px; } .empty-title { color: #374151; font-weight: 700; font-size: 15px; } .empty-text { margin-top: 5px; font-size: 12px; } /* LOADING */ .loading { text-align: center; padding: 70px 20px; color: #6b7280; } .spinner { width: 30px; height: 30px; border: 3px solid #e5e7eb; border-top-color: #374151; border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 13px; } @keyframes spin { to { transform: rotate(360deg); } } /* ERROR */ .error-box { display: none; background: #fff; border: 1px solid #f0caca; border-radius: 14px; padding: 20px; margin-bottom: 18px; } .error-title { color: #b42318; font-weight: 750; font-size: 15px; } .error-message { margin-top: 7px; color: #6b7280; font-size: 13px; line-height: 1.5; word-break: break-word; } .error-help { margin-top: 12px; color: #6b7280; font-size: 12px; line-height: 1.5; } /* MODAL */ .modal-overlay { position: fixed; inset: 0; background: rgba(17, 24, 39, .45); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; } .modal-overlay.show { display: flex; } .modal { width: min(650px, 100%); max-height: calc(100vh - 40px); overflow-y: auto; background: #fff; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.2); } .modal-header { position: sticky; top: 0; background: #fff; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 17px 19px; border-bottom: 1px solid #e5e7eb; } .modal-title { font-size: 17px; font-weight: 750; } .close-btn { width: 32px; height: 32px; border: 0; border-radius: 50%; background: #f3f4f6; color: #4b5563; font-size: 18px; } .modal-body { padding: 19px; } /* DETAIL */ .detail-section { margin-bottom: 20px; } .detail-section:last-child { margin-bottom: 0; } .detail-section-title { font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: .05em; font-weight: 750; margin-bottom: 9px; } .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #e5e7eb; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; } .detail-item { background: #fff; padding: 10px 12px; } .detail-label { font-size: 10px; color: #6b7280; } .detail-value { margin-top: 3px; font-size: 13px; font-weight: 650; color: #111827; word-break: break-word; } .note-box { background: #f8f9fa; border-radius: 10px; padding: 12px; font-size: 12px; line-height: 1.5; color: #4b5563; white-space: pre-wrap; } /* CHECK BUTTONS */ .check-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; } .check-btn { padding: 11px; border-radius: 9px; font-size: 12px; font-weight: 700; border: 1px solid #dfe3e8; background: #fff; color: #374151; transition: .15s; } .check-btn.ok.selected { background: #eaf7ee; border-color: #8bd3a0; color: #22863a; } .check-btn.bad.selected { background: #fff0f0; border-color: #efaaaa; color: #c53030; } .check-btn:not(.selected) { background: #f3f4f6; border-color: #e5e7eb; color: #9ca3af; } .check-btn.ok:not(.selected):hover { background: #fff; border-color: #8bd3a0; color: #22863a; } .check-btn.bad:not(.selected):hover { background: #fff; border-color: #efaaaa; color: #c53030; } /* HELP */ .help-content { color: #4b5563; font-size: 13px; line-height: 1.65; } .help-content p { margin-bottom: 12px; } .help-content p:last-child { margin-bottom: 0; } /* FOOTER */ .footer { text-align: center; color: #9ca3af; font-size: 11px; padding: 0 20px 30px; } /* RESPONSIVE */ @media (max-width: 900px) { .header { padding: 15px; } .header-inner { align-items: flex-start; } .brand h1 { font-size: 18px; } .brand p { font-size: 12px; } .container { width: calc(100% - 20px); padding-top: 15px; } .summary { gap: 8px; } .summary-card { padding: 13px; } .summary-value { font-size: 20px; } .summary-value.money { font-size: 16px; } .table-wrap { display: none; } .mobile-list { display: block; } } @media (max-width: 560px) { .header-actions .btn-help { display: none; } .summary { grid-template-columns: repeat(3, 1fr); } .summary-label { font-size: 9px; } .summary-value { font-size: 17px; } .summary-value.money { font-size: 13px; } .filters { padding: 10px; gap: 6px; } .filter-btn { flex: 1 1 calc(33.333% - 6px); padding: 8px 5px; font-size: 11px; } .modal-overlay { padding: 10px; } .modal { max-height: calc(100vh - 20px); border-radius: 14px; } .detail-grid { grid-template-columns: 1fr 1fr; } } </style> </head> <body> <div class="app"> <header class="header">
+<div class="header-inner">
 
-        <div class="brand">
-            <h1>Xem báo cáo doanh thu</h1>
-            <p>Tascus Food · Cổng vận hành</p>
-        </div>
+    <div class="brand">
 
-        <div class="header-actions">
-            <button class="btn btn-help" onclick="openHelp()">
-                Hướng dẫn
-            </button>
+        <h1>
+            Xem báo cáo doanh thu
+        </h1>
 
-            <button class="btn btn-primary" onclick="loadReports()">
-                ↻ Làm mới
-            </button>
-        </div>
-
-    </div>
-</header>
-
-<main class="container">
-
-    <div class="filters">
-        <button class="filter-btn active" data-filter="today">
-            Hôm nay
-        </button>
-
-        <button class="filter-btn" data-filter="yesterday">
-            Hôm qua
-        </button>
-
-        <button class="filter-btn" data-filter="last_week">
-            Tuần trước
-        </button>
-
-        <button class="filter-btn" data-filter="this_week">
-            Tuần này
-        </button>
-
-        <button class="filter-btn" data-filter="last_month">
-            Tháng trước
-        </button>
-
-        <button class="filter-btn" data-filter="this_month">
-            Tháng này
-        </button>
-    </div>
-
-    <div id="errorBox" class="error-box">
-        <div class="error-title">
-            ⚠️ Không tải được báo cáo
-        </div>
-
-        <div id="errorMessage" class="error-message"></div>
-
-        <div class="error-help">
-            Hệ thống đang đọc trực tiếp file
-            <strong>baocaodoanhthu.json</strong>.
-            Kiểm tra file có nằm cùng thư mục với trang HTML và đã được GitHub Pages xuất bản hay chưa.
-        </div>
-    </div>
-
-    <div id="summary" class="summary">
-        <div class="summary-card">
-            <div class="summary-label">Số báo cáo</div>
-            <div id="summaryCount" class="summary-value">0</div>
-        </div>
-
-        <div class="summary-card">
-            <div class="summary-label">Tổng doanh thu</div>
-            <div id="summaryTotal" class="summary-value money">0 ₫</div>
-        </div>
-
-        <div class="summary-card">
-            <div class="summary-label">Trung bình / báo cáo</div>
-            <div id="summaryAverage" class="summary-value money">0 ₫</div>
-        </div>
-    </div>
-
-    <div id="content">
-
-        <div class="loading">
-            <div class="spinner"></div>
-            <div>Đang tải báo cáo...</div>
-        </div>
+        <p>
+            Tascus Food · Cổng vận hành
+        </p>
 
     </div>
 
-</main>
+    <div class="header-actions">
 
-<div class="footer">
-    Tascus Food · Dữ liệu được cập nhật từ hệ thống báo cáo doanh thu
+        <button
+            class="btn btn-help"
+            onclick="openHelp()"
+        >
+            Hướng dẫn
+        </button>
+
+        <button
+            class="btn"
+            onclick="loadReports()"
+        >
+            ↻ Làm mới
+        </button>
+
+    </div>
+
 </div>
-</div> <!-- DETAIL MODAL --> <div id="detailModal" class="modal-overlay" onclick="closeModalOutside(event)">
+</header> <main class="container">
+<div class="filters">
+
+    <button
+        class="filter-btn active"
+        data-filter="today"
+    >
+        Hôm nay
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="yesterday"
+    >
+        Hôm qua
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="last_week"
+    >
+        Tuần trước
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="this_week"
+    >
+        Tuần này
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="last_month"
+    >
+        Tháng trước
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="this_month"
+    >
+        Tháng này
+    </button>
+
+</div>
+
+
+<div
+    id="errorBox"
+    class="error-box"
+>
+
+    <div class="error-title">
+        ⚠️ Không tải được báo cáo
+    </div>
+
+    <div
+        id="errorMessage"
+        class="error-message"
+    ></div>
+
+    <div class="error-help">
+
+        Hệ thống đọc trực tiếp file
+        <strong>baocaodoanhthu.json</strong>.
+
+        Kiểm tra file có nằm đúng vị trí và
+        đã được GitHub Pages xuất bản hay chưa.
+
+    </div>
+
+</div>
+
+
+<div class="summary">
+
+    <div class="summary-card">
+
+        <div class="summary-label">
+            Số báo cáo
+        </div>
+
+        <div
+            id="summaryCount"
+            class="summary-value"
+        >
+            0
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-label">
+            Tổng doanh thu
+        </div>
+
+        <div
+            id="summaryTotal"
+            class="summary-value money"
+        >
+            0 ₫
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-label">
+            Trung bình / báo cáo
+        </div>
+
+        <div
+            id="summaryAverage"
+            class="summary-value money"
+        >
+            0 ₫
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="content">
+
+    <div class="loading">
+
+        <div class="spinner"></div>
+
+        <div>
+            Đang tải báo cáo...
+        </div>
+
+    </div>
+
+</div>
+</main> <div class="footer">
+Tascus Food · Dữ liệu báo cáo doanh thu
+</div> </div> <!-- DETAIL MODAL --> <div id="detailModal" class="modal-overlay" onclick="closeModalOutside(event)" >
 <div class="modal">
 
     <div class="modal-header">
@@ -102,16 +183,22 @@
             Chi tiết báo cáo
         </div>
 
-        <button class="close-btn" onclick="closeDetail()">
+        <button
+            class="close-btn"
+            onclick="closeDetail()"
+        >
             ×
         </button>
 
     </div>
 
-    <div id="detailBody" class="modal-body"></div>
+    <div
+        id="detailBody"
+        class="modal-body"
+    ></div>
 
 </div>
-</div> <!-- HELP MODAL --> <div id="helpModal" class="modal-overlay" onclick="closeHelpOutside(event)">
+</div> <!-- HELP MODAL --> <div id="helpModal" class="modal-overlay" onclick="closeHelpOutside(event)" >
 <div class="modal">
 
     <div class="modal-header">
@@ -120,7 +207,10 @@
             Hướng dẫn
         </div>
 
-        <button class="close-btn" onclick="closeHelp()">
+        <button
+            class="close-btn"
+            onclick="closeHelp()"
+        >
             ×
         </button>
 
@@ -131,24 +221,31 @@
         <div class="help-content">
 
             <p>
-                Trang này dùng để xem các báo cáo doanh thu đã được ghi nhận trong hệ thống.
+                Trang này dùng để xem các báo cáo
+                doanh thu đã được ghi nhận.
             </p>
 
             <p>
-                Sử dụng các bộ lọc phía trên để xem báo cáo theo ngày, tuần hoặc tháng.
+                Sử dụng bộ lọc để xem báo cáo
+                theo ngày, tuần hoặc tháng.
             </p>
 
             <p>
-                Nhấn vào <strong>Chi tiết</strong> để xem đầy đủ số liệu của từng báo cáo.
+                Nhấn <strong>Chi tiết</strong>
+                để xem đầy đủ số liệu.
             </p>
 
             <p>
-                Trạng thái <strong>Chưa đối chiếu</strong> nghĩa là báo cáo chưa được kiểm tra.
+                Trạng thái
+                <strong>Chưa đối chiếu</strong>
+                nghĩa là báo cáo chưa được kiểm tra.
             </p>
 
             <p>
-                Trạng thái <strong>Khớp</strong> hoặc <strong>Sai</strong> được lấy từ trường
-                <strong>trang_thai_doi_chieu</strong> trong dữ liệu.
+                Khi đối chiếu, chỉ một trong hai
+                trạng thái <strong>Khớp</strong>
+                hoặc <strong>Sai</strong>
+                được chọn.
             </p>
 
         </div>
@@ -156,4 +253,4 @@
     </div>
 
 </div>
-</div> <script> /* |-------------------------------------------------------------------------- | CẤU HÌNH |-------------------------------------------------------------------------- | | baocaodoanhthu.json nằm cùng thư mục với file HTML. | */ const REVENUE_JSON_URL = "./baocaodoanhthu.json"; /* |-------------------------------------------------------------------------- | STATE |-------------------------------------------------------------------------- */ let allReports = []; let currentFilter = "today"; let currentReport = null; /* |-------------------------------------------------------------------------- | FORMAT |-------------------------------------------------------------------------- */ function formatMoney(value) { const number = Number(value) || 0; return number.toLocaleString("vi-VN") + " ₫"; } function formatNumber(value) { return (Number(value) || 0).toLocaleString("vi-VN"); } function normalizeDate(value) { if (!value) { return ""; } const text = String(value).trim(); /* * Hỗ trợ: * 2026/09/07 * 2026/09/07 08:48 * 2026-09-07 * 2026-09-07T08:48:00 */ let match = text.match(/^(\d{4})[\/-](\d{2})[\/-](\d{2})/); if (match) { return `${match[1]}-${match[2]}-${match[3]}`; } const date = new Date(text); if (!isNaN(date.getTime())) { return [ date.getFullYear(), String(date.getMonth() + 1).padStart(2, "0"), String(date.getDate()).padStart(2, "0") ].join("-"); } return ""; } function formatDate(value) { const date = normalizeDate(value); if (!date) { return "-"; } const parts = date.split("-"); return `${parts[2]}/${parts[1]}/${parts[0]}`; } function formatDateTime(value) { if (!value) { return "-"; } const text = String(value); const match = text.match( /^(\d{4})[\/-](\d{2})[\/-](\d{2})(?:[ T](\d{2}):(\d{2}))?/ ); if (match) { let result = `${match[3]}/${match[2]}/${match[1]}`; if (match[4] && match[5]) { result += ` ${match[4]}:${match[5]}`; } return result; } return text; } /* |-------------------------------------------------------------------------- | STATUS |-------------------------------------------------------------------------- */ function normalizeStatus(value) { const status = String(value || "") .trim() .toLowerCase(); if ( status === "khớp" || status === "khop" || status === "match" ) { return "Khớp"; } if ( status === "sai" || status === "wrong" ) { return "Sai"; } return ""; } function statusHtml(status) { if (status === "Khớp") { return ` <span class="status ok"> ● Khớp </span> `; } if (status === "Sai") { return ` <span class="status bad"> ● Sai </span> `; } return ` <span class="status pending"> ● Chưa đối chiếu </span> `; } /* |-------------------------------------------------------------------------- | NORMALIZE DATA |-------------------------------------------------------------------------- */ function normalizeReports(records) { if (!Array.isArray(records)) { return []; } return records .map((r, index) => { const cash = Number(r.tien_mat_thuc_te) || 0; const appTotal = Number(r.tong_doanh_thu_app) || 0; return { id: r.id || `R-${index + 1}`, thoi_gian: r.thoi_gian || "", ngay: normalizeDate(r.thoi_gian), nguoi_bao_cao: r.nguoi_bao_cao || "", chi_nhanh: r.chi_nhanh || "", ca: r.ca || "", tien_mat: Number(r.tien_mat_kiem_dem) || 0, chi: Number(r.chi) || 0, doanh_thu_tien_mat: cash, grab: Number(r.grab_food) || 0, shopee: Number(r.shopee_food) || 0, be: Number(r.be_food) || 0, xanh: Number(r.xanh_ngon) || 0, tong_doanh_thu_app: appTotal, tong_doanh_thu: cash + appTotal, ghi_chu: r.mo_ta || "", co_anh: r.co_anh || "false", trang_thai_kiem_tra: normalizeStatus(r.trang_thai_doi_chieu), raw: r }; }) .sort((a, b) => { const dateA = new Date( a.thoi_gian.replace(/\//g, "-") ).getTime(); const dateB = new Date( b.thoi_gian.replace(/\//g, "-") ).getTime(); return (isNaN(dateB) ? 0 : dateB) - (isNaN(dateA) ? 0 : dateA); }); } /* |-------------------------------------------------------------------------- | LOAD JSON |-------------------------------------------------------------------------- */ async function loadReports() { hideError(); showLoading(); try { /* * Cache busting. * * Không dùng Apps Script. * Không gửi action. * Đọc trực tiếp baocaodoanhthu.json. */ const url = REVENUE_JSON_URL + "?t=" + Date.now(); const response = await fetch(url, { method: "GET", cache: "no-store", headers: { "Accept": "application/json" } }); if (!response.ok) { throw new Error( `Không thể tải baocaodoanhthu.json. HTTP ${response.status}` ); } const data = await response.json(); if (!data || !Array.isArray(data.records)) { throw new Error( "Cấu trúc JSON không hợp lệ. Cần có trường records dạng mảng." ); } allReports = normalizeReports(data.records); applyFilter(); } catch (error) { console.error( "Lỗi tải báo cáo doanh thu:", error ); showError( error.message || "Không tải được dữ liệu báo cáo doanh thu." ); } } /* |-------------------------------------------------------------------------- | FILTER |-------------------------------------------------------------------------- */ function getToday() { const now = new Date(); return new Date( now.getFullYear(), now.getMonth(), now.getDate() ); } function getStartOfWeek(date) { const d = new Date(date); const day = d.getDay(); const diff = day === 0 ? -6 : 1 - day; d.setDate(d.getDate() + diff); d.setHours(0, 0, 0, 0); return d; } function getEndOfWeek(date) { const start = getStartOfWeek(date); const end = new Date(start); end.setDate(end.getDate() + 6); end.setHours(23, 59, 59, 999); return end; } function getDateObject(report) { if (!report.ngay) { return null; } const parts = report.ngay.split("-"); if (parts.length !== 3) { return null; } return new Date( Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]) ); } function isSameDay(a, b) { return ( a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate() ); } function getFilteredReports() { const now = new Date(); const today = getToday(); return allReports.filter(report => { const date = getDateObject(report); if (!date) { return false; } date.setHours(0, 0, 0, 0); switch (currentFilter) { case "today": return isSameDay(date, today); case "yesterday": { const yesterday = new Date(today); yesterday.setDate( yesterday.getDate() - 1 ); return isSameDay( date, yesterday ); } case "this_week": { const start = getStartOfWeek(now); const end = getEndOfWeek(now); return date >= start && date <= end; } case "last_week": { const start = getStartOfWeek(now); start.setDate( start.getDate() - 7 ); const end = getEndOfWeek(start); return date >= start && date <= end; } case "this_month": { const start = new Date( now.getFullYear(), now.getMonth(), 1 ); const end = new Date( now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999 ); return date >= start && date <= end; } case "last_month": { const start = new Date( now.getFullYear(), now.getMonth() - 1, 1 ); const end = new Date( now.getFullYear(), now.getMonth(), 0, 23, 59, 59, 999 ); return date >= start && date <= end; } default: return true; } }); } function applyFilter() { const reports = getFilteredReports(); updateSummary(reports); renderReports(reports); } /* |-------------------------------------------------------------------------- | SUMMARY |-------------------------------------------------------------------------- */ function updateSummary(reports) { const count = reports.length; const total = reports.reduce( (sum, report) => sum + report.tong_doanh_thu, 0 ); const average = count > 0 ? total / count : 0; document.getElementById( "summaryCount" ).textContent = formatNumber(count); document.getElementById( "summaryTotal" ).textContent = formatMoney(total); document.getElementById( "summaryAverage" ).textContent = formatMoney(average); } /* |-------------------------------------------------------------------------- | RENDER |-------------------------------------------------------------------------- */ function renderReports(reports) { const content = document.getElementById("content"); if (!reports.length) { content.innerHTML = ` <div class="table-wrap"> <div class="empty"> <div class="empty-icon"> 📭 </div> <div class="empty-title"> Không có báo cáo </div> <div class="empty-text"> Không tìm thấy báo cáo doanh thu trong khoảng thời gian này. </div> </div> </div> `; return; } content.innerHTML = ` <div class="table-wrap"> <div class="table-scroll"> ${renderTable(reports)} </div> </div> <div class="mobile-list"> ${reports .map(renderMobileCard) .join("")} </div> `; } function renderTable(reports) { return ` <table> <thead> <tr> <th>Ngày</th> <th>Chi nhánh</th> <th>Ca</th> <th>Tiền mặt</th> <th>Chi</th> <th>DT tiền mặt</th> <th>Grab</th> <th>Shopee</th> <th>Be</th> <th>Xanh SM</th> <th>Tổng doanh thu</th> <th>Người báo cáo</th> <th>Trạng thái</th> <th></th> </tr> </thead> <tbody> ${reports .map(renderTableRow) .join("")} </tbody> </table> `; } function renderTableRow(report) { return ` <tr> <td> ${formatDateTime(report.thoi_gian)} </td> <td> <strong> ${escapeHtml(report.chi_nhanh)} </strong> </td> <td> ${escapeHtml(report.ca)} </td> <td class="money-cell"> ${formatMoney(report.tien_mat)} </td> <td class="money-cell"> ${formatMoney(report.chi)} </td> <td class="money-cell"> ${formatMoney(report.doanh_thu_tien_mat)} </td> <td> ${formatMoney(report.grab)} </td> <td> ${formatMoney(report.shopee)} </td> <td> ${formatMoney(report.be)} </td> <td> ${formatMoney(report.xanh)} </td> <td class="total-cell"> ${formatMoney(report.tong_doanh_thu)} </td> <td class="reporter"> ${escapeHtml(report.nguoi_bao_cao)} </td> <td> ${statusHtml( report.trang_thai_kiem_tra )} </td> <td> <button class="detail-btn" onclick="openDetail('${escapeAttribute(report.id)}')" > Chi tiết </button> </td> </tr> `; } function renderMobileCard(report) { return ` <div class="mobile-card"> <div class="mobile-card-top"> <div> <div class="mobile-date"> ${formatDateTime(report.thoi_gian)} </div> <div class="mobile-branch"> ${escapeHtml(report.chi_nhanh)} · ${escapeHtml(report.ca)} </div> </div> <div class="mobile-total"> <span class="mobile-total-label"> Tổng doanh thu </span> ${formatMoney( report.tong_doanh_thu )} </div> </div> <div class="mobile-grid"> <div class="mobile-item"> <div class="mobile-item-label"> Tiền mặt </div> <div class="mobile-item-value"> ${formatMoney( report.doanh_thu_tien_mat )} </div> </div> <div class="mobile-item"> <div class="mobile-item-label"> App </div> <div class="mobile-item-value"> ${formatMoney( report.tong_doanh_thu_app )} </div> </div> <div class="mobile-item"> <div class="mobile-item-label"> Chi trong ca </div> <div class="mobile-item-value"> ${formatMoney( report.chi )} </div> </div> <div class="mobile-item"> <div class="mobile-item-label"> Trạng thái </div> <div class="mobile-item-value"> ${statusHtml( report.trang_thai_kiem_tra )} </div> </div> </div> <div class="mobile-card-bottom"> <div class="mobile-reporter"> ${escapeHtml( report.nguoi_bao_cao )} </div> <button class="detail-btn" onclick="openDetail('${escapeAttribute(report.id)}')" > Xem chi tiết </button> </div> </div> `; } /* |-------------------------------------------------------------------------- | DETAIL |-------------------------------------------------------------------------- */ function openDetail(id) { const report = allReports.find( r => String(r.id) === String(id) ); if (!report) { return; } currentReport = report; const body = document.getElementById("detailBody"); body.innerHTML = ` <div class="detail-section"> <div class="detail-section-title"> Thông tin báo cáo </div> <div class="detail-grid"> ${detailItem( "Chi nhánh", report.chi_nhanh )} ${detailItem( "Ngày / giờ", formatDateTime( report.thoi_gian ) )} ${detailItem( "Ca", report.ca )} ${detailItem( "Người báo cáo", report.nguoi_bao_cao )} </div> </div> <div class="detail-section"> <div class="detail-section-title"> Tiền mặt </div> <div class="detail-grid"> ${detailMoney( "Tiền mặt kiểm đếm", report.tien_mat )} ${detailMoney( "Chi trong ca", report.chi )} ${detailMoney( "Tiền mặt thực tế", report.doanh_thu_tien_mat )} ${detailMoney( "Tổng doanh thu app", report.tong_doanh_thu_app )} </div> </div> <div class="detail-section"> <div class="detail-section-title"> Doanh thu ứng dụng </div> <div class="detail-grid"> ${detailMoney( "Grab Food", report.grab )} ${detailMoney( "Shopee Food", report.shopee )} ${detailMoney( "Be Food", report.be )} ${detailMoney( "Xanh Ngon", report.xanh )} </div> </div> <div class="detail-section"> <div class="detail-section-title"> Tổng </div> <div class="detail-grid"> ${detailMoney( "Tổng doanh thu", report.tong_doanh_thu )} ${detailItem( "Trạng thái", report.trang_thai_kiem_tra || "Chưa đối chiếu" )} </div> </div> ${ report.ghi_chu ? ` <div class="detail-section"> <div class="detail-section-title"> Ghi chú </div> <div class="note-box"> ${escapeHtml( report.ghi_chu )} </div> </div> ` : "" } <div class="detail-section"> <div class="detail-section-title"> Đối chiếu </div> <div class="check-actions"> <button class="check-btn ok ${ report.trang_thai_kiem_tra === "Khớp" ? "selected" : "" }" onclick="setLocalStatus('Khớp')" > ✓ Khớp </button> <button class="check-btn bad ${ report.trang_thai_kiem_tra === "Sai" ? "selected" : "" }" onclick="setLocalStatus('Sai')" > ✕ Sai </button> </div> </div> `; document .getElementById("detailModal") .classList.add("show"); } function detailItem(label, value) { return ` <div class="detail-item"> <div class="detail-label"> ${escapeHtml(label)} </div> <div class="detail-value"> ${escapeHtml( value == null || value === "" ? "-" : String(value) )} </div> </div> `; } function detailMoney(label, value) { return ` <div class="detail-item"> <div class="detail-label"> ${escapeHtml(label)} </div> <div class="detail-value"> ${formatMoney(value)} </div> </div> `; } /* |-------------------------------------------------------------------------- | LOCAL STATUS |-------------------------------------------------------------------------- | | Chỉ thay đổi trên giao diện hiện tại. | Không ghi ngược JSON vì trình duyệt không thể | tự ghi vào GitHub repository. | */ function setLocalStatus(status) { if (!currentReport) { return; } currentReport.trang_thai_kiem_tra = status; const index = allReports.findIndex( r => String(r.id) === String(currentReport.id) ); if (index !== -1) { allReports[index] .trang_thai_kiem_tra = status; } const reports = getFilteredReports(); updateSummary(reports); renderReports(reports); openDetail(currentReport.id); } /* |-------------------------------------------------------------------------- | MODAL |-------------------------------------------------------------------------- */ function closeDetail() { document .getElementById("detailModal") .classList.remove("show"); currentReport = null; } function closeModalOutside(event) { if ( event.target === document.getElementById("detailModal") ) { closeDetail(); } } function openHelp() { document .getElementById("helpModal") .classList.add("show"); } function closeHelp() { document .getElementById("helpModal") .classList.remove("show"); } function closeHelpOutside(event) { if ( event.target === document.getElementById("helpModal") ) { closeHelp(); } } /* |-------------------------------------------------------------------------- | LOADING / ERROR |-------------------------------------------------------------------------- */ function showLoading() { document.getElementById( "content" ).innerHTML = ` <div class="loading"> <div class="spinner"></div> <div> Đang tải báo cáo... </div> </div> `; } function showError(message) { document.getElementById( "errorMessage" ).textContent = message; document.getElementById( "errorBox" ).style.display = "block"; document.getElementById( "content" ).innerHTML = ""; } function hideError() { document.getElementById( "errorBox" ).style.display = "none"; } /* |-------------------------------------------------------------------------- | ESCAPE HTML |-------------------------------------------------------------------------- */ function escapeHtml(value) { return String(value ?? "") .replace(/&/g, "&amp;") .replace(/</g, "&lt;") .replace(/>/g, "&gt;") .replace(/"/g, "&quot;") .replace(/'/g, "&#039;"); } function escapeAttribute(value) { return String(value ?? "") .replace(/\\/g, "\\\\") .replace(/'/g, "\\'"); } /* |-------------------------------------------------------------------------- | FILTER EVENTS |-------------------------------------------------------------------------- */ document .querySelectorAll(".filter-btn") .forEach(button => { button.addEventListener( "click", () => { document .querySelectorAll( ".filter-btn" ) .forEach(btn => { btn.classList.remove( "active" ); }); button.classList.add( "active" ); currentFilter = button.dataset.filter; applyFilter(); } ); }); /* |-------------------------------------------------------------------------- | KEYBOARD |-------------------------------------------------------------------------- */ document.addEventListener( "keydown", event => { if (event.key === "Escape") { closeDetail(); closeHelp(); } } ); /* |-------------------------------------------------------------------------- | START |-------------------------------------------------------------------------- */ loadReports(); </script> </body> </html>
+</div> <script> /* ========================================================= CONFIG ========================================================= */ const REVENUE_JSON_URL = "./baocaodoanhthu.json"; /* ========================================================= STATE ========================================================= */ let allReports = []; let currentFilter = "today"; let currentReport = null; /* ========================================================= FORMAT ========================================================= */ function formatMoney(value) { const number = Number(value) || 0; return number.toLocaleString("vi-VN") + " ₫"; } function formatNumber(value) { return (Number(value) || 0) .toLocaleString("vi-VN"); } function normalizeDate(value) { if (!value) { return ""; } const text = String(value).trim(); const match = text.match( /^(\d{4})[\/-](\d{2})[\/-](\d{2})/ ); if (match) { return ( match[1] + "-" + match[2] + "-" + match[3] ); } const date = new Date(text); if (!isNaN(date.getTime())) { return [ date.getFullYear(), String( date.getMonth() + 1 ).padStart(2, "0"), String( date.getDate() ).padStart(2, "0") ].join("-"); } return ""; } function formatDateTime(value) { if (!value) { return "-"; } const text = String(value); const match = text.match( /^(\d{4})[\/-](\d{2})[\/-](\d{2})(?:[ T](\d{2}):(\d{2}))?/ ); if (match) { let result = `${match[3]}/${match[2]}/${match[1]}`; if (match[4] && match[5]) { result += ` ${match[4]}:${match[5]}`; } return result; } return text; } /* ========================================================= STATUS ========================================================= */ function normalizeStatus(value) { const status = String(value || "") .trim() .toLowerCase(); if ( status === "khớp" || status === "khop" || status === "match" ) { return "Khớp"; } if ( status === "sai" || status === "wrong" ) { return "Sai"; } return ""; } function statusHtml(status) { if (status === "Khớp") { return ` <span class="status ok"> ● Khớp </span> `; } if (status === "Sai") { return ` <span class="status bad"> ● Sai </span> `; } return ` <span class="status pending"> ● Chưa đối chiếu </span> `; } /* ========================================================= NORMALIZE JSON ========================================================= */ function normalizeReports(records) { if (!Array.isArray(records)) { return []; } return records .map((r, index) => { const cash = Number( r.tien_mat_thuc_te ) || 0; const appTotal = Number( r.tong_doanh_thu_app ) || 0; return { id: r.id || `R-${index + 1}`, thoi_gian: r.thoi_gian || "", ngay: normalizeDate( r.thoi_gian ), nguoi_bao_cao: r.nguoi_bao_cao || "", chi_nhanh: r.chi_nhanh || "", ca: r.ca || "", tien_mat: Number( r.tien_mat_kiem_dem ) || 0, chi: Number(r.chi) || 0, doanh_thu_tien_mat: cash, grab: Number( r.grab_food ) || 0, shopee: Number( r.shopee_food ) || 0, be: Number( r.be_food ) || 0, xanh: Number( r.xanh_ngon ) || 0, tong_doanh_thu_app: appTotal, tong_doanh_thu: cash + appTotal, ghi_chu: r.mo_ta || "", co_anh: r.co_anh || "false", trang_thai_kiem_tra: normalizeStatus( r.trang_thai_doi_chieu ), raw: r }; }) .sort((a, b) => { const dateA = new Date( a.thoi_gian .replace(/\//g, "-") ).getTime(); const dateB = new Date( b.thoi_gian .replace(/\//g, "-") ).getTime(); return ( (isNaN(dateB) ? 0 : dateB) - (isNaN(dateA) ? 0 : dateA) ); }); } /* ========================================================= LOAD JSON ========================================================= */ async function loadReports() { hideError(); showLoading(); try { const url = REVENUE_JSON_URL + "?t=" + Date.now(); const response = await fetch( url, { method: "GET", cache: "no-store", headers: { "Accept": "application/json" } } ); if (!response.ok) { throw new Error( `Không thể tải baocaodoanhthu.json. HTTP ${response.status}` ); } const data = await response.json(); if ( !data || !Array.isArray(data.records) ) { throw new Error( "Cấu trúc JSON không hợp lệ. Cần có trường records dạng mảng." ); } allReports = normalizeReports( data.records ); applyFilter(); } catch (error) { console.error( "Lỗi tải báo cáo:", error ); showError( error.message || "Không tải được dữ liệu báo cáo." ); } } /* ========================================================= DATE FILTER ========================================================= */ function getToday() { const now = new Date(); return new Date( now.getFullYear(), now.getMonth(), now.getDate() ); } function getStartOfWeek(date) { const d = new Date(date); const day = d.getDay(); const diff = day === 0 ? -6 : 1 - day; d.setDate( d.getDate() + diff ); d.setHours( 0, 0, 0, 0 ); return d; } function getEndOfWeek(date) { const start = getStartOfWeek(date); const end = new Date(start); end.setDate( end.getDate() + 6 ); end.setHours( 23, 59, 59, 999 ); return end; } function getDateObject(report) { if (!report.ngay) { return null; } const parts = report.ngay.split("-"); if (parts.length !== 3) { return null; } return new Date( Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]) ); } function isSameDay(a, b) { return ( a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate() ); } function getFilteredReports() { const now = new Date(); const today = getToday(); return allReports.filter( report => { const date = getDateObject(report); if (!date) { return false; } date.setHours( 0, 0, 0, 0 ); switch (currentFilter) { case "today": return isSameDay( date, today ); case "yesterday": { const yesterday = new Date(today); yesterday.setDate( yesterday.getDate() - 1 ); return isSameDay( date, yesterday ); } case "this_week": { const start = getStartOfWeek(now); const end = getEndOfWeek(now); return ( date >= start && date <= end ); } case "last_week": { const start = getStartOfWeek(now); start.setDate( start.getDate() - 7 ); const end = getEndOfWeek(start); return ( date >= start && date <= end ); } case "this_month": { const start = new Date( now.getFullYear(), now.getMonth(), 1 ); const end = new Date( now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999 ); return ( date >= start && date <= end ); } case "last_month": { const start = new Date( now.getFullYear(), now.getMonth() - 1, 1 ); const end = new Date( now.getFullYear(), now.getMonth(), 0, 23, 59, 59, 999 ); return ( date >= start && date <= end ); } default: return true; } } ); } function applyFilter() { const reports = getFilteredReports(); updateSummary(reports); renderReports(reports); } /* ========================================================= SUMMARY ========================================================= */ function updateSummary(reports) { const count = reports.length; const total = reports.reduce( (sum, report) => sum + report.tong_doanh_thu, 0 ); const average = count > 0 ? total / count : 0; document.getElementById( "summaryCount" ).textContent = formatNumber(count); document.getElementById( "summaryTotal" ).textContent = formatMoney(total); document.getElementById( "summaryAverage" ).textContent = formatMoney(average); } /* ========================================================= RENDER ========================================================= */ function renderReports(reports) { const content = document.getElementById( "content" ); if (!reports.length) { content.innerHTML = ` <div class="table-wrap"> <div class="empty"> <div class="empty-icon"> 📭 </div> <div class="empty-title"> Không có báo cáo </div> <div class="empty-text"> Không tìm thấy báo cáo doanh thu trong khoảng thời gian này. </div> </div> </div> `; return; } content.innerHTML = ` <div class="table-wrap"> <div class="table-scroll"> ${renderTable(reports)} </div> </div> <div class="mobile-list"> ${reports .map(renderMobileCard) .join("")} </div> `; } function renderTable(reports) { return ` <table> <thead> <tr> <th>Ngày</th> <th>Chi nhánh</th> <th>Ca</th> <th>Tiền mặt</th> <th>Chi</th> <th>DT tiền mặt</th> <th>Grab</th> <th>Shopee</th> <th>Be</th> <th>Xanh SM</th> <th>Tổng doanh thu</th> <th>Người báo cáo</th> <th>Trạng thái</th> <th></th> </tr> </thead> <tbody> ${reports .map(renderTableRow) .join("")} </tbody> </table> `; } function renderTableRow(report) { return ` <tr> <td> ${formatDateTime( report.thoi_gian )} </td> <td> <strong> ${escapeHtml( report.chi_nhanh )} </strong> </td> <td> ${escapeHtml( report.ca )} </td> <td class="money-cell"> ${formatMoney( report.tien_mat )} </td> <td class="money-cell"> ${formatMoney( report.chi )} </td> <td class="money-cell"> ${formatMoney( report.doanh_thu_tien_mat )} </td> <td> ${formatMoney( report.grab )} </td> <td> ${formatMoney( report.shopee )} </td> <td> ${formatMoney( report.be )} </td> <td> ${formatMoney( report.xanh )} </td> <td class="total-cell"> ${formatMoney( report.tong_doanh_thu )} </td> <td class="reporter"> ${escapeHtml( report.nguoi_bao_cao )} </td> <td> ${statusHtml( report.trang_thai_kiem_tra )} </td> <td> <button class="detail-btn" onclick="openDetail('${escapeAttribute(report.id)}')" > Chi tiết </button> </td> </tr> `; } function renderMobileCard(report) { return ` <div class="mobile-card"> <div class="mobile-card-top"> <div> <div class="mobile-date"> ${formatDateTime( report.thoi_gian )} </div> <div class="mobile-branch"> ${escapeHtml( report.chi_nhanh )} · ${escapeHtml( report.ca )} </div> </div> <div class="mobile-total"> <span class="mobile-total-label"> Tổng doanh thu </span> ${formatMoney( report.tong_doanh_thu )} </div> </div> <div class="mobile-grid"> <div class="mobile-item"> <div class="mobile-item-label"> Tiền mặt </div> <div class="mobile-item-value"> ${formatMoney( report.doanh_thu_tien_mat )} </div> </div> <div class="mobile-item"> <div class="mobile-item-label"> App </div> <div class="mobile-item-value"> ${formatMoney( report.tong_doanh_thu_app )} </div> </div> <div class="mobile-item"> <div class="mobile-item-label"> Chi trong ca </div> <div class="mobile-item-value"> ${formatMoney( report.chi )} </div> </div> <div class="mobile-item"> <div class="mobile-item-label"> Trạng thái </div> <div class="mobile-item-value"> ${statusHtml( report.trang_thai_kiem_tra )} </div> </div> </div> <div class="mobile-card-bottom"> <div class="mobile-reporter"> ${escapeHtml( report.nguoi_bao_cao )} </div> <button class="detail-btn" onclick="openDetail('${escapeAttribute(report.id)}')" > Xem chi tiết </button> </div> </div> `; } /* ========================================================= DETAIL ========================================================= */ function openDetail(id) { const report = allReports.find( r => String(r.id) === String(id) ); if (!report) { return; } currentReport = report; const body = document.getElementById( "detailBody" ); body.innerHTML = ` <div class="detail-section"> <div class="detail-section-title"> Thông tin báo cáo </div> <div class="detail-grid"> ${detailItem( "Chi nhánh", report.chi_nhanh )} ${detailItem( "Ngày / giờ", formatDateTime( report.thoi_gian ) )} ${detailItem( "Ca", report.ca )} ${detailItem( "Người báo cáo", report.nguoi_bao_cao )} </div> </div> <div class="detail-section"> <div class="detail-section-title"> Tiền mặt </div> <div class="detail-grid"> ${detailMoney( "Tiền mặt kiểm đếm", report.tien_mat )} ${detailMoney( "Chi trong ca", report.chi )} ${detailMoney( "Tiền mặt thực tế", report.doanh_thu_tien_mat )} ${detailMoney( "Tổng doanh thu app", report.tong_doanh_thu_app )} </div> </div> <div class="detail-section"> <div class="detail-section-title"> Doanh thu ứng dụng </div> <div class="detail-grid"> ${detailMoney( "Grab Food", report.grab )} ${detailMoney( "Shopee Food", report.shopee )} ${detailMoney( "Be Food", report.be )} ${detailMoney( "Xanh Ngon", report.xanh )} </div> </div> <div class="detail-section"> <div class="detail-section-title"> Tổng </div> <div class="detail-grid"> ${detailMoney( "Tổng doanh thu", report.tong_doanh_thu )} ${detailItem( "Trạng thái", report.trang_thai_kiem_tra || "Chưa đối chiếu" )} </div> </div> ${ report.ghi_chu ? ` <div class="detail-section"> <div class="detail-section-title"> Ghi chú </div> <div class="note-box"> ${escapeHtml( report.ghi_chu )} </div> </div> ` : "" } <div class="detail-section"> <div class="detail-section-title"> Đối chiếu </div> <div class="check-actions"> <button id="checkOkButton" class="check-btn ok ${ report.trang_thai_kiem_tra === "Khớp" ? "selected" : "" }" onclick="setLocalStatus('Khớp')" > ✓ Khớp </button> <button id="checkBadButton" class="check-btn bad ${ report.trang_thai_kiem_tra === "Sai" ? "selected" : "" }" onclick="setLocalStatus('Sai')" > ✕ Sai </button> </div> </div> `; document .getElementById( "detailModal" ) .classList.add("show"); } function detailItem(label, value) { return ` <div class="detail-item"> <div class="detail-label"> ${escapeHtml(label)} </div> <div class="detail-value"> ${escapeHtml( value == null || value === "" ? "-" : String(value) )} </div> </div> `; } function detailMoney(label, value) { return ` <div class="detail-item"> <div class="detail-label"> ${escapeHtml(label)} </div> <div class="detail-value"> ${formatMoney(value)} </div> </div> `; } /* ========================================================= CHECK STATUS ========================================================= */ function setLocalStatus(status) { if (!currentReport) { return; } /* * Chỉ tồn tại MỘT trạng thái. */ currentReport.trang_thai_kiem_tra = status; /* * Cập nhật record trong bộ nhớ. */ const index = allReports.findIndex( r => String(r.id) === String(currentReport.id) ); if (index !== -1) { allReports[index] .trang_thai_kiem_tra = status; } /* * Cập nhật trực tiếp nút. * * Không render lại modal. * Không đóng modal. * Không có trạng thái chồng nhau. */ const okButton = document.getElementById( "checkOkButton" ); const badButton = document.getElementById( "checkBadButton" ); if (okButton) { okButton.classList.toggle( "selected", status === "Khớp" ); } if (badButton) { badButton.classList.toggle( "selected", status === "Sai" ); } /* * Cập nhật bảng/card phía sau. */ const reports = getFilteredReports(); updateSummary(reports); renderReports(reports); } /* ========================================================= MODAL ========================================================= */ function closeDetail() { document .getElementById( "detailModal" ) .classList.remove("show"); currentReport = null; } function closeModalOutside(event) { if ( event.target === document.getElementById( "detailModal" ) ) { closeDetail(); } } function openHelp() { document .getElementById( "helpModal" ) .classList.add("show"); } function closeHelp() { document .getElementById( "helpModal" ) .classList.remove("show"); } function closeHelpOutside(event) { if ( event.target === document.getElementById( "helpModal" ) ) { closeHelp(); } } /* ========================================================= LOADING / ERROR ========================================================= */ function showLoading() { document.getElementById( "content" ).innerHTML = ` <div class="loading"> <div class="spinner"></div> <div> Đang tải báo cáo... </div> </div> `; } function showError(message) { document.getElementById( "errorMessage" ).textContent = message; document.getElementById( "errorBox" ).style.display = "block"; document.getElementById( "content" ).innerHTML = ""; } function hideError() { document.getElementById( "errorBox" ).style.display = "none"; } /* ========================================================= ESCAPE ========================================================= */ function escapeHtml(value) { return String(value ?? "") .replace(/&/g, "&amp;") .replace( /</g, "&lt;" ) .replace( />/g, "&gt;" ) .replace( /"/g, "&quot;" ) .replace( /'/g, "&#039;" ); } function escapeAttribute(value) { return String(value ?? "") .replace( /\\/g, "\\\\" ) .replace( /'/g, "\\'" ); } /* ========================================================= FILTER EVENTS ========================================================= */ document .querySelectorAll( ".filter-btn" ) .forEach(button => { button.addEventListener( "click", () => { document .querySelectorAll( ".filter-btn" ) .forEach(btn => { btn.classList.remove( "active" ); }); button.classList.add( "active" ); currentFilter = button.dataset.filter; applyFilter(); } ); }); /* ========================================================= KEYBOARD ========================================================= */ document.addEventListener( "keydown", event => { if ( event.key === "Escape" ) { closeDetail(); closeHelp(); } } ); /* ========================================================= START ========================================================= */ loadReports(); </script> </body> </html>
