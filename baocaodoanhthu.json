@@ -1,5 +1,24 @@
 {
-"version": 1,
-"updated_at": "2026/09/07 08:30:00",
-"records": []
+  "version": 1,
+  "updated_at": "2026-09-07T01:48:22.392Z",
+  "records": [
+    {
+      "id": "R000",
+      "thoi_gian": "2026/09/07 08:48",
+      "nguoi_bao_cao": "Hưng Nguyễn",
+      "chi_nhanh": "Thái Thịnh",
+      "ca": "Ca sáng",
+      "tien_mat_kiem_dem": 111,
+      "chi": 111,
+      "tien_mat_thuc_te": 222,
+      "shopee_food": 0,
+      "grab_food": 0,
+      "be_food": 0,
+      "xanh_ngon": 0,
+      "tong_doanh_thu_app": 0,
+      "mo_ta": "111111",
+      "co_anh": "false",
+      "trang_thai_doi_chieu": "Chưa đối chiếu"
+    }
+  ]
 }
