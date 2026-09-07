@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T17:55:24.459Z",
+  "updated_at": "2026-09-07T01:27:37.478Z",
   "records": [
     {
       "id": "Z024",
@@ -215,7 +215,9 @@
       "noi_dung": "hết pate bò+heo",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Cần theo dõi thêm",
+      "phuong_an_xu_ly": "Xưởng thứ 3 mới đi hàng. Không có biện pháp xử lý lúc này",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z042",
