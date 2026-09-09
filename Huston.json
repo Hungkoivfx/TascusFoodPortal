@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-08T08:29:19.566Z",
+  "updated_at": "2026-09-09T01:05:38.874Z",
   "records": [
     {
       "id": "Z024",
@@ -240,7 +240,10 @@
       "noi_dung": "Burger đang được nặn\nChưa có bánh\nCa tối bật lại món trên các app",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/09 08:05",
+      "phuong_an_xu_ly": "Không",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
