@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-09T08:56:42.786Z",
+  "updated_at": "2026-09-09T11:02:08.744Z",
   "records": [
     {
       "id": "Z024",
@@ -253,6 +253,16 @@
       "noi_dung": "chưa nặn thịt burger do ca sáng trưa rã đông muộn, thịt vẫn đóng đá",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z045",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/09 18:02",
+      "nguoi_bao_cao": "Duyên",
+      "noi_dung": "Sắp hết giấy ăn và giấy gói bánh mỳ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Chỉ thông báo / báo cáo",
       "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
