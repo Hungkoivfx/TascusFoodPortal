@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-09T01:05:38.874Z",
+  "updated_at": "2026-09-09T08:56:42.786Z",
   "records": [
     {
       "id": "Z024",
@@ -244,6 +244,16 @@
       "thoi_gian_xu_ly": "2026/09/09 08:05",
       "phuong_an_xu_ly": "Không",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z044",
+      "chi_nhanh": "Thái Thịnh",
+      "thoi_gian": "2026/09/09 15:56",
+      "nguoi_bao_cao": "ly",
+      "noi_dung": "chưa nặn thịt burger do ca sáng trưa rã đông muộn, thịt vẫn đóng đá",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
