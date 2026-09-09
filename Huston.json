@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-09T11:02:08.744Z",
+  "updated_at": "2026-09-09T14:51:35.099Z",
   "records": [
     {
       "id": "Z024",
@@ -263,6 +263,16 @@
       "noi_dung": "Sắp hết giấy ăn và giấy gói bánh mỳ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Chỉ thông báo / báo cáo",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z046",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/09 21:51",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Hết sạch sốt hồng\nNhiệm vụ ca sáng mai (đào tạo Hoài Anh)\ntắt món app các món như bánh mỳ, sanwich\n0",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
