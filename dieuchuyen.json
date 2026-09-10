@@ -1,5 +1,17 @@
 {
-"version": 1,
-"updated_at": "",
-"records": []
+  "version": 1,
+  "updated_at": "2026/09/10 15:38:40",
+  "records": [
+    {
+      "id": "TEST-DC-001",
+      "ngay_tao": "2026/09/10 15:30",
+      "dieu_chuyen_tu": "Khương Trung",
+      "den": "Thái Thịnh",
+      "noi_dung": "Trứng",
+      "so_luong": 2.5,
+      "da_tra_chua": false,
+      "thoi_gian_tra": "",
+      "nguoi_tao_phieu": "Hưng Nguyễn"
+    }
+  ]
 }
