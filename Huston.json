@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-10T14:35:51.789Z",
+  "updated_at": "2026-09-10T14:45:06.533Z",
   "records": [
     {
       "id": "Z024",
@@ -283,6 +283,16 @@
       "thoi_gian": "2026/09/10 21:35",
       "nguoi_bao_cao": "P.Linh",
       "noi_dung": "Có 1 túi sốt kem nấm bị thủng, em để trong cont inox ở tủ mát. Mai hết sốt, mọi người để ý lấy túi đó bơm vào nhé",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z048",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/10 21:45",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Hết tiền lẻ để rút doanh thu doanh thu ca tối 10/09. Mai có tiền lẻ mọi người rút 391k giúp em ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
