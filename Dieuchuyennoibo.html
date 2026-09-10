@@ -1,68 +1,169 @@
-<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Điều chuyển nội bộ · Tascus Food</title> <style> * { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-height: 100%; } body { font-family: Arial, Helvetica, sans-serif; background: #f5f6f8; color: #202124; } /* HEADER */ .header { height: 68px; background: #ffffff; border-bottom: 1px solid #e6e8eb; display: flex; align-items: center; padding: 0 22px; position: sticky; top: 0; z-index: 20; } .header-left { display: flex; align-items: center; gap: 12px; } .back-btn { width: 40px; height: 40px; border: 1px solid #e0e2e5; background: #fff; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 21px; color: #444; transition: .15s; } .back-btn:hover { background: #f5f6f8; } .page-title { font-size: 20px; font-weight: 600; color: #252525; } .help-btn { margin-left: auto; width: 38px; height: 38px; border-radius: 50%; border: 1px solid #e0e2e5; background: #fff; color: #555; font-size: 17px; font-weight: 600; cursor: pointer; transition: .15s; } .help-btn:hover { background: #f5f6f8; } /* MAIN */ .container { width: min(1500px, calc(100% - 36px)); margin: 18px auto 30px; } /* ACTION BAR */ .action-bar { background: #fff; border: 1px solid #e4e6e9; border-radius: 14px; padding: 16px; display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 16px; } .action-description { color: #666; font-size: 14px; line-height: 1.5; } /* BLACK BUTTON */ .create-btn { border: none; background: #222222; color: #ffffff; padding: 11px 17px; border-radius: 9px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: .15s; } .create-btn:hover { background: #000000; } .create-btn:active { transform: translateY(1px); } /* LARK ZONE */ .lark-zone { background: #fff; border: 1px solid #e4e6e9; border-radius: 14px; overflow: hidden; min-height: calc(100vh - 145px); position: relative; } .zone-header { height: 50px; border-bottom: 1px solid #e7e8ea; display: flex; align-items: center; padding: 0 16px; background: #fff; } .zone-title { font-size: 14px; font-weight: 600; color: #333; } .zone-status { margin-left: auto; font-size: 12px; color: #888; } .lark-frame { width: 100%; height: calc(100vh - 195px); min-height: 600px; border: 0; display: block; background: #f5f6f8; } /* LOADING */ .frame-loading { position: absolute; top: 50px; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,.92); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; z-index: 5; transition: opacity .2s; } .frame-loading.hidden { opacity: 0; pointer-events: none; } .spinner { width: 28px; height: 28px; border: 3px solid #e5e5e5; border-top-color: #222; border-radius: 50%; animation: spin .8s linear infinite; } .loading-text { font-size: 13px; color: #777; } @keyframes spin { to { transform: rotate(360deg); } } /* HELP MODAL */ .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; } .modal-overlay.show { display: flex; } .modal { width: min(520px, 100%); background: #fff; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.18); overflow: hidden; } .modal-header { padding: 17px 20px; border-bottom: 1px solid #e7e8ea; display: flex; align-items: center; } .modal-title { font-size: 17px; font-weight: 600; } .modal-close { margin-left: auto; border: none; background: transparent; font-size: 24px; color: #777; cursor: pointer; line-height: 1; } .modal-body { padding: 20px; color: #555; font-size: 14px; line-height: 1.65; } .modal-body p + p { margin-top: 10px; } /* MOBILE */ @media (max-width: 700px) { .header { height: 60px; padding: 0 14px; } .page-title { font-size: 18px; } .container { width: calc(100% - 20px); margin-top: 10px; } .action-bar { align-items: stretch; flex-direction: column; padding: 13px; } .create-btn { width: 100%; } .lark-zone { border-radius: 12px; } .lark-frame { height: calc(100vh - 190px); min-height: 500px; } } </style> </head> <body> <header class="header"> <div class="header-left"> <button class="back-btn" onclick="goBack()" aria-label="Quay lại">‹</button> <div class="page-title">Điều chuyển nội bộ</div> </div>
-<button class="help-btn" onclick="openHelp()" aria-label="Hướng dẫn">?</button>
-</header> <main class="container">
-<section class="action-bar">
+<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Điều chuyển nội bộ - Tascus Food</title> <style> * { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-height: 100%; } body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f6f7; color: #222; } /* ========================= HEADER ========================= */ .header { height: 72px; background: #ffffff; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; padding: 0 28px; position: sticky; top: 0; z-index: 100; } .header-left { display: flex; align-items: center; gap: 12px; } .back-button { width: 42px; height: 42px; border: 1px solid #e1e3e6; border-radius: 10px; background: #fff; color: #333; font-size: 21px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: .15s; } .back-button:hover { background: #f3f4f6; } .page-title { font-size: 21px; font-weight: 600; color: #202124; } .page-subtitle { margin-left: 2px; color: #8a8f98; font-size: 13px; } /* ========================= HEADER RIGHT ========================= */ .header-right { margin-left: auto; display: flex; align-items: center; gap: 10px; } .help-button, .refresh-button, .create-button { height: 42px; border-radius: 10px; padding: 0 15px; font-size: 14px; font-weight: 500; cursor: pointer; transition: .15s; display: flex; align-items: center; justify-content: center; gap: 7px; } .help-button, .refresh-button { border: 1px solid #e1e3e6; background: #fff; color: #333; } .help-button { width: 42px; padding: 0; font-size: 17px; font-weight: 600; } .help-button:hover, .refresh-button:hover { background: #f3f4f6; } .create-button { border: 1px solid #202124; background: #202124; color: #fff; } .create-button:hover { background: #000; } /* ========================= MAIN ========================= */ .container { width: calc(100% - 56px); max-width: 1500px; margin: 28px auto 50px; } /* ========================= TOOLBAR ========================= */ .toolbar { display: flex; align-items: center; margin-bottom: 16px; } .toolbar-left { display: flex; align-items: center; gap: 10px; } .total-count { font-size: 14px; color: #666; } .total-count strong { color: #222; } /* ========================= TABLE CARD ========================= */ .table-card { background: #fff; border: 1px solid #e2e5e8; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.03); } /* ========================= TABLE ========================= */ .table-wrapper { width: 100%; overflow-x: auto; } table { width: 100%; min-width: 1100px; border-collapse: collapse; table-layout: auto; } thead { background: #f8f9fa; border-bottom: 1px solid #e5e7eb; } th { padding: 14px 16px; text-align: left; font-size: 12px; font-weight: 600; color: #6b7280; white-space: nowrap; } td { padding: 15px 16px; border-bottom: 1px solid #eef0f2; font-size: 14px; color: #30343b; vertical-align: middle; } tbody tr:last-child td { border-bottom: none; } tbody tr:hover { background: #fafafa; } /* ========================= DATE ========================= */ .date-main { white-space: nowrap; font-weight: 500; color: #25282d; } .date-time { margin-top: 3px; color: #90959d; font-size: 12px; } /* ========================= BRANCH ========================= */ .branch { display: inline-flex; align-items: center; padding: 5px 9px; border-radius: 7px; background: #f4f5f6; color: #444; font-size: 13px; white-space: nowrap; } .arrow { margin: 0 7px; color: #a1a6ad; font-size: 15px; } /* ========================= CONTENT ========================= */ .content { max-width: 310px; line-height: 1.45; color: #282c32; } /* ========================= QUANTITY ========================= */ .quantity { font-weight: 600; white-space: nowrap; } /* ========================= STATUS ========================= */ .status { display: inline-flex; align-items: center; gap: 7px; padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; white-space: nowrap; } .status-dot { width: 7px; height: 7px; border-radius: 50%; } .status-pending { background: #fff7ed; color: #9a4d00; } .status-pending .status-dot { background: #f59e0b; } .status-done { background: #f1f5f3; color: #28734d; } .status-done .status-dot { background: #48a868; } /* ========================= RETURN TIME ========================= */ .return-time { color: #555; font-size: 13px; white-space: nowrap; } .return-empty { color: #a0a5ac; } /* ========================= CREATOR ========================= */ .creator { white-space: nowrap; color: #4a4f57; } /* ========================= EMPTY ========================= */ .empty-state { padding: 70px 20px; text-align: center; color: #8b9199; } .empty-icon { width: 54px; height: 54px; margin: 0 auto 14px; border-radius: 50%; background: #f2f3f4; display: flex; align-items: center; justify-content: center; font-size: 23px; } .empty-title { color: #4a4f56; font-size: 15px; font-weight: 600; margin-bottom: 5px; } .empty-text { font-size: 13px; } /* ========================= LOADING ========================= */ .loading { padding: 70px 20px; text-align: center; color: #888; } .spinner { width: 28px; height: 28px; margin: 0 auto 14px; border: 3px solid #e4e6e8; border-top-color: #333; border-radius: 50%; animation: spin .8s linear infinite; } @keyframes spin { to { transform: rotate(360deg); } } /* ========================= ERROR ========================= */ .error-state { padding: 60px 20px; text-align: center; } .error-icon { font-size: 30px; margin-bottom: 12px; } .error-title { font-size: 15px; font-weight: 600; color: #444; margin-bottom: 6px; } .error-text { font-size: 13px; color: #888; margin-bottom: 18px; } .retry-button { border: 1px solid #d9dcdf; background: #fff; padding: 9px 15px; border-radius: 8px; cursor: pointer; font-size: 13px; } .retry-button:hover { background: #f5f6f7; } /* ========================= HELP MODAL ========================= */ .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.32); display: none; align-items: center; justify-content: center; z-index: 500; padding: 20px; } .modal-overlay.show { display: flex; } .modal { width: 100%; max-width: 520px; background: #fff; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,.18); overflow: hidden; } .modal-header { padding: 20px 22px; border-bottom: 1px solid #eceef0; display: flex; align-items: center; } .modal-title { font-size: 17px; font-weight: 600; color: #25282d; } .modal-close { margin-left: auto; border: none; background: transparent; width: 34px; height: 34px; border-radius: 8px; cursor: pointer; font-size: 20px; color: #777; } .modal-close:hover { background: #f3f4f5; } .modal-body { padding: 22px; font-size: 14px; color: #555; line-height: 1.6; } .help-item { display: flex; gap: 12px; margin-bottom: 17px; } .help-item:last-child { margin-bottom: 0; } .help-number { flex: 0 0 26px; width: 26px; height: 26px; border-radius: 50%; background: #f1f2f3; display: flex; align-items: center; justify-content: center; color: #444; font-size: 12px; font-weight: 600; } /* ========================= TOAST ========================= */ .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); background: #202124; color: #fff; padding: 11px 17px; border-radius: 9px; font-size: 13px; opacity: 0; pointer-events: none; transition: .25s; z-index: 1000; } .toast.show { opacity: 1; transform: translate(-50%, 0); } /* ========================= MOBILE ========================= */ @media (max-width: 800px) { .header { height: auto; min-height: 64px; padding: 11px 14px; flex-wrap: wrap; gap: 10px; } .header-right { width: 100%; margin-left: 0; justify-content: flex-end; } .page-subtitle { display: none; } .container { width: calc(100% - 28px); margin-top: 18px; } .table-card { border-radius: 11px; } } </style> </head> <body> <header class="header">
+<div class="header-left">
 
-    <div class="action-description">
-        Quản lý các lệnh điều chuyển nguyên vật liệu giữa các cơ sở Tascus Food.
-    </div>
-
-    <button class="create-btn" onclick="createTransfer()">
-        + Tạo lệnh điều chuyển mới
+    <button
+        class="back-button"
+        onclick="goBack()"
+        title="Quay lại">
+        ↩
     </button>
 
-</section>
+    <div>
+        <div class="page-title">
+            Điều chuyển nội bộ
+        </div>
 
-<section class="lark-zone">
-
-    <div class="zone-header">
-        <div class="zone-title">Danh sách điều chuyển</div>
-        <div class="zone-status">Dữ liệu Lark Base</div>
+        <div class="page-subtitle">
+            Theo dõi nguyên vật liệu điều chuyển giữa các cơ sở
+        </div>
     </div>
 
-    <div class="frame-loading" id="frameLoading">
-        <div class="spinner"></div>
-        <div class="loading-text">Đang tải dữ liệu...</div>
-    </div>
+</div>
 
-    <iframe
-        id="larkFrame"
-        class="lark-frame"
-        src="https://rjtj1yaw65k.sg.larksuite.com/share/base/view/shrlgv8WEZRbJnqgM4O2aBfXaT9"
-        title="Danh sách điều chuyển nội bộ"
-        loading="eager"
-        allow="clipboard-read; clipboard-write">
-    </iframe>
+<div class="header-right">
 
-</section>
-</main> <!-- HELP MODAL --> <div class="modal-overlay" id="helpModal" onclick="closeHelpOutside(event)">
-<div class="modal">
+    <button
+        class="refresh-button"
+        onclick="loadData()"
+        title="Tải lại dữ liệu">
 
-    <div class="modal-header">
-        <div class="modal-title">Điều chuyển nội bộ</div>
+        ↻
 
-        <button class="modal-close" onclick="closeHelp()">
-            ×
-        </button>
-    </div>
+        <span>
+            Làm mới
+        </span>
 
-    <div class="modal-body">
+    </button>
 
-        <p>
-            Đây là khu vực theo dõi các lệnh điều chuyển nguyên vật liệu
-            giữa các cơ sở Tascus Food.
-        </p>
+    <button
+        class="create-button"
+        onclick="createTransfer()">
 
-        <p>
-            Sử dụng <strong>“Tạo lệnh điều chuyển mới”</strong> để lập
-            một yêu cầu điều chuyển mới.
-        </p>
+        + Tạo lệnh điều chuyển mới
 
-        <p>
-            Danh sách điều chuyển được hiển thị trực tiếp từ Lark Base.
-        </p>
+    </button>
+
+    <button
+        class="help-button"
+        onclick="openHelp()"
+        title="Hướng dẫn">
+
+        ?
+
+    </button>
+
+</div>
+</header> <main class="container">
+<div class="toolbar">
+
+    <div class="toolbar-left">
+
+        <div
+            class="total-count"
+            id="totalCount">
+
+            Đang tải dữ liệu...
+
+        </div>
 
     </div>
 
 </div>
-</div> <script> /* ========================= LINKS ========================= */ const LARK_BASE_VIEW_URL = "https://rjtj1yaw65k.sg.larksuite.com/share/base/view/shrlgv8WEZRbJnqgM4O2aBfXaT9"; const LARK_TRANSFER_FORM_URL = "https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgNXdmH8WBZ8N90g76kdhGee"; /* ========================= BACK ========================= */ function goBack() { if (document.referrer) { history.back(); } else { window.location.href = "index.html"; } } /* ========================= CREATE TRANSFER ========================= */ function createTransfer() { window.open( LARK_TRANSFER_FORM_URL, "_blank" ); } /* ========================= HELP ========================= */ function openHelp() { document .getElementById("helpModal") .classList.add("show"); } function closeHelp() { document .getElementById("helpModal") .classList.remove("show"); } function closeHelpOutside(event) { if ( event.target === document.getElementById("helpModal") ) { closeHelp(); } } /* ========================= LARK FRAME ========================= */ const larkFrame = document.getElementById("larkFrame"); const frameLoading = document.getElementById("frameLoading"); larkFrame.addEventListener("load", function () { frameLoading.classList.add("hidden"); }); /* * Tránh màn hình loading bị treo * nếu Lark không phản hồi sự kiện load. */ setTimeout(function () { frameLoading.classList.add("hidden"); }, 5000); </script> </body> </html>
+
+
+<div class="table-card">
+
+    <div
+        class="table-wrapper"
+        id="tableContainer">
+
+        <div class="loading">
+
+            <div class="spinner"></div>
+
+            Đang tải dữ liệu điều chuyển...
+
+        </div>
+
+    </div>
+
+</div>
+</main> <!-- HELP MODAL --> <div class="modal-overlay" id="helpModal" onclick="closeHelpOutside(event)">
+<div class="modal">
+
+    <div class="modal-header">
+
+        <div class="modal-title">
+            Hướng dẫn điều chuyển nội bộ
+        </div>
+
+        <button
+            class="modal-close"
+            onclick="closeHelp()">
+            ×
+        </button>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="help-item">
+
+            <div class="help-number">
+                1
+            </div>
+
+            <div>
+                <strong>Tạo lệnh mới</strong><br>
+                Nhấn "Tạo lệnh điều chuyển mới".
+                Biểu mẫu Lark Base sẽ được mở ở tab mới.
+            </div>
+
+        </div>
+
+
+        <div class="help-item">
+
+            <div class="help-number">
+                2
+            </div>
+
+            <div>
+                <strong>Chưa trả</strong><br>
+                Lệnh đang được điều chuyển và chưa xác nhận hoàn trả.
+            </div>
+
+        </div>
+
+
+        <div class="help-item">
+
+            <div class="help-number">
+                3
+            </div>
+
+            <div>
+                <strong>Đã trả</strong><br>
+                Lệnh đã được đánh dấu hoàn trả trong Lark Base.
+            </div>
+
+        </div>
+
+
+        <div class="help-item">
+
+            <div class="help-number">
+                4
+            </div>
+
+            <div>
+                <strong>Làm mới</strong><br>
+                Tải lại dữ liệu mới nhất từ hệ thống.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</div> <div class="toast" id="toast"> </div> <script> /* ========================================== CONFIG ========================================== */ const JSON_URL = "https://raw.githubusercontent.com/Hungkoivfx/TascusFoodPortal/main/dieuchuyen.json"; const LARK_FORM_URL = "https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgNXdmH8WBZ8N90g76kdhGee"; /* ========================================== LOAD DATA ========================================== */ async function loadData() { const container = document.getElementById( "tableContainer" ); const totalCount = document.getElementById( "totalCount" ); container.innerHTML = ` <div class="loading"> <div class="spinner"></div> Đang tải dữ liệu điều chuyển... </div> `; totalCount.textContent = "Đang tải dữ liệu..."; try { const response = await fetch( JSON_URL + "?t=" + Date.now() ); if (!response.ok) { throw new Error( "HTTP " + response.status ); } const database = await response.json(); if ( !database || !Array.isArray(database.records) ) { throw new Error( "Cấu trúc JSON không hợp lệ." ); } renderTable( database.records ); } catch (error) { console.error(error); container.innerHTML = ` <div class="error-state"> <div class="error-icon"> ⚠ </div> <div class="error-title"> Không thể tải dữ liệu </div> <div class="error-text"> Không đọc được dieuchuyen.json từ GitHub. </div> <button class="retry-button" onclick="loadData()"> Thử lại </button> </div> `; totalCount.textContent = "Không có dữ liệu"; } } /* ========================================== RENDER TABLE ========================================== */ function renderTable(records) { const container = document.getElementById( "tableContainer" ); const totalCount = document.getElementById( "totalCount" ); totalCount.innerHTML = `Tổng cộng <strong>${records.length}</strong> lệnh điều chuyển`; if (records.length === 0) { container.innerHTML = ` <div class="empty-state"> <div class="empty-icon"> ⇄ </div> <div class="empty-title"> Chưa có lệnh điều chuyển </div> <div class="empty-text"> Các lệnh điều chuyển mới sẽ xuất hiện tại đây. </div> </div> `; return; } const sortedRecords = [...records].sort( (a, b) => { const dateA = parseDate(a.ngay_tao); const dateB = parseDate(b.ngay_tao); return dateB - dateA; } ); let html = ` <table> <thead> <tr> <th> Ngày tạo </th> <th> Từ cơ sở </th> <th> Đến cơ sở </th> <th> Nội dung </th> <th> Số lượng </th> <th> Đã trả chưa </th> <th> Thời gian trả </th> <th> Người tạo </th> </tr> </thead> <tbody> `; sortedRecords.forEach( record => { const date = formatDate( record.ngay_tao ); const returned = record.da_tra_chua === true; const statusHtml = returned ? ` <span class="status status-done"> <span class="status-dot"></span> Đã trả </span> ` : ` <span class="status status-pending"> <span class="status-dot"></span> Chưa trả </span> `; const returnTime = record.thoi_gian_tra && String( record.thoi_gian_tra ).trim() !== "" ? escapeHtml( record.thoi_gian_tra ) : `<span class="return-empty">Chưa có</span>`; html += ` <tr> <td> <div class="date-main"> ${date.date} </div> <div class="date-time"> ${date.time} </div> </td> <td> <span class="branch"> ${escapeHtml( record.dieu_chuyen_tu || "-" )} </span> </td> <td> <span class="branch"> ${escapeHtml( record.den || "-" )} </span> </td> <td> <div class="content"> ${escapeHtml( record.noi_dung || "-" )} </div> </td> <td> <span class="quantity"> ${formatNumber( record.so_luong )} </span> </td> <td> ${statusHtml} </td> <td> <div class="return-time"> ${returnTime} </div> </td> <td> <div class="creator"> ${escapeHtml( record.nguoi_tao_phieu || "-" )} </div> </td> </tr> `; } ); html += ` </tbody> </table> `; container.innerHTML = html; } /* ========================================== DATE ========================================== */ function parseDate(value) { if (!value) { return new Date(0); } const text = String(value).trim(); const match = text.match( /^(\d{4})\/(\d{2})\/(\d{2})(?:\s+(\d{2}):(\d{2})(?::(\d{2}))?)?$/ ); if (!match) { const fallback = new Date(text); return isNaN(fallback) ? new Date(0) : fallback; } return new Date( Number(match[1]), Number(match[2]) - 1, Number(match[3]), Number(match[4] || 0), Number(match[5] || 0), Number(match[6] || 0) ); } function formatDate(value) { if (!value) { return { date: "-", time: "" }; } const text = String(value).trim(); const parts = text.split(/\s+/); return { date: parts[0] || "-", time: parts[1] || "" }; } /* ========================================== NUMBER ========================================== */ function formatNumber(value) { if ( value === null || value === undefined || value === "" ) { return "0"; } const number = Number(value); if (Number.isNaN(number)) { return escapeHtml( String(value) ); } return number.toLocaleString( "vi-VN", { maximumFractionDigits: 3 } ); } /* ========================================== ESCAPE HTML ========================================== */ function escapeHtml(value) { return String(value) .replace(/&/g, "&amp;") .replace(/</g, "&lt;") .replace(/>/g, "&gt;") .replace(/"/g, "&quot;") .replace(/'/g, "&#039;"); } /* ========================================== CREATE TRANSFER ========================================== */ function createTransfer() { window.open( LARK_FORM_URL, "_blank" ); showToast( "Đã mở biểu mẫu tạo lệnh điều chuyển." ); } /* ========================================== BACK ========================================== */ function goBack() { if ( window.history.length > 1 ) { window.history.back(); } else { window.location.href = "index.html"; } } /* ========================================== HELP ========================================== */ function openHelp() { document .getElementById("helpModal") .classList.add("show"); } function closeHelp() { document .getElementById("helpModal") .classList.remove("show"); } function closeHelpOutside(event) { if ( event.target === document.getElementById("helpModal") ) { closeHelp(); } } /* ========================================== TOAST ========================================== */ let toastTimer = null; function showToast(message) { const toast = document.getElementById( "toast" ); toast.textContent = message; toast.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout( () => { toast.classList.remove( "show" ); }, 2500 ); } /* ========================================== INITIAL LOAD ========================================== */ loadData(); </script> </body> </html>
