@@ -1,61 +1,72 @@
 {
-"version": 1,
-"updated_at": "2026/09/10 13:57:00",
-"records": [
-{
-"id": "D-7382",
-"ngay_tao": "2026/09/10 13:48",
-"dieu_chuyen_tu": "69 Khương Trung",
-"den": "122 Thái Thịnh",
-"noi_dung": "Sốt Hồng bánh mì Tascus",
-"so_luong": 2,
-"da_tra_chua": false,
-"thoi_gian_tra": "",
-"nguoi_tao_phieu": "Hưng"
-},
-{
-"id": "D-1619",
-"ngay_tao": "2026/09/10 13:56",
-"dieu_chuyen_tu": "69 Khương Trung",
-"den": "122 Thái Thịnh",
-"noi_dung": "Xúc Xích Hấp Đức Việt làm BM Crepe Tascus",
-"so_luong": 4,
-"da_tra_chua": false,
-"thoi_gian_tra": "",
-"nguoi_tao_phieu": "Hưng"
-},
-{
-"id": "D-6988",
-"ngay_tao": "2026/09/10 13:56",
-"dieu_chuyen_tu": "69 Khương Trung",
-"den": "122 Thái Thịnh",
-"noi_dung": "Bò thành phẩm ướp sống BM Tasucs",
-"so_luong": 4,
-"da_tra_chua": false,
-"thoi_gian_tra": "",
-"nguoi_tao_phieu": "Hưng"
-},
-{
-"id": "D-4395",
-"ngay_tao": "2026/09/10 13:57",
-"dieu_chuyen_tu": "69 Khương Trung",
-"den": "122 Thái Thịnh",
-"noi_dung": "Vỏ Bánh mì tascus",
-"so_luong": 20,
-"da_tra_chua": false,
-"thoi_gian_tra": "",
-"nguoi_tao_phieu": "Hưng"
-},
-{
-"id": "D-9288",
-"ngay_tao": "2026/09/10 13:57",
-"dieu_chuyen_tu": "122 Thái Thịnh",
-"den": "69 Khương Trung",
-"noi_dung": "Bò miếng Burger tascus",
-"so_luong": 2,
-"da_tra_chua": false,
-"thoi_gian_tra": "",
-"nguoi_tao_phieu": "Hưng"
-}
-]
+  "version": 1,
+  "updated_at": "2026/09/10 19:05:58",
+  "records": [
+    {
+      "id": "D-7382",
+      "ngay_tao": "2026/09/10 13:48",
+      "dieu_chuyen_tu": "69 Khương Trung",
+      "den": "122 Thái Thịnh",
+      "noi_dung": "Sốt Hồng bánh mì Tascus",
+      "so_luong": 2,
+      "da_tra_chua": false,
+      "thoi_gian_tra": "",
+      "nguoi_tao_phieu": "Hưng"
+    },
+    {
+      "id": "D-1619",
+      "ngay_tao": "2026/09/10 13:56",
+      "dieu_chuyen_tu": "69 Khương Trung",
+      "den": "122 Thái Thịnh",
+      "noi_dung": "Xúc Xích Hấp Đức Việt làm BM Crepe Tascus",
+      "so_luong": 4,
+      "da_tra_chua": false,
+      "thoi_gian_tra": "",
+      "nguoi_tao_phieu": "Hưng"
+    },
+    {
+      "id": "D-6988",
+      "ngay_tao": "2026/09/10 13:56",
+      "dieu_chuyen_tu": "69 Khương Trung",
+      "den": "122 Thái Thịnh",
+      "noi_dung": "Bò thành phẩm ướp sống BM Tasucs",
+      "so_luong": 4,
+      "da_tra_chua": false,
+      "thoi_gian_tra": "",
+      "nguoi_tao_phieu": "Hưng"
+    },
+    {
+      "id": "D-4395",
+      "ngay_tao": "2026/09/10 13:57",
+      "dieu_chuyen_tu": "69 Khương Trung",
+      "den": "122 Thái Thịnh",
+      "noi_dung": "Vỏ Bánh mì tascus",
+      "so_luong": 20,
+      "da_tra_chua": false,
+      "thoi_gian_tra": "",
+      "nguoi_tao_phieu": "Hưng"
+    },
+    {
+      "id": "D-9288",
+      "ngay_tao": "2026/09/10 13:57",
+      "dieu_chuyen_tu": "122 Thái Thịnh",
+      "den": "69 Khương Trung",
+      "noi_dung": "Bò miếng Burger tascus",
+      "so_luong": 2,
+      "da_tra_chua": false,
+      "thoi_gian_tra": "",
+      "nguoi_tao_phieu": "Hưng"
+    },
+    {
+      "id": "D-2614",
+      "ngay_tao": "2026/09/10 19:05",
+      "dieu_chuyen_tu": "122 Thái Thịnh",
+      "den": "69 Khương Trung",
+      "noi_dung": "Bơ nhạt tascus",
+      "so_luong": 1,
+      "da_tra_chua": false,
+      "thoi_gian_tra": "",
+      "nguoi_tao_phieu": "Hưng"
+    }
+  ]
 }
