@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-10T14:45:06.533Z",
+  "updated_at": "2026-09-10T14:59:19.126Z",
   "records": [
     {
       "id": "Z024",
@@ -293,6 +293,16 @@
       "thoi_gian": "2026/09/10 21:45",
       "nguoi_bao_cao": "P.Linh",
       "noi_dung": "Hết tiền lẻ để rút doanh thu doanh thu ca tối 10/09. Mai có tiền lẻ mọi người rút 391k giúp em ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z049",
+      "chi_nhanh": "Thái Thịnh",
+      "thoi_gian": "2026/09/10 21:59",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Cửa hàng hết sạch coca\nNgày 11/09 Ông quản lý tên Hưng trước khi bước chân ra khỏi nhà cần ôm theo 1 két mang tới thái thịnh",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
