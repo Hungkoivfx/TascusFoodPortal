@@ -1,39 +1,61 @@
 {
-  "version": 1,
-  "updated_at": "2026/09/10 16:23:50",
-  "records": [
-    {
-      "id": "TEST-DC-001",
-      "ngay_tao": "2026/09/10 15:30",
-      "dieu_chuyen_tu": "Khương Trung",
-      "den": "Thái Thịnh",
-      "noi_dung": "Trứng",
-      "so_luong": 3.5,
-      "da_tra_chua": true,
-      "thoi_gian_tra": "2026/09/10 17:00",
-      "nguoi_tao_phieu": "Hưng Nguyễn"
-    },
-    {
-      "id": "TEST-DC-HTTP-002",
-      "ngay_tao": "2026/09/10 16:20",
-      "dieu_chuyen_tu": "Khương Trung",
-      "den": "Thái Thịnh",
-      "noi_dung": "Trứng",
-      "so_luong": 5,
-      "da_tra_chua": false,
-      "thoi_gian_tra": "",
-      "nguoi_tao_phieu": "TEST HTTP"
-    },
-    {
-      "id": "TEST-DC-HTTP-001",
-      "ngay_tao": "2026/09/10 17:00",
-      "dieu_chuyen_tu": "Khương Trung",
-      "den": "Thái Thịnh",
-      "noi_dung": "Trứng",
-      "so_luong": 5,
-      "da_tra_chua": false,
-      "thoi_gian_tra": "",
-      "nguoi_tao_phieu": "TEST HTTP"
-    }
-  ]
+"version": 1,
+"updated_at": "2026/09/10 13:57:00",
+"records": [
+{
+"id": "D-7382",
+"ngay_tao": "2026/09/10 13:48",
+"dieu_chuyen_tu": "69 Khương Trung",
+"den": "122 Thái Thịnh",
+"noi_dung": "Sốt Hồng bánh mì Tascus",
+"so_luong": 2,
+"da_tra_chua": false,
+"thoi_gian_tra": "",
+"nguoi_tao_phieu": "Hưng"
+},
+{
+"id": "D-1619",
+"ngay_tao": "2026/09/10 13:56",
+"dieu_chuyen_tu": "69 Khương Trung",
+"den": "122 Thái Thịnh",
+"noi_dung": "Xúc Xích Hấp Đức Việt làm BM Crepe Tascus",
+"so_luong": 4,
+"da_tra_chua": false,
+"thoi_gian_tra": "",
+"nguoi_tao_phieu": "Hưng"
+},
+{
+"id": "D-6988",
+"ngay_tao": "2026/09/10 13:56",
+"dieu_chuyen_tu": "69 Khương Trung",
+"den": "122 Thái Thịnh",
+"noi_dung": "Bò thành phẩm ướp sống BM Tasucs",
+"so_luong": 4,
+"da_tra_chua": false,
+"thoi_gian_tra": "",
+"nguoi_tao_phieu": "Hưng"
+},
+{
+"id": "D-4395",
+"ngay_tao": "2026/09/10 13:57",
+"dieu_chuyen_tu": "69 Khương Trung",
+"den": "122 Thái Thịnh",
+"noi_dung": "Vỏ Bánh mì tascus",
+"so_luong": 20,
+"da_tra_chua": false,
+"thoi_gian_tra": "",
+"nguoi_tao_phieu": "Hưng"
+},
+{
+"id": "D-9288",
+"ngay_tao": "2026/09/10 13:57",
+"dieu_chuyen_tu": "122 Thái Thịnh",
+"den": "69 Khương Trung",
+"noi_dung": "Bò miếng Burger tascus",
+"so_luong": 2,
+"da_tra_chua": false,
+"thoi_gian_tra": "",
+"nguoi_tao_phieu": "Hưng"
+}
+]
 }
