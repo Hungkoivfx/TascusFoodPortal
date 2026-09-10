@@ -1,0 +1,53 @@
+<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Điều chuyển nội bộ · Tascus Food</title> <style> * { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-height: 100%; } body { font-family: Arial, Helvetica, sans-serif; background: #f5f6f8; color: #202124; } /* HEADER */ .header { height: 68px; background: #ffffff; border-bottom: 1px solid #e6e8eb; display: flex; align-items: center; padding: 0 22px; position: sticky; top: 0; z-index: 20; } .header-left { display: flex; align-items: center; gap: 12px; } .back-btn { width: 40px; height: 40px; border: 1px solid #e0e2e5; background: #fff; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 21px; color: #444; transition: .15s; } .back-btn:hover { background: #f5f6f8; } .page-title { font-size: 20px; font-weight: 600; color: #252525; } .help-btn { margin-left: auto; width: 38px; height: 38px; border-radius: 50%; border: 1px solid #e0e2e5; background: #fff; color: #555; font-size: 17px; font-weight: 600; cursor: pointer; } .help-btn:hover { background: #f5f6f8; } /* MAIN */ .container { width: min(1500px, calc(100% - 36px)); margin: 18px auto 30px; } /* ACTION BAR */ .action-bar { background: #fff; border: 1px solid #e4e6e9; border-radius: 14px; padding: 16px; display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 16px; } .action-description { color: #666; font-size: 14px; line-height: 1.5; } .create-btn { border: none; background: #e88922; color: #fff; padding: 11px 17px; border-radius: 9px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: .15s; } .create-btn:hover { background: #d97918; } .create-btn:active { transform: translateY(1px); } /* LARK ZONE */ .lark-zone { background: #fff; border: 1px solid #e4e6e9; border-radius: 14px; overflow: hidden; min-height: calc(100vh - 145px); position: relative; } .zone-header { height: 50px; border-bottom: 1px solid #e7e8ea; display: flex; align-items: center; padding: 0 16px; background: #fff; } .zone-title { font-size: 14px; font-weight: 600; color: #333; } .zone-status { margin-left: auto; font-size: 12px; color: #888; } .lark-frame { width: 100%; height: calc(100vh - 195px); min-height: 600px; border: 0; display: block; background: #f5f6f8; } /* LOADING */ .frame-loading { position: absolute; top: 50px; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,.92); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; z-index: 5; transition: opacity .2s; } .frame-loading.hidden { opacity: 0; pointer-events: none; } .spinner { width: 28px; height: 28px; border: 3px solid #e5e5e5; border-top-color: #e88922; border-radius: 50%; animation: spin .8s linear infinite; } .loading-text { font-size: 13px; color: #777; } @keyframes spin { to { transform: rotate(360deg); } } /* HELP MODAL */ .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; } .modal-overlay.show { display: flex; } .modal { width: min(520px, 100%); background: #fff; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.18); overflow: hidden; } .modal-header { padding: 17px 20px; border-bottom: 1px solid #e7e8ea; display: flex; align-items: center; } .modal-title { font-size: 17px; font-weight: 600; } .modal-close { margin-left: auto; border: none; background: transparent; font-size: 24px; color: #777; cursor: pointer; line-height: 1; } .modal-body { padding: 20px; color: #555; font-size: 14px; line-height: 1.65; } .modal-body p + p { margin-top: 10px; } /* MOBILE */ @media (max-width: 700px) { .header { height: 60px; padding: 0 14px; } .page-title { font-size: 18px; } .container { width: calc(100% - 20px); margin-top: 10px; } .action-bar { align-items: stretch; flex-direction: column; padding: 13px; } .create-btn { width: 100%; } .lark-zone { border-radius: 12px; } .lark-frame { height: calc(100vh - 190px); min-height: 500px; } } </style> </head> <body> <header class="header"> <div class="header-left"> <button class="back-btn" onclick="goBack()" aria-label="Quay lại">‹</button> <div class="page-title">Điều chuyển nội bộ</div> </div>
+<button class="help-btn" onclick="openHelp()" aria-label="Hướng dẫn">?</button>
+</header> <main class="container">
+<section class="action-bar">
+    <div class="action-description">
+        Quản lý các lệnh điều chuyển nguyên vật liệu giữa các cơ sở Tascus Food.
+    </div>
+
+    <button class="create-btn" onclick="createTransfer()">
+        + Tạo lệnh điều chuyển mới
+    </button>
+</section>
+
+<section class="lark-zone">
+
+    <div class="zone-header">
+        <div class="zone-title">Danh sách điều chuyển</div>
+        <div class="zone-status">Dữ liệu Lark Base</div>
+    </div>
+
+    <div class="frame-loading" id="frameLoading">
+        <div class="spinner"></div>
+        <div class="loading-text">Đang tải dữ liệu...</div>
+    </div>
+
+    <iframe
+        id="larkFrame"
+        class="lark-frame"
+        src="https://rjtj1yaw65k.sg.larksuite.com/share/base/view/shrlgv8WEZRbJnqgM4O2aBfXaT9"
+        title="Danh sách điều chuyển nội bộ"
+        loading="eager"
+        allow="clipboard-read; clipboard-write">
+    </iframe>
+
+</section>
+</main> <!-- HELP MODAL --> <div class="modal-overlay" id="helpModal" onclick="closeHelpOutside(event)"> <div class="modal"> <div class="modal-header"> <div class="modal-title">Điều chuyển nội bộ</div> <button class="modal-close" onclick="closeHelp()">×</button> </div>
+    <div class="modal-body">
+        <p>
+            Đây là khu vực theo dõi các lệnh điều chuyển nguyên vật liệu
+            giữa các cơ sở Tascus Food.
+        </p>
+
+        <p>
+            Sử dụng <strong>“Tạo lệnh điều chuyển mới”</strong> để lập
+            một yêu cầu điều chuyển mới.
+        </p>
+
+        <p>
+            Bảng dữ liệu bên dưới được lấy trực tiếp từ Lark Base.
+        </p>
+    </div>
+</div>
+</div> <script> const LARK_BASE_URL = "https://rjtj1yaw65k.sg.larksuite.com/share/base/view/shrlgv8WEZRbJnqgM4O2aBfXaT9"; /* BACK */ function goBack() { if (document.referrer) { history.back(); } else { window.location.href = "index.html"; } } /* CREATE TRANSFER */ function createTransfer() { /* * Chỗ này sẽ nối sang form tạo lệnh điều chuyển. * Tạm thời mở Lark Base ở tab hiện tại để người dùng * có thể thao tác nếu Base cho phép. */ window.open(LARK_BASE_URL, "_blank"); } /* HELP */ function openHelp() { document.getElementById("helpModal").classList.add("show"); } function closeHelp() { document.getElementById("helpModal").classList.remove("show"); } function closeHelpOutside(event) { if (event.target === document.getElementById("helpModal")) { closeHelp(); } } /* LARK FRAME */ const larkFrame = document.getElementById("larkFrame"); const frameLoading = document.getElementById("frameLoading"); larkFrame.addEventListener("load", function () { frameLoading.classList.add("hidden"); }); /* * Không thể biết chắc iframe đã thực sự hiển thị * nội dung Lark hay bị trình duyệt/Lark chặn. * Timeout chỉ để không giữ màn hình loading vô hạn. */ setTimeout(function () { frameLoading.classList.add("hidden"); }, 5000); </script> </body> </html>
