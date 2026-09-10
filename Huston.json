@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-09T23:26:05.872Z",
+  "updated_at": "2026-09-10T14:35:51.789Z",
   "records": [
     {
       "id": "Z024",
@@ -276,6 +276,16 @@
       "trang_thai_xu_ly": "Cần theo dõi thêm",
       "phuong_an_xu_ly": "Đã tắt các món liên quan\nKhi hàng về các bạn nhân viên vui lòng mở lại món trên các app và đóng vấn đề",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z047",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/10 21:35",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Có 1 túi sốt kem nấm bị thủng, em để trong cont inox ở tủ mát. Mai hết sốt, mọi người để ý lấy túi đó bơm vào nhé",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
