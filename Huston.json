@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-11T06:21:20.425Z",
+  "updated_at": "2026-09-11T09:47:49.300Z",
   "records": [
     {
       "id": "Z024",
@@ -276,9 +276,10 @@
       "noi_dung": "Hết sạch sốt hồng\nNhiệm vụ ca sáng mai (đào tạo Hoài Anh)\ntắt món app các món như bánh mỳ, sanwich\n0",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Cần theo dõi thêm",
-      "phuong_an_xu_ly": "Đã tắt các món liên quan\nKhi hàng về các bạn nhân viên vui lòng mở lại món trên các app và đóng vấn đề",
-      "nguoi_xu_ly": "Hưng"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "phuong_an_xu_ly": "Đã tắt các món liên quan\nKhi hàng về các bạn nhân viên vui lòng mở lại món trên các app và đóng vấn đề\n----\nĐã bật lại toàn bộ các món trên các app",
+      "nguoi_xu_ly": "Hưng",
+      "thoi_gian_xu_ly": "2026/09/11 16:47"
     },
     {
       "id": "Z047",
