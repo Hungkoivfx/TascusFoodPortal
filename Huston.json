@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-10T14:59:19.126Z",
+  "updated_at": "2026-09-11T00:00:46.002Z",
   "records": [
     {
       "id": "Z024",
@@ -285,7 +285,10 @@
       "noi_dung": "Có 1 túi sốt kem nấm bị thủng, em để trong cont inox ở tủ mát. Mai hết sốt, mọi người để ý lấy túi đó bơm vào nhé",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/11 07:00",
+      "phuong_an_xu_ly": "đã fill",
+      "nguoi_xu_ly": "Hoài Anh"
     },
     {
       "id": "Z048",
