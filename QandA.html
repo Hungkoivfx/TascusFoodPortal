@@ -488,7 +488,7 @@ body {
    trực tiếp trong file HTML.
 =========================================================
 */
-const API_URL = "";
+const API_URL = "https://script.google.com/macros/s/AKfycbyDGh1QDs9hS22PEU7CfwpEBmtUPVFfndHfeUjcUUWBL1_tfU61lXUkBOWIhX8w6TIb6A/exec";
 /* =========================
    ELEMENTS
 ========================= */
@@ -648,33 +648,49 @@ async function sendMessage() {
     =====================================================
     */
     try {
-        const response =
-            await fetch(API_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    message: text
-                })
-            });
-        if (!response.ok) {
-            throw new Error(
-                "HTTP " + response.status
-            );
-        }
-        const data =
-            await response.json();
-        hideTyping();
-        const reply =
-            data.reply ||
-            data.message ||
-            data.answer ||
-            "Chatbot không trả về nội dung.";
-        addMessage(
-            "bot",
-            reply
+
+    const response = await fetch(API_URL, {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+
+        body: JSON.stringify({
+            question: text
+        })
+
+    });
+
+    const data = await response.json();
+
+    if (!data.success) {
+        throw new Error(
+            data.error || "Backend không trả về thành công."
         );
+    }
+
+    hideTyping();
+
+    addMessage(
+        "bot",
+        data.answer || "Chatbot không trả về nội dung."
+    );
+
+} catch (error) {
+
+    console.error("Chatbot error:", error);
+
+    hideTyping();
+
+    addMessage(
+        "bot",
+        "Không thể kết nối với máy chủ chatbot.\n\n" +
+        error.message
+    );
+
+}
     } catch (error) {
         console.error(error);
         hideTyping();
