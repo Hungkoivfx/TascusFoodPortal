@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-11T00:12:56.951Z",
+  "updated_at": "2026-09-11T00:17:49.198Z",
   "records": [
     {
       "id": "Z024",
@@ -298,7 +298,10 @@
       "noi_dung": "Hết tiền lẻ để rút doanh thu doanh thu ca tối 10/09. Mai có tiền lẻ mọi người rút 391k giúp em ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/11 07:17",
+      "phuong_an_xu_ly": "Cộng hai ca vào cọc tiền là có thành tiền to 500 hơn mà.",
+      "nguoi_xu_ly": "hưng"
     },
     {
       "id": "Z049",
