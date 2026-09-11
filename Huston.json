@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-11T00:00:46.002Z",
+  "updated_at": "2026-09-11T00:12:56.951Z",
   "records": [
     {
       "id": "Z024",
@@ -308,7 +308,10 @@
       "noi_dung": "Cửa hàng hết sạch coca\nNgày 11/09 Ông quản lý tên Hưng trước khi bước chân ra khỏi nhà cần ôm theo 1 két mang tới thái thịnh",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/11 07:12",
+      "phuong_an_xu_ly": "Đã đem cocacola tới",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
