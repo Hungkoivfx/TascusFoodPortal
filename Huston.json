@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-11T00:18:25.536Z",
+  "updated_at": "2026-09-11T06:21:20.425Z",
   "records": [
     {
       "id": "Z024",
@@ -318,6 +318,16 @@
       "thoi_gian_xu_ly": "2026/09/11 07:12",
       "phuong_an_xu_ly": "Đã đem cocacola tới",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z050",
+      "chi_nhanh": "Thái Thịnh",
+      "thoi_gian": "2026/09/11 13:21",
+      "nguoi_bao_cao": "Ánh",
+      "noi_dung": "Báo cáo nhập hàng 11/9",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Chỉ thông báo / báo cáo",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
