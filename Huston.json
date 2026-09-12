@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-12T02:33:35.849Z",
+  "updated_at": "2026-09-12T12:44:31.833Z",
   "records": [
     {
       "id": "Z024",
@@ -356,6 +356,16 @@
       "thoi_gian": "2026/09/12 09:23",
       "nguoi_bao_cao": "Vanh",
       "noi_dung": "Rụng cam",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z053",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/12 19:44",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Còn 1 cuộn giấy in duy nhất. Mai anh Hưng mang thêm giấy in nhá",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
