@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 
 <head>
@@ -6,8 +7,9 @@
 <meta charset="UTF-8">
 
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+
 >
 
 <title>Sổ thanh toán · 69 Khương Trung</title>
@@ -122,60 +124,56 @@ body {
 
 
 /* =========================
-   TOP BAR
+   FILTER BAR
 ========================= */
 
-.top-bar {
+.filter-bar {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 8px;
+    gap: 7px;
 
     margin-bottom: 12px;
 }
 
-.month-switcher {
-    display: flex;
-    align-items: center;
+.filter-button {
+    flex: 1;
 
     height: 40px;
 
     border: 1px solid #dedfe1;
-
-    background: #fff;
-
     border-radius: 11px;
 
-    overflow: hidden;
-}
-
-.month-arrow {
-    width: 36px;
-    height: 40px;
-
-    border: 0;
-
-    background: transparent;
-
+    background: #fff;
     color: #55575a;
 
-    font-size: 18px;
+    font-size: 11px;
+    font-weight: 600;
 
     cursor: pointer;
+
+    transition: .15s ease;
 }
 
-.month-arrow:active {
-    background: #f1f1f2;
+.filter-button:active {
+    transform: scale(.97);
 }
 
-.month-label {
-    min-width: 82px;
+.filter-button.active {
+    background: #17181a;
+    border-color: #17181a;
+    color: #fff;
+}
 
-    text-align: center;
 
-    font-size: 12px;
-    font-weight: 700;
+/* =========================
+   CREATE
+========================= */
+
+.create-row {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-bottom: 12px;
 }
 
 .create-button {
@@ -802,13 +800,16 @@ body {
 
 @media (max-width: 420px) {
 
-    .create-button {
-        padding-left: 10px;
-        padding-right: 10px;
+    .filter-button {
+        font-size: 10px;
     }
 
-    .month-label {
-        min-width: 74px;
+    .create-button {
+        width: 100%;
+    }
+
+    .create-row {
+        justify-content: stretch;
     }
 
     .payment-item {
@@ -821,161 +822,160 @@ body {
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
+```
+<!-- HEADER -->
 
-    <!-- HEADER -->
+<div class="header">
 
-    <div class="header">
-
-        <button
-            type="button"
-            class="back-button"
-            onclick="goBack()"
-            aria-label="Quay lại"
-        >
-            ‹
-        </button>
-
-
-        <div class="header-main">
-
-            <h1>
-                Sổ thanh toán
-            </h1>
-
-            <p>
-                Kế toán · 69 Khương Trung
-            </p>
-
-        </div>
+    <button
+        type="button"
+        class="back-button"
+        onclick="goBack()"
+        aria-label="Quay lại"
+    >
+        ‹
+    </button>
 
 
-        <button
-            type="button"
-            class="help-button"
-            onclick="openHelp()"
-            aria-label="Trợ giúp"
-        >
-            ?
-        </button>
+    <div class="header-main">
+
+        <h1>
+            Sổ thanh toán
+        </h1>
+
+        <p>
+            Kế toán · 69 Khương Trung
+        </p>
 
     </div>
 
 
-    <!-- TOP BAR -->
-
-    <div class="top-bar">
-
-
-        <div class="month-switcher">
-
-            <button
-                type="button"
-                class="month-arrow"
-                onclick="changeMonth(-1)"
-            >
-                ‹
-            </button>
-
-
-            <div
-                class="month-label"
-                id="monthLabel"
-            >
-                09 / 2026
-            </div>
-
-
-            <button
-                type="button"
-                class="month-arrow"
-                onclick="changeMonth(1)"
-            >
-                ›
-            </button>
-
-        </div>
-
-
-        <button
-            type="button"
-            class="create-button"
-            onclick="openCreateModal()"
-        >
-            ＋ Tạo thanh toán
-        </button>
-
-
-    </div>
-
-
-    <!-- SUMMARY -->
-
-    <div class="summary">
-
-        <div>
-
-            <div class="summary-label">
-                Tổng thanh toán
-            </div>
-
-            <div
-                class="summary-period"
-                id="summaryPeriod"
-            >
-                Tháng 09 / 2026
-            </div>
-
-        </div>
-
-
-        <div
-            class="summary-value"
-            id="totalAmount"
-        >
-            0
-        </div>
-
-    </div>
-
-
-    <!-- LIST -->
-
-    <div class="list-card">
-
-
-        <div class="section-header">
-
-            <div class="section-title">
-                Lịch sử thanh toán
-            </div>
-
-            <div
-                class="record-count"
-                id="recordCount"
-            >
-                0 khoản
-            </div>
-
-        </div>
-
-
-        <div
-            class="payment-list"
-            id="paymentList"
-        ></div>
-
-
-    </div>
-
+    <button
+        type="button"
+        class="help-button"
+        onclick="openHelp()"
+        aria-label="Trợ giúp"
+    >
+        ?
+    </button>
 
 </div>
 
+
+<!-- FILTER -->
+
+<div class="filter-bar">
+
+    <button
+        type="button"
+        class="filter-button"
+        data-filter="week"
+        onclick="setFilter('week')"
+    >
+        Tuần này
+    </button>
+
+    <button
+        type="button"
+        class="filter-button active"
+        data-filter="month"
+        onclick="setFilter('month')"
+    >
+        Tháng này
+    </button>
+
+    <button
+        type="button"
+        class="filter-button"
+        data-filter="previous-month"
+        onclick="setFilter('previous-month')"
+    >
+        Tháng trước
+    </button>
+
+</div>
+
+
+<!-- CREATE -->
+
+<div class="create-row">
+
+    <button
+        type="button"
+        class="create-button"
+        onclick="openCreateModal()"
+    >
+        ＋ Tạo thanh toán
+    </button>
+
+</div>
+
+
+<!-- SUMMARY -->
+
+<div class="summary">
+
+    <div>
+
+        <div class="summary-label">
+            Tổng thanh toán
+        </div>
+
+        <div
+            class="summary-period"
+            id="summaryPeriod"
+        >
+            Tháng này
+        </div>
+
+    </div>
+
+
+    <div
+        class="summary-value"
+        id="totalAmount"
+    >
+        0
+    </div>
+
+</div>
+
+
+<!-- LIST -->
+
+<div class="list-card">
+
+
+    <div class="section-header">
+
+        <div class="section-title">
+            Lịch sử thanh toán
+        </div>
+
+        <div
+            class="record-count"
+            id="recordCount"
+        >
+            0 khoản
+        </div>
+
+    </div>
+
+
+    <div
+        class="payment-list"
+        id="paymentList"
+    ></div>
+
+
+</div>
+```
+
+</div>
 
 <!-- =========================
      CREATE MODAL
@@ -987,202 +987,203 @@ body {
     onclick="closeModalByOverlay(event)"
 >
 
-    <div
-        class="modal"
-        onclick="event.stopPropagation()"
+```
+<div
+    class="modal"
+    onclick="event.stopPropagation()"
+>
+
+
+    <div class="modal-header">
+
+        <div class="modal-title">
+            Tạo thanh toán
+        </div>
+
+        <button
+            type="button"
+            class="close-button"
+            onclick="closeCreateModal()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <form
+        id="paymentForm"
+        onsubmit="submitPayment(event)"
     >
 
 
-        <div class="modal-header">
+        <div class="form-group">
 
-            <div class="modal-title">
-                Tạo thanh toán
+            <label
+                class="form-label"
+                for="paymentContent"
+            >
+                Nội dung thanh toán
+            </label>
+
+            <input
+                type="text"
+                id="paymentContent"
+                class="form-input"
+                placeholder="Ví dụ: Thanh toán tiền rau"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label
+                class="form-label"
+                for="paymentAmount"
+            >
+                Số tiền
+            </label>
+
+            <input
+                type="text"
+                id="paymentAmount"
+                class="form-input"
+                inputmode="numeric"
+                autocomplete="off"
+                placeholder="Ví dụ: 1250000"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label
+                class="form-label"
+                for="paymentDate"
+            >
+                Ngày giờ thanh toán
+            </label>
+
+            <input
+                type="datetime-local"
+                id="paymentDate"
+                class="form-input"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label class="form-label">
+                Hình thức thanh toán
+            </label>
+
+
+            <div class="payment-types">
+
+
+                <div class="payment-type">
+
+                    <input
+                        type="radio"
+                        id="typeBank"
+                        name="paymentType"
+                        value="Chuyển khoản ngân hàng"
+                        checked
+                        onchange="updateTransactionField()"
+                    >
+
+                    <label for="typeBank">
+                        🏦 Chuyển khoản
+                    </label>
+
+                </div>
+
+
+                <div class="payment-type">
+
+                    <input
+                        type="radio"
+                        id="typeCash"
+                        name="paymentType"
+                        value="Tiền mặt"
+                        onchange="updateTransactionField()"
+                    >
+
+                    <label for="typeCash">
+                        💵 Tiền mặt
+                    </label>
+
+                </div>
+
+
             </div>
+
+        </div>
+
+
+        <div
+            class="form-group"
+            id="transactionGroup"
+        >
+
+            <label
+                class="form-label"
+                for="transactionCode"
+            >
+                Mã giao dịch
+            </label>
+
+            <input
+                type="text"
+                id="transactionCode"
+                class="form-input"
+                placeholder="Nhập mã giao dịch"
+            >
+
+            <div
+                class="transaction-note"
+                id="transactionNote"
+            >
+                Thanh toán tiền mặt không có mã giao dịch.
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
 
             <button
                 type="button"
-                class="close-button"
+                class="cancel-button"
                 onclick="closeCreateModal()"
             >
-                ×
+                Hủy
+            </button>
+
+            <button
+                type="submit"
+                class="submit-button"
+            >
+                Tạo thanh toán
             </button>
 
         </div>
 
 
-        <form
-            id="paymentForm"
-            onsubmit="submitPayment(event)"
-        >
+    </form>
 
-
-            <div class="form-group">
-
-                <label
-                    class="form-label"
-                    for="paymentContent"
-                >
-                    Nội dung thanh toán
-                </label>
-
-                <input
-                    type="text"
-                    id="paymentContent"
-                    class="form-input"
-                    placeholder="Ví dụ: Thanh toán tiền rau"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label
-                    class="form-label"
-                    for="paymentAmount"
-                >
-                    Số tiền
-                </label>
-
-                <input
-                    type="text"
-                    id="paymentAmount"
-                    class="form-input"
-                    inputmode="numeric"
-                    autocomplete="off"
-                    placeholder="Ví dụ: 1250000"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label
-                    class="form-label"
-                    for="paymentDate"
-                >
-                    Ngày chuyển khoản
-                </label>
-
-                <input
-                    type="date"
-                    id="paymentDate"
-                    class="form-input"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label class="form-label">
-                    Hình thức thanh toán
-                </label>
-
-
-                <div class="payment-types">
-
-
-                    <div class="payment-type">
-
-                        <input
-                            type="radio"
-                            id="typeBank"
-                            name="paymentType"
-                            value="Chuyển khoản ngân hàng"
-                            checked
-                            onchange="updateTransactionField()"
-                        >
-
-                        <label for="typeBank">
-                            🏦 Chuyển khoản
-                        </label>
-
-                    </div>
-
-
-                    <div class="payment-type">
-
-                        <input
-                            type="radio"
-                            id="typeCash"
-                            name="paymentType"
-                            value="Tiền mặt"
-                            onchange="updateTransactionField()"
-                        >
-
-                        <label for="typeCash">
-                            💵 Tiền mặt
-                        </label>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-            <div
-                class="form-group"
-                id="transactionGroup"
-            >
-
-                <label
-                    class="form-label"
-                    for="transactionCode"
-                >
-                    Mã giao dịch
-                </label>
-
-                <input
-                    type="text"
-                    id="transactionCode"
-                    class="form-input"
-                    placeholder="Nhập mã giao dịch"
-                >
-
-                <div
-                    class="transaction-note"
-                    id="transactionNote"
-                >
-                    Thanh toán tiền mặt không có mã giao dịch.
-                </div>
-
-            </div>
-
-
-            <div class="modal-actions">
-
-                <button
-                    type="button"
-                    class="cancel-button"
-                    onclick="closeCreateModal()"
-                >
-                    Hủy
-                </button>
-
-                <button
-                    type="submit"
-                    class="submit-button"
-                >
-                    Tạo thanh toán
-                </button>
-
-            </div>
-
-
-        </form>
-
-
-    </div>
 
 </div>
+```
 
+</div>
 
 <!-- =========================
      HELP MODAL
@@ -1194,63 +1195,64 @@ body {
     onclick="closeHelp(event)"
 >
 
-    <div
-        class="modal"
-        onclick="event.stopPropagation()"
-    >
+```
+<div
+    class="modal"
+    onclick="event.stopPropagation()"
+>
 
 
-        <div class="modal-header">
+    <div class="modal-header">
 
-            <div class="modal-title">
-                Sổ thanh toán
-            </div>
-
-            <button
-                type="button"
-                class="close-button"
-                onclick="closeHelp()"
-            >
-                ×
-            </button>
-
+        <div class="modal-title">
+            Sổ thanh toán
         </div>
 
-
-        <div class="help-content">
-
-            Đây là sổ thanh toán của
-            <strong>69 Khương Trung</strong>.
-
-            <br><br>
-
-            Các khoản thanh toán được hệ thống
-            ghi nhận tự động sẽ xuất hiện tại đây.
-
-            <br><br>
-
-            Sử dụng <strong>＋ Tạo thanh toán</strong>
-            khi cần nhập thủ công một khoản tiền mặt
-            hoặc khi hệ thống tự động ghi nhận bị lỗi.
-
-            <br><br>
-
-            Số tiền nhập bằng đầy đủ đơn vị đồng.
-            Ví dụ:
-
-            <strong>1250000</strong>
-
-            sẽ được hiển thị là
-
-            <strong>1.250.000</strong>.
-
-        </div>
-
+        <button
+            type="button"
+            class="close-button"
+            onclick="closeHelp()"
+        >
+            ×
+        </button>
 
     </div>
 
-</div>
 
+    <div class="help-content">
+
+        Đây là sổ thanh toán của
+        <strong>69 Khương Trung</strong>.
+
+        <br><br>
+
+        Các khoản thanh toán được hệ thống
+        ghi nhận tự động sẽ xuất hiện tại đây.
+
+        <br><br>
+
+        Sử dụng <strong>＋ Tạo thanh toán</strong>
+        khi cần nhập thủ công một khoản tiền mặt
+        hoặc khi hệ thống tự động ghi nhận bị lỗi.
+
+        <br><br>
+
+        Số tiền nhập bằng đầy đủ đơn vị đồng.
+        Ví dụ:
+
+        <strong>1250000</strong>
+
+        sẽ được hiển thị là
+
+        <strong>1.250.000</strong>.
+
+    </div>
+
+
+</div>
+```
+
+</div>
 
 <!-- LOADING -->
 
@@ -1259,18 +1261,19 @@ body {
     id="loading"
 >
 
-    <div class="loading-box">
+```
+<div class="loading-box">
 
-        <div class="spinner"></div>
+    <div class="spinner"></div>
 
-        <div class="loading-text">
-            Đang xử lý...
-        </div>
-
+    <div class="loading-text">
+        Đang xử lý...
     </div>
 
 </div>
+```
 
+</div>
 
 <!-- TOAST -->
 
@@ -1278,7 +1281,6 @@ body {
     class="toast"
     id="toast"
 ></div>
-
 
 <script>
 
@@ -1288,7 +1290,7 @@ body {
 ===================================================== */
 
 const API_URL =
-    "https://script.google.com/macros/s/AKfycbz7S749Q7gPYHM8ImzIhkY4p6dxexivCFIERbkLYOTysDyLpsvZ4Q5Mci9ata6NmV3Z/exec";
+    "DÁN_URL_WEB_APP_APPS_SCRIPT_MỚI_VÀO_ĐÂY";
 
 
 const BRANCH =
@@ -1296,280 +1298,146 @@ const BRANCH =
 
 
 /* =====================================================
-   CURRENT MONTH
+   DATA
 ===================================================== */
 
-let currentDate =
-    new Date(
-        2026,
-        8,
-        1
-    );
+let payments = [];
+
+let currentFilter = "month";
 
 
 /* =====================================================
-   DEMO DATA
+   API - LOAD
 ===================================================== */
 
-let payments = [
+async function loadPayments() {
 
-    {
-        noi_dung:
-            "Thanh toán tiền rau củ quả",
-        so_tien:
-            1250000,
-        ngay:
-            "2026-09-01",
-        hinh_thuc:
-            "Chuyển khoản ngân hàng",
-        ma_giao_dich:
-            "FT2609010018"
-    },
+    showLoading("Đang tải dữ liệu...");
 
-    {
-        noi_dung:
-            "Thanh toán tiền bánh",
-        so_tien:
-            980000,
-        ngay:
-            "2026-09-02",
-        hinh_thuc:
-            "Chuyển khoản ngân hàng",
-        ma_giao_dich:
-            "FT2609020041"
-    },
 
-    {
-        noi_dung:
-            "Mua đá",
-        so_tien:
-            320000,
-        ngay:
-            "2026-09-03",
-        hinh_thuc:
-            "Tiền mặt",
-        ma_giao_dich:
-            ""
-    },
+    try {
 
-    {
-        noi_dung:
-            "Mua dầu ăn",
-        so_tien:
-            760000,
-        ngay:
-            "2026-09-04",
-        hinh_thuc:
-            "Chuyển khoản ngân hàng",
-        ma_giao_dich:
-            "FT2609040087"
-    },
+        const response =
+            await fetch(
+                API_URL +
+                "?action=get_payments",
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
 
-    {
-        noi_dung:
-            "Thanh toán tiền điện",
-        so_tien:
-            1840000,
-        ngay:
-            "2026-09-05",
-        hinh_thuc:
-            "Chuyển khoản ngân hàng",
-        ma_giao_dich:
-            "FT2609050112"
-    },
 
-    {
-        noi_dung:
-            "Mua bao bì và túi giấy",
-        so_tien:
-            685000,
-        ngay:
-            "2026-09-06",
-        hinh_thuc:
-            "Tiền mặt",
-        ma_giao_dich:
-            ""
-    },
+        if (!response.ok) {
 
-    {
-        noi_dung:
-            "Thanh toán nguyên vật liệu",
-        so_tien:
-            2150000,
-        ngay:
-            "2026-09-08",
-        hinh_thuc:
-            "Chuyển khoản ngân hàng",
-        ma_giao_dich:
-            "FT2609080193"
-    },
+            throw new Error(
+                "API trả về lỗi HTTP " +
+                response.status
+            );
 
-    {
-        noi_dung:
-            "Mua rau mùi và xà lách",
-        so_tien:
-            540000,
-        ngay:
-            "2026-09-10",
-        hinh_thuc:
-            "Tiền mặt",
-        ma_giao_dich:
-            ""
-    },
+        }
 
-    {
-        noi_dung:
-            "Thanh toán tiền nước",
-        so_tien:
-            420000,
-        ngay:
-            "2026-09-11",
-        hinh_thuc:
-            "Chuyển khoản ngân hàng",
-        ma_giao_dich:
-            "FT2609110237"
-    },
 
-    {
-        noi_dung:
-            "Sửa chữa tủ mát",
-        so_tien:
-            1350000,
-        ngay:
-            "2026-09-13",
-        hinh_thuc:
-            "Tiền mặt",
-        ma_giao_dich:
-            ""
-    },
+        const result =
+            await response.json();
 
-    {
-        noi_dung:
-            "Thanh toán tiền bánh đợt 2",
-        so_tien:
-            1120000,
-        ngay:
-            "2026-09-15",
-        hinh_thuc:
-            "Chuyển khoản ngân hàng",
-        ma_giao_dich:
-            "FT2609150315"
-    },
 
-    {
-        noi_dung:
-            "Mua hóa chất vệ sinh",
-        so_tien:
-            375000,
-        ngay:
-            "2026-09-17",
-        hinh_thuc:
-            "Tiền mặt",
-        ma_giao_dich:
-            ""
-    },
+        if (!result.success) {
 
-    {
-        noi_dung:
-            "Thanh toán tiền rau củ quả",
-        so_tien:
-            1480000,
-        ngay:
-            "2026-09-20",
-        hinh_thuc:
-            "Chuyển khoản ngân hàng",
-        ma_giao_dich:
-            "FT2609200472"
-    },
+            throw new Error(
+                result.error ||
+                "Không thể đọc dữ liệu thanh toán"
+            );
 
-    {
-        noi_dung:
-            "Mua gas bếp",
-        so_tien:
-            495000,
-        ngay:
-            "2026-09-22",
-        hinh_thuc:
-            "Tiền mặt",
-        ma_giao_dich:
-            ""
-    },
+        }
 
-    {
-        noi_dung:
-            "Thanh toán chi phí bảo trì thiết bị",
-        so_tien:
-            890000,
-        ngay:
-            "2026-09-25",
-        hinh_thuc:
-            "Chuyển khoản ngân hàng",
-        ma_giao_dich:
-            "FT2609250619"
+
+        payments =
+            (result.data || [])
+                .map(normalizePayment)
+                .filter(Boolean);
+
+
+        renderPayments();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        payments = [];
+
+
+        renderPayments();
+
+
+        showToast(
+            error.message ||
+            "Không thể tải dữ liệu"
+        );
+
+
+    } finally {
+
+        hideLoading();
+
     }
 
-];
-
-
-/* =====================================================
-   MONTH FUNCTIONS
-===================================================== */
-
-function getMonth() {
-
-    return currentDate.getMonth();
-
-}
-
-
-function getYear() {
-
-    return currentDate.getFullYear();
-
-}
-
-
-function changeMonth(direction) {
-
-    currentDate.setMonth(
-        currentDate.getMonth() +
-        direction
-    );
-
-
-    updateMonthLabel();
-
-    renderPayments();
-
 }
 
 
 /* =====================================================
-   MONTH LABEL
+   NORMALIZE PAYMENT
 ===================================================== */
 
-function updateMonthLabel() {
+function normalizePayment(payment) {
 
-    const month =
-        String(
-            getMonth() + 1
-        ).padStart(2, "0");
+    if (!payment) {
 
+        return null;
 
-    const year =
-        getYear();
+    }
 
 
-    document.getElementById(
-        "monthLabel"
-    ).textContent =
-        `${month} / ${year}`;
+    return {
 
+        noi_dung:
+            String(
+                payment["Nội dung chuyển tiền"] ||
+                payment.noi_dung ||
+                ""
+            ),
 
-    document.getElementById(
-        "summaryPeriod"
-    ).textContent =
-        `Tháng ${month} / ${year}`;
+        so_tien:
+            Number(
+                payment["Số tiền"] ??
+                payment.so_tien ??
+                0
+            ),
+
+        hinh_thuc:
+            String(
+                payment["Hình thức thanh toán"] ||
+                payment.hinh_thuc ||
+                ""
+            ),
+
+        ma_giao_dich:
+            String(
+                payment["Mã giao dịch"] ||
+                payment.ma_giao_dich ||
+                ""
+            ),
+
+        ngay_gio:
+            String(
+                payment["Ngày giờ thanh toán"] ||
+                payment.ngay_gio ||
+                ""
+            )
+
+    };
 
 }
 
@@ -1578,42 +1446,383 @@ function updateMonthLabel() {
    FILTER
 ===================================================== */
 
-function getFilteredPayments() {
+function setFilter(filter) {
 
-    const month =
-        getMonth();
-
-
-    const year =
-        getYear();
+    currentFilter =
+        filter;
 
 
-    return payments.filter(
-        payment => {
+    document
+        .querySelectorAll(
+            ".filter-button"
+        )
+        .forEach(
+            button => {
 
-            const date =
-                new Date(
-                    payment.ngay +
-                    "T00:00:00"
+                button.classList.toggle(
+                    "active",
+                    button.dataset.filter ===
+                    filter
                 );
 
+            }
+        );
 
-            return (
 
-                date.getMonth()
-                ===
-                month
+    updateSummaryPeriod();
 
-                &&
+    renderPayments();
 
-                date.getFullYear()
-                ===
-                year
+}
 
+
+/* =====================================================
+   DATE PARSER
+===================================================== */
+
+function parsePaymentDate(value) {
+
+    if (!value) {
+
+        return null;
+
+    }
+
+
+    const text =
+        String(value)
+            .trim();
+
+
+    let match =
+        text.match(
+            /^(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2}):(\d{2})$/
+        );
+
+
+    if (match) {
+
+        return new Date(
+            Number(match[1]),
+            Number(match[2]) - 1,
+            Number(match[3]),
+            Number(match[4]),
+            Number(match[5])
+        );
+
+    }
+
+
+    match =
+        text.match(
+            /^(\d{4})-(\d{2})-(\d{2})(?:T|\s)(\d{2}):(\d{2})/
+        );
+
+
+    if (match) {
+
+        return new Date(
+            Number(match[1]),
+            Number(match[2]) - 1,
+            Number(match[3]),
+            Number(match[4]),
+            Number(match[5])
+        );
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =====================================================
+   FILTER RANGE
+===================================================== */
+
+function getFilterRange() {
+
+    const now =
+        new Date();
+
+
+    const today =
+        new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate(),
+            0,
+            0,
+            0,
+            0
+        );
+
+
+    /* =========================
+       TUẦN NÀY
+       Thứ Hai → hôm nay
+    ========================= */
+
+    if (
+        currentFilter ===
+        "week"
+    ) {
+
+        const day =
+            today.getDay();
+
+
+        const daysFromMonday =
+            day === 0
+                ? 6
+                : day - 1;
+
+
+        const start =
+            new Date(today);
+
+
+        start.setDate(
+            start.getDate() -
+            daysFromMonday
+        );
+
+
+        const end =
+            new Date(
+                today
             );
 
-        }
-    );
+
+        end.setHours(
+            23,
+            59,
+            59,
+            999
+        );
+
+
+        return {
+            start,
+            end
+        };
+
+    }
+
+
+    /* =========================
+       THÁNG NÀY
+    ========================= */
+
+    if (
+        currentFilter ===
+        "month"
+    ) {
+
+        const start =
+            new Date(
+                today.getFullYear(),
+                today.getMonth(),
+                1,
+                0,
+                0,
+                0,
+                0
+            );
+
+
+        const end =
+            new Date(
+                today.getFullYear(),
+                today.getMonth() + 1,
+                0,
+                23,
+                59,
+                59,
+                999
+            );
+
+
+        return {
+            start,
+            end
+        };
+
+    }
+
+
+    /* =========================
+       THÁNG TRƯỚC
+    ========================= */
+
+    const start =
+        new Date(
+            today.getFullYear(),
+            today.getMonth() - 1,
+            1,
+            0,
+            0,
+            0,
+            0
+        );
+
+
+    const end =
+        new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            0,
+            23,
+            59,
+            59,
+            999
+        );
+
+
+    return {
+        start,
+        end
+    };
+
+}
+
+
+/* =====================================================
+   FILTER PAYMENTS
+===================================================== */
+
+function getFilteredPayments() {
+
+    const range =
+        getFilterRange();
+
+
+    return payments
+        .filter(
+            payment => {
+
+                const date =
+                    parsePaymentDate(
+                        payment.ngay_gio
+                    );
+
+
+                if (!date) {
+
+                    return false;
+
+                }
+
+
+                return (
+                    date >= range.start &&
+                    date <= range.end
+                );
+
+            }
+        )
+        .sort(
+            (a, b) => {
+
+                const dateA =
+                    parsePaymentDate(
+                        a.ngay_gio
+                    ) || 0;
+
+
+                const dateB =
+                    parsePaymentDate(
+                        b.ngay_gio
+                    ) || 0;
+
+
+                return dateB - dateA;
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   SUMMARY PERIOD
+===================================================== */
+
+function updateSummaryPeriod() {
+
+    const element =
+        document.getElementById(
+            "summaryPeriod"
+        );
+
+
+    if (
+        currentFilter ===
+        "week"
+    ) {
+
+        const range =
+            getFilterRange();
+
+
+        element.textContent =
+            formatShortDate(
+                range.start
+            ) +
+            " – " +
+            formatShortDate(
+                range.end
+            );
+
+
+        return;
+
+    }
+
+
+    if (
+        currentFilter ===
+        "month"
+    ) {
+
+        const now =
+            new Date();
+
+
+        element.textContent =
+            "Tháng " +
+            String(
+                now.getMonth() + 1
+            ).padStart(2, "0") +
+            " / " +
+            now.getFullYear();
+
+
+        return;
+
+    }
+
+
+    const now =
+        new Date();
+
+
+    const previous =
+        new Date(
+            now.getFullYear(),
+            now.getMonth() - 1,
+            1
+        );
+
+
+    element.textContent =
+        "Tháng " +
+        String(
+            previous.getMonth() + 1
+        ).padStart(2, "0") +
+        " / " +
+        previous.getFullYear();
 
 }
 
@@ -1637,7 +1846,8 @@ function renderPayments() {
     list.innerHTML = "";
 
 
-    let total = 0;
+    let total =
+        0;
 
 
     filtered.forEach(
@@ -1696,8 +1906,8 @@ function renderPayments() {
                         </div>
 
                         <div class="payment-date">
-                            ${formatDate(
-                                payment.ngay
+                            ${formatDateTime(
+                                payment.ngay_gio
                             )}
                         </div>
 
@@ -1750,7 +1960,7 @@ function renderPayments() {
                 </div>
 
                 <div class="empty-text">
-                    Không có dữ liệu trong tháng này.
+                    Không có dữ liệu trong khoảng thời gian này.
                 </div>
 
             </div>
@@ -1769,7 +1979,9 @@ function renderPayments() {
     document.getElementById(
         "totalAmount"
     ).textContent =
-        formatMoney(total);
+        formatMoney(
+            total
+        );
 
 }
 
@@ -1790,47 +2002,34 @@ function formatMoney(value) {
 
 
 /* =====================================================
-   FORMAT DATE
+   FORMAT DATE TIME
 ===================================================== */
 
-function formatDate(value) {
-
-    if (!value) {
-
-        return "";
-
-    }
-
+function formatDateTime(value) {
 
     const date =
-        new Date(
-            value +
-            "T00:00:00"
+        parsePaymentDate(
+            value
         );
 
 
-    if (
-        Number.isNaN(
-            date.getTime()
-        )
-    ) {
+    if (!date) {
 
-        return value;
+        return escapeHtml(
+            value || ""
+        );
 
     }
 
 
     return (
-
         String(
             date.getDate()
         ).padStart(2, "0")
 
         +
 
-        "/"
-
-        +
+        "/" +
 
         String(
             date.getMonth() + 1
@@ -1838,12 +2037,44 @@ function formatDate(value) {
 
         +
 
-        "/"
-
-        +
+        "/" +
 
         date.getFullYear()
 
+        +
+
+        " " +
+
+        String(
+            date.getHours()
+        ).padStart(2, "0")
+
+        +
+
+        ":" +
+
+        String(
+            date.getMinutes()
+        ).padStart(2, "0")
+    );
+
+}
+
+
+function formatShortDate(date) {
+
+    return (
+        String(
+            date.getDate()
+        ).padStart(2, "0")
+
+        +
+
+        "/" +
+
+        String(
+            date.getMonth() + 1
+        ).padStart(2, "0")
     );
 
 }
@@ -1863,7 +2094,7 @@ function openCreateModal() {
     document.getElementById(
         "paymentDate"
     ).value =
-        getToday();
+        getCurrentDateTime();
 
 
     document.getElementById(
@@ -1997,7 +2228,7 @@ async function submitPayment(event) {
             );
 
 
-    const date =
+    const dateTime =
         document.getElementById(
             "paymentDate"
         ).value;
@@ -2037,10 +2268,10 @@ async function submitPayment(event) {
     }
 
 
-    if (!date) {
+    if (!dateTime) {
 
         showToast(
-            "Vui lòng chọn ngày"
+            "Vui lòng chọn ngày giờ thanh toán"
         );
 
         return;
@@ -2070,72 +2301,69 @@ async function submitPayment(event) {
         );
 
 
-    /*
-        Payload thật sẽ gửi về Apps Script.
-
-        Chi nhánh luôn cố định.
-    */
-
     const payload = {
 
         action:
             "create_payment",
 
-        chi_nhanh:
-            BRANCH,
-
-        noi_dung:
+        "Nội dung chuyển tiền":
             content,
 
-        so_tien:
+        "Số tiền":
             amount,
 
-        ngay_chuyen_khoan:
-            date,
-
-        hinh_thuc_thanh_toan:
+        "Hình thức thanh toán":
             type,
 
-        ma_giao_dich:
-            type ===
-            "Tiền mặt"
-
+        "Mã giao dịch":
+            type === "Tiền mặt"
                 ? ""
-
                 : transaction,
 
-        nguon:
-            "Thu cong"
+        "Ngày giờ thanh toán":
+            dateTime
 
     };
 
 
-    showLoading();
+    showLoading(
+        "Đang lưu thanh toán..."
+    );
 
 
     try {
-
-        /*
-        Khi backend đã sẵn sàng,
-        bỏ comment đoạn fetch này:
 
         const response =
             await fetch(
                 API_URL,
                 {
+
                     method: "POST",
 
                     headers: {
+
                         "Content-Type":
                             "text/plain;charset=utf-8"
+
                     },
 
                     body:
                         JSON.stringify(
                             payload
                         )
+
                 }
             );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "API trả về lỗi HTTP " +
+                response.status
+            );
+
+        }
 
 
         const result =
@@ -2144,47 +2372,38 @@ async function submitPayment(event) {
 
         if (!result.success) {
 
+            if (
+                result.duplicate
+            ) {
+
+                throw new Error(
+                    result.error ||
+                    "Mã giao dịch đã tồn tại"
+                );
+
+            }
+
+
             throw new Error(
+                result.error ||
                 result.message ||
                 "Không thể tạo thanh toán"
             );
 
         }
-        */
-
-
-        /*
-            Demo:
-            thêm trực tiếp vào danh sách.
-        */
-
-        payments.unshift({
-
-            noi_dung:
-                content,
-
-            so_tien:
-                amount,
-
-            ngay:
-                date,
-
-            hinh_thuc:
-                type,
-
-            ma_giao_dich:
-                transaction
-
-        });
 
 
         closeCreateModal();
 
-        renderPayments();
 
         showToast(
-            "Đã tạo thanh toán"
+            result.zalo_sent === false
+                ? "Đã lưu thanh toán, Zalo chưa gửi được"
+                : "Đã tạo thanh toán"
         );
+
+
+        await loadPayments();
 
 
     } catch (error) {
@@ -2193,10 +2412,12 @@ async function submitPayment(event) {
             error
         );
 
+
         showToast(
             error.message ||
             "Không thể tạo thanh toán"
         );
+
 
     } finally {
 
@@ -2208,10 +2429,10 @@ async function submitPayment(event) {
 
 
 /* =====================================================
-   TODAY
+   CURRENT DATETIME FOR INPUT
 ===================================================== */
 
-function getToday() {
+function getCurrentDateTime() {
 
     const now =
         new Date();
@@ -2233,7 +2454,22 @@ function getToday() {
         ).padStart(2, "0");
 
 
-    return `${year}-${month}-${day}`;
+    const hour =
+        String(
+            now.getHours()
+        ).padStart(2, "0");
+
+
+    const minute =
+        String(
+            now.getMinutes()
+        ).padStart(2, "0");
+
+
+    return (
+        `${year}-${month}-${day}` +
+        `T${hour}:${minute}`
+    );
 
 }
 
@@ -2302,7 +2538,19 @@ function goBack() {
    LOADING
 ===================================================== */
 
-function showLoading() {
+function showLoading(
+    message = "Đang xử lý..."
+) {
+
+    document.getElementById(
+        "loading"
+    )
+    .querySelector(
+        ".loading-text"
+    )
+    .textContent =
+        message;
+
 
     document.getElementById(
         "loading"
@@ -2362,7 +2610,7 @@ function showToast(message) {
                 );
 
             },
-            2500
+            3000
         );
 
 }
@@ -2415,15 +2663,11 @@ document
    INIT
 ===================================================== */
 
-updateMonthLabel();
+updateSummaryPeriod();
 
-renderPayments();
+updateTransactionField();
 
-
-document.getElementById(
-    "paymentDate"
-).value =
-    getToday();
+loadPayments();
 
 </script>
 
