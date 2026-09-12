@@ -1,5 +1,9 @@
-{
-  "version": 1,
-  "updated_at": "",
-  "data": []
-}
+[
+  {
+    "Nội dung chuyển tiền": "TEST NHAP TAY",
+    "Số tiền": 1000,
+    "Hình thức thanh toán": "Tiền mặt",
+    "Mã giao dịch": "",
+    "Ngày giờ thanh toán": "2026/09/13 00:10"
+  }
+]
