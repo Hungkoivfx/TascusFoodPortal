@@ -1,16 +1,1126 @@
-[
-  {
-    "Nội dung chuyển tiền": "TEST NHAP TAY",
-    "Số tiền": 1000,
-    "Hình thức thanh toán": "Tiền mặt",
-    "Mã giao dịch": "",
-    "Ngày giờ thanh toán": "2026/09/13 00:10"
-  },
-  {
-    "Nội dung chuyển tiền": "Thanh toán test tiền mặt",
-    "Số tiền": 2000,
-    "Hình thức thanh toán": "Tiền mặt",
-    "Mã giao dịch": "",
-    "Ngày giờ thanh toán": "2026/09/13 00:55"
-  }
+{
+"version": 1,
+"updated_at": "2026/09/13 00:00:00",
+"data": [
+{
+"Nội dung chuyển tiền": "Nha đam x 3",
+"Số tiền": 115000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/31 15:34"
+},
+{
+"Nội dung chuyển tiền": "tiền trứng 19/05 23/05",
+"Số tiền": 585000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/23 10:48"
+},
+{
+"Nội dung chuyển tiền": "Tiền gas",
+"Số tiền": 553000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/20 20:51"
+},
+{
+"Nội dung chuyển tiền": "tiền ống xả + 2 vòi",
+"Số tiền": 320000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/20 20:57"
+},
+{
+"Nội dung chuyển tiền": "trứng ngày 16/05",
+"Số tiền": 140000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/20 20:58"
+},
+{
+"Nội dung chuyển tiền": "Hoàn trả khách do bánh hỏng",
+"Số tiền": 90000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/20 21:01"
+},
+{
+"Nội dung chuyển tiền": "Rau",
+"Số tiền": 453000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/21 16:10"
+},
+{
+"Nội dung chuyển tiền": "rau 21/05",
+"Số tiền": 210000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/21 16:10"
+},
+{
+"Nội dung chuyển tiền": "tiền rau ngày 24/05",
+"Số tiền": 200000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/24 11:55"
+},
+{
+"Nội dung chuyển tiền": "tiền rau ngày 26/05",
+"Số tiền": 362000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/28 09:32"
+},
+{
+"Nội dung chuyển tiền": "Trứng 26/05 30/05",
+"Số tiền": 585000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/30 10:22"
+},
+{
+"Nội dung chuyển tiền": "Dầu ăn 10 lít",
+"Số tiền": 390000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/31 15:31"
+},
+{
+"Nội dung chuyển tiền": "Rau 31/05",
+"Số tiền": 251000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/05/31 15:33"
+},
+{
+"Nội dung chuyển tiền": "thanh toán tiền hàng 29/05",
+"Số tiền": 4065693,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 10:17"
+},
+{
+"Nội dung chuyển tiền": "Thanh toán tiền hàng từ xưởng 02/06",
+"Số tiền": 7526200,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 10:18"
+},
+{
+"Nội dung chuyển tiền": "Thanh toán mở tài khoản grab",
+"Số tiền": 1200000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 10:18"
+},
+{
+"Nội dung chuyển tiền": "Tiền điện nước tháng 05/2026",
+"Số tiền": 9150000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 16:58"
+},
+{
+"Nội dung chuyển tiền": "Tiền rau 07/06",
+"Số tiền": 263000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 16:59"
+},
+{
+"Nội dung chuyển tiền": "Tiền thuê nhà 69 khương trung 06 07 08 2026",
+"Số tiền": 45000000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 16:59"
+},
+{
+"Nội dung chuyển tiền": "in checklist",
+"Số tiền": 45000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:00"
+},
+{
+"Nội dung chuyển tiền": "Tiền trứng 06/06 10/06",
+"Số tiền": 480000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:00"
+},
+{
+"Nội dung chuyển tiền": "Lương nhân viên tháng 05/2026",
+"Số tiền": 16181929,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:04"
+},
+{
+"Nội dung chuyển tiền": "Dầu ăn",
+"Số tiền": 360000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:04"
+},
+{
+"Nội dung chuyển tiền": "Rau ngày 14/06",
+"Số tiền": 239000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:06"
+},
+{
+"Nội dung chuyển tiền": "Thanh toán tiền Gas",
+"Số tiền": 450000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:07"
+},
+{
+"Nội dung chuyển tiền": "Sửa chữa cửa kính cửa hàng",
+"Số tiền": 1150000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:07"
+},
+{
+"Nội dung chuyển tiền": "Sửa điều hòa",
+"Số tiền": 700000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:07"
+},
+{
+"Nội dung chuyển tiền": "Mua C sủi phục vụ nhân viên :)",
+"Số tiền": 60000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:08"
+},
+{
+"Nội dung chuyển tiền": "Bảo dưỡng tủ mát tủ đông",
+"Số tiền": 500000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:08"
+},
+{
+"Nội dung chuyển tiền": "Thanh toán đơn hàng PO00000215",
+"Số tiền": 4569324,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/17 17:09"
+},
+{
+"Nội dung chuyển tiền": "Rau ngày 18/06",
+"Số tiền": 150000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/06/19 11:03"
+},
+{
+"Nội dung chuyển tiền": "Tiền rau 21/06",
+"Số tiền": 154000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:08"
+},
+{
+"Nội dung chuyển tiền": "tiền trứng 20/06",
+"Số tiền": 325000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:08"
+},
+{
+"Nội dung chuyển tiền": "Mua nha đam cho 2 cửa hàng (đã thu tiền mặt của thái thịnh)",
+"Số tiền": 210000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:09"
+},
+{
+"Nội dung chuyển tiền": "Thanh toán tiền hàng đơn PO0000226",
+"Số tiền": 7054200,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:10"
+},
+{
+"Nội dung chuyển tiền": "Trả tiền đơn hàng PO00000222",
+"Số tiền": 8906100,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:10"
+},
+{
+"Nội dung chuyển tiền": "dau an",
+"Số tiền": 360000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:11"
+},
+{
+"Nội dung chuyển tiền": "mua nha đam (đã lấy lại tiền từ thái thịnh)",
+"Số tiền": 105000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:12"
+},
+{
+"Nội dung chuyển tiền": "Sửa điều hoà",
+"Số tiền": 1050000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:12"
+},
+{
+"Nội dung chuyển tiền": "Mua cà chua cho thái thịnh (đã lấy lại tiền mặt)",
+"Số tiền": 36000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:13"
+},
+{
+"Nội dung chuyển tiền": "tiền rau 29/06",
+"Số tiền": 136000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:14"
+},
+{
+"Nội dung chuyển tiền": "tiền rau 02/07",
+"Số tiền": 212000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:14"
+},
+{
+"Nội dung chuyển tiền": "Trả tiền đơn hàng PO00000234",
+"Số tiền": 6737848,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:15"
+},
+{
+"Nội dung chuyển tiền": "thanh toán PO00000232 PO00000236 PO00000227",
+"Số tiền": 4642100,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:16"
+},
+{
+"Nội dung chuyển tiền": "tiền trứng",
+"Số tiền": 470000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:16"
+},
+{
+"Nội dung chuyển tiền": "tiền gas",
+"Số tiền": 450000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:16"
+},
+{
+"Nội dung chuyển tiền": "Dầu ăn",
+"Số tiền": 360000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:17"
+},
+{
+"Nội dung chuyển tiền": "thanh toán Lương tháng 06/2026",
+"Số tiền": 17978640,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:19"
+},
+{
+"Nội dung chuyển tiền": "hoàn trả tiền đồng phục cho Liên",
+"Số tiền": 350000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:19"
+},
+{
+"Nội dung chuyển tiền": "thanh toán tiền bánh tháng 06/2026",
+"Số tiền": 6319950,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:35"
+},
+{
+"Nội dung chuyển tiền": "tiền rau 11/07",
+"Số tiền": 180000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:36"
+},
+{
+"Nội dung chuyển tiền": "mua 2 bóng đèn",
+"Số tiền": 430000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:36"
+},
+{
+"Nội dung chuyển tiền": "thanh toán đơn àng PO0000241",
+"Số tiền": 3554100,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:37"
+},
+{
+"Nội dung chuyển tiền": "Thanh toán đơn hàng PO00000247",
+"Số tiền": 5098024,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:38"
+},
+{
+"Nội dung chuyển tiền": "Tiền rau 18/07",
+"Số tiền": 222000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:39"
+},
+{
+"Nội dung chuyển tiền": "tiền trứng 15/07",
+"Số tiền": 425000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/07/23 10:39"
+},
+{
+"Nội dung chuyển tiền": "Tuong ca tuong ot",
+"Số tiền": 214000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230047959906/182314508559",
+"Ngày giờ thanh toán": "2026/08/18 11:27"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tui dung banh my",
+"Số tiền": 150000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230100182048/182314657926",
+"Ngày giờ thanh toán": "2026/08/18 12:34"
+},
+{
+"Nội dung chuyển tiền": "Test",
+"Số tiền": 2000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230320173960/182314770688",
+"Ngày giờ thanh toán": "2026/08/18 13:39"
+},
+{
+"Nội dung chuyển tiền": "Test no 2",
+"Số tiền": 2000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230071366313/182314826941",
+"Ngày giờ thanh toán": "2026/08/18 14:11"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien",
+"Số tiền": 2000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230690378395/182314872441",
+"Ngày giờ thanh toán": "2026/08/18 14:35"
+},
+{
+"Nội dung chuyển tiền": "Test 4",
+"Số tiền": 2000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230205899125/182314947765",
+"Ngày giờ thanh toán": "2026/08/18 15:13"
+},
+{
+"Nội dung chuyển tiền": "Test noi dung thong bao chuyen khoan",
+"Số tiền": 10000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230403908040/182314970895",
+"Ngày giờ thanh toán": "2026/08/18 15:24"
+},
+{
+"Nội dung chuyển tiền": "Test tinh nang tu them ban ghi",
+"Số tiền": 5000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230534200290/182314975578",
+"Ngày giờ thanh toán": "2026/08/18 15:26"
+},
+{
+"Nội dung chuyển tiền": "Test quy trinh them ban ghi",
+"Số tiền": 10000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230475642631/182314985235",
+"Ngày giờ thanh toán": "2026/08/18 15:30"
+},
+{
+"Nội dung chuyển tiền": "Test lan cuoi chuc nang tu dong them ban ghi Dkm nhuc het ca dau",
+"Số tiền": 10000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230102078522/182314991152",
+"Ngày giờ thanh toán": "2026/08/18 15:33"
+},
+{
+"Nội dung chuyển tiền": "Neu co thong bao zalo tuc la du lieu da cap nhat tu dong vao database",
+"Số tiền": 20000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230409680680/182315043346",
+"Ngày giờ thanh toán": "2026/08/18 15:57"
+},
+{
+"Nội dung chuyển tiền": "Database da xuat hien du lieu kem thong bao",
+"Số tiền": 20000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230725485672/182315047268",
+"Ngày giờ thanh toán": "2026/08/18 15:58"
+},
+{
+"Nội dung chuyển tiền": "The nuon tao test lan cuoi",
+"Số tiền": 10000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26230706616780/182315089235",
+"Ngày giờ thanh toán": "2026/08/18 16:17"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan giay an",
+"Số tiền": 101473,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26229670909008/172312071421",
+"Ngày giờ thanh toán": "2026/08/17 10:06"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien hop giay",
+"Số tiền": 800000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26229291404407/172313016713",
+"Ngày giờ thanh toán": "2026/08/17 17:18"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung thanh toan tien rau ngay 1508",
+"Số tiền": 215000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26227234500246/152308360087",
+"Ngày giờ thanh toán": "2026/08/15 15:12"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan dau an",
+"Số tiền": 360000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26227511703517/152308542308",
+"Ngày giờ thanh toán": "2026/08/15 16:37"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan thung giay bill",
+"Số tiền": 351000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26227109614605/152308591571",
+"Ngày giờ thanh toán": "2026/08/15 16:56"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien",
+"Số tiền": 28597703,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26226974041401/142305373979",
+"Ngày giờ thanh toán": "2026/08/14 09:21"
+},
+{
+"Nội dung chuyển tiền": "HKD NGUYEN TUAN HUNG 1994 chuyen tien",
+"Số tiền": 2514099,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26226974046190/142305376411",
+"Ngày giờ thanh toán": "2026/08/14 09:22"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien",
+"Số tiền": 4494450,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26226274908550/142305377562",
+"Ngày giờ thanh toán": "2026/08/14 09:23"
+},
+{
+"Nội dung chuyển tiền": "Sua laptop",
+"Số tiền": 500000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26225505104058/132304115094",
+"Ngày giờ thanh toán": "2026/08/13 16:24"
+},
+{
+"Nội dung chuyển tiền": "LUONG THANG 072026 KHUONG TRUNG",
+"Số tiền": 2861250,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26224522621501/122300852828",
+"Ngày giờ thanh toán": "2026/08/12 08:49"
+},
+{
+"Nội dung chuyển tiền": "LUONG THANG 072026 KHUONG TRUNG",
+"Số tiền": 2453040,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26224467356848/122300854168",
+"Ngày giờ thanh toán": "2026/08/12 08:50"
+},
+{
+"Nội dung chuyển tiền": "LUONG THANG 072026 KHUONG TRUNG",
+"Số tiền": 2064680,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26224854033999/122300856076",
+"Ngày giờ thanh toán": "2026/08/12 08:51"
+},
+{
+"Nội dung chuyển tiền": "Hung chuyen tien rau giup thai thinh",
+"Số tiền": 220000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26220464025401/082291959919",
+"Ngày giờ thanh toán": "2026/08/08 10:45"
+},
+{
+"Nội dung chuyển tiền": "Thang toan chuoi cho thai thinh",
+"Số tiền": 8000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26220408241593/082291978025",
+"Ngày giờ thanh toán": "2026/08/08 10:53"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung chuyen tien trung 2 ngay",
+"Số tiền": 850000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26220251050024/082292229377",
+"Ngày giờ thanh toán": "2026/08/08 12:46"
+},
+{
+"Nội dung chuyển tiền": "Tascus Food Khuong Trung",
+"Số tiền": 3000000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26220503107468/082292233401",
+"Ngày giờ thanh toán": "2026/08/08 12:48"
+},
+{
+"Nội dung chuyển tiền": "Tascus Food Khuong trung thanh toan tien dien nuoc thang 072026",
+"Số tiền": 9188000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26220895846760/082292398419",
+"Ngày giờ thanh toán": "2026/08/08 14:22"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung thanh toan tien thiet ke banner",
+"Số tiền": 400000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26220215865679/082292475226",
+"Ngày giờ thanh toán": "2026/08/08 15:04"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien",
+"Số tiền": 90000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26218492303684/062286995180",
+"Ngày giờ thanh toán": "2026/08/06 07:54"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien",
+"Số tiền": 50000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26217401928844/052285724786",
+"Ngày giờ thanh toán": "2026/08/05 15:39"
+},
+{
+"Nội dung chuyển tiền": "NPS6869",
+"Số tiền": 10000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26217699559380/052285732147",
+"Ngày giờ thanh toán": "2026/08/05 15:42"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung thanh toan PO00000280",
+"Số tiền": 4444712,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26216582806332/042283228500",
+"Ngày giờ thanh toán": "2026/08/04 14:08"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung thanh toan PO00000282",
+"Số tiền": 6955000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26216348990146/042283235053",
+"Ngày giờ thanh toán": "2026/08/04 14:11"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung thanh toan PO00000273",
+"Số tiền": 4091324,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26216023908496/042283244033",
+"Ngày giờ thanh toán": "2026/08/04 14:15"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung thanh toan tien banh 1507 toi 3107",
+"Số tiền": 3089100,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26217144086036/052284452082",
+"Ngày giờ thanh toán": "2026/08/05 00:03"
+},
+{
+"Nội dung chuyển tiền": "MC7G5XRFWJZPVNP 471293704",
+"Số tiền": 100000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26213086841808/012276205575",
+"Ngày giờ thanh toán": "2026/08/01 10:25"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien",
+"Số tiền": 15000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26212765906807/312275388833",
+"Ngày giờ thanh toán": "2026/07/31 20:52"
+},
+{
+"Nội dung chuyển tiền": "In tai lieu 3 cua hang",
+"Số tiền": 450000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26208331369820/262265064904",
+"Ngày giờ thanh toán": "2026/07/26 20:29"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien",
+"Số tiền": 30000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26208399245578/262265314561",
+"Ngày giờ thanh toán": "2026/07/26 23:29"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien",
+"Số tiền": 15000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26208329964354/272265599790",
+"Ngày giờ thanh toán": "2026/07/27 08:23"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung chuyen tien trung ngay 2207",
+"Số tiền": 425000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26208545662997/272265881186",
+"Ngày giờ thanh toán": "2026/07/27 10:34"
+},
+{
+"Nội dung chuyển tiền": "NPS6869",
+"Số tiền": 20000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26208710069005/252263017766",
+"Ngày giờ thanh toán": "2026/07/25 19:20"
+},
+{
+"Nội dung chuyển tiền": "TX00091A79B OS2026072506692844 VETC EPARKING DX 2125NQ M Ph1 g1u xe d1em do xe may dX",
+"Số tiền": 8000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26208090339101/252263100315",
+"Ngày giờ thanh toán": "2026/07/25 19:59"
+},
+{
+"Nội dung chuyển tiền": "NPS6869",
+"Số tiền": 15000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26208661010004/252263406056",
+"Ngày giờ thanh toán": "2026/07/25 23:07"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien",
+"Số tiền": 500000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26205805799497/242259845813",
+"Ngày giờ thanh toán": "2026/07/24 10:08"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung thanh toán tien banh 0108 toi 1508",
+"Số tiền": 3344900,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/08/18 18:00"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan don hang PO0000290",
+"Số tiền": 2488900,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/08/14 10:24"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan don hang PO00000293",
+"Số tiền": 4075212,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/08/14 10:25"
+},
+{
+"Nội dung chuyển tiền": "thanh toan tien trung",
+"Số tiền": 412000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/08/14 10:25"
+},
+{
+"Nội dung chuyển tiền": "thanh toan luong cho Le Huong Ly qua momo",
+"Số tiền": 838550,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/08/12 10:35"
+},
+{
+"Nội dung chuyển tiền": "Thanh toán lương nguyễn nam phương qua momo",
+"Số tiền": 3343750,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/08/12 10:36"
+},
+{
+"Nội dung chuyển tiền": "Cúng tiền cho công an t8 t9 t10",
+"Số tiền": 3000000,
+"Hình thức thanh toán": "Tiền mặt",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/08/18 10:36"
+},
+{
+"Nội dung chuyển tiền": "Thanh toán lương cho đinh việt anh qua momo",
+"Số tiền": 2045000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/08/12 10:37"
+},
+{
+"Nội dung chuyển tiền": "thanh toán lương cho minh thư qua momo",
+"Số tiền": 113000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/08/12 10:37"
+},
+{
+"Nội dung chuyển tiền": "Thanh toán lương cho Nguyễn Phương Linh qua momo",
+"Số tiền": 2881250,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "",
+"Ngày giờ thanh toán": "2026/08/12 10:38"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien bao bi crepe",
+"Số tiền": 536000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26231676050697/192316609893",
+"Ngày giờ thanh toán": "2026/08/19 11:01"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan thung creamO",
+"Số tiền": 276000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26231836559499/192316631795",
+"Ngày giờ thanh toán": "2026/08/19 11:11"
+},
+{
+"Nội dung chuyển tiền": "Test",
+"Số tiền": 2000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26231836652387/192316689409",
+"Ngày giờ thanh toán": "2026/08/19 11:36"
+},
+{
+"Nội dung chuyển tiền": "Hoan tien san pham",
+"Số tiền": 50000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26231200932086/192317171870",
+"Ngày giờ thanh toán": "2026/08/19 15:46"
+},
+{
+"Nội dung chuyển tiền": "Toi met moi",
+"Số tiền": 2000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26231394550009/192317472736",
+"Ngày giờ thanh toán": "2026/08/19 17:47"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan bao bi sandwich giay burger",
+"Số tiền": 997000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26232690046132/202319005861",
+"Ngày giờ thanh toán": "2026/08/20 12:40"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan Hop nhua dung banh",
+"Số tiền": 129000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26232294660069/202319117377",
+"Ngày giờ thanh toán": "2026/08/20 13:42"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien giay burger thai thinh",
+"Số tiền": 1194000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26234400105826/212322339039",
+"Ngày giờ thanh toán": "2026/08/21 21:35"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan Giay nen burger tui den dung rac",
+"Số tiền": 142966,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26234726874700/222323198448",
+"Ngày giờ thanh toán": "2026/08/22 11:51"
+},
+{
+"Nội dung chuyển tiền": "Coca nuoc loc nuoc rua bat",
+"Số tiền": 632000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26234500824405/222323362603",
+"Ngày giờ thanh toán": "2026/08/22 13:17"
+},
+{
+"Nội dung chuyển tiền": "oK5adeqmU5AxmS0 0 08",
+"Số tiền": 993882,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236582947053/222324326388",
+"Ngày giờ thanh toán": "2026/08/22 20:53"
+},
+{
+"Nội dung chuyển tiền": "znbMOYuTtanjjZn 0 08",
+"Số tiền": 16000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236292100736/222324327995",
+"Ngày giờ thanh toán": "2026/08/22 20:54"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien trung ngay 2108",
+"Số tiền": 412500,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236953448702/222324443162",
+"Ngày giờ thanh toán": "2026/08/22 22:07"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien rau ngay 1908 2308",
+"Số tiền": 420000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236290173331/232325154736",
+"Ngày giờ thanh toán": "2026/08/23 11:21"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tui nilon coc dung sot gang tay",
+"Số tiền": 141500,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236137871209/232325226723",
+"Ngày giờ thanh toán": "2026/08/23 12:00"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan Chay dam hoa qua",
+"Số tiền": 23999,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236966170062/242326765066",
+"Ngày giờ thanh toán": "2026/08/24 09:10"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan don hang PO00000301",
+"Số tiền": 17760000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236254704025/242326864158",
+"Ngày giờ thanh toán": "2026/08/24 09:55"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan don hang PO00000306",
+"Số tiền": 2267500,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236236140489/242326867890",
+"Ngày giờ thanh toán": "2026/08/24 09:57"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan don hang PO00000298",
+"Số tiền": 3626500,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236966480704/242326951078",
+"Ngày giờ thanh toán": "2026/08/24 10:33"
+},
+{
+"Nội dung chuyển tiền": "Coc nhua 700ml",
+"Số tiền": 775000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236009238731/242327057763",
+"Ngày giờ thanh toán": "2026/08/24 11:20"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien ca nhan mua dau doc the",
+"Số tiền": 20000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236393068358/242328109342",
+"Ngày giờ thanh toán": "2026/08/24 19:09"
+},
+{
+"Nội dung chuyển tiền": "Nguyen Tuan Hung chuyen tien ca nhan giat la",
+"Số tiền": 105000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26236711029889/242328121458",
+"Ngày giờ thanh toán": "2026/08/24 19:14"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan Xuc xich jambon",
+"Số tiền": 485000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26237009514284/252329424227",
+"Ngày giờ thanh toán": "2026/08/25 12:35"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien ca nhan",
+"Số tiền": 50000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26237067403240/252329438069",
+"Ngày giờ thanh toán": "2026/08/25 12:42"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien banh thang 072026 cho nha banh Phuong Dong",
+"Số tiền": 1681600,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26237222309606/252329450592",
+"Ngày giờ thanh toán": "2026/08/25 12:49"
+},
+{
+"Nội dung chuyển tiền": "NGUYEN TUAN HUNG chuyen tien",
+"Số tiền": 150000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26243017350473/312342858364",
+"Ngày giờ thanh toán": "2026/08/31 17:16"
+},
+{
+"Nội dung chuyển tiền": "Mua dau an",
+"Số tiền": 360000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26246510161079/032348035023",
+"Ngày giờ thanh toán": "2026/09/03 09:17"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien dieu hoa 18000btu Sk",
+"Số tiền": 8450000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26246906050805/032348966332",
+"Ngày giờ thanh toán": "2026/09/03 15:54"
+},
+{
+"Nội dung chuyển tiền": "Tien lap dat dieu hoa",
+"Số tiền": 1450000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26246367034331/032348967837",
+"Ngày giờ thanh toán": "2026/09/03 15:55"
+},
+{
+"Nội dung chuyển tiền": "In banner A5",
+"Số tiền": 40000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26246737043080/032349447460",
+"Ngày giờ thanh toán": "2026/09/03 18:48"
+},
+{
+"Nội dung chuyển tiền": "Ship khoai",
+"Số tiền": 30000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26247830745004/042351895704",
+"Ngày giờ thanh toán": "2026/09/04 18:26"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung thanh toan tien banh tu ngay 1608 toi 3108",
+"Số tiền": 2609900,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26248793015016/042352458193",
+"Ngày giờ thanh toán": "2026/09/04 22:18"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan jambon xuc xich",
+"Số tiền": 485000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26248001070090/052353208060",
+"Ngày giờ thanh toán": "2026/09/05 10:33"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan don hang PO0000313",
+"Số tiền": 4235500,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26248670936824/052353797227",
+"Ngày giờ thanh toán": "2026/09/05 15:09"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien 20 tui khoai tay",
+"Số tiền": 777600,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26250384095071/052354815349",
+"Ngày giờ thanh toán": "2026/09/05 22:18"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan 3 x cocacola",
+"Số tiền": 507000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26250117580896/052354816704",
+"Ngày giờ thanh toán": "2026/09/05 22:19"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien dien nuoc 082026",
+"Số tiền": 8252000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26251946874123/072359419678",
+"Ngày giờ thanh toán": "2026/09/07 22:16"
+},
+{
+"Nội dung chuyển tiền": "Khuong trung thanh toan tien rau 09 09",
+"Số tiền": 176000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26252159420830/092362412542",
+"Ngày giờ thanh toán": "2026/09/09 10:07"
+},
+{
+"Nội dung chuyển tiền": "Ship ga",
+"Số tiền": 19000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26253102349224/102365718992",
+"Ngày giờ thanh toán": "2026/09/10 16:46"
+},
+{
+"Nội dung chuyển tiền": "69 khuong trung thanh toan ga vong ga vien",
+"Số tiền": 449000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26253046743051/102365755955",
+"Ngày giờ thanh toán": "2026/09/10 16:59"
+},
+{
+"Nội dung chuyển tiền": "NPS6869 Thanh toan QR",
+"Số tiền": 65000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26253491489350/102366159514",
+"Ngày giờ thanh toán": "2026/09/10 19:09"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien trung CP 1109",
+"Số tiền": 405000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26254468929994/112367221606",
+"Ngày giờ thanh toán": "2026/09/11 09:20"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan do nhua",
+"Số tiền": 456000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26254054505939/112367406162",
+"Ngày giờ thanh toán": "2026/09/11 10:41"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan PO00000315",
+"Số tiền": 3560000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26254520002200/112367487770",
+"Ngày giờ thanh toán": "2026/09/11 11:15"
+},
+{
+"Nội dung chuyển tiền": "Bao banh my",
+"Số tiền": 213700,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26254290694859/112368245494",
+"Ngày giờ thanh toán": "2026/09/11 16:55"
+},
+{
+"Nội dung chuyển tiền": "Thanh toan tien rau ngay 1109 1209",
+"Số tiền": 153000,
+"Hình thức thanh toán": "Chuyển khoản ngân hàng",
+"Mã giao dịch": "FT26256477236550/122371327371",
+"Ngày giờ thanh toán": "2026/09/12 23:32"
+}
 ]
+}
