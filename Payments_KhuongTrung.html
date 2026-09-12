@@ -413,23 +413,52 @@ body {
 ========================= */
 
 .modal-overlay {
-    position: fixed;
+position: fixed;
 
-    inset: 0;
 
-    z-index: 100;
+inset: 0;
 
-    display: none;
+z-index: 100;
 
-    align-items: flex-end;
-    justify-content: center;
+display: none;
 
-    background: rgba(0, 0, 0, .4);
+align-items: center;
+justify-content: center;
+
+background: rgba(0, 0, 0, .4);
+
+padding: 18px;
+
 }
 
 .modal-overlay.show {
-    display: flex;
+display: flex;
 }
+
+.modal {
+width: 100%;
+max-width: 620px;
+
+max-height: 92vh;
+
+overflow-y: auto;
+
+background: #fff;
+
+border-radius: 16px;
+
+padding:
+    17px
+    15px
+    22px
+    15px;
+
+box-shadow:
+    0 12px 40px rgba(0, 0, 0, .16);
+
+
+}
+
 
 .modal {
     width: 100%;
