@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-12T15:21:44.222Z",
+  "updated_at": "2026-09-12T15:26:38.915Z",
   "records": [
     {
       "id": "Z024",
@@ -368,7 +368,10 @@
       "noi_dung": "Còn 1 cuộn giấy in duy nhất. Mai anh Hưng mang thêm giấy in nhá",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/12 22:26",
+      "phuong_an_xu_ly": "Đã mang thêm 20 cuộn giấy\n1 dây hộp\n10 cọc oreo\n3 dây cốc",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z054",
