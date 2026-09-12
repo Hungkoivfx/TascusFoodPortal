@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-12T01:37:53.775Z",
+  "updated_at": "2026-09-12T02:23:34.536Z",
   "records": [
     {
       "id": "Z024",
@@ -342,6 +342,16 @@
       "noi_dung": "Hết giấy ăn",
       "muc_do": "Thông thường",
       "can_xu_ly": "Chỉ thông báo / báo cáo",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z052",
+      "chi_nhanh": "Thái Thịnh",
+      "thoi_gian": "2026/09/12 09:23",
+      "nguoi_bao_cao": "Vanh",
+      "noi_dung": "Rụng cam",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
