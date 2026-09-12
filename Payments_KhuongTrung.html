@@ -414,21 +414,13 @@ body {
 
 .modal-overlay {
 position: fixed;
-
-
 inset: 0;
-
 z-index: 100;
-
 display: none;
-
 align-items: center;
 justify-content: center;
-
 background: rgba(0, 0, 0, .4);
-
 padding: 18px;
-
 }
 
 .modal-overlay.show {
@@ -438,25 +430,12 @@ display: flex;
 .modal {
 width: 100%;
 max-width: 620px;
-
-max-height: 92vh;
-
+max-height: calc(100vh - 36px);
 overflow-y: auto;
-
 background: #fff;
-
-border-radius: 16px;
-
-padding:
-    17px
-    15px
-    22px
-    15px;
-
-box-shadow:
-    0 12px 40px rgba(0, 0, 0, .16);
-
-
+border-radius: 18px;
+padding: 17px 15px 22px;
+box-shadow: 0 12px 40px rgba(0, 0, 0, .16);
 }
 
 
