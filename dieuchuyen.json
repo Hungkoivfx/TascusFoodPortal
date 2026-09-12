@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026/09/10 19:05:58",
+  "updated_at": "2026/09/12 09:16:37",
   "records": [
     {
       "id": "D-7382",
@@ -64,6 +64,17 @@
       "den": "69 Khương Trung",
       "noi_dung": "Bơ nhạt tascus",
       "so_luong": 1,
+      "da_tra_chua": false,
+      "thoi_gian_tra": "",
+      "nguoi_tao_phieu": "Hưng"
+    },
+    {
+      "id": "D-8253",
+      "ngay_tao": "2026/09/12 09:16",
+      "dieu_chuyen_tu": "69 Khương Trung",
+      "den": "122 Thái Thịnh",
+      "noi_dung": "Giấy ăn Khô Tascus",
+      "so_luong": 2,
       "da_tra_chua": false,
       "thoi_gian_tra": "",
       "nguoi_tao_phieu": "Hưng"
