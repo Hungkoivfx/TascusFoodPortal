@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-12T15:26:38.915Z",
+  "updated_at": "2026-09-13T07:55:11.917Z",
   "records": [
     {
       "id": "Z024",
@@ -379,6 +379,16 @@
       "thoi_gian": "2026/09/12 22:21",
       "nguoi_bao_cao": "Gia Định Trần",
       "noi_dung": "sắp hết khoai để chiên",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z055",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/13 14:55",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Còn đúng 1 túi thịt burger. Em đã xả ở ngăn mát.\nCa tối tranh thủ nặn nốt túi đấy giúp ca chiều nhá. Xin cảm ưnnn",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
