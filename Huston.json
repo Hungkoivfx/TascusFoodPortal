@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-13T07:55:11.917Z",
+  "updated_at": "2026-09-13T15:41:35.648Z",
   "records": [
     {
       "id": "Z024",
@@ -391,7 +391,10 @@
       "noi_dung": "Còn đúng 1 túi thịt burger. Em đã xả ở ngăn mát.\nCa tối tranh thủ nặn nốt túi đấy giúp ca chiều nhá. Xin cảm ưnnn",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/13 22:41",
+      "phuong_an_xu_ly": "ca tối về muộn nên không nặn thịt hộ ca chiều được",
+      "nguoi_xu_ly": "Gia Định Trần"
     }
   ]
 }
