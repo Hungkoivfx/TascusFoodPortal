@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-14T12:30:21.827Z",
+  "updated_at": "2026-09-14T15:51:31.084Z",
   "records": [
     {
       "id": "Z024",
@@ -402,6 +402,16 @@
       "thoi_gian": "2026/09/14 19:30",
       "nguoi_bao_cao": "Duyên",
       "noi_dung": "Trà hibiscus hết \nCốt trà còn 3\nThịt burger còn khoảng 30 miếng\nChanh vàng hết",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z057",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/14 22:51",
+      "nguoi_bao_cao": "Duyên",
+      "noi_dung": "Bóng đèn nhà vs cháy \nBánh còn trên 30 cái ( bánh mỳ và burge) nên k order\nChỗ thùng rác cạnh bồn rửa kinh quá chảy nước đã cọ xà phòng nhưng sợ mai vẫn thế ca sáng kiểm tra lại",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
