@@ -839,16 +839,18 @@ body {
 
 const BYPASS_ZALO_CHECK = false;
 
-const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
+const NON_ZALO_REDIRECT =
+"./TascusfoodPortal.html";
 
 (function () {
 
-
+```
 const userAgent =
     navigator.userAgent ||
     navigator.vendor ||
     window.opera ||
     "";
+
 
 const isZaloBrowser =
     /Zalo/i.test(userAgent);
@@ -861,10 +863,51 @@ const isHomeScreenApp =
     ).matches;
 
 
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+/*
+ * Kích hoạt thiết bị tin cậy
+ *
+ * Ví dụ:
+ * index.html?admin=1
+ */
+
+if (
+    params.get("admin") === "1"
+) {
+
+    localStorage.setItem(
+        "tascusTrustedDevice",
+        "true"
+    );
+
+}
+
+
+const isTrustedDevice =
+    localStorage.getItem(
+        "tascusTrustedDevice"
+    ) === "true";
+
+
+/*
+ * Chỉ dọa ma nếu:
+ *
+ * - Không bật bypass
+ * - Không phải Zalo
+ * - Không phải Home Screen App
+ * - Không phải thiết bị đã được tin cậy
+ */
+
 if (
     !BYPASS_ZALO_CHECK &&
     !isZaloBrowser &&
-    !isHomeScreenApp
+    !isHomeScreenApp &&
+    !isTrustedDevice
 ) {
 
     window.location.replace(
@@ -872,7 +915,7 @@ if (
     );
 
 }
-
+```
 
 })();
 
