@@ -809,31 +809,41 @@ const BYPASS_ZALO_CHECK = false;
 
 const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
 
-
 (function () {
 
-    const userAgent =
-        navigator.userAgent ||
-        navigator.vendor ||
-        window.opera ||
-        "";
 
-    const isZaloBrowser =
-        /Zalo/i.test(userAgent);
+const userAgent =
+    navigator.userAgent ||
+    navigator.vendor ||
+    window.opera ||
+    "";
+
+const isZaloBrowser =
+    /Zalo/i.test(userAgent);
 
 
-    if (
-        !BYPASS_ZALO_CHECK &&
-        !isZaloBrowser
-    ) {
+const isHomeScreenApp =
+    window.navigator.standalone === true ||
+    window.matchMedia(
+        "(display-mode: standalone)"
+    ).matches;
 
-        window.location.replace(
-            NON_ZALO_REDIRECT
-        );
 
-    }
+if (
+    !BYPASS_ZALO_CHECK &&
+    !isZaloBrowser &&
+    !isHomeScreenApp
+) {
+
+    window.location.replace(
+        NON_ZALO_REDIRECT
+    );
+
+}
+
 
 })();
+
 
 </script>
 
