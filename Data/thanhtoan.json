@@ -1153,5 +1153,12 @@
     "Hình thức thanh toán": "Chuyển khoản ngân hàng",
     "Mã giao dịch": "FT26256220980360/132372340864",
     "Ngày giờ thanh toán": "2026/09/13 15:25"
+  },
+  {
+    "Nội dung chuyển tiền": "Test auto mail to json",
+    "Số tiền": 2000,
+    "Hình thức thanh toán": "Chuyển khoản ngân hàng",
+    "Mã giao dịch": "FT26257405103116/142374536997",
+    "Ngày giờ thanh toán": "2026/09/14 15:19"
   }
 ]
