@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-13T15:41:35.648Z",
+  "updated_at": "2026-09-14T12:30:21.827Z",
   "records": [
     {
       "id": "Z024",
@@ -395,6 +395,16 @@
       "thoi_gian_xu_ly": "2026/09/13 22:41",
       "phuong_an_xu_ly": "ca tối về muộn nên không nặn thịt hộ ca chiều được",
       "nguoi_xu_ly": "Gia Định Trần"
+    },
+    {
+      "id": "Z056",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/14 19:30",
+      "nguoi_bao_cao": "Duyên",
+      "noi_dung": "Trà hibiscus hết \nCốt trà còn 3\nThịt burger còn khoảng 30 miếng\nChanh vàng hết",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
