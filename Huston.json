@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15T09:37:35.788Z",
+  "updated_at": "2026-09-15T12:06:46.867Z",
   "records": [
     {
       "id": "Z024",
@@ -435,6 +435,16 @@
       "trang_thai_xu_ly": "Cần theo dõi thêm",
       "phuong_an_xu_ly": "Hắn chưa khoá vòi xong hắn kêu oai oái nước chảy.",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z059",
+      "chi_nhanh": "Thái Thịnh",
+      "thoi_gian": "2026/09/15 19:06",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Bàn mát salad không hề lạnh",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
