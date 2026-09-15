@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15T12:07:43.082Z",
+  "updated_at": "2026-09-15T13:18:13.881Z",
   "records": [
     {
       "id": "Z024",
@@ -420,9 +420,10 @@
       "noi_dung": "Bóng đèn nhà vs cháy \nBánh còn trên 30 cái ( bánh mỳ và burge) nên k order\nChỗ thùng rác cạnh bồn rửa kinh quá chảy nước đã cọ xà phòng nhưng sợ mai vẫn thế ca sáng kiểm tra lại",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Cần theo dõi thêm",
+      "trang_thai_xu_ly": "Đã xử lý",
       "phuong_an_xu_ly": "Có vẻ như ca tối tắt nhầm hút mùi nên đèn điện không lên, không phải do cháy bóng đèn",
-      "nguoi_xu_ly": "Hưng"
+      "nguoi_xu_ly": "Hưng",
+      "thoi_gian_xu_ly": "2026/09/15 20:18"
     },
     {
       "id": "Z058",
