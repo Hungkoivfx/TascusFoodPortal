@@ -69,7 +69,6 @@ textarea {
     margin: 0 auto;
 }
 
-
 /* =====================================================
    HEADER
 ===================================================== */
@@ -100,7 +99,6 @@ textarea {
     color: #333;
 
     cursor: pointer;
-
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -135,7 +133,6 @@ textarea {
     font-size: 12px;
     color: #888;
 }
-
 
 /* =====================================================
    ACTION BUTTONS
@@ -228,7 +225,6 @@ textarea {
     font-size: 20px;
 }
 
-
 /* =====================================================
    SECTION
 ===================================================== */
@@ -263,7 +259,6 @@ textarea {
     color: #999;
     white-space: nowrap;
 }
-
 
 /* =====================================================
    FILTER
@@ -309,7 +304,6 @@ textarea {
     box-shadow:
         0 1px 4px rgba(0,0,0,.08);
 }
-
 
 /* =====================================================
    LOG CARD
@@ -379,6 +373,7 @@ textarea {
     font-size: 11px;
     font-weight: 650;
     color: #555;
+
     white-space: nowrap;
 }
 
@@ -398,6 +393,7 @@ textarea {
 .log-time {
     font-size: 11px;
     color: #999;
+
     white-space: nowrap;
 }
 
@@ -449,7 +445,6 @@ textarea {
 
 .log-content {
     font-size: 13px;
-
     line-height: 1.5;
 
     color: #6f6f6f;
@@ -457,7 +452,6 @@ textarea {
     display: -webkit-box;
 
     -webkit-box-orient: vertical;
-
     -webkit-line-clamp: 2;
 
     overflow: hidden;
@@ -489,7 +483,6 @@ textarea {
     color: #777;
 }
 
-
 /* =====================================================
    EMPTY
 ===================================================== */
@@ -511,7 +504,6 @@ textarea {
 
     border-radius: 15px;
 }
-
 
 /* =====================================================
    MODAL
@@ -537,7 +529,6 @@ textarea {
 .modal.active {
     display: flex;
 }
-
 
 /* =====================================================
    FORM BOX
@@ -613,7 +604,6 @@ textarea {
 
     flex-shrink: 0;
 }
-
 
 /* =====================================================
    FORM FIELD
@@ -698,7 +688,6 @@ textarea {
     cursor: default;
 }
 
-
 /* =====================================================
    ID DISPLAY
 ===================================================== */
@@ -727,7 +716,6 @@ textarea {
 
     letter-spacing: .3px;
 }
-
 
 /* =====================================================
    ACTIONS FORM
@@ -775,7 +763,6 @@ textarea {
 .form-button:active {
 
     transform: scale(.985);
-
 }
 
 .form-button:disabled {
@@ -792,7 +779,6 @@ textarea {
 
     opacity: 1;
 }
-
 
 /* =====================================================
    DETAIL MODAL
@@ -827,7 +813,6 @@ textarea {
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
     gap: 10px;
@@ -877,7 +862,6 @@ textarea {
     white-space: pre-wrap;
 }
 
-
 /* =====================================================
    UPDATE BUTTON
 ===================================================== */
@@ -923,7 +907,6 @@ textarea {
     opacity: 1;
 }
 
-
 /* =====================================================
    HELP MODAL
 ===================================================== */
@@ -956,7 +939,6 @@ textarea {
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
     gap: 10px;
@@ -1036,7 +1018,6 @@ textarea {
 
     color: #444;
 }
-
 
 /* =====================================================
    MOBILE
@@ -1149,7 +1130,6 @@ textarea {
     textarea {
 
         font-size: 16px !important;
-
     }
 
 }
@@ -1162,150 +1142,145 @@ textarea {
 
 <div class="container">
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header class="header">
 
-
 <button
-    class="back-button"
-    onclick="goBack()"
-    aria-label="Quay lại"
+class="back-button"
+onclick="goBack()"
+aria-label="Quay lại"
+
 >
-    ‹
+
+```
+‹
+```
+
 </button>
 
 <div class="header-text">
 
-    <div class="header-title">
-        Nhật ký vận hành
-    </div>
+<div class="header-title">
+    Nhật ký vận hành
+</div>
 
-    <div class="header-subtitle">
-        Các sự việc được ghi nhận tại cửa hàng
-    </div>
+<div class="header-subtitle">
+    Các sự việc được ghi nhận tại cửa hàng
+</div>
 
 </div>
 
 <button
-    class="help-button"
-    onclick="openHelp()"
-    aria-label="Hướng dẫn"
->
-    ?
-</button>
+class="help-button"
+onclick="openHelp()"
+aria-label="Hướng dẫn"
 
+>
+
+```
+?
+```
+
+</button>
 
 </header>
 
-<!-- =====================================================
-     ACTION BUTTONS
-===================================================== -->
-
 <section class="actions">
 
-
 <button
-    class="action-button"
-    onclick="openNewReport()"
+class="action-button"
+onclick="openNewReport()"
+
 >
 
-    <div class="action-icon">
-        ＋
-    </div>
+<div class="action-icon">
+    ＋
+</div>
 
-    <div class="action-content">
+<div class="action-content">
 
-        <div class="action-title">
-            Báo cáo vấn đề mới
-        </div>
+<div class="action-title">
+    Báo cáo vấn đề mới
+</div>
 
-        <div class="action-description">
-            Ghi nhận sự việc hoặc vấn đề vừa phát sinh.
-        </div>
-
-    </div>
-
-    <div class="action-arrow">
-        ›
-    </div>
-
-</button>
-
-
-</section>
-
-<!-- =====================================================
-     RECENT
-===================================================== -->
-
-<section class="section">
-
-
-<div class="section-header">
-
-    <div class="section-title-wrap">
-
-        <div class="section-title">
-            Sự việc gần đây
-        </div>
-
-        <div
-            class="section-count"
-            id="recentCount"
-        >
-            0 sự việc
-        </div>
-
-    </div>
-
-    <div class="filter-tabs">
-
-        <button
-            class="filter-tab active"
-            onclick="filterLogs(
-                'recent',
-                'all',
-                this
-            )"
-        >
-            Tất cả
-        </button>
-
-        <button
-            class="filter-tab"
-            onclick="filterLogs(
-                'recent',
-                'Khương Trung',
-                this
-            )"
-        >
-            Khương Trung
-        </button>
-
-        <button
-            class="filter-tab"
-            onclick="filterLogs(
-                'recent',
-                'Thái Thịnh',
-                this
-            )"
-        >
-            Thái Thịnh
-        </button>
-
-    </div>
+<div class="action-description">
+    Ghi nhận sự việc hoặc vấn đề vừa phát sinh.
+</div>
 
 </div>
 
+<div class="action-arrow">
+    ›
+</div>
+
+</button>
+
+</section>
+
+<section class="section">
+
+<div class="section-header">
+
+<div class="section-title-wrap">
+
+<div class="section-title">
+    Sự việc gần đây
+</div>
+
+<div
+    class="section-count"
+    id="recentCount"
+>
+    0 sự việc
+</div>
+
+</div>
+
+<div class="filter-tabs">
+
+<button
+class="filter-tab active"
+onclick="filterLogs('recent','all',this)"
+
+>
+
+```
+Tất cả
+```
+
+</button>
+
+<button
+class="filter-tab"
+onclick="filterLogs('recent','Khương Trung',this)"
+
+>
+
+```
+Khương Trung
+```
+
+</button>
+
+<button
+class="filter-tab"
+onclick="filterLogs('recent','Thái Thịnh',this)"
+
+>
+
+```
+Thái Thịnh
+```
+
+</button>
+
+</div>
+
+</div>
 
 <div
     class="logs"
     id="recentLogs"
 ></div>
-
 
 <div
     class="empty"
@@ -1314,79 +1289,73 @@ textarea {
     Không có sự việc nào tại cửa hàng này.
 </div>
 
-
 </section>
-
-<!-- =====================================================
-     COMPLETED
-===================================================== -->
 
 <section class="section">
 
-
 <div class="section-header">
 
-    <div class="section-title-wrap">
+<div class="section-title-wrap">
 
-        <div class="section-title">
-            Đã xử lý xong
-        </div>
+<div class="section-title">
+    Đã xử lý xong
+</div>
 
-        <div
-            class="section-count"
-            id="completedCount"
-        >
-            0 sự việc
-        </div>
-
-    </div>
-
-
-    <div class="filter-tabs">
-
-        <button
-            class="filter-tab active"
-            onclick="filterLogs(
-                'completed',
-                'all',
-                this
-            )"
-        >
-            Tất cả
-        </button>
-
-        <button
-            class="filter-tab"
-            onclick="filterLogs(
-                'completed',
-                'Khương Trung',
-                this
-            )"
-        >
-            Khương Trung
-        </button>
-
-        <button
-            class="filter-tab"
-            onclick="filterLogs(
-                'completed',
-                'Thái Thịnh',
-                this
-            )"
-        >
-            Thái Thịnh
-        </button>
-
-    </div>
+<div
+    class="section-count"
+    id="completedCount"
+>
+    0 sự việc
+</div>
 
 </div>
 
+<div class="filter-tabs">
+
+<button
+class="filter-tab active"
+onclick="filterLogs('completed','all',this)"
+
+>
+
+```
+Tất cả
+```
+
+</button>
+
+<button
+class="filter-tab"
+onclick="filterLogs('completed','Khương Trung',this)"
+
+>
+
+```
+Khương Trung
+```
+
+</button>
+
+<button
+class="filter-tab"
+onclick="filterLogs('completed','Thái Thịnh',this)"
+
+>
+
+```
+Thái Thịnh
+```
+
+</button>
+
+</div>
+
+</div>
 
 <div
     class="logs"
     id="completedLogs"
 ></div>
-
 
 <div
     class="empty"
@@ -1395,7 +1364,6 @@ textarea {
     Không có sự việc nào được xử lý
     trong thời gian gần đây.
 </div>
-
 
 </section>
 
@@ -1410,138 +1378,149 @@ textarea {
     id="newReportModal"
 >
 
-
 <div class="form-box">
 
-    <div class="form-header">
+<div class="form-header">
 
-        <div class="form-title">
-            Báo cáo vấn đề mới
-        </div>
+<div class="form-title">
+    Báo cáo vấn đề mới
+</div>
 
-        <button
-            class="close-button"
-            onclick="closeNewReport()"
-            aria-label="Đóng"
-        >
-            ×
-        </button>
+<button
+class="close-button"
+onclick="closeNewReport()"
+aria-label="Đóng"
 
-    </div>
+>
 
+```
+×
+```
 
-    <div class="form-field">
-
-        <label class="form-label">
-            Cơ sở
-            <span class="required">*</span>
-        </label>
-
-        <select
-            class="form-select"
-            id="newBranch"
-        >
-
-            <option value="">
-                Chọn cơ sở
-            </option>
-
-            <option value="Khương Trung">
-                Khương Trung
-            </option>
-
-            <option value="Thái Thịnh">
-                Thái Thịnh
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <div class="form-field">
-
-        <label class="form-label">
-            Nội dung vấn đề
-            <span class="required">*</span>
-        </label>
-
-        <textarea
-            class="form-textarea"
-            id="newContent"
-            placeholder="Mô tả ngắn gọn vấn đề..."
-        ></textarea>
-
-    </div>
-
-
-    <div class="form-field">
-
-        <label class="form-label">
-            Mục cần xử lý
-            <span class="required">*</span>
-        </label>
-
-        <select
-            class="form-select"
-            id="newNeed"
-        >
-
-            <option value="">
-                Chọn phương án
-            </option>
-
-            <option value="Chỉ thông báo / báo cáo">
-                Chỉ thông báo / báo cáo
-            </option>
-
-            <option value="Cần xử lý">
-                Cần xử lý
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <div class="form-field">
-
-        <label class="form-label">
-            Người báo cáo
-            <span class="required">*</span>
-        </label>
-
-        <input
-            class="form-input"
-            id="newReporter"
-            type="text"
-            placeholder="Nhập tên người báo cáo"
-            autocomplete="name"
-        >
-
-    </div>
-
-
-    <div class="form-actions">
-
-        <button
-            class="form-button"
-            onclick="closeNewReport()"
-        >
-            Hủy
-        </button>
-
-        <button
-            class="form-button primary"
-            onclick="submitNewReport()"
-        >
-            Ghi nhận
-        </button>
-
-    </div>
+</button>
 
 </div>
 
+<div class="form-field">
+
+<label class="form-label">
+    Cơ sở
+    <span class="required">*</span>
+</label>
+
+<select
+class="form-select"
+id="newBranch"
+
+>
+
+<option value="">
+    Chọn cơ sở
+</option>
+
+<option value="Khương Trung">
+    Khương Trung
+</option>
+
+<option value="Thái Thịnh">
+    Thái Thịnh
+</option>
+
+</select>
+
+</div>
+
+<div class="form-field">
+
+<label class="form-label">
+    Nội dung vấn đề
+    <span class="required">*</span>
+</label>
+
+<textarea
+    class="form-textarea"
+    id="newContent"
+    placeholder="Mô tả ngắn gọn vấn đề..."
+></textarea>
+
+</div>
+
+<div class="form-field">
+
+<label class="form-label">
+    Mục cần xử lý
+    <span class="required">*</span>
+</label>
+
+<select
+class="form-select"
+id="newNeed"
+
+>
+
+<option value="">
+    Chọn phương án
+</option>
+
+<option value="Chỉ thông báo / báo cáo">
+    Chỉ thông báo / báo cáo
+</option>
+
+<option value="Cần xử lý">
+    Cần xử lý
+</option>
+
+</select>
+
+</div>
+
+<div class="form-field">
+
+<label class="form-label">
+    Người báo cáo
+    <span class="required">*</span>
+</label>
+
+<input
+class="form-input"
+id="newReporter"
+type="text"
+placeholder="Nhập tên người báo cáo"
+autocomplete="name"
+
+>
+
+</div>
+
+<div class="form-actions">
+
+<button
+class="form-button"
+onclick="closeNewReport()"
+
+>
+
+```
+Hủy
+```
+
+</button>
+
+<button
+class="form-button primary"
+onclick="submitNewReport()"
+
+>
+
+```
+Ghi nhận
+```
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1554,40 +1533,46 @@ textarea {
     id="detailModal"
 >
 
-
 <div class="detail-box">
 
-    <div class="detail-header">
+<div class="detail-header">
 
-        <div
-            class="detail-title"
-            id="detailTitle"
-        >
-            Chi tiết sự việc
-        </div>
+<div
+    class="detail-title"
+    id="detailTitle"
+>
+    Chi tiết sự việc
+</div>
 
-        <button
-            class="close-button"
-            onclick="closeLogDetail()"
-        >
-            ×
-        </button>
+<button
+class="close-button"
+onclick="closeLogDetail()"
 
-    </div>
+>
 
+```
+×
+```
 
-    <div id="detailContent"></div>
-
-
-    <button
-        class="update-button"
-        onclick="openUpdateFromDetail()"
-    >
-        Cập nhật vấn đề
-    </button>
+</button>
 
 </div>
 
+<div id="detailContent"></div>
+
+<button
+class="update-button"
+onclick="openUpdateFromDetail()"
+
+>
+
+```
+Cập nhật vấn đề
+```
+
+</button>
+
+</div>
 
 </div>
 
@@ -1600,199 +1585,197 @@ textarea {
     id="updateModal"
 >
 
-
 <div class="form-box">
 
-    <div class="form-header">
+<div class="form-header">
 
-        <div class="form-title">
-            Cập nhật vấn đề
-        </div>
+<div class="form-title">
+    Cập nhật vấn đề
+</div>
 
-        <button
-            class="close-button"
-            onclick="closeUpdate()"
-            aria-label="Đóng"
-        >
-            ×
-        </button>
+<button
+class="close-button"
+onclick="closeUpdate()"
+aria-label="Đóng"
 
-    </div>
+>
 
+```
+×
+```
 
-    <div class="form-field">
-
-        <label class="form-label">
-            ID
-        </label>
-
-        <div
-            class="id-display"
-            id="updateId"
-        >
-            Z000
-        </div>
-
-    </div>
-
-
-    <div class="form-field">
-
-        <label class="form-label">
-            Cơ sở
-        </label>
-
-        <div
-            class="id-display"
-            id="updateBranch"
-        >
-            —
-        </div>
-
-    </div>
-
-
-    <div class="form-field">
-
-        <label class="form-label">
-            Nội dung vấn đề
-        </label>
-
-        <div
-            class="id-display"
-            id="updateContent"
-            style="
-                min-height:46px;
-                height:auto;
-                padding-top:12px;
-                padding-bottom:12px;
-                align-items:flex-start;
-                white-space:pre-wrap;
-                line-height:1.5;
-            "
-        >
-            —
-        </div>
-
-    </div>
-
-
-    <div class="form-field">
-
-        <label class="form-label">
-            Trạng thái xử lý
-            <span class="required">*</span>
-        </label>
-
-        <select
-            class="form-select"
-            id="updateStatus"
-        >
-
-            <option value="">
-                Chọn trạng thái
-            </option>
-
-            <option value="Chưa xử lý">
-                Chưa xử lý
-            </option>
-
-            <option value="Đang xử lý">
-                Đang xử lý
-            </option>
-
-            <option value="Đã xử lý">
-                Đã xử lý
-            </option>
-
-            <option value="Cần theo dõi thêm">
-                Cần theo dõi thêm
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <div class="form-field">
-
-        <label class="form-label">
-            Biện pháp xử lý
-        </label>
-
-        <textarea
-            class="form-textarea"
-            id="updateAction"
-            placeholder="Nhập biện pháp đã thực hiện..."
-        ></textarea>
-
-    </div>
-
-
-    <!-- =================================================
-         NGƯỜI BÁO CÁO
-         KHÓA CỨNG
-    ================================================== -->
-
-    <div class="form-field">
-
-        <label class="form-label">
-            Người báo cáo
-        </label>
-
-        <input
-            class="form-input"
-            id="updateReporter"
-            type="text"
-            readonly
-        >
-
-    </div>
-
-
-    <!-- =================================================
-         Người xử lý / theo dõi vấn đê
-         TỰ HIỆN NGƯỜI GẦN NHẤT
-    ================================================== -->
-
-    <div class="form-field">
-
-        <label class="form-label">
-            Người xử lý / theo dõi vấn đê
-            <span class="required">*</span>
-        </label>
-
-        <input
-            class="form-input"
-            id="updateEditor"
-            type="text"
-            placeholder="Nhập tên Người xử lý / theo dõi vấn đê"
-            autocomplete="name"
-        >
-
-    </div>
-
-
-    <div class="form-actions">
-
-        <button
-            class="form-button"
-            onclick="closeUpdate()"
-        >
-            Hủy
-        </button>
-
-        <button
-            class="form-button primary"
-            onclick="submitUpdate()"
-        >
-            Cập nhật
-        </button>
-
-    </div>
+</button>
 
 </div>
 
+<div class="form-field">
+
+<label class="form-label">
+    ID
+</label>
+
+<div
+    class="id-display"
+    id="updateId"
+>
+    Z000
+</div>
+
+</div>
+
+<div class="form-field">
+
+<label class="form-label">
+    Cơ sở
+</label>
+
+<div
+    class="id-display"
+    id="updateBranch"
+>
+    —
+</div>
+
+</div>
+
+<div class="form-field">
+
+<label class="form-label">
+    Nội dung vấn đề
+</label>
+
+<div
+    class="id-display"
+    id="updateContent"
+    style="
+        min-height:46px;
+        height:auto;
+        padding-top:12px;
+        padding-bottom:12px;
+        align-items:flex-start;
+        white-space:pre-wrap;
+        line-height:1.5;
+    "
+>
+    —
+</div>
+
+</div>
+
+<div class="form-field">
+
+<label class="form-label">
+    Trạng thái xử lý
+    <span class="required">*</span>
+</label>
+
+<select
+class="form-select"
+id="updateStatus"
+
+>
+
+<option value="">
+    Chọn trạng thái
+</option>
+
+<option value="Chưa xử lý">
+    Chưa xử lý
+</option>
+
+<option value="Đang xử lý">
+    Đang xử lý
+</option>
+
+<option value="Đã xử lý">
+    Đã xử lý
+</option>
+
+<option value="Cần theo dõi thêm">
+    Cần theo dõi thêm
+</option>
+
+</select>
+
+</div>
+
+<div class="form-field">
+
+<label class="form-label">
+    Biện pháp xử lý
+</label>
+
+<textarea
+    class="form-textarea"
+    id="updateAction"
+    placeholder="Nhập biện pháp đã thực hiện..."
+></textarea>
+
+</div>
+
+<div class="form-field">
+
+<label class="form-label">
+    Người báo cáo
+</label>
+
+<input
+class="form-input"
+id="updateReporter"
+type="text"
+readonly
+
+>
+
+</div>
+
+<div class="form-field">
+
+<label class="form-label">
+    Người xử lý / theo dõi vấn đề
+    <span class="required">*</span>
+</label>
+
+<input
+class="form-input"
+id="updateEditor"
+type="text"
+placeholder="Nhập tên Người xử lý / theo dõi vấn đề"
+autocomplete="name"
+
+>
+
+</div>
+
+<div class="form-actions">
+
+<button
+class="form-button"
+onclick="closeUpdate()"
+
+>
+
+```
+Hủy
+```
+
+</button>
+
+<button
+class="form-button primary"
+onclick="submitUpdate()"
+
+>
+
+```
+Cập nhật
+```
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1805,94 +1788,96 @@ textarea {
     id="helpModal"
 >
 
-
 <div class="help-box">
 
-    <div class="help-header">
+<div class="help-header">
 
-        <div class="help-title">
-            Nhật ký vận hành để làm gì?
-        </div>
+<div class="help-title">
+    Nhật ký vận hành để làm gì?
+</div>
 
-        <button
-            class="close-button"
-            onclick="closeHelp()"
-        >
-            ×
-        </button>
+<button
+class="close-button"
+onclick="closeHelp()"
 
-    </div>
+>
 
+```
+×
+```
 
-    <div class="help-content">
-
-        <p>
-            Trong lúc làm việc sẽ có những chuyện phát sinh
-            mà không phải lúc nào cũng xử lý xong ngay trong ca.
-        </p>
-
-        <p>
-            Ví dụ: máy có vấn đề, thiếu đồ, khách phản ánh,
-            phát hiện một việc cần sửa, hoặc có chuyện mà ca sau cần biết.
-        </p>
-
-        <p>
-            Thay vì chỉ nói trong nhóm Zalo rồi tin nhắn trôi mất,
-            mình ghi lại ở đây để
-            <strong>
-                các ca sau vẫn biết chuyện gì đã xảy ra.
-            </strong>
-        </p>
-
-        <ul class="help-list">
-
-            <li>
-                <strong>Báo cáo vấn đề mới:</strong>
-                Có chuyện mới xảy ra thì báo ở đây.
-            </li>
-
-            <li>
-                <strong>Sự việc gần đây:</strong>
-                Để xem cửa hàng đang có những chuyện gì cần chú ý.
-            </li>
-
-            <li>
-                <strong>Cập nhật vấn đề:</strong>
-                Mở một sự việc rồi cập nhật trạng thái và biện pháp xử lý.
-            </li>
-
-            <li>
-                <strong>Đã xử lý xong:</strong>
-                Để biết những chuyện vừa được giải quyết.
-            </li>
-
-        </ul>
-
-        <p>
-            Không cần viết dài.
-            Chỉ cần ghi
-            <strong>
-                đúng chuyện gì xảy ra và người khác cần biết điều gì.
-            </strong>
-        </p>
-
-        <p class="help-final">
-
-            Mục đích đơn giản là:
-
-            <br>
-
-            <strong>
-                Ca trước biết → ca sau biết →
-                không ai phải đoán xem chuyện gì đã xảy ra.
-            </strong>
-
-        </p>
-
-    </div>
+</button>
 
 </div>
 
+<div class="help-content">
+
+<p>
+    Trong lúc làm việc sẽ có những chuyện phát sinh
+    mà không phải lúc nào cũng xử lý xong ngay trong ca.
+</p>
+
+<p>
+    Ví dụ: máy có vấn đề, thiếu đồ, khách phản ánh,
+    phát hiện một việc cần sửa, hoặc có chuyện mà ca sau cần biết.
+</p>
+
+<p>
+    Thay vì chỉ nói trong nhóm Zalo rồi tin nhắn trôi mất,
+    mình ghi lại ở đây để
+    <strong>
+        các ca sau vẫn biết chuyện gì đã xảy ra.
+    </strong>
+</p>
+
+<ul class="help-list">
+
+<li>
+    <strong>Báo cáo vấn đề mới:</strong>
+    Có chuyện mới xảy ra thì báo ở đây.
+</li>
+
+<li>
+    <strong>Sự việc gần đây:</strong>
+    Để xem cửa hàng đang có những chuyện gì cần chú ý.
+</li>
+
+<li>
+    <strong>Cập nhật vấn đề:</strong>
+    Mở một sự việc rồi cập nhật trạng thái và biện pháp xử lý.
+</li>
+
+<li>
+    <strong>Đã xử lý xong:</strong>
+    Để biết những chuyện vừa được giải quyết.
+</li>
+
+</ul>
+
+<p>
+    Không cần viết dài.
+    Chỉ cần ghi
+    <strong>
+        đúng chuyện gì xảy ra và người khác cần biết điều gì.
+    </strong>
+</p>
+
+<p class="help-final">
+
+Mục đích đơn giản là:
+
+<br>
+
+<strong>
+    Ca trước biết → ca sau biết →
+    không ai phải đoán xem chuyện gì đã xảy ra.
+</strong>
+
+</p>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1908,20 +1893,10 @@ const API_URL =
 
 
 /* =====================================================
-   COMPLETED STORAGE
-   -----------------------------------------------------
-   Lưu thời điểm HTML lần đầu nhận thấy một ID
-   có trạng thái "Đã xử lý".
-
-   Sau 5 ngày kể từ thời điểm đó:
-   -> ẩn hoàn toàn khỏi giao diện.
+   CẤU HÌNH
 ===================================================== */
 
-const COMPLETED_STORAGE_KEY =
-    "tascus_food_completed_logs_v1";
-
-const COMPLETED_KEEP_DAYS =
-    5;
+const COMPLETED_KEEP_DAYS = 5;
 
 const COMPLETED_KEEP_MS =
     COMPLETED_KEEP_DAYS *
@@ -1943,309 +1918,6 @@ let currentFilters = {
 };
 
 let selectedRecord = null;
-
-
-/* =====================================================
-   COMPLETED STORAGE
-===================================================== */
-
-function getCompletedStorage() {
-
-    try {
-
-        const raw =
-            localStorage.getItem(
-                COMPLETED_STORAGE_KEY
-            );
-
-        if (!raw) {
-
-            return {};
-
-        }
-
-
-        const data =
-            JSON.parse(raw);
-
-
-        if (
-            !data ||
-            typeof data !== "object" ||
-            Array.isArray(data)
-        ) {
-
-            return {};
-
-        }
-
-
-        return data;
-
-    } catch (error) {
-
-        console.error(
-            "Không đọc được completed storage:",
-            error
-        );
-
-        return {};
-
-    }
-
-}
-
-
-/* =====================================================
-   SAVE COMPLETED STORAGE
-===================================================== */
-
-function saveCompletedStorage(data) {
-
-    try {
-
-        localStorage.setItem(
-            COMPLETED_STORAGE_KEY,
-            JSON.stringify(data)
-        );
-
-    } catch (error) {
-
-        console.error(
-            "Không lưu được completed storage:",
-            error
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   REGISTER COMPLETED TIME
-   -----------------------------------------------------
-   Nếu ID chưa có trong localStorage:
-   ghi thời điểm hiện tại.
-
-   Nếu đã có:
-   giữ nguyên mốc cũ.
-===================================================== */
-
-function registerCompletedRecords(records) {
-
-    const storage =
-        getCompletedStorage();
-
-    let changed = false;
-
-
-    records.forEach(
-        function(record) {
-
-            const id =
-                String(
-                    record.id || ""
-                ).trim();
-
-
-            if (!id) {
-
-                return;
-
-            }
-
-
-            if (
-                !isCompleted(record)
-            ) {
-
-                return;
-
-            }
-
-
-            if (
-                !storage[id] ||
-                typeof storage[id] !== "number"
-            ) {
-
-                storage[id] =
-                    Date.now();
-
-                changed = true;
-
-            }
-
-        }
-    );
-
-
-    /*
-     * Dọn các ID đã quá cũ khỏi localStorage.
-     *
-     * Việc này không liên quan tới dữ liệu API.
-     * Chỉ dọn bộ nhớ của trình duyệt.
-     */
-
-    const now =
-        Date.now();
-
-
-    Object.keys(
-        storage
-    ).forEach(
-        function(id) {
-
-            const completedAt =
-                Number(
-                    storage[id]
-                );
-
-
-            if (
-                !completedAt ||
-                (
-                    now -
-                    completedAt
-                ) >
-                COMPLETED_KEEP_MS
-            ) {
-
-                delete storage[id];
-
-                changed = true;
-
-            }
-
-        }
-    );
-
-
-    if (changed) {
-
-        saveCompletedStorage(
-            storage
-        );
-
-    }
-
-
-    return storage;
-
-}
-
-
-/* =====================================================
-   CHECK COMPLETED STILL VISIBLE
-===================================================== */
-
-function isCompletedStillVisible(
-    record,
-    storage
-) {
-
-    const id =
-        String(
-            record.id || ""
-        ).trim();
-
-
-    if (!id) {
-
-        return false;
-
-    }
-
-
-    const completedAt =
-        Number(
-            storage[id]
-        );
-
-
-    if (!completedAt) {
-
-        /*
-         * Trường hợp bất thường:
-         * record đã completed nhưng chưa có mốc.
-         *
-         * registerCompletedRecords()
-         * phía trước sẽ xử lý việc này.
-         */
-
-        return false;
-
-    }
-
-
-    return (
-        Date.now() -
-        completedAt
-    ) <=
-    COMPLETED_KEEP_MS;
-
-}
-
-
-/* =====================================================
-   REMOVE EXPIRED COMPLETED RECORDS
-===================================================== */
-
-function cleanExpiredCompletedStorage() {
-
-    const storage =
-        getCompletedStorage();
-
-
-    const now =
-        Date.now();
-
-
-    let changed = false;
-
-
-    Object.keys(
-        storage
-    ).forEach(
-        function(id) {
-
-            const timestamp =
-                Number(
-                    storage[id]
-                );
-
-
-            if (
-                !timestamp ||
-                (
-                    now -
-                    timestamp
-                ) >
-                COMPLETED_KEEP_MS
-            ) {
-
-                delete storage[id];
-
-                changed = true;
-
-            }
-
-        }
-    );
-
-
-    if (changed) {
-
-        saveCompletedStorage(
-            storage
-        );
-
-    }
-
-
-    return storage;
-
-}
 
 
 /* =====================================================
@@ -2338,15 +2010,11 @@ async function loadHuston() {
 
     showLoadingState();
 
-
     try {
 
         const result =
             await apiRequest({
-
-                action:
-                    "list"
-
+                action: "list"
             });
 
 
@@ -2358,9 +2026,7 @@ async function loadHuston() {
                 : [];
 
 
-        renderLogs(
-            records
-        );
+        renderLogs(records);
 
 
         console.log(
@@ -2685,9 +2351,6 @@ async function submitNewReport() {
                 chi_nhanh:
                     branch,
 
-                thoi_gian:
-                    getCurrentDateTime(),
-
                 nguoi_bao_cao:
                     reporter,
 
@@ -2957,6 +2620,104 @@ function isCompleted(record) {
 
 
 /* =====================================================
+   THỜI GIAN HOÀN THÀNH
+   -----------------------------------------------------
+   DÙNG THỜI GIAN THỰC TỪ BACKEND:
+
+   record.thoi_gian_xu_ly
+
+   Không dùng localStorage.
+===================================================== */
+
+function getCompletedTime(record) {
+
+    if (!record) {
+
+        return null;
+
+    }
+
+
+    const value =
+        record.thoi_gian_xu_ly;
+
+
+    if (!value) {
+
+        return null;
+
+    }
+
+
+    return parseDate(value);
+
+}
+
+
+/* =====================================================
+   KIỂM TRA ĐÃ QUÁ 5 NGÀY KỂ TỪ KHI HOÀN THÀNH
+===================================================== */
+
+function isCompletedExpired(record) {
+
+    if (!isCompleted(record)) {
+
+        return false;
+
+    }
+
+
+    const completedAt =
+        getCompletedTime(record);
+
+
+    /*
+     * Bản ghi cũ chưa có
+     * thoi_gian_xu_ly.
+     *
+     * Không tự đoán ngày.
+     * Vẫn hiển thị.
+     */
+
+    if (!completedAt) {
+
+        return false;
+
+    }
+
+
+    const elapsed =
+        Date.now() -
+        completedAt.getTime();
+
+
+    return elapsed >=
+        COMPLETED_KEEP_MS;
+
+}
+
+
+/* =====================================================
+   BẢN GHI ĐÃ XỬ LÝ CÒN HIỂN THỊ
+===================================================== */
+
+function isCompletedStillVisible(record) {
+
+    if (!isCompleted(record)) {
+
+        return false;
+
+    }
+
+
+    return !isCompletedExpired(
+        record
+    );
+
+}
+
+
+/* =====================================================
    DATE
 ===================================================== */
 
@@ -2969,36 +2730,52 @@ function parseDate(value) {
     }
 
 
-    let date =
-        new Date(value);
+    const text =
+        String(value).trim();
 
 
-    if (
-        !isNaN(
-            date.getTime()
-        )
-    ) {
-
-        return date;
-
-    }
-
+    /*
+     * Backend hiện dùng:
+     *
+     * yyyy/MM/dd HH:mm
+     *
+     * Tự parse thủ công để tránh
+     * trình duyệt hiểu sai timezone.
+     */
 
     const match =
-        String(value).match(
+        text.match(
             /^(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2}):(\d{2})$/
         );
 
 
     if (match) {
 
-        date =
+        const year =
+            Number(match[1]);
+
+        const month =
+            Number(match[2]) - 1;
+
+        const day =
+            Number(match[3]);
+
+        const hour =
+            Number(match[4]);
+
+        const minute =
+            Number(match[5]);
+
+
+        const date =
             new Date(
-                Number(match[1]),
-                Number(match[2]) - 1,
-                Number(match[3]),
-                Number(match[4]),
-                Number(match[5])
+                year,
+                month,
+                day,
+                hour,
+                minute,
+                0,
+                0
             );
 
 
@@ -3015,10 +2792,34 @@ function parseDate(value) {
     }
 
 
+    /*
+     * Fallback cho ISO datetime
+     * nếu sau này backend thay đổi.
+     */
+
+    const date =
+        new Date(text);
+
+
+    if (
+        !isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return date;
+
+    }
+
+
     return null;
 
 }
 
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
 
 function formatDate(value) {
 
@@ -3070,6 +2871,10 @@ function formatDate(value) {
 
 }
 
+
+/* =====================================================
+   FORMAT DETAIL DATE
+===================================================== */
 
 function formatDetailDate(value) {
 
@@ -3231,17 +3036,21 @@ function renderLogs(records) {
 
 
             return (
+
                 (
                     dateB
                         ? dateB.getTime()
                         : 0
                 )
+
                 -
+
                 (
                     dateA
                         ? dateA.getTime()
                         : 0
                 )
+
             );
 
         }
@@ -3249,30 +3058,21 @@ function renderLogs(records) {
 
 
     /*
-     * ĐĂNG KÝ MỐC THỜI GIAN HOÀN THÀNH
-     *
-     * Phải chạy trước khi lọc.
-     *
-     * Đây là điểm quan trọng:
-     * khi HTML lần đầu nhìn thấy "Đã xử lý",
-     * thời điểm hiện tại được lưu lại.
-     */
-
-    const completedStorage =
-        registerCompletedRecords(
-            uniqueRecords
-        );
-
-
-    /*
+     * =================================================
      * CHIA 2 NHÓM
      *
-     * Recent:
-     *   tất cả bản ghi chưa hoàn thành.
+     * RECENT:
+     *   Chưa hoàn thành.
      *
-     * Completed:
-     *   chỉ bản ghi đã hoàn thành
-     *   VÀ còn trong 5 ngày.
+     * COMPLETED:
+     *   Đã xử lý và chưa quá 5 ngày.
+     *
+     * QUAN TRỌNG:
+     *   Không dùng localStorage.
+     *   Thời gian lấy trực tiếp từ:
+     *
+     *   record.thoi_gian_xu_ly
+     * =================================================
      */
 
     const completed =
@@ -3280,10 +3080,8 @@ function renderLogs(records) {
             function(record) {
 
                 return (
-                    isCompleted(record) &&
                     isCompletedStillVisible(
-                        record,
-                        completedStorage
+                        record
                     )
                 );
 
@@ -3322,12 +3120,6 @@ function renderLogs(records) {
 
     /*
      * RENDER COMPLETED
-     *
-     * Những bản ghi quá 5 ngày
-     * không được append vào DOM.
-     *
-     * Vì vậy chúng thực sự biến mất
-     * khỏi giao diện.
      */
 
     completed.forEach(
@@ -3345,9 +3137,6 @@ function renderLogs(records) {
 
     /*
      * COUNT
-     *
-     * Count cũng chỉ tính các bản ghi
-     * thực sự còn được hiển thị.
      */
 
     updateCount(
@@ -3502,7 +3291,6 @@ function createLogCard(record) {
                 </span>
 
             </div>
-
 
             <span
                 class="status ${statusClass}"
@@ -3779,10 +3567,12 @@ function openLogDetail(record) {
             </div>
 
             <div class="detail-value">
+
                 ${escapeHTML(
                     record.id ||
                     "Không có"
                 )}
+
             </div>
 
         </div>
@@ -3795,10 +3585,12 @@ function openLogDetail(record) {
             </div>
 
             <div class="detail-value">
+
                 ${escapeHTML(
                     record.chi_nhanh ||
                     "Không có"
                 )}
+
             </div>
 
         </div>
@@ -3811,11 +3603,13 @@ function openLogDetail(record) {
             </div>
 
             <div class="detail-value">
+
                 ${escapeHTML(
                     formatDetailDate(
                         record.thoi_gian
                     )
                 )}
+
             </div>
 
         </div>
@@ -3828,10 +3622,12 @@ function openLogDetail(record) {
             </div>
 
             <div class="detail-value">
+
                 ${escapeHTML(
                     record.nguoi_bao_cao ||
                     "Không có"
                 )}
+
             </div>
 
         </div>
@@ -3844,10 +3640,12 @@ function openLogDetail(record) {
             </div>
 
             <div class="detail-value detail-content">
+
                 ${escapeHTML(
                     record.noi_dung ||
                     "Không có"
                 )}
+
             </div>
 
         </div>
@@ -3860,10 +3658,12 @@ function openLogDetail(record) {
             </div>
 
             <div class="detail-value">
+
                 ${escapeHTML(
                     record.can_xu_ly ||
                     "Không có"
                 )}
+
             </div>
 
         </div>
@@ -3876,10 +3676,12 @@ function openLogDetail(record) {
             </div>
 
             <div class="detail-value">
+
                 ${escapeHTML(
                     record.muc_do ||
                     "Chưa xác định"
                 )}
+
             </div>
 
         </div>
@@ -3892,12 +3694,41 @@ function openLogDetail(record) {
             </div>
 
             <div class="detail-value">
+
                 ${escapeHTML(
                     status
                 )}
+
             </div>
 
         </div>
+
+
+        ${
+            record.thoi_gian_xu_ly
+                ? `
+
+        <div class="detail-row">
+
+            <div class="detail-label">
+                Thời gian hoàn thành
+            </div>
+
+            <div class="detail-value">
+
+                ${escapeHTML(
+                    formatDetailDate(
+                        record.thoi_gian_xu_ly
+                    )
+                )}
+
+            </div>
+
+        </div>
+
+        `
+                : ""
+        }
 
 
         <div class="detail-row">
@@ -3907,10 +3738,12 @@ function openLogDetail(record) {
             </div>
 
             <div class="detail-value detail-content">
+
                 ${escapeHTML(
                     record.phuong_an_xu_ly ||
                     "Chưa cập nhật"
                 )}
+
             </div>
 
         </div>
@@ -3919,14 +3752,16 @@ function openLogDetail(record) {
         <div class="detail-row">
 
             <div class="detail-label">
-                Người xử lý / theo dõi vấn đê gần nhất
+                Người xử lý / theo dõi vấn đề gần nhất
             </div>
 
             <div class="detail-value">
+
                 ${escapeHTML(
                     record.nguoi_xu_ly ||
                     "Chưa cập nhật"
                 )}
+
             </div>
 
         </div>
@@ -3998,11 +3833,6 @@ function openUpdateFromDetail() {
     }
 
 
-    /*
-     * Không cho cập nhật bản ghi
-     * đã hoàn thành.
-     */
-
     if (
         isCompleted(
             selectedRecord
@@ -4018,19 +3848,11 @@ function openUpdateFromDetail() {
         selectedRecord;
 
 
-    /*
-     * ID
-     */
-
     document.getElementById(
         "updateId"
     ).textContent =
         record.id || "—";
 
-
-    /*
-     * CƠ SỞ
-     */
 
     document.getElementById(
         "updateBranch"
@@ -4038,19 +3860,11 @@ function openUpdateFromDetail() {
         record.chi_nhanh || "—";
 
 
-    /*
-     * NỘI DUNG
-     */
-
     document.getElementById(
         "updateContent"
     ).textContent =
         record.noi_dung || "—";
 
-
-    /*
-     * TRẠNG THÁI
-     */
 
     document.getElementById(
         "updateStatus"
@@ -4060,21 +3874,11 @@ function openUpdateFromDetail() {
         );
 
 
-    /*
-     * BIỆN PHÁP XỬ LÝ
-     */
-
     document.getElementById(
         "updateAction"
     ).value =
         record.phuong_an_xu_ly || "";
 
-
-    /*
-     * NGƯỜI BÁO CÁO
-     *
-     * KHÓA CỨNG.
-     */
 
     document.getElementById(
         "updateReporter"
@@ -4082,19 +3886,11 @@ function openUpdateFromDetail() {
         record.nguoi_bao_cao || "";
 
 
-    /*
-     * NGƯỜI XỬ LÝ / THEO DÕI
-     */
-
     document.getElementById(
         "updateEditor"
     ).value =
         record.nguoi_xu_ly || "";
 
-
-    /*
-     * ĐÓNG DETAIL
-     */
 
     document
         .getElementById(
@@ -4104,10 +3900,6 @@ function openUpdateFromDetail() {
             "active"
         );
 
-
-    /*
-     * MỞ UPDATE
-     */
 
     document
         .getElementById(
@@ -4163,10 +3955,6 @@ async function submitUpdate() {
 
     }
 
-
-    /*
-     * Không cho sửa bản ghi đã hoàn thành.
-     */
 
     if (
         isCompleted(
@@ -4230,7 +4018,7 @@ async function submitUpdate() {
     if (!editor) {
 
         alert(
-            "Vui lòng nhập Người xử lý / theo dõi vấn đê."
+            "Vui lòng nhập Người xử lý / theo dõi vấn đề."
         );
 
         return;
@@ -4264,9 +4052,12 @@ async function submitUpdate() {
 
 
         /*
-         * UPDATE
+         * BACKEND SẼ TỰ GHI:
          *
-         * KHÔNG gửi nguoi_bao_cao.
+         * thoi_gian_xu_ly
+         *
+         * khi status chuyển sang
+         * "Đã xử lý".
          */
 
         const result =
@@ -4297,55 +4088,44 @@ async function submitUpdate() {
 
 
         /*
-         * Cập nhật bản ghi local.
-         */
-
-        selectedRecord.nguoi_xu_ly =
-            editor;
-
-        selectedRecord.trang_thai_xu_ly =
-            status;
-
-        selectedRecord.phuong_an_xu_ly =
-            action;
-
-
-        /*
-         * Nếu vừa chuyển thành
-         * "Đã xử lý":
-         *
-         * ghi mốc 5 ngày ngay lúc này.
-         *
-         * Đây là trường hợp tốt nhất vì
-         * HTML biết chính xác thời điểm
-         * người dùng bấm cập nhật.
+         * Nếu API trả về record mới,
+         * cập nhật local ngay.
          */
 
         if (
-            status === "Đã xử lý"
+            result.record
         ) {
 
-            const storage =
-                getCompletedStorage();
+            selectedRecord =
+                result.record;
 
+        } else {
 
-            storage[id] =
-                Date.now();
+            selectedRecord.nguoi_xu_ly =
+                editor;
 
+            selectedRecord.trang_thai_xu_ly =
+                status;
 
-            saveCompletedStorage(
-                storage
-            );
+            selectedRecord.phuong_an_xu_ly =
+                action;
 
         }
 
 
+        /*
+         * KHÔNG:
+         *
+         * localStorage
+         * Date.now()
+         * completedStorage
+         *
+         * Backend mới là nguồn sự thật.
+         */
+
+
         closeUpdate();
 
-
-        /*
-         * Tải lại dữ liệu từ API.
-         */
 
         await loadHuston();
 
@@ -4577,42 +4357,18 @@ document.addEventListener(
 
 
 /* =====================================================
-   KHỞI ĐỘNG
-===================================================== */
-
-resetFilters();
-
-/*
- * Dọn bộ nhớ localStorage trước khi tải.
- */
-
-cleanExpiredCompletedStorage();
-
-/*
- * Tải dữ liệu.
- */
-
-loadHuston();
-
-
-/* =====================================================
    TỰ ĐỘNG KIỂM TRA HẾT HẠN
    -----------------------------------------------------
-   Nếu người dùng mở trang liên tục quá 5 ngày,
-   cứ mỗi 60 giây kiểm tra một lần để bản ghi
-   hết hạn biến mất mà không cần reload trang.
+   Không dùng localStorage.
+
+   Mỗi 60 giây:
+   - kiểm tra lại currentRecords
+   - dựa vào thoi_gian_xu_ly
+   - record quá 5 ngày sẽ biến mất
 ===================================================== */
 
 setInterval(
     function() {
-
-        const storage =
-            cleanExpiredCompletedStorage();
-
-
-        /*
-         * Render lại từ currentRecords nếu đã có dữ liệu.
-         */
 
         if (
             Array.isArray(
@@ -4631,7 +4387,17 @@ setInterval(
     60 * 1000
 );
 
+
+/* =====================================================
+   KHỞI ĐỘNG
+===================================================== */
+
+resetFilters();
+
+loadHuston();
+
 </script>
+
 </body>
 
 </html>
