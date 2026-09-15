@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15T09:35:32.896Z",
+  "updated_at": "2026-09-15T09:36:17.947Z",
   "records": [
     {
       "id": "Z024",
@@ -404,7 +404,10 @@
       "noi_dung": "Trà hibiscus hết \nCốt trà còn 3\nThịt burger còn khoảng 30 miếng\nChanh vàng hết",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/15 16:36",
+      "phuong_an_xu_ly": "Đã nhận hàng và bật lại app các món bị tắt",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z057",
