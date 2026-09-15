@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15T09:37:08.273Z",
+  "updated_at": "2026-09-15T09:37:35.788Z",
   "records": [
     {
       "id": "Z024",
@@ -381,7 +381,10 @@
       "noi_dung": "sắp hết khoai để chiên",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/15 16:37",
+      "phuong_an_xu_ly": "Đã nhập thêm",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z055",
