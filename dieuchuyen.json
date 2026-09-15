@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026/09/15 15:55:13",
+  "updated_at": "2026/09/15 16:27:06",
   "records": [
     {
       "id": "D-7382",
@@ -75,7 +75,7 @@
       "den": "122 Thái Thịnh",
       "noi_dung": "Giấy ăn Khô Tascus",
       "so_luong": 2,
-      "da_tra_chua": false,
+      "da_tra_chua": true,
       "thoi_gian_tra": "",
       "nguoi_tao_phieu": "Hưng"
     },
