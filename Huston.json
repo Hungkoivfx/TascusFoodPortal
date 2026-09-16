@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16T05:15:00.088Z",
+  "updated_at": "2026-09-16T11:05:27.910Z",
   "records": [
     {
       "id": "Z032",
@@ -371,6 +371,16 @@
       "thoi_gian": "2026/09/16 12:15",
       "nguoi_bao_cao": "P.Linh",
       "noi_dung": "Sắp hết cốc đựng sốt và xiên trang trí burger ạ.",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z062",
+      "chi_nhanh": "Thái Thịnh",
+      "thoi_gian": "2026/09/16 18:05",
+      "nguoi_bao_cao": "Ly",
+      "noi_dung": "mất 1c dĩa cân",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
