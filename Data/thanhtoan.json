@@ -1230,5 +1230,19 @@
     "Hình thức thanh toán": "Chuyển khoản ngân hàng",
     "Mã giao dịch": "FT26259585665800/162378530547",
     "Ngày giờ thanh toán": "2026/09/16 10:51"
+  },
+  {
+    "Nội dung chuyển tiền": "Thanh toan xuc xich",
+    "Số tiền": 291667,
+    "Hình thức thanh toán": "Chuyển khoản ngân hàng",
+    "Mã giao dịch": "FT26259074000525/162379076263",
+    "Ngày giờ thanh toán": "2026/09/16 15:02"
+  },
+  {
+    "Nội dung chuyển tiền": "Thue VAT xuc xich",
+    "Số tiền": 23333,
+    "Hình thức thanh toán": "Chuyển khoản ngân hàng",
+    "Mã giao dịch": "FT26259346743141/162379077847",
+    "Ngày giờ thanh toán": "2026/09/16 15:03"
   }
 ]
