@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15T13:18:13.881Z",
+  "updated_at": "2026-09-16T05:15:00.088Z",
   "records": [
     {
       "id": "Z032",
@@ -361,6 +361,16 @@
       "thoi_gian": "2026/09/15 19:07",
       "nguoi_bao_cao": "Hưng",
       "noi_dung": "chị Ngọc Hoa sống tại tầng 2 báo cáo là nước yếu. Nghi chết bơm tăng áp\nCần theo dõi thêm",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z061",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/16 12:15",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Sắp hết cốc đựng sốt và xiên trang trí burger ạ.",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
