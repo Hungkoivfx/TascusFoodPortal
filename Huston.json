@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T04:14:33.506Z",
+  "updated_at": "2026-09-18T04:15:20.076Z",
   "records": [
     {
       "id": "Z032",
@@ -341,9 +341,10 @@
       "noi_dung": "Quầy thu ngân rò rỉ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Cần theo dõi thêm",
+      "trang_thai_xu_ly": "Đã xử lý",
       "phuong_an_xu_ly": "Hắn chưa khoá vòi xong hắn kêu oai oái nước chảy.",
-      "nguoi_xu_ly": "Hưng"
+      "nguoi_xu_ly": "Hưng",
+      "thoi_gian_xu_ly": "2026/09/18 11:15"
     },
     {
       "id": "Z059",
