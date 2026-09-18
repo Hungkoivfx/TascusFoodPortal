@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16T11:05:27.910Z",
+  "updated_at": "2026-09-18T04:11:41.735Z",
   "records": [
     {
       "id": "Z032",
@@ -383,7 +383,10 @@
       "noi_dung": "mất 1c dĩa cân",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/18 11:11",
+      "phuong_an_xu_ly": "Đã tìm thấy nhưng vỡ, anh Hưng đem đi cắt lại cho đẹp",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
