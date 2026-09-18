@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T04:16:32.166Z",
+  "updated_at": "2026-09-18T05:37:55.026Z",
   "records": [
     {
       "id": "Z032",
@@ -266,7 +266,9 @@
       "noi_dung": "Rụng cam",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Chưa xử lý",
+      "phuong_an_xu_ly": "Không thể khắc phục",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z053",
