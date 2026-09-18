@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026/09/15 16:27:06",
+  "updated_at": "2026/09/18 12:53:55",
   "records": [
     {
       "id": "D-7382",
@@ -42,8 +42,8 @@
       "den": "122 Thái Thịnh",
       "noi_dung": "Vỏ Bánh mì tascus",
       "so_luong": 20,
-      "da_tra_chua": false,
-      "thoi_gian_tra": "",
+      "da_tra_chua": true,
+      "thoi_gian_tra": "2026/09/18 12:53",
       "nguoi_tao_phieu": "Hưng"
     },
     {
