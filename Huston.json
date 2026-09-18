@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T04:15:20.076Z",
+  "updated_at": "2026-09-18T04:16:32.166Z",
   "records": [
     {
       "id": "Z032",
@@ -354,7 +354,10 @@
       "noi_dung": "Bàn mát salad không hề lạnh",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/18 11:16",
+      "phuong_an_xu_ly": "Thợ đã khắc phục vấn đề",
+      "nguoi_xu_ly": "hưng"
     },
     {
       "id": "Z060",
