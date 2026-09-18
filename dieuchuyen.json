@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026/09/18 12:53:55",
+  "updated_at": "2026/09/18 12:54:19",
   "records": [
     {
       "id": "D-7382",
@@ -53,8 +53,8 @@
       "den": "69 Khương Trung",
       "noi_dung": "Bò miếng Burger tascus",
       "so_luong": 2,
-      "da_tra_chua": false,
-      "thoi_gian_tra": "",
+      "da_tra_chua": true,
+      "thoi_gian_tra": "2026/09/18 12:54",
       "nguoi_tao_phieu": "Hưng"
     },
     {
