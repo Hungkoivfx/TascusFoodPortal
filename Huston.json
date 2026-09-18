@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T04:13:04.530Z",
+  "updated_at": "2026-09-18T04:14:33.506Z",
   "records": [
     {
       "id": "Z032",
@@ -363,7 +363,10 @@
       "noi_dung": "chị Ngọc Hoa sống tại tầng 2 báo cáo là nước yếu. Nghi chết bơm tăng áp\nCần theo dõi thêm",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/18 11:14",
+      "phuong_an_xu_ly": "Nước đã chảy lại bình thường.",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z061",
