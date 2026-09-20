@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026/09/18 12:54:19",
+  "updated_at": "2026/09/20 17:03:02",
   "records": [
     {
       "id": "D-7382",
@@ -31,8 +31,8 @@
       "den": "122 Thái Thịnh",
       "noi_dung": "Bò thành phẩm ướp sống BM Tasucs",
       "so_luong": 4,
-      "da_tra_chua": false,
-      "thoi_gian_tra": "",
+      "da_tra_chua": true,
+      "thoi_gian_tra": "2026/09/20 17:02",
       "nguoi_tao_phieu": "Hưng"
     },
     {
