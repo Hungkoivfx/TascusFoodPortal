@@ -1286,5 +1286,19 @@
     "Hình thức thanh toán": "Chuyển khoản ngân hàng",
     "Mã giao dịch": "FT26264701082779/212389896386",
     "Ngày giờ thanh toán": "2026/09/21 11:09"
+  },
+  {
+    "Nội dung chuyển tiền": "Thanh toan xuc xich",
+    "Số tiền": 315000,
+    "Hình thức thanh toán": "Chuyển khoản ngân hàng",
+    "Mã giao dịch": "FT26264701314025/212390063934",
+    "Ngày giờ thanh toán": "2026/09/21 12:12"
+  },
+  {
+    "Nội dung chuyển tiền": "Thanh toan bao bi",
+    "Số tiền": 269000,
+    "Hình thức thanh toán": "Chuyển khoản ngân hàng",
+    "Mã giao dịch": "FT26264296281151/212390094272",
+    "Ngày giờ thanh toán": "2026/09/21 12:24"
   }
 ]
