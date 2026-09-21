@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026/09/20 17:03:02",
+  "updated_at": "2026/09/21 15:45:18",
   "records": [
     {
       "id": "D-7382",
@@ -89,6 +89,17 @@
       "da_tra_chua": false,
       "thoi_gian_tra": "",
       "nguoi_tao_phieu": "Hưng"
+    },
+    {
+      "id": "D-1125",
+      "ngay_tao": "2026/09/21 15:45",
+      "dieu_chuyen_tu": "122 Thái Thịnh",
+      "den": "69 Khương Trung",
+      "noi_dung": "Tương cà cholimex Tascus",
+      "so_luong": 2,
+      "da_tra_chua": false,
+      "thoi_gian_tra": "",
+      "nguoi_tao_phieu": "Ly"
     }
   ]
 }
