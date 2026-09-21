@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T05:37:55.026Z",
+  "updated_at": "2026-09-21T01:45:21.024Z",
   "records": [
     {
       "id": "Z032",
@@ -61,7 +61,10 @@
       "noi_dung": "Các mảnh thoi trang trí cửa hàng đang rụng lả tả từ lâu mà chưa gắn. Cần mang súng bắn keo đi sửa lại vấn đề",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/21 08:45",
+      "phuong_an_xu_ly": "Đã gắn lại các tấm thoi trang trí ngoài cửa. Hiện tại đang thiếu mất 3 tấm.",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z037",
