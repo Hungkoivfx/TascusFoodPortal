@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026/09/22 15:53:19",
+  "updated_at": "2026/09/22 15:54:10",
   "records": [
     {
       "id": "D-7382",
@@ -9,8 +9,8 @@
       "den": "122 Thái Thịnh",
       "noi_dung": "Sốt Hồng bánh mì Tascus",
       "so_luong": 2,
-      "da_tra_chua": false,
-      "thoi_gian_tra": "",
+      "da_tra_chua": true,
+      "thoi_gian_tra": "2026/09/22 15:54",
       "nguoi_tao_phieu": "Hưng"
     },
     {
