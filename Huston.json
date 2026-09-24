@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-21T01:45:45.366Z",
+  "updated_at": "2026-09-24T11:54:12.307Z",
   "records": [
     {
       "id": "Z032",
@@ -403,6 +403,16 @@
       "thoi_gian_xu_ly": "2026/09/18 11:11",
       "phuong_an_xu_ly": "Đã tìm thấy nhưng vỡ, anh Hưng đem đi cắt lại cho đẹp",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z063",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/24 18:54",
+      "nguoi_bao_cao": "Duyên",
+      "noi_dung": "Hết găng tay",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
