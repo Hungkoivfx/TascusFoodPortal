@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24T11:54:12.307Z",
+  "updated_at": "2026-09-24T13:43:48.993Z",
   "records": [
     {
       "id": "Z032",
@@ -410,6 +410,16 @@
       "thoi_gian": "2026/09/24 18:54",
       "nguoi_bao_cao": "Duyên",
       "noi_dung": "Hết găng tay",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z064",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/24 20:43",
+      "nguoi_bao_cao": "Duyên",
+      "noi_dung": "Hết hộp bix box",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
