@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24T13:43:48.993Z",
+  "updated_at": "2026-09-26T04:56:13.742Z",
   "records": [
     {
       "id": "Z032",
@@ -422,7 +422,10 @@
       "noi_dung": "Hết hộp bix box",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/26 11:56",
+      "phuong_an_xu_ly": "Đã mang 20",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
