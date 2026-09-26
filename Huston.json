@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-26T04:57:11.398Z",
+  "updated_at": "2026-09-26T11:07:35.693Z",
   "records": [
     {
       "id": "Z032",
@@ -429,6 +429,16 @@
       "thoi_gian_xu_ly": "2026/09/26 11:56",
       "phuong_an_xu_ly": "Đã mang 20",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z065",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/26 18:07",
+      "nguoi_bao_cao": "Định",
+      "noi_dung": "Hết sạch khoai để chiên",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
