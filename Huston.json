@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T14:16:16.254Z",
+  "updated_at": "2026-09-27T15:48:21.835Z",
   "records": [
     {
       "id": "Z032",
@@ -454,6 +454,16 @@
       "trang_thai_xu_ly": "Đang xử lý",
       "phuong_an_xu_ly": "Mai sẽ đem trứng và cốt trà từ thái thịnh về tiêu thụ giúp",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z067",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/27 22:48",
+      "nguoi_bao_cao": "Duyên",
+      "noi_dung": "Gãy vòi nước rửa bát",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
