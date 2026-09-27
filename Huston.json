@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T14:08:08.871Z",
+  "updated_at": "2026-09-27T14:15:02.709Z",
   "records": [
     {
       "id": "Z032",
@@ -438,7 +438,10 @@
       "noi_dung": "Hết sạch khoai để chiên",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/09/27 21:15",
+      "phuong_an_xu_ly": "Đã mang thêm ngày thứ 7 26/09",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z066",
