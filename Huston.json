@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T14:15:02.709Z",
+  "updated_at": "2026-09-27T14:16:16.254Z",
   "records": [
     {
       "id": "Z032",
@@ -451,7 +451,9 @@
       "noi_dung": "Hết trứng còn 5 quả \nCốt trà còn 3 chai",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đang xử lý",
+      "phuong_an_xu_ly": "Mai sẽ đem trứng và cốt trà từ thái thịnh về tiêu thụ giúp",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
