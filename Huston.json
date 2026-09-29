@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T15:48:21.835Z",
+  "updated_at": "2026-09-29T05:57:22.497Z",
   "records": [
     {
       "id": "Z032",
@@ -461,6 +461,16 @@
       "thoi_gian": "2026/09/27 22:48",
       "nguoi_bao_cao": "Duyên",
       "noi_dung": "Gãy vòi nước rửa bát",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z068",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/09/29 12:57",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Máy Post không hiện mã QR",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
