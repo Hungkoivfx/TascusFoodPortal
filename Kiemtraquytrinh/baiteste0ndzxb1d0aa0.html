@@ -2,1760 +2,1137 @@
 
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Test Đào Tạo - Tascus Food</title>
 
-<title>Bài Test Đào Tạo Nhân Sự · Tascus Food</title>
-
-<!-- Font hỗ trợ tiếng Việt -->
-
+```
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body,
-button,
-input,
-textarea,
-select {
-    font-family: "Inter", Arial, sans-serif;
-}
-
-body {
-    margin: 0;
-    background: #f5f6f8;
-    color: #222;
-    padding-bottom: 90px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.header {
-    background: #fff;
-    border-bottom: 1px solid #e5e5e5;
-    padding: 17px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 20;
-}
-
-.header-inner {
-    max-width: 900px;
-    margin: auto;
-}
-
-.brand {
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: -0.3px;
-}
-
-.subtitle {
-    margin-top: 4px;
-    font-size: 13px;
-    font-weight: 400;
-    color: #777;
-}
-
-.container {
-    max-width: 900px;
-    margin: 28px auto;
-    padding: 0 16px;
-}
-
-.card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 24px;
-    margin-bottom: 18px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.intro-title {
-    font-size: 25px;
-    font-weight: 800;
-    margin: 0 0 10px;
-    line-height: 1.35;
-    letter-spacing: -0.4px;
-}
-
-.intro-description {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 22px;
-    font-size: 14px;
-}
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 7px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #d8d8d8;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 400;
-    outline: none;
-    color: #222;
-    background: #fff;
-}
-
-.form-group input:focus {
-    border-color: #222;
-}
-
-.test-info {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 18px;
-    padding: 14px 15px;
-    background: #f7f7f7;
-    border-radius: 9px;
-    font-size: 14px;
-    flex-wrap: wrap;
-}
-
-button {
-    border: 0;
-    border-radius: 8px;
-    padding: 13px 20px;
-    font-family: "Inter", Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.btn-primary {
-    background: #222;
-    color: #fff;
-}
-
-.btn-danger {
-    background: #b00020;
-    color: #fff;
-}
-
-.start-button {
-    width: 100%;
-    margin-top: 2px;
-}
-
-.loading {
-    text-align: center;
-    padding: 50px 20px;
-    color: #666;
-    font-size: 14px;
-}
-
-.loading-spinner {
-    width: 30px;
-    height: 30px;
-    border: 3px solid #ddd;
-    border-top-color: #222;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.error {
-    padding: 22px;
-    background: #fff;
-    border: 1px solid #e0b4b4;
-    color: #a00000;
-    border-radius: 12px;
-    line-height: 1.6;
-}
-
-.error-title {
-    font-size: 18px;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-.error-detail {
-    color: #555;
-    font-size: 14px;
-    white-space: pre-line;
-    word-break: break-word;
-}
-
-.retry-button {
-    margin-top: 16px;
-    background: #222;
-    color: #fff;
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* TIMER */
-
-.timer-area {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 18px;
-}
-
-.timer-label {
-    font-size: 13px;
-    font-weight: 500;
-    color: #777;
-}
-
-.timer {
-    font-size: 24px;
-    font-weight: 900;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0;
-}
-
-.timer.warning {
-    color: #b00020;
-}
-
-/* PROGRESS */
-
-.progress-wrapper {
-    margin-bottom: 18px;
-}
-
-.progress-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 7px;
-    font-size: 12px;
-    color: #777;
-}
-
-.progress {
-    height: 5px;
-    background: #e8e8e8;
-    border-radius: 999px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0;
-    background: #222;
-    border-radius: 999px;
-    transition: width 0.2s ease;
-}
-
-/* QUESTION */
-
-.question-number {
-    font-size: 13px;
-    font-weight: 600;
-    color: #777;
-    margin-bottom: 10px;
-}
-
-.question-category {
-    display: inline-block;
-    margin-top: 5px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #888;
-}
-
-.question-text {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1.5;
-    letter-spacing: -0.2px;
-    margin-bottom: 22px;
-}
-
-.option {
-    margin-bottom: 10px;
-}
-
-.option:last-child {
-    margin-bottom: 0;
-}
-
-.option input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.option label {
-    display: block;
-    padding: 15px 16px;
-    border: 1px solid #ddd;
-    border-radius: 9px;
-    cursor: pointer;
-    line-height: 1.5;
-    font-size: 15px;
-    font-weight: 400;
-    color: #222;
-    transition: 0.15s;
-}
-
-.option label:hover {
-    background: #fafafa;
-}
-
-.option input:checked + label {
-    border-color: #222;
-    background: #f1f1f1;
-    font-weight: 600;
-}
-
-.option-letter {
-    display: inline-block;
-    width: 28px;
-    font-weight: 800;
-}
-
-/* NAVIGATION */
-
-.fixed-navigation {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 100;
-
-    background: rgba(255,255,255,0.96);
-    border-top: 1px solid #ddd;
-
-    padding: 10px 16px;
-
-    box-shadow: 0 -3px 15px rgba(0,0,0,0.08);
-
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-.fixed-navigation-inner {
-    max-width: 900px;
-    margin: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-}
-
-.current-progress {
-    font-size: 13px;
-    font-weight: 600;
-    color: #666;
-    white-space: nowrap;
-}
-
-.next-button {
-    min-width: 150px;
-}
-
-/* RESULT */
-
-.result {
-    text-align: center;
-}
-
-.result-score {
-    font-size: 58px;
-    font-weight: 900;
-    margin: 15px 0 5px;
-    letter-spacing: -1px;
-}
-
-.result-label {
-    color: #777;
-    font-size: 14px;
-    margin-bottom: 25px;
-}
-
-.result-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.result-item {
-    background: #f7f7f7;
-    border-radius: 10px;
-    padding: 15px 8px;
-}
-
-.result-number {
-    display: block;
-    font-size: 24px;
-    font-weight: 800;
-}
-
-.result-name {
-    display: block;
-    margin-top: 4px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #777;
-}
-
-.result-message {
-    margin-top: 25px;
-    color: #666;
-    font-size: 14px;
-}
-
-/* DESKTOP */
-
-@media (min-width: 701px) {
-
-    .fixed-navigation {
-        background: transparent;
-        border-top: 0;
-        box-shadow: none;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        position: static;
-        padding: 0;
+    * {
+        box-sizing: border-box;
     }
 
-    .fixed-navigation-inner {
-        background: #fff;
-        border-radius: 12px;
-        padding: 12px 16px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    html {
+        scroll-behavior: smooth;
     }
 
     body {
-        padding-bottom: 30px;
-    }
-}
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-    body {
-        padding-bottom: 82px;
-    }
-
-    .header {
-        padding: 13px 16px;
-    }
-
-    .brand {
-        font-size: 18px;
-    }
-
-    .subtitle {
-        font-size: 12px;
+        margin: 0;
+        background: #f5f6f8;
+        color: #202124;
+        font-family: 'Inter', sans-serif;
     }
 
     .container {
-        margin: 18px auto;
-        padding: 0 12px;
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 50px;
     }
 
     .card {
-        padding: 18px;
-        border-radius: 11px;
+        background: #ffffff;
+        border: 1px solid #e3e5e8;
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
     }
 
-    .intro-title {
-        font-size: 21px;
+    .hidden {
+        display: none !important;
     }
 
-    .question-text {
-        font-size: 18px;
-        line-height: 1.5;
+    .loading {
+        text-align: center;
+        margin-top: 80px;
+        color: #666;
     }
 
-    .option label {
-        padding: 14px;
-        font-size: 15px;
+    .error {
+        margin-top: 40px;
+        border-color: #e2b8b8;
+        background: #fff7f7;
+        color: #9b1c1c;
     }
 
-    .fixed-navigation {
-        padding:
-            9px
-            max(12px, env(safe-area-inset-right))
-            calc(9px + env(safe-area-inset-bottom))
-            max(12px, env(safe-area-inset-left));
+    .header {
+        text-align: center;
+        margin-bottom: 28px;
     }
 
-    .current-progress {
+    .brand {
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: #111;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    .description {
+        margin: 14px auto 0;
+        max-width: 700px;
+        color: #6b7280;
+        line-height: 1.6;
+        font-size: 14px;
+    }
+
+    .form-group {
+        margin-top: 28px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        height: 48px;
+        border: 1px solid #d6d9de;
+        border-radius: 10px;
+        padding: 0 14px;
+        font: inherit;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    input[type="text"]:focus {
+        border-color: #111;
+        box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+    }
+
+    .info-item {
+        background: #f7f8fa;
+        border-radius: 12px;
+        padding: 16px 12px;
+        text-align: center;
+    }
+
+    .info-value {
+        display: block;
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 5px;
+    }
+
+    .info-label {
+        color: #6b7280;
         font-size: 12px;
     }
 
-    .next-button {
+    .btn {
+        border: 0;
+        border-radius: 10px;
+        min-height: 48px;
+        padding: 0 22px;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.1s, opacity 0.15s;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    .btn-primary {
+        background: #111;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        opacity: 0.88;
+    }
+
+    .btn-danger {
+        background: #b42318;
+        color: #fff;
+    }
+
+    .start-actions {
+        margin-top: 28px;
+        text-align: center;
+    }
+
+    /* TEST HEADER */
+
+    .test-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(245, 246, 248, 0.96);
+        backdrop-filter: blur(8px);
+        padding: 10px 0 12px;
+    }
+
+    .test-status {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .progress-area {
         flex: 1;
         min-width: 0;
     }
 
-    .result-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .progress-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 7px;
     }
-}
 
+    .question-counter {
+        flex: 0 0 auto;
+        font-size: 13px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .progress {
+        width: 100%;
+        height: 7px;
+        background: #e1e4e8;
+        border-radius: 99px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #111;
+        border-radius: inherit;
+        transition: width 0.2s ease;
+    }
+
+    .timer {
+        flex: 0 0 auto;
+        min-width: 92px;
+        height: 42px;
+        padding: 0 13px;
+        border-radius: 10px;
+        background: #fff;
+        border: 1px solid #dfe2e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        font-size: 15px;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .timer.warning {
+        color: #a15c00;
+        border-color: #e3bd82;
+        background: #fffaf1;
+    }
+
+    .timer.danger {
+        color: #b42318;
+        border-color: #e3aaaa;
+        background: #fff5f5;
+    }
+
+    /* QUESTION */
+
+    .question-card {
+        margin-top: 16px;
+    }
+
+    .question-number {
+        font-size: 13px;
+        font-weight: 800;
+        color: #6b7280;
+        margin-bottom: 10px;
+    }
+
+    .question-text {
+        font-size: 20px;
+        line-height: 1.5;
+        font-weight: 700;
+        margin-bottom: 24px;
+    }
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .option {
+        position: relative;
+    }
+
+    .option input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .option label {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 15px;
+        border: 1px solid #dfe2e6;
+        border-radius: 12px;
+        cursor: pointer;
+        line-height: 1.5;
+        transition: border-color 0.15s, background 0.15s;
+    }
+
+    .option label:hover {
+        background: #fafafa;
+    }
+
+    .option input:checked + label {
+        border-color: #111;
+        background: #f5f5f5;
+    }
+
+    .option-letter {
+        flex: 0 0 30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #f0f1f3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 800;
+    }
+
+    .option input:checked + label .option-letter {
+        background: #111;
+        color: #fff;
+    }
+
+    .option-text {
+        padding-top: 3px;
+        font-size: 14px;
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 22px;
+    }
+
+    .question-warning {
+        color: #b42318;
+        font-size: 13px;
+        font-weight: 600;
+        margin-top: 10px;
+        min-height: 18px;
+    }
+
+    /* RESULT */
+
+    .result-header {
+        text-align: center;
+    }
+
+    .score {
+        font-size: 56px;
+        line-height: 1;
+        font-weight: 800;
+        margin: 22px 0 8px;
+    }
+
+    .score-label {
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    .result-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 28px;
+    }
+
+    .result-item {
+        background: #f7f8fa;
+        border-radius: 12px;
+        padding: 18px 12px;
+        text-align: center;
+    }
+
+    .result-item strong {
+        display: block;
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    .result-item span {
+        color: #6b7280;
+        font-size: 12px;
+    }
+
+    .result-message {
+        margin-top: 24px;
+        padding: 16px;
+        border-radius: 10px;
+        background: #f7f8fa;
+        text-align: center;
+        line-height: 1.6;
+        font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            width: min(100% - 20px, 900px);
+            padding-top: 20px;
+        }
+
+        .card {
+            padding: 20px;
+            border-radius: 13px;
+        }
+
+        h1 {
+            font-size: 22px;
+        }
+
+        .info-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .test-status {
+            width: calc(100% - 20px);
+            gap: 10px;
+        }
+
+        .timer {
+            min-width: 78px;
+            height: 40px;
+            padding: 0 9px;
+            font-size: 13px;
+        }
+
+        .progress-top {
+            margin-bottom: 5px;
+        }
+
+        .question-counter {
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-size: 18px;
+        }
+
+        .result-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .test-status {
+            gap: 7px;
+        }
+
+        .timer {
+            min-width: 70px;
+            font-size: 12px;
+        }
+
+        .question-counter {
+            font-size: 11px;
+        }
+    }
 </style>
+```
 
 </head>
 
 <body>
 
-<header class="header">
-    <div class="header-inner">
-
-
-    <div class="brand">
-        Tascus Food
-    </div>
-
-    <div class="subtitle">
-        Bài kiểm tra đào tạo nhân sự
-    </div>
-
-</div>
-
-
-</header>
-
-<div class="container">
-
-
-<!-- LOADING -->
-
-<div id="loading" class="card loading">
-
-    <div class="loading-spinner"></div>
-
-    <div>
+<div id="loading" class="container">
+    <div class="card loading">
         Đang tải dữ liệu bài test...
     </div>
-
 </div>
 
-<!-- ERROR -->
-
-<div id="error" class="card error hidden">
-
-    <div class="error-title">
-        Không thể tải dữ liệu bài test
+<div id="error" class="container hidden">
+    <div class="card error">
+        <strong>Không thể tải bài test.</strong>
+        <div id="errorMessage" style="margin-top:10px;"></div>
     </div>
-
-    <div id="errorDetail" class="error-detail"></div>
-
-    <button
-        id="retryButton"
-        class="retry-button"
-        onclick="loadQuestions()"
-    >
-        Thử tải lại
-    </button>
-
 </div>
 
-<!-- START SCREEN -->
+<!-- START -->
 
-<div id="startScreen" class="card hidden">
-
-    <h1 id="testTitle" class="intro-title"></h1>
-
-    <div
-        id="testDescription"
-        class="intro-description">
+<div id="startScreen" class="container hidden">
+    <div class="header">
+        <div class="brand">TASCUS FOOD</div>
+        <h1 id="testTitle">Bài Test Đào Tạo</h1>
+        <div id="testDescription" class="description"></div>
     </div>
 
+```
+<div class="card">
     <div class="form-group">
-
-        <label for="employeeName">
-            Họ và tên
-        </label>
-
+        <label for="employeeName">Họ và tên nhân viên</label>
         <input
-            id="employeeName"
             type="text"
+            id="employeeName"
             placeholder="Nhập họ và tên"
             autocomplete="name"
+            maxlength="100"
         >
-
     </div>
 
-    <div class="test-info">
+    <div class="info-grid">
+        <div class="info-item">
+            <span id="totalQuestions" class="info-value">80</span>
+            <span class="info-label">Câu hỏi</span>
+        </div>
 
-        <span>
-            Tổng số câu:
-            <strong id="totalQuestions">0</strong>
-        </span>
+        <div class="info-item">
+            <span id="sopCount" class="info-value">60</span>
+            <span class="info-label">Câu SOP</span>
+        </div>
 
-        <span>
-            SOP:
-            <strong id="sopQuestions">0</strong>
-        </span>
+        <div class="info-item">
+            <span id="cookingCount" class="info-value">20</span>
+            <span class="info-label">Câu công thức</span>
+        </div>
 
-        <span>
-            Công thức:
-            <strong id="cookingQuestions">0</strong>
-        </span>
-
-        <span>
-            Thời gian:
-            <strong>10 phút</strong>
-        </span>
-
+        <div class="info-item">
+            <span class="info-value">10</span>
+            <span class="info-label">Phút</span>
+        </div>
     </div>
 
-    <button
-        class="btn-primary start-button"
-        onclick="startTest()"
-    >
-        Bắt đầu bài test
-    </button>
+    <div class="start-actions">
+        <button id="startButton" class="btn btn-primary">
+            Bắt đầu bài test
+        </button>
+    </div>
+</div>
+```
 
 </div>
 
-<!-- TEST SCREEN -->
+<!-- TEST -->
 
 <div id="testScreen" class="hidden">
 
-    <!-- TIMER -->
+```
+<div class="test-header">
+    <div class="test-status">
 
-    <div class="card timer-area">
+        <div class="progress-area">
+            <div class="progress-top">
+                <div id="questionCounter" class="question-counter">
+                    Câu 1/80
+                </div>
+            </div>
 
-        <div class="timer-label">
-            Thời gian còn lại
+            <div class="progress">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
         </div>
 
         <div id="timer" class="timer">
-            10:00
+            <span>⏱</span>
+            <span id="timerText">10:00</span>
         </div>
 
     </div>
+</div>
 
-    <!-- PROGRESS -->
+<main class="container">
+    <div class="card question-card">
 
-    <div class="progress-wrapper">
-
-        <div class="progress-top">
-
-            <span id="progressText">
-                Câu 1 / 80
-            </span>
-
-            <span id="answeredText">
-                Đã trả lời: 0
-            </span>
-
+        <div id="questionNumber" class="question-number">
+            CÂU 1
         </div>
 
-        <div class="progress">
+        <div id="questionText" class="question-text"></div>
 
-            <div
-                id="progressBar"
-                class="progress-bar">
-            </div>
+        <div id="options" class="options"></div>
 
-        </div>
+        <div id="questionWarning" class="question-warning"></div>
 
-    </div>
-
-    <!-- QUESTION -->
-
-    <div
-        id="questionCard"
-        class="card">
-    </div>
-
-    <!-- FIXED NAVIGATION -->
-
-    <div class="fixed-navigation">
-
-        <div class="fixed-navigation-inner">
-
-            <div
-                id="fixedProgress"
-                class="current-progress">
-                Câu 1 / 80
-            </div>
-
-            <button
-                id="nextButton"
-                class="btn-primary next-button"
-                onclick="nextQuestion()"
-            >
-                Câu tiếp theo →
+        <div class="navigation">
+            <button id="nextButton" class="btn btn-primary">
+                Câu tiếp theo
             </button>
-
         </div>
 
     </div>
+</main>
+```
 
 </div>
 
 <!-- RESULT -->
 
-<div
-    id="resultScreen"
-    class="card result hidden">
+<div id="resultScreen" class="container hidden">
 
-    <div style="font-size:14px;color:#777;">
-        KẾT QUẢ BÀI TEST
-    </div>
+```
+<div class="card">
 
-    <div
-        id="resultScore"
-        class="result-score">
-        0/10
-    </div>
+    <div class="result-header">
+        <div class="brand">TASCUS FOOD</div>
+        <h2>Đã hoàn thành bài test</h2>
 
-    <div class="result-label">
-        Điểm bài kiểm tra
+        <div id="score" class="score">0%</div>
+        <div class="score-label">Kết quả bài kiểm tra</div>
     </div>
 
     <div class="result-grid">
-
         <div class="result-item">
-
-            <span
-                id="resultTotal"
-                class="result-number">
-                0
-            </span>
-
-            <span class="result-name">
-                Tổng số câu
-            </span>
-
+            <strong id="correctCount">0</strong>
+            <span>Câu đúng</span>
         </div>
 
         <div class="result-item">
-
-            <span
-                id="resultCorrect"
-                class="result-number">
-                0
-            </span>
-
-            <span class="result-name">
-                Câu đúng
-            </span>
-
+            <strong id="wrongCount">0</strong>
+            <span>Câu sai</span>
         </div>
 
         <div class="result-item">
-
-            <span
-                id="resultWrong"
-                class="result-number">
-                0
-            </span>
-
-            <span class="result-name">
-                Câu sai
-            </span>
-
+            <strong id="resultTotal">80</strong>
+            <span>Tổng số câu</span>
         </div>
-
-        <div class="result-item">
-
-            <span
-                id="resultUnanswered"
-                class="result-number">
-                0
-            </span>
-
-            <span class="result-name">
-                Chưa trả lời
-            </span>
-
-        </div>
-
     </div>
 
-    <div
-        id="resultMessage"
-        class="result-message">
-    </div>
+    <div id="resultMessage" class="result-message"></div>
 
 </div>
-
+```
 
 </div>
 
 <script>
+    const QUESTIONS_FILE = './questions.json';
 
-/* =========================================================
-   CẤU HÌNH
-   ========================================================= */
+    // Để trống nếu chưa kết nối Apps Script.
+    // Khi backend hoàn thiện, điền URL Web App của Apps Script vào đây.
+    const APPS_SCRIPT_URL = '';
 
-const QUESTIONS_FILE = './questions.json';
+    const TEST_DURATION = 10 * 60;
 
-const APPS_SCRIPT_URL = '';
+    let testData = null;
+    let questions = [];
+    let currentQuestion = 0;
+    let answers = [];
+    let remainingSeconds = TEST_DURATION;
+    let timerInterval = null;
+    let testStartedAt = null;
 
-const LOAD_TIMEOUT = 8000;
+    const loading = document.getElementById('loading');
+    const error = document.getElementById('error');
+    const errorMessage = document.getElementById('errorMessage');
+
+    const startScreen = document.getElementById('startScreen');
+    const testScreen = document.getElementById('testScreen');
+    const resultScreen = document.getElementById('resultScreen');
+
+    const employeeName = document.getElementById('employeeName');
+    const startButton = document.getElementById('startButton');
+
+    const testTitle = document.getElementById('testTitle');
+    const testDescription = document.getElementById('testDescription');
+
+    const totalQuestions = document.getElementById('totalQuestions');
+    const sopCount = document.getElementById('sopCount');
+    const cookingCount = document.getElementById('cookingCount');
+
+    const questionCounter = document.getElementById('questionCounter');
+    const progressBar = document.getElementById('progressBar');
+    const timer = document.getElementById('timer');
+    const timerText = document.getElementById('timerText');
+
+    const questionNumber = document.getElementById('questionNumber');
+    const questionText = document.getElementById('questionText');
+    const options = document.getElementById('options');
+    const questionWarning = document.getElementById('questionWarning');
+    const nextButton = document.getElementById('nextButton');
+
+    const score = document.getElementById('score');
+    const correctCount = document.getElementById('correctCount');
+    const wrongCount = document.getElementById('wrongCount');
+    const resultTotal = document.getElementById('resultTotal');
+    const resultMessage = document.getElementById('resultMessage');
 
 
-/* =========================================================
-   BIẾN
-   ========================================================= */
+    function showOnly(element) {
+        loading.classList.add('hidden');
+        error.classList.add('hidden');
+        startScreen.classList.add('hidden');
+        testScreen.classList.add('hidden');
+        resultScreen.classList.add('hidden');
 
-let testData = null;
-
-let currentQuestion = 0;
-
-let answers = {};
-
-let timerInterval = null;
-
-let remainingSeconds = 600;
-
-let testSubmitted = false;
+        element.classList.remove('hidden');
+    }
 
 
-/* =========================================================
-   LOAD JSON
-   ========================================================= */
+    function escapeHtml(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
 
-async function loadQuestions() {
 
-    const loading =
-        document.getElementById('loading');
-
-    const errorBox =
-        document.getElementById('error');
-
-    const errorDetail =
-        document.getElementById('errorDetail');
-
-    const startScreen =
-        document.getElementById('startScreen');
-
-    loading.classList.remove('hidden');
-
-    errorBox.classList.add('hidden');
-
-    startScreen.classList.add('hidden');
-
-    errorDetail.textContent = '';
-
-    try {
-
-        const controller =
-            new AbortController();
-
-        const timeout =
-            setTimeout(() => {
-                controller.abort();
-            }, LOAD_TIMEOUT);
-
-        /*
-         * Thêm timestamp để tránh trình duyệt
-         * lấy nhầm JSON cũ từ cache.
-         */
-
-        const separator =
-            QUESTIONS_FILE.includes('?')
-                ? '&'
-                : '?';
-
-        const url =
-            QUESTIONS_FILE +
-            separator +
-            '_=' +
-            Date.now();
-
-        const response =
-            await fetch(
-                url,
-                {
-                    method: 'GET',
-                    cache: 'no-store',
-                    signal: controller.signal
-                }
-            );
-
-        clearTimeout(timeout);
-
-        if (!response.ok) {
-
-            throw new Error(
-                'Máy chủ trả về HTTP ' +
-                response.status +
-                ' khi tải questions.json.'
-            );
-
-        }
-
-        const contentType =
-            response.headers.get('content-type') || '';
-
-        const text =
-            await response.text();
-
-        if (!text.trim()) {
-
-            throw new Error(
-                'File questions.json đang rỗng.'
-            );
-
-        }
-
+    async function loadQuestions() {
         try {
+            const controller = new AbortController();
 
-            testData =
-                JSON.parse(text);
+            const timeout = setTimeout(() => {
+                controller.abort();
+            }, 10000);
 
-        } catch (jsonError) {
+            const url = QUESTIONS_FILE + '?v=' + Date.now();
 
-            throw new Error(
-                'questions.json không phải JSON hợp lệ.\n\n' +
-                'Chi tiết: ' +
-                jsonError.message
-            );
+            const response = await fetch(url, {
+                method: 'GET',
+                cache: 'no-store',
+                signal: controller.signal
+            });
 
-        }
+            clearTimeout(timeout);
 
-        if (
-            !testData ||
-            !Array.isArray(testData.questions)
-        ) {
-
-            throw new Error(
-                'JSON đã tải được nhưng không tìm thấy mảng "questions".'
-            );
-
-        }
-
-        if (
-            testData.questions.length === 0
-        ) {
-
-            throw new Error(
-                'Mảng "questions" đang rỗng.'
-            );
-
-        }
-
-        /*
-         * Kiểm tra cấu trúc cơ bản của câu đầu tiên.
-         */
-
-        const firstQuestion =
-            testData.questions[0];
-
-        if (
-            !firstQuestion.question ||
-            !firstQuestion.options
-        ) {
-
-            throw new Error(
-                'Cấu trúc câu hỏi trong JSON không đúng.\n\n' +
-                'Cần có "question" và "options".'
-            );
-
-        }
-
-        loading.classList.add('hidden');
-
-        startScreen.classList.remove('hidden');
-
-        document
-            .getElementById('testTitle')
-            .textContent =
-                testData.title ||
-                'Bài kiểm tra';
-
-        document
-            .getElementById('testDescription')
-            .textContent =
-                testData.description || '';
-
-        document
-            .getElementById('totalQuestions')
-            .textContent =
-                testData.total_questions ||
-                testData.questions.length;
-
-        document
-            .getElementById('sopQuestions')
-            .textContent =
-                testData.sop_questions_count || 0;
-
-        document
-            .getElementById('cookingQuestions')
-            .textContent =
-                testData.cooking_questions_count || 0;
-
-        console.log(
-            'Đã tải thành công:',
-            testData.questions.length,
-            'câu hỏi.'
-        );
-
-    } catch (error) {
-
-        console.error(
-            'Lỗi tải questions.json:',
-            error
-        );
-
-        loading.classList.add('hidden');
-
-        errorBox.classList.remove('hidden');
-
-        let message = '';
-
-        if (error.name === 'AbortError') {
-
-            message =
-                'Đã chờ quá 8 giây nhưng không nhận được dữ liệu.\n\n' +
-                'Đường dẫn đang được tải:\n' +
-                getQuestionsUrl() +
-                '\n\n' +
-                'Kiểm tra questions.json có nằm đúng vị trí hay không.';
-
-        } else {
-
-            message =
-                error.message +
-                '\n\n' +
-                'Đường dẫn đang được tải:\n' +
-                getQuestionsUrl();
-
-        }
-
-        errorDetail.textContent =
-            message;
-
-    }
-
-}
-
-
-/* =========================================================
-   HIỂN THỊ URL JSON
-   ========================================================= */
-
-function getQuestionsUrl() {
-
-    try {
-
-        return new URL(
-            QUESTIONS_FILE,
-            window.location.href
-        ).href;
-
-    } catch (error) {
-
-        return QUESTIONS_FILE;
-
-    }
-
-}
-
-
-/* =========================================================
-   START TEST
-   ========================================================= */
-
-function startTest() {
-
-    const name =
-        document
-            .getElementById('employeeName')
-            .value
-            .trim();
-
-    if (!name) {
-
-        alert(
-            'Vui lòng nhập họ và tên.'
-        );
-
-        return;
-    }
-
-    currentQuestion = 0;
-
-    answers = {};
-
-    testSubmitted = false;
-
-    remainingSeconds = 600;
-
-    document
-        .getElementById('startScreen')
-        .classList.add('hidden');
-
-    document
-        .getElementById('testScreen')
-        .classList.remove('hidden');
-
-    renderQuestion();
-
-    updateTimerDisplay();
-
-    startTimer();
-
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-
-}
-
-
-/* =========================================================
-   TIMER
-   ========================================================= */
-
-function startTimer() {
-
-    clearInterval(timerInterval);
-
-    timerInterval =
-        setInterval(() => {
-
-            remainingSeconds--;
-
-            updateTimerDisplay();
-
-            if (remainingSeconds <= 0) {
-
-                clearInterval(timerInterval);
-
-                autoSubmitTest();
-
+            if (!response.ok) {
+                throw new Error(
+                    'Không tải được questions.json. HTTP ' + response.status
+                );
             }
 
-        }, 1000);
+            const data = await response.json();
 
-}
-
-
-function updateTimerDisplay() {
-
-    const timer =
-        document.getElementById('timer');
-
-    const minutes =
-        Math.floor(
-            remainingSeconds / 60
-        );
-
-    const seconds =
-        remainingSeconds % 60;
-
-    timer.textContent =
-        String(minutes).padStart(2, '0') +
-        ':' +
-        String(seconds).padStart(2, '0');
-
-    timer.classList.toggle(
-        'warning',
-        remainingSeconds <= 60
-    );
-
-}
-
-
-/* =========================================================
-   AUTO SUBMIT
-   ========================================================= */
-
-function autoSubmitTest() {
-
-    if (testSubmitted) {
-        return;
-    }
-
-    alert(
-        'Đã hết 10 phút. Bài test sẽ được tự động nộp.'
-    );
-
-    submitTest(true);
-
-}
-
-
-/* =========================================================
-   RENDER QUESTION
-   ========================================================= */
-
-function renderQuestion() {
-
-    const question =
-        testData.questions[currentQuestion];
-
-    if (!question) {
-        return;
-    }
-
-    const optionLetters =
-        ['A', 'B', 'C', 'D'];
-
-    let optionsHTML = '';
-
-    optionLetters.forEach(
-        (letter, index) => {
-
-            if (
-                question.options[letter] === undefined
-            ) {
-                return;
+            if (!data || !Array.isArray(data.questions)) {
+                throw new Error(
+                    'File questions.json không đúng cấu trúc. Không tìm thấy mảng "questions".'
+                );
             }
+
+            if (data.questions.length === 0) {
+                throw new Error('questions.json không có câu hỏi nào.');
+            }
+
+            questions = data.questions;
+
+            testData = data;
+
+            testTitle.textContent =
+                data.title || 'Bài Test Đào Tạo';
+
+            testDescription.textContent =
+                data.description || '';
+
+            totalQuestions.textContent =
+                data.total_questions || questions.length;
+
+            sopCount.textContent =
+                data.sop_questions_count || 0;
+
+            cookingCount.textContent =
+                data.cooking_questions_count || 0;
+
+            answers = new Array(questions.length).fill(null);
+
+            showOnly(startScreen);
+
+        } catch (error) {
+            console.error(error);
+
+            let message = error.message || 'Lỗi không xác định.';
+
+            if (error.name === 'AbortError') {
+                message =
+                    'Quá thời gian chờ tải dữ liệu. Kiểm tra lại file questions.json và đường dẫn.';
+            }
+
+            if (window.location.protocol === 'file:') {
+                message +=
+                    '<br><br><strong>Lưu ý:</strong> Bạn đang mở HTML trực tiếp bằng file://. ' +
+                    'Trình duyệt có thể chặn việc fetch questions.json. ' +
+                    'Hãy chạy trang qua GitHub Pages hoặc một local server.';
+            }
+
+            errorMessage.innerHTML =
+                message +
+                '<br><br><small>Đường dẫn đang tải: ' +
+                escapeHtml(new URL(QUESTIONS_FILE, document.baseURI).href) +
+                '</small>';
+
+            showOnly(error);
+        }
+    }
+
+
+    function startTest() {
+        const name = employeeName.value.trim();
+
+        if (!name) {
+            employeeName.focus();
+            employeeName.style.borderColor = '#b42318';
+            return;
+        }
+
+        employeeName.style.borderColor = '';
+
+        currentQuestion = 0;
+        answers = new Array(questions.length).fill(null);
+        remainingSeconds = TEST_DURATION;
+        testStartedAt = new Date().toISOString();
+
+        showOnly(testScreen);
+
+        renderQuestion();
+        startTimer();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+
+    function renderQuestion() {
+        const question = questions[currentQuestion];
+
+        if (!question) {
+            submitTest();
+            return;
+        }
+
+        const total = questions.length;
+        const number = currentQuestion + 1;
+
+        questionCounter.textContent =
+            `Câu ${number}/${total}`;
+
+        questionNumber.textContent =
+            `CÂU ${number}`;
+
+        progressBar.style.width =
+            `${(number / total) * 100}%`;
+
+        questionText.innerHTML =
+            escapeHtml(question.question);
+
+        options.innerHTML = '';
+
+        const optionLetters = ['A', 'B', 'C', 'D'];
+
+        optionLetters.forEach((letter, index) => {
+
+            const optionText =
+                question.options?.[letter] ?? '';
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'option';
+
+            const inputId =
+                `question-${currentQuestion}-option-${index}`;
 
             const checked =
-                answers[question.id] === index
+                answers[currentQuestion] === index
                     ? 'checked'
                     : '';
 
-            optionsHTML += `
+            wrapper.innerHTML = `
+                <input
+                    type="radio"
+                    id="${inputId}"
+                    name="question"
+                    value="${index}"
+                    ${checked}
+                >
 
-                <div class="option">
-
-                    <input
-                        type="radio"
-                        id="answer_${question.id}_${letter}"
-                        name="question_${question.id}"
-                        value="${index}"
-                        ${checked}
-                        onchange="selectAnswer(${index})"
-                    >
-
-                    <label
-                        for="answer_${question.id}_${letter}"
-                    >
-
-                        <span class="option-letter">
-                            ${letter}.
-                        </span>
-
-                        ${escapeHtml(
-                            question.options[letter]
-                        )}
-
-                    </label>
-
-                </div>
-
+                <label for="${inputId}">
+                    <span class="option-letter">${letter}</span>
+                    <span class="option-text">
+                        ${escapeHtml(optionText)}
+                    </span>
+                </label>
             `;
 
+            options.appendChild(wrapper);
+        });
+
+        questionWarning.textContent = '';
+
+        nextButton.textContent =
+            currentQuestion === total - 1
+                ? 'Nộp bài'
+                : 'Câu tiếp theo';
+
+        const selected = document.querySelector(
+            'input[name="question"]:checked'
+        );
+
+        if (selected) {
+            selected.focus();
         }
-    );
 
-    document
-        .getElementById('questionCard')
-        .innerHTML = `
-
-            <div class="question-number">
-
-                Câu ${currentQuestion + 1}
-                /
-                ${testData.questions.length}
-
-                <div class="question-category">
-
-                    ${escapeHtml(
-                        question.category || ''
-                    )}
-
-                </div>
-
-            </div>
-
-            <div class="question-text">
-
-                ${escapeHtml(
-                    question.question
-                )}
-
-            </div>
-
-            <div class="options">
-
-                ${optionsHTML}
-
-            </div>
-
-        `;
-
-    updateProgress();
-
-    updateNavigation();
-
-}
-
-
-/* =========================================================
-   SELECT ANSWER
-   ========================================================= */
-
-function selectAnswer(index) {
-
-    const question =
-        testData.questions[currentQuestion];
-
-    answers[question.id] = index;
-
-    updateProgress();
-
-    updateNavigation();
-
-}
-
-
-/* =========================================================
-   NEXT QUESTION
-   ========================================================= */
-
-function nextQuestion() {
-
-    if (testSubmitted) {
-        return;
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     }
 
-    const question =
-        testData.questions[currentQuestion];
 
-    if (
-        answers[question.id] === undefined
-    ) {
+    function saveCurrentAnswer() {
+        const selected =
+            document.querySelector('input[name="question"]:checked');
 
-        alert(
-            'Vui lòng chọn một đáp án trước khi tiếp tục.'
-        );
+        if (!selected) {
+            questionWarning.textContent =
+                'Vui lòng chọn một đáp án trước khi tiếp tục.';
+            return false;
+        }
 
-        return;
+        answers[currentQuestion] =
+            Number(selected.value);
+
+        questionWarning.textContent = '';
+
+        return true;
     }
 
-    if (
-        currentQuestion ===
-        testData.questions.length - 1
-    ) {
 
-        submitTest(false);
+    function nextQuestion() {
+        if (!saveCurrentAnswer()) {
+            return;
+        }
 
-        return;
+        if (currentQuestion >= questions.length - 1) {
+            submitTest();
+            return;
+        }
+
+        currentQuestion++;
+        renderQuestion();
     }
 
-    currentQuestion++;
 
-    renderQuestion();
+    function startTimer() {
+        stopTimer();
 
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+        updateTimer();
 
-}
+        timerInterval = setInterval(() => {
 
+            remainingSeconds--;
 
-/* =========================================================
-   PROGRESS
-   ========================================================= */
+            if (remainingSeconds <= 0) {
+                remainingSeconds = 0;
+                updateTimer();
+                stopTimer();
+                submitTest(true);
+                return;
+            }
 
-function updateProgress() {
+            updateTimer();
 
-    const total =
-        testData.questions.length;
-
-    const answered =
-        Object.keys(answers).length;
-
-    const progress =
-        ((currentQuestion + 1) / total) * 100;
-
-    document
-        .getElementById('progressText')
-        .textContent =
-            `Câu ${currentQuestion + 1} / ${total}`;
-
-    document
-        .getElementById('answeredText')
-        .textContent =
-            `Đã trả lời: ${answered}`;
-
-    document
-        .getElementById('progressBar')
-        .style.width =
-            progress + '%';
-
-    document
-        .getElementById('fixedProgress')
-        .textContent =
-            `Câu ${currentQuestion + 1} / ${total}`;
-
-}
-
-
-/* =========================================================
-   NAVIGATION BUTTON
-   ========================================================= */
-
-function updateNavigation() {
-
-    const button =
-        document.getElementById('nextButton');
-
-    const isLast =
-        currentQuestion ===
-        testData.questions.length - 1;
-
-    if (isLast) {
-
-        button.textContent =
-            'Nộp bài';
-
-        button.classList.remove(
-            'btn-primary'
-        );
-
-        button.classList.add(
-            'btn-danger'
-        );
-
-    } else {
-
-        button.textContent =
-            'Câu tiếp theo →';
-
-        button.classList.remove(
-            'btn-danger'
-        );
-
-        button.classList.add(
-            'btn-primary'
-        );
-
+        }, 1000);
     }
 
-}
 
-
-/* =========================================================
-   SUBMIT
-   ========================================================= */
-
-async function submitTest(isAutomatic) {
-
-    if (testSubmitted) {
-        return;
+    function stopTimer() {
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
     }
 
-    testSubmitted = true;
 
-    clearInterval(timerInterval);
+    function updateTimer() {
+        const minutes =
+            Math.floor(remainingSeconds / 60)
+                .toString()
+                .padStart(2, '0');
 
-    const result =
-        calculateResult();
+        const seconds =
+            (remainingSeconds % 60)
+                .toString()
+                .padStart(2, '0');
 
-    const employeeName =
-        document
-            .getElementById('employeeName')
-            .value
-            .trim();
+        timerText.textContent =
+            `${minutes}:${seconds}`;
 
-    const payload = {
+        timer.classList.remove(
+            'warning',
+            'danger'
+        );
 
-        employee_name:
-            employeeName,
+        if (remainingSeconds <= 60) {
+            timer.classList.add('danger');
+        } else if (remainingSeconds <= 180) {
+            timer.classList.add('warning');
+        }
+    }
 
-        test_title:
-            testData.title || '',
 
-        total_questions:
-            result.total,
+    function calculateResult() {
+        let correct = 0;
 
-        correct:
-            result.correct,
+        questions.forEach((question, index) => {
 
-        wrong:
-            result.wrong,
+            if (
+                Number.isInteger(answers[index]) &&
+                answers[index] === Number(question.answer_index)
+            ) {
+                correct++;
+            }
+        });
 
-        unanswered:
-            result.unanswered,
+        const total = questions.length;
+        const wrong = total - correct;
+        const percentage =
+            total > 0
+                ? Math.round((correct / total) * 100)
+                : 0;
 
-        score:
-            result.score,
+        return {
+            correct,
+            wrong,
+            total,
+            percentage
+        };
+    }
 
-        auto_submitted:
-            isAutomatic,
 
-        submitted_at:
-            new Date().toISOString(),
+    async function submitTest(timeExpired = false) {
 
-        details:
-            result.details
+        stopTimer();
 
-    };
+        /*
+         * Nếu người dùng đang ở câu cuối và đã chọn đáp án,
+         * answer đã được lưu qua nextQuestion().
+         *
+         * Nếu hết giờ giữa một câu, đáp án đã chọn vẫn được giữ
+         * trong mảng answers vì sự kiện change không bắt buộc ở đây.
+         * Do đó lưu lại lựa chọn hiện tại trước khi tính điểm.
+         */
+        const selected =
+            document.querySelector('input[name="question"]:checked');
 
-    showResult(result);
+        if (selected && currentQuestion < answers.length) {
+            answers[currentQuestion] =
+                Number(selected.value);
+        }
 
-    if (APPS_SCRIPT_URL) {
+        const result = calculateResult();
 
+        score.textContent =
+            `${result.percentage}%`;
+
+        correctCount.textContent =
+            result.correct;
+
+        wrongCount.textContent =
+            result.wrong;
+
+        resultTotal.textContent =
+            result.total;
+
+        if (timeExpired) {
+            resultMessage.textContent =
+                'Hết thời gian. Bài test đã được tự động nộp.';
+        } else {
+            resultMessage.textContent =
+                'Bài test đã được ghi nhận.';
+        }
+
+        showOnly(resultScreen);
+
+        const payload = {
+            employee_name: employeeName.value.trim(),
+            test_title: testData?.title || '',
+            total_questions: result.total,
+            correct_answers: result.correct,
+            wrong_answers: result.wrong,
+            score_percentage: result.percentage,
+            time_expired: timeExpired,
+            started_at: testStartedAt,
+            submitted_at: new Date().toISOString(),
+            answers: answers
+        };
+
+        if (APPS_SCRIPT_URL) {
+            sendResultToAppsScript(payload);
+        }
+    }
+
+
+    async function sendResultToAppsScript(payload) {
         try {
 
-            await fetch(
-                APPS_SCRIPT_URL,
-                {
-                    method: 'POST',
+            await fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: JSON.stringify(payload)
+            });
 
-                    headers: {
-                        'Content-Type':
-                            'text/plain;charset=utf-8'
-                    },
-
-                    body:
-                        JSON.stringify(payload)
-                }
-            );
-
-            console.log(
-                'Đã gửi kết quả lên Apps Script.'
-            );
+            console.log('Đã gửi kết quả tới Apps Script.');
 
         } catch (error) {
 
             console.error(
-                'Lỗi gửi kết quả:',
+                'Không gửi được kết quả tới Apps Script:',
                 error
             );
 
-            alert(
-                'Bài test đã được chấm nhưng không gửi được kết quả lên máy chủ.'
-            );
-
         }
-
     }
 
-}
 
+    startButton.addEventListener('click', startTest);
 
-/* =========================================================
-   CALCULATE RESULT
-   ========================================================= */
+    nextButton.addEventListener('click', nextQuestion);
 
-function calculateResult() {
-
-    let correct = 0;
-
-    let wrong = 0;
-
-    let unanswered = 0;
-
-    const details = [];
-
-    testData.questions.forEach(
-        question => {
-
-            const selected =
-                answers[question.id];
-
-            if (selected === undefined) {
-
-                unanswered++;
-
-                details.push({
-
-                    id:
-                        question.id,
-
-                    selected_index:
-                        null,
-
-                    selected_letter:
-                        null,
-
-                    correct_index:
-                        question.answer_index,
-
-                    correct_letter:
-                        question.answer_letter,
-
-                    is_correct:
-                        false
-
-                });
-
-                return;
-            }
-
-            const isCorrect =
-                selected ===
-                question.answer_index;
-
-            if (isCorrect) {
-
-                correct++;
-
-            } else {
-
-                wrong++;
-
-            }
-
-            details.push({
-
-                id:
-                    question.id,
-
-                selected_index:
-                    selected,
-
-                selected_letter:
-                    ['A', 'B', 'C', 'D'][selected],
-
-                correct_index:
-                    question.answer_index,
-
-                correct_letter:
-                    question.answer_letter,
-
-                is_correct:
-                    isCorrect
-
-            });
-
-        }
-    );
-
-    const total =
-        testData.questions.length;
-
-    const score =
-        Number(
-            (
-                (correct / total) * 10
-            ).toFixed(2)
-        );
-
-    return {
-
-        total,
-        correct,
-        wrong,
-        unanswered,
-        score,
-        details
-
-    };
-
-}
-
-
-/* =========================================================
-   RESULT
-   ========================================================= */
-
-function showResult(result) {
-
-    document
-        .getElementById('testScreen')
-        .classList.add('hidden');
-
-    document
-        .getElementById('resultScreen')
-        .classList.remove('hidden');
-
-    document
-        .getElementById('resultScore')
-        .textContent =
-            result.score + '/10';
-
-    document
-        .getElementById('resultTotal')
-        .textContent =
-            result.total;
-
-    document
-        .getElementById('resultCorrect')
-        .textContent =
-            result.correct;
-
-    document
-        .getElementById('resultWrong')
-        .textContent =
-            result.wrong;
-
-    document
-        .getElementById('resultUnanswered')
-        .textContent =
-            result.unanswered;
-
-    document
-        .getElementById('resultMessage')
-        .textContent =
-            'Kết quả bài test đã được ghi nhận.';
-
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    employeeName.addEventListener('input', () => {
+        employeeName.style.borderColor = '';
     });
 
-}
+    employeeName.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            startTest();
+        }
+    });
 
-
-/* =========================================================
-   ESCAPE HTML
-   ========================================================= */
-
-function escapeHtml(value) {
-
-    return String(value ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-
-}
-
-
-/* =========================================================
-   START
-   ========================================================= */
-
-loadQuestions();
-
+    loadQuestions();
 </script>
 
 </body>
