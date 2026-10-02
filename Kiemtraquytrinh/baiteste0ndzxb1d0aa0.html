@@ -7,6 +7,16 @@
 
 <title>Bài Test Đào Tạo Nhân Sự · Tascus Food</title>
 
+<!-- Font hỗ trợ tiếng Việt -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
 <style>
 
 * {
@@ -17,17 +27,26 @@ html {
     scroll-behavior: smooth;
 }
 
+body,
+button,
+input,
+textarea,
+select {
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+}
+
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
     background: #f5f6f8;
     color: #222;
     padding-bottom: 90px;
-}
 
-/* =========================
-   HEADER
-   ========================= */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 .header {
     background: #fff;
@@ -46,17 +65,15 @@ body {
 .brand {
     font-size: 20px;
     font-weight: 800;
+    letter-spacing: -0.3px;
 }
 
 .subtitle {
     margin-top: 4px;
     font-size: 13px;
+    font-weight: 400;
     color: #777;
 }
-
-/* =========================
-   CONTAINER
-   ========================= */
 
 .container {
     max-width: 900px;
@@ -72,21 +89,19 @@ body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* =========================
-   START SCREEN
-   ========================= */
-
 .intro-title {
     font-size: 25px;
     font-weight: 800;
     margin: 0 0 10px;
     line-height: 1.35;
+    letter-spacing: -0.4px;
 }
 
 .intro-description {
     color: #666;
     line-height: 1.6;
     margin-bottom: 22px;
+    font-size: 14px;
 }
 
 .form-group label {
@@ -102,7 +117,10 @@ body {
     border: 1px solid #d8d8d8;
     border-radius: 8px;
     font-size: 16px;
+    font-weight: 400;
     outline: none;
+    color: #222;
+    background: #fff;
 }
 
 .form-group input:focus {
@@ -121,42 +139,15 @@ body {
     flex-wrap: wrap;
 }
 
-/* =========================
-   BUTTON
-   ========================= */
-
 button {
     border: 0;
     border-radius: 8px;
     padding: 13px 20px;
+    font-family: "Inter", Arial, sans-serif;
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
 }
-
-button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-}
-
-.btn-primary {
-    background: #222;
-    color: #fff;
-}
-
-.btn-danger {
-    background: #b42318;
-    color: #fff;
-}
-
-.btn-secondary {
-    background: #eee;
-    color: #222;
-}
-
-/* =========================
-   TIMER
-   ========================= */
 
 .timer-area {
     display: flex;
@@ -168,6 +159,7 @@ button:disabled {
 
 .timer-label {
     font-size: 13px;
+    font-weight: 500;
     color: #777;
 }
 
@@ -175,48 +167,12 @@ button:disabled {
     font-size: 24px;
     font-weight: 900;
     font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
 }
-
-.timer.warning {
-    color: #b42318;
-}
-
-/* =========================
-   PROGRESS
-   ========================= */
-
-.progress-wrapper {
-    margin-bottom: 18px;
-}
-
-.progress-top {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 7px;
-}
-
-.progress {
-    height: 7px;
-    background: #e8e8e8;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background: #222;
-    transition: width 0.2s ease;
-}
-
-/* =========================
-   QUESTION
-   ========================= */
 
 .question-number {
     font-size: 13px;
+    font-weight: 600;
     color: #777;
     margin-bottom: 10px;
 }
@@ -225,6 +181,7 @@ button:disabled {
     display: inline-block;
     margin-top: 5px;
     font-size: 12px;
+    font-weight: 400;
     color: #888;
 }
 
@@ -232,23 +189,8 @@ button:disabled {
     font-size: 20px;
     font-weight: 700;
     line-height: 1.5;
+    letter-spacing: -0.2px;
     margin-bottom: 22px;
-}
-
-.options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.option {
-    position: relative;
-}
-
-.option input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
 }
 
 .option label {
@@ -258,11 +200,10 @@ button:disabled {
     border-radius: 9px;
     cursor: pointer;
     line-height: 1.5;
+    font-size: 15px;
+    font-weight: 400;
+    color: #222;
     transition: 0.15s;
-}
-
-.option label:hover {
-    background: #f7f7f7;
 }
 
 .option input:checked + label {
@@ -276,10 +217,6 @@ button:disabled {
     width: 28px;
     font-weight: 800;
 }
-
-/* =========================
-   FIXED NAVIGATION
-   ========================= */
 
 .fixed-navigation {
     position: fixed;
@@ -296,6 +233,7 @@ button:disabled {
     box-shadow: 0 -3px 15px rgba(0,0,0,0.08);
 
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .fixed-navigation-inner {
@@ -310,6 +248,7 @@ button:disabled {
 
 .current-progress {
     font-size: 13px;
+    font-weight: 600;
     color: #666;
     white-space: nowrap;
 }
@@ -318,36 +257,17 @@ button:disabled {
     min-width: 150px;
 }
 
-/* =========================
-   RESULT
-   ========================= */
-
-.result {
-    text-align: center;
-}
-
 .result-score {
     font-size: 58px;
     font-weight: 900;
     margin: 15px 0 5px;
+    letter-spacing: -1px;
 }
 
 .result-label {
     color: #777;
+    font-size: 14px;
     margin-bottom: 25px;
-}
-
-.result-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-.result-item {
-    background: #f6f6f6;
-    padding: 15px;
-    border-radius: 9px;
 }
 
 .result-number {
@@ -358,24 +278,15 @@ button:disabled {
 
 .result-name {
     font-size: 12px;
+    font-weight: 400;
     color: #777;
 }
-
-.result-message {
-    padding: 14px;
-    border-radius: 8px;
-    background: #f6f6f6;
-    line-height: 1.5;
-}
-
-/* =========================
-   LOADING / ERROR
-   ========================= */
 
 .loading {
     text-align: center;
     padding: 50px 20px;
     color: #666;
+    font-size: 14px;
 }
 
 .error {
@@ -390,10 +301,6 @@ button:disabled {
     display: none !important;
 }
 
-/* =========================
-   DESKTOP
-   ========================= */
-
 @media (min-width: 701px) {
 
     .fixed-navigation {
@@ -401,6 +308,7 @@ button:disabled {
         border-top: 0;
         box-shadow: none;
         backdrop-filter: none;
+        -webkit-backdrop-filter: none;
         position: static;
         padding: 0;
     }
@@ -416,10 +324,6 @@ button:disabled {
         padding-bottom: 30px;
     }
 }
-
-/* =========================
-   MOBILE
-   ========================= */
 
 @media (max-width: 700px) {
 
@@ -453,19 +357,6 @@ button:disabled {
         font-size: 21px;
     }
 
-    .test-info {
-        flex-direction: column;
-        gap: 7px;
-    }
-
-    .timer-area {
-        margin-bottom: 12px;
-    }
-
-    .timer {
-        font-size: 22px;
-    }
-
     .question-text {
         font-size: 18px;
         line-height: 1.5;
@@ -473,6 +364,7 @@ button:disabled {
 
     .option label {
         padding: 14px;
+        font-size: 15px;
     }
 
     .fixed-navigation {
@@ -483,10 +375,6 @@ button:disabled {
             max(12px, env(safe-area-inset-left));
     }
 
-    .fixed-navigation-inner {
-        gap: 10px;
-    }
-
     .current-progress {
         font-size: 12px;
     }
@@ -495,15 +383,12 @@ button:disabled {
         flex: 1;
         min-width: 0;
     }
-
-    .result-grid {
-        grid-template-columns: 1fr 1fr;
-    }
 }
 
 </style>
 
 </head>
+
 
 <body>
 
