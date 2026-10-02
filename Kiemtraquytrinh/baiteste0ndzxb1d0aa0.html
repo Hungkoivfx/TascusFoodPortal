@@ -3,339 +3,504 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>Bài Test Đào Tạo Nhân Sự · Tascus Food</title>
 
 <style>
-    * {
-        box-sizing: border-box;
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f6f8;
+    color: #222;
+    padding-bottom: 90px;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.header {
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 17px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.header-inner {
+    max-width: 900px;
+    margin: auto;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.subtitle {
+    margin-top: 4px;
+    font-size: 13px;
+    color: #777;
+}
+
+/* =========================
+   CONTAINER
+   ========================= */
+
+.container {
+    max-width: 900px;
+    margin: 28px auto;
+    padding: 0 16px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   START SCREEN
+   ========================= */
+
+.intro-title {
+    font-size: 25px;
+    font-weight: 800;
+    margin: 0 0 10px;
+    line-height: 1.35;
+}
+
+.intro-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #222;
+}
+
+.test-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 18px;
+    padding: 14px 15px;
+    background: #f7f7f7;
+    border-radius: 9px;
+    font-size: 14px;
+    flex-wrap: wrap;
+}
+
+/* =========================
+   BUTTON
+   ========================= */
+
+button {
+    border: 0;
+    border-radius: 8px;
+    padding: 13px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #222;
+    color: #fff;
+}
+
+.btn-danger {
+    background: #b42318;
+    color: #fff;
+}
+
+.btn-secondary {
+    background: #eee;
+    color: #222;
+}
+
+/* =========================
+   TIMER
+   ========================= */
+
+.timer-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.timer-label {
+    font-size: 13px;
+    color: #777;
+}
+
+.timer {
+    font-size: 24px;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer.warning {
+    color: #b42318;
+}
+
+/* =========================
+   PROGRESS
+   ========================= */
+
+.progress-wrapper {
+    margin-bottom: 18px;
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 7px;
+}
+
+.progress {
+    height: 7px;
+    background: #e8e8e8;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #222;
+    transition: width 0.2s ease;
+}
+
+/* =========================
+   QUESTION
+   ========================= */
+
+.question-number {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.question-category {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #888;
+}
+
+.question-text {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 22px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option {
+    position: relative;
+}
+
+.option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.option label {
+    display: block;
+    padding: 15px 16px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    cursor: pointer;
+    line-height: 1.5;
+    transition: 0.15s;
+}
+
+.option label:hover {
+    background: #f7f7f7;
+}
+
+.option input:checked + label {
+    border-color: #222;
+    background: #f1f1f1;
+    font-weight: 600;
+}
+
+.option-letter {
+    display: inline-block;
+    width: 28px;
+    font-weight: 800;
+}
+
+/* =========================
+   FIXED NAVIGATION
+   ========================= */
+
+.fixed-navigation {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+
+    background: rgba(255,255,255,0.96);
+    border-top: 1px solid #ddd;
+
+    padding: 10px 16px;
+
+    box-shadow: 0 -3px 15px rgba(0,0,0,0.08);
+
+    backdrop-filter: blur(8px);
+}
+
+.fixed-navigation-inner {
+    max-width: 900px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.current-progress {
+    font-size: 13px;
+    color: #666;
+    white-space: nowrap;
+}
+
+.next-button {
+    min-width: 150px;
+}
+
+/* =========================
+   RESULT
+   ========================= */
+
+.result {
+    text-align: center;
+}
+
+.result-score {
+    font-size: 58px;
+    font-weight: 900;
+    margin: 15px 0 5px;
+}
+
+.result-label {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.result-item {
+    background: #f6f6f6;
+    padding: 15px;
+    border-radius: 9px;
+}
+
+.result-number {
+    display: block;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.result-name {
+    font-size: 12px;
+    color: #777;
+}
+
+.result-message {
+    padding: 14px;
+    border-radius: 8px;
+    background: #f6f6f6;
+    line-height: 1.5;
+}
+
+/* =========================
+   LOADING / ERROR
+   ========================= */
+
+.loading {
+    text-align: center;
+    padding: 50px 20px;
+    color: #666;
+}
+
+.error {
+    padding: 20px;
+    background: #fff0f0;
+    color: #a40000;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================
+   DESKTOP
+   ========================= */
+
+@media (min-width: 701px) {
+
+    .fixed-navigation {
+        background: transparent;
+        border-top: 0;
+        box-shadow: none;
+        backdrop-filter: none;
+        position: static;
+        padding: 0;
     }
 
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f5f6f8;
-        color: #222;
-    }
-
-    .header {
-        background: #ffffff;
-        border-bottom: 1px solid #e5e5e5;
-        padding: 18px 20px;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
-
-    .header-inner {
-        max-width: 900px;
-        margin: auto;
-    }
-
-    .brand {
-        font-size: 20px;
-        font-weight: 800;
-        color: #111;
-    }
-
-    .subtitle {
-        margin-top: 4px;
-        font-size: 13px;
-        color: #777;
-    }
-
-    .container {
-        max-width: 900px;
-        margin: 30px auto;
-        padding: 0 16px 50px;
-    }
-
-    .card {
+    .fixed-navigation-inner {
         background: #fff;
-        border-radius: 14px;
-        padding: 24px;
-        margin-bottom: 18px;
+        border-radius: 12px;
+        padding: 12px 16px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
+    body {
+        padding-bottom: 30px;
+    }
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding-bottom: 82px;
+    }
+
+    .header {
+        padding: 13px 16px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .container {
+        margin: 18px auto;
+        padding: 0 12px;
+    }
+
+    .card {
+        padding: 18px;
+        border-radius: 11px;
+    }
+
     .intro-title {
-        font-size: 25px;
-        font-weight: 800;
-        margin: 0 0 8px;
-    }
-
-    .intro-description {
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 22px;
-    }
-
-    .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-    }
-
-    .form-group label {
-        display: block;
-        font-size: 13px;
-        font-weight: 700;
-        margin-bottom: 7px;
-    }
-
-    .form-group input {
-        width: 100%;
-        padding: 12px 13px;
-        border: 1px solid #d9d9d9;
-        border-radius: 8px;
-        font-size: 15px;
-        outline: none;
-    }
-
-    .form-group input:focus {
-        border-color: #333;
+        font-size: 21px;
     }
 
     .test-info {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-        margin-top: 18px;
-        padding: 13px 15px;
-        background: #f7f7f7;
-        border-radius: 9px;
-        font-size: 14px;
+        flex-direction: column;
+        gap: 7px;
     }
 
-    .progress-wrapper {
-        margin-bottom: 18px;
+    .timer-area {
+        margin-bottom: 12px;
     }
 
-    .progress-top {
-        display: flex;
-        justify-content: space-between;
-        font-size: 13px;
-        color: #666;
-        margin-bottom: 7px;
-    }
-
-    .progress {
-        height: 7px;
-        background: #e8e8e8;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    .progress-bar {
-        height: 100%;
-        width: 0%;
-        background: #222;
-        transition: width 0.2s ease;
-    }
-
-    .question-number {
-        font-size: 13px;
-        color: #777;
-        margin-bottom: 9px;
+    .timer {
+        font-size: 22px;
     }
 
     .question-text {
-        font-size: 19px;
-        font-weight: 700;
+        font-size: 18px;
         line-height: 1.5;
-        margin-bottom: 20px;
-    }
-
-    .options {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .option {
-        position: relative;
-    }
-
-    .option input {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
     }
 
     .option label {
-        display: block;
-        padding: 14px 16px;
-        border: 1px solid #ddd;
-        border-radius: 9px;
-        cursor: pointer;
-        line-height: 1.5;
-        transition: 0.15s;
+        padding: 14px;
     }
 
-    .option label:hover {
-        background: #f7f7f7;
+    .fixed-navigation {
+        padding:
+            9px
+            max(12px, env(safe-area-inset-right))
+            calc(9px + env(safe-area-inset-bottom))
+            max(12px, env(safe-area-inset-left));
     }
 
-    .option input:checked + label {
-        border-color: #222;
-        background: #f1f1f1;
-        font-weight: 600;
-    }
-
-    .option-letter {
-        display: inline-block;
-        width: 28px;
-        font-weight: 800;
-    }
-
-    .navigation {
-        display: flex;
-        justify-content: space-between;
+    .fixed-navigation-inner {
         gap: 10px;
-        margin-top: 22px;
     }
 
-    button {
-        border: 0;
-        border-radius: 8px;
-        padding: 12px 20px;
-        font-size: 14px;
-        font-weight: 700;
-        cursor: pointer;
-    }
-
-    .btn-secondary {
-        background: #eeeeee;
-        color: #222;
-    }
-
-    .btn-primary {
-        background: #222;
-        color: white;
-    }
-
-    .btn-danger {
-        background: #b42318;
-        color: white;
-    }
-
-    button:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
-
-    .question-map {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        gap: 6px;
-        margin-top: 18px;
-    }
-
-    .question-map button {
-        padding: 8px 0;
-        background: #eee;
+    .current-progress {
         font-size: 12px;
-        border-radius: 6px;
     }
 
-    .question-map button.answered {
-        background: #222;
-        color: white;
-    }
-
-    .question-map button.current {
-        outline: 2px solid #888;
-    }
-
-    .result {
-        text-align: center;
-    }
-
-    .result-score {
-        font-size: 58px;
-        font-weight: 900;
-        margin: 15px 0 5px;
-    }
-
-    .result-label {
-        color: #777;
-        margin-bottom: 25px;
+    .next-button {
+        flex: 1;
+        min-width: 0;
     }
 
     .result-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-bottom: 25px;
+        grid-template-columns: 1fr 1fr;
     }
+}
 
-    .result-item {
-        background: #f6f6f6;
-        padding: 15px;
-        border-radius: 9px;
-    }
-
-    .result-number {
-        display: block;
-        font-size: 24px;
-        font-weight: 800;
-    }
-
-    .result-name {
-        font-size: 12px;
-        color: #777;
-    }
-
-    .result-message {
-        padding: 14px;
-        border-radius: 8px;
-        background: #f6f6f6;
-        line-height: 1.5;
-    }
-
-    .hidden {
-        display: none !important;
-    }
-
-    .loading {
-        text-align: center;
-        padding: 50px 20px;
-        color: #666;
-    }
-
-    .error {
-        padding: 20px;
-        background: #fff0f0;
-        color: #a40000;
-        border-radius: 10px;
-        line-height: 1.6;
-    }
-
-    @media (max-width: 650px) {
-        .form-row {
-            grid-template-columns: 1fr;
-        }
-
-        .test-info {
-            flex-direction: column;
-        }
-
-        .question-map {
-            grid-template-columns: repeat(8, 1fr);
-        }
-
-        .question-text {
-            font-size: 17px;
-        }
-
-        .card {
-            padding: 18px;
-        }
-
-        .result-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
 </style>
 
 </head>
@@ -344,53 +509,71 @@
 
 <header class="header">
     <div class="header-inner">
-        <div class="brand">Tascus Food</div>
-        <div class="subtitle">Bài kiểm tra đào tạo nhân sự</div>
+
+```
+    <div class="brand">
+        Tascus Food
     </div>
+
+    <div class="subtitle">
+        Bài kiểm tra đào tạo nhân sự
+    </div>
+
+</div>
+```
+
 </header>
 
 <div class="container">
 
+```
+<!-- =========================
+     LOADING
+     ========================= -->
 
-<!-- LOADING -->
 <div id="loading" class="card loading">
     Đang tải dữ liệu bài test...
 </div>
 
-<!-- ERROR -->
+
+<!-- =========================
+     ERROR
+     ========================= -->
+
 <div id="error" class="card error hidden"></div>
 
-<!-- START -->
+
+<!-- =========================
+     START SCREEN
+     ========================= -->
+
 <div id="startScreen" class="card hidden">
 
     <h1 id="testTitle" class="intro-title"></h1>
 
-    <div id="testDescription" class="intro-description"></div>
+    <div id="testDescription"
+         class="intro-description">
+    </div>
 
-    <div class="form-row">
 
-        <div class="form-group">
-            <label for="employeeName">Họ và tên</label>
-            <input
-                id="employeeName"
-                type="text"
-                placeholder="Nhập họ và tên"
-                autocomplete="name"
-            >
-        </div>
+    <div class="form-group">
 
-        <div class="form-group">
-            <label for="employeeId">Mã nhân sự</label>
-            <input
-                id="employeeId"
-                type="text"
-                placeholder="Nhập mã nhân sự"
-            >
-        </div>
+        <label for="employeeName">
+            Họ và tên
+        </label>
+
+        <input
+            id="employeeName"
+            type="text"
+            placeholder="Nhập họ và tên"
+            autocomplete="name"
+        >
 
     </div>
 
+
     <div class="test-info">
+
         <span>
             Tổng số câu:
             <strong id="totalQuestions">0</strong>
@@ -405,90 +588,214 @@
             Công thức:
             <strong id="cookingQuestions">0</strong>
         </span>
+
+        <span>
+            Thời gian:
+            <strong>10 phút</strong>
+        </span>
+
     </div>
 
+
     <div style="margin-top:20px;">
-        <button class="btn-primary" onclick="startTest()">
+
+        <button
+            class="btn-primary"
+            onclick="startTest()"
+        >
             Bắt đầu bài test
         </button>
+
     </div>
 
 </div>
 
-<!-- TEST -->
+
+<!-- =========================
+     TEST SCREEN
+     ========================= -->
+
 <div id="testScreen" class="hidden">
+
+
+    <!-- TIMER -->
+
+    <div class="card timer-area">
+
+        <div>
+
+            <div class="timer-label">
+                Thời gian còn lại
+            </div>
+
+        </div>
+
+        <div id="timer"
+             class="timer">
+            10:00
+        </div>
+
+    </div>
+
+
+    <!-- PROGRESS -->
 
     <div class="progress-wrapper">
 
         <div class="progress-top">
-            <span id="progressText">Câu 1 / 80</span>
-            <span id="answeredText">Đã trả lời: 0</span>
+
+            <span id="progressText">
+                Câu 1 / 80
+            </span>
+
+            <span id="answeredText">
+                Đã trả lời: 0
+            </span>
+
         </div>
+
 
         <div class="progress">
-            <div id="progressBar" class="progress-bar"></div>
+
+            <div
+                id="progressBar"
+                class="progress-bar">
+            </div>
+
         </div>
 
     </div>
 
-    <div id="questionCard" class="card">
+
+    <!-- QUESTION -->
+
+    <div id="questionCard"
+         class="card">
     </div>
 
-    <div class="card">
 
-        <div style="font-size:13px;font-weight:700;">
-            Danh sách câu hỏi
+    <!-- FIXED NAVIGATION -->
+
+    <div class="fixed-navigation">
+
+        <div class="fixed-navigation-inner">
+
+            <div
+                id="fixedProgress"
+                class="current-progress">
+                Câu 1 / 80
+            </div>
+
+
+            <button
+                id="nextButton"
+                class="btn-primary next-button"
+                onclick="nextQuestion()"
+            >
+                Câu tiếp theo →
+            </button>
+
         </div>
-
-        <div id="questionMap" class="question-map"></div>
 
     </div>
 
 </div>
 
-<!-- RESULT -->
-<div id="resultScreen" class="card result hidden">
+
+<!-- =========================
+     RESULT
+     ========================= -->
+
+<div id="resultScreen"
+     class="card result hidden">
 
     <div style="font-size:14px;color:#777;">
         KẾT QUẢ BÀI TEST
     </div>
 
-    <div id="resultScore" class="result-score">
+
+    <div id="resultScore"
+         class="result-score">
         0/10
     </div>
+
 
     <div class="result-label">
         Điểm bài kiểm tra
     </div>
 
+
     <div class="result-grid">
 
         <div class="result-item">
-            <span id="resultTotal" class="result-number">0</span>
-            <span class="result-name">Tổng số câu</span>
+
+            <span
+                id="resultTotal"
+                class="result-number">
+                0
+            </span>
+
+            <span class="result-name">
+                Tổng số câu
+            </span>
+
         </div>
 
-        <div class="result-item">
-            <span id="resultCorrect" class="result-number">0</span>
-            <span class="result-name">Câu đúng</span>
-        </div>
 
         <div class="result-item">
-            <span id="resultWrong" class="result-number">0</span>
-            <span class="result-name">Câu sai</span>
+
+            <span
+                id="resultCorrect"
+                class="result-number">
+                0
+            </span>
+
+            <span class="result-name">
+                Câu đúng
+            </span>
+
         </div>
 
+
         <div class="result-item">
-            <span id="resultUnanswered" class="result-number">0</span>
-            <span class="result-name">Chưa trả lời</span>
+
+            <span
+                id="resultWrong"
+                class="result-number">
+                0
+            </span>
+
+            <span class="result-name">
+                Câu sai
+            </span>
+
+        </div>
+
+
+        <div class="result-item">
+
+            <span
+                id="resultUnanswered"
+                class="result-number">
+                0
+            </span>
+
+            <span class="result-name">
+                Chưa trả lời
+            </span>
+
         </div>
 
     </div>
 
-    <div id="resultMessage" class="result-message"></div>
+
+    <div
+        id="resultMessage"
+        class="result-message">
+    </div>
 
 </div>
-
+```
 
 </div>
 
@@ -501,26 +808,32 @@
 const QUESTIONS_FILE = './questions.json';
 
 /*
-   Khi có Apps Script, điền URL vào đây.
+    Sau này nếu dùng Apps Script,
+    điền URL Web App vào đây.
 
-   Ví dụ:
+    Ví dụ:
 
-   const APPS_SCRIPT_URL =
-       'https://script.google.com/macros/s/XXXXXXXX/exec';
-
-   Hiện tại để rỗng để chỉ chạy frontend.
+    const APPS_SCRIPT_URL =
+        'https://script.google.com/macros/s/XXXXXXXX/exec';
 */
+
 const APPS_SCRIPT_URL = '';
 
-
 /* =========================================================
-   BIẾN HỆ THỐNG
+   BIẾN
    ========================================================= */
 
 let testData = null;
+
 let currentQuestion = 0;
+
 let answers = {};
 
+let timerInterval = null;
+
+let remainingSeconds = 600;
+
+let testSubmitted = false;
 
 /* =========================================================
    LOAD JSON
@@ -530,51 +843,72 @@ async function loadQuestions() {
 
     try {
 
-        const response = await fetch(QUESTIONS_FILE);
+        const response =
+            await fetch(QUESTIONS_FILE);
 
         if (!response.ok) {
+
             throw new Error(
                 'HTTP ' + response.status
             );
+
         }
 
-        testData = await response.json();
+        testData =
+            await response.json();
 
-        if (!testData.questions ||
-            !Array.isArray(testData.questions)) {
+        if (
+            !testData.questions ||
+            !Array.isArray(testData.questions)
+        ) {
 
             throw new Error(
                 'File JSON không có mảng questions hợp lệ.'
             );
+
         }
 
-        document.getElementById('loading')
+        document
+            .getElementById('loading')
             .classList.add('hidden');
 
-        document.getElementById('startScreen')
+        document
+            .getElementById('startScreen')
             .classList.remove('hidden');
 
-        document.getElementById('testTitle')
-            .textContent = testData.title || 'Bài kiểm tra';
+        document
+            .getElementById('testTitle')
+            .textContent =
+                testData.title ||
+                'Bài kiểm tra';
 
-        document.getElementById('testDescription')
-            .textContent = testData.description || '';
+        document
+            .getElementById('testDescription')
+            .textContent =
+                testData.description || '';
 
-        document.getElementById('totalQuestions')
-            .textContent = testData.total_questions ||
-                           testData.questions.length;
+        document
+            .getElementById('totalQuestions')
+            .textContent =
+                testData.total_questions ||
+                testData.questions.length;
 
-        document.getElementById('sopQuestions')
-            .textContent = testData.sop_questions_count || 0;
+        document
+            .getElementById('sopQuestions')
+            .textContent =
+                testData.sop_questions_count || 0;
 
-        document.getElementById('cookingQuestions')
-            .textContent = testData.cooking_questions_count || 0;
+        document
+            .getElementById('cookingQuestions')
+            .textContent =
+                testData.cooking_questions_count || 0;
 
     } catch (error) {
 
         console.error(error);
 
-        document.getElementById('loading')
+        document
+            .getElementById('loading')
             .classList.add('hidden');
 
         const errorBox =
@@ -583,61 +917,148 @@ async function loadQuestions() {
         errorBox.classList.remove('hidden');
 
         errorBox.innerHTML = `
-            <strong>Không thể tải bài test.</strong><br><br>
-            Kiểm tra lại file <strong>questions.json</strong>
-            có nằm cùng thư mục với file HTML hay không.
+            <strong>
+                Không thể tải bài test.
+            </strong>
+
             <br><br>
-            Chi tiết: ${escapeHtml(error.message)}
+
+            Kiểm tra file
+            <strong>questions.json</strong>
+            có nằm cùng thư mục với file HTML hay không.
+
+            <br><br>
+
+            Chi tiết:
+            ${escapeHtml(error.message)}
         `;
+
     }
+
 }
 
-
 /* =========================================================
-   BẮT ĐẦU TEST
+   START TEST
    ========================================================= */
 
 function startTest() {
 
     const name =
-        document.getElementById('employeeName')
-            .value.trim();
-
-    const employeeId =
-        document.getElementById('employeeId')
-            .value.trim();
+        document
+            .getElementById('employeeName')
+            .value
+            .trim();
 
     if (!name) {
-        alert('Vui lòng nhập họ và tên.');
-        return;
-    }
 
-    if (!employeeId) {
-        alert('Vui lòng nhập mã nhân sự.');
+        alert(
+            'Vui lòng nhập họ và tên.'
+        );
+
         return;
     }
 
     currentQuestion = 0;
+
     answers = {};
 
-    document.getElementById('startScreen')
+    testSubmitted = false;
+
+    remainingSeconds = 600;
+
+    document
+        .getElementById('startScreen')
         .classList.add('hidden');
 
-    document.getElementById('testScreen')
+    document
+        .getElementById('testScreen')
         .classList.remove('hidden');
 
-    renderQuestionMap();
     renderQuestion();
+
+    updateTimerDisplay();
+
+    startTimer();
 
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
+
 }
 
+/* =========================================================
+   TIMER
+   ========================================================= */
+
+function startTimer() {
+
+    clearInterval(timerInterval);
+
+    timerInterval =
+        setInterval(() => {
+
+            remainingSeconds--;
+
+            updateTimerDisplay();
+
+            if (remainingSeconds <= 0) {
+
+                clearInterval(timerInterval);
+
+                autoSubmitTest();
+
+            }
+
+        }, 1000);
+
+}
+
+function updateTimerDisplay() {
+
+    const timer =
+        document.getElementById('timer');
+
+    const minutes =
+        Math.floor(
+            remainingSeconds / 60
+        );
+
+    const seconds =
+        remainingSeconds % 60;
+
+    timer.textContent =
+        String(minutes).padStart(2, '0')
+        + ':' +
+        String(seconds).padStart(2, '0');
+
+    timer.classList.toggle(
+        'warning',
+        remainingSeconds <= 60
+    );
+
+}
 
 /* =========================================================
-   HIỂN THỊ CÂU HỎI
+   AUTO SUBMIT
+   ========================================================= */
+
+function autoSubmitTest() {
+
+    if (testSubmitted) {
+        return;
+    }
+
+    alert(
+        'Đã hết 10 phút. Bài test sẽ được tự động nộp.'
+    );
+
+    submitTest(true);
+
+}
+
+/* =========================================================
+   RENDER QUESTION
    ========================================================= */
 
 function renderQuestion() {
@@ -645,119 +1066,99 @@ function renderQuestion() {
     const question =
         testData.questions[currentQuestion];
 
-    if (!question) return;
+    if (!question) {
+        return;
+    }
 
-    const selectedAnswer =
-        answers[question.id];
-
-    const optionLetters = ['A', 'B', 'C', 'D'];
+    const optionLetters =
+        ['A', 'B', 'C', 'D'];
 
     let optionsHTML = '';
 
-    optionLetters.forEach((letter, index) => {
+    optionLetters.forEach(
+        (letter, index) => {
 
-        if (!question.options[letter]) return;
-
-        const checked =
-            selectedAnswer === index
-                ? 'checked'
-                : '';
-
-        optionsHTML += `
-            <div class="option">
-
-                <input
-                    type="radio"
-                    id="answer_${question.id}_${letter}"
-                    name="question_${question.id}"
-                    value="${index}"
-                    ${checked}
-                    onchange="selectAnswer(${index})"
-                >
-
-                <label
-                    for="answer_${question.id}_${letter}"
-                >
-                    <span class="option-letter">
-                        ${letter}.
-                    </span>
-
-                    ${escapeHtml(
-                        question.options[letter]
-                    )}
-                </label>
-
-            </div>
-        `;
-    });
-
-    const isLast =
-        currentQuestion ===
-        testData.questions.length - 1;
-
-    document.getElementById('questionCard')
-        .innerHTML = `
-
-        <div class="question-number">
-            Câu ${currentQuestion + 1}
-            /
-            ${testData.questions.length}
-
-            · ${escapeHtml(
-                question.category || ''
-            )}
-        </div>
-
-        <div class="question-text">
-            ${escapeHtml(question.question)}
-        </div>
-
-        <div class="options">
-            ${optionsHTML}
-        </div>
-
-        <div class="navigation">
-
-            <button
-                class="btn-secondary"
-                onclick="previousQuestion()"
-                ${currentQuestion === 0 ? 'disabled' : ''}
-            >
-                ← Câu trước
-            </button>
-
-            ${
-                isLast
-                ?
-                `
-                <button
-                    class="btn-danger"
-                    onclick="submitTest()"
-                >
-                    Nộp bài
-                </button>
-                `
-                :
-                `
-                <button
-                    class="btn-primary"
-                    onclick="nextQuestion()"
-                >
-                    Câu tiếp theo →
-                </button>
-                `
+            if (!question.options[letter]) {
+                return;
             }
 
-        </div>
-    `;
+            optionsHTML += `
+
+                <div class="option">
+
+                    <input
+                        type="radio"
+                        id="answer_${question.id}_${letter}"
+                        name="question_${question.id}"
+                        value="${index}"
+                        onchange="selectAnswer(${index})"
+                    >
+
+                    <label
+                        for="answer_${question.id}_${letter}"
+                    >
+
+                        <span class="option-letter">
+                            ${letter}.
+                        </span>
+
+                        ${escapeHtml(
+                            question.options[letter]
+                        )}
+
+                    </label>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+    document
+        .getElementById('questionCard')
+        .innerHTML = `
+
+            <div class="question-number">
+
+                Câu ${currentQuestion + 1}
+                /
+                ${testData.questions.length}
+
+                <div class="question-category">
+
+                    ${escapeHtml(
+                        question.category || ''
+                    )}
+
+                </div>
+
+            </div>
+
+            <div class="question-text">
+
+                ${escapeHtml(
+                    question.question
+                )}
+
+            </div>
+
+            <div class="options">
+
+                ${optionsHTML}
+
+            </div>
+
+        `;
 
     updateProgress();
-    updateQuestionMap();
+
+    updateNavigation();
+
 }
 
-
 /* =========================================================
-   CHỌN ĐÁP ÁN
+   SELECT ANSWER
    ========================================================= */
 
 function selectAnswer(index) {
@@ -768,52 +1169,51 @@ function selectAnswer(index) {
     answers[question.id] = index;
 
     updateProgress();
-    updateQuestionMap();
+
+    updateNavigation();
+
 }
 
-
 /* =========================================================
-   ĐIỀU HƯỚNG
+   NEXT QUESTION
    ========================================================= */
 
 function nextQuestion() {
 
+    const question =
+        testData.questions[currentQuestion];
+
+    /*
+        Không cho đi tiếp nếu chưa chọn.
+    */
+
     if (
-        currentQuestion <
+        answers[question.id] === undefined
+    ) {
+
+        alert(
+            'Vui lòng chọn một đáp án trước khi tiếp tục.'
+        );
+
+        return;
+    }
+
+    /*
+        Nếu là câu cuối:
+        nộp bài.
+    */
+
+    if (
+        currentQuestion ===
         testData.questions.length - 1
     ) {
 
-        currentQuestion++;
+        submitTest(false);
 
-        renderQuestion();
-
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        return;
     }
-}
 
-
-function previousQuestion() {
-
-    if (currentQuestion > 0) {
-
-        currentQuestion--;
-
-        renderQuestion();
-
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-}
-
-
-function goToQuestion(index) {
-
-    currentQuestion = index;
+    currentQuestion++;
 
     renderQuestion();
 
@@ -821,11 +1221,11 @@ function goToQuestion(index) {
         top: 0,
         behavior: 'smooth'
     });
+
 }
 
-
 /* =========================================================
-   TIẾN ĐỘ
+   PROGRESS
    ========================================================= */
 
 function updateProgress() {
@@ -839,191 +1239,99 @@ function updateProgress() {
     const progress =
         ((currentQuestion + 1) / total) * 100;
 
-    document.getElementById('progressText')
+    document
+        .getElementById('progressText')
         .textContent =
-        `Câu ${currentQuestion + 1} / ${total}`;
+            `Câu ${currentQuestion + 1} / ${total}`;
 
-    document.getElementById('answeredText')
+    document
+        .getElementById('answeredText')
         .textContent =
-        `Đã trả lời: ${answered}`;
+            `Đã trả lời: ${answered}`;
 
-    document.getElementById('progressBar')
+    document
+        .getElementById('progressBar')
         .style.width =
-        progress + '%';
-}
+            progress + '%';
 
+    document
+        .getElementById('fixedProgress')
+        .textContent =
+            `Câu ${currentQuestion + 1} / ${total}`;
+
+}
 
 /* =========================================================
-   BẢNG CÂU HỎI
+   NAVIGATION BUTTON
    ========================================================= */
 
-function renderQuestionMap() {
+function updateNavigation() {
 
-    const container =
-        document.getElementById('questionMap');
-
-    container.innerHTML = '';
-
-    testData.questions.forEach(
-        (question, index) => {
-
-            const button =
-                document.createElement('button');
-
-            button.textContent =
-                question.id;
-
-            button.onclick = () =>
-                goToQuestion(index);
-
-            container.appendChild(button);
-        }
-    );
-
-    updateQuestionMap();
-}
-
-
-function updateQuestionMap() {
-
-    const buttons =
+    const button =
         document
-            .getElementById('questionMap')
-            .querySelectorAll('button');
+            .getElementById('nextButton');
 
-    testData.questions.forEach(
-        (question, index) => {
+    const isLast =
+        currentQuestion ===
+        testData.questions.length - 1;
 
-            const button = buttons[index];
+    if (isLast) {
 
-            if (!button) return;
+        button.textContent =
+            'Nộp bài';
 
-            button.classList.toggle(
-                'answered',
-                answers[question.id] !== undefined
-            );
-
-            button.classList.toggle(
-                'current',
-                index === currentQuestion
-            );
-        }
-    );
-}
-
-
-/* =========================================================
-   CHẤM ĐIỂM
-   ========================================================= */
-
-function calculateResult() {
-
-    let correct = 0;
-    let wrong = 0;
-    let unanswered = 0;
-
-    const details = [];
-
-    testData.questions.forEach(
-        question => {
-
-            const selected =
-                answers[question.id];
-
-            if (selected === undefined) {
-
-                unanswered++;
-
-                details.push({
-                    id: question.id,
-                    selected_index: null,
-                    selected_letter: null,
-                    correct_index: question.answer_index,
-                    correct_letter: question.answer_letter,
-                    is_correct: false
-                });
-
-                return;
-            }
-
-            const isCorrect =
-                selected === question.answer_index;
-
-            if (isCorrect) {
-                correct++;
-            } else {
-                wrong++;
-            }
-
-            details.push({
-                id: question.id,
-                selected_index: selected,
-                selected_letter:
-                    ['A', 'B', 'C', 'D'][selected],
-                correct_index:
-                    question.answer_index,
-                correct_letter:
-                    question.answer_letter,
-                is_correct: isCorrect
-            });
-        }
-    );
-
-    const total =
-        testData.questions.length;
-
-    const score =
-        Number(
-            ((correct / total) * 10)
-                .toFixed(2)
+        button.classList.remove(
+            'btn-primary'
         );
 
-    return {
-        total,
-        correct,
-        wrong,
-        unanswered,
-        score,
-        details
-    };
+        button.classList.add(
+            'btn-danger'
+        );
+
+    } else {
+
+        button.textContent =
+            'Câu tiếp theo →';
+
+        button.classList.remove(
+            'btn-danger'
+        );
+
+        button.classList.add(
+            'btn-primary'
+        );
+
+    }
+
 }
 
-
 /* =========================================================
-   NỘP BÀI
+   SUBMIT
    ========================================================= */
 
-async function submitTest() {
+async function submitTest(isAutomatic) {
+
+    if (testSubmitted) {
+        return;
+    }
+
+    testSubmitted = true;
+
+    clearInterval(timerInterval);
 
     const result =
         calculateResult();
 
-    if (result.unanswered > 0) {
-
-        const confirmSubmit =
-            confirm(
-                `Bạn còn ${result.unanswered} câu chưa trả lời.\n\n` +
-                `Bạn có chắc chắn muốn nộp bài không?`
-            );
-
-        if (!confirmSubmit) {
-            return;
-        }
-    }
-
     const employeeName =
-        document.getElementById('employeeName')
-            .value.trim();
-
-    const employeeId =
-        document.getElementById('employeeId')
-            .value.trim();
+        document
+            .getElementById('employeeName')
+            .value
+            .trim();
 
     const payload = {
 
-        employee_name: employeeName,
-
-        employee_id: employeeId,
+        employee_name:
+            employeeName,
 
         test_title:
             testData.title,
@@ -1043,18 +1351,21 @@ async function submitTest() {
         score:
             result.score,
 
+        auto_submitted:
+            isAutomatic,
+
         submitted_at:
             new Date().toISOString(),
 
         details:
             result.details
+
     };
 
     showResult(result);
 
     /*
-       Nếu đã cấu hình Apps Script,
-       gửi kết quả lên server.
+        Gửi Apps Script nếu đã cấu hình.
     */
 
     if (APPS_SCRIPT_URL) {
@@ -1077,7 +1388,7 @@ async function submitTest() {
             );
 
             console.log(
-                'Đã gửi kết quả lên Apps Script.'
+                'Đã gửi kết quả.'
             );
 
         } catch (error) {
@@ -1088,73 +1399,200 @@ async function submitTest() {
             );
 
             alert(
-                'Bài đã được chấm nhưng không gửi được dữ liệu lên máy chủ.'
+                'Bài test đã được chấm nhưng không gửi được kết quả lên máy chủ.'
             );
+
         }
+
     }
 
 }
 
+/* =========================================================
+   CALCULATE RESULT
+   ========================================================= */
+
+function calculateResult() {
+
+    let correct = 0;
+
+    let wrong = 0;
+
+    let unanswered = 0;
+
+    const details = [];
+
+    testData.questions.forEach(
+        question => {
+
+            const selected =
+                answers[question.id];
+
+            if (selected === undefined) {
+
+                unanswered++;
+
+                details.push({
+
+                    id:
+                        question.id,
+
+                    selected_index:
+                        null,
+
+                    selected_letter:
+                        null,
+
+                    correct_index:
+                        question.answer_index,
+
+                    correct_letter:
+                        question.answer_letter,
+
+                    is_correct:
+                        false
+
+                });
+
+                return;
+            }
+
+            const isCorrect =
+                selected ===
+                question.answer_index;
+
+            if (isCorrect) {
+
+                correct++;
+
+            } else {
+
+                wrong++;
+
+            }
+
+            details.push({
+
+                id:
+                    question.id,
+
+                selected_index:
+                    selected,
+
+                selected_letter:
+                    ['A', 'B', 'C', 'D'][selected],
+
+                correct_index:
+                    question.answer_index,
+
+                correct_letter:
+                    question.answer_letter,
+
+                is_correct:
+                    isCorrect
+
+            });
+
+        }
+    );
+
+    const total =
+        testData.questions.length;
+
+    const score =
+        Number(
+            (
+                (correct / total) * 10
+            ).toFixed(2)
+        );
+
+    return {
+
+        total,
+
+        correct,
+
+        wrong,
+
+        unanswered,
+
+        score,
+
+        details
+
+    };
+
+}
 
 /* =========================================================
-   HIỂN THỊ KẾT QUẢ
+   RESULT
    ========================================================= */
 
 function showResult(result) {
 
-    document.getElementById('testScreen')
+    document
+        .getElementById('testScreen')
         .classList.add('hidden');
 
-    document.getElementById('resultScreen')
+    document
+        .getElementById('resultScreen')
         .classList.remove('hidden');
 
-    document.getElementById('resultScore')
+    document
+        .getElementById('resultScore')
         .textContent =
-        result.score + '/10';
+            result.score + '/10';
 
-    document.getElementById('resultTotal')
+    document
+        .getElementById('resultTotal')
         .textContent =
-        result.total;
+            result.total;
 
-    document.getElementById('resultCorrect')
+    document
+        .getElementById('resultCorrect')
         .textContent =
-        result.correct;
+            result.correct;
 
-    document.getElementById('resultWrong')
+    document
+        .getElementById('resultWrong')
         .textContent =
-        result.wrong;
+            result.wrong;
 
-    document.getElementById('resultUnanswered')
+    document
+        .getElementById('resultUnanswered')
         .textContent =
-        result.unanswered;
+            result.unanswered;
 
-    let message = '';
+    let message;
 
     if (result.score >= 8) {
 
         message =
-            'Kết quả đạt mức từ 8/10 trở lên.';
+            'Kết quả bài test đã được ghi nhận.';
 
     } else if (result.score >= 5) {
 
         message =
-            'Kết quả từ 5/10 đến dưới 8/10.';
+            'Kết quả bài test đã được ghi nhận.';
 
     } else {
 
         message =
-            'Kết quả dưới 5/10.';
+            'Kết quả bài test đã được ghi nhận.';
+
     }
 
-    document.getElementById('resultMessage')
-        .textContent = message;
+    document
+        .getElementById('resultMessage')
+        .textContent =
+            message;
 
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
-}
 
+}
 
 /* =========================================================
    ESCAPE HTML
@@ -1163,16 +1601,16 @@ function showResult(result) {
 function escapeHtml(value) {
 
     return String(value ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+        .replace(/&/g, '&')
+        .replace(/</g, '<')
+        .replace(/>/g, '>')
+        .replace(/"/g, '"')
+        .replace(/'/g, ''');
+
 }
 
-
 /* =========================================================
-   KHỞI ĐỘNG
+   START
    ========================================================= */
 
 loadQuestions();
