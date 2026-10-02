@@ -11,7 +11,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
@@ -32,10 +31,7 @@ button,
 input,
 textarea,
 select {
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
+    font-family: "Inter", Arial, sans-serif;
 }
 
 body {
@@ -43,7 +39,6 @@ body {
     background: #f5f6f8;
     color: #222;
     padding-bottom: 90px;
-
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -104,6 +99,10 @@ body {
     font-size: 14px;
 }
 
+.form-group {
+    margin-bottom: 18px;
+}
+
 .form-group label {
     display: block;
     font-size: 13px;
@@ -149,6 +148,83 @@ button {
     cursor: pointer;
 }
 
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #222;
+    color: #fff;
+}
+
+.btn-danger {
+    background: #b00020;
+    color: #fff;
+}
+
+.start-button {
+    width: 100%;
+    margin-top: 2px;
+}
+
+.loading {
+    text-align: center;
+    padding: 50px 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid #ddd;
+    border-top-color: #222;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error {
+    padding: 22px;
+    background: #fff;
+    border: 1px solid #e0b4b4;
+    color: #a00000;
+    border-radius: 12px;
+    line-height: 1.6;
+}
+
+.error-title {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.error-detail {
+    color: #555;
+    font-size: 14px;
+    white-space: pre-line;
+    word-break: break-word;
+}
+
+.retry-button {
+    margin-top: 16px;
+    background: #222;
+    color: #fff;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* TIMER */
+
 .timer-area {
     display: flex;
     align-items: center;
@@ -169,6 +245,43 @@ button {
     font-variant-numeric: tabular-nums;
     letter-spacing: 0;
 }
+
+.timer.warning {
+    color: #b00020;
+}
+
+/* PROGRESS */
+
+.progress-wrapper {
+    margin-bottom: 18px;
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 7px;
+    font-size: 12px;
+    color: #777;
+}
+
+.progress {
+    height: 5px;
+    background: #e8e8e8;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: #222;
+    border-radius: 999px;
+    transition: width 0.2s ease;
+}
+
+/* QUESTION */
 
 .question-number {
     font-size: 13px;
@@ -193,6 +306,20 @@ button {
     margin-bottom: 22px;
 }
 
+.option {
+    margin-bottom: 10px;
+}
+
+.option:last-child {
+    margin-bottom: 0;
+}
+
+.option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .option label {
     display: block;
     padding: 15px 16px;
@@ -206,6 +333,10 @@ button {
     transition: 0.15s;
 }
 
+.option label:hover {
+    background: #fafafa;
+}
+
 .option input:checked + label {
     border-color: #222;
     background: #f1f1f1;
@@ -217,6 +348,8 @@ button {
     width: 28px;
     font-weight: 800;
 }
+
+/* NAVIGATION */
 
 .fixed-navigation {
     position: fixed;
@@ -257,6 +390,12 @@ button {
     min-width: 150px;
 }
 
+/* RESULT */
+
+.result {
+    text-align: center;
+}
+
 .result-score {
     font-size: 58px;
     font-weight: 900;
@@ -270,6 +409,19 @@ button {
     margin-bottom: 25px;
 }
 
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.result-item {
+    background: #f7f7f7;
+    border-radius: 10px;
+    padding: 15px 8px;
+}
+
 .result-number {
     display: block;
     font-size: 24px;
@@ -277,29 +429,20 @@ button {
 }
 
 .result-name {
+    display: block;
+    margin-top: 4px;
     font-size: 12px;
     font-weight: 400;
     color: #777;
 }
 
-.loading {
-    text-align: center;
-    padding: 50px 20px;
+.result-message {
+    margin-top: 25px;
     color: #666;
     font-size: 14px;
 }
 
-.error {
-    padding: 20px;
-    background: #fff0f0;
-    color: #a40000;
-    border-radius: 10px;
-    line-height: 1.6;
-}
-
-.hidden {
-    display: none !important;
-}
+/* DESKTOP */
 
 @media (min-width: 701px) {
 
@@ -324,6 +467,8 @@ button {
         padding-bottom: 30px;
     }
 }
+
+/* MOBILE */
 
 @media (max-width: 700px) {
 
@@ -383,12 +528,15 @@ button {
         flex: 1;
         min-width: 0;
     }
+
+    .result-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -412,34 +560,48 @@ button {
 <div class="container">
 
 
-<!-- =========================
-     LOADING
-     ========================= -->
+<!-- LOADING -->
 
 <div id="loading" class="card loading">
-    Đang tải dữ liệu bài test...
+
+    <div class="loading-spinner"></div>
+
+    <div>
+        Đang tải dữ liệu bài test...
+    </div>
+
 </div>
 
+<!-- ERROR -->
 
-<!-- =========================
-     ERROR
-     ========================= -->
+<div id="error" class="card error hidden">
 
-<div id="error" class="card error hidden"></div>
+    <div class="error-title">
+        Không thể tải dữ liệu bài test
+    </div>
 
+    <div id="errorDetail" class="error-detail"></div>
 
-<!-- =========================
-     START SCREEN
-     ========================= -->
+    <button
+        id="retryButton"
+        class="retry-button"
+        onclick="loadQuestions()"
+    >
+        Thử tải lại
+    </button>
+
+</div>
+
+<!-- START SCREEN -->
 
 <div id="startScreen" class="card hidden">
 
     <h1 id="testTitle" class="intro-title"></h1>
 
-    <div id="testDescription"
-         class="intro-description">
+    <div
+        id="testDescription"
+        class="intro-description">
     </div>
-
 
     <div class="form-group">
 
@@ -455,7 +617,6 @@ button {
         >
 
     </div>
-
 
     <div class="test-info">
 
@@ -481,47 +642,32 @@ button {
 
     </div>
 
-
-    <div style="margin-top:20px;">
-
-        <button
-            class="btn-primary"
-            onclick="startTest()"
-        >
-            Bắt đầu bài test
-        </button>
-
-    </div>
+    <button
+        class="btn-primary start-button"
+        onclick="startTest()"
+    >
+        Bắt đầu bài test
+    </button>
 
 </div>
 
-
-<!-- =========================
-     TEST SCREEN
-     ========================= -->
+<!-- TEST SCREEN -->
 
 <div id="testScreen" class="hidden">
-
 
     <!-- TIMER -->
 
     <div class="card timer-area">
 
-        <div>
-
-            <div class="timer-label">
-                Thời gian còn lại
-            </div>
-
+        <div class="timer-label">
+            Thời gian còn lại
         </div>
 
-        <div id="timer"
-             class="timer">
+        <div id="timer" class="timer">
             10:00
         </div>
 
     </div>
-
 
     <!-- PROGRESS -->
 
@@ -539,7 +685,6 @@ button {
 
         </div>
 
-
         <div class="progress">
 
             <div
@@ -551,13 +696,12 @@ button {
 
     </div>
 
-
     <!-- QUESTION -->
 
-    <div id="questionCard"
-         class="card">
+    <div
+        id="questionCard"
+        class="card">
     </div>
-
 
     <!-- FIXED NAVIGATION -->
 
@@ -570,7 +714,6 @@ button {
                 class="current-progress">
                 Câu 1 / 80
             </div>
-
 
             <button
                 id="nextButton"
@@ -586,29 +729,25 @@ button {
 
 </div>
 
+<!-- RESULT -->
 
-<!-- =========================
-     RESULT
-     ========================= -->
-
-<div id="resultScreen"
-     class="card result hidden">
+<div
+    id="resultScreen"
+    class="card result hidden">
 
     <div style="font-size:14px;color:#777;">
         KẾT QUẢ BÀI TEST
     </div>
 
-
-    <div id="resultScore"
-         class="result-score">
+    <div
+        id="resultScore"
+        class="result-score">
         0/10
     </div>
-
 
     <div class="result-label">
         Điểm bài kiểm tra
     </div>
-
 
     <div class="result-grid">
 
@@ -626,7 +765,6 @@ button {
 
         </div>
 
-
         <div class="result-item">
 
             <span
@@ -641,7 +779,6 @@ button {
 
         </div>
 
-
         <div class="result-item">
 
             <span
@@ -655,7 +792,6 @@ button {
             </span>
 
         </div>
-
 
         <div class="result-item">
 
@@ -672,7 +808,6 @@ button {
         </div>
 
     </div>
-
 
     <div
         id="resultMessage"
@@ -692,17 +827,10 @@ button {
 
 const QUESTIONS_FILE = './questions.json';
 
-/*
-    Sau này nếu dùng Apps Script,
-    điền URL Web App vào đây.
-
-    Ví dụ:
-
-    const APPS_SCRIPT_URL =
-        'https://script.google.com/macros/s/XXXXXXXX/exec';
-*/
-
 const APPS_SCRIPT_URL = '';
+
+const LOAD_TIMEOUT = 8000;
+
 
 /* =========================================================
    BIẾN
@@ -720,46 +848,153 @@ let remainingSeconds = 600;
 
 let testSubmitted = false;
 
+
 /* =========================================================
    LOAD JSON
    ========================================================= */
 
 async function loadQuestions() {
 
+    const loading =
+        document.getElementById('loading');
+
+    const errorBox =
+        document.getElementById('error');
+
+    const errorDetail =
+        document.getElementById('errorDetail');
+
+    const startScreen =
+        document.getElementById('startScreen');
+
+    loading.classList.remove('hidden');
+
+    errorBox.classList.add('hidden');
+
+    startScreen.classList.add('hidden');
+
+    errorDetail.textContent = '';
+
     try {
 
+        const controller =
+            new AbortController();
+
+        const timeout =
+            setTimeout(() => {
+                controller.abort();
+            }, LOAD_TIMEOUT);
+
+        /*
+         * Thêm timestamp để tránh trình duyệt
+         * lấy nhầm JSON cũ từ cache.
+         */
+
+        const separator =
+            QUESTIONS_FILE.includes('?')
+                ? '&'
+                : '?';
+
+        const url =
+            QUESTIONS_FILE +
+            separator +
+            '_=' +
+            Date.now();
+
         const response =
-            await fetch(QUESTIONS_FILE);
+            await fetch(
+                url,
+                {
+                    method: 'GET',
+                    cache: 'no-store',
+                    signal: controller.signal
+                }
+            );
+
+        clearTimeout(timeout);
 
         if (!response.ok) {
 
             throw new Error(
-                'HTTP ' + response.status
+                'Máy chủ trả về HTTP ' +
+                response.status +
+                ' khi tải questions.json.'
             );
 
         }
 
-        testData =
-            await response.json();
+        const contentType =
+            response.headers.get('content-type') || '';
+
+        const text =
+            await response.text();
+
+        if (!text.trim()) {
+
+            throw new Error(
+                'File questions.json đang rỗng.'
+            );
+
+        }
+
+        try {
+
+            testData =
+                JSON.parse(text);
+
+        } catch (jsonError) {
+
+            throw new Error(
+                'questions.json không phải JSON hợp lệ.\n\n' +
+                'Chi tiết: ' +
+                jsonError.message
+            );
+
+        }
 
         if (
-            !testData.questions ||
+            !testData ||
             !Array.isArray(testData.questions)
         ) {
 
             throw new Error(
-                'File JSON không có mảng questions hợp lệ.'
+                'JSON đã tải được nhưng không tìm thấy mảng "questions".'
             );
 
         }
 
-        document
-            .getElementById('loading')
-            .classList.add('hidden');
+        if (
+            testData.questions.length === 0
+        ) {
 
-        document
-            .getElementById('startScreen')
-            .classList.remove('hidden');
+            throw new Error(
+                'Mảng "questions" đang rỗng.'
+            );
+
+        }
+
+        /*
+         * Kiểm tra cấu trúc cơ bản của câu đầu tiên.
+         */
+
+        const firstQuestion =
+            testData.questions[0];
+
+        if (
+            !firstQuestion.question ||
+            !firstQuestion.options
+        ) {
+
+            throw new Error(
+                'Cấu trúc câu hỏi trong JSON không đúng.\n\n' +
+                'Cần có "question" và "options".'
+            );
+
+        }
+
+        loading.classList.add('hidden');
+
+        startScreen.classList.remove('hidden');
 
         document
             .getElementById('testTitle')
@@ -788,39 +1023,73 @@ async function loadQuestions() {
             .textContent =
                 testData.cooking_questions_count || 0;
 
+        console.log(
+            'Đã tải thành công:',
+            testData.questions.length,
+            'câu hỏi.'
+        );
+
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            'Lỗi tải questions.json:',
+            error
+        );
 
-        document
-            .getElementById('loading')
-            .classList.add('hidden');
-
-        const errorBox =
-            document.getElementById('error');
+        loading.classList.add('hidden');
 
         errorBox.classList.remove('hidden');
 
-        errorBox.innerHTML = `
-            <strong>
-                Không thể tải bài test.
-            </strong>
+        let message = '';
 
-            <br><br>
+        if (error.name === 'AbortError') {
 
-            Kiểm tra file
-            <strong>questions.json</strong>
-            có nằm cùng thư mục với file HTML hay không.
+            message =
+                'Đã chờ quá 8 giây nhưng không nhận được dữ liệu.\n\n' +
+                'Đường dẫn đang được tải:\n' +
+                getQuestionsUrl() +
+                '\n\n' +
+                'Kiểm tra questions.json có nằm đúng vị trí hay không.';
 
-            <br><br>
+        } else {
 
-            Chi tiết:
-            ${escapeHtml(error.message)}
-        `;
+            message =
+                error.message +
+                '\n\n' +
+                'Đường dẫn đang được tải:\n' +
+                getQuestionsUrl();
+
+        }
+
+        errorDetail.textContent =
+            message;
 
     }
 
 }
+
+
+/* =========================================================
+   HIỂN THỊ URL JSON
+   ========================================================= */
+
+function getQuestionsUrl() {
+
+    try {
+
+        return new URL(
+            QUESTIONS_FILE,
+            window.location.href
+        ).href;
+
+    } catch (error) {
+
+        return QUESTIONS_FILE;
+
+    }
+
+}
+
 
 /* =========================================================
    START TEST
@@ -872,6 +1141,7 @@ function startTest() {
 
 }
 
+
 /* =========================================================
    TIMER
    ========================================================= */
@@ -899,6 +1169,7 @@ function startTimer() {
 
 }
 
+
 function updateTimerDisplay() {
 
     const timer =
@@ -913,8 +1184,8 @@ function updateTimerDisplay() {
         remainingSeconds % 60;
 
     timer.textContent =
-        String(minutes).padStart(2, '0')
-        + ':' +
+        String(minutes).padStart(2, '0') +
+        ':' +
         String(seconds).padStart(2, '0');
 
     timer.classList.toggle(
@@ -923,6 +1194,7 @@ function updateTimerDisplay() {
     );
 
 }
+
 
 /* =========================================================
    AUTO SUBMIT
@@ -941,6 +1213,7 @@ function autoSubmitTest() {
     submitTest(true);
 
 }
+
 
 /* =========================================================
    RENDER QUESTION
@@ -963,9 +1236,16 @@ function renderQuestion() {
     optionLetters.forEach(
         (letter, index) => {
 
-            if (!question.options[letter]) {
+            if (
+                question.options[letter] === undefined
+            ) {
                 return;
             }
+
+            const checked =
+                answers[question.id] === index
+                    ? 'checked'
+                    : '';
 
             optionsHTML += `
 
@@ -976,6 +1256,7 @@ function renderQuestion() {
                         id="answer_${question.id}_${letter}"
                         name="question_${question.id}"
                         value="${index}"
+                        ${checked}
                         onchange="selectAnswer(${index})"
                     >
 
@@ -1042,6 +1323,7 @@ function renderQuestion() {
 
 }
 
+
 /* =========================================================
    SELECT ANSWER
    ========================================================= */
@@ -1059,18 +1341,19 @@ function selectAnswer(index) {
 
 }
 
+
 /* =========================================================
    NEXT QUESTION
    ========================================================= */
 
 function nextQuestion() {
 
+    if (testSubmitted) {
+        return;
+    }
+
     const question =
         testData.questions[currentQuestion];
-
-    /*
-        Không cho đi tiếp nếu chưa chọn.
-    */
 
     if (
         answers[question.id] === undefined
@@ -1082,11 +1365,6 @@ function nextQuestion() {
 
         return;
     }
-
-    /*
-        Nếu là câu cuối:
-        nộp bài.
-    */
 
     if (
         currentQuestion ===
@@ -1108,6 +1386,7 @@ function nextQuestion() {
     });
 
 }
+
 
 /* =========================================================
    PROGRESS
@@ -1146,6 +1425,7 @@ function updateProgress() {
 
 }
 
+
 /* =========================================================
    NAVIGATION BUTTON
    ========================================================= */
@@ -1153,8 +1433,7 @@ function updateProgress() {
 function updateNavigation() {
 
     const button =
-        document
-            .getElementById('nextButton');
+        document.getElementById('nextButton');
 
     const isLast =
         currentQuestion ===
@@ -1190,6 +1469,7 @@ function updateNavigation() {
 
 }
 
+
 /* =========================================================
    SUBMIT
    ========================================================= */
@@ -1219,7 +1499,7 @@ async function submitTest(isAutomatic) {
             employeeName,
 
         test_title:
-            testData.title,
+            testData.title || '',
 
         total_questions:
             result.total,
@@ -1249,10 +1529,6 @@ async function submitTest(isAutomatic) {
 
     showResult(result);
 
-    /*
-        Gửi Apps Script nếu đã cấu hình.
-    */
-
     if (APPS_SCRIPT_URL) {
 
         try {
@@ -1273,7 +1549,7 @@ async function submitTest(isAutomatic) {
             );
 
             console.log(
-                'Đã gửi kết quả.'
+                'Đã gửi kết quả lên Apps Script.'
             );
 
         } catch (error) {
@@ -1292,6 +1568,7 @@ async function submitTest(isAutomatic) {
     }
 
 }
+
 
 /* =========================================================
    CALCULATE RESULT
@@ -1394,20 +1671,16 @@ function calculateResult() {
     return {
 
         total,
-
         correct,
-
         wrong,
-
         unanswered,
-
         score,
-
         details
 
     };
 
 }
+
 
 /* =========================================================
    RESULT
@@ -1448,29 +1721,10 @@ function showResult(result) {
         .textContent =
             result.unanswered;
 
-    let message;
-
-    if (result.score >= 8) {
-
-        message =
-            'Kết quả bài test đã được ghi nhận.';
-
-    } else if (result.score >= 5) {
-
-        message =
-            'Kết quả bài test đã được ghi nhận.';
-
-    } else {
-
-        message =
-            'Kết quả bài test đã được ghi nhận.';
-
-    }
-
     document
         .getElementById('resultMessage')
         .textContent =
-            message;
+            'Kết quả bài test đã được ghi nhận.';
 
     window.scrollTo({
         top: 0,
@@ -1479,6 +1733,7 @@ function showResult(result) {
 
 }
 
+
 /* =========================================================
    ESCAPE HTML
    ========================================================= */
@@ -1486,13 +1741,14 @@ function showResult(result) {
 function escapeHtml(value) {
 
     return String(value ?? '')
-        .replace(/&/g, '&')
-        .replace(/</g, '<')
-        .replace(/>/g, '>')
-        .replace(/"/g, '"')
-        .replace(/'/g, ''');
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
 
 }
+
 
 /* =========================================================
    START
