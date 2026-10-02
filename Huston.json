@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29T06:01:49.376Z",
+  "updated_at": "2026-10-02T03:41:22.040Z",
   "records": [
     {
       "id": "Z032",
@@ -477,6 +477,16 @@
       "thoi_gian_xu_ly": "2026/09/29 13:01",
       "phuong_an_xu_ly": "Máy đã hiện QR",
       "nguoi_xu_ly": "P.Linh"
+    },
+    {
+      "id": "Z069",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/02 10:41",
+      "nguoi_bao_cao": "Hoài Anh",
+      "noi_dung": "combo số 6 không hiển thị ở máy pos",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
