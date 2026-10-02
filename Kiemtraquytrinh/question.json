@@ -1,0 +1,1209 @@
+{
+  "title": "Bộ 80 Câu Hỏi Trắc Nghiệm Đào Tạo Nhân Sự Tascus Food",
+  "description": "Bao quát toàn bộ 10 quy trình vận hành SOP (60 câu, độ khó 6/10) và công thức chế biến nấu ăn (20 câu, độ khó 7-8/10).",
+  "total_questions": 80,
+  "sop_questions_count": 60,
+  "cooking_questions_count": 20,
+  "questions": [
+    {
+      "id": 1,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Theo quy tắc phối hợp tại Tascus Food, khi nhận thông tin phân công trong nhóm Zalo công việc, nhân sự cần thực hiện thao tác nào?",
+      "options": {
+        "A": "Đợi đến khi kết thúc ca làm việc mới nhắn tin phản hồi lại.",
+        "B": "Chỉ cần xem tin nhắn và thực hiện, không cần phản hồi để tránh làm trôi tin nhắn.",
+        "C": "Chỉ phản hồi khi Cửa hàng trưởng gọi điện nhắc nhở trực tiếp.",
+        "D": "Phản hồi ngay bằng cách nhắn 'Đã nhận', 'OK' hoặc thả tim biểu thị đã đọc và hiểu thông tin."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "Quy trình KT.QC001 quy định: Khi nhận thông tin liên quan trong nhóm công việc, nhân sự phải phản hồi ngay bằng cách nhắn 'Đã nhận', 'OK' hoặc thả tim. Nghiêm cấm hành vi cố tình không phản hồi."
+    },
+    {
+      "id": 2,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Nguyên tắc 'Chủ động là mặc định' trong vận hành tại cửa hàng Tascus Food đòi hỏi nhân sự phải có thái độ làm việc như thế nào?",
+      "options": {
+        "A": "Tuyệt đối không chờ nhắc việc, không né tránh hoặc đùn đẩy trách nhiệm cá nhân.",
+        "B": "Hoàn thành xong phần việc cá nhân thì nghỉ ngơi, không cần hỗ trợ đồng nghiệp.",
+        "C": "Tự ý thay đổi quy trình làm món khi thấy đông khách mà không báo bếp trưởng.",
+        "D": "Đợi quản lý phân công chi tiết từng công việc trong ca rồi mới làm."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "Nguyên tắc bắt buộc thứ 1 trong KT.QC001 quy định: 'Chủ động là mặc định: Tuyệt đối không chờ nhắc việc; không né tránh hoặc đùn đẩy trách nhiệm cá nhân'."
+    },
+    {
+      "id": 3,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi làm việc tại khu vực Bếp, quy định về âm lượng đọc đơn hàng của Thu ngân được tiêu chuẩn hóa như thế nào?",
+      "options": {
+        "A": "Đọc to, rõ ràng và âm lượng bắt buộc phải lớn hơn tiếng máy hút mùi.",
+        "B": "Đọc vừa đủ nghe cho bản thân và người đứng ngay cạnh.",
+        "C": "Không đọc bằng lời mà chỉ in phiếu đặt hàng dán lên ray.",
+        "D": "Đọc thầm để giữ không gian yên tĩnh cho nhà bếp."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC001 quy định: Đọc đơn hàng hoặc tên món to, rõ ràng. Âm lượng phải lớn hơn tiếng máy hút mùi để đảm bảo thông tin truyền đạt chính xác."
+    },
+    {
+      "id": 4,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Sau khi sử dụng xong các dụng cụ sắc nhọn như dao, kéo trong bếp, nhân sự cần sắp xếp như thế nào để đảm bảo an toàn?",
+      "options": {
+        "A": "Cắm trực tiếp vào thùng rác hoặc hộp carton gần khu vực chế biến.",
+        "B": "Để gọn trên mặt bàn thao tác làm món để ca sau tiện dùng.",
+        "C": "Trả về đúng vị trí cố định, quay lưỡi dao/kéo vào trong và không để chung với đồ dùng ăn uống.",
+        "D": "Thả trực tiếp vào bồn rửa bát chung với bát đĩa bẩn."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC001 ghi rõ: Dao, kéo sắc nhọn phải quay lưỡi vào trong; không để chung với đồ dùng ăn uống để tránh gây tai nạn và thất lạc."
+    },
+    {
+      "id": 5,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Văn hóa xác nhận thông tin giữa Bếp và Thu ngân được hoàn tất khi nào?",
+      "options": {
+        "A": "Khi Bếp nhìn thấy phiếu dán trên ray mà không cần nói gì.",
+        "B": "Khi đơn hàng được in ra từ máy POS.",
+        "C": "Khi Thu ngân đã đọc xong tên món trên hệ thống.",
+        "D": "Khi có tín hiệu phản hồi xác nhận bằng lời nói hoặc hành động cụ thể từ cả hai phía."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC001 tiêu chuẩn kết quả: Phải có tín hiệu phản hồi xác nhận (bằng lời hoặc hành động) mới được coi là hoàn tất giao tiếp."
+    },
+    {
+      "id": 6,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Nguyên tắc 'Làm xong là dọn' trong ca trực Tascus Food yêu cầu nhân sự tuân thủ điều gì?",
+      "options": {
+        "A": "Chỉ dọn dẹp khi Quản lý ca trực tiếp kiểm tra và yêu cầu.",
+        "B": "Đợi đến cuối ca làm việc mới gom toàn bộ rác và dụng cụ đi dọn dẹp.",
+        "C": "Tuân thủ nguyên tắc 'làm tới đâu - gọn tới đó' để khu vực làm việc luôn sạch sẽ trong suốt ca.",
+        "D": "Giao toàn bộ công việc dọn dẹp khu vực bếp cho nhân viên ca tối."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC001 quy tắc 3: 'Làm xong là dọn: Tuân thủ nguyên tắc làm tới đâu - gọn tới đó để bếp và khu vực làm việc luôn sạch sẽ trong suốt ca'."
+    },
+    {
+      "id": 7,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Báo cáo mở ca sáng bắt buộc phải hoàn thành để đảm bảo cơ sở và thiết bị sẵn sàng đón khách vào mốc thời gian nào?",
+      "options": {
+        "A": "07:30 sáng hằng ngày.",
+        "B": "06:00 sáng hằng ngày.",
+        "C": "06:30 sáng hằng ngày.",
+        "D": "07:00 sáng hằng ngày."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC002 mục 1 quy định: MỤC TIÊU đảm bảo 100% cơ sở và thiết bị sẵn sàng đón khách vào lúc 06:30 sáng."
+    },
+    {
+      "id": 8,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Theo quy định báo cáo mở ca sáng vị trí Thu ngân, số tiền két nhận bàn giao ca sáng mặc định là bao nhiêu?",
+      "options": {
+        "A": "1.000.000 VNĐ.",
+        "B": "1.500.000 VNĐ.",
+        "C": "500.000 VNĐ.",
+        "D": "2.000.000 VNĐ."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC002 và KT.QC007 quy định mẫu báo cáo mở ca: 'Xác nhận ca sáng nhận đủ ..../1 triệu' (mặc định tiền két là 1.000.000 VNĐ)."
+    },
+    {
+      "id": 9,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Trường hợp nào nhân viên được phép bỏ qua mục 'Người chịu cost' trong Báo cáo hủy đồ?",
+      "options": {
+        "A": "Khi nguyên liệu bị hỏng do nhân viên rán quá lửa làm cháy.",
+        "B": "Khi nguyên vật liệu bị hỏng do lý do khách quan.",
+        "C": "Khi nhân viên vô ý làm rơi nguyên liệu xuống sàn nhà.",
+        "D": "Khi nhân viên đun nấu sai công thức dẫn đến hỏng món."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC002 quy định: Lý do chủ quan điền người gây thiệt hại vào mục 'Người chịu cost'. Lý do khách quan bỏ qua mục 'Người chịu cost'."
+    },
+    {
+      "id": 10,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Nguyên tắc bắt buộc trước khi đổ bỏ nguyên vật liệu hỏng trong Báo cáo hủy đồ là gì?",
+      "options": {
+        "A": "Ghi nhận số lượng hủy vào sổ tay cá nhân và nộp cuối tháng.",
+        "B": "Đổ bỏ ngay lập tức rồi ước tính số lượng báo cáo sau.",
+        "C": "Phải có ảnh chụp thực tế và cân đo khối lượng/số lượng chính xác.",
+        "D": "Chỉ cần báo miệng cho Quản lý ca mà không cần chụp ảnh."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC002 quy định: Phải có ảnh chụp thực tế và cân đo khối lượng/số lượng chính xác trước khi đổ bỏ."
+    },
+    {
+      "id": 11,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Quy trình tổng vệ sinh cơ sở định kỳ chiều Thứ Hai yêu cầu bước đầu tiên nhân sự phải thực hiện là gì?",
+      "options": {
+        "A": "Chia checklist cho từng nhân viên rồi mới dọn dẹp.",
+        "B": "Tạm thời tắt toàn bộ app hoạt động, ngừng nhận khách tại cửa hàng kèm lời xin lỗi.",
+        "C": "Bắt đầu lau kính và dọn sàn nhà bếp ngay lập tức.",
+        "D": "Chụp ảnh góc bẩn gửi lên nhóm Zalo."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC002 quy trình tổng vệ sinh Bước 1: Tạm thời tắt toàn bộ app hoạt động, ngừng nhận khách tại cửa hàng (nếu có) kèm lời xin lỗi."
+    },
+    {
+      "id": 12,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Ca tối (18:00 - 23:00) bắt buộc phải lập bao nhiêu loại báo cáo doanh thu vào cuối ca?",
+      "options": {
+        "A": "Không cần báo cáo nếu doanh thu chuyển khoản 100%.",
+        "B": "01 loại báo cáo duy nhất là Báo cáo ca 2.",
+        "C": "02 loại báo cáo: Báo cáo doanh thu ca 2 và Báo cáo tổng doanh thu ngày.",
+        "D": "03 loại báo cáo gồm ca 1, ca 2 và ca 3."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC002 mục 4 quy định: 'Ca tối bắt buộc phải lập 02 loại báo cáo: Báo cáo ca 2 và Báo cáo tổng doanh thu ngày'."
+    },
+    {
+      "id": 13,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi xảy ra sự cố chập cháy điện hoặc thiết bị bốc khói trong ca trực, nhân sự cần báo cáo khẩn cấp như thế nào?",
+      "options": {
+        "A": "Phải đồng thời gọi điện trực tiếp cho Quản lý và nhắn thông tin lên nhóm làm việc.",
+        "B": "Ghi chú sự cố vào sổ doanh thu ca tối.",
+        "C": "Chỉ nhắn tin lên nhóm Zalo và chờ Quản lý đọc.",
+        "D": "Tự xử lý và không cần báo cáo nếu sự cố nhỏ."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC002 mục 5 quy định: NGUYÊN TẮC BẮT BUỘC khi gặp sự cố khẩn cấp là phải đồng thời gọi điện trực tiếp cho Quản lý và nhắn thông tin lên nhóm làm việc."
+    },
+    {
+      "id": 14,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Đơn hàng phát sinh tại tiệm được xếp vào danh mục 'Sự cố cần báo cáo ngay cho Quản lý' khi đạt quy mô nào?",
+      "options": {
+        "A": "Đơn hàng giao xa quá 10km.",
+        "B": "Đơn hàng có giá trị lớn hơn 3.000.000 VNĐ.",
+        "C": "Đơn hàng nhiều hơn 10 sản phẩm hoặc giá trị lớn hơn 500.000 VNĐ.",
+        "D": "Đơn hàng nhiều hơn 20 sản phẩm hoặc giá trị lớn hơn 1.000.000 VNĐ."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC002 quy định danh mục sự cố: 'Đơn hàng lớn (Nhiều hơn 20 sản phẩm hoặc giá trị đơn hàng lớn hơn 1.000.000vnđ, cần xin giá chiết khấu)'."
+    },
+    {
+      "id": 15,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Thời gian quy định để thực hiện đặt bánh từ nhà bánh hằng ngày tại cơ sở Tascus 69 Khương Trung là khi nào?",
+      "options": {
+        "A": "Đặt bất kỳ lúc nào khi tủ bánh bị hết.",
+        "B": "02 lần/ngày vào lúc 06:30 và 18:00.",
+        "C": "01 lần/ngày vào lúc 08:00 sáng.",
+        "D": "02 lần/ngày vào lúc 13:00 và 22:00."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC003 mục 1 quy định thời gian áp dụng đặt bánh: 02 lần/ngày vào lúc 13:00 và 22:00 hằng ngày."
+    },
+    {
+      "id": 16,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Định mức tồn kho tiêu chuẩn đối với các loại bánh tươi tại cửa hàng Tascus Food là bao nhiêu?",
+      "options": {
+        "A": "Burger (~60), Bánh mì dài (~40), Bánh gối (~4 túi).",
+        "B": "Burger (~100), Bánh mì dài (~80), Bánh gối (~10 túi).",
+        "C": "Burger (~30), Bánh mì dài (~20), Bánh gối (~1 túi).",
+        "D": "Burger (~50), Bánh mì dài (~50), Bánh gối (~5 túi)."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC003 Bước 2 quy định định mức tồn kho: Burger (~60), Bánh mì dài (~40), Bánh gối (~4 túi)."
+    },
+    {
+      "id": 17,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi đặt rau củ quả hằng ngày, nếu nhà cung cấp rau không nhận giao đơn lẻ tẻ, nhân viên phải xử lý thế nào?",
+      "options": {
+        "A": "Chủ động ra nhà rau khác tại địa chỉ 200 Khương Trung để mua.",
+        "B": "Ngừng bán tất cả các món có sử dụng rau.",
+        "C": "Chờ đến ngày hôm sau để gom đơn lớn hơn.",
+        "D": "Báo quản lý đi mua giúp."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC003 ghi rõ: 'Đơn đặt lẻ tẻ nhà cung cấp không giao, nhân viên phải chủ động ra nhà rau khác tại địa chỉ 200 Khương Trung để mua'."
+    },
+    {
+      "id": 18,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Những loại trái cây/nông sản nào nhà cung cấp rau KHÔNG CÓ và nhân viên lưu ý tuyệt đối không đặt trong đơn rau?",
+      "options": {
+        "A": "Cà chua, dưa chuột và xà lách.",
+        "B": "Chanh xanh, bắp cải tím và ớt.",
+        "C": "Hành tây, rau mùi và quất.",
+        "D": "Chuối, chanh vàng và dâu tây."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC003 ghi rõ lưu ý: 'Nhà cung cấp rau không có chuối, chanh vàng và dâu tây (vui lòng không đặt)'."
+    },
+    {
+      "id": 19,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Quy định về việc giao trứng hằng ngày tại bếp Tascus Food được thực hiện theo cơ chế nào?",
+      "options": {
+        "A": "Chỉ giao trứng khi quản lý cửa hàng duyệt phiếu đặt.",
+        "B": "Trứng giao tự động mỗi ngày 1 khay vào ca sáng.",
+        "C": "Trứng được giao tự động vào Thứ 3 và Thứ 7 hằng tuần (mỗi lần 4 - 5 khay).",
+        "D": "Nhân viên bếp phải nhắn tin đặt trứng hằng ngày trước 22:00."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC003 mục 3 quy định: 'NGUYÊN TẮC: Trứng được giao tự động vào Thứ 3 và Thứ 7 hàng tuần (mỗi lần 4 - 5 khay)'."
+    },
+    {
+      "id": 20,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Nếu tiền mua rau phát sinh vượt quá 250.000 VNĐ, quy trình thanh toán yêu cầu nhân viên phải làm gì?",
+      "options": {
+        "A": "Tự bỏ tiền túi ra trả rồi đòi lại sau.",
+        "B": "Đề nghị nhà rau chuyển khoản sau và liên hệ kế toán.",
+        "C": "Lấy toàn bộ tiền mặt trong két ra trả trực tiếp.",
+        "D": "Hủy đơn rau không mua nữa."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC003 & KT.QC005 quy định: Nếu tiền rau vượt quá 250.000 VNĐ hoặc có thể gây âm két, đề nghị nhà rau chuyển khoản sau và liên hệ kế toán."
+    },
+    {
+      "id": 21,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khung giờ quy định để thực hiện kiểm tồn hàng hóa thường nhật tại cửa hàng Tascus Food là khi nào?",
+      "options": {
+        "A": "Từ 06:00 - 07:00 sáng hằng ngày.",
+        "B": "Từ 22:00 - 23:00 tối hằng ngày.",
+        "C": "Từ 14:00 - 15:00 hằng ngày.",
+        "D": "Thực hiện bất kỳ lúc nào rảnh trong ca."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC004 quy định thời gian kiểm tồn hàng hóa thường nhật: Từ 14:00 – 15:00 hằng ngày."
+    },
+    {
+      "id": 22,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi kiểm tồn hàng hóa, nhân sự bắt buộc phải kiểm tra đầy đủ mấy trạng thái bảo quản?",
+      "options": {
+        "A": "03 trạng thái: Dùng dở, Tủ mát (kệ khô), và Tủ đông.",
+        "B": "02 trạng thái: Tủ mát và Tủ đông.",
+        "C": "01 trạng thái: Chỉ kiểm tra kệ khô.",
+        "D": "04 trạng thái bao gồm cả hàng đang giao."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC004 ghi rõ: Nguyên tắc bắt buộc là phải kiểm tra đủ 03 trạng thái bảo quản: Dùng dở, Tủ mát (kệ khô), và Tủ đông."
+    },
+    {
+      "id": 23,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Danh mục đối tượng nào tại cửa hàng yêu cầu bắt buộc phải kiểm tra tồn 02 lần một ngày?",
+      "options": {
+        "A": "Danh sách công cụ dụng cụ.",
+        "B": "Bánh mì tươi các loại.",
+        "C": "Các túi sốt đóng sẵn từ xưởng.",
+        "D": "Nước đóng chai Coca-Cola."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC004 ghi rõ: 'Riêng danh sách công cụ cần kiểm tra 2 lần một ngày để dễ dàng theo dõi thất lạc, truy cứu trách nhiệm'."
+    },
+    {
+      "id": 24,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Thời gian nhận hàng hóa từ xưởng cố định vào khung giờ nào trong tuần?",
+      "options": {
+        "A": "Đầu khung giờ chiều Thứ Hai và Thứ Sáu hằng tuần.",
+        "B": "Sáng Thứ Ba và Thứ Bảy hằng tuần.",
+        "C": "Chiều Thứ Tư hằng tuần.",
+        "D": "Cuối ca tối mỗi ngày."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC004 mục 2 quy định thời gian nhận hàng xưởng: Đầu khung giờ chiều Thứ Hai và Thứ Sáu hằng tuần."
+    },
+    {
+      "id": 25,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi nhận hàng từ xưởng, nếu phát hiện sai lệch (thừa hoặc thiếu) so với phiếu xuất kho, nhân sự phải báo lại cho nhân viên giao hàng trong vòng bao lâu?",
+      "options": {
+        "A": "Báo vào cuối ngày khi làm báo cáo ca.",
+        "B": "Trong khoảng 1 giờ đồng hồ tính từ thời điểm nhận.",
+        "C": "Trong vòng 10 phút sau khi xe rời đi.",
+        "D": "Trong vòng 24 giờ kể từ khi nhận hàng."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC004 quy định: 'Mọi sai lệch (thừa/thiếu) phải được báo ngay cho nhân viên giao hàng trong khoảng 1 giờ đồng hồ tính từ thời điểm nhận'."
+    },
+    {
+      "id": 26,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Thao tác cuối cùng bắt buộc khi hoàn tất kiểm hàng xưởng là gì?",
+      "options": {
+        "A": "Chỉ cần nhắn số lượng tổng lên nhóm Zalo.",
+        "B": "Chụp ảnh phiếu đã kiểm, đăng lên nhóm Zalo công việc và gắn thẻ (tag) Kế toán.",
+        "C": "Cất phiếu vào tủ tài liệu và không cần chụp ảnh.",
+        "D": "Gửi phiếu giấy trực tiếp cho Shipper mang về."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC004 Bước 5: Chụp ảnh phiếu đã kiểm, đăng lên nhóm làm việc của cửa hàng và gắn thẻ (tag) kế toán để hoàn tất."
+    },
+    {
+      "id": 27,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi phát hiện hết nguyên liệu Nha đam hoặc Siro Socola trên các ứng dụng giao hàng, thao tác xử lý bắt buộc là gì?",
+      "options": {
+        "A": "Xóa luôn món ăn khỏi menu vĩnh viễn.",
+        "B": "Vẫn mở app và thay bằng nguyên liệu khác khi có đơn.",
+        "C": "Tắt toàn bộ ứng dụng bán hàng online.",
+        "D": "Khóa tạm tất cả các mục liên quan tới nguyên liệu trên ở các app (chọn mục Tắt cho tới ngày mai)."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC005 quy định: Liên hệ quản lý, khóa tạm tất cả các mục liên quan tới nguyên liệu trên ở các app giao hàng (Chọn mục tắt cho tới ngày mai)."
+    },
+    {
+      "id": 28,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi bị tuột ống xả ruột gà tại bồn rửa bát khiến nước lênh láng ra sàn bếp, nhân viên cần xử lý theo trình tự nào?",
+      "options": {
+        "A": "Tắt toàn bộ cầu giao điện và bỏ về.",
+        "B": "Nhanh tay cắm lại đầu ống -> Chuẩn bị công to đựng nước -> Dùng gạt kính đẩy nước vào xẻng nhựa đổ vào công -> Lau sạch.",
+        "C": "Dùng khăn lau thấm nước ngay lập tức mà không cắm lại ống xả.",
+        "D": "Mở cửa tràn nước ra ngoài hiên nhà."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC005 quy định chi tiết bước xử lý tràn nước bồn rửa bát: Nhanh tay cắm lại đầu ống, dùng công to, gạt kính và xẻng nhựa gom nước đổ đi rồi lau sạch."
+    },
+    {
+      "id": 29,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi khách hàng nài nỉ gọi món 'Bánh mì chảo không sốt' hoặc thiếu nguyên liệu chính tạo nên linh hồn của món ăn, thái độ chuẩn của nhân sự là gì?",
+      "options": {
+        "A": "Giải thích khéo léo nguyên liệu đó là linh hồn của món ăn và cương quyết từ chối phục vụ.",
+        "B": "Đồng ý bán ngay vì chiều lòng khách hàng.",
+        "C": "Lấy giá rẻ hơn và làm món không sốt cho khách.",
+        "D": "Tự ý thay bằng nước tương hoặc tương ớt để bán."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC005 quy định: 'Từ chối phục vụ món ăn dù khách nài nỉ. Sốt bánh mì chảo/Sốt burger/Sốt sandwich bị thiếu sẽ KHÔNG ĐƯỢC PHÁP PHỤC VỤ'."
+    },
+    {
+      "id": 30,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Tiệm nhận đơn 5 - 6 suất Bánh mì chảo nhưng khu vực bếp chỉ có 4 bếp gas hoạt động. Quy trình chế biến chuẩn là gì?",
+      "options": {
+        "A": "Chuẩn bị đủ nguyên liệu -> Chiên bò/xá xíu trước tại 1 chảo riêng -> Chia ra các chảo -> Bật bếp làm hoàn chỉnh -> Phục vụ cùng lúc đủ số suất.",
+        "B": "Làm trước 4 suất mang ra cho khách ăn trước, 2 suất còn lại làm sau.",
+        "C": "Từ chối bớt 2 suất chảo của khách.",
+        "D": "Hấp chín toàn bộ bằng lò vi sóng."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC005 quy định chi tiết: Chiên trước bò/xá xíu tại 1 chảo, chia ra các chảo chờ bật bếp. Bật bếp làm hoàn chỉnh và CHỈ PHỤC VỤ KHI ĐÃ HOÀN THÀNH ĐỦ SỐ LƯỢNG SUẤT ĂN."
+    },
+    {
+      "id": 31,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi hết đá viên trong ca trực, địa điểm gần nhất nhân viên chủ động sang mua tạm 2 túi (20.000 VNĐ) là đâu?",
+      "options": {
+        "A": "Siêu thị Vinmart.",
+        "B": "Tạp hóa OLY.",
+        "C": "Cửa hàng Luckin Mart.",
+        "D": "Chợ Khương Trung."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC005 mục 3 ghi rõ: Hết đá -> Chạy sang tạp hóa OLY mua tạm 2 túi (20.000 vnđ) và lập phiếu chi."
+    },
+    {
+      "id": 32,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi phát hiện trẻ em tò mò tiến lại gần khu vực Bếp trong lúc chờ đồ ăn, nhân viên cần xử lý như thế nào?",
+      "options": {
+        "A": "Nhẹ nhàng mời các bé về chỗ và nhắc nhở: 'Khu vực bếp hơi nguy hiểm, em vui lòng về chỗ chờ đồ giúp anh/chị nhé'.",
+        "B": "Cho các bé vào trong bếp tham quan.",
+        "C": "To tiếng mắng các bé để chạy ra ngoài ngay lập tức.",
+        "D": "Mặc kệ các bé đứng xem vì không ảnh hưởng đến thao tác."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC005 quy định: Nhẹ nhàng mời các bé về chỗ và khuyên các bé kiên nhẫn chờ đồ vì khu vực bếp nguy hiểm."
+    },
+    {
+      "id": 33,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Thái độ ứng xử tiêu chuẩn đối với Shipper đứng đợi đồ tại cửa hàng là gì?",
+      "options": {
+        "A": "Ưu tiên làm đơn shipper trước bỏ qua khách tại tiệm.",
+        "B": "Cãi nhau với shipper nếu họ giục đồ.",
+        "C": "Yêu cầu shipper đứng tuyệt đối ngoài đường không được vào tiệm.",
+        "D": "Tôn trọng như 'đại diện khách hàng', mời vào trong ngồi đàng hoàng và có thể Mời cốc nước đá hạ hỏa khi đông."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC005 ghi rõ: Shipper là 'đại diện khách hàng' thay mặt khách mua hàng tại tiệm. Nhẹ nhàng vui vẻ mời shipper vào trong ngồi đàng hoàng."
+    },
+    {
+      "id": 34,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi hết Trứng tươi trong ca, nhân viên bếp cần chủ động mua bổ sung bao nhiêu quả tại chợ Khương Trung?",
+      "options": {
+        "A": "Tầm 5 - 10 quả.",
+        "B": "Tầm 50 - 100 quả.",
+        "C": "Tầm 20 - 30 quả (có thể dùng tiền két 100.000 VNĐ mang theo).",
+        "D": "Mua 1 khay 30 quả bằng tiền chuyển khoản."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC005 ghi rõ: Hết trứng -> Chủ động ra chợ Khương Trung mua tầm 20 - 30 quả (Có thể sử dụng tiền két 100.000 vnđ mang theo người) và lập phiếu chi."
+    },
+    {
+      "id": 35,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Bước đầu tiên trong quy trình kích hoạt tài khoản phần mềm HRM dành cho nhân viên mới là gì?",
+      "options": {
+        "A": "Nộp chứng minh nhân dân bản photo cho Quản lý.",
+        "B": "Tải ứng dụng và tự đăng ký bằng số điện thoại.",
+        "C": "Kiểm tra email từ HRM và làm theo hướng dẫn.",
+        "D": "Yêu cầu Quản lý chấm công tay."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC006 mục 1: Bước 1 Kích hoạt tài khoản là Kiểm tra email từ HRM và làm theo hướng dẫn."
+    },
+    {
+      "id": 36,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Sau khi hoàn thiện hồ sơ trên app HRM, nhân sự cần thực hiện 2 bước đăng ký nào và chờ admin duyệt?",
+      "options": {
+        "A": "Đăng ký vị trí làm việc và Đăng ký xe máy.",
+        "B": "Đăng ký khuôn mặt và Đăng ký thiết bị chấm công.",
+        "C": "Đăng ký số tài khoản và Đăng ký ca cố định.",
+        "D": "Đăng ký địa chỉ nhà và Đăng ký người thân."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC006 ghi rõ: Đăng ký khuôn mặt và chờ tài khoản admin duyệt; Đăng ký thiết bị chấm công và chờ admin duyệt."
+    },
+    {
+      "id": 37,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi muốn 'Đổi ca' hoặc 'Nhờ làm thay' trên ứng dụng HRM, lưu ý quan trọng nhất nhân sự cần thực hiện trước là gì?",
+      "options": {
+        "A": "Liên hệ trước với những người có liên quan để tránh tình huống khó xử.",
+        "B": "Tự ý nghỉ ca rồi báo sau.",
+        "C": "Nhờ Quản lý ép buộc đồng nghiệp làm thay.",
+        "D": "Gửi yêu cầu trực tiếp mà không cần báo trước."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC006 lưu ý: 'Liên hệ trước với những người có liên quan để tránh những tình huống khó xử không đáng có với đồng nghiệp'."
+    },
+    {
+      "id": 38,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Trường hợp nào sau đây KHÔNG HỢP LỆ để gửi 'Yêu cầu bổ sung chấm công' trên phần mềm HRM?",
+      "options": {
+        "A": "Đã đến cửa hàng từ sớm nhưng do quá đông khách chưa kịp check-in.",
+        "B": "Nhân viên ngủ quên đến muộn và muốn sửa lại giờ check-in đúng giờ.",
+        "C": "Có sai sót kỹ thuật từ hệ thống ứng dụng trong quá trình ghi nhận.",
+        "D": "Nhân sự được huy động khẩn cấp, quản lý chưa kịp tạo ca làm việc."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC006 mục 3.1 quy định các trường hợp bổ sung chấm công: Huy động khẩn cấp, đông khách chưa kịp check-in, lỗi hệ thống. Ngủ quên không thuộc diện hợp lệ."
+    },
+    {
+      "id": 39,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Đơn xin nghỉ phép/nghỉ ca trên phần mềm HRM có thể bị Quản lý từ chối vì lý do nào?",
+      "options": {
+        "A": "Đơn có đính kèm ảnh minh chứng lịch thi/lịch học.",
+        "B": "Nhân viên gửi đơn trước 3 ngày.",
+        "C": "Nhân viên xin nghỉ đúng quy trình.",
+        "D": "Lý do xin nghỉ không hợp lý hoặc có dấu hiệu không trung thực."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC006 lưu ý: 'Đơn xét duyệt này có thể bị từ chối bởi quản lý vì lý do không hợp lý hoặc có dấu hiệu không trung thực trong lý do xin nghỉ'."
+    },
+    {
+      "id": 40,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Mật khẩu mở ca đăng nhập mặc định trên phần mềm bán hàng máy tính tiền FABI là gì?",
+      "options": {
+        "A": "000000",
+        "B": "888888",
+        "C": "123456",
+        "D": "123123"
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC007 mục 2.1 ghi rõ: Mở ca (mật khẩu đăng nhập 123123) và đưa số dư về 0."
+    },
+    {
+      "id": 41,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Tiền két mặc định duy trì trong két tiền tại quầy Thu ngân luôn là bao nhiêu?",
+      "options": {
+        "A": "300.000 VNĐ.",
+        "B": "2.000.000 VNĐ.",
+        "C": "1.000.000 VNĐ.",
+        "D": "500.000 VNĐ."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC007 quy định: Mặc định trong két tiền luôn có 3 khoản, trong đó Tiền két: 1.000.000đ."
+    },
+    {
+      "id": 42,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Công thức tính Doanh thu tiền mặt thực tế ca làm việc của Thu ngân là gì?",
+      "options": {
+        "A": "Tiền doanh thu ca = Tổng lượng tiền đếm được trong két - Tiền két (1 triệu) - Tiền doanh thu các ca trước chưa thu.",
+        "B": "Tiền doanh thu ca = Tổng lượng tiền đếm được trong két.",
+        "C": "Tiền doanh thu ca = Tiền mặt thực tế - Các khoản chi.",
+        "D": "Tiền doanh thu ca = Doanh thu app online + Tiền két."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC007 quy định: Tiền doanh thu ca làm việc = Tổng lượng tiền đếm được trong ca - Tiền két."
+    },
+    {
+      "id": 43,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi nhập các đơn hàng phát sinh từ App giao hàng vào máy POS/FABI, Thu ngân cần chú ý điều gì về giá tiền?",
+      "options": {
+        "A": "Hủy đơn trên máy POS nếu giá tiền không khớp.",
+        "B": "Tự tính tiền chênh lệch và nộp thêm tiền mặt.",
+        "C": "Chỉ điền chính xác món ăn + số lượng, BỎ QUA GIÁ TIỀN nếu không khớp với app.",
+        "D": "Phải chỉnh sửa giá trên máy POS cho khớp chính xác từng đồng với app."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC007 ghi rõ: 'Chú ý điền chính xác món ăn + số lượng như đơn đặt hàng trên ứng dụng. Vui lòng bỏ qua giá tiền của đơn hàng nếu không khớp với ứng dụng'."
+    },
+    {
+      "id": 44,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Đường dẫn thao tác đúng để 'Tạo phiếu chi' trực tiếp trên phần mềm FABI là gì?",
+      "options": {
+        "A": "Cấu hình ---> Báo cáo ---> Tạo phiếu chi.",
+        "B": "Nhà hàng ---> Quản lý ca ---> Quản lý thu chi ---> TẠO PHIẾU CHI.",
+        "C": "Bán hàng ---> Hóa đơn ---> Tạo phiếu chi.",
+        "D": "Nhà hàng ---> Quản lý máy in ---> Tạo phiếu chi."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC007 mục 2.4 quy định thao tác: Nhà hàng ---> Quản lý ca ---> Quản lý thu chi ---> TẠO PHIẾU CHI."
+    },
+    {
+      "id": 45,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi màn hình QR phụ (iAP 300s) dành cho khách bị mất kết nối, thao tác khôi phục trên máy POS là gì?",
+      "options": {
+        "A": "Tắt nguồn máy POS và rút phích cắm.",
+        "B": "Nhà hàng ---> Quản lý màn hình 2 ---> Kiểm tra kết nối -> Chọn iAP 300s display làm mặc định -> Lưu.",
+        "C": "Xóa phần mềm FABI và cài lại.",
+        "D": "Khởi động lại toàn bộ máy tính tiền."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC007 mục 2.5 quy định thao tác bật/kiểm tra lại màn hình QR: Nhà hàng ---> Quản lý màn hình 2 ---> Kiểm tra kết nối."
+    },
+    {
+      "id": 46,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Quy định bắt buộc đối với việc xử lý Hóa đơn in ra tại quầy Thu ngân là gì?",
+      "options": {
+        "A": "Kẹp hóa đơn vào sổ doanh thu ca sáng.",
+        "B": "Vứt hóa đơn thừa vào thùng rác ngay lập tức.",
+        "C": "100% Hóa đơn phải gửi trả khách hàng; hóa đơn khách không lấy phải để gọn trong cọc cắm bill.",
+        "D": "Chỉ in hóa đơn khi khách hàng có yêu cầu."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC007 mục 2.6 quy định: 1. 100% Hóa đơn phải gửi trả khách hàng. 2. Hóa đơn khách không lấy phải để gọn gàng trong cọc cắm bill."
+    },
+    {
+      "id": 47,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khung giờ tự động 'mở cửa' và 'đóng cửa' của các App bán hàng giao đồ ăn là khi nào?",
+      "options": {
+        "A": "Mở cửa 07:00 sáng và đóng cửa 21:00 tối.",
+        "B": "Mở cửa 06:30 sáng và đóng cửa 22:30 tối.",
+        "C": "Tự động mở cửa vào 06:20 mỗi sáng và đóng cửa 22:00 mỗi tối.",
+        "D": "Mở cửa 06:00 sáng và đóng cửa 23:00 tối."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC007 mục 3.1 ghi rõ: Các app sẽ tự động 'mở cửa' vào 06:20 mỗi sáng và 'đóng cửa' 22:00 mỗi tối."
+    },
+    {
+      "id": 48,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Mọi khoản chi tiêu mua nguyên liệu/dụng cụ phát sinh trong ca trực phải được tạo phiếu chi trên FABI vào thời điểm nào?",
+      "options": {
+        "A": "Đợi đến cuối tháng kế toán tổng hợp.",
+        "B": "Phải tạo phiếu chi NGAY LẬP TỨC trong ca trực.",
+        "C": "Đợi đến cuối ca tối mới tạo gộp một thể.",
+        "D": "Không cần tạo phiếu chi nếu có hóa đơn bán lẻ."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC007 ghi rõ: 'Mọi chi tiêu cho cửa hàng trong ca trực sẽ phải tạo phiếu chi ngay lập tức trong phần mềm FABI'."
+    },
+    {
+      "id": 49,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Thứ tự phục vụ món ăn chuẩn đối với một ĐƠN HÀNG LỚN tại tiệm là gì?",
+      "options": {
+        "A": "Món nào làm xong trước mang ra trước bất kể đồ uống hay đồ ăn.",
+        "B": "Phục vụ toàn bộ đồ uống trước cho khách nhâm nhi, sau đó mới phục vụ món chính.",
+        "C": "Đợi làm xong 100% tất cả đồ ăn đồ uống mới bê ra một lượt.",
+        "D": "Mang toàn bộ món chính ra trước, đồ uống mang ra sau."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC008 mục 1.2 quy định: Đối với đơn hàng lớn, phải phục vụ toàn bộ đồ uống trước để khách nhâm nhi, giảm bớt thời gian chờ đợi món chính."
+    },
+    {
+      "id": 50,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Tại sao nhân viên được hướng dẫn thay đổi cách gọi 'Hóa đơn' thành 'Phiếu nhận đồ' khi giao tiếp với khách?",
+      "options": {
+        "A": "Để khách hàng không đòi tiền thừa.",
+        "B": "Theo quy định của cơ quan thuế.",
+        "C": "Vì tờ giấy đó không có giá trị pháp lý.",
+        "D": "Để tránh cảm giác nặng nề về tiền bạc cho khách hàng."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC008 ghi rõ: 'Thay vì gọi là Hóa đơn, hãy gọi là Phiếu nhận đồ để tránh cảm giác nặng nề về tiền bạc cho khách'."
+    },
+    {
+      "id": 51,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Khi mượn lại 'Phiếu nhận đồ' của khách để kiểm tra món còn thiếu, câu thoại lịch sự chuẩn là gì?",
+      "options": {
+        "A": "'Anh/chị chưa đưa phiếu cho em sao làm món được'.",
+        "B": "'Cho em xem lại cái bill'.",
+        "C": "'Đưa hóa đơn đây em xem thiếu món gì'.",
+        "D": "'Anh/chị cho em xin phép mượn phiếu nhận đồ để chúng em kiểm tra món ạ'."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC008 quy định mẫu câu: 'Anh/chị cho em xin phép mượn phiếu nhận đồ để chúng em kiểm tra món ạ'."
+    },
+    {
+      "id": 52,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Tư thế nhận Order 'sang' và chuyên nghiệp được quy định như thế nào?",
+      "options": {
+        "A": "Chỉ tay trực tiếp vào mặt khách để hỏi.",
+        "B": "Cúi gập người ghé sát mặt vào menu cùng khách.",
+        "C": "Tự chọn combo cho khách mà không cần hỏi.",
+        "D": "Đứng thẳng lưng, ưỡn ngực, lịch sự mời khách đọc tên/số thứ tự combo thay vì cúi đầu ngó tay khách chỉ."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC008 quy định: Đứng thẳng lưng, ưỡn ngực ra phía trước. Mời khách: 'Anh/chị vui lòng đọc giúp em tên hoặc số thứ tự của combo được không ạ?'"
+    },
+    {
+      "id": 53,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Mẫu câu chào tiêu chuẩn khi khách hàng bước vào cửa hàng Tascus Food là gì?",
+      "options": {
+        "A": "'Tascus Food xin chào!'",
+        "B": "'Mời anh/chị vào mua hàng ạ!'",
+        "C": "'Chào anh chị, ăn gì ạ?'",
+        "D": "'Tascus Food xin kính chào quý khách!'"
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC008 mẫu câu phục vụ: Lời chào chuẩn: 'Tascus Food xin chào!'"
+    },
+    {
+      "id": 54,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Từ ngữ giao tiếp nào được quy định chuẩn hóa để thay thế cho từ 'Nước' khi tư vấn phục vụ?",
+      "options": {
+        "A": "'Thức uống'",
+        "B": "'Đồ uống'",
+        "C": "'Nước giải khát'",
+        "D": "'Nước ngọt'"
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC008 quy định: Thay 'Nước' bằng 'Đồ uống', văn phong sẽ trang trọng hơn."
+    },
+    {
+      "id": 55,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Quy tắc lấy mã số đơn hàng online để nhập vào máy POS/iPOS đối với nền tảng GrabFood là gì?",
+      "options": {
+        "A": "Lấy toàn bộ dãy mã đơn dài.",
+        "B": "Lấy 3 số cuối của đơn (bỏ qua tiền tố GF-).",
+        "C": "Lấy 4 số cuối của đơn (bỏ qua tiền tố #).",
+        "D": "Lấy 2 số đầu tiên."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC009 mục 4.1a quy định: Grab Food: Lấy 3 số cuối của đơn (bỏ qua các tiền tố GF- phía trước)."
+    },
+    {
+      "id": 56,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Quy tắc lấy mã số đơn hàng online đối với ShopeeFood khi nhập lên máy POS là gì?",
+      "options": {
+        "A": "Lấy tên tài xế.",
+        "B": "Lấy 4 số cuối của đơn (bỏ qua tiền tố #).",
+        "C": "Lấy 5 số cuối của đơn.",
+        "D": "Lấy 3 số cuối của đơn."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC009 mục 4.1b quy định: Shopee Food: 4 số cuối của đơn (bỏ qua tiền tố #)."
+    },
+    {
+      "id": 57,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Nguyên tắc bắt buộc trước khi Bếp bắt đầu chuẩn bị đồ ăn cho đơn hàng Online là gì?",
+      "options": {
+        "A": "Chỉ bắt đầu chuẩn bị đơn khi ĐÃ CÓ TÀI XẾ nhận đơn trên hệ thống.",
+        "B": "Làm món ngay khi nổ đơn bất kể có tài xế hay chưa.",
+        "C": "Chờ tài xế đến tận cửa hàng mới bắt đầu làm món.",
+        "D": "Làm món trước 30 phút."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC009 mục 3 quy định nguyên tắc bắt buộc: 'Chỉ bắt đầu chuẩn bị đơn khi đã có tài xế nhận đơn trên hệ thống'."
+    },
+    {
+      "id": 58,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Trường hợp cửa hàng vắng khách, nhân viên được phép nhấn nút 'Báo tài xế tới lấy đơn' khi tiến độ làm đơn đạt bao nhiêu %?",
+      "options": {
+        "A": "Khi mới nhận đơn chưa làm món nào.",
+        "B": "Khi tiến độ nhân viên bếp hoàn thành 50% đơn hàng.",
+        "C": "Khi hoàn thành 100% đơn hàng.",
+        "D": "Khi đã đóng gói xong."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC009 mục 3.2 ghi chú: Với trường hợp vắng khách, tiến độ nhân viên bếp hoàn thành 50% đơn hàng đã có thể nhấn nút báo tài xế."
+    },
+    {
+      "id": 59,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Ai là người có thẩm quyền quyết định cuối cùng đối với việc HỦY HÓA ĐƠN tại cửa hàng?",
+      "options": {
+        "A": "Tài xế giao hàng.",
+        "B": "Nhân viên Thu ngân ca trực.",
+        "C": "Nhân viên Bếp chính.",
+        "D": "Cửa hàng trưởng hoặc Chủ cửa hàng."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC010 mục 3 quy định: 'Chỉ cửa hàng trưởng hoặc Chủ cửa hàng mới có quyền quyết định cuối cùng với việc hủy hóa đơn'."
+    },
+    {
+      "id": 60,
+      "category": "Quy trình vận hành (SOP)",
+      "difficulty": "6/10",
+      "question": "Đối với đơn hàng thanh toán bằng chuyển khoản QR (Momo), khi phát hiện sai sót cần hoàn tiền, quy định nghiêm cấm điều gì?",
+      "options": {
+        "A": "Cấm trả lại tiền mặt cho khách.",
+        "B": "Cấm báo cáo cho Quản lý.",
+        "C": "Cấm làm lại món mới cho khách.",
+        "D": "NGHIÊM CẤM sử dụng chức năng Hủy hóa đơn trực tiếp trên FABI; phải trả lại tiền mặt và tạo phiếu chi thay thế."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC010 quy định: 'Không sử dụng chức năng Hủy hóa đơn với đơn hàng thanh toán bằng QR Momo. Sử dụng hình thức trả lại tiền mặt tương ứng và tạo phiếu chi'."
+    },
+    {
+      "id": 61,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Khi rán nhân thịt Burger với số lượng lớn trên bếp phẳng, kĩ thuật chỉnh lửa chuẩn để tránh bị cháy quá lửa là gì?",
+      "options": {
+        "A": "Bật lửa tối đa ở hướng 12h để thịt chín nhanh giữ nước.",
+        "B": "Tắt bếp rán bằng nhiệt tồn của mặt chảo.",
+        "C": "Để lửa ở hướng 6h cho dầu sôi sùng sục.",
+        "D": "Để lửa nhỏ, núm vặn ga chỉnh chỉ mũi tên ở hướng 2h - 3h."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC005 quy định kỹ thuật hạn chế cháy burger số lượng lớn: Để lửa nhỏ (mũi tên núm vặn ở hướng 2h - 3h)."
+    },
+    {
+      "id": 62,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Nếu thịt Burger lỡ bị cháy quá lửa nhẹ trên bề mặt, giải pháp khắc phục nhanh được khuyến nghị trong quy trình làm bếp là gì?",
+      "options": {
+        "A": "Vứt bỏ ngay lập tức và làm lại miếng mới.",
+        "B": "Thử cạo bỏ lớp cháy xém bằng kéo hoặc dao trổ bánh.",
+        "C": "Rưới thêm sốt phô mai đè lên lớp cháy để che đi.",
+        "D": "Rán tiếp cho chín đen đều."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC005 mục 2 ghi rõ giải pháp xử lý thịt Burger quá lửa: 'Hãy thử cạo bỏ lớp cháy xém bằng kéo hoặc dao trổ bánh'."
+    },
+    {
+      "id": 63,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Nguyên nhân chính khiến bột bánh Crepe bị dính chặt vào mặt máy làm Crepe khi tráng là gì và bước xử lý đầu tiên?",
+      "options": {
+        "A": "Do bột quá lỏng; xử lý bằng cách đổ thêm bột khô trực tiếp lên mặt bếp.",
+        "B": "Do nhiệt quá cao/quá thấp hoặc bề mặt dính vệt cũ; xử lý bằng cách hạ nhiệt khẩn cấp bằng nước, cọ nhẹ bằng khăn ẩm rồi phết bơ bôi lại.",
+        "C": "Do thiếu dầu ăn; xử lý bằng cách đổ 100ml dầu ăn lên chảo đang nóng.",
+        "D": "Do chảo chưa đủ nóng; xử lý bằng cách vặn tối đa công suất bếp."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC005 ghi rõ nguyên nhân dính bánh crepe và các bước hạ nhiệt khẩn cấp bằng nước, lau bằng khăn ẩm, phết lại bơ."
+    },
+    {
+      "id": 64,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Trong công thức chuẩn bị rau củ quả tươi cho bàn Salad ca sáng, định lượng nhập rau chuẩn hằng ngày gồm những gì?",
+      "options": {
+        "A": "Chỉ nhập Xà lách 5kg, không cần dưa chuột và cà chua.",
+        "B": "Xà lách, cà chua, dưa chuột, quất (~3kg); Rau mùi, hành tây (~1kg); Chanh (~1kg).",
+        "C": "Xà lách 1kg, Cà chua 1kg, Dưa chuột 1kg, Hành tây 5kg.",
+        "D": "Xà lách 10kg, Cà chua 5kg, Dưa chuột 5kg, Chanh 3kg."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC003 mục 2 Bước 2 quy định định lượng đặt rau hằng ngày chuẩn: Xà lách, cà chua, dưa chuột, quất (khoảng 3kg); Rau mùi, hành tây (~1kg); Chanh (~1kg)."
+    },
+    {
+      "id": 65,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Khi làm món Bánh mì chảo tại Tascus Food, hai loại sốt nền chính tạo nên hương vị đặc trưng linh hồn của món ăn là gì?",
+      "options": {
+        "A": "Sốt Mayonnaise trộn xì dầu.",
+        "B": "Sốt Cà chua đóng hộp ketchup bơ Margarine.",
+        "C": "Sốt Bò Băm Hầm Tascus / Sốt Sapo / Sốt Phô Mai Tascus (tùy vị chảo).",
+        "D": "Mắm tôm và Sốt Tương đen Cholimex."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "Theo danh mục nguyên liệu xưởng KT.QC004 và KT.QC005, các loại sốt linh hồn của Bánh mì chảo/Burger gồm Sốt Bò Băm Hầm, Sốt Phô Mai, Sốt Sapo, Sốt Seoul, Sốt Tiêu Đen."
+    },
+    {
+      "id": 66,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Trường hợp bị hết sạch Jambon hoặc Xúc xích chuyên dụng nhập từ xưởng, loại xúc xích tạm thời được phép mua ngoài Vinmart/tạp hóa để chữa cháy là gì?",
+      "options": {
+        "A": "Xúc xích Đức Việt nhãn đỏ (khoảng 40.000 VNĐ/túi, mua 2 túi).",
+        "B": "Xúc xích tiệt trùng Vissan.",
+        "C": "Xúc xích ăn liền CP.",
+        "D": "Lạp xưởng tươi."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC005 quy định: Hết xúc xích/jambon -> Mua tạm xúc xích Đức Việt nhãn đỏ (khoảng 40.000 vnđ) trong trường hợp không thể mua được loại đang sử dụng."
+    },
+    {
+      "id": 67,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Nếu cửa hàng bị hết nguyên liệu Paté Bò nhập từ xưởng, quy tắc thay thế nguyên liệu tương đương chuẩn SOP là gì?",
+      "options": {
+        "A": "Dùng sốt Mayonnaise thay cho Paté.",
+        "B": "Dùng bơ Margarine thay thế hoàn toàn Paté.",
+        "C": "Thay thế tạm bằng Paté Heo cho các sản phẩm bánh mì và báo cáo Quản lý.",
+        "D": "Từ chối bán tất cả các món có Paté."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC005 quy định: Hết paté bò/heo -> Thay thế tạm bằng Paté heo/bò cho các sản phẩm bánh mỳ và báo cáo quản lý ngay sau đó."
+    },
+    {
+      "id": 68,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Đối với nguyên liệu Bắp cải tím dùng cho món Salad/Burger, nếu đột ngột hết hàng trong ca, Bếp được phép dùng nguyên liệu nào thay thế?",
+      "options": {
+        "A": "Không cho rau vào bánh nữa.",
+        "B": "Thay bằng Bắp cải trắng.",
+        "C": "Thay bằng Xà lách tươi.",
+        "D": "Thay bằng Dưa chuột muối."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC005 ghi rõ hướng xử lý: Hết bắp cải tím -> Thay bằng xà lách."
+    },
+    {
+      "id": 69,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Khi bảo quản và sơ chế rau tươi tại bàn Salad, nguyên tắc xếp hàng bánh mì và rau củ nhập trước/nhập sau tuân thủ tiêu chuẩn nào?",
+      "options": {
+        "A": "Nguyên tắc FIFO (First In, First Out - Hàng nhập trước sử dụng trước).",
+        "B": "Xếp lộn xộn tiện tay lấy túi nào dùng túi đó.",
+        "C": "Chỉ dùng hàng mới nhập, hàng cũ bỏ đi.",
+        "D": "Nguyên tắc LIFO (Hàng nhập sau dùng trước)."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC003 mục 1 quy định: 'Tuân thủ nghiêm ngặt nguyên tắc FIFO (Hàng nhập trước dùng trước) khi sắp xếp và chế biến'."
+    },
+    {
+      "id": 70,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Quy cách đóng gói bán thành phẩm chuẩn từ Xưởng giao đến tiệm cho loại Sốt Bò Băm Hầm và Sốt Phô Mai Tascus là gì?",
+      "options": {
+        "A": "Túi kín quy cách 500Gram/Túi hoặc 1Kg/Túi.",
+        "B": "Hộp thủy tinh 200g.",
+        "C": "Can nhựa 5 lít.",
+        "D": "Bịch nilon 5kg."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "KT.QC004 phiếu nhận hàng xưởng quy định quy cách: Sốt Phô Mai Tascus (500Gram/Túi), Sốt Bò Băm Hầm Tascus (500Gram/Túi)."
+    },
+    {
+      "id": 71,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Trong danh mục đồ uống Tascus Food, hai loại trà cốt đóng túi thành phẩm bảo quản tủ mát từ xưởng là gì?",
+      "options": {
+        "A": "Trà Đào Cam Sả và Trà Lipton túi lọc.",
+        "B": "Trà Ô Long và Trà Lài Thái Xanh.",
+        "C": "Cốt Trà Tắc Chanh Tascus và Nước Trà Hibiscus Thành Phẩm.",
+        "D": "Trà Mãng Cầu và Trà Sen Vàng."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC004 phiếu kiểm hàng ghi rõ: Cốt Trà Tắc, chanh Tascus (Chai/Túi) và Nước Trà Hibiscus Thành Phẩm Tascus."
+    },
+    {
+      "id": 72,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Nhiệt độ bảo quản chuẩn đối với nguyên liệu Bán thành phẩm dùng dở trong ca làm việc tại Bếp là gì?",
+      "options": {
+        "A": "Ngâm toàn bộ sốt trong thùng đá lạnh.",
+        "B": "Khay Salad/Sốt bảo quản tại Bàn Mát chuyên dụng, đồ trữ đông giữ ở Tủ Đông sâu.",
+        "C": "Để toàn bộ nguyên liệu ngoài nhiệt độ phòng 35 độ C.",
+        "D": "Để nguyên liệu dở trong lò vi sóng."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC002 & KT.QC004 quy định kiểm tồn đủ 3 trạng thái bảo quản: Dùng dở (Bàn Salad/Mát), Tủ Mát/Kệ khô, và Tủ Đông."
+    },
+    {
+      "id": 73,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Nếu phát hiện túi Sốt Bò Băm hoặc Sốt Phô Mai bị phồng rộp, có mùi chua lạ khi mở túi trong tủ mát, thao tác chuẩn là gì?",
+      "options": {
+        "A": "Đun sôi lại sốt trên bếp cho hết mùi chua rồi dùng tiếp.",
+        "B": "Âm thầm vứt vào thùng rác không báo cáo.",
+        "C": "Ngừng sử dụng ngay, chụp ảnh, cân khối lượng, làm Báo cáo Hủy đồ lý do khách quan và báo Xưởng/Quản lý.",
+        "D": "Trộn thêm tương ớt vào để lấp mùi chua."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "KT.QC002 & KT.QC005 quy định nguyên liệu hỏng do lỗi khách quan (hàng lỗi xưởng) phải chụp ảnh, cân khối lượng, làm báo cáo hủy đồ và báo xưởng đổi hàng."
+    },
+    {
+      "id": 74,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Khi làm món Sandwich Phô mai Jambon hoặc Burger Bò Phô mai, phô mai lát nướng/áp chảo được đặt ở vị trí nào trong cấu trúc món ăn?",
+      "options": {
+        "A": "Dán lên vỏ ngoài bánh mì.",
+        "B": "Đặt dưới đáy hộp giấy đựng bánh.",
+        "C": "Đặt trực tiếp lên nhân thịt/jambon đang nóng để phô mai chảy béo ngậy ôm trọn nhân.",
+        "D": "Để nguyên túi nilon bọc phô mai rồi kẹp vào bánh."
+      },
+      "answer_index": 2,
+      "answer_letter": "C",
+      "explanation": "Quy chuẩn chế biến món Burger/Sandwich nướng nóng phô mai đòi hỏi đặt phô mai lát lên bề mặt nhân nóng để tạo độ chảy ngậy béo."
+    },
+    {
+      "id": 75,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Định lượng chuẩn khi pha chế các món Trà Tắc Nha Đam / Trà Hibiscus khi phục vụ ly cho khách là gì?",
+      "options": {
+        "A": "Đổ cốt trà theo định lượng vạch ly chuẩn, thêm topping Nha đam/Trắc, lắc đều với đá đầy ly.",
+        "B": "Đổ 100% cốt trà nguyên chất không thêm đá.",
+        "C": "Cho 90% đá viên và 1 thìa cốt trà.",
+        "D": "Pha thêm nước lọc ấm vào cốt trà."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "Quy trình quầy pha chế KT.QC002 & KT.QC007 yêu cầu chuẩn bị đá đầy thùng, đong cốt trà đúng vạch và thêm topping theo công thức chuẩn."
+    },
+    {
+      "id": 76,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Loại bột bánh vỏ giòn đặc trưng dùng cho các dòng bánh Crepe Kim Chi / Crepe Xúc Xích tại Tascus Food là gì?",
+      "options": {
+        "A": "Bột mì đa dụng Meizan.",
+        "B": "Bột bánh Crepe Tascus (túi 1Kg/Túi).",
+        "C": "Bột chiên giòn Tài Phát.",
+        "D": "Bột năng tôm."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC004 mã hàng xưởng TC.SOT.TP20 ghi rõ: Bột bánh Crepe Tascus (1Kg/Túi)."
+    },
+    {
+      "id": 77,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Khi làm món Khoai tây chiên giòn phục vụ kèm Combo, tiêu chuẩn kỹ thuật chiên khoai là gì?",
+      "options": {
+        "A": "Áp chảo khoai tây không dùng dầu.",
+        "B": "Luộc khoai trong nước sôi.",
+        "C": "Chiên sơ 30 giây rồi đóng hộp ngay khi khoai còn ỉu.",
+        "D": "Chiên ngập dầu ở nhiệt độ chuẩn đến khi khoai vàng giòn, vớt ra róc dầu hoàn toàn trước khi đóng hộp/khay."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC004 & KT.QC008 quy định Khoai tây chiên (1Kg/Túi) phải được chiên giòn, để róc dầu hoàn toàn trước khi phục vụ."
+    },
+    {
+      "id": 78,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Trong trường hợp hết Hành tím làm gia vị phi thơm cho các món chảo, hướng xử lý trong ca bếp là gì?",
+      "options": {
+        "A": "Tự ý chạy đi mua tỏi về thay thế.",
+        "B": "Tạm thời bỏ qua nguyên vật liệu hành tím và báo cáo Quản lý ngay sau đó.",
+        "C": "Tắt app nghỉ bán.",
+        "D": "Dừng bán toàn bộ món chảo."
+      },
+      "answer_index": 1,
+      "answer_letter": "B",
+      "explanation": "KT.QC005 ghi rõ hướng xử lý: Hết hành tím -> Tạm thời bỏ qua nguyên vật liệu; Báo cáo quản lý ngay sau đó."
+    },
+    {
+      "id": 79,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Khi chế biến món Mỳ Ý Bò Băm hoặc Mỳ Xào Tascus, sợi mỳ được bảo quản và sơ chế như thế nào?",
+      "options": {
+        "A": "Dùng mỳ tôm Hảo Hảo thay thế mỳ Ý.",
+        "B": "Thả mỳ sống trực tiếp vào chảo sốt không luộc trước.",
+        "C": "Ngâm mỳ trong nước lạnh 24 giờ.",
+        "D": "Mỳ Ý sợi khô Tascus (500g/túi) được luộc chín tới, xóc bơ/dầu chống dính, chia suất bảo quản túi/hộp chuẩn."
+      },
+      "answer_index": 3,
+      "answer_letter": "D",
+      "explanation": "KT.QC004 mã hàng NVLB.NX21 Mỳ ý sợi khô (500Gram/Túi) & Bơ tươi làm mì chảo Tascus (1Kg/Túi) phục vụ luộc chín xóc bơ chuẩn vị."
+    },
+    {
+      "id": 80,
+      "category": "Công thức nấu ăn & Chế biến",
+      "difficulty": "7.5/10",
+      "question": "Trường hợp khách đặt món Burger 2 Nhân (Double Burger), quy trình xếp lớp nhân bánh chuẩn là gì?",
+      "options": {
+        "A": "Vỏ bánh dưới -> Sốt lót -> Lớp nhân 1 + Phô mai -> Lớp nhân 2 + Phô mai -> Salad tươi -> Sốt phủ -> Vỏ bánh trên.",
+        "B": "Xay nát 2 miếng thịt thành giò rồi mới kẹp.",
+        "C": "Cho rau xà lách xuống đáy cùng rồi mới đè nhân thịt nóng lên làm nát rau.",
+        "D": "Để 2 miếng nhân thịt bên ngoài hộp giấy."
+      },
+      "answer_index": 0,
+      "answer_letter": "A",
+      "explanation": "Sơ đồ lắp ráp burger chuẩn Tascus Food yêu cầu cấu trúc lớp giữ nhiệt và giữ độ giòn tươi của salad, phô mai ôm nhân thịt giữa hai mặt vỏ nướng nóng."
+    }
+  ]
+}
