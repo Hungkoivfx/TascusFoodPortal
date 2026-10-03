@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-02T03:41:22.040Z",
+  "updated_at": "2026-10-03T12:36:30.500Z",
   "records": [
     {
       "id": "Z032",
@@ -484,6 +484,16 @@
       "thoi_gian": "2026/10/02 10:41",
       "nguoi_bao_cao": "Hoài Anh",
       "noi_dung": "combo số 6 không hiển thị ở máy pos",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z070",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/03 19:36",
+      "nguoi_bao_cao": "Định",
+      "noi_dung": "Sắp hết trứng",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
