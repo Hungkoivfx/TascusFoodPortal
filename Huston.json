@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T12:56:19.308Z",
+  "updated_at": "2026-10-04T01:06:04.249Z",
   "records": [
     {
       "id": "Z032",
@@ -498,6 +498,16 @@
       "thoi_gian": "2026/10/03 19:36",
       "nguoi_bao_cao": "Định",
       "noi_dung": "Sắp hết trứng",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z071",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/04 08:06",
+      "nguoi_bao_cao": "Hoài Anh",
+      "noi_dung": "hết xúc xích",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
