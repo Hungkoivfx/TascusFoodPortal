@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T01:06:04.249Z",
+  "updated_at": "2026-10-04T10:42:30.093Z",
   "records": [
     {
       "id": "Z032",
@@ -508,6 +508,16 @@
       "thoi_gian": "2026/10/04 08:06",
       "nguoi_bao_cao": "Hoài Anh",
       "noi_dung": "hết xúc xích",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z072",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/04 17:42",
+      "nguoi_bao_cao": "DIỆU LINH",
+      "noi_dung": "Hết túi cốc và vỏ bánh crep",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
