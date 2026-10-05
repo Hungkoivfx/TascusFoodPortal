@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T10:42:30.093Z",
+  "updated_at": "2026-10-05T11:07:09.773Z",
   "records": [
     {
       "id": "Z032",
@@ -520,7 +520,10 @@
       "noi_dung": "Hết túi cốc và vỏ bánh crep",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/05 18:07",
+      "phuong_an_xu_ly": "Đã mang tới",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
