@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-05T11:07:37.340Z",
+  "updated_at": "2026-10-05T11:08:03.965Z",
   "records": [
     {
       "id": "Z032",
@@ -513,7 +513,10 @@
       "noi_dung": "hết xúc xích",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/05 18:08",
+      "phuong_an_xu_ly": "Đã giao hàng sáng thứ 2",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z072",
