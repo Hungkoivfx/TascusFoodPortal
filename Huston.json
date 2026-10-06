@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-05T11:08:03.965Z",
+  "updated_at": "2026-10-06T03:50:43.529Z",
   "records": [
     {
       "id": "Z032",
@@ -530,6 +530,16 @@
       "thoi_gian_xu_ly": "2026/10/05 18:07",
       "phuong_an_xu_ly": "Đã mang tới",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z073",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/06 10:50",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Cần gấp dĩa gỗ, hộp mỳ mang đi ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
