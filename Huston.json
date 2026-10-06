@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-06T12:56:54.275Z",
+  "updated_at": "2026-10-06T12:57:37.394Z",
   "records": [
     {
       "id": "Z032",
@@ -542,7 +542,10 @@
       "noi_dung": "Cần gấp dĩa gỗ, hộp mỳ mang đi ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/06 19:57",
+      "phuong_an_xu_ly": "Mua tạm dĩa nhựa\nĐặt hàng 900 hộp",
+      "nguoi_xu_ly": "Linh"
     }
   ]
 }
