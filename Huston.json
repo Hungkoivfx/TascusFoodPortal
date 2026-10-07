@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-06T12:57:37.394Z",
+  "updated_at": "2026-10-07T04:59:02.739Z",
   "records": [
     {
       "id": "Z032",
@@ -546,6 +546,16 @@
       "thoi_gian_xu_ly": "2026/10/06 19:57",
       "phuong_an_xu_ly": "Mua tạm dĩa nhựa\nĐặt hàng 900 hộp",
       "nguoi_xu_ly": "Linh"
+    },
+    {
+      "id": "Z074",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/07 11:59",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "khoai tây còn 1 túi, bột crepe còn 1 túi ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
