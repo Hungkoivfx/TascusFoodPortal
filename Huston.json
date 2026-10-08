@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08T11:09:03.726Z",
+  "updated_at": "2026-10-08T11:48:50.006Z",
   "records": [
     {
       "id": "Z032",
@@ -586,6 +586,16 @@
       "thoi_gian": "2026/10/08 18:09",
       "nguoi_bao_cao": "Hưng",
       "noi_dung": "Ông Nguyễn Tuấn Hưng cần mang máy mài đến xử lý, mài nhẵn các cạnh sắc tại bàn salad",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z078",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/08 18:48",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Cửa bên trái từ ngoài vào bị nặng cửa, khó đóng mở\nTạm thời theo dõi,\nƯu tiên thấp, chưa cần sửa vội",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
