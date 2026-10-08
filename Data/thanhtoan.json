@@ -1524,5 +1524,19 @@
     "Hình thức thanh toán": "Chuyển khoản ngân hàng",
     "Mã giao dịch": "FT26280254095700/072428259699",
     "Ngày giờ thanh toán": "2026/10/07 13:58"
+  },
+  {
+    "Nội dung chuyển tiền": "Thanh toan tien trung ngay 0810",
+    "Số tiền": 210000,
+    "Hình thức thanh toán": "Chuyển khoản ngân hàng",
+    "Mã giao dịch": "FT26281501011390/082430192266",
+    "Ngày giờ thanh toán": "2026/10/08 10:15"
+  },
+  {
+    "Nội dung chuyển tiền": "Thanh toan khoai tay ngay 0710 INV202656249",
+    "Số tiền": 1166400,
+    "Hình thức thanh toán": "Chuyển khoản ngân hàng",
+    "Mã giao dịch": "FT26281938764987/082430198750",
+    "Ngày giờ thanh toán": "2026/10/08 10:18"
   }
 ]
