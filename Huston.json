@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08T03:20:47.654Z",
+  "updated_at": "2026-10-08T07:05:18.752Z",
   "records": [
     {
       "id": "Z032",
@@ -559,6 +559,16 @@
       "thoi_gian_xu_ly": "2026/10/08 10:20",
       "phuong_an_xu_ly": "Bổ sung 30 túi khoai\n4 gói bột crepe",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z075",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/08 14:05",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Sổ báo cáo doanh thu sắp hết. Anh Hưng in thêm nha ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
