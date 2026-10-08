@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08T11:48:50.006Z",
+  "updated_at": "2026-10-08T11:50:49.214Z",
   "records": [
     {
       "id": "Z032",
@@ -568,7 +568,9 @@
       "noi_dung": "Sổ báo cáo doanh thu sắp hết. Anh Hưng in thêm nha ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đang xử lý",
+      "phuong_an_xu_ly": "Đang xử lý lại nội dung cùng sổ kiểm đồ\nSẽ in lại trong thời gian sớm nhất",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z076",
