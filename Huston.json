@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08T07:05:18.752Z",
+  "updated_at": "2026-10-08T11:07:14.267Z",
   "records": [
     {
       "id": "Z032",
@@ -566,6 +566,16 @@
       "thoi_gian": "2026/10/08 14:05",
       "nguoi_bao_cao": "P.Linh",
       "noi_dung": "Sổ báo cáo doanh thu sắp hết. Anh Hưng in thêm nha ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z076",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/08 18:07",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Dầu đã đen\nCần thay gấp\nHết dầu....\nÔng Nguyễn Tuấn Hưng sẽ phải đi mua can dầu mới và mang tới cửa hàng sáng mai 09/10",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
