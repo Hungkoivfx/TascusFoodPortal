@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-07T04:59:02.739Z",
+  "updated_at": "2026-10-08T03:20:47.654Z",
   "records": [
     {
       "id": "Z032",
@@ -555,7 +555,10 @@
       "noi_dung": "khoai tây còn 1 túi, bột crepe còn 1 túi ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/08 10:20",
+      "phuong_an_xu_ly": "Bổ sung 30 túi khoai\n4 gói bột crepe",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
