@@ -1,112 +1,131 @@
+
 <!DOCTYPE html>
-
 <html lang="vi">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f7f7fa">
 <title>Sổ thanh toán · 69 Khương Trung</title>
 
 <style>
-input,
-textarea,
-select {
-font-size: 16px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+:root {
+    color-scheme: light;
+    --md-primary: #505c92;
+    --md-primary-hover: #414c80;
+    --md-on-primary: #ffffff;
+    --md-primary-container: #dfe4ff;
+    --md-on-primary-container: #111c4b;
+    --md-background: #f7f7fa;
+    --md-surface: #ffffff;
+    --md-surface-low: #f0f0f5;
+    --md-surface-high: #e9e9ef;
+    --md-outline: #777780;
+    --md-outline-variant: #c6c6d0;
+    --md-text: #191a22;
+    --md-text-secondary: #454650;
+    --md-text-muted: #747580;
+    --md-error: #ba1a1a;
+    --md-radius-small: 8px;
+    --md-radius-medium: 12px;
+    --md-radius-large: 16px;
+    --md-radius-xl: 24px;
+    --md-shadow: 0 1px 3px rgba(25, 26, 34, .08),
+                 0 2px 8px rgba(25, 26, 34, .04);
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
-html,
-body {
-    width: 100%;
+html {
     min-height: 100%;
+    background: var(--md-background);
 }
 
 body {
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
-
-    background: #f5f6f7;
-    color: #17181a;
-
+    min-height: 100vh;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
+    background: var(--md-background);
+    color: var(--md-text);
     padding:
-        max(18px, env(safe-area-inset-top))
-        14px
-        max(28px, env(safe-area-inset-bottom))
-        14px;
+        max(20px, env(safe-area-inset-top))
+        16px
+        max(32px, env(safe-area-inset-bottom));
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+
+button, input, textarea, select {
+    font: inherit;
+}
+
+button {
+    touch-action: manipulation;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 3px;
 }
 
 .container {
     width: 100%;
-    max-width: 620px;
+    max-width: 720px;
     margin: 0 auto;
 }
 
-
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header {
     display: flex;
     align-items: center;
-    gap: 11px;
-
-    margin-bottom: 14px;
+    gap: 12px;
+    margin-bottom: 24px;
 }
 
 .back-button,
 .help-button {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-
-    border: 1px solid #dedfe1;
-    background: #fff;
-
-    border-radius: 11px;
-
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border: 1px solid var(--md-outline-variant);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--md-text);
     display: flex;
     align-items: center;
     justify-content: center;
-
     cursor: pointer;
-
-    color: #17181a;
-
-    transition: .15s ease;
+    transition: background .18s, transform .12s;
 }
 
 .back-button {
-    font-size: 23px;
+    font-size: 28px;
     line-height: 1;
+    padding-bottom: 3px;
 }
 
 .help-button {
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.back-button:hover,
+.help-button:hover {
+    background: var(--md-surface-high);
 }
 
 .back-button:active,
 .help-button:active {
-    transform: scale(.95);
+    transform: scale(.94);
 }
 
 .header-main {
@@ -115,585 +134,533 @@ body {
 }
 
 .header-main h1 {
-    font-size: 20px;
-    line-height: 1.2;
-    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -.35px;
 }
 
 .header-main p {
-    margin-top: 3px;
-
-    font-size: 11px;
-    color: #777a7e;
+    margin-top: 5px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--md-text-muted);
 }
 
-
-/* =========================
-   FILTER BAR
-========================= */
+/* FILTERS */
 
 .filter-bar {
     display: flex;
-    gap: 7px;
-
-    margin-bottom: 12px;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
 .filter-button {
     flex: 1;
-
-    height: 40px;
-
-    border: 1px solid #dedfe1;
-    border-radius: 11px;
-
-    background: #fff;
-    color: #55575a;
-
-    font-size: 11px;
-    font-weight: 600;
-
+    min-width: 0;
+    min-height: 42px;
+    padding: 0 10px;
+    border: 1px solid var(--md-outline);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--md-text-secondary);
+    font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
-
-    transition: .15s ease;
+    transition: background .18s, border-color .18s;
 }
 
-.filter-button:active {
-    transform: scale(.97);
+.filter-button:hover {
+    background: var(--md-surface-low);
 }
 
 .filter-button.active {
-    background: #17181a;
-    border-color: #17181a;
-    color: #fff;
+    background: var(--md-secondary-container, #e5e5ef);
+    border-color: transparent;
+    color: var(--md-text);
+    font-weight: 600;
 }
 
-
-/* =========================
-   CREATE
-========================= */
+/* CREATE BUTTON */
 
 .create-row {
     display: flex;
-
     justify-content: flex-end;
-
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .create-button {
-    height: 40px;
-
-    padding: 0 13px;
-
+    min-height: 46px;
+    padding: 0 20px;
     border: 0;
-
-    border-radius: 11px;
-
-    background: #17181a;
-
-    color: #fff;
-
-    font-size: 12px;
-    font-weight: 700;
-
+    border-radius: 14px;
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
+    box-shadow: 0 2px 4px rgba(80, 92, 146, .18);
+    transition: background .18s, box-shadow .18s, transform .12s;
+}
 
-    white-space: nowrap;
-
-    transition: .15s ease;
+.create-button:hover {
+    background: var(--md-primary-hover);
+    box-shadow: 0 3px 8px rgba(80, 92, 146, .22);
 }
 
 .create-button:active {
-    transform: scale(.97);
+    transform: scale(.98);
 }
 
-
-/* =========================
-   SUMMARY
-========================= */
+/* SUMMARY */
 
 .summary {
-    background: #fff;
-
-    border: 1px solid #e1e2e4;
-
-    border-radius: 15px;
-
-    padding: 14px 15px;
-
-    margin-bottom: 12px;
-
+    background: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    border-radius: var(--md-radius-xl);
+    padding: 22px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
 }
 
 .summary-label {
-    font-size: 11px;
-    color: #777a7e;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .summary-period {
-    margin-top: 3px;
-
-    font-size: 11px;
-
-    color: #a0a2a5;
+    margin-top: 7px;
+    font-size: 12px;
+    color: var(--md-primary);
+    font-weight: 500;
 }
 
 .summary-value {
-    font-size: 22px;
-    font-weight: 700;
-
-    letter-spacing: -.02em;
+    font-size: clamp(22px, 5vw, 30px);
+    font-weight: 600;
+    letter-spacing: -.8px;
+    text-align: right;
+    overflow-wrap: anywhere;
 }
 
-
-/* =========================
-   LIST CARD
-========================= */
+/* LIST CARD */
 
 .list-card {
-    background: #fff;
-
-    border: 1px solid #e1e2e4;
-
-    border-radius: 15px;
-
-    padding: 13px;
-
-    margin-bottom: 12px;
+    background: var(--md-surface);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-radius-xl);
+    padding: 20px;
+    box-shadow: var(--md-shadow);
 }
 
 .section-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding: 1px 1px 10px;
+    gap: 12px;
+    padding: 0 2px 16px;
 }
 
 .section-title {
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -.2px;
 }
 
 .record-count {
-    font-size: 10px;
-    color: #85878a;
+    flex-shrink: 0;
+    background: var(--md-surface-low);
+    color: var(--md-text-secondary);
+    padding: 6px 11px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
 }
 
-
-/* =========================
-   PAYMENT LIST
-========================= */
+/* PAYMENT LIST */
 
 .payment-list {
     display: flex;
     flex-direction: column;
-
-    gap: 7px;
+    gap: 10px;
 }
 
 .payment-item {
-    border: 1px solid #e4e5e7;
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-radius-large);
+    padding: 16px;
+    background: var(--md-surface);
+    transition: background .16s, border-color .16s;
+}
 
-    border-radius: 11px;
-
-    padding: 11px 12px;
-
-    background: #fff;
+.payment-item:hover {
+    background: #fbfbfd;
+    border-color: #aaaab8;
 }
 
 .payment-top {
     display: flex;
     align-items: flex-start;
-
     justify-content: space-between;
-
-    gap: 12px;
+    gap: 14px;
 }
 
 .payment-content {
     flex: 1;
-
     min-width: 0;
 }
 
 .payment-name {
-    font-size: 13px;
-
+    font-size: 14px;
     font-weight: 600;
-
-    line-height: 1.35;
-
-    word-break: break-word;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
 }
 
 .payment-date {
-    margin-top: 4px;
-
-    font-size: 10px;
-
-    color: #85878a;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--md-text-muted);
+    line-height: 1.4;
 }
 
 .payment-amount {
-    font-size: 14px;
-
+    font-size: 15px;
     font-weight: 700;
-
+    color: var(--md-text);
     white-space: nowrap;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
 }
 
 .payment-meta {
     display: flex;
     align-items: center;
-
     flex-wrap: wrap;
-
-    gap: 5px;
-
-    margin-top: 8px;
+    gap: 7px;
+    margin-top: 12px;
 }
 
 .meta-badge {
     display: inline-flex;
     align-items: center;
-
-    padding: 4px 6px;
-
-    border-radius: 6px;
-
-    background: #f2f2f3;
-
-    color: #626467;
-
-    font-size: 9px;
+    min-height: 26px;
+    padding: 5px 9px;
+    border-radius: 8px;
+    background: var(--md-surface-low);
+    color: var(--md-text-secondary);
+    font-size: 11px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    max-width: 100%;
 }
 
 .transaction {
-    font-family: monospace;
-
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
     word-break: break-all;
 }
 
-
-/* =========================
-   EMPTY
-========================= */
+/* EMPTY */
 
 .empty {
-    padding: 35px 10px;
-
+    padding: 42px 12px;
     text-align: center;
-
-    color: #85878a;
+    color: var(--md-text-muted);
 }
 
 .empty-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: var(--md-surface-low);
     font-size: 26px;
-
-    margin-bottom: 7px;
 }
 
 .empty-title {
-    font-size: 12px;
-
+    font-size: 15px;
     font-weight: 600;
-
-    color: #5d5f62;
+    color: var(--md-text);
 }
 
 .empty-text {
-    margin-top: 3px;
-
-    font-size: 10px;
+    margin-top: 7px;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
-
-/* =========================
-   MODAL
-========================= */
+/* MODALS */
 
 .modal-overlay {
-position: fixed;
-inset: 0;
-z-index: 100;
-display: none;
-align-items: center;
-justify-content: center;
-background: rgba(0, 0, 0, .4);
-padding: 18px;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(20, 20, 30, .42);
+    padding:
+        max(16px, env(safe-area-inset-top))
+        16px
+        max(16px, env(safe-area-inset-bottom));
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
 .modal-overlay.show {
-display: flex;
+    display: flex;
 }
 
 .modal {
-width: 100%;
-max-width: 620px;
-max-height: calc(100vh - 36px);
-overflow-y: auto;
-background: #fff;
-border-radius: 18px;
-padding: 17px 15px 22px;
-box-shadow: 0 12px 40px rgba(0, 0, 0, .16);
+    width: 100%;
+    max-width: 560px;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--md-surface);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .18);
+    animation: modalIn .18s ease-out;
 }
 
-
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(8px) scale(.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
 
 .modal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    margin-bottom: 15px;
+    gap: 12px;
+    margin-bottom: 22px;
 }
 
 .modal-title {
-    font-size: 17px;
-
-    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -.3px;
 }
 
 .close-button {
-    width: 35px;
-    height: 35px;
-
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
     border: 0;
-
-    border-radius: 9px;
-
-    background: #f1f1f2;
-
-    font-size: 20px;
-
-    color: #45474a;
-
+    border-radius: 50%;
+    background: var(--md-surface-low);
+    color: var(--md-text);
+    font-size: 24px;
+    line-height: 1;
     cursor: pointer;
+    transition: background .16s;
 }
 
+.close-button:hover {
+    background: var(--md-surface-high);
+}
 
-/* =========================
-   FORM
-========================= */
+/* FORM */
 
 .form-group {
-    margin-bottom: 12px;
+    margin-bottom: 18px;
 }
 
 .form-label {
     display: block;
-
-    font-size: 11px;
-
-    font-weight: 600;
-
-    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--md-text-secondary);
 }
 
 .form-input,
 .form-textarea {
+    display: block;
     width: 100%;
-
-    border: 1px solid #dedfe1;
-
-    background: #fafafa;
-
-    border-radius: 10px;
-
-    padding: 0 11px;
-
-    color: #17181a;
-
+    min-width: 0;
+    border: 1px solid var(--md-outline);
+    background: var(--md-surface);
+    border-radius: 12px;
+    padding: 0 14px;
+    color: var(--md-text);
     font-family: inherit;
-
-    font-size: 13px;
-
+    font-size: 16px;
     outline: none;
+    transition: border-color .16s, box-shadow .16s;
 }
 
 .form-input {
-    height: 44px;
+    height: 52px;
 }
 
 .form-textarea {
-    min-height: 78px;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-
+    min-height: 90px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     resize: vertical;
+    line-height: 1.5;
+}
 
-    line-height: 1.45;
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #858590;
 }
 
 .form-input:focus,
 .form-textarea:focus {
-    background: #fff;
-
-    border-color: #999b9e;
+    border-color: var(--md-primary);
+    box-shadow: inset 0 0 0 1px var(--md-primary);
 }
 
+.form-input:disabled {
+    background: var(--md-surface-low);
+    color: var(--md-text-muted);
+    cursor: not-allowed;
+}
 
-/* =========================
-   PAYMENT TYPE
-========================= */
+/* PAYMENT TYPE */
 
 .payment-types {
     display: flex;
-
-    gap: 7px;
+    gap: 10px;
 }
 
 .payment-type {
     flex: 1;
-
+    min-width: 0;
     position: relative;
 }
 
 .payment-type input {
     position: absolute;
-
+    width: 1px;
+    height: 1px;
     opacity: 0;
-
     pointer-events: none;
 }
 
 .payment-type label {
-    min-height: 44px;
-
+    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-
     text-align: center;
-
-    padding: 7px;
-
-    border: 1px solid #dedfe1;
-
-    background: #fafafa;
-
-    border-radius: 10px;
-
-    font-size: 11px;
-
-    font-weight: 600;
-
+    padding: 10px;
+    border: 1px solid var(--md-outline);
+    background: var(--md-surface);
+    color: var(--md-text-secondary);
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
     cursor: pointer;
-
-    transition: .15s ease;
+    transition: background .16s, border-color .16s;
 }
 
 .payment-type input:checked + label {
-    background: #17181a;
+    background: var(--md-primary-container);
+    border-color: var(--md-primary);
+    color: var(--md-on-primary-container);
+}
 
-    border-color: #17181a;
-
-    color: #fff;
+.payment-type input:focus-visible + label {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 3px;
 }
 
 .transaction-note {
     display: none;
-
-    margin-top: 5px;
-
-    font-size: 10px;
-
-    color: #85878a;
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--md-text-muted);
+    line-height: 1.5;
 }
 
 .transaction-note.show {
     display: block;
 }
 
-
-/* =========================
-   MODAL BUTTONS
-========================= */
+/* MODAL ACTIONS */
 
 .modal-actions {
     display: flex;
-
-    gap: 7px;
-
-    margin-top: 16px;
+    gap: 10px;
+    margin-top: 24px;
 }
 
 .cancel-button,
 .submit-button {
-    height: 45px;
-
-    border-radius: 10px;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
+    min-height: 48px;
+    border-radius: 100px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background .16s, transform .12s;
 }
 
 .cancel-button {
-    width: 35%;
+    min-width: 100px;
+    border: 1px solid var(--md-outline);
+    background: transparent;
+    color: var(--md-primary);
+}
 
-    border: 1px solid #dedfe1;
-
-    background: #fff;
-
-    color: #444649;
+.cancel-button:hover {
+    background: var(--md-surface-low);
 }
 
 .submit-button {
     flex: 1;
-
     border: 0;
-
-    background: #17181a;
-
-    color: #fff;
+    background: var(--md-primary);
+    color: var(--md-on-primary);
 }
 
+.submit-button:hover {
+    background: var(--md-primary-hover);
+}
 
-/* =========================
-   HELP
-========================= */
+.cancel-button:active,
+.submit-button:active {
+    transform: scale(.98);
+}
+
+/* HELP */
 
 .help-content {
-    font-size: 12px;
-
-    line-height: 1.6;
-
-    color: #55575a;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--md-text-secondary);
 }
 
 .help-content strong {
-    color: #17181a;
+    color: var(--md-text);
+    font-weight: 600;
 }
 
-
-/* =========================
-   LOADING
-========================= */
+/* LOADING */
 
 .loading {
     position: fixed;
-
     inset: 0;
-
     z-index: 200;
-
     display: none;
-
     align-items: center;
     justify-content: center;
-
-    background: rgba(255,255,255,.72);
-
-    backdrop-filter: blur(3px);
+    padding: 20px;
+    background: rgba(247, 247, 250, .72);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .loading.show {
@@ -701,802 +668,448 @@ box-shadow: 0 12px 40px rgba(0, 0, 0, .16);
 }
 
 .loading-box {
-    background: #fff;
-
-    border: 1px solid #dedfe1;
-
-    border-radius: 13px;
-
-    padding: 16px 19px;
-
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.12);
-
+    min-width: 170px;
+    background: var(--md-surface);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: 20px;
+    padding: 22px 24px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .12);
     text-align: center;
 }
 
 .spinner {
-    width: 24px;
-    height: 24px;
-
-    margin: 0 auto 8px;
-
-    border: 3px solid #dedfe1;
-
-    border-top-color: #17181a;
-
+    width: 30px;
+    height: 30px;
+    margin: 0 auto 13px;
+    border: 3px solid var(--md-primary-container);
+    border-top-color: var(--md-primary);
     border-radius: 50%;
-
     animation: spin .7s linear infinite;
 }
 
 .loading-text {
-    font-size: 11px;
-
-    color: #55575a;
+    font-size: 13px;
+    color: var(--md-text-secondary);
+    line-height: 1.5;
 }
 
 @keyframes spin {
-
-    to {
-        transform: rotate(360deg);
-    }
-
+    to { transform: rotate(360deg); }
 }
 
-
-/* =========================
-   TOAST
-========================= */
+/* TOAST */
 
 .toast {
     position: fixed;
-
     left: 50%;
-
-    bottom:
-        max(20px, env(safe-area-inset-bottom));
-
-    transform:
-        translate(-50%, 20px);
-
+    bottom: max(24px, env(safe-area-inset-bottom));
+    transform: translate(-50%, 16px);
     z-index: 300;
-
-    background: #17181a;
-
-    color: #fff;
-
-    padding: 9px 14px;
-
-    border-radius: 9px;
-
-    font-size: 11px;
-
+    max-width: calc(100vw - 32px);
+    background: #303038;
+    color: #ffffff;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
     opacity: 0;
-
     pointer-events: none;
-
-    transition: .2s ease;
-
-    white-space: nowrap;
+    transition: opacity .2s, transform .2s;
 }
 
 .toast.show {
     opacity: 1;
-
-    transform:
-        translate(-50%, 0);
+    transform: translate(-50%, 0);
 }
 
+/* RESPONSIVE */
 
-/* =========================
-   MOBILE
-========================= */
+@media (min-width: 760px) {
+    body {
+        padding-top: 32px;
+    }
 
-@media (max-width: 420px) {
+    .header-main h1 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 520px) {
+    body {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .header {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .header-main h1 {
+        font-size: 21px;
+    }
+
+    .header-main p {
+        font-size: 12px;
+    }
+
+    .filter-bar {
+        gap: 6px;
+    }
 
     .filter-button {
-        font-size: 10px;
+        padding: 0 5px;
+        min-height: 42px;
+        font-size: 12px;
+        border-radius: 11px;
     }
 
     .create-button {
         width: 100%;
+        justify-content: center;
     }
 
-    .create-row {
-        justify-content: stretch;
+    .summary {
+        padding: 18px;
+        border-radius: 22px;
+    }
+
+    .summary-value {
+        font-size: clamp(20px, 6vw, 26px);
+    }
+
+    .list-card {
+        padding: 14px;
+        border-radius: 22px;
+    }
+
+    .section-title {
+        font-size: 16px;
     }
 
     .payment-item {
-        padding: 10px;
+        padding: 13px;
     }
 
+    .payment-name {
+        font-size: 13px;
+    }
+
+    .payment-amount {
+        font-size: 14px;
+    }
+
+    .modal {
+        padding: 22px 18px;
+        border-radius: 24px;
+    }
 }
 
-</style>
+@media (max-width: 360px) {
+    .back-button,
+    .help-button {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+    }
 
+    .header-main h1 {
+        font-size: 19px;
+    }
+
+    .filter-button {
+        font-size: 11px;
+    }
+
+    .payment-top {
+        gap: 8px;
+    }
+
+    .payment-amount {
+        font-size: 13px;
+    }
+
+    .payment-types {
+        gap: 6px;
+    }
+
+    .payment-type label {
+        font-size: 12px;
+        padding: 8px 5px;
+    }
+
+    .cancel-button,
+    .submit-button {
+        padding: 0 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
 </head>
 
 <body>
-
 <div class="container">
 
+    <!-- HEADER -->
+    <header class="header">
+        <button type="button" class="back-button"
+            onclick="goBack()" aria-label="Quay lại">‹</button>
 
-<!-- HEADER -->
+        <div class="header-main">
+            <h1>Sổ thanh toán</h1>
+            <p>Kế toán · 69 Khương Trung</p>
+        </div>
 
-<div class="header">
+        <button type="button" class="help-button"
+            onclick="openHelp()" aria-label="Trợ giúp">?</button>
+    </header>
 
-    <button
-        type="button"
-        class="back-button"
-        onclick="goBack()"
-        aria-label="Quay lại"
-    >
-        ‹
-    </button>
-
-
-    <div class="header-main">
-
-        <h1>
-            Sổ thanh toán
-        </h1>
-
-        <p>
-            Kế toán · 69 Khương Trung
-        </p>
-
+    <!-- FILTER -->
+    <div class="filter-bar">
+        <button type="button" class="filter-button"
+            data-filter="week" onclick="setFilter('week')">Tuần này</button>
+        <button type="button" class="filter-button active"
+            data-filter="month" onclick="setFilter('month')">Tháng này</button>
+        <button type="button" class="filter-button"
+            data-filter="previous-month" onclick="setFilter('previous-month')">Tháng trước</button>
     </div>
 
-
-    <button
-        type="button"
-        class="help-button"
-        onclick="openHelp()"
-        aria-label="Trợ giúp"
-    >
-        ?
-    </button>
-
-</div>
-
-
-<!-- FILTER -->
-
-<div class="filter-bar">
-
-    <button
-        type="button"
-        class="filter-button"
-        data-filter="week"
-        onclick="setFilter('week')"
-    >
-        Tuần này
-    </button>
-
-    <button
-        type="button"
-        class="filter-button active"
-        data-filter="month"
-        onclick="setFilter('month')"
-    >
-        Tháng này
-    </button>
-
-    <button
-        type="button"
-        class="filter-button"
-        data-filter="previous-month"
-        onclick="setFilter('previous-month')"
-    >
-        Tháng trước
-    </button>
-
-</div>
-
-
-<!-- CREATE -->
-
-<div class="create-row">
-
-    <button
-        type="button"
-        class="create-button"
-        onclick="openCreateModal()"
-    >
-        ＋ Tạo thanh toán
-    </button>
-
-</div>
-
-
-<!-- SUMMARY -->
-
-<div class="summary">
-
-    <div>
-
-        <div class="summary-label">
-            Tổng thanh toán
-        </div>
-
-        <div
-            class="summary-period"
-            id="summaryPeriod"
-        >
-            Tháng này
-        </div>
-
+    <!-- CREATE -->
+    <div class="create-row">
+        <button type="button" class="create-button"
+            onclick="openCreateModal()">＋ Tạo thanh toán</button>
     </div>
 
+    <!-- SUMMARY -->
+    <section class="summary" aria-label="Tổng thanh toán">
+        <div>
+            <div class="summary-label">Tổng thanh toán</div>
+            <div class="summary-period" id="summaryPeriod">Tháng này</div>
+        </div>
+        <div class="summary-value" id="totalAmount">0</div>
+    </section>
 
-    <div
-        class="summary-value"
-        id="totalAmount"
-    >
-        0
-    </div>
-
+    <!-- PAYMENT LIST -->
+    <section class="list-card">
+        <div class="section-header">
+            <div class="section-title">Lịch sử thanh toán</div>
+            <div class="record-count" id="recordCount">0 khoản</div>
+        </div>
+        <div class="payment-list" id="paymentList"></div>
+    </section>
 </div>
 
+<!-- CREATE MODAL -->
+<div class="modal-overlay" id="createModal" onclick="closeModalByOverlay(event)">
+    <div class="modal" role="dialog" aria-modal="true"
+        aria-labelledby="createModalTitle" onclick="event.stopPropagation()">
 
-<!-- LIST -->
-
-<div class="list-card">
-
-
-    <div class="section-header">
-
-        <div class="section-title">
-            Lịch sử thanh toán
+        <div class="modal-header">
+            <div class="modal-title" id="createModalTitle">Tạo thanh toán</div>
+            <button type="button" class="close-button"
+                onclick="closeCreateModal()" aria-label="Đóng">×</button>
         </div>
 
-        <div
-            class="record-count"
-            id="recordCount"
-        >
-            0 khoản
-        </div>
-
-    </div>
-
-
-    <div
-        class="payment-list"
-        id="paymentList"
-    ></div>
-
-
-</div>
-
-
-</div>
-
-<!-- =========================
-     CREATE MODAL
-========================= -->
-
-<div
-    class="modal-overlay"
-    id="createModal"
-    onclick="closeModalByOverlay(event)"
->
-
-
-<div
-    class="modal"
-    onclick="event.stopPropagation()"
->
-
-
-    <div class="modal-header">
-
-        <div class="modal-title">
-            Tạo thanh toán
-        </div>
-
-        <button
-            type="button"
-            class="close-button"
-            onclick="closeCreateModal()"
-        >
-            ×
-        </button>
-
-    </div>
-
-
-    <form
-        id="paymentForm"
-        onsubmit="submitPayment(event)"
-    >
-
-
-        <div class="form-group">
-
-            <label
-                class="form-label"
-                for="paymentContent"
-            >
-                Nội dung thanh toán
-            </label>
-
-            <input
-                type="text"
-                id="paymentContent"
-                class="form-input"
-                placeholder="Ví dụ: Thanh toán tiền rau"
-                required
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label
-                class="form-label"
-                for="paymentAmount"
-            >
-                Số tiền
-            </label>
-
-            <input
-                type="text"
-                id="paymentAmount"
-                class="form-input"
-                inputmode="numeric"
-                autocomplete="off"
-                placeholder="Ví dụ: 1250000"
-                required
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label
-                class="form-label"
-                for="paymentDate"
-            >
-                Ngày giờ thanh toán
-            </label>
-
-            <input
-                type="datetime-local"
-                id="paymentDate"
-                class="form-input"
-                required
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label class="form-label">
-                Hình thức thanh toán
-            </label>
-
-
-            <div class="payment-types">
-
-
-                <div class="payment-type">
-
-                    <input
-                        type="radio"
-                        id="typeBank"
-                        name="paymentType"
-                        value="Chuyển khoản ngân hàng"
-                        checked
-                        onchange="updateTransactionField()"
-                    >
-
-                    <label for="typeBank">
-                        🏦 Chuyển khoản
-                    </label>
-
-                </div>
-
-
-                <div class="payment-type">
-
-                    <input
-                        type="radio"
-                        id="typeCash"
-                        name="paymentType"
-                        value="Tiền mặt"
-                        onchange="updateTransactionField()"
-                    >
-
-                    <label for="typeCash">
-                        💵 Tiền mặt
-                    </label>
-
-                </div>
-
-
+        <form id="paymentForm" onsubmit="submitPayment(event)">
+            <div class="form-group">
+                <label class="form-label" for="paymentContent">Nội dung thanh toán</label>
+                <input type="text" id="paymentContent" class="form-input"
+                    placeholder="Ví dụ: Thanh toán tiền rau" required>
             </div>
 
-        </div>
-
-
-        <div
-            class="form-group"
-            id="transactionGroup"
-        >
-
-            <label
-                class="form-label"
-                for="transactionCode"
-            >
-                Mã giao dịch
-            </label>
-
-            <input
-                type="text"
-                id="transactionCode"
-                class="form-input"
-                placeholder="Nhập mã giao dịch"
-            >
-
-            <div
-                class="transaction-note"
-                id="transactionNote"
-            >
-                Thanh toán tiền mặt không có mã giao dịch.
+            <div class="form-group">
+                <label class="form-label" for="paymentAmount">Số tiền (VNĐ)</label>
+                <input type="text" id="paymentAmount" class="form-input"
+                    inputmode="numeric" autocomplete="off"
+                    placeholder="Ví dụ: 1250000" required>
             </div>
 
-        </div>
+            <div class="form-group">
+                <label class="form-label" for="paymentDate">Ngày giờ thanh toán</label>
+                <input type="datetime-local" id="paymentDate"
+                    class="form-input" required>
+            </div>
 
+            <div class="form-group">
+                <label class="form-label">Hình thức thanh toán</label>
+                <div class="payment-types">
+                    <div class="payment-type">
+                        <input type="radio" id="typeBank" name="paymentType"
+                            value="Chuyển khoản ngân hàng" checked
+                            onchange="updateTransactionField()">
+                        <label for="typeBank">🏦 Chuyển khoản</label>
+                    </div>
+                    <div class="payment-type">
+                        <input type="radio" id="typeCash" name="paymentType"
+                            value="Tiền mặt" onchange="updateTransactionField()">
+                        <label for="typeCash">💵 Tiền mặt</label>
+                    </div>
+                </div>
+            </div>
 
-        <div class="modal-actions">
+            <div class="form-group" id="transactionGroup">
+                <label class="form-label" for="transactionCode">Mã giao dịch</label>
+                <input type="text" id="transactionCode" class="form-input"
+                    placeholder="Nhập mã giao dịch">
+                <div class="transaction-note" id="transactionNote">
+                    Thanh toán tiền mặt không có mã giao dịch.
+                </div>
+            </div>
 
-            <button
-                type="button"
-                class="cancel-button"
-                onclick="closeCreateModal()"
-            >
-                Hủy
-            </button>
-
-            <button
-                type="submit"
-                class="submit-button"
-            >
-                Tạo thanh toán
-            </button>
-
-        </div>
-
-
-    </form>
-
-
-</div>
-
-
-</div>
-
-<!-- =========================
-     HELP MODAL
-========================= -->
-
-<div
-    class="modal-overlay"
-    id="helpModal"
-    onclick="closeHelp(event)"
->
-
-
-<div
-    class="modal"
-    onclick="event.stopPropagation()"
->
-
-
-    <div class="modal-header">
-
-        <div class="modal-title">
-            Sổ thanh toán
-        </div>
-
-        <button
-            type="button"
-            class="close-button"
-            onclick="closeHelp()"
-        >
-            ×
-        </button>
-
+            <div class="modal-actions">
+                <button type="button" class="cancel-button"
+                    onclick="closeCreateModal()">Hủy</button>
+                <button type="submit" class="submit-button">Tạo thanh toán</button>
+            </div>
+        </form>
     </div>
-
-
-    <div class="help-content">
-
-        Đây là sổ thanh toán của
-        <strong>69 Khương Trung</strong>.
-
-        <br><br>
-
-        Các khoản thanh toán được hệ thống
-        ghi nhận tự động sẽ xuất hiện tại đây.
-
-        <br><br>
-
-        Sử dụng <strong>＋ Tạo thanh toán</strong>
-        khi cần nhập thủ công một khoản tiền mặt
-        hoặc khi hệ thống tự động ghi nhận bị lỗi.
-
-        <br><br>
-
-        Số tiền nhập bằng đầy đủ đơn vị đồng.
-        Ví dụ:
-
-        <strong>1250000</strong>
-
-        sẽ được hiển thị là
-
-        <strong>1.250.000</strong>.
-
-    </div>
-
-
 </div>
 
+<!-- HELP MODAL -->
+<div class="modal-overlay" id="helpModal" onclick="closeHelp(event)">
+    <div class="modal" role="dialog" aria-modal="true"
+        aria-labelledby="helpModalTitle" onclick="event.stopPropagation()">
 
+        <div class="modal-header">
+            <div class="modal-title" id="helpModalTitle">Sổ thanh toán</div>
+            <button type="button" class="close-button"
+                onclick="closeHelp()" aria-label="Đóng">×</button>
+        </div>
+
+        <div class="help-content">
+            Đây là sổ thanh toán của <strong>69 Khương Trung</strong>.
+            <br><br>
+            Các khoản thanh toán được hệ thống ghi nhận tự động sẽ xuất hiện tại đây.
+            <br><br>
+            Sử dụng <strong>＋ Tạo thanh toán</strong> khi cần nhập thủ công một khoản
+            tiền mặt hoặc khi hệ thống tự động ghi nhận bị lỗi.
+            <br><br>
+            Số tiền nhập bằng đầy đủ đơn vị đồng. Ví dụ:
+            <strong>1250000</strong> sẽ được hiển thị là <strong>1.250.000</strong>.
+        </div>
+    </div>
 </div>
 
 <!-- LOADING -->
-
-<div
-    class="loading"
-    id="loading"
->
-
-
-<div class="loading-box">
-
-    <div class="spinner"></div>
-
-    <div class="loading-text">
-        Đang xử lý...
+<div class="loading" id="loading" aria-live="polite" aria-busy="true">
+    <div class="loading-box">
+        <div class="spinner"></div>
+        <div class="loading-text">Đang xử lý...</div>
     </div>
-
-</div>
-
-
 </div>
 
 <!-- TOAST -->
-
-<div
-    class="toast"
-    id="toast"
-></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+/* CONFIG */
+const API_URL = "https://script.google.com/macros/s/AKfycbz7S749Q7gPYHM8ImzIhkY4p6dxexivCFIERbkLYOTysDyLpsvZ4Q5Mci9ata6NmV3Z/exec";
+const BRANCH = "69 Khương Trung";
 
-
-/* =====================================================
-   CONFIG
-===================================================== */
-
-const API_URL =
-    "https://script.google.com/macros/s/AKfycbz7S749Q7gPYHM8ImzIhkY4p6dxexivCFIERbkLYOTysDyLpsvZ4Q5Mci9ata6NmV3Z/exec";
-
-
-const BRANCH =
-    "69 Khương Trung";
-
-
-/* =====================================================
-   DATA
-===================================================== */
-
+/* DATA */
 let payments = [];
-
 let currentFilter = "month";
 
-
-/* =====================================================
-   API - LOAD
-===================================================== */
-
+/* API - LOAD */
 async function loadPayments() {
-
     showLoading("Đang tải dữ liệu...");
 
-
     try {
-
-        const response =
-            await fetch(
-                API_URL +
-                "?action=get_payments",
-                {
-                    method: "GET",
-                    cache: "no-store"
-                }
-            );
-
+        const response = await fetch(API_URL + "?action=get_payments", {
+            method: "GET",
+            cache: "no-store"
+        });
 
         if (!response.ok) {
-
-            throw new Error(
-                "API trả về lỗi HTTP " +
-                response.status
-            );
-
+            throw new Error("API trả về lỗi HTTP " + response.status);
         }
 
-
-        const result =
-            await response.json();
-
+        const result = await response.json();
 
         if (!result.success) {
-
-            throw new Error(
-                result.error ||
-                "Không thể đọc dữ liệu thanh toán"
-            );
-
+            throw new Error(result.error || "Không thể đọc dữ liệu thanh toán");
         }
 
-
-        payments =
-            (result.data || [])
-                .map(normalizePayment)
-                .filter(Boolean);
-
+        payments = (result.data || [])
+            .map(normalizePayment)
+            .filter(Boolean);
 
         renderPayments();
-
-
     } catch (error) {
-
         console.error(error);
-
-
         payments = [];
-
-
         renderPayments();
-
-
-        showToast(
-            error.message ||
-            "Không thể tải dữ liệu"
-        );
-
-
+        showToast(error.message || "Không thể tải dữ liệu");
     } finally {
-
         hideLoading();
-
     }
-
 }
 
-
-/* =====================================================
-   NORMALIZE PAYMENT
-===================================================== */
-
+/* NORMALIZE PAYMENT */
 function normalizePayment(payment) {
-
-    if (!payment) {
-
-        return null;
-
-    }
-
+    if (!payment) return null;
 
     return {
-
-        noi_dung:
-            String(
-                payment["Nội dung chuyển tiền"] ||
-                payment.noi_dung ||
-                ""
-            ),
-
-        so_tien:
-            Number(
-                payment["Số tiền"] ??
-                payment.so_tien ??
-                0
-            ),
-
-        hinh_thuc:
-            String(
-                payment["Hình thức thanh toán"] ||
-                payment.hinh_thuc ||
-                ""
-            ),
-
-        ma_giao_dich:
-            String(
-                payment["Mã giao dịch"] ||
-                payment.ma_giao_dich ||
-                ""
-            ),
-
-        ngay_gio:
-            String(
-                payment["Ngày giờ thanh toán"] ||
-                payment.ngay_gio ||
-                ""
-            )
-
+        noi_dung: String(
+            payment["Nội dung chuyển tiền"] ||
+            payment.noi_dung || ""
+        ),
+        so_tien: Number(
+            payment["Số tiền"] ??
+            payment.so_tien ??
+            0
+        ),
+        hinh_thuc: String(
+            payment["Hình thức thanh toán"] ||
+            payment.hinh_thuc || ""
+        ),
+        ma_giao_dich: String(
+            payment["Mã giao dịch"] ||
+            payment.ma_giao_dich || ""
+        ),
+        ngay_gio: String(
+            payment["Ngày giờ thanh toán"] ||
+            payment.ngay_gio || ""
+        )
     };
-
 }
 
-
-/* =====================================================
-   FILTER
-===================================================== */
-
+/* FILTER */
 function setFilter(filter) {
+    currentFilter = filter;
 
-    currentFilter =
-        filter;
-
-
-    document
-        .querySelectorAll(
-            ".filter-button"
-        )
-        .forEach(
-            button => {
-
-                button.classList.toggle(
-                    "active",
-                    button.dataset.filter ===
-                    filter
-                );
-
-            }
+    document.querySelectorAll(".filter-button").forEach(button => {
+        button.classList.toggle(
+            "active",
+            button.dataset.filter === filter
         );
-
+    });
 
     updateSummaryPeriod();
-
     renderPayments();
-
 }
 
-
-/* =====================================================
-   DATE PARSER
-===================================================== */
-
+/* DATE PARSER */
 function parsePaymentDate(value) {
+    if (!value) return null;
 
-    if (!value) {
+    const text = String(value).trim();
 
-        return null;
-
-    }
-
-
-    const text =
-        String(value)
-            .trim();
-
-
-    let match =
-        text.match(
-            /^(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2}):(\d{2})$/
-        );
-
+    let match = text.match(
+        /^(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2}):(\d{2})$/
+    );
 
     if (match) {
-
         return new Date(
             Number(match[1]),
             Number(match[2]) - 1,
@@ -1504,18 +1117,13 @@ function parsePaymentDate(value) {
             Number(match[4]),
             Number(match[5])
         );
-
     }
 
-
-    match =
-        text.match(
-            /^(\d{4})-(\d{2})-(\d{2})(?:T|\s)(\d{2}):(\d{2})/
-        );
-
+    match = text.match(
+        /^(\d{4})-(\d{2})-(\d{2})(?:T|\s)(\d{2}):(\d{2})/
+    );
 
     if (match) {
-
         return new Date(
             Number(match[1]),
             Number(match[2]) - 1,
@@ -1523,873 +1131,338 @@ function parsePaymentDate(value) {
             Number(match[4]),
             Number(match[5])
         );
-
     }
-
 
     return null;
-
 }
 
-
-/* =====================================================
-   FILTER RANGE
-===================================================== */
-
+/* FILTER RANGE */
 function getFilterRange() {
+    const now = new Date();
 
-    const now =
-        new Date();
+    const today = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        0, 0, 0, 0
+    );
 
+    if (currentFilter === "week") {
+        const day = today.getDay();
+        const daysFromMonday = day === 0 ? 6 : day - 1;
+        const start = new Date(today);
 
-    const today =
-        new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate(),
-            0,
-            0,
-            0,
-            0
-        );
+        start.setDate(start.getDate() - daysFromMonday);
 
+        const end = new Date(today);
+        end.setHours(23, 59, 59, 999);
 
-    /* =========================
-       TUẦN NÀY
-       Thứ Hai → hôm nay
-    ========================= */
-
-    if (
-        currentFilter ===
-        "week"
-    ) {
-
-        const day =
-            today.getDay();
-
-
-        const daysFromMonday =
-            day === 0
-                ? 6
-                : day - 1;
-
-
-        const start =
-            new Date(today);
-
-
-        start.setDate(
-            start.getDate() -
-            daysFromMonday
-        );
-
-
-        const end =
-            new Date(
-                today
-            );
-
-
-        end.setHours(
-            23,
-            59,
-            59,
-            999
-        );
-
-
-        return {
-            start,
-            end
-        };
-
+        return { start, end };
     }
 
-
-    /* =========================
-       THÁNG NÀY
-    ========================= */
-
-    if (
-        currentFilter ===
-        "month"
-    ) {
-
-        const start =
-            new Date(
-                today.getFullYear(),
-                today.getMonth(),
-                1,
-                0,
-                0,
-                0,
-                0
-            );
-
-
-        const end =
-            new Date(
-                today.getFullYear(),
-                today.getMonth() + 1,
-                0,
-                23,
-                59,
-                59,
-                999
-            );
-
-
-        return {
-            start,
-            end
-        };
-
-    }
-
-
-    /* =========================
-       THÁNG TRƯỚC
-    ========================= */
-
-    const start =
-        new Date(
-            today.getFullYear(),
-            today.getMonth() - 1,
-            1,
-            0,
-            0,
-            0,
-            0
-        );
-
-
-    const end =
-        new Date(
+    if (currentFilter === "month") {
+        const start = new Date(
             today.getFullYear(),
             today.getMonth(),
-            0,
-            23,
-            59,
-            59,
-            999
+            1, 0, 0, 0, 0
         );
 
-
-    return {
-        start,
-        end
-    };
-
-}
-
-
-/* =====================================================
-   FILTER PAYMENTS
-===================================================== */
-
-function getFilteredPayments() {
-
-    const range =
-        getFilterRange();
-
-
-    return payments
-        .filter(
-            payment => {
-
-                const date =
-                    parsePaymentDate(
-                        payment.ngay_gio
-                    );
-
-
-                if (!date) {
-
-                    return false;
-
-                }
-
-
-                return (
-                    date >= range.start &&
-                    date <= range.end
-                );
-
-            }
-        )
-        .sort(
-            (a, b) => {
-
-                const dateA =
-                    parsePaymentDate(
-                        a.ngay_gio
-                    ) || 0;
-
-
-                const dateB =
-                    parsePaymentDate(
-                        b.ngay_gio
-                    ) || 0;
-
-
-                return dateB - dateA;
-
-            }
+        const end = new Date(
+            today.getFullYear(),
+            today.getMonth() + 1,
+            0, 23, 59, 59, 999
         );
 
-}
-
-
-/* =====================================================
-   SUMMARY PERIOD
-===================================================== */
-
-function updateSummaryPeriod() {
-
-    const element =
-        document.getElementById(
-            "summaryPeriod"
-        );
-
-
-    if (
-        currentFilter ===
-        "week"
-    ) {
-
-        const range =
-            getFilterRange();
-
-
-        element.textContent =
-            formatShortDate(
-                range.start
-            ) +
-            " – " +
-            formatShortDate(
-                range.end
-            );
-
-
-        return;
-
+        return { start, end };
     }
 
+    const start = new Date(
+        today.getFullYear(),
+        today.getMonth() - 1,
+        1, 0, 0, 0, 0
+    );
 
-    if (
-        currentFilter ===
-        "month"
-    ) {
+    const end = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        0, 23, 59, 59, 999
+    );
 
-        const now =
-            new Date();
+    return { start, end };
+}
 
+/* FILTER PAYMENTS */
+function getFilteredPayments() {
+    const range = getFilterRange();
+
+    return payments
+        .filter(payment => {
+            const date = parsePaymentDate(payment.ngay_gio);
+
+            if (!date) return false;
+
+            return date >= range.start && date <= range.end;
+        })
+        .sort((a, b) => {
+            const dateA = parsePaymentDate(a.ngay_gio) || 0;
+            const dateB = parsePaymentDate(b.ngay_gio) || 0;
+            return dateB - dateA;
+        });
+}
+
+/* SUMMARY PERIOD */
+function updateSummaryPeriod() {
+    const element = document.getElementById("summaryPeriod");
+
+    if (currentFilter === "week") {
+        const range = getFilterRange();
+        element.textContent =
+            formatShortDate(range.start) + " – " +
+            formatShortDate(range.end);
+        return;
+    }
+
+    if (currentFilter === "month") {
+        const now = new Date();
 
         element.textContent =
             "Tháng " +
-            String(
-                now.getMonth() + 1
-            ).padStart(2, "0") +
-            " / " +
-            now.getFullYear();
-
+            String(now.getMonth() + 1).padStart(2, "0") +
+            " / " + now.getFullYear();
 
         return;
-
     }
 
-
-    const now =
-        new Date();
-
-
-    const previous =
-        new Date(
-            now.getFullYear(),
-            now.getMonth() - 1,
-            1
-        );
-
+    const now = new Date();
+    const previous = new Date(
+        now.getFullYear(),
+        now.getMonth() - 1,
+        1
+    );
 
     element.textContent =
         "Tháng " +
-        String(
-            previous.getMonth() + 1
-        ).padStart(2, "0") +
-        " / " +
-        previous.getFullYear();
-
+        String(previous.getMonth() + 1).padStart(2, "0") +
+        " / " + previous.getFullYear();
 }
 
-
-/* =====================================================
-   RENDER
-===================================================== */
-
+/* RENDER */
 function renderPayments() {
-
-    const list =
-        document.getElementById(
-            "paymentList"
-        );
-
-
-    const filtered =
-        getFilteredPayments();
-
+    const list = document.getElementById("paymentList");
+    const filtered = getFilteredPayments();
 
     list.innerHTML = "";
+    let total = 0;
 
+    filtered.forEach(payment => {
+        total += Number(payment.so_tien) || 0;
 
-    let total =
-        0;
+        const item = document.createElement("div");
+        item.className = "payment-item";
 
+        const paymentType =
+            payment.hinh_thuc === "Tiền mặt"
+                ? "💵 Tiền mặt"
+                : "🏦 Chuyển khoản";
 
-    filtered.forEach(
-        payment => {
+        const transaction = payment.ma_giao_dich
+            ? `
+                <span class="meta-badge transaction">
+                    GD: ${escapeHtml(payment.ma_giao_dich)}
+                </span>
+              `
+            : "";
 
-            total +=
-                Number(
-                    payment.so_tien
-                ) || 0;
-
-
-            const item =
-                document.createElement(
-                    "div"
-                );
-
-
-            item.className =
-                "payment-item";
-
-
-            const paymentType =
-                payment.hinh_thuc
-                ===
-                "Tiền mặt"
-
-                    ? "💵 Tiền mặt"
-
-                    : "🏦 Chuyển khoản";
-
-
-            const transaction =
-                payment.ma_giao_dich
-
-                    ? `
-                        <span class="meta-badge transaction">
-                            GD: ${escapeHtml(
-                                payment.ma_giao_dich
-                            )}
-                        </span>
-                      `
-
-                    : "";
-
-
-            item.innerHTML = `
-
-                <div class="payment-top">
-
-                    <div class="payment-content">
-
-                        <div class="payment-name">
-                            ${escapeHtml(
-                                payment.noi_dung
-                            )}
-                        </div>
-
-                        <div class="payment-date">
-                            ${formatDateTime(
-                                payment.ngay_gio
-                            )}
-                        </div>
-
+        item.innerHTML = `
+            <div class="payment-top">
+                <div class="payment-content">
+                    <div class="payment-name">
+                        ${escapeHtml(payment.noi_dung)}
                     </div>
-
-                    <div class="payment-amount">
-                        ${formatMoney(
-                            payment.so_tien
-                        )}
+                    <div class="payment-date">
+                        ${formatDateTime(payment.ngay_gio)}
                     </div>
-
                 </div>
-
-
-                <div class="payment-meta">
-
-                    <span class="meta-badge">
-                        ${paymentType}
-                    </span>
-
-                    ${transaction}
-
+                <div class="payment-amount">
+                    ${formatMoney(payment.so_tien)}
                 </div>
+            </div>
+            <div class="payment-meta">
+                <span class="meta-badge">${paymentType}</span>
+                ${transaction}
+            </div>
+        `;
 
-            `;
+        list.appendChild(item);
+    });
 
-
-            list.appendChild(
-                item
-            );
-
-        }
-    );
-
-
-    if (
-        filtered.length === 0
-    ) {
-
+    if (filtered.length === 0) {
         list.innerHTML = `
-
             <div class="empty">
-
-                <div class="empty-icon">
-                    💳
-                </div>
-
-                <div class="empty-title">
-                    Chưa có khoản thanh toán
-                </div>
-
+                <div class="empty-icon">💳</div>
+                <div class="empty-title">Chưa có khoản thanh toán</div>
                 <div class="empty-text">
                     Không có dữ liệu trong khoảng thời gian này.
                 </div>
-
             </div>
-
         `;
-
     }
 
-
-    document.getElementById(
-        "recordCount"
-    ).textContent =
+    document.getElementById("recordCount").textContent =
         `${filtered.length} khoản`;
 
-
-    document.getElementById(
-        "totalAmount"
-    ).textContent =
-        formatMoney(
-            total
-        );
-
+    document.getElementById("totalAmount").textContent =
+        formatMoney(total);
 }
 
-
-/* =====================================================
-   FORMAT MONEY
-===================================================== */
-
+/* FORMAT MONEY */
 function formatMoney(value) {
-
-    return new Intl.NumberFormat(
-        "vi-VN"
-    ).format(
-        Number(value) || 0
-    );
-
+    return new Intl.NumberFormat("vi-VN").format(Number(value) || 0);
 }
 
-
-/* =====================================================
-   FORMAT DATE TIME
-===================================================== */
-
+/* FORMAT DATE TIME */
 function formatDateTime(value) {
-
-    const date =
-        parsePaymentDate(
-            value
-        );
-
+    const date = parsePaymentDate(value);
 
     if (!date) {
-
-        return escapeHtml(
-            value || ""
-        );
-
+        return escapeHtml(value || "");
     }
 
-
     return (
-        String(
-            date.getDate()
-        ).padStart(2, "0")
-
-        +
-
-        "/" +
-
-        String(
-            date.getMonth() + 1
-        ).padStart(2, "0")
-
-        +
-
-        "/" +
-
-        date.getFullYear()
-
-        +
-
-        " " +
-
-        String(
-            date.getHours()
-        ).padStart(2, "0")
-
-        +
-
-        ":" +
-
-        String(
-            date.getMinutes()
-        ).padStart(2, "0")
+        String(date.getDate()).padStart(2, "0") + "/" +
+        String(date.getMonth() + 1).padStart(2, "0") + "/" +
+        date.getFullYear() + " " +
+        String(date.getHours()).padStart(2, "0") + ":" +
+        String(date.getMinutes()).padStart(2, "0")
     );
-
 }
-
 
 function formatShortDate(date) {
-
     return (
-        String(
-            date.getDate()
-        ).padStart(2, "0")
-
-        +
-
-        "/" +
-
-        String(
-            date.getMonth() + 1
-        ).padStart(2, "0")
+        String(date.getDate()).padStart(2, "0") + "/" +
+        String(date.getMonth() + 1).padStart(2, "0")
     );
-
 }
 
-
-/* =====================================================
-   CREATE MODAL
-===================================================== */
-
+/* CREATE MODAL */
 function openCreateModal() {
-
-    document.getElementById(
-        "paymentForm"
-    ).reset();
-
-
-    document.getElementById(
-        "paymentDate"
-    ).value =
-        getCurrentDateTime();
-
-
-    document.getElementById(
-        "typeBank"
-    ).checked =
-        true;
-
+    document.getElementById("paymentForm").reset();
+    document.getElementById("paymentDate").value = getCurrentDateTime();
+    document.getElementById("typeBank").checked = true;
 
     updateTransactionField();
 
-
-    document.getElementById(
-        "createModal"
-    ).classList.add(
-        "show"
-    );
-
+    document.getElementById("createModal").classList.add("show");
 }
-
 
 function closeCreateModal() {
-
-    document.getElementById(
-        "createModal"
-    ).classList.remove(
-        "show"
-    );
-
+    document.getElementById("createModal").classList.remove("show");
 }
-
 
 function closeModalByOverlay(event) {
-
-    if (
-        event.target.id
-        ===
-        "createModal"
-    ) {
-
+    if (event.target.id === "createModal") {
         closeCreateModal();
-
     }
-
 }
 
-
-/* =====================================================
-   PAYMENT TYPE
-===================================================== */
-
+/* PAYMENT TYPE */
 function updateTransactionField() {
-
-    const bank =
-        document.getElementById(
-            "typeBank"
-        ).checked;
-
-
-    const input =
-        document.getElementById(
-            "transactionCode"
-        );
-
-
-    const note =
-        document.getElementById(
-            "transactionNote"
-        );
-
+    const bank = document.getElementById("typeBank").checked;
+    const input = document.getElementById("transactionCode");
+    const note = document.getElementById("transactionNote");
 
     if (bank) {
-
-        input.disabled =
-            false;
-
-        input.required =
-            true;
-
-        input.placeholder =
-            "Nhập mã giao dịch";
-
-        note.classList.remove(
-            "show"
-        );
-
+        input.disabled = false;
+        input.required = true;
+        input.placeholder = "Nhập mã giao dịch";
+        note.classList.remove("show");
     } else {
-
-        input.disabled =
-            true;
-
-        input.required =
-            false;
-
-        input.value =
-            "";
-
-        input.placeholder =
-            "Không áp dụng";
-
-        note.classList.add(
-            "show"
-        );
-
+        input.disabled = true;
+        input.required = false;
+        input.value = "";
+        input.placeholder = "Không áp dụng";
+        note.classList.add("show");
     }
-
 }
 
-
-/* =====================================================
-   SUBMIT
-===================================================== */
-
+/* SUBMIT */
 async function submitPayment(event) {
-
     event.preventDefault();
 
+    const content = document.getElementById("paymentContent").value.trim();
 
-    const content =
-        document.getElementById(
-            "paymentContent"
-        ).value.trim();
+    const amountRaw = document.getElementById("paymentAmount").value
+        .replace(/[^\d]/g, "");
 
+    const dateTime = document.getElementById("paymentDate").value;
 
-    const amountRaw =
-        document.getElementById(
-            "paymentAmount"
-        ).value
-            .replace(
-                /[^\d]/g,
-                ""
-            );
+    const type = document.querySelector(
+        'input[name="paymentType"]:checked'
+    ).value;
 
-
-    const dateTime =
-        document.getElementById(
-            "paymentDate"
-        ).value;
-
-
-    const type =
-        document.querySelector(
-            'input[name="paymentType"]:checked'
-        ).value;
-
-
-    const transaction =
-        document.getElementById(
-            "transactionCode"
-        ).value.trim();
-
+    const transaction = document.getElementById("transactionCode").value.trim();
 
     if (!content) {
-
-        showToast(
-            "Vui lòng nhập nội dung thanh toán"
-        );
-
+        showToast("Vui lòng nhập nội dung thanh toán");
         return;
-
     }
-
 
     if (!amountRaw) {
-
-        showToast(
-            "Vui lòng nhập số tiền"
-        );
-
+        showToast("Vui lòng nhập số tiền");
         return;
-
     }
-
 
     if (!dateTime) {
-
-        showToast(
-            "Vui lòng chọn ngày giờ thanh toán"
-        );
-
+        showToast("Vui lòng chọn ngày giờ thanh toán");
         return;
-
     }
 
-
-    if (
-        type ===
-        "Chuyển khoản ngân hàng"
-        &&
-        !transaction
-    ) {
-
-        showToast(
-            "Vui lòng nhập mã giao dịch"
-        );
-
+    if (type === "Chuyển khoản ngân hàng" && !transaction) {
+        showToast("Vui lòng nhập mã giao dịch");
         return;
-
     }
 
-
-    const amount =
-        Number(
-            amountRaw
-        );
-
+    const amount = Number(amountRaw);
 
     const payload = {
-
-        action:
-            "create_payment",
-
-        "Nội dung chuyển tiền":
-            content,
-
-        "Số tiền":
-            amount,
-
-        "Hình thức thanh toán":
-            type,
-
-        "Mã giao dịch":
-            type === "Tiền mặt"
-                ? ""
-                : transaction,
-
-        "Ngày giờ thanh toán":
-            dateTime
-
+        action: "create_payment",
+        "Nội dung chuyển tiền": content,
+        "Số tiền": amount,
+        "Hình thức thanh toán": type,
+        "Mã giao dịch": type === "Tiền mặt" ? "" : transaction,
+        "Ngày giờ thanh toán": dateTime
     };
 
-
-    showLoading(
-        "Đang lưu thanh toán..."
-    );
-
+    showLoading("Đang lưu thanh toán...");
 
     try {
-
-        const response =
-            await fetch(
-                API_URL,
-                {
-
-                    method: "POST",
-
-                    headers: {
-
-                        "Content-Type":
-                            "text/plain;charset=utf-8"
-
-                    },
-
-                    body:
-                        JSON.stringify(
-                            payload
-                        )
-
-                }
-            );
-
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload)
+        });
 
         if (!response.ok) {
-
-            throw new Error(
-                "API trả về lỗi HTTP " +
-                response.status
-            );
-
+            throw new Error("API trả về lỗi HTTP " + response.status);
         }
 
-
-        const result =
-            await response.json();
-
+        const result = await response.json();
 
         if (!result.success) {
-
-            if (
-                result.duplicate
-            ) {
-
-                throw new Error(
-                    result.error ||
-                    "Mã giao dịch đã tồn tại"
-                );
-
+            if (result.duplicate) {
+                throw new Error(result.error || "Mã giao dịch đã tồn tại");
             }
-
 
             throw new Error(
                 result.error ||
                 result.message ||
                 "Không thể tạo thanh toán"
             );
-
         }
 
-
         closeCreateModal();
-
 
         showToast(
             result.zalo_sent === false
@@ -2397,275 +1470,102 @@ async function submitPayment(event) {
                 : "Đã tạo thanh toán"
         );
 
-
         await loadPayments();
-
-
     } catch (error) {
-
-        console.error(
-            error
-        );
-
-
-        showToast(
-            error.message ||
-            "Không thể tạo thanh toán"
-        );
-
-
+        console.error(error);
+        showToast(error.message || "Không thể tạo thanh toán");
     } finally {
-
         hideLoading();
-
     }
-
 }
 
-
-/* =====================================================
-   CURRENT DATETIME FOR INPUT
-===================================================== */
-
+/* CURRENT DATETIME FOR INPUT */
 function getCurrentDateTime() {
+    const now = new Date();
 
-    const now =
-        new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    const hour = String(now.getHours()).padStart(2, "0");
+    const minute = String(now.getMinutes()).padStart(2, "0");
 
-
-    const year =
-        now.getFullYear();
-
-
-    const month =
-        String(
-            now.getMonth() + 1
-        ).padStart(2, "0");
-
-
-    const day =
-        String(
-            now.getDate()
-        ).padStart(2, "0");
-
-
-    const hour =
-        String(
-            now.getHours()
-        ).padStart(2, "0");
-
-
-    const minute =
-        String(
-            now.getMinutes()
-        ).padStart(2, "0");
-
-
-    return (
-        `${year}-${month}-${day}` +
-        `T${hour}:${minute}`
-    );
-
+    return `${year}-${month}-${day}T${hour}:${minute}`;
 }
 
-
-/* =====================================================
-   HELP
-===================================================== */
-
+/* HELP */
 function openHelp() {
-
-    document.getElementById(
-        "helpModal"
-    ).classList.add(
-        "show"
-    );
-
+    document.getElementById("helpModal").classList.add("show");
 }
-
 
 function closeHelp(event) {
-
-    if (
-        event &&
-        event.target.id
-        !==
-        "helpModal"
-    ) {
-
+    if (event && event.target.id !== "helpModal") {
         return;
-
     }
 
-
-    document.getElementById(
-        "helpModal"
-    ).classList.remove(
-        "show"
-    );
-
+    document.getElementById("helpModal").classList.remove("show");
 }
 
-
-/* =====================================================
-   BACK
-===================================================== */
-
+/* BACK */
 function goBack() {
-
-    if (
-        window.history.length > 1
-    ) {
-
+    if (window.history.length > 1) {
         window.history.back();
-
     } else {
-
-        window.location.href =
-            "../index.html";
-
+        window.location.href = "../index.html";
     }
-
 }
 
+/* LOADING */
+function showLoading(message = "Đang xử lý...") {
+    document.getElementById("loading")
+        .querySelector(".loading-text")
+        .textContent = message;
 
-/* =====================================================
-   LOADING
-===================================================== */
-
-function showLoading(
-    message = "Đang xử lý..."
-) {
-
-    document.getElementById(
-        "loading"
-    )
-    .querySelector(
-        ".loading-text"
-    )
-    .textContent =
-        message;
-
-
-    document.getElementById(
-        "loading"
-    ).classList.add(
-        "show"
-    );
-
+    document.getElementById("loading").classList.add("show");
 }
-
 
 function hideLoading() {
-
-    document.getElementById(
-        "loading"
-    ).classList.remove(
-        "show"
-    );
-
+    document.getElementById("loading").classList.remove("show");
 }
 
-
-/* =====================================================
-   TOAST
-===================================================== */
-
+/* TOAST */
 let toastTimer;
 
-
 function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
 
-    const toast =
-        document.getElementById(
-            "toast"
-        );
+    clearTimeout(toastTimer);
 
-
-    toast.textContent =
-        message;
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        toastTimer
-    );
-
-
-    toastTimer =
-        setTimeout(
-            () => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            3000
-        );
-
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
 }
 
-
-/* =====================================================
-   ESCAPE
-===================================================== */
-
+/* ESCAPE */
 function escapeHtml(value) {
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-
-    div.textContent =
-        value ?? "";
-
-
+    const div = document.createElement("div");
+    div.textContent = value ?? "";
     return div.innerHTML;
-
 }
 
+/* AMOUNT INPUT */
+document.getElementById("paymentAmount").addEventListener("input", function() {
+    this.value = this.value.replace(/[^\d]/g, "");
+});
 
-/* =====================================================
-   AMOUNT INPUT
-===================================================== */
+/* CLOSE MODALS WITH ESCAPE */
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        closeCreateModal();
+        closeHelp();
+    }
+});
 
-document
-    .getElementById(
-        "paymentAmount"
-    )
-    .addEventListener(
-        "input",
-        function() {
-
-            this.value =
-                this.value.replace(
-                    /[^\d]/g,
-                    ""
-                );
-
-        }
-    );
-
-
-/* =====================================================
-   INIT
-===================================================== */
-
+/* INIT */
 updateSummaryPeriod();
-
 updateTransactionField();
-
 loadPayments();
-
 </script>
-
 </body>
-
 </html>
