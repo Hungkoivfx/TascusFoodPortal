@@ -1,1327 +1,1575 @@
+
 <!DOCTYPE html>
-
 <html lang="vi">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Thư viện công thức / sơ đồ - Tascus Food</title>
-
-<style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f6f8;
-    color: #222;
-    overflow: hidden;
-}
-
-
-/* =========================================
-   HEADER
-========================================= */
-
-.header {
-    height: 64px;
-    background: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 24px;
-
-    position: relative;
-    z-index: 10;
-}
-
-
-/* =========================================
-   BACK BUTTON
-========================================= */
-
-.back-button {
-    width: 40px;
-    height: 40px;
-
-    margin-right: 14px;
-
-    padding: 0;
-
-    border: none;
-    border-radius: 9px;
-
-    background: #f3f4f6;
-    color: #333;
-
-    font-size: 24px;
-    line-height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
-}
-
-.back-button:hover {
-    background: #e5e7eb;
-}
-
-.back-button:active {
-    transform: scale(0.94);
-}
-
-
-/* =========================================
-   LOGO
-========================================= */
-
-.logo {
-    font-size: 21px;
-    font-weight: 700;
-    color: #222;
-}
-
-.logo span {
-    color: #777;
-    font-weight: 400;
-    margin-left: 8px;
-}
-
-
-/* =========================================
-   MAIN
-========================================= */
-
-.layout {
-    display: flex;
-
-    width: 100%;
-    height: calc(100vh - 64px);
-}
-
-
-/* =========================================
-   SIDEBAR
-========================================= */
-
-.sidebar {
-    width: 250px;
-    min-width: 250px;
-    max-width: 250px;
-
-    height: 100%;
-
-    background: #ffffff;
-
-    border-right: 1px solid #e5e7eb;
-
-    padding: 20px 14px;
-
-    overflow-y: auto;
-}
-
-.sidebar-title {
-    height: 20px;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    color: #999;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.6px;
-
-    padding: 0 12px;
-
-    margin-bottom: 10px;
-}
-
-
-/* =========================================
-   CATEGORY BUTTON
-========================================= */
-
-.category {
-    display: block;
-
-    width: 100%;
-
-    height: 44px;
-    min-height: 44px;
-    max-height: 44px;
-
-    border: none;
-
-    background: transparent;
-
-    padding: 0 12px;
-
-    margin: 0 0 3px 0;
-
-    border-radius: 9px;
-
-    text-align: left;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 15px;
-
-    font-weight: 400;
-
-    line-height: 44px;
-
-    color: #444;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease;
-
-    white-space: nowrap;
-}
-
-.category:hover {
-    background: #f3f4f6;
-}
-
-.category.active {
-    background: #222;
-
-    color: #ffffff;
-
-    font-weight: 600;
-}
-
-
-/* =========================================
-   CONTENT
-========================================= */
-
-.content {
-    flex: 1;
-
-    min-width: 0;
-
-    height: 100%;
-
-    overflow-y: auto;
-
-    padding: 28px 32px 50px;
-}
-
-.content-header {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin-bottom: 22px;
-}
-
-.content-title {
-    font-size: 24px;
-
-    font-weight: 700;
-}
-
-.content-count {
-    font-size: 13px;
-
-    color: #888;
-}
-
-
-/* =========================================
-   RECIPE GRID
-
-   DESKTOP:
-   2 ẢNH / HÀNG
-
-   ẢNH GIỮ NGUYÊN TỶ LỆ DỌC 2:3
-========================================= */
-
-.recipe-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap: 24px;
-
-    width: 100%;
-
-    max-width: 1100px;
-}
-
-
-/* =========================================
-   RECIPE CARD
-========================================= */
-
-.recipe-card {
-    width: 100%;
-
-    background: #ffffff;
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-    border: 1px solid #e5e7eb;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.recipe-card:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.08);
-}
-
-
-/* =========================================
-   RECIPE IMAGE
-
-   ẢNH GỐC:
-   1024 × 1536
-
-   TỶ LỆ:
-   2 : 3
-
-   KHÔNG CROP
-   KHÔNG ÉP TỶ LỆ
-========================================= */
-
-.recipe-image {
-    display: block;
-
-    width: 100%;
-
-    height: auto;
-
-    object-fit: contain;
-
-    background: #f5f5f5;
-
-    cursor: zoom-in;
-}
-
-
-/* =========================================
-   RECIPE INFO
-========================================= */
-
-.recipe-info {
-    padding: 14px 16px;
-}
-
-.recipe-name {
-    font-size: 16px;
-
-    font-weight: 600;
-
-    line-height: 1.4;
-}
-
-.recipe-number {
-    font-size: 12px;
-
-    color: #999;
-
-    margin-top: 5px;
-}
-
-
-/* =========================================
-   IMAGE VIEWER
-========================================= */
-
-.viewer {
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0, 0, 0, 0.90);
-
-    z-index: 100;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    cursor: zoom-out;
-}
-
-.viewer.show {
-    display: flex;
-}
-
-.viewer img {
-    display: block;
-
-    max-width: 95vw;
-
-    max-height: 95vh;
-
-    width: auto;
-
-    height: auto;
-
-    object-fit: contain;
-
-    border-radius: 6px;
-}
-
-
-/* =========================================
-   CLOSE BUTTON
-========================================= */
-
-.close {
-    position: absolute;
-
-    top: 20px;
-
-    right: 28px;
-
-    width: 42px;
-
-    height: 42px;
-
-    padding: 0;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.15);
-
-    color: #ffffff;
-
-    font-size: 26px;
-
-    line-height: 42px;
-
-    text-align: center;
-
-    cursor: pointer;
-}
-
-.close:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 700px) {
-
-    .header {
-        height: 58px;
-
-        padding: 0 16px;
-    }
-
-
-    .back-button {
-        width: 36px;
-
-        height: 36px;
-
-        margin-right: 9px;
-
-        font-size: 21px;
-
-        line-height: 36px;
-    }
-
-
-    .logo {
-        font-size: 18px;
-    }
-
-
-    .logo span {
-        margin-left: 5px;
-    }
-
-
-    .layout {
-        height: calc(100vh - 58px);
-    }
-
-
-    .sidebar {
-        width: 125px;
-
-        min-width: 125px;
-
-        max-width: 125px;
-
-        padding: 14px 8px;
-    }
-
-
-    .sidebar-title {
-        padding: 0 8px;
-
-        font-size: 10px;
-
-        margin-bottom: 8px;
-    }
-
-
-    .category {
-        height: 40px;
-
-        min-height: 40px;
-
-        max-height: 40px;
-
-        padding: 0 8px;
-
-        font-size: 13px;
-
-        line-height: 40px;
-    }
-
-
-    .category.active {
-        height: 40px;
-
-        min-height: 40px;
-
-        max-height: 40px;
-
-        line-height: 40px;
-    }
-
-
-    .content {
-        padding: 18px 14px 40px;
-    }
-
-
-    .content-title {
-        font-size: 20px;
-    }
-
-
-    .content-count {
-        font-size: 11px;
-    }
-
-
-    /* MOBILE:
-       1 ẢNH / HÀNG */
-
-    .recipe-grid {
-        grid-template-columns: 1fr;
-
-        gap: 16px;
-    }
-
-
-    .recipe-info {
-        padding: 11px 13px;
-    }
-
-
-    .recipe-name {
-        font-size: 14px;
-    }
-
-}
-
-
-/* =========================================
-   MOBILE NHỎ
-========================================= */
-
-@media (max-width: 450px) {
-
-    .sidebar {
-        width: 110px;
-
-        min-width: 110px;
-
-        max-width: 110px;
-    }
-
-
-    .category {
-        font-size: 12px;
-    }
-
-
-    .content {
-        padding:
-            15px
-            10px
-            30px;
-    }
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f7fb">
+    <title>Thư viện công thức | Tascus Food</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f7f7fb;
+            --surface: #ffffff;
+            --surface-soft: #f0eff7;
+            --primary: #625b71;
+            --primary-dark: #4f485e;
+            --primary-soft: #e9e4f2;
+            --text: #1c1b1f;
+            --text-secondary: #625f68;
+            --outline: #dedbe5;
+            --outline-strong: #c9c5d1;
+            --shadow: 0 2px 8px rgba(30, 25, 40, 0.05);
+            --radius-card: 18px;
+            --radius-control: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Roboto", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* HEADER */
+
+        .app-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(247, 247, 251, 0.94);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(222, 219, 229, 0.85);
+        }
+
+        .header-inner {
+            width: min(1440px, 100%);
+            min-height: 64px;
+            margin: 0 auto;
+            padding: 10px 28px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header-action {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid var(--outline);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+            transition: background 0.18s, border-color 0.18s;
+        }
+
+        .header-action:hover {
+            background: var(--surface-soft);
+            border-color: var(--outline-strong);
+        }
+
+        .header-action svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .help-button {
+            font-size: 19px;
+            font-weight: 600;
+        }
+
+        .header-title {
+            min-width: 0;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .header-spacer {
+            flex: 1;
+        }
+
+        /* MAIN */
+
+        .page-container {
+            width: min(1440px, 100%);
+            margin: 0 auto;
+            padding: 32px 28px 56px;
+        }
+
+        .page-intro {
+            margin-bottom: 26px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 12px;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #8c829f;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(27px, 4vw, 36px);
+            font-weight: 700;
+            letter-spacing: -1.1px;
+            line-height: 1.2;
+        }
+
+        .page-description {
+            max-width: 620px;
+            margin: 10px 0 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* SEARCH */
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .search-box {
+            min-width: 0;
+            flex: 1;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 0 16px;
+            background: var(--surface);
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-control);
+            transition: border-color 0.18s, box-shadow 0.18s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(98, 91, 113, 0.10);
+        }
+
+        .search-icon {
+            width: 21px;
+            height: 21px;
+            flex: 0 0 21px;
+            color: var(--text-secondary);
+        }
+
+        .search-box input {
+            width: 100%;
+            min-width: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .search-box input::placeholder {
+            color: #85818b;
+        }
+
+        .clear-search {
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: none;
+            place-items: center;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: var(--surface-soft);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .clear-search.visible {
+            display: grid;
+        }
+
+        .result-count {
+            color: var(--text-secondary);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        /* CATEGORY: TWO ROWS ON DESKTOP */
+
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-heading {
+            margin: 0 0 12px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 10px;
+            padding: 2px 0 4px;
+        }
+
+        .category-chip {
+            width: 100%;
+            min-width: 0;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 0 10px;
+            border: 1px solid var(--outline);
+            border-radius: 13px;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.18s, border-color 0.18s, color 0.18s;
+        }
+
+        .category-chip:hover {
+            background: var(--surface-soft);
+        }
+
+        .category-chip.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .category-chip > span:first-child {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .chip-count {
+            min-width: 21px;
+            height: 21px;
+            flex: 0 0 auto;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 5px;
+            border-radius: 999px;
+            background: rgba(98, 91, 113, 0.10);
+            color: var(--text-secondary);
+            font-size: 11px;
+        }
+
+        .category-chip.active .chip-count {
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+        }
+
+        /* RECIPE GRID */
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 17px;
+        }
+
+        .section-title {
+            margin: 0;
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        .section-subtitle {
+            margin-top: 5px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .recipe-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-card);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(30, 25, 40, 0.09);
+        }
+
+        .recipe-image-button {
+            position: relative;
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            padding: 0;
+            border: 0;
+            background: #f4f3f6;
+            cursor: zoom-in;
+        }
+
+        .recipe-image {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            display: block;
+            object-fit: contain;
+            background: #f4f3f6;
+            transition: transform 0.3s ease;
+        }
+
+        .recipe-card:hover .recipe-image {
+            transform: scale(1.015);
+        }
+
+        .zoom-hint {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            z-index: 1;
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--primary-dark);
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.18s, transform 0.18s;
+        }
+
+        .recipe-card:hover .zoom-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .zoom-hint svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .recipe-info {
+            min-height: 86px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 14px 15px 16px;
+        }
+
+        .recipe-name {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+        }
+
+        .recipe-category {
+            align-self: flex-start;
+            padding: 5px 9px;
+            border-radius: 7px;
+            background: var(--surface-soft);
+            color: var(--primary-dark);
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* EMPTY SEARCH RESULT */
+
+        .empty-state {
+            display: none;
+            padding: 64px 20px;
+            border: 1px dashed var(--outline-strong);
+            border-radius: var(--radius-card);
+            background: rgba(255, 255, 255, 0.55);
+            text-align: center;
+        }
+
+        .empty-state.visible {
+            display: block;
+        }
+
+        .empty-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 15px;
+            border-radius: 18px;
+            background: var(--surface-soft);
+            color: var(--primary);
+        }
+
+        .empty-icon svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        .empty-title {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .empty-description {
+            margin: 8px 0 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .reset-button {
+            min-height: 40px;
+            margin-top: 18px;
+            padding: 0 16px;
+            border: 1px solid var(--outline);
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--primary-dark);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .reset-button:hover {
+            background: var(--surface-soft);
+        }
+
+        .page-footer {
+            display: flex;
+            justify-content: center;
+            padding-top: 42px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* MODAL BASE */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(20, 19, 24, 0.78);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            width: min(100%, 1050px);
+            max-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .modal-topbar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .modal-title {
+            min-width: 0;
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        .modal-close {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .modal-close svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        /* IMAGE VIEWER */
+
+        .viewer-content {
+            height: min(100%, 900px);
+        }
+
+        .viewer-image-wrap {
+            min-height: 0;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .viewer-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .viewer-caption {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* HELP DIALOG */
+
+        .help-content {
+            width: min(100%, 520px);
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 22px;
+            border-radius: 22px;
+            background: var(--surface);
+            color: var(--text);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .help-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .help-title {
+            margin: 0;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .help-close {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid var(--outline);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .help-intro {
+            margin: 0 0 18px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .help-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .help-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 13px;
+            border: 1px solid var(--outline);
+            border-radius: 14px;
+            background: #fff;
+        }
+
+        .help-item-icon {
+            width: 36px;
+            height: 36px;
+            flex: 0 0 36px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .help-item-title {
+            margin: 1px 0 4px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .help-item-description {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .help-done {
+            width: 100%;
+            min-height: 44px;
+            margin-top: 18px;
+            border: 0;
+            border-radius: 999px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .help-done:hover {
+            background: var(--primary-dark);
+        }
+
+        /* TABLET */
+
+        @media (max-width: 1100px) {
+            .page-container {
+                padding-right: 22px;
+                padding-left: 22px;
+            }
+
+            .recipe-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 16px;
+            }
+
+            .category-list {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+            .header-inner {
+                min-height: 58px;
+                padding: 9px 14px;
+                gap: 12px;
+            }
+
+            .header-action {
+                width: 38px;
+                height: 38px;
+                flex-basis: 38px;
+            }
+
+            .header-title {
+                font-size: 16px;
+            }
+
+            .page-container {
+                padding: 25px 16px 40px;
+            }
+
+            .page-intro {
+                margin-bottom: 21px;
+            }
+
+            .page-description {
+                font-size: 14px;
+            }
+
+            .toolbar {
+                align-items: stretch;
+                flex-direction: column;
+                gap: 9px;
+            }
+
+            .search-box {
+                flex: auto;
+                height: 49px;
+            }
+
+            .result-count {
+                padding-left: 3px;
+                font-size: 12px;
+            }
+
+            .category-section {
+                margin-bottom: 24px;
+            }
+
+            .category-list {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 8px;
+            }
+
+            .category-chip {
+                min-height: 40px;
+                padding: 0 7px;
+                gap: 5px;
+                border-radius: 11px;
+                font-size: 12px;
+            }
+
+            .chip-count {
+                min-width: 18px;
+                height: 18px;
+                padding: 0 4px;
+                font-size: 10px;
+            }
+
+            .recipe-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .recipe-card {
+                border-radius: 14px;
+            }
+
+            .recipe-info {
+                min-height: 78px;
+                gap: 7px;
+                padding: 11px 11px 13px;
+            }
+
+            .recipe-name {
+                font-size: 13px;
+            }
+
+            .recipe-category {
+                padding: 4px 7px;
+                font-size: 10px;
+            }
+
+            .zoom-hint {
+                right: 8px;
+                bottom: 8px;
+                width: 30px;
+                height: 30px;
+                opacity: 1;
+                transform: none;
+            }
+
+            .section-title {
+                font-size: 19px;
+            }
+
+            .modal {
+                padding: 12px;
+            }
+
+            .modal-close {
+                width: 38px;
+                height: 38px;
+                flex-basis: 38px;
+            }
+
+            .help-content {
+                padding: 18px;
+                border-radius: 18px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .header-inner {
+                gap: 9px;
+            }
+
+            .header-title {
+                font-size: 15px;
+            }
+
+            .category-list {
+                gap: 6px;
+            }
+
+            .category-chip {
+                font-size: 11px;
+                padding: 0 5px;
+            }
+
+            .chip-count {
+                min-width: 16px;
+                height: 16px;
+                font-size: 9px;
+            }
+
+            .recipe-grid {
+                gap: 9px;
+            }
+
+            .recipe-info {
+                padding: 10px;
+            }
+
+            .recipe-name {
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <header class="app-header">
+        <div class="header-inner">
+            <button
+                class="header-action"
+                id="backButton"
+                type="button"
+                aria-label="Quay lại"
+                title="Quay lại"
+            >
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                        d="M19 12H5M12 19l-7-7 7-7"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </button>
 
-<!-- =========================================
-     HEADER
-========================================= -->
+            <div class="header-title">Thư viện công thức</div>
 
-<header class="header">
+            <div class="header-spacer"></div>
 
+            <button
+                class="header-action help-button"
+                id="helpButton"
+                type="button"
+                aria-label="Trợ giúp"
+                title="Trợ giúp"
+            >?</button>
+        </div>
+    </header>
 
-<button
-    type="button"
-    class="back-button"
-    onclick="window.location.href='index.html'"
-    aria-label="Quay lại trang chủ"
->
-    ←
-</button>
+    <main class="page-container">
+        <section class="page-intro">
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                TÀI LIỆU VẬN HÀNH
+            </div>
 
+            <h1>Thư viện công thức</h1>
 
-<div class="logo">
+            <p class="page-description">
+                Tra cứu hình ảnh công thức chế biến và sơ đồ sắp xếp tại cửa hàng.
+                Chọn danh mục hoặc tìm trực tiếp tên món cần xem.
+            </p>
+        </section>
 
-    Tascus Food
+        <section class="toolbar" aria-label="Tìm kiếm công thức">
+            <label class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
 
-    <span>
-        Thư viện công thức - Các sơ đồ vận hành
-    </span>
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Tìm tên món, ví dụ: bánh mì bò..."
+                    autocomplete="off"
+                    aria-label="Tìm kiếm theo tên công thức"
+                >
 
-</div>
+                <button
+                    class="clear-search"
+                    id="clearSearch"
+                    type="button"
+                    aria-label="Xóa nội dung tìm kiếm"
+                    title="Xóa tìm kiếm"
+                >
+                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" aria-hidden="true">
+                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </label>
 
+            <div class="result-count" id="resultCount" aria-live="polite"></div>
+        </section>
 
-</header>
+        <section class="category-section" aria-label="Danh mục công thức">
+            <h2 class="category-heading">Danh mục</h2>
+            <div class="category-list" id="categoryList"></div>
+        </section>
 
-<div class="layout">
+        <section aria-label="Danh sách công thức">
+            <div class="section-heading">
+                <div>
+                    <h2 class="section-title" id="sectionTitle">Tất cả công thức</h2>
+                    <div class="section-subtitle" id="sectionSubtitle">Tra cứu theo hình ảnh</div>
+                </div>
+            </div>
 
-<!-- =========================================
-     SIDEBAR
-========================================= -->
+            <div class="recipe-grid" id="recipeGrid"></div>
 
-<aside class="sidebar">
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        <path d="M8.5 10.8h4.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                    </svg>
+                </div>
 
+                <h3 class="empty-title">Không tìm thấy công thức</h3>
 
-<div class="sidebar-title">
-    Nhóm món
-</div>
+                <p class="empty-description">
+                    Không có mục nào khớp với nội dung tìm kiếm hoặc danh mục hiện tại.
+                </p>
 
+                <button class="reset-button" id="resetFilters" type="button">
+                    Hiển thị tất cả công thức
+                </button>
+            </div>
+        </section>
 
-<button
-    type="button"
-    class="category active"
-    onclick="showCategory('banhmi', this)"
->
-    🥖 Bánh mì
-</button>
+        <footer class="page-footer">
+            Tascus Food · Thư viện công thức và sơ đồ nội bộ
+        </footer>
+    </main>
 
-
-<button
-    type="button"
-    class="category"
-    onclick="showCategory('burger', this)"
->
-    🍔 Burger
-</button>
-
-
-<button
-    type="button"
-    class="category"
-    onclick="showCategory('sandwich', this)"
->
-    🥪 Sandwich
-</button>
-
-
-<button
-    type="button"
-    class="category"
-    onclick="showCategory('crepe', this)"
->
-    🥞 Crepe
-</button>
-
-
-<button
-    type="button"
-    class="category"
-    onclick="showCategory('salad', this)"
->
-    🥗 Salad
-</button>
-
-
-<button
-    type="button"
-    class="category"
-    onclick="showCategory('fries', this)"
->
-    🍟 Khoai tây
-</button>
-
-
-<button
-    type="button"
-    class="category"
-    onclick="showCategory('pasta', this)"
->
-    🍝 Mỳ Ý
-</button>
-<button
-    type="button"
-    class="category"
-    onclick="showCategory('bmchao', this)"
->
-    🥘 Bánh mỳ chảo
-</button>
-
-<button
-    type="button"
-    class="category"
-    onclick="showCategory('drink', this)"
->
-    🍹 Đồ uống
-</button>
-
-<button
-    type="button"
-    class="category"
-    onclick="showCategory('stuffs', this)"
->
-    🗺️ Linh tinh
-</button>
-</aside>
-
-<!-- =========================================
-     CONTENT
-========================================= -->
-
-<main class="content">
-
-
-<div class="content-header">
-
-
+    <!-- IMAGE VIEWER -->
     <div
-        class="content-title"
-        id="categoryTitle"
+        class="modal"
+        id="imageViewer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Xem ảnh công thức"
+        aria-hidden="true"
     >
-        Bánh mì
+        <div class="modal-content viewer-content">
+            <div class="modal-topbar">
+                <h2 class="modal-title" id="viewerTitle"></h2>
+
+                <button class="modal-close" id="viewerClose" type="button" aria-label="Đóng ảnh">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="viewer-image-wrap">
+                <img class="viewer-image" id="viewerImage" src="" alt="">
+            </div>
+
+            <div class="viewer-caption">Nhấn bên ngoài ảnh hoặc phím Esc để đóng</div>
+        </div>
     </div>
 
-
+    <!-- HELP DIALOG -->
     <div
-        class="content-count"
-        id="recipeCount"
+        class="modal"
+        id="helpViewer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Hướng dẫn sử dụng"
+        aria-hidden="true"
     >
-        5 công thức
+        <div class="help-content">
+            <div class="help-header">
+                <h2 class="help-title">Hướng dẫn sử dụng</h2>
+
+                <button class="help-close" id="helpClose" type="button" aria-label="Đóng hướng dẫn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <p class="help-intro">
+                Sử dụng thư viện để tra cứu công thức chế biến và tài liệu bố trí tại cửa hàng.
+            </p>
+
+            <div class="help-list">
+                <div class="help-item">
+                    <div class="help-item-icon">⌕</div>
+                    <div>
+                        <h3 class="help-item-title">Tìm kiếm công thức</h3>
+                        <p class="help-item-description">
+                            Nhập tên món vào ô tìm kiếm. Có thể tìm cả khi không nhập dấu tiếng Việt.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-item">
+                    <div class="help-item-icon">▦</div>
+                    <div>
+                        <h3 class="help-item-title">Lọc theo danh mục</h3>
+                        <p class="help-item-description">
+                            Chọn danh mục để chỉ hiển thị các công thức thuộc nhóm tương ứng.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-item">
+                    <div class="help-item-icon">↗</div>
+                    <div>
+                        <h3 class="help-item-title">Xem ảnh chi tiết</h3>
+                        <p class="help-item-description">
+                            Nhấn vào ảnh công thức để phóng to. Nhấn nút đóng, vùng nền bên ngoài hoặc phím Esc để trở lại thư viện.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-item">
+                    <div class="help-item-icon">←</div>
+                    <div>
+                        <h3 class="help-item-title">Quay lại cổng vận hành</h3>
+                        <p class="help-item-description">
+                            Nhấn nút mũi tên ở góc trên bên trái. Nếu không có trang trước trong lịch sử trình duyệt, hệ thống sẽ mở index.html.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="help-done" id="helpDone" type="button">Đã hiểu</button>
+        </div>
     </div>
 
+    <script>
+        const categories = [
+            { id: "all", name: "Tất cả" },
+            { id: "banhmi", name: "Bánh mì" },
+            { id: "burger", name: "Burger" },
+            { id: "sandwich", name: "Sandwich" },
+            { id: "crepe", name: "Crepe" },
+            { id: "salad", name: "Salad" },
+            { id: "fries", name: "Khoai tây" },
+            { id: "pasta", name: "Mỳ Ý" },
+            { id: "bmchao", name: "Bánh mì chảo" },
+            { id: "drink", name: "Đồ uống" },
+            { id: "stuffs", name: "Linh tinh" }
+        ];
 
-</div>
-
-
-<div
-    class="recipe-grid"
-    id="recipeGrid"
-></div>
-
-
-</main>
-
-</div>
-
-<!-- =========================================
-     IMAGE VIEWER
-========================================= -->
-
-<div
-    class="viewer"
-    id="viewer"
-    onclick="closeViewer(event)"
->
-
-
-<button
-    type="button"
-    class="close"
-    onclick="closeViewer(event)"
-    aria-label="Đóng"
->
-    ×
-</button>
-
-
-<img
-    id="viewerImage"
-    src=""
-    alt="Công thức"
->
-
-
-</div>
-
-<script>
-
-
-/* =====================================================
-   DỮ LIỆU CÔNG THỨC
-
-   GIỮ NGUYÊN TOÀN BỘ TÊN FILE ẢNH BẠN ĐÃ ĐƯA.
-===================================================== */
-
-
-const recipes = {
-
-
-    /* =====================================
-       BÁNH MÌ
-    ===================================== */
-
-    banhmi: {
-
-        title: "Bánh mì",
-
-        items: [
-
+        const recipes = [
             {
+                category: "banhmi",
                 name: "Bánh mì gà nướng sả",
                 image: "BM-BMganuongsa.png"
             },
-
             {
+                category: "banhmi",
                 name: "Bánh mì xúc xích bò bằm hầm phô mai",
                 image: "BM-BMXucxichbobamhamphomai.png"
             },
-
             {
+                category: "banhmi",
                 name: "Bánh mì heo nướng xá xíu",
                 image: "BM-BMheonuongxaxiu.png"
             },
-
             {
+                category: "banhmi",
                 name: "Bánh mì bò phô mai",
                 image: "BM-BMbophomai.png"
             },
-
             {
+                category: "banhmi",
                 name: "Bánh mì bò tiêu đen",
                 image: "BM-BMbotieuden.png"
-            }
-
-        ]
-
-    },
-
-
-    /* =====================================
-       BURGER
-    ===================================== */
-
-    burger: {
-
-        title: "Burger",
-
-        items: [
-
+            },
             {
+                category: "burger",
                 name: "Burger",
                 image: "Burger.png"
-            }
-
-        ]
-
-    },
-
-
-    /* =====================================
-       SANDWICH
-    ===================================== */
-
-    sandwich: {
-
-        title: "Sandwich",
-
-        items: [
-
+            },
             {
+                category: "sandwich",
                 name: "Sandwich xúc xích phô mai",
                 image: "Sanwich-Sandwichxucxichphomai.png"
             },
-
             {
+                category: "sandwich",
                 name: "Sandwich jambon phô mai",
                 image: "Sanwich-Sandwichjambonphomai.png"
             },
-
             {
+                category: "sandwich",
                 name: "Sandwich phô mai pate heo",
                 image: "Sanwich-Sandwichphomaipateheo.png"
             },
-
             {
+                category: "sandwich",
                 name: "Sandwich phô mai pate bò",
                 image: "Sanwich-Sandwichphomaipatebo.png"
             },
-
             {
+                category: "sandwich",
                 name: "Sandwich phô mai sô cô la",
                 image: "Sandwich-Sanwichphomaisocola.png"
-            }
-
-        ]
-
-    },
-
-
-    /* =====================================
-       CREPE
-    ===================================== */
-
-    crepe: {
-
-        title: "Crepe",
-
-        items: [
-
+            },
             {
+                category: "crepe",
                 name: "Crepe xúc xích phô mai",
                 image: "Crepe-Crepexucxicphomai.png"
             },
-
             {
+                category: "crepe",
                 name: "Crepe jambon phô mai",
                 image: "Crepe-Crepejambonphomai.png"
             },
- {
+            {
+                category: "crepe",
                 name: "Crepe Oreo sữa",
                 image: "Crepe-CrepeOreoSua.png"
             },
-{
+            {
+                category: "crepe",
                 name: "Crepe xúc xích jambon phô mai",
                 image: "Crepe-Crepexucxichjambonphomai.png"
             },
             {
+                category: "crepe",
                 name: "Crepe chuối sô cô la phô mai",
                 image: "Crepe-Crepechuoisocolaphomai.png"
-            }
-        ]
-
-    },
-
-
-    /* =====================================
-       SALAD
-    ===================================== */
-
-    salad: {
-
-        title: "Salad",
-
-        items: [
-
+            },
             {
+                category: "salad",
                 name: "Salad gà viên",
                 image: "Salad-gavien.png"
             },
-
             {
+                category: "salad",
                 name: "Salad combo No Nê một ghế",
                 image: "Salad-none.png"
-            }
-
-        ]
-
-    },
-
-
-    /* =====================================
-       KHOAI TÂY
-    ===================================== */
-
-    fries: {
-
-        title: "Khoai tây",
-
-        items: [
-
+            },
             {
+                category: "fries",
                 name: "Khoai tây chiên",
                 image: "Khoaitaychien.png"
-            }
-
-        ]
-
-    },
-
-
-    /* =====================================
-       MỲ Ý
-    ===================================== */
-
-    pasta: {
-
-        title: "Mỳ Ý",
-
-        items: [
-
+            },
             {
+                category: "pasta",
                 name: "Mỳ Ý xúc xích bò bằm",
                 image: "Pasta-MyYsotbobam.png"
-            }
-
-        ]
-
-    },
- /* =====================================
-       Bánh mỳ chao
-    ===================================== */
-
-    bmchao: {
-
-        title: "Bánh mỳ chảo",
-
-        items: [
-
+            },
             {
-                name: "Bánh mỳ chảo",
+                category: "bmchao",
+                name: "Bánh mì chảo",
                 image: "Banhmychao.png"
-            }
-
-        ]
-
-    },
-
-
-    /* =====================================
-       ĐỒ UỐNG
-    ===================================== */
-
-    drink: {
-
-        title: "Đồ uống",
-
-        items: [
-
+            },
             {
+                category: "drink",
                 name: "Công thức đồ uống",
                 image: "Douong.png"
-            }
-
-        ]
-
-    },
- /* =====================================
-      LINH TINH
-    ===================================== */
-
-    stuffs: {
-
-        title: "Linh tinh",
-
-        items: [
-
+            },
             {
+                category: "stuffs",
                 name: "Bố cục sắp xếp quầy salad cơ sở Khương Trung",
                 image: "quaysalad.png"
             }
-            
-        ]
+        ];
 
-    }
+        const categoryList = document.getElementById("categoryList");
+        const recipeGrid = document.getElementById("recipeGrid");
+        const searchInput = document.getElementById("searchInput");
+        const clearSearch = document.getElementById("clearSearch");
+        const resultCount = document.getElementById("resultCount");
+        const sectionTitle = document.getElementById("sectionTitle");
+        const sectionSubtitle = document.getElementById("sectionSubtitle");
+        const emptyState = document.getElementById("emptyState");
+        const resetFilters = document.getElementById("resetFilters");
 
-};
+        const imageViewer = document.getElementById("imageViewer");
+        const viewerImage = document.getElementById("viewerImage");
+        const viewerTitle = document.getElementById("viewerTitle");
+        const viewerClose = document.getElementById("viewerClose");
 
+        const helpViewer = document.getElementById("helpViewer");
+        const helpButton = document.getElementById("helpButton");
+        const helpClose = document.getElementById("helpClose");
+        const helpDone = document.getElementById("helpDone");
 
-/* =====================================================
-   HIỂN THỊ NHÓM MÓN
-===================================================== */
+        let activeCategory = "all";
+        let previousFocusedElement = null;
+        let activeModal = null;
 
-function showCategory(category, button) {
+        function normalizeText(value) {
+            return String(value)
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/đ/g, "d")
+                .replace(/Đ/g, "D")
+                .toLocaleLowerCase("vi")
+                .trim();
+        }
 
-
-    const data = recipes[category];
-
-
-    if (!data) {
-        return;
-    }
-
-
-    document.getElementById(
-        "categoryTitle"
-    ).textContent = data.title;
-
-
-    document.getElementById(
-        "recipeCount"
-    ).textContent =
-        data.items.length + " công thức";
-
-
-    document
-        .querySelectorAll(".category")
-        .forEach(function(btn) {
-
-            btn.classList.remove("active");
-
-        });
-
-
-    button.classList.add("active");
-
-
-    const grid =
-        document.getElementById(
-            "recipeGrid"
-        );
-
-
-    grid.innerHTML = "";
-
-
-    data.items.forEach(
-        function(item, index) {
-
-
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-
-            card.className =
-                "recipe-card";
-
-
-            const image =
-                document.createElement(
-                    "img"
-                );
-
-
-            image.className =
-                "recipe-image";
-
-
-            image.src =
-                item.image;
-
-
-            image.alt =
-                item.name;
-
-
-            image.loading =
-                "lazy";
-
-
-            image.onclick =
-                function(event) {
-
-                    event.stopPropagation();
-
-                    openViewer(
-                        item.image
-                    );
-
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, character => {
+                const entities = {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;"
                 };
 
-
-            const info =
-                document.createElement(
-                    "div"
-                );
-
-
-            info.className =
-                "recipe-info";
-
-
-            const name =
-                document.createElement(
-                    "div"
-                );
-
-
-            name.className =
-                "recipe-name";
-
-
-            name.textContent =
-                item.name;
-
-
-            const number =
-                document.createElement(
-                    "div"
-                );
-
-
-            number.className =
-                "recipe-number";
-
-
-            number.textContent =
-                "Công thức " +
-                (index + 1);
-
-
-            info.appendChild(name);
-
-            info.appendChild(number);
-
-
-            card.appendChild(image);
-
-            card.appendChild(info);
-
-
-            grid.appendChild(card);
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   MỞ ẢNH
-===================================================== */
-
-function openViewer(image) {
-
-
-    document.getElementById(
-        "viewerImage"
-    ).src = image;
-
-
-    document.getElementById(
-        "viewer"
-    ).classList.add("show");
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-/* =====================================================
-   ĐÓNG ẢNH
-===================================================== */
-
-function closeViewer(event) {
-
-
-    if (
-        !event ||
-        event.target.id === "viewer" ||
-        event.target.classList.contains("close")
-    ) {
-
-
-        document.getElementById(
-            "viewer"
-        ).classList.remove("show");
-
-
-        document.body.style.overflow =
-            "hidden";
-
-
-    }
-
-}
-
-
-/* =====================================================
-   ESC ĐỂ ĐÓNG
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-
-        if (
-            event.key === "Escape"
-        ) {
-
-
-            document.getElementById(
-                "viewer"
-            ).classList.remove("show");
-
-
-            document.body.style.overflow =
-                "hidden";
-
-
+                return entities[character];
+            });
         }
 
-    }
-);
+        function getCategoryName(categoryId) {
+            const category = categories.find(item => item.id === categoryId);
+            return category ? category.name : "";
+        }
 
+        function getCategoryCount(categoryId) {
+            if (categoryId === "all") {
+                return recipes.length;
+            }
 
-/* =====================================================
-   LOAD MẶC ĐỊNH
-===================================================== */
+            return recipes.filter(recipe => recipe.category === categoryId).length;
+        }
 
-showCategory(
-    "banhmi",
-    document.querySelector(
-        ".category.active"
-    )
-);
+        function renderCategories() {
+            categoryList.innerHTML = categories.map(category => {
+                const isActive = category.id === activeCategory;
 
-</script>
+                return `
+                    <button
+                        type="button"
+                        class="category-chip ${isActive ? "active" : ""}"
+                        data-category="${category.id}"
+                        aria-pressed="${isActive}"
+                    >
+                        <span>${category.name}</span>
+                        <span class="chip-count">${getCategoryCount(category.id)}</span>
+                    </button>
+                `;
+            }).join("");
+        }
 
+        function getFilteredRecipes() {
+            const keyword = normalizeText(searchInput.value);
+
+            return recipes.filter(recipe => {
+                const matchesCategory =
+                    activeCategory === "all" ||
+                    recipe.category === activeCategory;
+
+                const matchesSearch =
+                    !keyword ||
+                    normalizeText(recipe.name).includes(keyword) ||
+                    normalizeText(getCategoryName(recipe.category)).includes(keyword);
+
+                return matchesCategory && matchesSearch;
+            });
+        }
+
+        function renderRecipes() {
+            const filteredRecipes = getFilteredRecipes();
+            const keyword = searchInput.value.trim();
+
+            recipeGrid.innerHTML = filteredRecipes.map(recipe => {
+                const originalIndex = recipes.indexOf(recipe);
+
+                return `
+                    <article class="recipe-card">
+                        <button
+                            class="recipe-image-button"
+                            type="button"
+                            data-recipe-index="${originalIndex}"
+                            aria-label="Phóng to ảnh: ${escapeHTML(recipe.name)}"
+                        >
+                            <img
+                                class="recipe-image"
+                                src="${escapeHTML(recipe.image)}"
+                                alt="${escapeHTML(recipe.name)}"
+                                loading="lazy"
+                                decoding="async"
+                            >
+
+                            <span class="zoom-hint" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="10.8" cy="10.8" r="6.8"
+                                        stroke="currentColor" stroke-width="1.8"/>
+                                    <path d="m16 16 4.2 4.2"
+                                        stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <div class="recipe-info">
+                            <h3 class="recipe-name">${escapeHTML(recipe.name)}</h3>
+                            <span class="recipe-category">
+                                ${escapeHTML(getCategoryName(recipe.category))}
+                            </span>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+
+            sectionTitle.textContent =
+                activeCategory === "all"
+                    ? "Tất cả công thức"
+                    : getCategoryName(activeCategory);
+
+            if (keyword) {
+                sectionSubtitle.textContent = `Kết quả tìm kiếm cho “${keyword}”`;
+            } else if (activeCategory === "all") {
+                sectionSubtitle.textContent = "Tra cứu theo hình ảnh";
+            } else {
+                sectionSubtitle.textContent =
+                    `Công thức thuộc danh mục ${getCategoryName(activeCategory)}`;
+            }
+
+            resultCount.textContent =
+                `Hiển thị ${filteredRecipes.length}/${recipes.length} mục`;
+
+            clearSearch.classList.toggle(
+                "visible",
+                searchInput.value.length > 0
+            );
+
+            const noResults = filteredRecipes.length === 0;
+
+            emptyState.classList.toggle("visible", noResults);
+            recipeGrid.style.display = noResults ? "none" : "grid";
+        }
+
+        function renderAll() {
+            renderCategories();
+            renderRecipes();
+        }
+
+        function selectCategory(categoryId) {
+            activeCategory = categoryId;
+            renderAll();
+        }
+
+        function openModal(modal, focusElement) {
+            if (activeModal) {
+                closeModal(activeModal, false);
+            }
+
+            previousFocusedElement = document.activeElement;
+            activeModal = modal;
+
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
+
+            if (focusElement) {
+                focusElement.focus();
+            }
+        }
+
+        function closeModal(modal, restoreFocus = true) {
+            if (!modal) return;
+
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+
+            if (modal === imageViewer) {
+                viewerImage.src = "";
+            }
+
+            if (activeModal === modal) {
+                activeModal = null;
+            }
+
+            if (!activeModal) {
+                document.body.classList.remove("modal-open");
+            }
+
+            if (
+                restoreFocus &&
+                previousFocusedElement &&
+                typeof previousFocusedElement.focus === "function"
+            ) {
+                previousFocusedElement.focus();
+            }
+        }
+
+        function openImageViewer(recipe) {
+            if (!recipe) return;
+
+            viewerImage.src = recipe.image;
+            viewerImage.alt = recipe.name;
+            viewerTitle.textContent = recipe.name;
+
+            openModal(imageViewer, viewerClose);
+        }
+
+        function openHelp() {
+            openModal(helpViewer, helpClose);
+        }
+
+        /* CATEGORY EVENTS */
+
+        categoryList.addEventListener("click", event => {
+            const button = event.target.closest("[data-category]");
+
+            if (!button) return;
+
+            selectCategory(button.dataset.category);
+        });
+
+        /* IMAGE EVENTS */
+
+        recipeGrid.addEventListener("click", event => {
+            const button = event.target.closest("[data-recipe-index]");
+
+            if (!button) return;
+
+            const recipeIndex = Number(button.dataset.recipeIndex);
+            openImageViewer(recipes[recipeIndex]);
+        });
+
+        /* SEARCH EVENTS */
+
+        searchInput.addEventListener("input", renderRecipes);
+
+        clearSearch.addEventListener("click", () => {
+            searchInput.value = "";
+            renderRecipes();
+            searchInput.focus();
+        });
+
+        resetFilters.addEventListener("click", () => {
+            activeCategory = "all";
+            searchInput.value = "";
+            renderAll();
+        });
+
+        /* BACK BUTTON */
+
+        document.getElementById("backButton").addEventListener("click", () => {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "index.html";
+            }
+        });
+
+        /* HELP BUTTON */
+
+        helpButton.addEventListener("click", openHelp);
+        helpClose.addEventListener("click", () => closeModal(helpViewer));
+        helpDone.addEventListener("click", () => closeModal(helpViewer));
+
+        helpViewer.addEventListener("click", event => {
+            if (event.target === helpViewer) {
+                closeModal(helpViewer);
+            }
+        });
+
+        /* IMAGE VIEWER CLOSE */
+
+        viewerClose.addEventListener("click", () => closeModal(imageViewer));
+
+        imageViewer.addEventListener("click", event => {
+            if (event.target === imageViewer) {
+                closeModal(imageViewer);
+            }
+        });
+
+        /* KEYBOARD */
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && activeModal) {
+                closeModal(activeModal);
+            }
+        });
+
+        renderAll();
+    </script>
 </body>
-
 </html>
