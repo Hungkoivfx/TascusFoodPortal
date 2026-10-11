@@ -9,9 +9,8 @@
 
 <style>
 :root {
-    color-scheme: light;
     --bg: #f7f6fb;
-    --surface: #ffffff;
+    --surface: #fff;
     --primary: #65558f;
     --primary-dark: #514477;
     --text: #24232a;
@@ -27,11 +26,6 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html {
-    min-height: 100%;
-    background: var(--bg);
-}
-
 body {
     margin: 0;
     min-height: 100vh;
@@ -39,12 +33,12 @@ body {
     background: var(--bg);
     color: var(--text);
     font-family: Inter, -apple-system, BlinkMacSystemFont,
-                 "Segoe UI", Roboto, sans-serif;
+        "Segoe UI", Roboto, sans-serif;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
 }
 
-button, input, textarea {
+button, input {
     font: inherit;
 }
 
@@ -58,7 +52,7 @@ button {
     min-height: 100vh;
     margin: 0 auto;
     padding: max(12px, env(safe-area-inset-top)) 16px
-             max(24px, env(safe-area-inset-bottom));
+        max(24px, env(safe-area-inset-bottom));
 }
 
 /* Header */
@@ -84,9 +78,7 @@ button {
     background: var(--surface);
     color: var(--text);
     font-size: 26px;
-    font-weight: 400;
     line-height: 1;
-    box-shadow: 0 1px 2px rgba(30, 25, 50, 0.03);
 }
 
 .icon-button:active {
@@ -112,8 +104,6 @@ button {
     font-size: 13px;
 }
 
-/* Main layout */
-
 .section {
     margin-bottom: 20px;
 }
@@ -135,7 +125,6 @@ button {
 .section-hint {
     color: var(--muted);
     font-size: 12px;
-    line-height: 1.5;
 }
 
 .card {
@@ -147,7 +136,7 @@ button {
     box-shadow: 0 2px 8px rgba(35, 28, 60, 0.025);
 }
 
-/* Preview */
+/* HTML preview */
 
 .preview-card {
     padding: 19px;
@@ -166,16 +155,10 @@ button {
     margin: 0 0 8px;
     font-size: 20px;
     line-height: 1.4;
-    font-weight: 700;
 }
 
-.preview-content p {
-    margin: 0 0 8px;
-}
-
-.preview-content:empty::after {
-    content: "Thông báo sẽ hiển thị tại đây.";
-    color: #a09daa;
+.preview-content .message-html {
+    white-space: normal;
 }
 
 .preview-footer {
@@ -207,12 +190,11 @@ button {
     border-radius: 14px;
     font-size: 15px;
     font-weight: 650;
-    transition: background 0.15s ease;
 }
 
 .button-primary {
     background: var(--primary);
-    color: #ffffff;
+    color: #fff;
 }
 
 .button-primary:active {
@@ -221,7 +203,7 @@ button {
 
 .button-secondary {
     border: 1px solid var(--border);
-    background: #ffffff;
+    background: #fff;
     color: var(--text);
 }
 
@@ -233,40 +215,76 @@ button {
 .send-icon {
     width: 18px;
     height: 18px;
-    display: block;
 }
 
-/* Large input */
+/* Editor */
 
 .input-card {
-    padding: 15px;
+    padding: 12px;
 }
 
-.message-input {
+.format-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 2px 12px;
+    border-bottom: 1px solid #f0eef4;
+    margin-bottom: 12px;
+}
+
+.format-button {
+    display: inline-flex;
+    width: 44px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--text);
+    font-size: 19px;
+}
+
+.format-button:active,
+.format-button.active {
+    border-color: #c9bce8;
+    background: var(--soft);
+    color: var(--primary-dark);
+}
+
+.format-hint {
+    margin-left: 4px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.message-editor {
     display: block;
     width: 100%;
     min-height: 250px;
-    resize: vertical;
-    padding: 16px;
+    padding: 15px;
     border: 1px solid var(--border);
     border-radius: 16px;
     outline: none;
     background: #fcfbfe;
     color: var(--text);
     font-size: 16px !important;
-    line-height: 1.7;
+    line-height: 1.8;
     overflow-wrap: anywhere;
-    transition: border-color 0.15s, box-shadow 0.15s;
+    word-break: break-word;
+    white-space: pre-wrap;
 }
 
-.message-input::placeholder {
-    color: #9995a3;
-}
-
-.message-input:focus {
+.message-editor:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(101, 85, 143, 0.12);
-    background: #ffffff;
+    background: #fff;
+}
+
+.message-editor:empty::before {
+    content: attr(data-placeholder);
+    color: #9995a3;
+    pointer-events: none;
 }
 
 .input-footer {
@@ -291,7 +309,7 @@ button {
     font-weight: 650;
 }
 
-/* Modal */
+/* Modals */
 
 .modal-backdrop {
     position: fixed;
@@ -312,22 +330,9 @@ button {
     width: 100%;
     max-width: 380px;
     padding: 24px;
-    border: 1px solid rgba(255,255,255,0.5);
     border-radius: 25px;
     background: var(--surface);
     box-shadow: 0 16px 50px rgba(20, 15, 35, 0.18);
-    animation: modal-in 0.18s ease-out;
-}
-
-@keyframes modal-in {
-    from {
-        opacity: 0;
-        transform: translateY(8px) scale(0.98);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
 }
 
 .modal h2 {
@@ -383,7 +388,6 @@ button {
 .help-list {
     margin: 0;
     padding-left: 20px;
-    color: var(--text);
     font-size: 14px;
     line-height: 1.8;
 }
@@ -400,14 +404,14 @@ button {
     padding: 13px 18px;
     border-radius: 14px;
     background: #302d37;
-    color: #ffffff;
+    color: #fff;
     font-size: 14px;
     line-height: 1.5;
     box-shadow: 0 6px 22px rgba(0,0,0,0.18);
     opacity: 0;
     pointer-events: none;
     transform: translateY(8px);
-    transition: opacity 0.2s, transform 0.2s;
+    transition: opacity .2s, transform .2s;
 }
 
 .toast.show {
@@ -422,15 +426,8 @@ button {
         padding-top: 24px;
     }
 
-    .message-input {
+    .message-editor {
         min-height: 280px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
     }
 }
 </style>
@@ -440,55 +437,36 @@ button {
 <div class="app">
 
     <header class="header">
-        <button
-            class="icon-button"
-            type="button"
-            onclick="goBack()"
-            aria-label="Quay lại"
-            title="Quay lại"
-        >‹</button>
+        <button class="icon-button" type="button"
+            onclick="goBack()" aria-label="Quay lại">&lt;</button>
 
         <div class="header-title">
             <h1>Thông báo nhanh</h1>
             <p>Tascus Food · Công cụ vận hành</p>
         </div>
 
-        <button
-            class="icon-button"
-            type="button"
-            onclick="openHelp()"
-            aria-label="Trợ giúp"
-            title="Trợ giúp"
-        >?</button>
+        <button class="icon-button" type="button"
+            onclick="openHelp()" aria-label="Trợ giúp">?</button>
     </header>
 
     <main>
         <section class="section">
             <div class="section-heading">
-                <h2>Bản xem trước</h2>
+                <h2>Bản xem trước HTML</h2>
                 <span class="section-hint">Cập nhật trực tiếp</span>
             </div>
 
             <div class="card preview-card">
-                <div
-                    id="previewContent"
-                    class="preview-content"
-                    aria-live="polite"
-                ></div>
+                <div id="previewContent" class="preview-content"></div>
 
                 <div class="preview-footer">
-                    <small>Nội dung thông báo sẽ được gửi đi</small>
-
-                    <button
-                        class="button button-primary"
-                        id="sendButton"
-                        type="button"
-                        onclick="requestPin()"
-                    >
+                    <small>Thông điệp sau khi chuyển thành HTML</small>
+                    <button class="button button-primary" id="sendButton"
+                        type="button" onclick="requestPin()">
                         <svg class="send-icon" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor"
-                             stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" aria-hidden="true">
+                            fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" aria-hidden="true">
                             <path d="M22 2 11 13"></path>
                             <path d="m22 2-7 20-4-9-9-4Z"></path>
                         </svg>
@@ -501,25 +479,39 @@ button {
         <section class="section">
             <div class="section-heading">
                 <h2>Nội dung thông báo</h2>
-                <span class="section-hint">Nhập bên dưới</span>
+                <span class="section-hint">Soạn thảo bên dưới</span>
             </div>
 
             <div class="card input-card">
-                <textarea
-                    id="messageInput"
-                    class="message-input"
-                    placeholder="Nhập nội dung thông báo tại đây..."
+                <div class="format-toolbar" aria-label="Định dạng văn bản">
+                    <button class="format-button" id="boldButton"
+                        type="button" aria-label="In đậm"
+                        title="In đậm (B)">
+                        <b>B</b>
+                    </button>
+
+                    <button class="format-button" id="italicButton"
+                        type="button" aria-label="In nghiêng"
+                        title="In nghiêng (I)">
+                        <i>I</i>
+                    </button>
+
+                    <span class="format-hint">Bôi đen chữ rồi chọn B hoặc I</span>
+                </div>
+
+                <div id="messageEditor"
+                    class="message-editor"
+                    contenteditable="true"
+                    role="textbox"
                     aria-label="Nội dung thông báo"
-                    spellcheck="true"
-                ></textarea>
+                    aria-multiline="true"
+                    data-placeholder="Nhập nội dung thông báo tại đây..."
+                    spellcheck="true"></div>
 
                 <div class="input-footer">
                     <span id="charCount">0 ký tự</span>
-                    <button
-                        class="text-button"
-                        type="button"
-                        onclick="clearMessage()"
-                    >Xóa nội dung</button>
+                    <button class="text-button" type="button"
+                        onclick="clearMessage()">Xóa nội dung</button>
                 </div>
             </div>
         </section>
@@ -527,87 +519,54 @@ button {
 </div>
 
 <!-- PIN modal -->
-<div
-    class="modal-backdrop"
-    id="pinBackdrop"
-    role="presentation"
-    onclick="backdropClose(event, 'pinBackdrop')"
->
-    <section
-        class="modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="pinTitle"
-    >
+<div class="modal-backdrop" id="pinBackdrop"
+    onclick="backdropClose(event, 'pinBackdrop')">
+    <section class="modal" role="dialog" aria-modal="true"
+        aria-labelledby="pinTitle">
         <h2 id="pinTitle">Xác nhận gửi</h2>
         <p class="modal-description">
             Nhập mã PIN để xác nhận gửi thông báo.
         </p>
 
         <form id="pinForm" onsubmit="confirmSend(event)">
-            <input
-                id="pinInput"
-                class="pin-input"
-                type="password"
-                inputmode="numeric"
-                pattern="[0-9]*"
-                maxlength="4"
-                autocomplete="off"
-                placeholder="••••"
-                aria-label="Mã PIN"
-                required
-            >
+            <input id="pinInput" class="pin-input" type="password"
+                inputmode="numeric" pattern="[0-9]*" maxlength="4"
+                autocomplete="off" placeholder="••••"
+                aria-label="Mã PIN" required>
 
             <div class="pin-error" id="pinError" aria-live="polite"></div>
 
             <div class="modal-actions">
-                <button
-                    class="button button-secondary"
-                    type="button"
-                    onclick="closeModal('pinBackdrop')"
-                >Hủy</button>
-
-                <button
-                    class="button button-primary"
-                    id="confirmButton"
-                    type="submit"
-                >Xác nhận</button>
+                <button class="button button-secondary" type="button"
+                    onclick="closeModal('pinBackdrop')">Hủy</button>
+                <button class="button button-primary" id="confirmButton"
+                    type="submit">Xác nhận</button>
             </div>
         </form>
     </section>
 </div>
 
 <!-- Help modal -->
-<div
-    class="modal-backdrop"
-    id="helpBackdrop"
-    role="presentation"
-    onclick="backdropClose(event, 'helpBackdrop')"
->
-    <section
-        class="modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="helpTitle"
-    >
+<div class="modal-backdrop" id="helpBackdrop"
+    onclick="backdropClose(event, 'helpBackdrop')">
+    <section class="modal" role="dialog" aria-modal="true"
+        aria-labelledby="helpTitle">
         <h2 id="helpTitle">Hướng dẫn sử dụng</h2>
         <p class="modal-description">
-            Công cụ tạo và gửi thông báo nhanh.
+            Soạn nội dung, định dạng và gửi thông báo.
         </p>
 
         <ol class="help-list">
-            <li>Nhập nội dung vào ô lớn phía dưới.</li>
-            <li>Xem lại thông điệp trong phần bản xem trước.</li>
-            <li>Nhấn Gửi và nhập mã PIN xác nhận.</li>
-            <li>Thông báo được gửi khi máy chủ xác nhận thành công.</li>
+            <li>Nhập nội dung vào ô soạn thảo lớn.</li>
+            <li>Bôi đen chữ rồi nhấn B để in đậm hoặc I để in nghiêng.</li>
+            <li>Nhấn Enter để xuống dòng. HTML đầu ra sẽ dùng thẻ br.</li>
+            <li>Kiểm tra bản xem trước rồi nhấn Gửi.</li>
+            <li>Nhập PIN để xác nhận gửi.</li>
         </ol>
 
         <div class="modal-actions">
-            <button
-                class="button button-primary"
-                type="button"
-                onclick="closeModal('helpBackdrop')"
-            >Đã hiểu</button>
+            <button class="button button-primary" type="button"
+                onclick="closeModal('helpBackdrop')">Đã hiểu</button>
         </div>
     </section>
 </div>
@@ -618,29 +577,26 @@ button {
 "use strict";
 
 /*
- * CẤU HÌNH API
- *
  * Điền URL Google Apps Script xử lý hành động send_quick_notice.
- * Backend phải tự xác minh PIN và thực hiện gửi thông báo.
+ * Backend cần xác minh PIN và thực hiện gửi thông báo.
  */
 const API_URL = "";
 
 /*
- * PIN phía trình duyệt chỉ để minh họa giao diện.
- * Không dùng kiểm tra PIN phía frontend làm lớp bảo mật thực sự.
- * Hãy xác minh PIN ở backend trước khi gửi.
+ * Chỉ dùng kiểm tra PIN frontend cho bản demo.
+ * Khi triển khai thật, cần xác minh PIN tại backend.
  */
 const PIN = "0606";
 
-const messageInput = document.getElementById("messageInput");
-const previewContent = document.getElementById("previewContent");
+const editor = document.getElementById("messageEditor");
+const preview = document.getElementById("previewContent");
 const charCount = document.getElementById("charCount");
-const sendButton = document.getElementById("sendButton");
 const pinInput = document.getElementById("pinInput");
 const pinError = document.getElementById("pinError");
 const confirmButton = document.getElementById("confirmButton");
 
 let toastTimer = null;
+let savedRange = null;
 
 function goBack() {
     if (window.history.length > 1) {
@@ -659,50 +615,179 @@ function closeModal(id) {
 }
 
 function backdropClose(event, id) {
-    if (event.target.id === id) {
-        closeModal(id);
-    }
-}
-
-function updatePreview() {
-    const message = messageInput.value;
-    const heading = document.createElement("h3");
-    const bold = document.createElement("b");
-
-    bold.textContent = "Thông báo";
-    heading.appendChild(bold);
-
-    previewContent.replaceChildren(heading);
-
-    if (message.length > 0) {
-        previewContent.appendChild(document.createElement("br"));
-        previewContent.appendChild(document.createElement("br"));
-
-        /*
-         * Dùng textContent để nội dung người nhập được hiển thị
-         * an toàn, không bị diễn giải thành HTML hoặc script.
-         */
-        const messageNode = document.createElement("div");
-        messageNode.style.whiteSpace = "pre-wrap";
-        messageNode.style.overflowWrap = "anywhere";
-        messageNode.textContent = message;
-        previewContent.appendChild(messageNode);
-    }
-
-    charCount.textContent =
-        message.length.toLocaleString("vi-VN") + " ký tự";
+    if (event.target.id === id) closeModal(id);
 }
 
 function clearMessage() {
-    messageInput.value = "";
+    editor.replaceChildren();
     updatePreview();
-    messageInput.focus();
+    editor.focus();
+}
+
+function saveSelection() {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+
+    const range = selection.getRangeAt(0);
+    if (editor.contains(range.commonAncestorContainer)) {
+        savedRange = range.cloneRange();
+    }
+}
+
+function restoreSelection() {
+    editor.focus();
+
+    const selection = window.getSelection();
+    if (!selection) return;
+
+    selection.removeAllRanges();
+
+    if (savedRange) {
+        selection.addRange(savedRange);
+    }
+}
+
+function applyFormat(tagName) {
+    restoreSelection();
+
+    const selection = window.getSelection();
+
+    if (!selection || selection.rangeCount === 0 ||
+        selection.isCollapsed ||
+        !editor.contains(selection.anchorNode) ||
+        !editor.contains(selection.focusNode)) {
+        showToast("Hãy bôi đen đoạn chữ cần định dạng trước.");
+        return;
+    }
+
+    const range = selection.getRangeAt(0);
+
+    // Không cho phép định dạng vượt qua nhiều dòng.
+    if (range.startContainer !== range.endContainer) {
+        showToast("Hãy chọn đoạn chữ trong cùng một dòng.");
+        return;
+    }
+
+    const wrapper = document.createElement(tagName);
+
+    try {
+        wrapper.appendChild(range.extractContents());
+        range.insertNode(wrapper);
+
+        const newRange = document.createRange();
+        newRange.selectNodeContents(wrapper);
+
+        selection.removeAllRanges();
+        selection.addRange(newRange);
+        savedRange = newRange.cloneRange();
+
+        updatePreview();
+    } catch (error) {
+        showToast("Không thể định dạng đoạn chữ này.");
+    }
+}
+
+document.getElementById("boldButton").addEventListener("mousedown", event => {
+    event.preventDefault();
+    saveSelection();
+});
+
+document.getElementById("boldButton").addEventListener("click", () => {
+    applyFormat("b");
+});
+
+document.getElementById("italicButton").addEventListener("mousedown", event => {
+    event.preventDefault();
+    saveSelection();
+});
+
+document.getElementById("italicButton").addEventListener("click", () => {
+    applyFormat("i");
+});
+
+editor.addEventListener("mouseup", saveSelection);
+editor.addEventListener("keyup", saveSelection);
+editor.addEventListener("input", updatePreview);
+
+/*
+ * Chuyển nội dung soạn thảo thành HTML an toàn.
+ * Chỉ giữ lại b, strong, i, em và br.
+ * Mọi dòng mới đều được chuẩn hóa thành br.
+ */
+function editorToHtml() {
+    const result = [];
+    const allowedInline = new Set(["B", "STRONG", "I", "EM", "BR"]);
+
+    function walk(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            result.push(escapeHtml(node.nodeValue || ""));
+            return;
+        }
+
+        if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+        const tag = node.tagName;
+
+        if (tag === "BR") {
+            result.push("<br>");
+            return;
+        }
+
+        if (tag === "DIV" || tag === "P") {
+            if (result.length > 0 && result[result.length - 1] !== "<br>") {
+                result.push("<br>");
+            }
+
+            Array.from(node.childNodes).forEach(walk);
+            return;
+        }
+
+        if (allowedInline.has(tag) && tag !== "BR") {
+            const safeTag = tag.toLowerCase();
+            result.push("<" + safeTag + ">");
+            Array.from(node.childNodes).forEach(walk);
+            result.push("</" + safeTag + ">");
+            return;
+        }
+
+        // Không giữ thẻ lạ, chỉ lấy nội dung văn bản bên trong.
+        Array.from(node.childNodes).forEach(walk);
+    }
+
+    Array.from(editor.childNodes).forEach(walk);
+
+    return result.join("")
+        .replace(/(?:<br>)+$/g, "");
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function getPlainText() {
+    return editor.innerText || editor.textContent || "";
+}
+
+function updatePreview() {
+    const messageHtml = editorToHtml();
+
+    preview.innerHTML =
+        "<h3><b>Thông báo</b></h3><br>" +
+        '<div class="message-html">' + messageHtml + "</div>";
+
+    charCount.textContent =
+        getPlainText().length.toLocaleString("vi-VN") + " ký tự";
 }
 
 function requestPin() {
-    if (!messageInput.value.trim()) {
+    if (!getPlainText().trim()) {
         showToast("Vui lòng nhập nội dung thông báo.");
-        messageInput.focus();
+        editor.focus();
         return;
     }
 
@@ -711,7 +796,6 @@ function requestPin() {
     confirmButton.disabled = false;
 
     document.getElementById("pinBackdrop").classList.add("show");
-
     setTimeout(() => pinInput.focus(), 100);
 }
 
@@ -735,6 +819,9 @@ async function confirmSend(event) {
     confirmButton.textContent = "Đang gửi...";
 
     try {
+        const messageHtml =
+            "<h3><b>Thông báo</b></h3><br>" + editorToHtml();
+
         const response = await fetch(API_URL, {
             method: "POST",
             headers: {
@@ -743,11 +830,8 @@ async function confirmSend(event) {
             body: JSON.stringify({
                 action: "send_quick_notice",
                 pin: pinInput.value,
-                message: messageInput.value.trim(),
-                html:
-                    "<h3><b>Thông báo</b></h3><br>" +
-                    escapeHtml(messageInput.value.trim())
-                        .replace(/\r?\n/g, "<br>")
+                message: getPlainText().trim(),
+                html: messageHtml
             })
         });
 
@@ -771,15 +855,6 @@ async function confirmSend(event) {
     }
 }
 
-function escapeHtml(value) {
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
 function showToast(message) {
     const toast = document.getElementById("toast");
     toast.textContent = message;
@@ -790,8 +865,6 @@ function showToast(message) {
         toast.classList.remove("show");
     }, 3200);
 }
-
-messageInput.addEventListener("input", updatePreview);
 
 pinInput.addEventListener("input", () => {
     pinInput.value = pinInput.value.replace(/\D/g, "").slice(0, 4);
