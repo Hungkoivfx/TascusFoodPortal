@@ -2,1574 +2,1570 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f7f7fb">
-    <title>Thư viện công thức | Tascus Food</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            color-scheme: light;
-            --bg: #f7f7fb;
-            --surface: #ffffff;
-            --surface-soft: #f0eff7;
-            --primary: #625b71;
-            --primary-dark: #4f485e;
-            --primary-soft: #e9e4f2;
-            --text: #1c1b1f;
-            --text-secondary: #625f68;
-            --outline: #dedbe5;
-            --outline-strong: #c9c5d1;
-            --shadow: 0 2px 8px rgba(30, 25, 40, 0.05);
-            --radius-card: 18px;
-            --radius-control: 14px;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
-            font-family: "Roboto", Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body.modal-open {
-            overflow: hidden;
-        }
-
-        button,
-        input {
-            font: inherit;
-        }
-
-        button {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* HEADER */
-
-        .app-header {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            background: rgba(247, 247, 251, 0.94);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(222, 219, 229, 0.85);
-        }
-
-        .header-inner {
-            width: min(1440px, 100%);
-            min-height: 64px;
-            margin: 0 auto;
-            padding: 10px 28px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .header-action {
-            width: 42px;
-            height: 42px;
-            flex: 0 0 42px;
-            display: grid;
-            place-items: center;
-            padding: 0;
-            border: 1px solid var(--outline);
-            border-radius: 50%;
-            background: var(--surface);
-            color: var(--text);
-            cursor: pointer;
-            transition: background 0.18s, border-color 0.18s;
-        }
-
-        .header-action:hover {
-            background: var(--surface-soft);
-            border-color: var(--outline-strong);
-        }
-
-        .header-action svg {
-            width: 21px;
-            height: 21px;
-        }
-
-        .help-button {
-            font-size: 19px;
-            font-weight: 600;
-        }
-
-        .header-title {
-            min-width: 0;
-            font-size: 17px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .header-spacer {
-            flex: 1;
-        }
-
-        /* MAIN */
-
-        .page-container {
-            width: min(1440px, 100%);
-            margin: 0 auto;
-            padding: 32px 28px 56px;
-        }
-
-        .page-intro {
-            margin-bottom: 26px;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            margin-bottom: 12px;
-            color: var(--primary);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .eyebrow-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #8c829f;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: clamp(27px, 4vw, 36px);
-            font-weight: 700;
-            letter-spacing: -1.1px;
-            line-height: 1.2;
-        }
-
-        .page-description {
-            max-width: 620px;
-            margin: 10px 0 0;
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        /* SEARCH */
-
-        .toolbar {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 22px;
-        }
-
-        .search-box {
-            min-width: 0;
-            flex: 1;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            gap: 11px;
-            padding: 0 16px;
-            background: var(--surface);
-            border: 1px solid var(--outline);
-            border-radius: var(--radius-control);
-            transition: border-color 0.18s, box-shadow 0.18s;
-        }
-
-        .search-box:focus-within {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(98, 91, 113, 0.10);
-        }
-
-        .search-icon {
-            width: 21px;
-            height: 21px;
-            flex: 0 0 21px;
-            color: var(--text-secondary);
-        }
-
-        .search-box input {
-            width: 100%;
-            min-width: 0;
-            padding: 0;
-            border: 0;
-            outline: 0;
-            background: transparent;
-            color: var(--text);
-            font-size: 14px;
-        }
-
-        .search-box input::placeholder {
-            color: #85818b;
-        }
-
-        .clear-search {
-            width: 30px;
-            height: 30px;
-            flex: 0 0 30px;
-            display: none;
-            place-items: center;
-            padding: 0;
-            border: 0;
-            border-radius: 50%;
-            background: var(--surface-soft);
-            color: var(--text-secondary);
-            cursor: pointer;
-        }
-
-        .clear-search.visible {
-            display: grid;
-        }
-
-        .result-count {
-            color: var(--text-secondary);
-            font-size: 13px;
-            white-space: nowrap;
-        }
-
-        /* CATEGORY: TWO ROWS ON DESKTOP */
-
-        .category-section {
-            margin-bottom: 30px;
-        }
-
-        .category-heading {
-            margin: 0 0 12px;
-            color: var(--text-secondary);
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .category-list {
-            display: grid;
-            grid-template-columns: repeat(6, minmax(0, 1fr));
-            gap: 10px;
-            padding: 2px 0 4px;
-        }
-
-        .category-chip {
-            width: 100%;
-            min-width: 0;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-            padding: 0 10px;
-            border: 1px solid var(--outline);
-            border-radius: 13px;
-            background: var(--surface);
-            color: var(--text);
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.18s, border-color 0.18s, color 0.18s;
-        }
-
-        .category-chip:hover {
-            background: var(--surface-soft);
-        }
-
-        .category-chip.active {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: #fff;
-        }
-
-        .category-chip > span:first-child {
-            min-width: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .chip-count {
-            min-width: 21px;
-            height: 21px;
-            flex: 0 0 auto;
-            display: inline-grid;
-            place-items: center;
-            padding: 0 5px;
-            border-radius: 999px;
-            background: rgba(98, 91, 113, 0.10);
-            color: var(--text-secondary);
-            font-size: 11px;
-        }
-
-        .category-chip.active .chip-count {
-            background: rgba(255, 255, 255, 0.18);
-            color: #fff;
-        }
-
-        /* RECIPE GRID */
-
-        .section-heading {
-            display: flex;
-            align-items: end;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 17px;
-        }
-
-        .section-title {
-            margin: 0;
-            font-size: 21px;
-            font-weight: 700;
-            letter-spacing: -0.4px;
-        }
-
-        .section-subtitle {
-            margin-top: 5px;
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
-
-        .recipe-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 20px;
-        }
-
-        .recipe-card {
-            min-width: 0;
-            overflow: hidden;
-            border: 1px solid var(--outline);
-            border-radius: var(--radius-card);
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
-        }
-
-        .recipe-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 22px rgba(30, 25, 40, 0.09);
-        }
-
-        .recipe-image-button {
-            position: relative;
-            width: 100%;
-            display: block;
-            overflow: hidden;
-            padding: 0;
-            border: 0;
-            background: #f4f3f6;
-            cursor: zoom-in;
-        }
-
-        .recipe-image {
-            width: 100%;
-            aspect-ratio: 2 / 3;
-            display: block;
-            object-fit: contain;
-            background: #f4f3f6;
-            transition: transform 0.3s ease;
-        }
-
-        .recipe-card:hover .recipe-image {
-            transform: scale(1.015);
-        }
-
-        .zoom-hint {
-            position: absolute;
-            right: 12px;
-            bottom: 12px;
-            z-index: 1;
-            width: 34px;
-            height: 34px;
-            display: grid;
-            place-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.92);
-            color: var(--primary-dark);
-            opacity: 0;
-            transform: translateY(4px);
-            transition: opacity 0.18s, transform 0.18s;
-        }
-
-        .recipe-card:hover .zoom-hint {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .zoom-hint svg {
-            width: 17px;
-            height: 17px;
-        }
-
-        .recipe-info {
-            min-height: 86px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-            padding: 14px 15px 16px;
-        }
-
-        .recipe-name {
-            margin: 0;
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 1.45;
-            overflow-wrap: anywhere;
-        }
-
-        .recipe-category {
-            align-self: flex-start;
-            padding: 5px 9px;
-            border-radius: 7px;
-            background: var(--surface-soft);
-            color: var(--primary-dark);
-            font-size: 11px;
-            font-weight: 500;
-        }
-
-        /* EMPTY SEARCH RESULT */
-
-        .empty-state {
-            display: none;
-            padding: 64px 20px;
-            border: 1px dashed var(--outline-strong);
-            border-radius: var(--radius-card);
-            background: rgba(255, 255, 255, 0.55);
-            text-align: center;
-        }
-
-        .empty-state.visible {
-            display: block;
-        }
-
-        .empty-icon {
-            width: 52px;
-            height: 52px;
-            display: grid;
-            place-items: center;
-            margin: 0 auto 15px;
-            border-radius: 18px;
-            background: var(--surface-soft);
-            color: var(--primary);
-        }
-
-        .empty-icon svg {
-            width: 25px;
-            height: 25px;
-        }
-
-        .empty-title {
-            margin: 0;
-            font-size: 17px;
-            font-weight: 600;
-        }
-
-        .empty-description {
-            margin: 8px 0 0;
-            color: var(--text-secondary);
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .reset-button {
-            min-height: 40px;
-            margin-top: 18px;
-            padding: 0 16px;
-            border: 1px solid var(--outline);
-            border-radius: 999px;
-            background: var(--surface);
-            color: var(--primary-dark);
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .reset-button:hover {
-            background: var(--surface-soft);
-        }
-
-        .page-footer {
-            display: flex;
-            justify-content: center;
-            padding-top: 42px;
-            color: var(--text-secondary);
-            font-size: 12px;
-            text-align: center;
-        }
-
-        /* MODAL BASE */
-
-        .modal {
-            position: fixed;
-            inset: 0;
-            z-index: 100;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            background: rgba(20, 19, 24, 0.78);
-            backdrop-filter: blur(8px);
-        }
-
-        .modal.open {
-            display: flex;
-        }
-
-        .modal-content {
-            width: min(100%, 1050px);
-            max-height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-        }
-
-        .modal-topbar {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            color: #fff;
-        }
-
-        .modal-title {
-            min-width: 0;
-            margin: 0;
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 1.5;
-            overflow-wrap: anywhere;
-        }
-
-        .modal-close {
-            width: 42px;
-            height: 42px;
-            flex: 0 0 42px;
-            display: grid;
-            place-items: center;
-            padding: 0;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.12);
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.22);
-        }
-
-        .modal-close svg {
-            width: 21px;
-            height: 21px;
-        }
-
-        /* IMAGE VIEWER */
-
-        .viewer-content {
-            height: min(100%, 900px);
-        }
-
-        .viewer-image-wrap {
-            min-height: 0;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .viewer-image {
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
-            object-fit: contain;
-            border-radius: 5px;
-        }
-
-        .viewer-caption {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 12px;
-            text-align: center;
-        }
-
-        /* HELP DIALOG */
-
-        .help-content {
-            width: min(100%, 520px);
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 22px;
-            border-radius: 22px;
-            background: var(--surface);
-            color: var(--text);
-            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
-        }
-
-        .help-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-
-        .help-title {
-            margin: 0;
-            font-size: 21px;
-            font-weight: 700;
-        }
-
-        .help-close {
-            width: 38px;
-            height: 38px;
-            flex: 0 0 38px;
-            display: grid;
-            place-items: center;
-            padding: 0;
-            border: 1px solid var(--outline);
-            border-radius: 50%;
-            background: var(--surface);
-            color: var(--text);
-            cursor: pointer;
-        }
-
-        .help-intro {
-            margin: 0 0 18px;
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .help-list {
-            display: grid;
-            gap: 12px;
-        }
-
-        .help-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 13px;
-            border: 1px solid var(--outline);
-            border-radius: 14px;
-            background: #fff;
-        }
-
-        .help-item-icon {
-            width: 36px;
-            height: 36px;
-            flex: 0 0 36px;
-            display: grid;
-            place-items: center;
-            border-radius: 11px;
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-            font-size: 17px;
-            font-weight: 700;
-        }
-
-        .help-item-title {
-            margin: 1px 0 4px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .help-item-description {
-            margin: 0;
-            color: var(--text-secondary);
-            font-size: 13px;
-            line-height: 1.55;
-        }
-
-        .help-done {
-            width: 100%;
-            min-height: 44px;
-            margin-top: 18px;
-            border: 0;
-            border-radius: 999px;
-            background: var(--primary);
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .help-done:hover {
-            background: var(--primary-dark);
-        }
-
-        /* TABLET */
-
-        @media (max-width: 1100px) {
-            .page-container {
-                padding-right: 22px;
-                padding-left: 22px;
-            }
-
-            .recipe-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 16px;
-            }
-
-            .category-list {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-            }
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 600px) {
-            .header-inner {
-                min-height: 58px;
-                padding: 9px 14px;
-                gap: 12px;
-            }
-
-            .header-action {
-                width: 38px;
-                height: 38px;
-                flex-basis: 38px;
-            }
-
-            .header-title {
-                font-size: 16px;
-            }
-
-            .page-container {
-                padding: 25px 16px 40px;
-            }
-
-            .page-intro {
-                margin-bottom: 21px;
-            }
-
-            .page-description {
-                font-size: 14px;
-            }
-
-            .toolbar {
-                align-items: stretch;
-                flex-direction: column;
-                gap: 9px;
-            }
-
-            .search-box {
-                flex: auto;
-                height: 49px;
-            }
-
-            .result-count {
-                padding-left: 3px;
-                font-size: 12px;
-            }
-
-            .category-section {
-                margin-bottom: 24px;
-            }
-
-            .category-list {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 8px;
-            }
-
-            .category-chip {
-                min-height: 40px;
-                padding: 0 7px;
-                gap: 5px;
-                border-radius: 11px;
-                font-size: 12px;
-            }
-
-            .chip-count {
-                min-width: 18px;
-                height: 18px;
-                padding: 0 4px;
-                font-size: 10px;
-            }
-
-            .recipe-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 12px;
-            }
-
-            .recipe-card {
-                border-radius: 14px;
-            }
-
-            .recipe-info {
-                min-height: 78px;
-                gap: 7px;
-                padding: 11px 11px 13px;
-            }
-
-            .recipe-name {
-                font-size: 13px;
-            }
-
-            .recipe-category {
-                padding: 4px 7px;
-                font-size: 10px;
-            }
-
-            .zoom-hint {
-                right: 8px;
-                bottom: 8px;
-                width: 30px;
-                height: 30px;
-                opacity: 1;
-                transform: none;
-            }
-
-            .section-title {
-                font-size: 19px;
-            }
-
-            .modal {
-                padding: 12px;
-            }
-
-            .modal-close {
-                width: 38px;
-                height: 38px;
-                flex-basis: 38px;
-            }
-
-            .help-content {
-                padding: 18px;
-                border-radius: 18px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .header-inner {
-                gap: 9px;
-            }
-
-            .header-title {
-                font-size: 15px;
-            }
-
-            .category-list {
-                gap: 6px;
-            }
-
-            .category-chip {
-                font-size: 11px;
-                padding: 0 5px;
-            }
-
-            .chip-count {
-                min-width: 16px;
-                height: 16px;
-                font-size: 9px;
-            }
-
-            .recipe-grid {
-                gap: 9px;
-            }
-
-            .recipe-info {
-                padding: 10px;
-            }
-
-            .recipe-name {
-                font-size: 12px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-                animation-duration: 0.01ms !important;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f7f7fa">
+<title>Sổ thanh toán · 69 Khương Trung</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+:root {
+    color-scheme: light;
+    --md-primary: #505c92;
+    --md-primary-hover: #414c80;
+    --md-on-primary: #ffffff;
+    --md-primary-container: #dfe4ff;
+    --md-on-primary-container: #111c4b;
+    --md-background: #f7f7fa;
+    --md-surface: #ffffff;
+    --md-surface-low: #f0f0f5;
+    --md-surface-high: #e9e9ef;
+    --md-outline: #777780;
+    --md-outline-variant: #c6c6d0;
+    --md-text: #191a22;
+    --md-text-secondary: #454650;
+    --md-text-muted: #747580;
+    --md-error: #ba1a1a;
+    --md-radius-small: 8px;
+    --md-radius-medium: 12px;
+    --md-radius-large: 16px;
+    --md-radius-xl: 24px;
+    --md-shadow: 0 1px 3px rgba(25, 26, 34, .08),
+                 0 2px 8px rgba(25, 26, 34, .04);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    min-height: 100%;
+    background: var(--md-background);
+}
+
+body {
+    min-height: 100vh;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
+    background: var(--md-background);
+    color: var(--md-text);
+    padding:
+        max(20px, env(safe-area-inset-top))
+        16px
+        max(32px, env(safe-area-inset-bottom));
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+
+button, input, textarea, select {
+    font: inherit;
+}
+
+button {
+    touch-action: manipulation;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 3px;
+}
+
+.container {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.back-button,
+.help-button {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border: 1px solid var(--md-outline-variant);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--md-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .18s, transform .12s;
+}
+
+.back-button {
+    font-size: 28px;
+    line-height: 1;
+    padding-bottom: 3px;
+}
+
+.help-button {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.back-button:hover,
+.help-button:hover {
+    background: var(--md-surface-high);
+}
+
+.back-button:active,
+.help-button:active {
+    transform: scale(.94);
+}
+
+.header-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.header-main h1 {
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -.35px;
+}
+
+.header-main p {
+    margin-top: 5px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--md-text-muted);
+}
+
+/* FILTERS */
+
+.filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.filter-button {
+    flex: 1;
+    min-width: 0;
+    min-height: 42px;
+    padding: 0 10px;
+    border: 1px solid var(--md-outline);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--md-text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .18s, border-color .18s;
+}
+
+.filter-button:hover {
+    background: var(--md-surface-low);
+}
+
+.filter-button.active {
+    background: var(--md-secondary-container, #e5e5ef);
+    border-color: transparent;
+    color: var(--md-text);
+    font-weight: 600;
+}
+
+/* CREATE BUTTON */
+
+.create-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+.create-button {
+    min-height: 46px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 14px;
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(80, 92, 146, .18);
+    transition: background .18s, box-shadow .18s, transform .12s;
+}
+
+.create-button:hover {
+    background: var(--md-primary-hover);
+    box-shadow: 0 3px 8px rgba(80, 92, 146, .22);
+}
+
+.create-button:active {
+    transform: scale(.98);
+}
+
+/* SUMMARY */
+
+.summary {
+    background: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    border-radius: var(--md-radius-xl);
+    padding: 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.summary-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.summary-period {
+    margin-top: 7px;
+    font-size: 12px;
+    color: var(--md-primary);
+    font-weight: 500;
+}
+
+.summary-value {
+    font-size: clamp(22px, 5vw, 30px);
+    font-weight: 600;
+    letter-spacing: -.8px;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* LIST CARD */
+
+.list-card {
+    background: var(--md-surface);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-radius-xl);
+    padding: 20px;
+    box-shadow: var(--md-shadow);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 2px 16px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -.2px;
+}
+
+.record-count {
+    flex-shrink: 0;
+    background: var(--md-surface-low);
+    color: var(--md-text-secondary);
+    padding: 6px 11px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* PAYMENT LIST */
+
+.payment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.payment-item {
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-radius-large);
+    padding: 16px;
+    background: var(--md-surface);
+    transition: background .16s, border-color .16s;
+}
+
+.payment-item:hover {
+    background: #fbfbfd;
+    border-color: #aaaab8;
+}
+
+.payment-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.payment-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.payment-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.payment-date {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--md-text-muted);
+    line-height: 1.4;
+}
+
+.payment-amount {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--md-text);
+    white-space: nowrap;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.payment-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 12px;
+}
+
+.meta-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 5px 9px;
+    border-radius: 8px;
+    background: var(--md-surface-low);
+    color: var(--md-text-secondary);
+    font-size: 11px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    max-width: 100%;
+}
+
+.transaction {
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    word-break: break-all;
+}
+
+/* EMPTY */
+
+.empty {
+    padding: 42px 12px;
+    text-align: center;
+    color: var(--md-text-muted);
+}
+
+.empty-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: var(--md-surface-low);
+    font-size: 26px;
+}
+
+.empty-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--md-text);
+}
+
+.empty-text {
+    margin-top: 7px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* MODALS */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(20, 20, 30, .42);
+    padding:
+        max(16px, env(safe-area-inset-top))
+        16px
+        max(16px, env(safe-area-inset-bottom));
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal {
+    width: 100%;
+    max-width: 560px;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--md-surface);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .18);
+    animation: modalIn .18s ease-out;
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(8px) scale(.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.modal-title {
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -.3px;
+}
+
+.close-button {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--md-surface-low);
+    color: var(--md-text);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .16s;
+}
+
+.close-button:hover {
+    background: var(--md-surface-high);
+}
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--md-text-secondary);
+}
+
+.form-input,
+.form-textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--md-outline);
+    background: var(--md-surface);
+    border-radius: 12px;
+    padding: 0 14px;
+    color: var(--md-text);
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+    transition: border-color .16s, box-shadow .16s;
+}
+
+.form-input {
+    height: 52px;
+}
+
+.form-textarea {
+    min-height: 90px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #858590;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: var(--md-primary);
+    box-shadow: inset 0 0 0 1px var(--md-primary);
+}
+
+.form-input:disabled {
+    background: var(--md-surface-low);
+    color: var(--md-text-muted);
+    cursor: not-allowed;
+}
+
+/* PAYMENT TYPE */
+
+.payment-types {
+    display: flex;
+    gap: 10px;
+}
+
+.payment-type {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+}
+
+.payment-type input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.payment-type label {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid var(--md-outline);
+    background: var(--md-surface);
+    color: var(--md-text-secondary);
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: background .16s, border-color .16s;
+}
+
+.payment-type input:checked + label {
+    background: var(--md-primary-container);
+    border-color: var(--md-primary);
+    color: var(--md-on-primary-container);
+}
+
+.payment-type input:focus-visible + label {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 3px;
+}
+
+.transaction-note {
+    display: none;
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--md-text-muted);
+    line-height: 1.5;
+}
+
+.transaction-note.show {
+    display: block;
+}
+
+/* MODAL ACTIONS */
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.cancel-button,
+.submit-button {
+    min-height: 48px;
+    border-radius: 100px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .16s, transform .12s;
+}
+
+.cancel-button {
+    min-width: 100px;
+    border: 1px solid var(--md-outline);
+    background: transparent;
+    color: var(--md-primary);
+}
+
+.cancel-button:hover {
+    background: var(--md-surface-low);
+}
+
+.submit-button {
+    flex: 1;
+    border: 0;
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+}
+
+.submit-button:hover {
+    background: var(--md-primary-hover);
+}
+
+.cancel-button:active,
+.submit-button:active {
+    transform: scale(.98);
+}
+
+/* HELP */
+
+.help-content {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--md-text-secondary);
+}
+
+.help-content strong {
+    color: var(--md-text);
+    font-weight: 600;
+}
+
+/* LOADING */
+
+.loading {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(247, 247, 250, .72);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.loading.show {
+    display: flex;
+}
+
+.loading-box {
+    min-width: 170px;
+    background: var(--md-surface);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: 20px;
+    padding: 22px 24px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .12);
+    text-align: center;
+}
+
+.spinner {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto 13px;
+    border: 3px solid var(--md-primary-container);
+    border-top-color: var(--md-primary);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+}
+
+.loading-text {
+    font-size: 13px;
+    color: var(--md-text-secondary);
+    line-height: 1.5;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    transform: translate(-50%, 16px);
+    z-index: 300;
+    max-width: calc(100vw - 32px);
+    background: #303038;
+    color: #ffffff;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* RESPONSIVE */
+
+@media (min-width: 760px) {
+    body {
+        padding-top: 32px;
+    }
+
+    .header-main h1 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 520px) {
+    body {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .header {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .header-main h1 {
+        font-size: 21px;
+    }
+
+    .header-main p {
+        font-size: 12px;
+    }
+
+    .filter-bar {
+        gap: 6px;
+    }
+
+    .filter-button {
+        padding: 0 5px;
+        min-height: 42px;
+        font-size: 12px;
+        border-radius: 11px;
+    }
+
+    .create-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .summary {
+        padding: 18px;
+        border-radius: 22px;
+    }
+
+    .summary-value {
+        font-size: clamp(20px, 6vw, 26px);
+    }
+
+    .list-card {
+        padding: 14px;
+        border-radius: 22px;
+    }
+
+    .section-title {
+        font-size: 16px;
+    }
+
+    .payment-item {
+        padding: 13px;
+    }
+
+    .payment-name {
+        font-size: 13px;
+    }
+
+    .payment-amount {
+        font-size: 14px;
+    }
+
+    .modal {
+        padding: 22px 18px;
+        border-radius: 24px;
+    }
+}
+
+@media (max-width: 360px) {
+    .back-button,
+    .help-button {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+    }
+
+    .header-main h1 {
+        font-size: 19px;
+    }
+
+    .filter-button {
+        font-size: 11px;
+    }
+
+    .payment-top {
+        gap: 8px;
+    }
+
+    .payment-amount {
+        font-size: 13px;
+    }
+
+    .payment-types {
+        gap: 6px;
+    }
+
+    .payment-type label {
+        font-size: 12px;
+        padding: 8px 5px;
+    }
+
+    .cancel-button,
+    .submit-button {
+        padding: 0 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
 </head>
 
 <body>
-    <header class="app-header">
-        <div class="header-inner">
-            <button
-                class="header-action"
-                id="backButton"
-                type="button"
-                aria-label="Quay lại"
-                title="Quay lại"
-            >
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path
-                        d="M19 12H5M12 19l-7-7 7-7"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                </svg>
-            </button>
+<div class="container">
 
-            <div class="header-title">Thư viện công thức</div>
+    <!-- HEADER -->
+    <header class="header">
+        <button type="button" class="back-button"
+            onclick="goBack()" aria-label="Quay lại">‹</button>
 
-            <div class="header-spacer"></div>
-
-            <button
-                class="header-action help-button"
-                id="helpButton"
-                type="button"
-                aria-label="Trợ giúp"
-                title="Trợ giúp"
-            >?</button>
+        <div class="header-main">
+            <h1>Sổ thanh toán</h1>
+            <p>Kế toán · 69 Khương Trung</p>
         </div>
+
+        <button type="button" class="help-button"
+            onclick="openHelp()" aria-label="Trợ giúp">?</button>
     </header>
 
-    <main class="page-container">
-        <section class="page-intro">
-            <div class="eyebrow">
-                <span class="eyebrow-dot"></span>
-                TÀI LIỆU VẬN HÀNH
-            </div>
-
-            <h1>Thư viện công thức</h1>
-
-            <p class="page-description">
-                Tra cứu hình ảnh công thức chế biến và sơ đồ sắp xếp tại cửa hàng.
-                Chọn danh mục hoặc tìm trực tiếp tên món cần xem.
-            </p>
-        </section>
-
-        <section class="toolbar" aria-label="Tìm kiếm công thức">
-            <label class="search-box">
-                <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/>
-                    <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                </svg>
-
-                <input
-                    id="searchInput"
-                    type="search"
-                    placeholder="Tìm tên món, ví dụ: bánh mì bò..."
-                    autocomplete="off"
-                    aria-label="Tìm kiếm theo tên công thức"
-                >
-
-                <button
-                    class="clear-search"
-                    id="clearSearch"
-                    type="button"
-                    aria-label="Xóa nội dung tìm kiếm"
-                    title="Xóa tìm kiếm"
-                >
-                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" aria-hidden="true">
-                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-            </label>
-
-            <div class="result-count" id="resultCount" aria-live="polite"></div>
-        </section>
-
-        <section class="category-section" aria-label="Danh mục công thức">
-            <h2 class="category-heading">Danh mục</h2>
-            <div class="category-list" id="categoryList"></div>
-        </section>
-
-        <section aria-label="Danh sách công thức">
-            <div class="section-heading">
-                <div>
-                    <h2 class="section-title" id="sectionTitle">Tất cả công thức</h2>
-                    <div class="section-subtitle" id="sectionSubtitle">Tra cứu theo hình ảnh</div>
-                </div>
-            </div>
-
-            <div class="recipe-grid" id="recipeGrid"></div>
-
-            <div class="empty-state" id="emptyState">
-                <div class="empty-icon">
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/>
-                        <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-                        <path d="M8.5 10.8h4.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-                    </svg>
-                </div>
-
-                <h3 class="empty-title">Không tìm thấy công thức</h3>
-
-                <p class="empty-description">
-                    Không có mục nào khớp với nội dung tìm kiếm hoặc danh mục hiện tại.
-                </p>
-
-                <button class="reset-button" id="resetFilters" type="button">
-                    Hiển thị tất cả công thức
-                </button>
-            </div>
-        </section>
-
-        <footer class="page-footer">
-            Tascus Food · Thư viện công thức và sơ đồ nội bộ
-        </footer>
-    </main>
-
-    <!-- IMAGE VIEWER -->
-    <div
-        class="modal"
-        id="imageViewer"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Xem ảnh công thức"
-        aria-hidden="true"
-    >
-        <div class="modal-content viewer-content">
-            <div class="modal-topbar">
-                <h2 class="modal-title" id="viewerTitle"></h2>
-
-                <button class="modal-close" id="viewerClose" type="button" aria-label="Đóng ảnh">
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-            </div>
-
-            <div class="viewer-image-wrap">
-                <img class="viewer-image" id="viewerImage" src="" alt="">
-            </div>
-
-            <div class="viewer-caption">Nhấn bên ngoài ảnh hoặc phím Esc để đóng</div>
-        </div>
+    <!-- FILTER -->
+    <div class="filter-bar">
+        <button type="button" class="filter-button"
+            data-filter="week" onclick="setFilter('week')">Tuần này</button>
+        <button type="button" class="filter-button active"
+            data-filter="month" onclick="setFilter('month')">Tháng này</button>
+        <button type="button" class="filter-button"
+            data-filter="previous-month" onclick="setFilter('previous-month')">Tháng trước</button>
     </div>
 
-    <!-- HELP DIALOG -->
-    <div
-        class="modal"
-        id="helpViewer"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Hướng dẫn sử dụng"
-        aria-hidden="true"
-    >
+    <!-- CREATE -->
+    <div class="create-row">
+        <button type="button" class="create-button"
+            onclick="openCreateModal()">＋ Tạo thanh toán</button>
+    </div>
+
+    <!-- SUMMARY -->
+    <section class="summary" aria-label="Tổng thanh toán">
+        <div>
+            <div class="summary-label">Tổng thanh toán</div>
+            <div class="summary-period" id="summaryPeriod">Tháng này</div>
+        </div>
+        <div class="summary-value" id="totalAmount">0</div>
+    </section>
+
+    <!-- PAYMENT LIST -->
+    <section class="list-card">
+        <div class="section-header">
+            <div class="section-title">Lịch sử thanh toán</div>
+            <div class="record-count" id="recordCount">0 khoản</div>
+        </div>
+        <div class="payment-list" id="paymentList"></div>
+    </section>
+</div>
+
+<!-- CREATE MODAL -->
+<div class="modal-overlay" id="createModal" onclick="closeModalByOverlay(event)">
+    <div class="modal" role="dialog" aria-modal="true"
+        aria-labelledby="createModalTitle" onclick="event.stopPropagation()">
+
+        <div class="modal-header">
+            <div class="modal-title" id="createModalTitle">Tạo thanh toán</div>
+            <button type="button" class="close-button"
+                onclick="closeCreateModal()" aria-label="Đóng">×</button>
+        </div>
+
+        <form id="paymentForm" onsubmit="submitPayment(event)">
+            <div class="form-group">
+                <label class="form-label" for="paymentContent">Nội dung thanh toán</label>
+                <input type="text" id="paymentContent" class="form-input"
+                    placeholder="Ví dụ: Thanh toán tiền rau" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="paymentAmount">Số tiền (VNĐ)</label>
+                <input type="text" id="paymentAmount" class="form-input"
+                    inputmode="numeric" autocomplete="off"
+                    placeholder="Ví dụ: 1250000" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="paymentDate">Ngày giờ thanh toán</label>
+                <input type="datetime-local" id="paymentDate"
+                    class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Hình thức thanh toán</label>
+                <div class="payment-types">
+                    <div class="payment-type">
+                        <input type="radio" id="typeBank" name="paymentType"
+                            value="Chuyển khoản ngân hàng" checked
+                            onchange="updateTransactionField()">
+                        <label for="typeBank">🏦 Chuyển khoản</label>
+                    </div>
+                    <div class="payment-type">
+                        <input type="radio" id="typeCash" name="paymentType"
+                            value="Tiền mặt" onchange="updateTransactionField()">
+                        <label for="typeCash">💵 Tiền mặt</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="transactionGroup">
+                <label class="form-label" for="transactionCode">Mã giao dịch</label>
+                <input type="text" id="transactionCode" class="form-input"
+                    placeholder="Nhập mã giao dịch">
+                <div class="transaction-note" id="transactionNote">
+                    Thanh toán tiền mặt không có mã giao dịch.
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="cancel-button"
+                    onclick="closeCreateModal()">Hủy</button>
+                <button type="submit" class="submit-button">Tạo thanh toán</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- HELP MODAL -->
+<div class="modal-overlay" id="helpModal" onclick="closeHelp(event)">
+    <div class="modal" role="dialog" aria-modal="true"
+        aria-labelledby="helpModalTitle" onclick="event.stopPropagation()">
+
+        <div class="modal-header">
+            <div class="modal-title" id="helpModalTitle">Sổ thanh toán</div>
+            <button type="button" class="close-button"
+                onclick="closeHelp()" aria-label="Đóng">×</button>
+        </div>
+
         <div class="help-content">
-            <div class="help-header">
-                <h2 class="help-title">Hướng dẫn sử dụng</h2>
-
-                <button class="help-close" id="helpClose" type="button" aria-label="Đóng hướng dẫn">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
-                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-            </div>
-
-            <p class="help-intro">
-                Sử dụng thư viện để tra cứu công thức chế biến và tài liệu bố trí tại cửa hàng.
-            </p>
-
-            <div class="help-list">
-                <div class="help-item">
-                    <div class="help-item-icon">⌕</div>
-                    <div>
-                        <h3 class="help-item-title">Tìm kiếm công thức</h3>
-                        <p class="help-item-description">
-                            Nhập tên món vào ô tìm kiếm. Có thể tìm cả khi không nhập dấu tiếng Việt.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="help-item">
-                    <div class="help-item-icon">▦</div>
-                    <div>
-                        <h3 class="help-item-title">Lọc theo danh mục</h3>
-                        <p class="help-item-description">
-                            Chọn danh mục để chỉ hiển thị các công thức thuộc nhóm tương ứng.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="help-item">
-                    <div class="help-item-icon">↗</div>
-                    <div>
-                        <h3 class="help-item-title">Xem ảnh chi tiết</h3>
-                        <p class="help-item-description">
-                            Nhấn vào ảnh công thức để phóng to. Nhấn nút đóng, vùng nền bên ngoài hoặc phím Esc để trở lại thư viện.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="help-item">
-                    <div class="help-item-icon">←</div>
-                    <div>
-                        <h3 class="help-item-title">Quay lại cổng vận hành</h3>
-                        <p class="help-item-description">
-                            Nhấn nút mũi tên ở góc trên bên trái. Nếu không có trang trước trong lịch sử trình duyệt, hệ thống sẽ mở index.html.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <button class="help-done" id="helpDone" type="button">Đã hiểu</button>
+            Đây là sổ thanh toán của <strong>69 Khương Trung</strong>.
+            <br><br>
+            Các khoản thanh toán được hệ thống ghi nhận tự động sẽ xuất hiện tại đây.
+            <br><br>
+            Sử dụng <strong>＋ Tạo thanh toán</strong> khi cần nhập thủ công một khoản
+            tiền mặt hoặc khi hệ thống tự động ghi nhận bị lỗi.
+            <br><br>
+            Số tiền nhập bằng đầy đủ đơn vị đồng. Ví dụ:
+            <strong>1250000</strong> sẽ được hiển thị là <strong>1.250.000</strong>.
         </div>
     </div>
+</div>
 
-    <script>
-        const categories = [
-            { id: "all", name: "Tất cả" },
-            { id: "banhmi", name: "Bánh mì" },
-            { id: "burger", name: "Burger" },
-            { id: "sandwich", name: "Sandwich" },
-            { id: "crepe", name: "Crepe" },
-            { id: "salad", name: "Salad" },
-            { id: "fries", name: "Khoai tây" },
-            { id: "pasta", name: "Mỳ Ý" },
-            { id: "bmchao", name: "Bánh mì chảo" },
-            { id: "drink", name: "Đồ uống" },
-            { id: "stuffs", name: "Linh tinh" }
-        ];
+<!-- LOADING -->
+<div class="loading" id="loading" aria-live="polite" aria-busy="true">
+    <div class="loading-box">
+        <div class="spinner"></div>
+        <div class="loading-text">Đang xử lý...</div>
+    </div>
+</div>
 
-        const recipes = [
-            {
-                category: "banhmi",
-                name: "Bánh mì gà nướng sả",
-                image: "BM-BMganuongsa.png"
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* CONFIG */
+const API_URL = "https://script.google.com/macros/s/AKfycbz7S749Q7gPYHM8ImzIhkY4p6dxexivCFIERbkLYOTysDyLpsvZ4Q5Mci9ata6NmV3Z/exec";
+const BRANCH = "69 Khương Trung";
+
+/* DATA */
+let payments = [];
+let currentFilter = "month";
+
+/* API - LOAD */
+async function loadPayments() {
+    showLoading("Đang tải dữ liệu...");
+
+    try {
+        const response = await fetch(API_URL + "?action=get_payments", {
+            method: "GET",
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error("API trả về lỗi HTTP " + response.status);
+        }
+
+        const result = await response.json();
+
+        if (!result.success) {
+            throw new Error(result.error || "Không thể đọc dữ liệu thanh toán");
+        }
+
+        payments = (result.data || [])
+            .map(normalizePayment)
+            .filter(Boolean);
+
+        renderPayments();
+    } catch (error) {
+        console.error(error);
+        payments = [];
+        renderPayments();
+        showToast(error.message || "Không thể tải dữ liệu");
+    } finally {
+        hideLoading();
+    }
+}
+
+/* NORMALIZE PAYMENT */
+function normalizePayment(payment) {
+    if (!payment) return null;
+
+    return {
+        noi_dung: String(
+            payment["Nội dung chuyển tiền"] ||
+            payment.noi_dung || ""
+        ),
+        so_tien: Number(
+            payment["Số tiền"] ??
+            payment.so_tien ??
+            0
+        ),
+        hinh_thuc: String(
+            payment["Hình thức thanh toán"] ||
+            payment.hinh_thuc || ""
+        ),
+        ma_giao_dich: String(
+            payment["Mã giao dịch"] ||
+            payment.ma_giao_dich || ""
+        ),
+        ngay_gio: String(
+            payment["Ngày giờ thanh toán"] ||
+            payment.ngay_gio || ""
+        )
+    };
+}
+
+/* FILTER */
+function setFilter(filter) {
+    currentFilter = filter;
+
+    document.querySelectorAll(".filter-button").forEach(button => {
+        button.classList.toggle(
+            "active",
+            button.dataset.filter === filter
+        );
+    });
+
+    updateSummaryPeriod();
+    renderPayments();
+}
+
+/* DATE PARSER */
+function parsePaymentDate(value) {
+    if (!value) return null;
+
+    const text = String(value).trim();
+
+    let match = text.match(
+        /^(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2}):(\d{2})$/
+    );
+
+    if (match) {
+        return new Date(
+            Number(match[1]),
+            Number(match[2]) - 1,
+            Number(match[3]),
+            Number(match[4]),
+            Number(match[5])
+        );
+    }
+
+    match = text.match(
+        /^(\d{4})-(\d{2})-(\d{2})(?:T|\s)(\d{2}):(\d{2})/
+    );
+
+    if (match) {
+        return new Date(
+            Number(match[1]),
+            Number(match[2]) - 1,
+            Number(match[3]),
+            Number(match[4]),
+            Number(match[5])
+        );
+    }
+
+    return null;
+}
+
+/* FILTER RANGE */
+function getFilterRange() {
+    const now = new Date();
+
+    const today = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        0, 0, 0, 0
+    );
+
+    if (currentFilter === "week") {
+        const day = today.getDay();
+        const daysFromMonday = day === 0 ? 6 : day - 1;
+        const start = new Date(today);
+
+        start.setDate(start.getDate() - daysFromMonday);
+
+        const end = new Date(today);
+        end.setHours(23, 59, 59, 999);
+
+        return { start, end };
+    }
+
+    if (currentFilter === "month") {
+        const start = new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            1, 0, 0, 0, 0
+        );
+
+        const end = new Date(
+            today.getFullYear(),
+            today.getMonth() + 1,
+            0, 23, 59, 59, 999
+        );
+
+        return { start, end };
+    }
+
+    const start = new Date(
+        today.getFullYear(),
+        today.getMonth() - 1,
+        1, 0, 0, 0, 0
+    );
+
+    const end = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        0, 23, 59, 59, 999
+    );
+
+    return { start, end };
+}
+
+/* FILTER PAYMENTS */
+function getFilteredPayments() {
+    const range = getFilterRange();
+
+    return payments
+        .filter(payment => {
+            const date = parsePaymentDate(payment.ngay_gio);
+
+            if (!date) return false;
+
+            return date >= range.start && date <= range.end;
+        })
+        .sort((a, b) => {
+            const dateA = parsePaymentDate(a.ngay_gio) || 0;
+            const dateB = parsePaymentDate(b.ngay_gio) || 0;
+            return dateB - dateA;
+        });
+}
+
+/* SUMMARY PERIOD */
+function updateSummaryPeriod() {
+    const element = document.getElementById("summaryPeriod");
+
+    if (currentFilter === "week") {
+        const range = getFilterRange();
+        element.textContent =
+            formatShortDate(range.start) + " – " +
+            formatShortDate(range.end);
+        return;
+    }
+
+    if (currentFilter === "month") {
+        const now = new Date();
+
+        element.textContent =
+            "Tháng " +
+            String(now.getMonth() + 1).padStart(2, "0") +
+            " / " + now.getFullYear();
+
+        return;
+    }
+
+    const now = new Date();
+    const previous = new Date(
+        now.getFullYear(),
+        now.getMonth() - 1,
+        1
+    );
+
+    element.textContent =
+        "Tháng " +
+        String(previous.getMonth() + 1).padStart(2, "0") +
+        " / " + previous.getFullYear();
+}
+
+/* RENDER */
+function renderPayments() {
+    const list = document.getElementById("paymentList");
+    const filtered = getFilteredPayments();
+
+    list.innerHTML = "";
+    let total = 0;
+
+    filtered.forEach(payment => {
+        total += Number(payment.so_tien) || 0;
+
+        const item = document.createElement("div");
+        item.className = "payment-item";
+
+        const paymentType =
+            payment.hinh_thuc === "Tiền mặt"
+                ? "💵 Tiền mặt"
+                : "🏦 Chuyển khoản";
+
+        const transaction = payment.ma_giao_dich
+            ? `
+                <span class="meta-badge transaction">
+                    GD: ${escapeHtml(payment.ma_giao_dich)}
+                </span>
+              `
+            : "";
+
+        item.innerHTML = `
+            <div class="payment-top">
+                <div class="payment-content">
+                    <div class="payment-name">
+                        ${escapeHtml(payment.noi_dung)}
+                    </div>
+                    <div class="payment-date">
+                        ${formatDateTime(payment.ngay_gio)}
+                    </div>
+                </div>
+                <div class="payment-amount">
+                    ${formatMoney(payment.so_tien)}
+                </div>
+            </div>
+            <div class="payment-meta">
+                <span class="meta-badge">${paymentType}</span>
+                ${transaction}
+            </div>
+        `;
+
+        list.appendChild(item);
+    });
+
+    if (filtered.length === 0) {
+        list.innerHTML = `
+            <div class="empty">
+                <div class="empty-icon">💳</div>
+                <div class="empty-title">Chưa có khoản thanh toán</div>
+                <div class="empty-text">
+                    Không có dữ liệu trong khoảng thời gian này.
+                </div>
+            </div>
+        `;
+    }
+
+    document.getElementById("recordCount").textContent =
+        `${filtered.length} khoản`;
+
+    document.getElementById("totalAmount").textContent =
+        formatMoney(total);
+}
+
+/* FORMAT MONEY */
+function formatMoney(value) {
+    return new Intl.NumberFormat("vi-VN").format(Number(value) || 0);
+}
+
+/* FORMAT DATE TIME */
+function formatDateTime(value) {
+    const date = parsePaymentDate(value);
+
+    if (!date) {
+        return escapeHtml(value || "");
+    }
+
+    return (
+        String(date.getDate()).padStart(2, "0") + "/" +
+        String(date.getMonth() + 1).padStart(2, "0") + "/" +
+        date.getFullYear() + " " +
+        String(date.getHours()).padStart(2, "0") + ":" +
+        String(date.getMinutes()).padStart(2, "0")
+    );
+}
+
+function formatShortDate(date) {
+    return (
+        String(date.getDate()).padStart(2, "0") + "/" +
+        String(date.getMonth() + 1).padStart(2, "0")
+    );
+}
+
+/* CREATE MODAL */
+function openCreateModal() {
+    document.getElementById("paymentForm").reset();
+    document.getElementById("paymentDate").value = getCurrentDateTime();
+    document.getElementById("typeBank").checked = true;
+
+    updateTransactionField();
+
+    document.getElementById("createModal").classList.add("show");
+}
+
+function closeCreateModal() {
+    document.getElementById("createModal").classList.remove("show");
+}
+
+function closeModalByOverlay(event) {
+    if (event.target.id === "createModal") {
+        closeCreateModal();
+    }
+}
+
+/* PAYMENT TYPE */
+function updateTransactionField() {
+    const bank = document.getElementById("typeBank").checked;
+    const input = document.getElementById("transactionCode");
+    const note = document.getElementById("transactionNote");
+
+    if (bank) {
+        input.disabled = false;
+        input.required = true;
+        input.placeholder = "Nhập mã giao dịch";
+        note.classList.remove("show");
+    } else {
+        input.disabled = true;
+        input.required = false;
+        input.value = "";
+        input.placeholder = "Không áp dụng";
+        note.classList.add("show");
+    }
+}
+
+/* SUBMIT */
+async function submitPayment(event) {
+    event.preventDefault();
+
+    const content = document.getElementById("paymentContent").value.trim();
+
+    const amountRaw = document.getElementById("paymentAmount").value
+        .replace(/[^\d]/g, "");
+
+    const dateTime = document.getElementById("paymentDate").value;
+
+    const type = document.querySelector(
+        'input[name="paymentType"]:checked'
+    ).value;
+
+    const transaction = document.getElementById("transactionCode").value.trim();
+
+    if (!content) {
+        showToast("Vui lòng nhập nội dung thanh toán");
+        return;
+    }
+
+    if (!amountRaw) {
+        showToast("Vui lòng nhập số tiền");
+        return;
+    }
+
+    if (!dateTime) {
+        showToast("Vui lòng chọn ngày giờ thanh toán");
+        return;
+    }
+
+    if (type === "Chuyển khoản ngân hàng" && !transaction) {
+        showToast("Vui lòng nhập mã giao dịch");
+        return;
+    }
+
+    const amount = Number(amountRaw);
+
+    const payload = {
+        action: "create_payment",
+        "Nội dung chuyển tiền": content,
+        "Số tiền": amount,
+        "Hình thức thanh toán": type,
+        "Mã giao dịch": type === "Tiền mặt" ? "" : transaction,
+        "Ngày giờ thanh toán": dateTime
+    };
+
+    showLoading("Đang lưu thanh toán...");
+
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
             },
-            {
-                category: "banhmi",
-                name: "Bánh mì xúc xích bò bằm hầm phô mai",
-                image: "BM-BMXucxichbobamhamphomai.png"
-            },
-            {
-                category: "banhmi",
-                name: "Bánh mì heo nướng xá xíu",
-                image: "BM-BMheonuongxaxiu.png"
-            },
-            {
-                category: "banhmi",
-                name: "Bánh mì bò phô mai",
-                image: "BM-BMbophomai.png"
-            },
-            {
-                category: "banhmi",
-                name: "Bánh mì bò tiêu đen",
-                image: "BM-BMbotieuden.png"
-            },
-            {
-                category: "burger",
-                name: "Burger",
-                image: "Burger.png"
-            },
-            {
-                category: "sandwich",
-                name: "Sandwich xúc xích phô mai",
-                image: "Sanwich-Sandwichxucxichphomai.png"
-            },
-            {
-                category: "sandwich",
-                name: "Sandwich jambon phô mai",
-                image: "Sanwich-Sandwichjambonphomai.png"
-            },
-            {
-                category: "sandwich",
-                name: "Sandwich phô mai pate heo",
-                image: "Sanwich-Sandwichphomaipateheo.png"
-            },
-            {
-                category: "sandwich",
-                name: "Sandwich phô mai pate bò",
-                image: "Sanwich-Sandwichphomaipatebo.png"
-            },
-            {
-                category: "sandwich",
-                name: "Sandwich phô mai sô cô la",
-                image: "Sandwich-Sanwichphomaisocola.png"
-            },
-            {
-                category: "crepe",
-                name: "Crepe xúc xích phô mai",
-                image: "Crepe-Crepexucxicphomai.png"
-            },
-            {
-                category: "crepe",
-                name: "Crepe jambon phô mai",
-                image: "Crepe-Crepejambonphomai.png"
-            },
-            {
-                category: "crepe",
-                name: "Crepe Oreo sữa",
-                image: "Crepe-CrepeOreoSua.png"
-            },
-            {
-                category: "crepe",
-                name: "Crepe xúc xích jambon phô mai",
-                image: "Crepe-Crepexucxichjambonphomai.png"
-            },
-            {
-                category: "crepe",
-                name: "Crepe chuối sô cô la phô mai",
-                image: "Crepe-Crepechuoisocolaphomai.png"
-            },
-            {
-                category: "salad",
-                name: "Salad gà viên",
-                image: "Salad-gavien.png"
-            },
-            {
-                category: "salad",
-                name: "Salad combo No Nê một ghế",
-                image: "Salad-none.png"
-            },
-            {
-                category: "fries",
-                name: "Khoai tây chiên",
-                image: "Khoaitaychien.png"
-            },
-            {
-                category: "pasta",
-                name: "Mỳ Ý xúc xích bò bằm",
-                image: "Pasta-MyYsotbobam.png"
-            },
-            {
-                category: "bmchao",
-                name: "Bánh mì chảo",
-                image: "Banhmychao.png"
-            },
-            {
-                category: "drink",
-                name: "Công thức đồ uống",
-                image: "Douong.png"
-            },
-            {
-                category: "stuffs",
-                name: "Bố cục sắp xếp quầy salad cơ sở Khương Trung",
-                image: "quaysalad.png"
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error("API trả về lỗi HTTP " + response.status);
+        }
+
+        const result = await response.json();
+
+        if (!result.success) {
+            if (result.duplicate) {
+                throw new Error(result.error || "Mã giao dịch đã tồn tại");
             }
-        ];
 
-        const categoryList = document.getElementById("categoryList");
-        const recipeGrid = document.getElementById("recipeGrid");
-        const searchInput = document.getElementById("searchInput");
-        const clearSearch = document.getElementById("clearSearch");
-        const resultCount = document.getElementById("resultCount");
-        const sectionTitle = document.getElementById("sectionTitle");
-        const sectionSubtitle = document.getElementById("sectionSubtitle");
-        const emptyState = document.getElementById("emptyState");
-        const resetFilters = document.getElementById("resetFilters");
-
-        const imageViewer = document.getElementById("imageViewer");
-        const viewerImage = document.getElementById("viewerImage");
-        const viewerTitle = document.getElementById("viewerTitle");
-        const viewerClose = document.getElementById("viewerClose");
-
-        const helpViewer = document.getElementById("helpViewer");
-        const helpButton = document.getElementById("helpButton");
-        const helpClose = document.getElementById("helpClose");
-        const helpDone = document.getElementById("helpDone");
-
-        let activeCategory = "all";
-        let previousFocusedElement = null;
-        let activeModal = null;
-
-        function normalizeText(value) {
-            return String(value)
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .replace(/đ/g, "d")
-                .replace(/Đ/g, "D")
-                .toLocaleLowerCase("vi")
-                .trim();
-        }
-
-        function escapeHTML(value) {
-            return String(value).replace(/[&<>"']/g, character => {
-                const entities = {
-                    "&": "&amp;",
-                    "<": "&lt;",
-                    ">": "&gt;",
-                    '"': "&quot;",
-                    "'": "&#39;"
-                };
-
-                return entities[character];
-            });
-        }
-
-        function getCategoryName(categoryId) {
-            const category = categories.find(item => item.id === categoryId);
-            return category ? category.name : "";
-        }
-
-        function getCategoryCount(categoryId) {
-            if (categoryId === "all") {
-                return recipes.length;
-            }
-
-            return recipes.filter(recipe => recipe.category === categoryId).length;
-        }
-
-        function renderCategories() {
-            categoryList.innerHTML = categories.map(category => {
-                const isActive = category.id === activeCategory;
-
-                return `
-                    <button
-                        type="button"
-                        class="category-chip ${isActive ? "active" : ""}"
-                        data-category="${category.id}"
-                        aria-pressed="${isActive}"
-                    >
-                        <span>${category.name}</span>
-                        <span class="chip-count">${getCategoryCount(category.id)}</span>
-                    </button>
-                `;
-            }).join("");
-        }
-
-        function getFilteredRecipes() {
-            const keyword = normalizeText(searchInput.value);
-
-            return recipes.filter(recipe => {
-                const matchesCategory =
-                    activeCategory === "all" ||
-                    recipe.category === activeCategory;
-
-                const matchesSearch =
-                    !keyword ||
-                    normalizeText(recipe.name).includes(keyword) ||
-                    normalizeText(getCategoryName(recipe.category)).includes(keyword);
-
-                return matchesCategory && matchesSearch;
-            });
-        }
-
-        function renderRecipes() {
-            const filteredRecipes = getFilteredRecipes();
-            const keyword = searchInput.value.trim();
-
-            recipeGrid.innerHTML = filteredRecipes.map(recipe => {
-                const originalIndex = recipes.indexOf(recipe);
-
-                return `
-                    <article class="recipe-card">
-                        <button
-                            class="recipe-image-button"
-                            type="button"
-                            data-recipe-index="${originalIndex}"
-                            aria-label="Phóng to ảnh: ${escapeHTML(recipe.name)}"
-                        >
-                            <img
-                                class="recipe-image"
-                                src="${escapeHTML(recipe.image)}"
-                                alt="${escapeHTML(recipe.name)}"
-                                loading="lazy"
-                                decoding="async"
-                            >
-
-                            <span class="zoom-hint" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <circle cx="10.8" cy="10.8" r="6.8"
-                                        stroke="currentColor" stroke-width="1.8"/>
-                                    <path d="m16 16 4.2 4.2"
-                                        stroke="currentColor" stroke-width="1.8"
-                                        stroke-linecap="round"/>
-                                </svg>
-                            </span>
-                        </button>
-
-                        <div class="recipe-info">
-                            <h3 class="recipe-name">${escapeHTML(recipe.name)}</h3>
-                            <span class="recipe-category">
-                                ${escapeHTML(getCategoryName(recipe.category))}
-                            </span>
-                        </div>
-                    </article>
-                `;
-            }).join("");
-
-            sectionTitle.textContent =
-                activeCategory === "all"
-                    ? "Tất cả công thức"
-                    : getCategoryName(activeCategory);
-
-            if (keyword) {
-                sectionSubtitle.textContent = `Kết quả tìm kiếm cho “${keyword}”`;
-            } else if (activeCategory === "all") {
-                sectionSubtitle.textContent = "Tra cứu theo hình ảnh";
-            } else {
-                sectionSubtitle.textContent =
-                    `Công thức thuộc danh mục ${getCategoryName(activeCategory)}`;
-            }
-
-            resultCount.textContent =
-                `Hiển thị ${filteredRecipes.length}/${recipes.length} mục`;
-
-            clearSearch.classList.toggle(
-                "visible",
-                searchInput.value.length > 0
+            throw new Error(
+                result.error ||
+                result.message ||
+                "Không thể tạo thanh toán"
             );
-
-            const noResults = filteredRecipes.length === 0;
-
-            emptyState.classList.toggle("visible", noResults);
-            recipeGrid.style.display = noResults ? "none" : "grid";
         }
 
-        function renderAll() {
-            renderCategories();
-            renderRecipes();
-        }
+        closeCreateModal();
 
-        function selectCategory(categoryId) {
-            activeCategory = categoryId;
-            renderAll();
-        }
+        showToast(
+            result.zalo_sent === false
+                ? "Đã lưu thanh toán, Zalo chưa gửi được"
+                : "Đã tạo thanh toán"
+        );
 
-        function openModal(modal, focusElement) {
-            if (activeModal) {
-                closeModal(activeModal, false);
-            }
+        await loadPayments();
+    } catch (error) {
+        console.error(error);
+        showToast(error.message || "Không thể tạo thanh toán");
+    } finally {
+        hideLoading();
+    }
+}
 
-            previousFocusedElement = document.activeElement;
-            activeModal = modal;
+/* CURRENT DATETIME FOR INPUT */
+function getCurrentDateTime() {
+    const now = new Date();
 
-            modal.classList.add("open");
-            modal.setAttribute("aria-hidden", "false");
-            document.body.classList.add("modal-open");
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    const hour = String(now.getHours()).padStart(2, "0");
+    const minute = String(now.getMinutes()).padStart(2, "0");
 
-            if (focusElement) {
-                focusElement.focus();
-            }
-        }
+    return `${year}-${month}-${day}T${hour}:${minute}`;
+}
 
-        function closeModal(modal, restoreFocus = true) {
-            if (!modal) return;
+/* HELP */
+function openHelp() {
+    document.getElementById("helpModal").classList.add("show");
+}
 
-            modal.classList.remove("open");
-            modal.setAttribute("aria-hidden", "true");
+function closeHelp(event) {
+    if (event && event.target.id !== "helpModal") {
+        return;
+    }
 
-            if (modal === imageViewer) {
-                viewerImage.src = "";
-            }
+    document.getElementById("helpModal").classList.remove("show");
+}
 
-            if (activeModal === modal) {
-                activeModal = null;
-            }
+/* BACK */
+function goBack() {
+    if (window.history.length > 1) {
+        window.history.back();
+    } else {
+        window.location.href = "../index.html";
+    }
+}
 
-            if (!activeModal) {
-                document.body.classList.remove("modal-open");
-            }
+/* LOADING */
+function showLoading(message = "Đang xử lý...") {
+    document.getElementById("loading")
+        .querySelector(".loading-text")
+        .textContent = message;
 
-            if (
-                restoreFocus &&
-                previousFocusedElement &&
-                typeof previousFocusedElement.focus === "function"
-            ) {
-                previousFocusedElement.focus();
-            }
-        }
+    document.getElementById("loading").classList.add("show");
+}
 
-        function openImageViewer(recipe) {
-            if (!recipe) return;
+function hideLoading() {
+    document.getElementById("loading").classList.remove("show");
+}
 
-            viewerImage.src = recipe.image;
-            viewerImage.alt = recipe.name;
-            viewerTitle.textContent = recipe.name;
+/* TOAST */
+let toastTimer;
 
-            openModal(imageViewer, viewerClose);
-        }
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
 
-        function openHelp() {
-            openModal(helpViewer, helpClose);
-        }
+    clearTimeout(toastTimer);
 
-        /* CATEGORY EVENTS */
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
 
-        categoryList.addEventListener("click", event => {
-            const button = event.target.closest("[data-category]");
+/* ESCAPE */
+function escapeHtml(value) {
+    const div = document.createElement("div");
+    div.textContent = value ?? "";
+    return div.innerHTML;
+}
 
-            if (!button) return;
+/* AMOUNT INPUT */
+document.getElementById("paymentAmount").addEventListener("input", function() {
+    this.value = this.value.replace(/[^\d]/g, "");
+});
 
-            selectCategory(button.dataset.category);
-        });
+/* CLOSE MODALS WITH ESCAPE */
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        closeCreateModal();
+        closeHelp();
+    }
+});
 
-        /* IMAGE EVENTS */
-
-        recipeGrid.addEventListener("click", event => {
-            const button = event.target.closest("[data-recipe-index]");
-
-            if (!button) return;
-
-            const recipeIndex = Number(button.dataset.recipeIndex);
-            openImageViewer(recipes[recipeIndex]);
-        });
-
-        /* SEARCH EVENTS */
-
-        searchInput.addEventListener("input", renderRecipes);
-
-        clearSearch.addEventListener("click", () => {
-            searchInput.value = "";
-            renderRecipes();
-            searchInput.focus();
-        });
-
-        resetFilters.addEventListener("click", () => {
-            activeCategory = "all";
-            searchInput.value = "";
-            renderAll();
-        });
-
-        /* BACK BUTTON */
-
-        document.getElementById("backButton").addEventListener("click", () => {
-            if (window.history.length > 1) {
-                window.history.back();
-            } else {
-                window.location.href = "index.html";
-            }
-        });
-
-        /* HELP BUTTON */
-
-        helpButton.addEventListener("click", openHelp);
-        helpClose.addEventListener("click", () => closeModal(helpViewer));
-        helpDone.addEventListener("click", () => closeModal(helpViewer));
-
-        helpViewer.addEventListener("click", event => {
-            if (event.target === helpViewer) {
-                closeModal(helpViewer);
-            }
-        });
-
-        /* IMAGE VIEWER CLOSE */
-
-        viewerClose.addEventListener("click", () => closeModal(imageViewer));
-
-        imageViewer.addEventListener("click", event => {
-            if (event.target === imageViewer) {
-                closeModal(imageViewer);
-            }
-        });
-
-        /* KEYBOARD */
-
-        document.addEventListener("keydown", event => {
-            if (event.key === "Escape" && activeModal) {
-                closeModal(activeModal);
-            }
-        });
-
-        renderAll();
-    </script>
+/* INIT */
+updateSummaryPeriod();
+updateTransactionField();
+loadPayments();
+</script>
 </body>
 </html>
