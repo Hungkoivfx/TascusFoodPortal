@@ -2,1752 +2,1574 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f7f7fa">
-<title>Nhật ký vận hành · Tascus Food</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
-
-:root {
-    color-scheme: light;
-    --md-primary: #625b71;
-    --md-on-primary: #ffffff;
-    --md-primary-container: #eaddff;
-    --md-on-primary-container: #21005d;
-    --md-secondary-container: #e8def8;
-    --md-on-secondary-container: #1d192b;
-    --md-background: #f7f7fa;
-    --md-surface: #ffffff;
-    --md-surface-low: #f0eff5;
-    --md-surface-high: #e9e7ef;
-    --md-outline: #797680;
-    --md-outline-variant: #cac6d1;
-    --md-on-surface: #1b1b21;
-    --md-on-surface-variant: #48464f;
-    --md-error: #ba1a1a;
-    --md-error-container: #ffdad6;
-    --md-success: #386a42;
-    --md-success-container: #d8f2d5;
-    --md-warning: #795900;
-    --md-warning-container: #ffdf9e;
-    --radius-card: 24px;
-    --radius-control: 14px;
-    --shadow-card: 0 1px 3px rgba(30, 25, 40, .08);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    min-height: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: var(--md-background);
-    color: var(--md-on-surface);
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 15px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-}
-
-button, input, textarea, select {
-    font: inherit;
-}
-
-button, a {
-    -webkit-tap-highlight-color: transparent;
-}
-
-button {
-    cursor: pointer;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-    outline: 3px solid #9384bd;
-    outline-offset: 3px;
-}
-
-.top-app-bar {
-    position: sticky;
-    z-index: 20;
-    top: 0;
-    min-height: 76px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px max(20px, env(safe-area-inset-right))
-             12px max(20px, env(safe-area-inset-left));
-    background: rgba(247, 247, 250, .94);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(202, 198, 209, .45);
-}
-
-.icon-button {
-    display: inline-flex;
-    flex: 0 0 44px;
-    width: 44px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    color: var(--md-on-surface-variant);
-    background: transparent;
-    font-size: 25px;
-    text-decoration: none;
-}
-
-.icon-button:hover {
-    background: var(--md-surface-high);
-}
-
-.app-heading {
-    min-width: 0;
-    flex: 1;
-}
-
-.app-title {
-    margin: 0;
-    font-size: 21px;
-    font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -.35px;
-}
-
-.app-subtitle {
-    margin-top: 3px;
-    color: var(--md-on-surface-variant);
-    font-size: 12px;
-}
-
-.top-action {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 0 17px;
-    border: none;
-    border-radius: 100px;
-    background: var(--md-primary);
-    color: var(--md-on-primary);
-    font-weight: 600;
-    box-shadow: 0 2px 5px rgba(45, 35, 60, .12);
-    white-space: nowrap;
-}
-
-.top-action:hover {
-    filter: brightness(.96);
-}
-
-.page {
-    width: min(100% - 32px, 780px);
-    margin: 28px auto 60px;
-}
-
-.intro {
-    margin-bottom: 25px;
-}
-
-.eyebrow {
-    margin-bottom: 5px;
-    color: var(--md-primary);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.page-heading {
-    margin: 0;
-    font-size: clamp(25px, 5vw, 32px);
-    font-weight: 600;
-    letter-spacing: -.7px;
-    line-height: 1.25;
-}
-
-.page-description {
-    margin: 9px 0 0;
-    max-width: 580px;
-    color: var(--md-on-surface-variant);
-    line-height: 1.6;
-}
-
-.summary-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    margin-bottom: 28px;
-}
-
-.summary-card {
-    min-width: 0;
-    padding: 17px 18px;
-    border: 1px solid var(--md-outline-variant);
-    border-radius: 20px;
-    background: var(--md-surface);
-    box-shadow: var(--shadow-card);
-}
-
-.summary-label {
-    color: var(--md-on-surface-variant);
-    font-size: 12px;
-    line-height: 1.4;
-}
-
-.summary-value {
-    margin-top: 7px;
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 1.1;
-    font-variant-numeric: tabular-nums;
-}
-
-.section {
-    margin-top: 30px;
-}
-
-.section-heading-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 13px;
-}
-
-.section-title {
-    margin: 0;
-    font-size: 21px;
-    font-weight: 600;
-    letter-spacing: -.3px;
-}
-
-.section-count {
-    display: inline-flex;
-    min-width: 28px;
-    height: 28px;
-    align-items: center;
-    justify-content: center;
-    padding: 0 8px;
-    border-radius: 100px;
-    background: var(--md-secondary-container);
-    color: var(--md-on-secondary-container);
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.filter-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 15px;
-    overflow-x: auto;
-    padding: 2px 1px 6px;
-    scrollbar-width: thin;
-}
-
-.filter-chip {
-    flex: 0 0 auto;
-    min-height: 36px;
-    padding: 0 15px;
-    border: 1px solid var(--md-outline);
-    border-radius: 100px;
-    background: transparent;
-    color: var(--md-on-surface-variant);
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.filter-chip.active {
-    border-color: var(--md-secondary-container);
-    background: var(--md-secondary-container);
-    color: var(--md-on-secondary-container);
-}
-
-.filter-chip:disabled {
-    cursor: not-allowed;
-    opacity: .42;
-}
-
-.log-list {
-    display: grid;
-    gap: 12px;
-}
-
-.log-card {
-    overflow: hidden;
-    padding: 18px;
-    border: 1px solid var(--md-outline-variant);
-    border-radius: var(--radius-card);
-    background: var(--md-surface);
-    box-shadow: var(--shadow-card);
-    cursor: pointer;
-    transition: box-shadow .18s ease, transform .18s ease;
-}
-
-.log-card:hover {
-    box-shadow: 0 3px 10px rgba(30, 25, 40, .10);
-}
-
-.log-card:active {
-    transform: scale(.995);
-}
-
-.log-topline {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.log-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 7px;
-    min-width: 0;
-}
-
-.branch-tag {
-    display: inline-flex;
-    align-items: center;
-    min-height: 25px;
-    padding: 3px 9px;
-    border-radius: 8px;
-    background: var(--md-surface-low);
-    color: var(--md-on-surface-variant);
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.status-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    min-height: 26px;
-    padding: 4px 9px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.status-chip::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: currentColor;
-}
-
-.status-pending {
-    background: var(--md-error-container);
-    color: var(--md-error);
-}
-
-.status-progress {
-    background: var(--md-primary-container);
-    color: var(--md-on-primary-container);
-}
-
-.status-follow {
-    background: var(--md-warning-container);
-    color: var(--md-warning);
-}
-
-.status-done {
-    background: var(--md-success-container);
-    color: var(--md-success);
-}
-
-.log-date {
-    flex: 0 0 auto;
-    color: var(--md-on-surface-variant);
-    font-size: 12px;
-    text-align: right;
-}
-
-.log-content {
-    margin: 13px 0 12px;
-    font-size: 15px;
-    line-height: 1.65;
-    overflow-wrap: anywhere;
-    white-space: pre-wrap;
-}
-
-.log-footer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    padding-top: 11px;
-    border-top: 1px solid var(--md-surface-high);
-    color: var(--md-on-surface-variant);
-    font-size: 12px;
-}
-
-.log-footer strong {
-    color: var(--md-on-surface);
-    font-weight: 500;
-}
-
-.empty-state {
-    padding: 32px 20px;
-    border: 1px dashed var(--md-outline-variant);
-    border-radius: var(--radius-card);
-    text-align: center;
-    color: var(--md-on-surface-variant);
-    background: rgba(255, 255, 255, .55);
-}
-
-.empty-icon {
-    margin-bottom: 9px;
-    font-size: 32px;
-}
-
-.empty-title {
-    margin-bottom: 5px;
-    color: var(--md-on-surface);
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.loading-state {
-    padding: 26px;
-    color: var(--md-on-surface-variant);
-    text-align: center;
-}
-
-.error-banner {
-    display: none;
-    margin-bottom: 18px;
-    padding: 14px 16px;
-    border: 1px solid #e7b9b5;
-    border-radius: 14px;
-    background: var(--md-error-container);
-    color: var(--md-error);
-    overflow-wrap: anywhere;
-}
-
-.text-button {
-    min-height: 40px;
-    padding: 0 13px;
-    border: 0;
-    border-radius: 100px;
-    background: transparent;
-    color: var(--md-primary);
-    font-weight: 600;
-}
-
-.text-button:hover {
-    background: var(--md-surface-low);
-}
-
-.primary-button {
-    display: inline-flex;
-    min-height: 48px;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 0 22px;
-    border: 0;
-    border-radius: 100px;
-    background: var(--md-primary);
-    color: white;
-    font-weight: 600;
-}
-
-.primary-button:hover {
-    filter: brightness(.96);
-}
-
-.primary-button:disabled {
-    cursor: wait;
-    opacity: .6;
-}
-
-.secondary-button {
-    display: inline-flex;
-    min-height: 46px;
-    align-items: center;
-    justify-content: center;
-    padding: 0 18px;
-    border: 1px solid var(--md-outline);
-    border-radius: 100px;
-    background: transparent;
-    color: var(--md-primary);
-    font-weight: 600;
-}
-
-.danger-button {
-    display: inline-flex;
-    min-height: 46px;
-    align-items: center;
-    justify-content: center;
-    padding: 0 18px;
-    border: 0;
-    border-radius: 100px;
-    background: var(--md-error-container);
-    color: var(--md-error);
-    font-weight: 600;
-}
-
-.modal {
-    position: fixed;
-    z-index: 100;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 18px;
-    background: rgba(24, 22, 30, .42);
-    backdrop-filter: blur(3px);
-}
-
-.modal.open {
-    display: flex;
-}
-
-.modal-panel {
-    width: min(100%, 540px);
-    max-height: min(88vh, 850px);
-    overflow-y: auto;
-    padding: 25px;
-    border-radius: 28px;
-    background: var(--md-surface);
-    box-shadow: 0 12px 38px rgba(0, 0, 0, .18);
-    animation: modalIn .18s ease-out;
-}
-
-@keyframes modalIn {
-    from { opacity: 0; transform: translateY(8px) scale(.99); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.modal-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 22px;
-}
-
-.modal-title {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: -.4px;
-}
-
-.modal-description {
-    margin-top: 6px;
-    color: var(--md-on-surface-variant);
-    font-size: 13px;
-}
-
-.close-button {
-    display: inline-flex;
-    flex: 0 0 40px;
-    width: 40px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    border-radius: 50%;
-    background: var(--md-surface-low);
-    color: var(--md-on-surface-variant);
-    font-size: 22px;
-}
-
-.form-field {
-    margin-bottom: 18px;
-}
-
-.form-label {
-    display: block;
-    margin-bottom: 7px;
-    color: var(--md-on-surface);
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.form-control {
-    display: block;
-    width: 100%;
-    min-height: 49px;
-    padding: 12px 14px;
-    border: 1px solid var(--md-outline);
-    border-radius: var(--radius-control);
-    background: var(--md-surface);
-    color: var(--md-on-surface);
-    outline: none;
-}
-
-.form-control:focus {
-    border: 2px solid var(--md-primary);
-    padding: 11px 13px;
-}
-
-textarea.form-control {
-    min-height: 130px;
-    resize: vertical;
-    line-height: 1.55;
-}
-
-.form-hint {
-    margin-top: 6px;
-    color: var(--md-on-surface-variant);
-    font-size: 12px;
-}
-
-.form-error {
-    display: none;
-    margin: 0 0 14px;
-    padding: 11px 13px;
-    border-radius: 12px;
-    background: var(--md-error-container);
-    color: var(--md-error);
-    font-size: 13px;
-}
-
-.modal-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 9px;
-    margin-top: 24px;
-}
-
-.detail-block {
-    margin: 18px 0;
-}
-
-.detail-label {
-    margin-bottom: 6px;
-    color: var(--md-on-surface-variant);
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.detail-value {
-    overflow-wrap: anywhere;
-    white-space: pre-wrap;
-    line-height: 1.7;
-}
-
-.detail-content {
-    padding: 15px;
-    border-radius: 16px;
-    background: var(--md-surface-low);
-}
-
-.detail-divider {
-    height: 1px;
-    margin: 18px 0;
-    background: var(--md-outline-variant);
-}
-
-.help-list {
-    padding-left: 20px;
-    color: var(--md-on-surface-variant);
-}
-
-.help-list li {
-    margin: 10px 0;
-}
-
-.toast {
-    position: fixed;
-    z-index: 200;
-    right: 20px;
-    bottom: max(20px, env(safe-area-inset-bottom));
-    left: 20px;
-    width: fit-content;
-    max-width: min(460px, calc(100% - 40px));
-    margin: 0 auto;
-    padding: 13px 18px;
-    border-radius: 14px;
-    background: #302d36;
-    color: white;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(10px);
-    transition: opacity .2s, transform .2s;
-}
-
-.toast.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.page-footer {
-    padding: 30px 0 0;
-    color: var(--md-on-surface-variant);
-    font-size: 12px;
-    text-align: center;
-}
-
-@media (max-width: 600px) {
-    .top-app-bar {
-        min-height: 66px;
-        gap: 7px;
-        padding: 9px 12px;
-    }
-
-    .app-title {
-        font-size: 17px;
-    }
-
-    .app-subtitle {
-        font-size: 11px;
-    }
-
-    .icon-button {
-        flex-basis: 38px;
-        width: 38px;
-        height: 38px;
-    }
-
-    .top-action {
-        min-height: 40px;
-        padding: 0 13px;
-        font-size: 12px;
-    }
-
-    .top-action .action-long {
-        display: none;
-    }
-
-    .page {
-        width: calc(100% - 28px);
-        margin-top: 22px;
-    }
-
-    .summary-grid {
-        gap: 8px;
-    }
-
-    .summary-card {
-        padding: 13px 12px;
-        border-radius: 17px;
-    }
-
-    .summary-label {
-        font-size: 11px;
-    }
-
-    .summary-value {
-        font-size: 25px;
-    }
-
-    .section-title {
-        font-size: 19px;
-    }
-
-    .log-card {
-        padding: 15px;
-        border-radius: 20px;
-    }
-
-    .log-topline {
-        flex-direction: column;
-        gap: 9px;
-    }
-
-    .log-date {
-        text-align: left;
-    }
-
-    .modal {
-        align-items: flex-end;
-        padding: 0;
-    }
-
-    .modal-panel {
-        width: 100%;
-        max-height: 90vh;
-        padding: 23px 19px calc(22px + env(safe-area-inset-bottom));
-        border-radius: 28px 28px 0 0;
-    }
-
-    .modal-title {
-        font-size: 22px;
-    }
-
-    .modal-actions > button {
-        flex: 1;
-    }
-
-    .page-footer {
-        padding-bottom: 20px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f7fb">
+    <title>Thư viện công thức | Tascus Food</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f7f7fb;
+            --surface: #ffffff;
+            --surface-soft: #f0eff7;
+            --primary: #625b71;
+            --primary-dark: #4f485e;
+            --primary-soft: #e9e4f2;
+            --text: #1c1b1f;
+            --text-secondary: #625f68;
+            --outline: #dedbe5;
+            --outline-strong: #c9c5d1;
+            --shadow: 0 2px 8px rgba(30, 25, 40, 0.05);
+            --radius-card: 18px;
+            --radius-control: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Roboto", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* HEADER */
+
+        .app-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(247, 247, 251, 0.94);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(222, 219, 229, 0.85);
+        }
+
+        .header-inner {
+            width: min(1440px, 100%);
+            min-height: 64px;
+            margin: 0 auto;
+            padding: 10px 28px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header-action {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid var(--outline);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+            transition: background 0.18s, border-color 0.18s;
+        }
+
+        .header-action:hover {
+            background: var(--surface-soft);
+            border-color: var(--outline-strong);
+        }
+
+        .header-action svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .help-button {
+            font-size: 19px;
+            font-weight: 600;
+        }
+
+        .header-title {
+            min-width: 0;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .header-spacer {
+            flex: 1;
+        }
+
+        /* MAIN */
+
+        .page-container {
+            width: min(1440px, 100%);
+            margin: 0 auto;
+            padding: 32px 28px 56px;
+        }
+
+        .page-intro {
+            margin-bottom: 26px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 12px;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #8c829f;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(27px, 4vw, 36px);
+            font-weight: 700;
+            letter-spacing: -1.1px;
+            line-height: 1.2;
+        }
+
+        .page-description {
+            max-width: 620px;
+            margin: 10px 0 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* SEARCH */
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .search-box {
+            min-width: 0;
+            flex: 1;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 0 16px;
+            background: var(--surface);
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-control);
+            transition: border-color 0.18s, box-shadow 0.18s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(98, 91, 113, 0.10);
+        }
+
+        .search-icon {
+            width: 21px;
+            height: 21px;
+            flex: 0 0 21px;
+            color: var(--text-secondary);
+        }
+
+        .search-box input {
+            width: 100%;
+            min-width: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .search-box input::placeholder {
+            color: #85818b;
+        }
+
+        .clear-search {
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: none;
+            place-items: center;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: var(--surface-soft);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .clear-search.visible {
+            display: grid;
+        }
+
+        .result-count {
+            color: var(--text-secondary);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        /* CATEGORY: TWO ROWS ON DESKTOP */
+
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-heading {
+            margin: 0 0 12px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 10px;
+            padding: 2px 0 4px;
+        }
+
+        .category-chip {
+            width: 100%;
+            min-width: 0;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 0 10px;
+            border: 1px solid var(--outline);
+            border-radius: 13px;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.18s, border-color 0.18s, color 0.18s;
+        }
+
+        .category-chip:hover {
+            background: var(--surface-soft);
+        }
+
+        .category-chip.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .category-chip > span:first-child {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .chip-count {
+            min-width: 21px;
+            height: 21px;
+            flex: 0 0 auto;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 5px;
+            border-radius: 999px;
+            background: rgba(98, 91, 113, 0.10);
+            color: var(--text-secondary);
+            font-size: 11px;
+        }
+
+        .category-chip.active .chip-count {
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+        }
+
+        /* RECIPE GRID */
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 17px;
+        }
+
+        .section-title {
+            margin: 0;
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        .section-subtitle {
+            margin-top: 5px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .recipe-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-card);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(30, 25, 40, 0.09);
+        }
+
+        .recipe-image-button {
+            position: relative;
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            padding: 0;
+            border: 0;
+            background: #f4f3f6;
+            cursor: zoom-in;
+        }
+
+        .recipe-image {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            display: block;
+            object-fit: contain;
+            background: #f4f3f6;
+            transition: transform 0.3s ease;
+        }
+
+        .recipe-card:hover .recipe-image {
+            transform: scale(1.015);
+        }
+
+        .zoom-hint {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            z-index: 1;
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--primary-dark);
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.18s, transform 0.18s;
+        }
+
+        .recipe-card:hover .zoom-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .zoom-hint svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .recipe-info {
+            min-height: 86px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 14px 15px 16px;
+        }
+
+        .recipe-name {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+        }
+
+        .recipe-category {
+            align-self: flex-start;
+            padding: 5px 9px;
+            border-radius: 7px;
+            background: var(--surface-soft);
+            color: var(--primary-dark);
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* EMPTY SEARCH RESULT */
+
+        .empty-state {
+            display: none;
+            padding: 64px 20px;
+            border: 1px dashed var(--outline-strong);
+            border-radius: var(--radius-card);
+            background: rgba(255, 255, 255, 0.55);
+            text-align: center;
+        }
+
+        .empty-state.visible {
+            display: block;
+        }
+
+        .empty-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 15px;
+            border-radius: 18px;
+            background: var(--surface-soft);
+            color: var(--primary);
+        }
+
+        .empty-icon svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        .empty-title {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .empty-description {
+            margin: 8px 0 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .reset-button {
+            min-height: 40px;
+            margin-top: 18px;
+            padding: 0 16px;
+            border: 1px solid var(--outline);
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--primary-dark);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .reset-button:hover {
+            background: var(--surface-soft);
+        }
+
+        .page-footer {
+            display: flex;
+            justify-content: center;
+            padding-top: 42px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* MODAL BASE */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(20, 19, 24, 0.78);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            width: min(100%, 1050px);
+            max-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .modal-topbar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .modal-title {
+            min-width: 0;
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        .modal-close {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .modal-close svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        /* IMAGE VIEWER */
+
+        .viewer-content {
+            height: min(100%, 900px);
+        }
+
+        .viewer-image-wrap {
+            min-height: 0;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .viewer-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .viewer-caption {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* HELP DIALOG */
+
+        .help-content {
+            width: min(100%, 520px);
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 22px;
+            border-radius: 22px;
+            background: var(--surface);
+            color: var(--text);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .help-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .help-title {
+            margin: 0;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .help-close {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid var(--outline);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .help-intro {
+            margin: 0 0 18px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .help-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .help-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 13px;
+            border: 1px solid var(--outline);
+            border-radius: 14px;
+            background: #fff;
+        }
+
+        .help-item-icon {
+            width: 36px;
+            height: 36px;
+            flex: 0 0 36px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .help-item-title {
+            margin: 1px 0 4px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .help-item-description {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .help-done {
+            width: 100%;
+            min-height: 44px;
+            margin-top: 18px;
+            border: 0;
+            border-radius: 999px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .help-done:hover {
+            background: var(--primary-dark);
+        }
+
+        /* TABLET */
+
+        @media (max-width: 1100px) {
+            .page-container {
+                padding-right: 22px;
+                padding-left: 22px;
+            }
+
+            .recipe-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 16px;
+            }
+
+            .category-list {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+            .header-inner {
+                min-height: 58px;
+                padding: 9px 14px;
+                gap: 12px;
+            }
+
+            .header-action {
+                width: 38px;
+                height: 38px;
+                flex-basis: 38px;
+            }
+
+            .header-title {
+                font-size: 16px;
+            }
+
+            .page-container {
+                padding: 25px 16px 40px;
+            }
+
+            .page-intro {
+                margin-bottom: 21px;
+            }
+
+            .page-description {
+                font-size: 14px;
+            }
+
+            .toolbar {
+                align-items: stretch;
+                flex-direction: column;
+                gap: 9px;
+            }
+
+            .search-box {
+                flex: auto;
+                height: 49px;
+            }
+
+            .result-count {
+                padding-left: 3px;
+                font-size: 12px;
+            }
+
+            .category-section {
+                margin-bottom: 24px;
+            }
+
+            .category-list {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 8px;
+            }
+
+            .category-chip {
+                min-height: 40px;
+                padding: 0 7px;
+                gap: 5px;
+                border-radius: 11px;
+                font-size: 12px;
+            }
+
+            .chip-count {
+                min-width: 18px;
+                height: 18px;
+                padding: 0 4px;
+                font-size: 10px;
+            }
+
+            .recipe-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .recipe-card {
+                border-radius: 14px;
+            }
+
+            .recipe-info {
+                min-height: 78px;
+                gap: 7px;
+                padding: 11px 11px 13px;
+            }
+
+            .recipe-name {
+                font-size: 13px;
+            }
+
+            .recipe-category {
+                padding: 4px 7px;
+                font-size: 10px;
+            }
+
+            .zoom-hint {
+                right: 8px;
+                bottom: 8px;
+                width: 30px;
+                height: 30px;
+                opacity: 1;
+                transform: none;
+            }
+
+            .section-title {
+                font-size: 19px;
+            }
+
+            .modal {
+                padding: 12px;
+            }
+
+            .modal-close {
+                width: 38px;
+                height: 38px;
+                flex-basis: 38px;
+            }
+
+            .help-content {
+                padding: 18px;
+                border-radius: 18px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .header-inner {
+                gap: 9px;
+            }
+
+            .header-title {
+                font-size: 15px;
+            }
+
+            .category-list {
+                gap: 6px;
+            }
+
+            .category-chip {
+                font-size: 11px;
+                padding: 0 5px;
+            }
+
+            .chip-count {
+                min-width: 16px;
+                height: 16px;
+                font-size: 9px;
+            }
+
+            .recipe-grid {
+                gap: 9px;
+            }
+
+            .recipe-info {
+                padding: 10px;
+            }
+
+            .recipe-name {
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-<header class="top-app-bar">
-    <a href="../index.html" class="icon-button" id="backButton"
-       aria-label="Quay lại trang trước" title="Quay lại">‹</a>
-
-    <div class="app-heading">
-        <h1 class="app-title">Nhật ký vận hành</h1>
-        <div class="app-subtitle">Tascus Food · Quản lý sự việc</div>
-    </div>
-
-    <button class="icon-button" type="button" id="helpButton"
-            aria-label="Hướng dẫn" title="Hướng dẫn">?</button>
-
-    <button class="top-action" type="button" id="newReportButton">
-        <span aria-hidden="true">＋</span>
-        <span>Báo cáo <span class="action-long">vấn đề mới</span></span>
-    </button>
-</header>
-
-<main class="page">
-    <div class="intro">
-        <div class="eyebrow">Vận hành cửa hàng</div>
-        <h2 class="page-heading">Theo dõi sự việc</h2>
-        <p class="page-description">
-            Ghi nhận vấn đề, cập nhật phương án xử lý và theo dõi tình trạng
-            công việc tại cửa hàng.
-        </p>
-    </div>
-
-    <div class="error-banner" id="errorBanner" role="alert"></div>
-
-    <section class="summary-grid" aria-label="Tổng quan">
-        <div class="summary-card">
-            <div class="summary-label">Chưa xử lý</div>
-            <div class="summary-value" id="pendingCount">—</div>
-        </div>
-        <div class="summary-card">
-            <div class="summary-label">Đang thực hiện</div>
-            <div class="summary-value" id="progressCount">—</div>
-        </div>
-        <div class="summary-card">
-            <div class="summary-label">Đã xử lý</div>
-            <div class="summary-value" id="doneCount">—</div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="section-heading-row">
-            <h2 class="section-title">Sự việc gần đây</h2>
-            <span class="section-count" id="recentCount">0</span>
-        </div>
-
-        <div class="filter-row" aria-label="Lọc theo cửa hàng">
-            <button class="filter-chip active" data-filter="all" type="button">
-                Tất cả
+    <header class="app-header">
+        <div class="header-inner">
+            <button
+                class="header-action"
+                id="backButton"
+                type="button"
+                aria-label="Quay lại"
+                title="Quay lại"
+            >
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                        d="M19 12H5M12 19l-7-7 7-7"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
             </button>
-            <button class="filter-chip" data-filter="Khương Trung" type="button">
-                Khương Trung
-            </button>
-            <button class="filter-chip" data-filter="Thái Thịnh" type="button" disabled
-                    title="Cửa hàng đã ngừng hoạt động trong hệ thống">
-                Thái Thịnh · Đã tắt
-            </button>
+
+            <div class="header-title">Thư viện công thức</div>
+
+            <div class="header-spacer"></div>
+
+            <button
+                class="header-action help-button"
+                id="helpButton"
+                type="button"
+                aria-label="Trợ giúp"
+                title="Trợ giúp"
+            >?</button>
         </div>
+    </header>
 
-        <div class="log-list" id="recentList">
-            <div class="loading-state">Đang tải nhật ký vận hành…</div>
-        </div>
-    </section>
+    <main class="page-container">
+        <section class="page-intro">
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                TÀI LIỆU VẬN HÀNH
+            </div>
 
-    <section class="section">
-        <div class="section-heading-row">
-            <h2 class="section-title">Đã xử lý xong</h2>
-            <span class="section-count" id="completedCount">0</span>
-        </div>
+            <h1>Thư viện công thức</h1>
 
-        <p class="page-description" style="margin: -5px 0 14px">
-            Các sự việc đã hoàn tất trong vòng 5 ngày gần nhất.
-        </p>
+            <p class="page-description">
+                Tra cứu hình ảnh công thức chế biến và sơ đồ sắp xếp tại cửa hàng.
+                Chọn danh mục hoặc tìm trực tiếp tên món cần xem.
+            </p>
+        </section>
 
-        <div class="log-list" id="completedList">
-            <div class="loading-state">Đang tải dữ liệu…</div>
-        </div>
-    </section>
+        <section class="toolbar" aria-label="Tìm kiếm công thức">
+            <label class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
 
-    <footer class="page-footer">
-        Nhật ký vận hành · Tascus Food
-    </footer>
-</main>
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Tìm tên món, ví dụ: bánh mì bò..."
+                    autocomplete="off"
+                    aria-label="Tìm kiếm theo tên công thức"
+                >
 
-<!-- Tạo báo cáo -->
-<div class="modal" id="createModal" role="dialog" aria-modal="true"
-     aria-labelledby="createTitle">
-    <div class="modal-panel">
-        <div class="modal-header">
-            <div>
-                <h2 class="modal-title" id="createTitle">Báo cáo vấn đề mới</h2>
-                <div class="modal-description">
-                    Ghi rõ sự việc để người phụ trách có thể xử lý.
+                <button
+                    class="clear-search"
+                    id="clearSearch"
+                    type="button"
+                    aria-label="Xóa nội dung tìm kiếm"
+                    title="Xóa tìm kiếm"
+                >
+                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" aria-hidden="true">
+                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </label>
+
+            <div class="result-count" id="resultCount" aria-live="polite"></div>
+        </section>
+
+        <section class="category-section" aria-label="Danh mục công thức">
+            <h2 class="category-heading">Danh mục</h2>
+            <div class="category-list" id="categoryList"></div>
+        </section>
+
+        <section aria-label="Danh sách công thức">
+            <div class="section-heading">
+                <div>
+                    <h2 class="section-title" id="sectionTitle">Tất cả công thức</h2>
+                    <div class="section-subtitle" id="sectionSubtitle">Tra cứu theo hình ảnh</div>
                 </div>
             </div>
-            <button class="close-button" type="button" data-close="createModal"
-                    aria-label="Đóng">×</button>
-        </div>
 
-        <form id="createForm">
-            <div class="form-error" id="createError" role="alert"></div>
+            <div class="recipe-grid" id="recipeGrid"></div>
 
-            <div class="form-field">
-                <label class="form-label" for="createBranch">Cửa hàng</label>
-                <select class="form-control" id="createBranch" name="chi_nhanh" required>
-                    <option value="Khương Trung">Khương Trung</option>
-                </select>
-            </div>
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        <path d="M8.5 10.8h4.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                    </svg>
+                </div>
 
-            <div class="form-field">
-                <label class="form-label" for="reporterName">Người báo cáo</label>
-                <input class="form-control" id="reporterName" name="nguoi_bao_cao"
-                       type="text" maxlength="100" required
-                       placeholder="Nhập tên người báo cáo">
-            </div>
+                <h3 class="empty-title">Không tìm thấy công thức</h3>
 
-            <div class="form-field">
-                <label class="form-label" for="reportContent">Nội dung sự việc</label>
-                <textarea class="form-control" id="reportContent" name="noi_dung"
-                          maxlength="5000" required
-                          placeholder="Mô tả sự việc, thời gian và thông tin liên quan…"></textarea>
-                <div class="form-hint">Mô tả cụ thể giúp việc xử lý nhanh và chính xác hơn.</div>
-            </div>
+                <p class="empty-description">
+                    Không có mục nào khớp với nội dung tìm kiếm hoặc danh mục hiện tại.
+                </p>
 
-            <div class="form-field">
-                <label class="form-label" for="canXuLy">Khả năng xử lý tại cửa hàng</label>
-                <select class="form-control" id="canXuLy" name="can_xu_ly" required>
-                    <option value="Có thể tự xử lý">Có thể tự xử lý</option>
-                    <option value="Cần hỗ trợ">Cần hỗ trợ</option>
-                </select>
-            </div>
-
-            <div class="modal-actions">
-                <button class="secondary-button" type="button" data-close="createModal">
-                    Hủy
-                </button>
-                <button class="primary-button" id="submitReportButton" type="submit">
-                    Gửi báo cáo
+                <button class="reset-button" id="resetFilters" type="button">
+                    Hiển thị tất cả công thức
                 </button>
             </div>
-        </form>
-    </div>
-</div>
+        </section>
 
-<!-- Chi tiết sự việc -->
-<div class="modal" id="detailModal" role="dialog" aria-modal="true"
-     aria-labelledby="detailTitle">
-    <div class="modal-panel">
-        <div class="modal-header">
-            <div>
-                <h2 class="modal-title" id="detailTitle">Chi tiết sự việc</h2>
-                <div class="modal-description" id="detailSubtitle"></div>
+        <footer class="page-footer">
+            Tascus Food · Thư viện công thức và sơ đồ nội bộ
+        </footer>
+    </main>
+
+    <!-- IMAGE VIEWER -->
+    <div
+        class="modal"
+        id="imageViewer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Xem ảnh công thức"
+        aria-hidden="true"
+    >
+        <div class="modal-content viewer-content">
+            <div class="modal-topbar">
+                <h2 class="modal-title" id="viewerTitle"></h2>
+
+                <button class="modal-close" id="viewerClose" type="button" aria-label="Đóng ảnh">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
             </div>
-            <button class="close-button" type="button" data-close="detailModal"
-                    aria-label="Đóng">×</button>
-        </div>
 
-        <div id="detailBody"></div>
+            <div class="viewer-image-wrap">
+                <img class="viewer-image" id="viewerImage" src="" alt="">
+            </div>
 
-        <div class="modal-actions" id="detailActions">
-            <button class="secondary-button" type="button" data-close="detailModal">
-                Đóng
-            </button>
-            <button class="primary-button" type="button" id="openUpdateButton">
-                Cập nhật xử lý
-            </button>
+            <div class="viewer-caption">Nhấn bên ngoài ảnh hoặc phím Esc để đóng</div>
         </div>
     </div>
-</div>
 
-<!-- Cập nhật xử lý -->
-<div class="modal" id="updateModal" role="dialog" aria-modal="true"
-     aria-labelledby="updateTitle">
-    <div class="modal-panel">
-        <div class="modal-header">
-            <div>
-                <h2 class="modal-title" id="updateTitle">Cập nhật xử lý</h2>
-                <div class="modal-description">
-                    Ghi nhận trạng thái và phương án giải quyết.
+    <!-- HELP DIALOG -->
+    <div
+        class="modal"
+        id="helpViewer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Hướng dẫn sử dụng"
+        aria-hidden="true"
+    >
+        <div class="help-content">
+            <div class="help-header">
+                <h2 class="help-title">Hướng dẫn sử dụng</h2>
+
+                <button class="help-close" id="helpClose" type="button" aria-label="Đóng hướng dẫn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <p class="help-intro">
+                Sử dụng thư viện để tra cứu công thức chế biến và tài liệu bố trí tại cửa hàng.
+            </p>
+
+            <div class="help-list">
+                <div class="help-item">
+                    <div class="help-item-icon">⌕</div>
+                    <div>
+                        <h3 class="help-item-title">Tìm kiếm công thức</h3>
+                        <p class="help-item-description">
+                            Nhập tên món vào ô tìm kiếm. Có thể tìm cả khi không nhập dấu tiếng Việt.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-item">
+                    <div class="help-item-icon">▦</div>
+                    <div>
+                        <h3 class="help-item-title">Lọc theo danh mục</h3>
+                        <p class="help-item-description">
+                            Chọn danh mục để chỉ hiển thị các công thức thuộc nhóm tương ứng.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-item">
+                    <div class="help-item-icon">↗</div>
+                    <div>
+                        <h3 class="help-item-title">Xem ảnh chi tiết</h3>
+                        <p class="help-item-description">
+                            Nhấn vào ảnh công thức để phóng to. Nhấn nút đóng, vùng nền bên ngoài hoặc phím Esc để trở lại thư viện.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-item">
+                    <div class="help-item-icon">←</div>
+                    <div>
+                        <h3 class="help-item-title">Quay lại cổng vận hành</h3>
+                        <p class="help-item-description">
+                            Nhấn nút mũi tên ở góc trên bên trái. Nếu không có trang trước trong lịch sử trình duyệt, hệ thống sẽ mở index.html.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <button class="close-button" type="button" data-close="updateModal"
-                    aria-label="Đóng">×</button>
-        </div>
 
-        <form id="updateForm">
-            <div class="form-error" id="updateError" role="alert"></div>
-
-            <div class="form-field">
-                <label class="form-label" for="updateStatus">Trạng thái xử lý</label>
-                <select class="form-control" id="updateStatus"
-                        name="trang_thai_xu_ly" required>
-                    <option value="Chưa xử lý">Chưa xử lý</option>
-                    <option value="Đang xử lý">Đang xử lý</option>
-                    <option value="Cần theo dõi thêm">Cần theo dõi thêm</option>
-                    <option value="Đã xử lý">Đã xử lý</option>
-                </select>
-            </div>
-
-            <div class="form-field">
-                <label class="form-label" for="solutionContent">Phương án xử lý</label>
-                <textarea class="form-control" id="solutionContent"
-                          name="phuong_an_xu_ly" maxlength="5000" required
-                          placeholder="Mô tả việc đã thực hiện hoặc bước tiếp theo…"></textarea>
-            </div>
-
-            <div class="form-field">
-                <label class="form-label" for="resolverName">Người xử lý</label>
-                <input class="form-control" id="resolverName" name="nguoi_xu_ly"
-                       type="text" maxlength="100" required
-                       placeholder="Nhập tên người xử lý">
-            </div>
-
-            <div class="modal-actions">
-                <button class="secondary-button" type="button" data-close="updateModal">
-                    Hủy
-                </button>
-                <button class="primary-button" id="submitUpdateButton" type="submit">
-                    Lưu cập nhật
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- Hướng dẫn -->
-<div class="modal" id="helpModal" role="dialog" aria-modal="true"
-     aria-labelledby="helpTitle">
-    <div class="modal-panel">
-        <div class="modal-header">
-            <div>
-                <h2 class="modal-title" id="helpTitle">Hướng dẫn sử dụng</h2>
-                <div class="modal-description">Quy trình ghi nhận và xử lý sự việc.</div>
-            </div>
-            <button class="close-button" type="button" data-close="helpModal"
-                    aria-label="Đóng">×</button>
-        </div>
-
-        <ol class="help-list">
-            <li><strong>Báo cáo vấn đề mới:</strong> nhập cửa hàng, người báo cáo và nội dung sự việc.</li>
-            <li><strong>Chưa xử lý:</strong> sự việc đã được ghi nhận nhưng chưa giải quyết.</li>
-            <li><strong>Đang xử lý:</strong> đã có người tiếp nhận và đang thực hiện phương án.</li>
-            <li><strong>Cần theo dõi thêm:</strong> cần kiểm tra lại kết quả hoặc diễn biến sau xử lý.</li>
-            <li><strong>Đã xử lý:</strong> cập nhật phương án và người xử lý để hoàn tất.</li>
-            <li>Các sự việc đã xử lý sẽ hiển thị trong mục riêng tối đa 5 ngày theo thời gian xử lý do API cung cấp.</li>
-        </ol>
-
-        <div class="modal-actions">
-            <button class="primary-button" type="button" data-close="helpModal">
-                Đã hiểu
-            </button>
+            <button class="help-done" id="helpDone" type="button">Đã hiểu</button>
         </div>
     </div>
-</div>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script>
+        const categories = [
+            { id: "all", name: "Tất cả" },
+            { id: "banhmi", name: "Bánh mì" },
+            { id: "burger", name: "Burger" },
+            { id: "sandwich", name: "Sandwich" },
+            { id: "crepe", name: "Crepe" },
+            { id: "salad", name: "Salad" },
+            { id: "fries", name: "Khoai tây" },
+            { id: "pasta", name: "Mỳ Ý" },
+            { id: "bmchao", name: "Bánh mì chảo" },
+            { id: "drink", name: "Đồ uống" },
+            { id: "stuffs", name: "Linh tinh" }
+        ];
 
-<script>
-"use strict";
+        const recipes = [
+            {
+                category: "banhmi",
+                name: "Bánh mì gà nướng sả",
+                image: "BM-BMganuongsa.png"
+            },
+            {
+                category: "banhmi",
+                name: "Bánh mì xúc xích bò bằm hầm phô mai",
+                image: "BM-BMXucxichbobamhamphomai.png"
+            },
+            {
+                category: "banhmi",
+                name: "Bánh mì heo nướng xá xíu",
+                image: "BM-BMheonuongxaxiu.png"
+            },
+            {
+                category: "banhmi",
+                name: "Bánh mì bò phô mai",
+                image: "BM-BMbophomai.png"
+            },
+            {
+                category: "banhmi",
+                name: "Bánh mì bò tiêu đen",
+                image: "BM-BMbotieuden.png"
+            },
+            {
+                category: "burger",
+                name: "Burger",
+                image: "Burger.png"
+            },
+            {
+                category: "sandwich",
+                name: "Sandwich xúc xích phô mai",
+                image: "Sanwich-Sandwichxucxichphomai.png"
+            },
+            {
+                category: "sandwich",
+                name: "Sandwich jambon phô mai",
+                image: "Sanwich-Sandwichjambonphomai.png"
+            },
+            {
+                category: "sandwich",
+                name: "Sandwich phô mai pate heo",
+                image: "Sanwich-Sandwichphomaipateheo.png"
+            },
+            {
+                category: "sandwich",
+                name: "Sandwich phô mai pate bò",
+                image: "Sanwich-Sandwichphomaipatebo.png"
+            },
+            {
+                category: "sandwich",
+                name: "Sandwich phô mai sô cô la",
+                image: "Sandwich-Sanwichphomaisocola.png"
+            },
+            {
+                category: "crepe",
+                name: "Crepe xúc xích phô mai",
+                image: "Crepe-Crepexucxicphomai.png"
+            },
+            {
+                category: "crepe",
+                name: "Crepe jambon phô mai",
+                image: "Crepe-Crepejambonphomai.png"
+            },
+            {
+                category: "crepe",
+                name: "Crepe Oreo sữa",
+                image: "Crepe-CrepeOreoSua.png"
+            },
+            {
+                category: "crepe",
+                name: "Crepe xúc xích jambon phô mai",
+                image: "Crepe-Crepexucxichjambonphomai.png"
+            },
+            {
+                category: "crepe",
+                name: "Crepe chuối sô cô la phô mai",
+                image: "Crepe-Crepechuoisocolaphomai.png"
+            },
+            {
+                category: "salad",
+                name: "Salad gà viên",
+                image: "Salad-gavien.png"
+            },
+            {
+                category: "salad",
+                name: "Salad combo No Nê một ghế",
+                image: "Salad-none.png"
+            },
+            {
+                category: "fries",
+                name: "Khoai tây chiên",
+                image: "Khoaitaychien.png"
+            },
+            {
+                category: "pasta",
+                name: "Mỳ Ý xúc xích bò bằm",
+                image: "Pasta-MyYsotbobam.png"
+            },
+            {
+                category: "bmchao",
+                name: "Bánh mì chảo",
+                image: "Banhmychao.png"
+            },
+            {
+                category: "drink",
+                name: "Công thức đồ uống",
+                image: "Douong.png"
+            },
+            {
+                category: "stuffs",
+                name: "Bố cục sắp xếp quầy salad cơ sở Khương Trung",
+                image: "quaysalad.png"
+            }
+        ];
 
-/*
- * API Huston hiện tại.
- * Giữ nguyên endpoint đang được sử dụng.
- */
-const API_URL = "https://script.google.com/macros/s/AKfycbwd6hrdfUGmSGxwyZJDGpF8FoXve3AJ5q7oy1aZaU74pY1WjEbVb2gTXrqjVjQmeAvnXQ/exec";
+        const categoryList = document.getElementById("categoryList");
+        const recipeGrid = document.getElementById("recipeGrid");
+        const searchInput = document.getElementById("searchInput");
+        const clearSearch = document.getElementById("clearSearch");
+        const resultCount = document.getElementById("resultCount");
+        const sectionTitle = document.getElementById("sectionTitle");
+        const sectionSubtitle = document.getElementById("sectionSubtitle");
+        const emptyState = document.getElementById("emptyState");
+        const resetFilters = document.getElementById("resetFilters");
 
-const state = {
-    logs: [],
-    branchFilter: "all",
-    selectedLog: null,
-    loading: false,
-    submitting: false
-};
+        const imageViewer = document.getElementById("imageViewer");
+        const viewerImage = document.getElementById("viewerImage");
+        const viewerTitle = document.getElementById("viewerTitle");
+        const viewerClose = document.getElementById("viewerClose");
 
-const $ = (id) => document.getElementById(id);
+        const helpViewer = document.getElementById("helpViewer");
+        const helpButton = document.getElementById("helpButton");
+        const helpClose = document.getElementById("helpClose");
+        const helpDone = document.getElementById("helpDone");
 
-function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, (char) => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-    })[char]);
-}
+        let activeCategory = "all";
+        let previousFocusedElement = null;
+        let activeModal = null;
 
-function normalizeStatus(status) {
-    const value = String(status ?? "").trim().toLocaleLowerCase("vi");
+        function normalizeText(value) {
+            return String(value)
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/đ/g, "d")
+                .replace(/Đ/g, "D")
+                .toLocaleLowerCase("vi")
+                .trim();
+        }
 
-    if (value.includes("đã xử lý") || value.includes("da xu ly")) {
-        return "Đã xử lý";
-    }
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, character => {
+                const entities = {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;"
+                };
 
-    if (value.includes("đang xử lý") || value.includes("dang xu ly")) {
-        return "Đang xử lý";
-    }
+                return entities[character];
+            });
+        }
 
-    if (value.includes("theo dõi") || value.includes("theo doi")) {
-        return "Cần theo dõi thêm";
-    }
+        function getCategoryName(categoryId) {
+            const category = categories.find(item => item.id === categoryId);
+            return category ? category.name : "";
+        }
 
-    return "Chưa xử lý";
-}
+        function getCategoryCount(categoryId) {
+            if (categoryId === "all") {
+                return recipes.length;
+            }
 
-function statusClass(status) {
-    switch (normalizeStatus(status)) {
-        case "Đã xử lý":
-            return "status-done";
-        case "Đang xử lý":
-            return "status-progress";
-        case "Cần theo dõi thêm":
-            return "status-follow";
-        default:
-            return "status-pending";
-    }
-}
+            return recipes.filter(recipe => recipe.category === categoryId).length;
+        }
 
-function formatDate(value) {
-    if (!value) return "Không có thời gian";
+        function renderCategories() {
+            categoryList.innerHTML = categories.map(category => {
+                const isActive = category.id === activeCategory;
 
-    let date;
+                return `
+                    <button
+                        type="button"
+                        class="category-chip ${isActive ? "active" : ""}"
+                        data-category="${category.id}"
+                        aria-pressed="${isActive}"
+                    >
+                        <span>${category.name}</span>
+                        <span class="chip-count">${getCategoryCount(category.id)}</span>
+                    </button>
+                `;
+            }).join("");
+        }
 
-    if (value instanceof Date) {
-        date = value;
-    } else if (typeof value === "number") {
-        date = new Date(value);
-    } else {
-        const raw = String(value).trim();
+        function getFilteredRecipes() {
+            const keyword = normalizeText(searchInput.value);
 
-        // Hỗ trợ định dạng ngày thường gặp trong JSON/Google Sheets.
-        const match = raw.match(
-            /^(\d{1,2})[/-](\d{1,2})[/-](\d{4})(?:[,\s]+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/
-        );
+            return recipes.filter(recipe => {
+                const matchesCategory =
+                    activeCategory === "all" ||
+                    recipe.category === activeCategory;
 
-        if (match) {
-            date = new Date(
-                Number(match[3]),
-                Number(match[2]) - 1,
-                Number(match[1]),
-                Number(match[4] || 0),
-                Number(match[5] || 0),
-                Number(match[6] || 0)
+                const matchesSearch =
+                    !keyword ||
+                    normalizeText(recipe.name).includes(keyword) ||
+                    normalizeText(getCategoryName(recipe.category)).includes(keyword);
+
+                return matchesCategory && matchesSearch;
+            });
+        }
+
+        function renderRecipes() {
+            const filteredRecipes = getFilteredRecipes();
+            const keyword = searchInput.value.trim();
+
+            recipeGrid.innerHTML = filteredRecipes.map(recipe => {
+                const originalIndex = recipes.indexOf(recipe);
+
+                return `
+                    <article class="recipe-card">
+                        <button
+                            class="recipe-image-button"
+                            type="button"
+                            data-recipe-index="${originalIndex}"
+                            aria-label="Phóng to ảnh: ${escapeHTML(recipe.name)}"
+                        >
+                            <img
+                                class="recipe-image"
+                                src="${escapeHTML(recipe.image)}"
+                                alt="${escapeHTML(recipe.name)}"
+                                loading="lazy"
+                                decoding="async"
+                            >
+
+                            <span class="zoom-hint" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="10.8" cy="10.8" r="6.8"
+                                        stroke="currentColor" stroke-width="1.8"/>
+                                    <path d="m16 16 4.2 4.2"
+                                        stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <div class="recipe-info">
+                            <h3 class="recipe-name">${escapeHTML(recipe.name)}</h3>
+                            <span class="recipe-category">
+                                ${escapeHTML(getCategoryName(recipe.category))}
+                            </span>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+
+            sectionTitle.textContent =
+                activeCategory === "all"
+                    ? "Tất cả công thức"
+                    : getCategoryName(activeCategory);
+
+            if (keyword) {
+                sectionSubtitle.textContent = `Kết quả tìm kiếm cho “${keyword}”`;
+            } else if (activeCategory === "all") {
+                sectionSubtitle.textContent = "Tra cứu theo hình ảnh";
+            } else {
+                sectionSubtitle.textContent =
+                    `Công thức thuộc danh mục ${getCategoryName(activeCategory)}`;
+            }
+
+            resultCount.textContent =
+                `Hiển thị ${filteredRecipes.length}/${recipes.length} mục`;
+
+            clearSearch.classList.toggle(
+                "visible",
+                searchInput.value.length > 0
             );
-        } else {
-            date = new Date(raw);
+
+            const noResults = filteredRecipes.length === 0;
+
+            emptyState.classList.toggle("visible", noResults);
+            recipeGrid.style.display = noResults ? "none" : "grid";
         }
-    }
 
-    if (Number.isNaN(date.getTime())) {
-        return String(value);
-    }
-
-    return new Intl.DateTimeFormat("vi-VN", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false
-    }).format(date);
-}
-
-function parseDate(value) {
-    if (!value) return null;
-
-    if (value instanceof Date) {
-        return Number.isNaN(value.getTime()) ? null : value;
-    }
-
-    if (typeof value === "number") {
-        const date = new Date(value);
-        return Number.isNaN(date.getTime()) ? null : date;
-    }
-
-    const raw = String(value).trim();
-    const match = raw.match(
-        /^(\d{1,2})[/-](\d{1,2})[/-](\d{4})(?:[,\s]+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/
-    );
-
-    if (match) {
-        const date = new Date(
-            Number(match[3]),
-            Number(match[2]) - 1,
-            Number(match[1]),
-            Number(match[4] || 0),
-            Number(match[5] || 0),
-            Number(match[6] || 0)
-        );
-        return Number.isNaN(date.getTime()) ? null : date;
-    }
-
-    const date = new Date(raw);
-    return Number.isNaN(date.getTime()) ? null : date;
-}
-
-function getField(log, ...names) {
-    for (const name of names) {
-        if (log && log[name] !== undefined && log[name] !== null) {
-            return log[name];
+        function renderAll() {
+            renderCategories();
+            renderRecipes();
         }
-    }
-    return "";
-}
 
-function getLogId(log) {
-    return String(getField(log, "id", "ID", "ma_su_viec", "Mã sự việc"));
-}
-
-function getBranch(log) {
-    return String(getField(log, "chi_nhanh", "Chi nhánh", "branch") || "Chưa xác định");
-}
-
-function getReporter(log) {
-    return String(getField(log, "nguoi_bao_cao", "Người báo cáo", "reporter") || "Chưa xác định");
-}
-
-function getContent(log) {
-    return String(getField(log, "noi_dung", "Nội dung", "content") || "");
-}
-
-function getStatus(log) {
-    return normalizeStatus(
-        getField(log, "trang_thai_xu_ly", "Trạng thái xử lý", "status")
-    );
-}
-
-function getCreatedTime(log) {
-    return getField(
-        log,
-        "thoi_gian_bao_cao",
-        "thoi_gian_tao",
-        "Thời gian báo cáo",
-        "Ngày tạo",
-        "timestamp",
-        "created_at"
-    );
-}
-
-function getResolutionTime(log) {
-    return getField(
-        log,
-        "thoi_gian_xu_ly",
-        "Thời gian xử lý",
-        "resolution_time"
-    );
-}
-
-function isCompleted(log) {
-    return getStatus(log) === "Đã xử lý";
-}
-
-function isVisibleCompleted(log) {
-    if (!isCompleted(log)) return false;
-
-    const resolvedAt = parseDate(getResolutionTime(log));
-    if (!resolvedAt) return false;
-
-    const age = Date.now() - resolvedAt.getTime();
-    return age >= 0 && age <= 5 * 24 * 60 * 60 * 1000;
-}
-
-async function apiRequest(payload) {
-    const response = await fetch(API_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) {
-        throw new Error("Máy chủ phản hồi HTTP " + response.status);
-    }
-
-    const result = await response.json();
-
-    if (result && result.success === false) {
-        throw new Error(result.message || result.error || "Yêu cầu không thành công.");
-    }
-
-    return result;
-}
-
-function extractLogs(result) {
-    if (Array.isArray(result)) return result;
-    if (Array.isArray(result.data)) return result.data;
-    if (Array.isArray(result.logs)) return result.logs;
-    if (Array.isArray(result.records)) return result.records;
-    if (Array.isArray(result.items)) return result.items;
-    return [];
-}
-
-function showError(message) {
-    const banner = $("errorBanner");
-    banner.textContent = message;
-    banner.style.display = "block";
-}
-
-function hideError() {
-    $("errorBanner").style.display = "none";
-    $("errorBanner").textContent = "";
-}
-
-let toastTimer;
-
-function showToast(message) {
-    const toast = $("toast");
-    toast.textContent = message;
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("show"), 2800);
-}
-
-function openModal(id) {
-    const modal = $(id);
-    if (!modal) return;
-
-    modal.classList.add("open");
-    document.body.style.overflow = "hidden";
-
-    const focusable = modal.querySelector(
-        "input:not([disabled]), textarea:not([disabled]), select:not([disabled]), button:not([disabled])"
-    );
-
-    if (focusable) {
-        setTimeout(() => focusable.focus(), 50);
-    }
-}
-
-function closeModal(id) {
-    const modal = $(id);
-    if (!modal) return;
-
-    modal.classList.remove("open");
-
-    if (!document.querySelector(".modal.open")) {
-        document.body.style.overflow = "";
-    }
-}
-
-function closeAllModals() {
-    document.querySelectorAll(".modal.open").forEach((modal) => {
-        modal.classList.remove("open");
-    });
-    document.body.style.overflow = "";
-}
-
-document.querySelectorAll("[data-close]").forEach((button) => {
-    button.addEventListener("click", () => closeModal(button.dataset.close));
-});
-
-document.querySelectorAll(".modal").forEach((modal) => {
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            closeModal(modal.id);
+        function selectCategory(categoryId) {
+            activeCategory = categoryId;
+            renderAll();
         }
-    });
-});
 
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeAllModals();
-});
+        function openModal(modal, focusElement) {
+            if (activeModal) {
+                closeModal(activeModal, false);
+            }
 
-$("backButton").addEventListener("click", (event) => {
-    if (window.history.length > 1) {
-        event.preventDefault();
-        window.history.back();
-    }
-});
+            previousFocusedElement = document.activeElement;
+            activeModal = modal;
 
-$("helpButton").addEventListener("click", () => openModal("helpModal"));
-$("newReportButton").addEventListener("click", () => {
-    $("createError").style.display = "none";
-    openModal("createModal");
-});
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
 
-function createEmptyState(title, description, icon = "📋") {
-    return `
-        <div class="empty-state">
-            <div class="empty-icon" aria-hidden="true">${icon}</div>
-            <div class="empty-title">${escapeHTML(title)}</div>
-            <div>${escapeHTML(description)}</div>
-        </div>
-    `;
-}
+            if (focusElement) {
+                focusElement.focus();
+            }
+        }
 
-function renderLogCard(log) {
-    const id = getLogId(log);
-    const branch = getBranch(log);
-    const reporter = getReporter(log);
-    const content = getContent(log);
-    const status = getStatus(log);
-    const created = formatDate(getCreatedTime(log));
-    const completed = isCompleted(log);
+        function closeModal(modal, restoreFocus = true) {
+            if (!modal) return;
 
-    return `
-        <article class="log-card" tabindex="0" role="button"
-                 aria-label="Xem chi tiết sự việc"
-                 data-log-id="${escapeHTML(id)}">
-            <div class="log-topline">
-                <div class="log-meta">
-                    <span class="branch-tag">${escapeHTML(branch)}</span>
-                    <span class="status-chip ${statusClass(status)}">${escapeHTML(status)}</span>
-                </div>
-                <div class="log-date">${escapeHTML(created)}</div>
-            </div>
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
 
-            <div class="log-content">${escapeHTML(content)}</div>
+            if (modal === imageViewer) {
+                viewerImage.src = "";
+            }
 
-            <div class="log-footer">
-                <span>Người báo cáo: <strong>${escapeHTML(reporter)}</strong></span>
-                <span>${completed ? "Đã hoàn tất" : "Xem chi tiết"}　›</span>
-            </div>
-        </article>
-    `;
-}
+            if (activeModal === modal) {
+                activeModal = null;
+            }
 
-function renderLogs() {
-    const activeLogs = state.logs.filter((log) => !isCompleted(log));
-    const completedLogs = state.logs.filter(isVisibleCompleted);
+            if (!activeModal) {
+                document.body.classList.remove("modal-open");
+            }
 
-    const filteredActive = activeLogs.filter((log) => {
-        return state.branchFilter === "all" ||
-            getBranch(log) === state.branchFilter;
-    });
+            if (
+                restoreFocus &&
+                previousFocusedElement &&
+                typeof previousFocusedElement.focus === "function"
+            ) {
+                previousFocusedElement.focus();
+            }
+        }
 
-    const filteredCompleted = completedLogs.filter((log) => {
-        return state.branchFilter === "all" ||
-            getBranch(log) === state.branchFilter;
-    });
+        function openImageViewer(recipe) {
+            if (!recipe) return;
 
-    $("pendingCount").textContent = activeLogs.filter(
-        (log) => getStatus(log) === "Chưa xử lý"
-    ).length;
+            viewerImage.src = recipe.image;
+            viewerImage.alt = recipe.name;
+            viewerTitle.textContent = recipe.name;
 
-    $("progressCount").textContent = activeLogs.filter((log) => {
-        const status = getStatus(log);
-        return status === "Đang xử lý" || status === "Cần theo dõi thêm";
-    }).length;
+            openModal(imageViewer, viewerClose);
+        }
 
-    $("doneCount").textContent = completedLogs.length;
-    $("recentCount").textContent = filteredActive.length;
-    $("completedCount").textContent = filteredCompleted.length;
+        function openHelp() {
+            openModal(helpViewer, helpClose);
+        }
 
-    $("recentList").innerHTML = filteredActive.length
-        ? filteredActive.map(renderLogCard).join("")
-        : createEmptyState(
-            "Không có sự việc cần xử lý",
-            "Các sự việc chưa hoàn tất sẽ xuất hiện tại đây.",
-            "✓"
-        );
+        /* CATEGORY EVENTS */
 
-    $("completedList").innerHTML = filteredCompleted.length
-        ? filteredCompleted.map(renderLogCard).join("")
-        : createEmptyState(
-            "Chưa có sự việc hoàn tất",
-            "Sự việc đã xử lý trong 5 ngày gần nhất sẽ xuất hiện tại đây.",
-            "✓"
-        );
+        categoryList.addEventListener("click", event => {
+            const button = event.target.closest("[data-category]");
 
-    document.querySelectorAll(".log-card[data-log-id]").forEach((card) => {
-        const activate = () => openLogDetail(card.dataset.logId);
+            if (!button) return;
 
-        card.addEventListener("click", activate);
-        card.addEventListener("keydown", (event) => {
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                activate();
+            selectCategory(button.dataset.category);
+        });
+
+        /* IMAGE EVENTS */
+
+        recipeGrid.addEventListener("click", event => {
+            const button = event.target.closest("[data-recipe-index]");
+
+            if (!button) return;
+
+            const recipeIndex = Number(button.dataset.recipeIndex);
+            openImageViewer(recipes[recipeIndex]);
+        });
+
+        /* SEARCH EVENTS */
+
+        searchInput.addEventListener("input", renderRecipes);
+
+        clearSearch.addEventListener("click", () => {
+            searchInput.value = "";
+            renderRecipes();
+            searchInput.focus();
+        });
+
+        resetFilters.addEventListener("click", () => {
+            activeCategory = "all";
+            searchInput.value = "";
+            renderAll();
+        });
+
+        /* BACK BUTTON */
+
+        document.getElementById("backButton").addEventListener("click", () => {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "index.html";
             }
         });
-    });
-}
 
-async function loadHuston(showLoading = true) {
-    if (state.loading) return;
+        /* HELP BUTTON */
 
-    state.loading = true;
-    hideError();
+        helpButton.addEventListener("click", openHelp);
+        helpClose.addEventListener("click", () => closeModal(helpViewer));
+        helpDone.addEventListener("click", () => closeModal(helpViewer));
 
-    if (showLoading && state.logs.length === 0) {
-        $("recentList").innerHTML =
-            '<div class="loading-state">Đang tải nhật ký vận hành…</div>';
-        $("completedList").innerHTML =
-            '<div class="loading-state">Đang tải dữ liệu…</div>';
-    }
-
-    try {
-        const result = await apiRequest({ action: "list" });
-        state.logs = extractLogs(result);
-        renderLogs();
-    } catch (error) {
-        console.error("Không thể tải nhật ký:", error);
-
-        showError(
-            "Không thể tải dữ liệu nhật ký. " +
-            (error.message || "Vui lòng kiểm tra kết nối và thử tải lại trang.")
-        );
-
-        if (state.logs.length === 0) {
-            $("recentList").innerHTML = createEmptyState(
-                "Không tải được dữ liệu",
-                "Kiểm tra kết nối hoặc tải lại trang.",
-                "!"
-            );
-            $("completedList").innerHTML = "";
-        }
-    } finally {
-        state.loading = false;
-    }
-}
-
-function openLogDetail(id) {
-    const log = state.logs.find((item) => getLogId(item) === String(id));
-    if (!log) {
-        showToast("Không tìm thấy sự việc trong dữ liệu hiện tại.");
-        return;
-    }
-
-    state.selectedLog = log;
-
-    const status = getStatus(log);
-    const completed = isCompleted(log);
-    const solution = getField(
-        log,
-        "phuong_an_xu_ly",
-        "Phương án xử lý",
-        "solution"
-    );
-    const resolver = getField(
-        log,
-        "nguoi_xu_ly",
-        "Người xử lý",
-        "resolver"
-    );
-    const branch = getBranch(log);
-    const reporter = getReporter(log);
-    const canHandle = getField(
-        log,
-        "can_xu_ly",
-        "Khả năng xử lý",
-        "Khả năng tự xử lý"
-    );
-
-    $("detailSubtitle").textContent =
-        branch + " · " + formatDate(getCreatedTime(log));
-
-    $("detailBody").innerHTML = `
-        <div class="detail-block">
-            <div class="detail-label">Trạng thái</div>
-            <span class="status-chip ${statusClass(status)}">${escapeHTML(status)}</span>
-        </div>
-
-        <div class="detail-block">
-            <div class="detail-label">Nội dung sự việc</div>
-            <div class="detail-value detail-content">${escapeHTML(getContent(log))}</div>
-        </div>
-
-        <div class="detail-block">
-            <div class="detail-label">Người báo cáo</div>
-            <div class="detail-value">${escapeHTML(reporter)}</div>
-        </div>
-
-        <div class="detail-block">
-            <div class="detail-label">Khả năng xử lý tại cửa hàng</div>
-            <div class="detail-value">${escapeHTML(canHandle || "Chưa có thông tin")}</div>
-        </div>
-
-        <div class="detail-divider"></div>
-
-        <div class="detail-block">
-            <div class="detail-label">Phương án xử lý</div>
-            <div class="detail-value">${escapeHTML(solution || "Chưa cập nhật")}</div>
-        </div>
-
-        <div class="detail-block">
-            <div class="detail-label">Người xử lý</div>
-            <div class="detail-value">${escapeHTML(resolver || "Chưa cập nhật")}</div>
-        </div>
-
-        <div class="detail-block">
-            <div class="detail-label">Thời gian xử lý</div>
-            <div class="detail-value">${escapeHTML(
-                getResolutionTime(log)
-                    ? formatDate(getResolutionTime(log))
-                    : "Chưa hoàn tất"
-            )}</div>
-        </div>
-    `;
-
-    $("openUpdateButton").style.display = completed ? "none" : "inline-flex";
-    openModal("detailModal");
-}
-
-$("openUpdateButton").addEventListener("click", () => {
-    if (!state.selectedLog || isCompleted(state.selectedLog)) return;
-
-    const log = state.selectedLog;
-
-    $("updateError").style.display = "none";
-    $("updateStatus").value = getStatus(log);
-    $("solutionContent").value = getField(
-        log,
-        "phuong_an_xu_ly",
-        "Phương án xử lý",
-        "solution"
-    );
-    $("resolverName").value = getField(
-        log,
-        "nguoi_xu_ly",
-        "Người xử lý",
-        "resolver"
-    );
-
-    closeModal("detailModal");
-    openModal("updateModal");
-});
-
-function setFormError(id, message) {
-    const element = $(id);
-    element.textContent = message;
-    element.style.display = "block";
-}
-
-function setSubmitting(buttonId, submitting, normalText, busyText) {
-    const button = $(buttonId);
-    button.disabled = submitting;
-    button.textContent = submitting ? busyText : normalText;
-}
-
-$("createForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    if (state.submitting) return;
-
-    const branch = $("createBranch").value;
-    const reporter = $("reporterName").value.trim();
-    const content = $("reportContent").value.trim();
-    const canHandle = $("canXuLy").value;
-
-    if (!branch || !reporter || !content) {
-        setFormError("createError", "Vui lòng điền đầy đủ các trường bắt buộc.");
-        return;
-    }
-
-    state.submitting = true;
-    $("createError").style.display = "none";
-    setSubmitting("submitReportButton", true, "Gửi báo cáo", "Đang gửi…");
-
-    try {
-        const result = await apiRequest({
-            action: "create",
-            chi_nhanh: branch,
-            nguoi_bao_cao: reporter,
-            noi_dung: content,
-            muc_do: "Thông thường",
-            can_xu_ly: canHandle
+        helpViewer.addEventListener("click", event => {
+            if (event.target === helpViewer) {
+                closeModal(helpViewer);
+            }
         });
 
-        closeModal("createModal");
-        $("createForm").reset();
-        showToast(result.message || "Đã gửi báo cáo.");
+        /* IMAGE VIEWER CLOSE */
 
-        await loadHuston(false);
-    } catch (error) {
-        setFormError(
-            "createError",
-            error.message || "Không thể gửi báo cáo. Vui lòng thử lại."
-        );
-    } finally {
-        state.submitting = false;
-        setSubmitting("submitReportButton", false, "Gửi báo cáo", "Đang gửi…");
-    }
-});
+        viewerClose.addEventListener("click", () => closeModal(imageViewer));
 
-$("updateForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    if (state.submitting || !state.selectedLog) return;
-
-    const id = getLogId(state.selectedLog);
-    const status = $("updateStatus").value;
-    const solution = $("solutionContent").value.trim();
-    const resolver = $("resolverName").value.trim();
-
-    if (!id || !status || !solution || !resolver) {
-        setFormError("updateError", "Vui lòng điền đầy đủ các trường bắt buộc.");
-        return;
-    }
-
-    state.submitting = true;
-    $("updateError").style.display = "none";
-    setSubmitting("submitUpdateButton", true, "Lưu cập nhật", "Đang lưu…");
-
-    try {
-        const result = await apiRequest({
-            action: "update",
-            id: id,
-            trang_thai_xu_ly: status,
-            phuong_an_xu_ly: solution,
-            nguoi_xu_ly: resolver
+        imageViewer.addEventListener("click", event => {
+            if (event.target === imageViewer) {
+                closeModal(imageViewer);
+            }
         });
 
-        closeModal("updateModal");
-        showToast(result.message || "Đã cập nhật sự việc.");
+        /* KEYBOARD */
 
-        await loadHuston(false);
-    } catch (error) {
-        setFormError(
-            "updateError",
-            error.message || "Không thể cập nhật. Vui lòng thử lại."
-        );
-    } finally {
-        state.submitting = false;
-        setSubmitting("submitUpdateButton", false, "Lưu cập nhật", "Đang lưu…");
-    }
-});
-
-document.querySelectorAll("[data-filter]").forEach((button) => {
-    button.addEventListener("click", () => {
-        if (button.disabled) return;
-
-        state.branchFilter = button.dataset.filter;
-
-        document.querySelectorAll("[data-filter]").forEach((item) => {
-            item.classList.toggle("active", item === button);
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && activeModal) {
+                closeModal(activeModal);
+            }
         });
 
-        renderLogs();
-    });
-});
-
-// Tải dữ liệu ban đầu và làm mới định kỳ.
-loadHuston(true);
-setInterval(() => loadHuston(false), 60000);
-</script>
-
+        renderAll();
+    </script>
 </body>
 </html>
