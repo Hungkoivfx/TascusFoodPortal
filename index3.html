@@ -6,6 +6,7 @@
 
 <title>Tascus Food Portal</title>
 
+<!-- Favicon & Apple Icons -->
 <link rel="icon" type="image/png" href="https://hungkoivfx.github.io/TascusFoodPortal/tascuslogofinal-png-07.png">
 <link rel="apple-touch-startup-image" href="https://hungkoivfx.github.io/TascusFoodPortal/tascuslogofinal-png-07.png">
 <link rel="apple-touch-icon" href="https://hungkoivfx.github.io/TascusFoodPortal/tascuslogofinal-png-07.png">
@@ -21,26 +22,27 @@
 }
 
 :root {
-    --bg-main: #f5f6f7;
-    --card-bg: #fff;
-    --border-color: #e1e3e5;
-    --text-main: #17181a;
-    --text-secondary: #777b80;
-    --text-muted: #a1a4a8;
+    --bg-main: #f5f5f7;
+    --card-bg: #ffffff;
+    --border-subtle: #e5e5ea;
+    --text-main: #1d1d1f;
+    --text-muted: #86868b;
+    --accent-dark: #1d1d1f;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: var(--bg-main);
     color: var(--text-main);
     min-height: 100vh;
     min-height: 100dvh;
     overflow-x: hidden;
     position: relative;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* =====================================================
-   APP CONTAINER & SLIDE VIEWPORTS
+   APP VIEWPORT & SLIDE ANIMATION
 ===================================================== */
 .app-viewport {
     position: relative;
@@ -56,11 +58,11 @@ body {
     left: 0;
     width: 100%;
     min-height: 100%;
-    padding: 24px 16px max(90px, calc(env(safe-area-inset-bottom) + 80px)) 16px;
+    padding: 24px 16px max(100px, calc(env(safe-area-inset-bottom) + 90px)) 16px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.25s ease;
     will-change: transform, opacity;
 }
 
@@ -87,16 +89,16 @@ body {
 
 .container {
     width: 100%;
-    max-width: 620px;
+    max-width: 600px;
 }
 
 /* =====================================================
-   HEADER (CHUẨN 48x48, CĂN TRÁI, ĐỒNG BỘ)
+   HEADER MINIMAL
 ===================================================== */
 .header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     margin-bottom: 24px;
     position: relative;
 }
@@ -107,9 +109,10 @@ body {
     flex-shrink: 0;
     border-radius: 12px;
     background: #fff;
-    border: 1px solid #e1e2e4;
-    padding: 5px;
+    border: 1px solid var(--border-subtle);
+    padding: 4px;
     object-fit: contain;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .header-title {
@@ -119,62 +122,56 @@ body {
 
 .header-title h1 {
     font-size: 21px;
-    line-height: 1.2;
-    font-weight: 700;
-    letter-spacing: -0.3px;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+    color: var(--text-main);
 }
 
 .header-title p {
-    margin-top: 4px;
-    font-size: 12px;
-    color: var(--text-secondary);
+    margin-top: 2px;
+    font-size: 12.5px;
+    color: var(--text-muted);
 }
 
 .info-button {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-subtle);
     background: #fff;
-    color: var(--text-secondary);
-    font-size: 15px;
+    color: var(--text-muted);
+    font-size: 14px;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
     -webkit-tap-highlight-color: transparent;
-    transition: background 0.12s ease, transform 0.12s ease;
+    transition: background 0.15s ease, transform 0.1s ease;
     flex-shrink: 0;
-}
-
-.info-button:hover {
-    background: #f5f6f7;
 }
 
 .info-button:active {
     transform: scale(0.92);
+    background: #e5e5ea;
 }
 
 /* =====================================================
-   SECTIONS & MENU CARDS
+   SECTIONS & CARDS
 ===================================================== */
 .section-label {
-    margin: 0 4px 9px;
+    margin: 0 2px 8px;
     font-size: 11px;
-    font-weight: 700;
-    color: #85888d;
+    font-weight: 600;
+    color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: .7px;
+    letter-spacing: 0.6px;
 }
 
 .section {
-    margin-bottom: 24px;
-}
-
-.section:last-of-type {
-    margin-bottom: 0;
+    margin-bottom: 22px;
 }
 
 .function-list {
@@ -187,39 +184,41 @@ body {
     display: flex;
     align-items: center;
     gap: 14px;
-    min-height: 76px;
+    min-height: 72px;
     padding: 14px 16px;
     background: var(--card-bg);
-    border: 1px solid #e0e1e3;
-    border-radius: 15px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
     color: var(--text-main);
     text-decoration: none;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    transition: background .15s ease, transform .1s ease, box-shadow .1s ease, border-color .1s ease;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
 }
 
 .function-card:hover {
-    background: #fafafa;
-    border-color: #cfd2d5;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    border-color: #d1d1d6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .function-card:active {
-    transform: scale(0.985);
+    transform: scale(0.982);
+    background: #fafafa;
 }
 
 .icon {
-    width: 44px;
-    height: 44px;
-    flex: 0 0 44px;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f1f2f3;
+    background: #f2f2f7;
     border-radius: 12px;
-    font-size: 21px;
+    font-size: 19px;
+    color: #3a3a3c;
 }
 
 .card-content {
@@ -229,74 +228,73 @@ body {
 
 .card-title {
     font-size: 15px;
-    font-weight: 650;
+    font-weight: 600;
     line-height: 1.3;
 }
 
 .card-desc {
-    margin-top: 4px;
+    margin-top: 3px;
     font-size: 12px;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     line-height: 1.4;
 }
 
 .arrow {
-    font-size: 21px;
-    color: #a0a3a7;
+    font-size: 18px;
+    color: #c7c7cc;
     flex-shrink: 0;
     transition: transform 0.1s ease, color 0.1s ease;
 }
 
 .function-card:hover .arrow {
-    color: #666;
+    color: var(--text-main);
     transform: translateX(2px);
 }
 
 .coming-soon-badge {
     flex-shrink: 0;
-    margin-left: 12px;
-    padding: 5px 8px;
-    border-radius: 8px;
-    background: #f0f1f2;
-    color: var(--text-muted);
-    font-size: 10px;
+    margin-left: 8px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: #f2f2f7;
+    color: #8e8e93;
+    font-size: 9.5px;
     font-weight: 600;
     white-space: nowrap;
 }
 
 .footer {
-    margin-top: 30px;
+    margin-top: 28px;
     text-align: center;
-    font-size: 10px;
+    font-size: 11px;
     color: var(--text-muted);
 }
 
 /* =====================================================
-   FIXED BOTTOM NAVIGATION BAR (80:20 / 20:80)
+   BOTTOM NAVIGATION BAR 80:20 (CLEAN APPLE STYLE)
 ===================================================== */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid var(--border-color);
-    padding: 10px 14px max(10px, env(safe-area-inset-bottom)) 14px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 10px 14px max(12px, env(safe-area-inset-bottom)) 14px;
     display: flex;
     gap: 10px;
     z-index: 999;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .nav-btn {
-    height: 52px;
+    height: 50px;
     border-radius: 14px;
-    border: 1px solid var(--border-color);
-    background: #f8f9fa;
-    color: var(--text-secondary);
-    font-size: 15px;
+    border: 1px solid var(--border-subtle);
+    background: #f2f2f7;
+    color: var(--text-muted);
+    font-size: 14.5px;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -310,43 +308,45 @@ body {
     padding: 0 12px;
 }
 
-/* Mặc định Tab Vận hành mở (bên phải 80%) */
+/* Tab Vận hành mặc định (Bên phải 80%) */
 .nav-btn.nav-dieuhanh {
     flex: 0 0 20%;
+    background: #f2f2f7;
+    color: var(--text-muted);
 }
 
 .nav-btn.nav-vanhanh {
     flex: 0 0 80%;
-    background: #17181a;
-    color: #fff;
-    border-color: #17181a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    background: var(--text-main);
+    color: #ffffff;
+    border-color: var(--text-main);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* Khi Tab Điều hành hoạt động */
 .bottom-nav.mode-dieuhanh .nav-btn.nav-dieuhanh {
     flex: 0 0 80%;
-    background: #17181a;
-    color: #fff;
-    border-color: #17181a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    background: var(--text-main);
+    color: #ffffff;
+    border-color: var(--text-main);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .bottom-nav.mode-dieuhanh .nav-btn.nav-vanhanh {
     flex: 0 0 20%;
-    background: #f8f9fa;
-    color: var(--text-secondary);
-    border-color: var(--border-color);
+    background: #f2f2f7;
+    color: var(--text-muted);
+    border-color: var(--border-subtle);
     box-shadow: none;
 }
 
 /* =====================================================
-   MODALS (INFO & PASSWORD POPUPS)
+   POPUP MODALS (CLEAN & DỊU MẮT)
 ===================================================== */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.3);
     display: none;
     align-items: center;
     justify-content: center;
@@ -363,11 +363,11 @@ body {
 .modal-box {
     position: relative;
     width: 100%;
-    max-width: 380px;
+    max-width: 360px;
     background: #fff;
-    border-radius: 18px;
-    padding: 26px 22px 22px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+    border-radius: 20px;
+    padding: 24px 20px 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
     animation: modalAppear 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -380,48 +380,50 @@ body {
     position: absolute;
     top: 12px;
     right: 14px;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border: none;
-    background: transparent;
-    color: var(--text-muted);
-    font-size: 24px;
+    border-radius: 50%;
+    background: #f2f2f7;
+    color: #8e8e93;
+    font-size: 18px;
     line-height: 1;
     cursor: pointer;
 }
 
 .modal-icon {
-    width: 42px;
-    height: 42px;
-    margin-bottom: 14px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
     border-radius: 12px;
-    background: #f1f2f3;
-    color: #555;
+    background: #f2f2f7;
+    color: var(--text-main);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
+    font-size: 18px;
 }
 
 .modal-box h2 {
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .modal-box p {
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
     margin-bottom: 14px;
 }
 
 .modal-input {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid #dfe1e3;
+    border: 1px solid var(--border-subtle);
     border-radius: 12px;
-    background: #fff;
+    background: #f9f9fb;
     color: var(--text-main);
     font-size: 16px;
     outline: none;
@@ -429,7 +431,8 @@ body {
 }
 
 .modal-input:focus {
-    border-color: #888;
+    border-color: #8e8e93;
+    background: #fff;
 }
 
 .modal-submit {
@@ -437,7 +440,7 @@ body {
     padding: 12px;
     border: none;
     border-radius: 12px;
-    background: #17181a;
+    background: var(--text-main);
     color: #fff;
     font-size: 14px;
     font-weight: 600;
@@ -452,18 +455,13 @@ body {
     display: none;
     margin-top: 8px;
     font-size: 12px;
-    color: #b94b42;
+    color: #ff3b30;
 }
 .modal-error.show { display: block; }
 
 @media (max-width: 480px) {
-    body {
-        padding-left: 13px;
-        padding-right: 13px;
-    }
-    .header-title h1 {
-        font-size: 20px;
-    }
+    body { padding-left: 12px; padding-right: 12px; }
+    .header-title h1 { font-size: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -505,7 +503,7 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
 <div class="app-viewport">
 
     <!-- =====================================================
-         CỔNG ĐIỀU HÀNH (DIEUHANH.HTML HỢP NHẤT)
+         CỔNG ĐIỀU HÀNH (DIEUHANH.HTML)
     ===================================================== -->
     <div id="viewDieuHanh" class="portal-view inactive-left">
         <main class="container">
@@ -519,9 +517,7 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
                 <button class="info-button" onclick="openInfoModal('dieuhanh')" aria-label="Giới thiệu cổng điều hành">?</button>
             </header>
 
-            <div class="section-label">
-                Chức năng điều hành
-            </div>
+            <div class="section-label">Chức năng điều hành</div>
 
             <div class="function-list">
                 <a href="./Payments_KhuongTrung.html" class="function-card">
@@ -596,7 +592,7 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
                 <div class="section-label">Tác nghiệp</div>
                 <div class="function-list">
                     <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation" target="_blank" rel="noopener">
-                        <div class="icon" style="background: #faf6df; color: #9b8420;">🥬</div>
+                        <div class="icon">🥬</div>
                         <div class="card-content">
                             <div class="card-title">Đặt rau, bánh</div>
                             <div class="card-desc">Tạo lệnh đặt hàng bánh và rau cho cửa hàng.</div>
@@ -605,7 +601,7 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
                     </a>
 
                     <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgZBVWGRxoxGS1QUIzk1RZZg" target="_blank" rel="noopener">
-                        <div class="icon" style="background: #fcf0e8; color: #c5632c;">✓</div>
+                        <div class="icon">✓</div>
                         <div class="card-content">
                             <div class="card-title">Xác nhận bánh</div>
                             <div class="card-desc">Xác nhận số lượng bánh đã nhận tại cửa hàng.</div>
@@ -628,7 +624,7 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
                 <div class="section-label">Báo cáo</div>
                 <div class="function-list">
                     <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb" target="_blank" rel="noopener">
-                        <div class="icon" style="background: #fcf0e8; color: #c5632c;">₫</div>
+                        <div class="icon">₫</div>
                         <div class="card-content">
                             <div class="card-title">Báo cáo doanh thu</div>
                             <div class="card-desc">Gửi báo cáo doanh thu của cửa hàng.</div>
@@ -637,7 +633,7 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
                     </a>
 
                     <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd" target="_blank" rel="noopener">
-                        <div class="icon" style="background: #faecea; color: #b94b42;">!</div>
+                        <div class="icon">!</div>
                         <div class="card-content">
                             <div class="card-title">Báo cáo huỷ nguyên vật liệu</div>
                             <div class="card-desc">Ghi nhận nguyên vật liệu bị huỷ trong quá trình vận hành.</div>
@@ -673,7 +669,7 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
                         <div class="arrow">↗</div>
                     </a>
 
-                    <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd" target="_blank" rel="noopener" style="pointer-events: none; opacity: 1; cursor: not-allowed;">
+                    <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd" target="_blank" rel="noopener" style="pointer-events: none; opacity: 0.6; cursor: not-allowed;">
                         <div class="icon">≡</div>
                         <div class="card-content">
                             <div class="card-title" style="opacity: 0.7;">Quy trình vận hành · 122 Thái Thịnh</div>
@@ -688,7 +684,7 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
                 <div class="section-label">Thư viện</div>
                 <div class="function-list">
                     <a class="function-card" href="./Thu-vien.html">
-                        <div class="icon" style="background: #faf6df; color: #9b8420;">▤</div>
+                        <div class="icon">▤</div>
                         <div class="card-content">
                             <div class="card-title">Thư viện công thức</div>
                             <div class="card-desc">Tra cứu công thức và hình ảnh công thức các món tại Tascus Food.</div>
@@ -731,15 +727,15 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
 </div>
 
 <!-- =====================================================
-     THANH ĐIỀU HƯỚNG CỐ ĐỊNH PHÍA DƯỚI (80:20 / 20:80)
+     THANH ĐIỀU HƯỚNG CỐ ĐỊNH PHÍA DƯỚI (80:20)
 ===================================================== -->
 <nav class="bottom-nav" id="bottomNav">
     <button class="nav-btn nav-dieuhanh" onclick="switchToTab('dieuhanh')" aria-label="Cổng điều hành">
-        <span style="font-size: 17px;">⚙️</span>
+        <span style="font-size: 16px;">⚙️</span>
         <span class="label">Điều hành</span>
     </button>
     <button class="nav-btn nav-vanhanh" onclick="switchToTab('vanhanh')" aria-label="Cổng vận hành">
-        <span style="font-size: 17px;">🏪</span>
+        <span style="font-size: 16px;">🏪</span>
         <span class="label">Vận hành</span>
     </button>
 </nav>
@@ -776,7 +772,7 @@ const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
    LOGIC CHUYỂN TAB & BẢO VỆ MẬT KHẨU
 ===================================================== */
 const UNLOCKED_KEY = "tascus_dieuhanh_unlocked";
-let currentTab = "vanhanh"; // Mặc định mở Vận hành
+let currentTab = "vanhanh"; 
 
 function switchToTab(targetTab) {
     if (targetTab === currentTab) return;
