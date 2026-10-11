@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Tascus Food Portal</title>
+
+<link rel="icon" type="image/png" href="https://hungkoivfx.github.io/TascusFoodPortal/tascuslogofinal-png-07.png">
+<link rel="apple-touch-startup-image" href="https://hungkoivfx.github.io/TascusFoodPortal/tascuslogofinal-png-07.png">
+<link rel="apple-touch-icon" href="https://hungkoivfx.github.io/TascusFoodPortal/tascuslogofinal-png-07.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tascus Food Portal">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-main: #f5f6f7;
+    --card-bg: #fff;
+    --border-color: #e1e3e5;
+    --text-main: #17181a;
+    --text-secondary: #777b80;
+    --text-muted: #a1a4a8;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* =====================================================
+   APP CONTAINER & SLIDE VIEWPORTS
+===================================================== */
+.app-viewport {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+}
+
+.portal-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    padding: 24px 16px max(90px, calc(env(safe-area-inset-bottom) + 80px)) 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+    will-change: transform, opacity;
+}
+
+.portal-view.inactive-left {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.portal-view.inactive-right {
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.portal-view.active {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.container {
+    width: 100%;
+    max-width: 620px;
+}
+
+/* =====================================================
+   HEADER (CHUẨN 48x48, CĂN TRÁI, ĐỒNG BỘ)
+===================================================== */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #e1e2e4;
+    padding: 5px;
+    object-fit: contain;
+}
+
+.header-title {
+    flex: 1;
+    min-width: 0;
+}
+
+.header-title h1 {
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.header-title p {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.info-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.12s ease, transform 0.12s ease;
+    flex-shrink: 0;
+}
+
+.info-button:hover {
+    background: #f5f6f7;
+}
+
+.info-button:active {
+    transform: scale(0.92);
+}
+
+/* =====================================================
+   SECTIONS & MENU CARDS
+===================================================== */
+.section-label {
+    margin: 0 4px 9px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #85888d;
+    text-transform: uppercase;
+    letter-spacing: .7px;
+}
+
+.section {
+    margin-bottom: 24px;
+}
+
+.section:last-of-type {
+    margin-bottom: 0;
+}
+
+.function-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.function-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 76px;
+    padding: 14px 16px;
+    background: var(--card-bg);
+    border: 1px solid #e0e1e3;
+    border-radius: 15px;
+    color: var(--text-main);
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: background .15s ease, transform .1s ease, box-shadow .1s ease, border-color .1s ease;
+}
+
+.function-card:hover {
+    background: #fafafa;
+    border-color: #cfd2d5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.function-card:active {
+    transform: scale(0.985);
+}
+
+.icon {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f2f3;
+    border-radius: 12px;
+    font-size: 21px;
+}
+
+.card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.card-title {
+    font-size: 15px;
+    font-weight: 650;
+    line-height: 1.3;
+}
+
+.card-desc {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.arrow {
+    font-size: 21px;
+    color: #a0a3a7;
+    flex-shrink: 0;
+    transition: transform 0.1s ease, color 0.1s ease;
+}
+
+.function-card:hover .arrow {
+    color: #666;
+    transform: translateX(2px);
+}
+
+.coming-soon-badge {
+    flex-shrink: 0;
+    margin-left: 12px;
+    padding: 5px 8px;
+    border-radius: 8px;
+    background: #f0f1f2;
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+/* =====================================================
+   FIXED BOTTOM NAVIGATION BAR (80:20 / 20:80)
+===================================================== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border-color);
+    padding: 10px 14px max(10px, env(safe-area-inset-bottom)) 14px;
+    display: flex;
+    gap: 10px;
+    z-index: 999;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nav-btn {
+    height: 52px;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    background: #f8f9fa;
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: flex 0.3s cubic-bezier(0.25, 1, 0.5, 1), background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0 12px;
+}
+
+/* Mặc định Tab Vận hành mở (bên phải 80%) */
+.nav-btn.nav-dieuhanh {
+    flex: 0 0 20%;
+}
+
+.nav-btn.nav-vanhanh {
+    flex: 0 0 80%;
+    background: #17181a;
+    color: #fff;
+    border-color: #17181a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Khi Tab Điều hành hoạt động */
+.bottom-nav.mode-dieuhanh .nav-btn.nav-dieuhanh {
+    flex: 0 0 80%;
+    background: #17181a;
+    color: #fff;
+    border-color: #17181a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.bottom-nav.mode-dieuhanh .nav-btn.nav-vanhanh {
+    flex: 0 0 20%;
+    background: #f8f9fa;
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+    box-shadow: none;
+}
+
+/* =====================================================
+   MODALS (INFO & PASSWORD POPUPS)
+===================================================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-box {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    background: #fff;
+    border-radius: 18px;
+    padding: 26px 22px 22px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+    animation: modalAppear 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes modalAppear {
+    from { opacity: 0; transform: scale(0.95) translateY(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.modal-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    background: #f1f2f3;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.modal-box h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.modal-box p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dfe1e3;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--text-main);
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.modal-input:focus {
+    border-color: #888;
+}
+
+.modal-submit {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: #17181a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modal-submit:active {
+    transform: scale(0.98);
+}
+
+.modal-error {
+    display: none;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #b94b42;
+}
+.modal-error.show { display: block; }
+
+@media (max-width: 480px) {
+    body {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+    .header-title h1 {
+        font-size: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-view, .nav-btn, .modal-box {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+</style>
+
+<script>
+/* =====================================================
+   KIỂM TRA TRÌNH DUYỆT ZALO (GIỮ NGUYÊN GỐC)
+===================================================== */
+const BYPASS_ZALO_CHECK = true;
+const NON_ZALO_REDIRECT = "./TascusfoodPortal.html";
+
+(function () {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera || "";
+    const isZaloBrowser = /Zalo/i.test(userAgent);
+    const isHomeScreenApp = window.navigator.standalone === true || window.matchMedia("(display-mode: standalone)").matches;
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("admin") === "1") {
+        localStorage.setItem("tascusTrustedDevice", "true");
+    }
+
+    const isTrustedDevice = localStorage.getItem("tascusTrustedDevice") === "true";
+
+    if (!BYPASS_ZALO_CHECK && !isZaloBrowser && !isHomeScreenApp && !isTrustedDevice) {
+        window.location.replace(NON_ZALO_REDIRECT);
+    }
+})();
+</script>
+</head>
+
+<body>
+
+<div class="app-viewport">
+
+    <!-- =====================================================
+         CỔNG ĐIỀU HÀNH (DIEUHANH.HTML HỢP NHẤT)
+    ===================================================== -->
+    <div id="viewDieuHanh" class="portal-view inactive-left">
+        <main class="container">
+
+            <header class="header">
+                <img class="logo" src="https://hungkoivfx.github.io/TascusFoodPortal/tascuslogofinal-png-07.png" alt="Tascus Food">
+                <div class="header-title">
+                    <h1>Cổng điều hành</h1>
+                    <p>Quản lý · Tascus Food</p>
+                </div>
+                <button class="info-button" onclick="openInfoModal('dieuhanh')" aria-label="Giới thiệu cổng điều hành">?</button>
+            </header>
+
+            <div class="section-label">
+                Chức năng điều hành
+            </div>
+
+            <div class="function-list">
+                <a href="./Payments_KhuongTrung.html" class="function-card">
+                    <div class="icon">💳</div>
+                    <div class="card-content">
+                        <div class="card-title">Sổ thanh toán</div>
+                        <div class="card-desc">Kế toán · 69 Khương Trung</div>
+                    </div>
+                    <div class="arrow">›</div>
+                </a>
+
+                <a href="./Demothongkebanh.html" class="function-card">
+                    <div class="icon">🥖</div>
+                    <div class="card-content">
+                        <div class="card-title">Bảng thống kê bánh</div>
+                        <div class="card-desc">Theo dõi số lượng bánh</div>
+                    </div>
+                    <div class="arrow">›</div>
+                </a>
+
+                <a href="./docbaocaodoanhthu.html" class="function-card">
+                    <div class="icon">📊</div>
+                    <div class="card-content">
+                        <div class="card-title">Xem báo cáo doanh thu</div>
+                        <div class="card-desc">Báo cáo doanh thu theo ca</div>
+                    </div>
+                    <div class="arrow">›</div>
+                </a>
+
+                <a href="#" class="function-card">
+                    <div class="icon">🗑️</div>
+                    <div class="card-content">
+                        <div class="card-title">Báo cáo hủy đồ</div>
+                        <div class="card-desc">Theo dõi nguyên vật liệu và sản phẩm hủy</div>
+                    </div>
+                    <div class="arrow">›</div>
+                </a>
+
+                <a href="#" class="function-card">
+                    <div class="icon">🔔</div>
+                    <div class="card-content">
+                        <div class="card-title">Quản lý nhắc nhở công việc tự động</div>
+                        <div class="card-desc">Quản lý các công việc và lịch nhắc tự động</div>
+                    </div>
+                    <div class="arrow">›</div>
+                </a>
+            </div>
+
+            <div class="footer">
+                Tascus Food · Cổng điều hành
+            </div>
+
+        </main>
+    </div>
+
+    <!-- =====================================================
+         CỔNG VẬN HÀNH (INDEX.HTML GỐC)
+    ===================================================== -->
+    <div id="viewVanHanh" class="portal-view active">
+        <main class="container">
+
+            <header class="header">
+                <img class="logo" src="https://hungkoivfx.github.io/TascusFoodPortal/tascuslogofinal-png-07.png" alt="Tascus Food">
+                <div class="header-title">
+                    <h1>Cổng vận hành</h1>
+                    <p>Trung tâm tác nghiệp dành cho nhân viên cửa hàng Tascus Food Khương Trung.</p>
+                </div>
+                <button class="info-button" onclick="openInfoModal('vanhanh')" aria-label="Giới thiệu cổng vận hành">?</button>
+            </header>
+
+            <section class="section">
+                <div class="section-label">Tác nghiệp</div>
+                <div class="function-list">
+                    <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation" target="_blank" rel="noopener">
+                        <div class="icon" style="background: #faf6df; color: #9b8420;">🥬</div>
+                        <div class="card-content">
+                            <div class="card-title">Đặt rau, bánh</div>
+                            <div class="card-desc">Tạo lệnh đặt hàng bánh và rau cho cửa hàng.</div>
+                        </div>
+                        <div class="arrow">↗</div>
+                    </a>
+
+                    <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgZBVWGRxoxGS1QUIzk1RZZg" target="_blank" rel="noopener">
+                        <div class="icon" style="background: #fcf0e8; color: #c5632c;">✓</div>
+                        <div class="card-content">
+                            <div class="card-title">Xác nhận bánh</div>
+                            <div class="card-desc">Xác nhận số lượng bánh đã nhận tại cửa hàng.</div>
+                        </div>
+                        <div class="arrow">↗</div>
+                    </a>
+
+                    <a class="function-card" href="https://i.pinimg.com/originals/87/dc/63/87dc639537d59eab8cf6d77849d1b9e2.gif">
+                        <div class="icon">🚚</div>
+                        <div class="card-content">
+                            <div class="card-title">Điều chuyển nội bộ</div>
+                            <div class="card-desc">Vay/mượn/hỗ trợ vật tư giữa hai cửa hàng.</div>
+                        </div>
+                        <div class="coming-soon-badge">Tạm thời ngừng hoạt động!</div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-label">Báo cáo</div>
+                <div class="function-list">
+                    <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb" target="_blank" rel="noopener">
+                        <div class="icon" style="background: #fcf0e8; color: #c5632c;">₫</div>
+                        <div class="card-content">
+                            <div class="card-title">Báo cáo doanh thu</div>
+                            <div class="card-desc">Gửi báo cáo doanh thu của cửa hàng.</div>
+                        </div>
+                        <div class="arrow">↗</div>
+                    </a>
+
+                    <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd" target="_blank" rel="noopener">
+                        <div class="icon" style="background: #faecea; color: #b94b42;">!</div>
+                        <div class="card-content">
+                            <div class="card-title">Báo cáo huỷ nguyên vật liệu</div>
+                            <div class="card-desc">Ghi nhận nguyên vật liệu bị huỷ trong quá trình vận hành.</div>
+                        </div>
+                        <div class="arrow">↗</div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-label">Vận hành</div>
+                <div class="function-list">
+                    <a class="function-card" href="./OperationLogs.html">
+                        <div class="icon">◷</div>
+                        <div class="card-content">
+                            <div class="card-title">Nhật ký vận hành</div>
+                            <div class="card-desc">Ghi nhận và cập nhật các vấn đề phát sinh trong vận hành.</div>
+                        </div>
+                        <div class="arrow">›</div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-label">Quy trình vận hành tiêu chuẩn</div>
+                <div class="function-list">
+                    <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/wiki/UE0wwgqeSi2pKskkDgalSbTjgJd?from=from_copylink" target="_blank" rel="noopener">
+                        <div class="icon">≡</div>
+                        <div class="card-content">
+                            <div class="card-title">Quy trình vận hành · 69 Khương Trung</div>
+                            <div class="card-desc">Quy trình vận hành cửa hàng, các nhân sự bắt buộc phải đọc và cập nhật thường xuyên</div>
+                        </div>
+                        <div class="arrow">↗</div>
+                    </a>
+
+                    <a class="function-card" href="https://rjtj1yaw65k.sg.larksuite.com/wiki/P9mawMsIciX1F1kBjJOlBrx1gXd" target="_blank" rel="noopener" style="pointer-events: none; opacity: 1; cursor: not-allowed;">
+                        <div class="icon">≡</div>
+                        <div class="card-content">
+                            <div class="card-title" style="opacity: 0.7;">Quy trình vận hành · 122 Thái Thịnh</div>
+                            <div class="card-desc" style="opacity: 0.7;">Đã tắt, không còn khả năng truy cập</div>
+                        </div>
+                        <div class="arrow">↗</div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-label">Thư viện</div>
+                <div class="function-list">
+                    <a class="function-card" href="./Thu-vien.html">
+                        <div class="icon" style="background: #faf6df; color: #9b8420;">▤</div>
+                        <div class="card-content">
+                            <div class="card-title">Thư viện công thức</div>
+                            <div class="card-desc">Tra cứu công thức và hình ảnh công thức các món tại Tascus Food.</div>
+                        </div>
+                        <div class="arrow">›</div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-label">Nhân viên</div>
+                <div class="function-list">
+                    <div class="function-card" style="background: #fafafa; cursor: default;">
+                        <div class="icon" style="color: #a1a4a8;">+</div>
+                        <div class="card-content">
+                            <div class="card-title">Sổ tay nhân viên</div>
+                            <div class="card-desc">Tài liệu hướng dẫn dành cho nhân viên Tascus Food.</div>
+                        </div>
+                        <div class="coming-soon-badge">SẮP RA MẮT</div>
+                    </div>
+
+                    <div class="function-card" style="background: #fafafa; cursor: default;">
+                        <div class="icon" style="color: #a1a4a8;">✓</div>
+                        <div class="card-content">
+                            <div class="card-title">Đào tạo / Kiểm tra</div>
+                            <div class="card-desc">Học quy trình và kiểm tra kiến thức vận hành của nhân viên.</div>
+                        </div>
+                        <div class="coming-soon-badge">SẮP RA MẮT</div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                Tascus Food · Cổng vận hành
+            </footer>
+
+        </main>
+    </div>
+
+</div>
+
+<!-- =====================================================
+     THANH ĐIỀU HƯỚNG CỐ ĐỊNH PHÍA DƯỚI (80:20 / 20:80)
+===================================================== -->
+<nav class="bottom-nav" id="bottomNav">
+    <button class="nav-btn nav-dieuhanh" onclick="switchToTab('dieuhanh')" aria-label="Cổng điều hành">
+        <span style="font-size: 17px;">⚙️</span>
+        <span class="label">Điều hành</span>
+    </button>
+    <button class="nav-btn nav-vanhanh" onclick="switchToTab('vanhanh')" aria-label="Cổng vận hành">
+        <span style="font-size: 17px;">🏪</span>
+        <span class="label">Vận hành</span>
+    </button>
+</nav>
+
+<!-- =====================================================
+     POPUP MẬT KHẨU CỔNG ĐIỀU HÀNH
+===================================================== -->
+<div class="modal-overlay" id="passwordModal" onclick="closePasswordModal(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closePasswordModal()">&times;</button>
+        <div class="modal-icon">🔒</div>
+        <h2>Cổng điều hành</h2>
+        <p>Nhập mật khẩu để truy cập cổng điều hành.</p>
+        <input type="password" id="managementPassword" class="modal-input" placeholder="Mật khẩu" inputmode="numeric" autocomplete="off" onkeydown="if(event.key === 'Enter') verifyPassword()">
+        <button class="modal-submit" onclick="verifyPassword()">Xác nhận</button>
+        <div class="modal-error" id="passwordError">Mật khẩu không đúng.</div>
+    </div>
+</div>
+
+<!-- =====================================================
+     POPUP GIỚI THIỆU (INFO MODAL)
+===================================================== -->
+<div class="modal-overlay" id="infoModal" onclick="closeInfoModal(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeInfoModal()">&times;</button>
+        <div class="modal-icon" id="infoModalIcon">?</div>
+        <h2 id="infoModalTitle">Giới thiệu</h2>
+        <p id="infoModalContent">Nội dung giới thiệu...</p>
+    </div>
+</div>
+
+<script>
+/* =====================================================
+   LOGIC CHUYỂN TAB & BẢO VỆ MẬT KHẨU
+===================================================== */
+const UNLOCKED_KEY = "tascus_dieuhanh_unlocked";
+let currentTab = "vanhanh"; // Mặc định mở Vận hành
+
+function switchToTab(targetTab) {
+    if (targetTab === currentTab) return;
+
+    if (targetTab === "dieuhanh") {
+        const isUnlocked = localStorage.getItem(UNLOCKED_KEY) === "true";
+        if (!isUnlocked) {
+            openPasswordModal();
+            return;
+        }
+    }
+
+    const viewVH = document.getElementById("viewVanHanh");
+    const viewDH = document.getElementById("viewDieuHanh");
+    const nav = document.getElementById("bottomNav");
+
+    if (targetTab === "dieuhanh") {
+        viewVH.className = "portal-view inactive-left";
+        viewDH.className = "portal-view active";
+        nav.classList.add("mode-dieuhanh");
+        currentTab = "dieuhanh";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        viewDH.className = "portal-view inactive-right";
+        viewVH.className = "portal-view active";
+        nav.classList.remove("mode-dieuhanh");
+        currentTab = "vanhanh";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+/* Password Modal Logic */
+function openPasswordModal() {
+    const modal = document.getElementById("passwordModal");
+    const passInput = document.getElementById("managementPassword");
+    const error = document.getElementById("passwordError");
+
+    passInput.value = "";
+    error.classList.remove("show");
+    modal.classList.add("show");
+    setTimeout(() => passInput.focus(), 120);
+}
+
+function closePasswordModal(event) {
+    const modal = document.getElementById("passwordModal");
+    if (!event || event.target === modal) {
+        modal.classList.remove("show");
+    }
+}
+
+function verifyPassword() {
+    const passInput = document.getElementById("managementPassword");
+    const error = document.getElementById("passwordError");
+
+    if (passInput.value === "0606") {
+        localStorage.setItem(UNLOCKED_KEY, "true");
+        document.getElementById("passwordModal").classList.remove("show");
+        switchToTab("dieuhanh");
+    } else {
+        error.classList.add("show");
+        passInput.select();
+    }
+}
+
+/* Info Modal Logic */
+function openInfoModal(portal) {
+    const modal = document.getElementById("infoModal");
+    const titleEl = document.getElementById("infoModalTitle");
+    const contentEl = document.getElementById("infoModalContent");
+
+    if (portal === "vanhanh") {
+        titleEl.textContent = "Cổng vận hành";
+        contentEl.innerHTML = "Đây là nơi tập hợp những thứ nhân viên cần dùng trong công việc hằng ngày tại Tascus Food. Từ đặt hàng, báo cáo, ghi nhận sự cố đến xem quy trình và công thức món, mọi thứ đều được gom lại ở đây để dễ tìm và dễ sử dụng hơn.<br><br>Các chức năng và hướng dẫn trên cổng được thiết kế để nhân viên có thể tự tìm hiểu và thực hiện công việc của mình.";
+    } else {
+        titleEl.textContent = "Cổng điều hành";
+        contentEl.innerHTML = "Trung tâm quản trị dành cho quản lý và các nghiệp vụ tài chính, theo dõi số liệu, kiểm soát vận hành nội bộ Tascus Food.";
+    }
+
+    modal.classList.add("show");
+}
+
+function closeInfoModal(event) {
+    const modal = document.getElementById("infoModal");
+    if (!event || event.target === modal) {
+        modal.classList.remove("show");
+    }
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        document.getElementById("passwordModal").classList.remove("show");
+        document.getElementById("infoModal").classList.remove("show");
+    }
+});
+
+/* Khởi tạo trạng thái ban đầu khi tải trang */
+window.addEventListener("DOMContentLoaded", () => {
+    currentTab = "vanhanh";
+    document.getElementById("viewVanHanh").className = "portal-view active";
+    document.getElementById("viewDieuHanh").className = "portal-view inactive-left";
+    document.getElementById("bottomNav").classList.remove("mode-dieuhanh");
+});
+</script>
+
+</body>
+</html>
