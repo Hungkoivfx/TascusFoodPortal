@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T08:46:57.829Z",
+  "updated_at": "2026-10-12T09:07:19.616Z",
   "records": [
     {
       "id": "Z032",
@@ -639,7 +639,10 @@
       "noi_dung": "Cần bổ sung thêm\nCốc to",
       "muc_do": "Thông thường",
       "can_xu_ly": "Có thể tự xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/12 16:07",
+      "phuong_an_xu_ly": "Đã bổ sung",
+      "nguoi_xu_ly": "Anh Hưng"
     }
   ]
 }
