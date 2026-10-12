@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T08:37:27.250Z",
+  "updated_at": "2026-10-12T08:46:57.829Z",
   "records": [
     {
       "id": "Z032",
@@ -626,9 +626,10 @@
       "noi_dung": "Cần bổ sung thêm\nCốc nhỏ\nOreo\nỐng hút nhỏ\nGiấy in Bill",
       "muc_do": "Thông thường",
       "can_xu_ly": "Có thể tự xử lý",
-      "trang_thai_xu_ly": "Đang xử lý",
-      "phuong_an_xu_ly": "Bổ sung combo bigbox",
-      "nguoi_xu_ly": "Hưng"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "phuong_an_xu_ly": "Bổ sung \n13 x combo bigbox\n03 x cốc\n20 x giấy bill\n08 x Oreo\n185 x ống hút nhỏ",
+      "nguoi_xu_ly": "Hưng",
+      "thoi_gian_xu_ly": "2026/10/12 15:46"
     },
     {
       "id": "Z081",
