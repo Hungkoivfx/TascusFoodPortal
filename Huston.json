@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T16:37:53.570Z",
+  "updated_at": "2026-10-12T07:01:37.286Z",
   "records": [
     {
       "id": "Z032",
@@ -617,6 +617,16 @@
       "thoi_gian_xu_ly": "2026/10/11 23:37",
       "phuong_an_xu_ly": "Đã mua tạm 30 trứng",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z080",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/12 14:01",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Cần bổ sung thêm\nCốc nhỏ\nOreo\nỐng hút nhỏ\nGiấy in Bill",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Có thể tự xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
