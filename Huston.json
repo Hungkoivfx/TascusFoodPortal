@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T07:05:12.479Z",
+  "updated_at": "2026-10-12T08:37:27.250Z",
   "records": [
     {
       "id": "Z032",
@@ -629,6 +629,16 @@
       "trang_thai_xu_ly": "Đang xử lý",
       "phuong_an_xu_ly": "Bổ sung combo bigbox",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z081",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/12 15:37",
+      "nguoi_bao_cao": "D.Linh",
+      "noi_dung": "Cần bổ sung thêm\nCốc to",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Có thể tự xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
