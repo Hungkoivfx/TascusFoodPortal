@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T12:21:41.265Z",
+  "updated_at": "2026-10-13T14:17:13.165Z",
   "records": [
     {
       "id": "Z032",
@@ -644,6 +644,16 @@
       "thoi_gian_xu_ly": "2026/10/12 16:07",
       "phuong_an_xu_ly": "Đã bổ sung",
       "nguoi_xu_ly": "Anh Hưng"
+    },
+    {
+      "id": "Z082",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/13 21:17",
+      "nguoi_bao_cao": "Duyên",
+      "noi_dung": "Tủ đông có vấn đề cần xử lí gấp chỉ thấy mát k thấy đông",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
