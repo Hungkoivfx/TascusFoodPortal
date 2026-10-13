@@ -119,8 +119,8 @@ const BYPASS_ZALO_CHECK=true;const NON_ZALO_REDIRECT="./TascusfoodPortal.html";(
 <section class="section"><div class="section-title"><span>Tác nghiệp</span></div><div class="menu">
 <a class="menu-button" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation" target="_blank" rel="noopener"><div class="button-icon yellow">🥬</div><div class="button-content"><div class="button-title">Đặt rau, bánh</div><div class="button-description">Tạo lệnh đặt hàng bánh và rau cho cửa hàng.</div></div><div class="arrow">↗</div></a>
 <a class="menu-button" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgZBVWGRxoxGS1QUIzk1RZZg" target="_blank" rel="noopener"><div class="button-icon orange">✓</div><div class="button-content"><div class="button-title">Xác nhận bánh</div><div class="button-description">Xác nhận số lượng bánh đã nhận tại cửa hàng.</div></div><div class="arrow">↗</div></a>
-<a class="menu-button" href="./Data
-/pickup-truck-animation-gif-download-13201275.gif" onclick="openGifViewer(event)" aria-label="Xem ảnh GIF điều chuyển nội bộ"><div class="button-icon">🚚</div><div class="button-content"><div class="button-title">Điều chuyển nội bộ</div><div class="button-description">Vay/mượn/hỗ trợ vật tư giữa hai cửa hàng.</div></div><div class="coming-soon-badge">Tạm thời ngừng hoạt động!</div></a>
+<a class="menu-button" href="https://i.pinimg.com/originals/87/dc/63/87dc639537d59eab8cf6d77849d1b9e2.gif"><div class="button-icon">🚚</div><div class="button-content"><div class="button-title">Điều chuyển nội bộ</div><div class="button-description">Vay/mượn/hỗ trợ vật tư giữa hai cửa hàng.</div></div><div class="coming-soon-badge">Tạm thời ngừng hoạt động!</div></a>
+</div></section>
 <section class="section"><div class="section-title"><span>Báo cáo</span></div><div class="menu">
 <a class="menu-button" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb" target="_blank" rel="noopener"><div class="button-icon orange">₫</div><div class="button-content"><div class="button-title">Báo cáo doanh thu</div><div class="button-description">Gửi báo cáo doanh thu của cửa hàng.</div></div><div class="arrow">↗</div></a>
 <a class="menu-button" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgfNVtiMPLfVO038tPkQ9Wbd" target="_blank" rel="noopener"><div class="button-icon red">!</div><div class="button-content"><div class="button-title">Báo cáo huỷ nguyên vật liệu</div><div class="button-description">Ghi nhận nguyên vật liệu bị huỷ trong quá trình vận hành.</div></div><div class="arrow">↗</div></a>
@@ -221,10 +221,6 @@ document.querySelectorAll(".pin-digit").forEach((input,index,inputs)=>{
 function openInfo(){document.getElementById("infoOverlay").classList.add("show")}
 function closeInfo(event){const o=document.getElementById("infoOverlay");if(!event||event.target===o)o.classList.remove("show")}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("infoOverlay").classList.remove("show")});
- function openGifViewer(event){if(event)event.preventDefault();const overlay=document.getElementById("gifViewerOverlay");overlay.classList.add("show");document.body.style.overflow="hidden";const closeButton=overlay.querySelector(".gif-viewer-close");if(closeButton)closeButton.focus()}
-function closeGifViewer(event){const overlay=document.getElementById("gifViewerOverlay");if(!event||event.target===overlay||event.target.closest(".gif-viewer-close")){overlay.classList.remove("show");document.body.style.overflow=""}}
-
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){document.getElementById("infoOverlay").classList.remove("show");closeGifViewer()}});
 /* Mỗi lần tải trang mặc định vào Vận hành; khu vực Điều hành khóa lại cho đến khi nhập đúng PIN. */
 document.addEventListener("DOMContentLoaded",()=>{document.getElementById("operationsPanel").classList.add("active","entering");document.getElementById("managementPanel").classList.remove("active","entering");document.getElementById("managementGate").hidden=false;document.getElementById("managementContent").hidden=true;clearPin();document.getElementById("operationsTabButton").classList.add("active");document.getElementById("managementTabButton").classList.remove("active")});
 </script></body></html>
