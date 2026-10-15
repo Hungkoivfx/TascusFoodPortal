@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f7f7fb">
+    <title>Thống kê số lượng bánh</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f7f7fb;
+            --surface: #ffffff;
+            --surface-container: #efeff6;
+            --primary: #705b91;
+            --primary-container: #eaddff;
+            --on-primary-container: #271642;
+            --text: #1b1b21;
+            --subtext: #62616a;
+            --outline: #c8c5d0;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Roboto', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button, a {
+            font: inherit;
+        }
+
+        button {
+            color: inherit;
+        }
+
+        .topbar {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-button {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: transparent;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .icon-button:hover {
+            background: var(--surface-container);
+        }
+
+        .icon-button .material-icons-round {
+            font-size: 24px;
+        }
+
+        .help-button {
+            border: 1px solid var(--outline);
+        }
+
+        .page-heading {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .page-heading h1 {
+            margin: 0;
+            font-size: 24px;
+            line-height: 1.3;
+            font-weight: 600;
+            letter-spacing: -.4px;
+        }
+
+        .page-heading p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: var(--subtext);
+            line-height: 1.5;
+        }
+
+        .main {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 24px 32px;
+        }
+
+        .intro {
+            margin-bottom: 22px;
+        }
+
+        .intro h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 0 8px;
+        }
+
+        .intro p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--subtext);
+        }
+
+        .help-panel {
+            display: none;
+            margin-bottom: 18px;
+            padding: 18px 20px;
+            background: var(--surface);
+            border: 1px solid #e7e5ed;
+            border-radius: 16px;
+            line-height: 1.7;
+            animation: appear .2s ease-out;
+        }
+
+        .help-panel.show {
+            display: block;
+        }
+
+        .help-panel h3 {
+            font-size: 16px;
+            margin: 0 0 8px;
+            font-weight: 600;
+        }
+
+        .help-panel p {
+            font-size: 14px;
+            color: var(--subtext);
+            margin: 5px 0;
+        }
+
+        .tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 5px;
+            border-radius: 20px;
+            background: var(--surface-container);
+            margin-bottom: 16px;
+        }
+
+        .tab {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+            min-height: 56px;
+            padding: 12px;
+            border: 1px solid transparent;
+            border-radius: 15px;
+            background: transparent;
+            font-size: 14px;
+            line-height: 1.4;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .tab .material-icons-round {
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .tab.active {
+            color: var(--on-primary-container);
+            background: var(--primary-container);
+            font-weight: 600;
+        }
+
+        .tab:focus-visible,
+        .icon-button:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .content-card {
+            background: var(--surface);
+            border: 1px solid #e7e5ed;
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: 0 2px 5px rgba(30, 25, 45, .025);
+            animation: appear .2s ease-out;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-heading {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 18px;
+        }
+
+        .content-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            background: var(--primary-container);
+            color: var(--primary);
+        }
+
+        .content-icon .material-icons-round {
+            font-size: 26px;
+        }
+
+        .content-heading h2 {
+            margin: 0 0 5px;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .content-heading p {
+            margin: 0;
+            color: var(--subtext);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .device-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            color: var(--subtext);
+            font-size: 13px;
+        }
+
+        .device-info .material-icons-round {
+            font-size: 19px;
+        }
+
+        .device-value {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .frame-wrapper {
+            position: relative;
+            width: 100%;
+            height: 76vh;
+            min-height: 520px;
+            overflow: hidden;
+            border: 1px solid #e4e1ea;
+            border-radius: 16px;
+            background: #fff;
+        }
+
+        .frame-loading {
+            position: absolute;
+            z-index: 0;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: 24px;
+            text-align: center;
+            color: var(--subtext);
+            font-size: 14px;
+            line-height: 1.6;
+            background: #fff;
+        }
+
+        .spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #e7e0f2;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin .8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .stats-frame {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: transparent;
+        }
+
+        .frame-note {
+            display: flex;
+            gap: 9px;
+            align-items: flex-start;
+            margin-top: 14px;
+            padding: 13px 15px;
+            border-radius: 12px;
+            background: #f5f4f8;
+            color: var(--subtext);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .frame-note .material-icons-round {
+            flex-shrink: 0;
+            color: var(--primary);
+            font-size: 19px;
+        }
+
+        .retry-button {
+            margin-top: 8px;
+            padding: 9px 16px;
+            border: 1px solid var(--outline);
+            border-radius: 100px;
+            background: #fff;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .footer {
+            padding: 22px 0 0;
+            text-align: center;
+            color: #898791;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .topbar {
+                padding: 10px 12px 8px;
+                gap: 7px;
+            }
+
+            .icon-button {
+                width: 42px;
+                height: 42px;
+            }
+
+            .page-heading h1 {
+                font-size: 19px;
+            }
+
+            .page-heading p {
+                font-size: 12px;
+            }
+
+            .main {
+                padding: 14px 12px 24px;
+            }
+
+            .intro {
+                margin-bottom: 18px;
+            }
+
+            .intro h2 {
+                font-size: 18px;
+            }
+
+            .intro p {
+                font-size: 13px;
+            }
+
+            .tabs {
+                gap: 4px;
+                padding: 4px;
+                border-radius: 17px;
+                margin-bottom: 12px;
+            }
+
+            .tab {
+                flex-direction: column;
+                gap: 5px;
+                min-height: 72px;
+                padding: 9px 4px;
+                text-align: center;
+                font-size: 12px;
+            }
+
+            .tab .material-icons-round {
+                font-size: 21px;
+            }
+
+            .content-card {
+                padding: 16px 12px;
+                border-radius: 20px;
+            }
+
+            .content-heading {
+                gap: 10px;
+                margin-bottom: 16px;
+            }
+
+            .content-icon {
+                width: 43px;
+                height: 43px;
+                border-radius: 13px;
+            }
+
+            .content-heading h2 {
+                font-size: 16px;
+            }
+
+            .content-heading p {
+                font-size: 12px;
+            }
+
+            .frame-wrapper {
+                height: 76vh;
+                min-height: 420px;
+                border-radius: 12px;
+            }
+
+            .frame-note {
+                font-size: 12px;
+                padding: 11px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <button class="icon-button" id="backButton" type="button"
+                aria-label="Quay lại" title="Quay lại">
+            <span class="material-icons-round">arrow_back</span>
+        </button>
+
+        <div class="page-heading">
+            <h1>Thống kê số lượng bánh</h1>
+            <p>Tra cứu và theo dõi số liệu</p>
+        </div>
+
+        <button class="icon-button help-button" id="helpButton" type="button"
+                aria-label="Hướng dẫn sử dụng" aria-expanded="false"
+                title="Hướng dẫn">
+            <span class="material-icons-round">help_outline</span>
+        </button>
+    </header>
+
+    <main class="main">
+        <section class="intro">
+            <h2>Tra cứu thống kê</h2>
+            <p>Chọn loại thống kê để xem bảng dữ liệu trực tiếp ngay bên dưới.</p>
+        </section>
+
+        <section class="help-panel" id="helpPanel" aria-hidden="true">
+            <h3>Hướng dẫn sử dụng</h3>
+            <p>• <strong>Thống kê tiền bánh:</strong> Xem dữ liệu thống kê tiền bánh.</p>
+            <p>• <strong>Thống kê số lượng bánh:</strong> Xem dữ liệu thống kê số lượng bánh.</p>
+            <p>• Bảng dữ liệu được nhúng trực tiếp trong trang. Khi chuyển tab, bảng tương ứng sẽ được tải.</p>
+            <p>• Nếu bảng không hiển thị, Lark có thể đang chặn iframe hoặc yêu cầu đăng nhập. Khi đó cần mở liên kết trực tiếp trên Lark.</p>
+        </section>
+
+        <nav class="tabs" role="tablist" aria-label="Loại thống kê">
+            <button class="tab active" id="tabMoney" type="button"
+                    role="tab" aria-selected="true"
+                    aria-controls="tabContent" data-tab="money">
+                <span class="material-icons-round">payments</span>
+                <span>Thống kê tiền bánh</span>
+            </button>
+
+            <button class="tab" id="tabQuantity" type="button"
+                    role="tab" aria-selected="false"
+                    aria-controls="tabContent" data-tab="quantity" tabindex="-1">
+                <span class="material-icons-round">inventory_2</span>
+                <span>Thống kê số lượng bánh</span>
+            </button>
+        </nav>
+
+        <section class="content-card" id="tabContent"
+                 role="tabpanel" aria-labelledby="tabMoney">
+
+            <div class="content-heading">
+                <div class="content-icon">
+                    <span class="material-icons-round" id="contentIcon">payments</span>
+                </div>
+
+                <div>
+                    <h2 id="contentTitle">Thống kê tiền bánh</h2>
+                    <p id="contentDescription">Theo dõi dữ liệu thống kê tiền bánh.</p>
+                </div>
+            </div>
+
+            <div class="device-info">
+                <span class="material-icons-round" id="deviceIcon">computer</span>
+                <span>Phiên bản:</span>
+                <span class="device-value" id="deviceName">Máy tính</span>
+            </div>
+
+            <div class="frame-wrapper">
+                <div class="frame-loading" id="frameLoading">
+                    <div class="spinner"></div>
+                    <div id="loadingText">Đang tải bảng thống kê...</div>
+                    <button class="retry-button" id="retryButton" type="button"
+                            style="display:none">
+                        Tải lại bảng
+                    </button>
+                </div>
+
+                <iframe
+                    class="stats-frame"
+                    id="statsFrame"
+                    title="Bảng thống kê tiền bánh"
+                    src="about:blank"
+                    loading="eager"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="frame-note">
+                <span class="material-icons-round">info</span>
+                <span id="frameNoteText">Bảng đang được tải trực tiếp từ Lark. Thời gian tải phụ thuộc vào kết nối mạng và quyền truy cập.</span>
+            </div>
+        </section>
+
+        <div class="footer">
+            Cổng vận hành · Tascus Food
+        </div>
+    </main>
+
+    <script>
+        (() => {
+            'use strict';
+
+            const links = {
+                money: {
+                    title: 'Thống kê tiền bánh',
+                    description: 'Theo dõi dữ liệu thống kê tiền bánh.',
+                    icon: 'payments',
+                    mobile: 'https://rjtj1yaw65k.sg.larksuite.com/share/base/dashboard/shrlgk8jqlhHXtKDqs2QU4dpkad',
+                    desktop: 'https://rjtj1yaw65k.sg.larksuite.com/share/base/dashboard/shrlgGIJ8pKJIN3z7QyngRk2Afb'
+                },
+                quantity: {
+                    title: 'Thống kê số lượng bánh',
+                    description: 'Theo dõi dữ liệu thống kê số lượng bánh.',
+                    icon: 'inventory_2',
+                    mobile: 'https://rjtj1yaw65k.sg.larksuite.com/share/base/view/shrlg5Z3tXnyuIAmkhjsnWRMAzb',
+                    desktop: 'https://rjtj1yaw65k.sg.larksuite.com/share/base/view/shrlgVsvKDPgQFNBjLFHGkUs2XI'
+                }
+            };
+
+            const $ = id => document.getElementById(id);
+
+            let currentTab = 'money';
+            let currentUrl = '';
+            let loadTimer = null;
+
+            function isMobile() {
+                return window.matchMedia('(max-width: 600px)').matches;
+            }
+
+            function getUrl(tab) {
+                return isMobile() ? links[tab].mobile : links[tab].desktop;
+            }
+
+            function showLoading(message, showRetry = false) {
+                $('frameLoading').style.display = 'flex';
+                $('loadingText').textContent = message;
+                $('retryButton').style.display = showRetry ? 'inline-block' : 'none';
+            }
+
+            function hideLoading() {
+                $('frameLoading').style.display = 'none';
+            }
+
+            function loadFrame(forceReload = false) {
+                const item = links[currentTab];
+                const url = getUrl(currentTab);
+                const frame = $('statsFrame');
+
+                $('deviceName').textContent = isMobile() ? 'Điện thoại' : 'Máy tính';
+                $('deviceIcon').textContent = isMobile() ? 'smartphone' : 'computer';
+                frame.title = item.title;
+
+                if (!forceReload && url === currentUrl) {
+                    return;
+                }
+
+                currentUrl = url;
+                clearTimeout(loadTimer);
+                showLoading('Đang tải bảng thống kê...');
+
+                frame.src = url;
+
+                // Trình duyệt không cho biết chắc chắn iframe có bị máy chủ
+                // đích chặn hay không. Bộ hẹn giờ chỉ hiện hướng dẫn dự phòng.
+                loadTimer = setTimeout(() => {
+                    $('loadingText').textContent =
+                        'Bảng tải lâu hoặc không hiển thị? Lark có thể yêu cầu đăng nhập hoặc chặn nhúng iframe.';
+                    $('retryButton').style.display = 'inline-block';
+                }, 12000);
+            }
+
+            function selectTab(tab) {
+                if (!links[tab]) return;
+
+                currentTab = tab;
+                const item = links[tab];
+
+                document.querySelectorAll('.tab').forEach(button => {
+                    const selected = button.dataset.tab === tab;
+                    button.classList.toggle('active', selected);
+                    button.setAttribute('aria-selected', String(selected));
+                    button.tabIndex = selected ? 0 : -1;
+                });
+
+                $('tabContent').setAttribute(
+                    'aria-labelledby',
+                    tab === 'money' ? 'tabMoney' : 'tabQuantity'
+                );
+
+                $('contentTitle').textContent = item.title;
+                $('contentDescription').textContent = item.description;
+                $('contentIcon').textContent = item.icon;
+
+                $('frameNoteText').textContent =
+                    'Bảng đang được tải trực tiếp từ Lark. Thời gian tải phụ thuộc vào kết nối mạng và quyền truy cập.';
+
+                loadFrame();
+            }
+
+            document.querySelectorAll('.tab').forEach(button => {
+                button.addEventListener('click', () => {
+                    selectTab(button.dataset.tab);
+                });
+
+                button.addEventListener('keydown', event => {
+                    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+
+                    event.preventDefault();
+                    const nextTab = currentTab === 'money' ? 'quantity' : 'money';
+                    selectTab(nextTab);
+                    $(nextTab === 'money' ? 'tabMoney' : 'tabQuantity').focus();
+                });
+            });
+
+            $('helpButton').addEventListener('click', () => {
+                const panel = $('helpPanel');
+                const isOpen = panel.classList.toggle('show');
+
+                $('helpButton').setAttribute('aria-expanded', String(isOpen));
+                panel.setAttribute('aria-hidden', String(!isOpen));
+            });
+
+            $('backButton').addEventListener('click', () => {
+                if (window.history.length > 1 && document.referrer) {
+                    window.history.back();
+                } else {
+                    window.location.href = './index.html';
+                }
+            });
+
+            $('retryButton').addEventListener('click', () => {
+                currentUrl = '';
+                loadFrame(true);
+            });
+
+            $('statsFrame').addEventListener('load', () => {
+                clearTimeout(loadTimer);
+
+                // Sự kiện load không đảm bảo nội dung Lark đã hiển thị.
+                // Một số máy chủ chặn iframe vẫn phát sinh sự kiện này.
+                $('loadingText').textContent = 'Đang hoàn tất tải bảng...';
+
+                setTimeout(() => {
+                    hideLoading();
+                }, 500);
+            });
+
+            let resizeTimer;
+
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+
+                resizeTimer = setTimeout(() => {
+                    const nextUrl = getUrl(currentTab);
+
+                    if (nextUrl !== currentUrl) {
+                        loadFrame();
+                    }
+
+                    $('deviceName').textContent =
+                        isMobile() ? 'Điện thoại' : 'Máy tính';
+
+                    $('deviceIcon').textContent =
+                        isMobile() ? 'smartphone' : 'computer';
+                }, 200);
+            });
+
+            selectTab('money');
+        })();
+    </script>
+</body>
+</html>
