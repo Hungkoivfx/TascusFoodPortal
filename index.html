@@ -152,7 +152,7 @@ const BYPASS_ZALO_CHECK=true;const NON_ZALO_REDIRECT="./TascusfoodPortal.html";(
 <div id="managementContent" class="management-content" hidden>
 <div class="section-label">Chức năng điều hành</div><div class="function-list">
 <a href="./Payments_KhuongTrung.html" class="function-card"><div class="icon">💳</div><div class="card-content"><div class="card-title">Sổ thanh toán</div><div class="card-desc">Kế toán · 69 Khương Trung</div></div><div class="arrow">›</div></a>
-<a href="./thongkebanh.html" class="function-card" id="thongKeBanhLink">
+<a href="./thongkebanh.html" class="function-card">
     <div class="icon">🥖</div>
     <div class="card-content">
         <div class="card-title">Bảng thống kê bánh</div>
@@ -161,14 +161,6 @@ const BYPASS_ZALO_CHECK=true;const NON_ZALO_REDIRECT="./TascusfoodPortal.html";(
     <div class="arrow">›</div>
 </a>
 
-<script>
-document.getElementById("thongKeBanhLink").addEventListener("click", function(event) {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-    if (isMobile) {
-        event.preventDefault();
-        window.location.href = "./thongkebanh.html";
-    }
 });
 </script>
 <a href="./docbaocaodoanhthu.html" class="function-card"><div class="icon">📊</div><div class="card-content"><div class="card-title">Xem báo cáo doanh thu</div><div class="card-desc">Báo cáo doanh thu theo ca</div></div><div class="arrow">›</div></a>
