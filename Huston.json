@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-13T14:17:13.165Z",
+  "updated_at": "2026-10-16T03:13:17.981Z",
   "records": [
     {
       "id": "Z032",
@@ -653,6 +653,16 @@
       "noi_dung": "Tủ đông có vấn đề cần xử lí gấp chỉ thấy mát k thấy đông",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z083",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/16 10:13",
+      "nguoi_bao_cao": "Ánh",
+      "noi_dung": "Hết bao bì crepe , cốc nhỏ và giấy gói burger",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Có thể tự xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
