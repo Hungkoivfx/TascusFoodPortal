@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16T03:13:17.981Z",
+  "updated_at": "2026-10-16T07:56:14.771Z",
   "records": [
     {
       "id": "Z032",
@@ -653,7 +653,10 @@
       "noi_dung": "Tủ đông có vấn đề cần xử lí gấp chỉ thấy mát k thấy đông",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/16 14:56",
+      "phuong_an_xu_ly": "Không vấn đề gì, tí mất 200 tiền kiểm tra tủ",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z083",
