@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16T13:16:38.213Z",
+  "updated_at": "2026-10-16T15:26:37.948Z",
   "records": [
     {
       "id": "Z032",
@@ -677,6 +677,16 @@
       "thoi_gian": "2026/10/16 20:16",
       "nguoi_bao_cao": "Việt Anh",
       "noi_dung": "Hết dầu ăn",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z085",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/16 22:26",
+      "nguoi_bao_cao": "Việt Anh",
+      "noi_dung": "Cốt trà còn 3 chai \nHibiscus còn 5 chai",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
       "trang_thai_xu_ly": "Chưa xử lý"
