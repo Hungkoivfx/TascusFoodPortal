@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16T07:57:19.746Z",
+  "updated_at": "2026-10-16T13:16:38.213Z",
   "records": [
     {
       "id": "Z032",
@@ -670,6 +670,16 @@
       "thoi_gian_xu_ly": "2026/10/16 14:57",
       "phuong_an_xu_ly": "Đã bổ sung\n100 vỏ crepe\n1 bịch giấy burger\n150 cốc kèm nắp\n1 standee thay thế cái bị vỡ",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z084",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/16 20:16",
+      "nguoi_bao_cao": "Việt Anh",
+      "noi_dung": "Hết dầu ăn",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
