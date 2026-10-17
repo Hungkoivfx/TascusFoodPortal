@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-17T12:17:12.687Z",
+  "updated_at": "2026-10-17T12:17:54.808Z",
   "records": [
     {
       "id": "Z032",
@@ -702,7 +702,10 @@
       "noi_dung": "Còn duy nhất 1 lon coca mà",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/17 19:17",
+      "phuong_an_xu_ly": "NCC đã giao thêm 3",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
