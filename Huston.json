@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16T15:26:37.948Z",
+  "updated_at": "2026-10-17T08:34:06.083Z",
   "records": [
     {
       "id": "Z032",
@@ -687,6 +687,16 @@
       "thoi_gian": "2026/10/16 22:26",
       "nguoi_bao_cao": "Việt Anh",
       "noi_dung": "Cốt trà còn 3 chai \nHibiscus còn 5 chai",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z086",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/17 15:34",
+      "nguoi_bao_cao": "D.Linh",
+      "noi_dung": "Còn duy nhất 1 lon coca mà",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
       "trang_thai_xu_ly": "Chưa xử lý"
