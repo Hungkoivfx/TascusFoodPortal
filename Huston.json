@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-17T08:34:06.083Z",
+  "updated_at": "2026-10-17T12:17:12.687Z",
   "records": [
     {
       "id": "Z032",
@@ -689,7 +689,10 @@
       "noi_dung": "Cốt trà còn 3 chai \nHibiscus còn 5 chai",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/17 19:17",
+      "phuong_an_xu_ly": "Chịu",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z086",
