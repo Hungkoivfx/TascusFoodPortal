@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T03:54:15.716Z",
+  "updated_at": "2026-10-19T04:41:50.385Z",
   "records": [
     {
       "id": "Z032",
@@ -750,6 +750,16 @@
       "noi_dung": "Ông NTH đi kiếm thêm hộp",
       "muc_do": "Thông thường",
       "can_xu_ly": "Có thể tự xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z091",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/19 11:41",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Còn 1 kem nấm, 8 hộp mỳ ý mang đi ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
       "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
