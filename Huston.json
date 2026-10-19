@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T04:41:50.385Z",
+  "updated_at": "2026-10-19T04:48:15.007Z",
   "records": [
     {
       "id": "Z032",
@@ -760,7 +760,10 @@
       "noi_dung": "Còn 1 kem nấm, 8 hộp mỳ ý mang đi ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/19 11:48",
+      "phuong_an_xu_ly": "Do Linh mắt đui khum thấy 2 dây hộp mỳ ý sau mấy túi bánh.",
+      "nguoi_xu_ly": "P.Linh"
     }
   ]
 }
