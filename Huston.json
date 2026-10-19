@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T03:11:45.139Z",
+  "updated_at": "2026-10-19T03:12:35.299Z",
   "records": [
     {
       "id": "Z032",
@@ -721,6 +721,16 @@
       "thoi_gian_xu_ly": "2026/10/19 09:25",
       "phuong_an_xu_ly": "rút được khoá bị kẹt",
       "nguoi_xu_ly": "Mai hà"
+    },
+    {
+      "id": "Z088",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/19 10:12",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Ông NTH mang ổ điện cam đỏ đến cửa hàng để cắm thêm máy chiên phục vụ đơn lớn",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Có thể tự xử lý",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
