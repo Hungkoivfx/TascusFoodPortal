@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T04:48:15.007Z",
+  "updated_at": "2026-10-19T14:22:53.857Z",
   "records": [
     {
       "id": "Z032",
@@ -750,7 +750,10 @@
       "noi_dung": "Ông NTH đi kiếm thêm hộp",
       "muc_do": "Thông thường",
       "can_xu_ly": "Có thể tự xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/19 21:22",
+      "phuong_an_xu_ly": "Đã thêm 2 hộp",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z091",
