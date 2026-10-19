@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T14:23:27.409Z",
+  "updated_at": "2026-10-19T14:23:55.296Z",
   "records": [
     {
       "id": "Z032",
@@ -679,9 +679,10 @@
       "noi_dung": "Hết dầu ăn",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Đang xử lý",
-      "phuong_an_xu_ly": "Đang đặt về",
-      "nguoi_xu_ly": "Hưng và PH"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "phuong_an_xu_ly": "Đã mua",
+      "nguoi_xu_ly": "Hưng và Phương Anh",
+      "thoi_gian_xu_ly": "2026/10/19 21:23"
     },
     {
       "id": "Z085",
