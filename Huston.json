@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-17T12:17:54.808Z",
+  "updated_at": "2026-10-19T00:48:11.697Z",
   "records": [
     {
       "id": "Z032",
@@ -706,6 +706,16 @@
       "thoi_gian_xu_ly": "2026/10/17 19:17",
       "phuong_an_xu_ly": "NCC đã giao thêm 3",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z087",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/19 07:48",
+      "nguoi_bao_cao": "Mai Hà",
+      "noi_dung": "Làm gãy chìa khoá cửa cuốn, bị kẹt ổ khoá",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
