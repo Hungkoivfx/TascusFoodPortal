@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T14:22:53.857Z",
+  "updated_at": "2026-10-19T14:23:27.409Z",
   "records": [
     {
       "id": "Z032",
@@ -730,7 +730,10 @@
       "noi_dung": "Ông NTH mang ổ điện cam đỏ đến cửa hàng để cắm thêm máy chiên phục vụ đơn lớn",
       "muc_do": "Thông thường",
       "can_xu_ly": "Có thể tự xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/19 21:23",
+      "phuong_an_xu_ly": "Nguyễn Tuấn Hưng đã đem tới",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z089",
