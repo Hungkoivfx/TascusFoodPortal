@@ -1867,5 +1867,19 @@
     "Hình thức thanh toán": "Chuyển khoản ngân hàng",
     "Mã giao dịch": "FT26293506486046/202459197508",
     "Ngày giờ thanh toán": "2026/10/20 09:27"
+  },
+  {
+    "Nội dung chuyển tiền": "Tra truoc bac Thang 50 phan tram so tien muon de kinh doanh",
+    "Số tiền": 10000000,
+    "Hình thức thanh toán": "Chuyển khoản ngân hàng",
+    "Mã giao dịch": "FT26293117459210/202459442229",
+    "Ngày giờ thanh toán": "2026/10/20 11:03"
+  },
+  {
+    "Nội dung chuyển tiền": "Ship hang don event",
+    "Số tiền": 100000,
+    "Hình thức thanh toán": "Chuyển khoản ngân hàng",
+    "Mã giao dịch": "FT26293421134839/202459463118",
+    "Ngày giờ thanh toán": "2026/10/20 11:11"
   }
 ]
