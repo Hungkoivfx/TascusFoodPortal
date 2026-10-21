@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T09:56:15.379Z",
+  "updated_at": "2026-10-21T09:56:30.103Z",
   "records": [
     {
       "id": "Z032",
@@ -783,9 +783,10 @@
       "noi_dung": "Còn 1 túi khoai tây ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý",
+      "trang_thai_xu_ly": "Đã xử lý",
       "phuong_an_xu_ly": "Mang thêm 9 khoai 2 gà vòng",
-      "nguoi_xu_ly": "Hưng"
+      "nguoi_xu_ly": "Hưng",
+      "thoi_gian_xu_ly": "2026/10/21 16:56"
     }
   ]
 }
