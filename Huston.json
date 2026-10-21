@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T09:18:48.587Z",
+  "updated_at": "2026-10-21T09:55:51.522Z",
   "records": [
     {
       "id": "Z032",
@@ -744,7 +744,10 @@
       "noi_dung": "Cửa hàng ca sáng bị gãy khóa, \nChiều Việt Anh cầm chìa đi đánh thêm\n---\n2 chia cửa chính bị gãy\n1 chìa cửa sau\nNgân sách cửa hàng trả\nnhớ hỏi báo giá từng chìa",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/21 16:55",
+      "phuong_an_xu_ly": "Đã đánh 1 chìa mới",
+      "nguoi_xu_ly": "Ánh"
     },
     {
       "id": "Z090",
