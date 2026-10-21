@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T14:23:55.296Z",
+  "updated_at": "2026-10-21T09:18:48.587Z",
   "records": [
     {
       "id": "Z032",
@@ -771,6 +771,16 @@
       "thoi_gian_xu_ly": "2026/10/19 11:48",
       "phuong_an_xu_ly": "Do Linh mắt đui khum thấy 2 dây hộp mỳ ý sau mấy túi bánh.",
       "nguoi_xu_ly": "P.Linh"
+    },
+    {
+      "id": "Z092",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/21 16:18",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Còn 1 túi khoai tây ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
