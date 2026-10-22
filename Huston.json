@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T05:27:32.386Z",
+  "updated_at": "2026-10-22T05:42:07.093Z",
   "records": [
     {
       "id": "Z032",
@@ -796,7 +796,9 @@
       "noi_dung": "Không có combo 6 trên app bán hàng. Nhập món lẻ sẽ đắt hơn 1k , sợ khách khó tính thắc mắc . A Hưng xử lý giúp ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Chưa xử lý",
+      "phuong_an_xu_ly": "Tự xử lý",
+      "nguoi_xu_ly": "Ánh"
     }
   ]
 }
