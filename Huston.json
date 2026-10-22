@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T09:56:30.103Z",
+  "updated_at": "2026-10-22T05:27:32.386Z",
   "records": [
     {
       "id": "Z032",
@@ -787,6 +787,16 @@
       "phuong_an_xu_ly": "Mang thêm 9 khoai 2 gà vòng",
       "nguoi_xu_ly": "Hưng",
       "thoi_gian_xu_ly": "2026/10/21 16:56"
+    },
+    {
+      "id": "Z093",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/22 12:27",
+      "nguoi_bao_cao": "Ánh",
+      "noi_dung": "Không có combo 6 trên app bán hàng. Nhập món lẻ sẽ đắt hơn 1k , sợ khách khó tính thắc mắc . A Hưng xử lý giúp ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
