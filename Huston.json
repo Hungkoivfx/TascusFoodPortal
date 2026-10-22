@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T09:31:59.049Z",
+  "updated_at": "2026-10-22T10:55:33.929Z",
   "records": [
     {
       "id": "Z032",
@@ -806,6 +806,16 @@
       "thoi_gian": "2026/10/22 16:31",
       "nguoi_bao_cao": "Nguyễn Phương Linh",
       "noi_dung": "Bổ sung thêm cốc nhựa nhỏ, nắp cốc nhỏ, nắp cốc to, ống hút nhỏ, giấy in ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z095",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/22 17:55",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Dầu ăn đang dần đen. Anh Hưng mua thêm ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
       "trang_thai_xu_ly": "Chưa xử lý"
