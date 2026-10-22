@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T06:01:26.415Z",
+  "updated_at": "2026-10-22T09:31:59.049Z",
   "records": [
     {
       "id": "Z032",
@@ -799,6 +799,16 @@
       "trang_thai_xu_ly": "Cần theo dõi thêm",
       "phuong_an_xu_ly": "Đã kích hoạt lại combo 6, nhân viên tại tiệm vui lòng tải lại cấu hình fabi",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z094",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/22 16:31",
+      "nguoi_bao_cao": "Nguyễn Phương Linh",
+      "noi_dung": "Bổ sung thêm cốc nhựa nhỏ, nắp cốc nhỏ, nắp cốc to, ống hút nhỏ, giấy in ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
