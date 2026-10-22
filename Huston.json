@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T05:42:07.093Z",
+  "updated_at": "2026-10-22T06:01:26.415Z",
   "records": [
     {
       "id": "Z032",
@@ -796,9 +796,9 @@
       "noi_dung": "Không có combo 6 trên app bán hàng. Nhập món lẻ sẽ đắt hơn 1k , sợ khách khó tính thắc mắc . A Hưng xử lý giúp ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý",
-      "phuong_an_xu_ly": "Tự xử lý",
-      "nguoi_xu_ly": "Ánh"
+      "trang_thai_xu_ly": "Cần theo dõi thêm",
+      "phuong_an_xu_ly": "Đã kích hoạt lại combo 6, nhân viên tại tiệm vui lòng tải lại cấu hình fabi",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
