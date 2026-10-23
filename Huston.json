@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23T03:24:24.612Z",
+  "updated_at": "2026-10-23T07:25:56.276Z",
   "records": [
     {
       "id": "Z032",
@@ -820,7 +820,10 @@
       "noi_dung": "Dầu ăn đang dần đen. Anh Hưng mua thêm ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/23 14:25",
+      "phuong_an_xu_ly": "Đã mua",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
