@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23T07:25:56.276Z",
+  "updated_at": "2026-10-24T01:39:23.218Z",
   "records": [
     {
       "id": "Z032",
@@ -824,6 +824,16 @@
       "thoi_gian_xu_ly": "2026/10/23 14:25",
       "phuong_an_xu_ly": "Đã mua",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z096",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/24 08:39",
+      "nguoi_bao_cao": "Ánh",
+      "noi_dung": "Gần hết hết hộp đựng sốt ạ. Cần bổ sung thêm",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
