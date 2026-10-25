@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T05:13:58.321Z",
+  "updated_at": "2026-10-25T05:14:42.714Z",
   "records": [
     {
       "id": "Z032",
@@ -844,7 +844,10 @@
       "noi_dung": "Còn 3 túi xiên nhựa và hết xiên gỗ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/10/25 12:14",
+      "phuong_an_xu_ly": "Đã bổ sung 1 túi xiên gỗ",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z098",
