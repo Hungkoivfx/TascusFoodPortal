@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T05:15:16.706Z",
+  "updated_at": "2026-10-25T09:26:47.779Z",
   "records": [
     {
       "id": "Z032",
@@ -860,6 +860,16 @@
       "trang_thai_xu_ly": "Chưa xử lý",
       "phuong_an_xu_ly": "Bổ sung \n1000 tờ burger\n100 vỏ crepe",
       "nguoi_xu_ly": "Hưng"
+    },
+    {
+      "id": "Z099",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/25 16:26",
+      "nguoi_bao_cao": "D.Linh",
+      "noi_dung": "Còn 1 túi nha đam",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
