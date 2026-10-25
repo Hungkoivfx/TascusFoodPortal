@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T09:26:47.779Z",
+  "updated_at": "2026-10-25T23:49:25.544Z",
   "records": [
     {
       "id": "Z032",
@@ -867,6 +867,16 @@
       "thoi_gian": "2026/10/25 16:26",
       "nguoi_bao_cao": "D.Linh",
       "noi_dung": "Còn 1 túi nha đam",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z100",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/10/26 06:49",
+      "nguoi_bao_cao": "M hà",
+      "noi_dung": "Trứng còn 1 khay rưỡi ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
       "trang_thai_xu_ly": "Chưa xử lý"
