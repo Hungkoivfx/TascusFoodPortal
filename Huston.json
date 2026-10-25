@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T05:14:42.714Z",
+  "updated_at": "2026-10-25T05:15:16.706Z",
   "records": [
     {
       "id": "Z032",
@@ -857,7 +857,9 @@
       "noi_dung": "Hết giấy gói Burger",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Chưa xử lý",
+      "phuong_an_xu_ly": "Bổ sung \n1000 tờ burger\n100 vỏ crepe",
+      "nguoi_xu_ly": "Hưng"
     }
   ]
 }
