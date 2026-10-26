@@ -1335,7 +1335,8 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
             <p>Kế toán · 69 Khương Trung</p>
 
         </div>
-        
+        <div class="create-row">
+
         <button type="button" class="export-button"
 
             id="exportButton" onclick="exportPaymentsToExcel()">
@@ -1344,6 +1345,14 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 
         </button>
 
+
+        <button type="button" class="create-button"
+
+            onclick="openCreateModal()">＋ Tạo thanh toán</button>
+
+    </div>
+        
+       
         <button type="button" class="help-button"
 
             onclick="openHelp()" aria-label="Trợ giúp">?</button>
@@ -1366,15 +1375,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 
     </div>
 
-    <div class="create-row">
-
-       
-
-        <button type="button" class="create-button"
-
-            onclick="openCreateModal()">＋ Tạo thanh toán</button>
-
-    </div>
+    
 
     <section class="summary" aria-label="Tổng thanh toán">
 
