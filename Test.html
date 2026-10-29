@@ -3,286 +3,276 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f47721">
 <title>Kiểm kho · Tascus Food</title>
 <style>
 :root {
-  --orange:#f47721;
-  --orange-dark:#c9570a;
-  --orange-light:#fff0e4;
-  --bg:#f5f6f8;
-  --card:#fff;
-  --text:#202124;
-  --muted:#70757d;
-  --border:#e2e5e9;
-  --green:#16834a;
-  --red:#c62828;
+  --orange: #f47721;
+  --orange-dark: #d85e0a;
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --text: #202124;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --green: #16834a;
 }
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  font-size:15px;line-height:1.45;
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 15px;
+  padding-bottom: calc(95px + env(safe-area-inset-bottom));
 }
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-header{
-  background:var(--orange);color:#fff;padding:18px 16px 20px;
-  position:sticky;top:0;z-index:20;box-shadow:0 2px 8px #0002;
+header {
+  background: var(--orange);
+  color: white;
+  padding: 22px 16px 18px;
 }
-.header-inner{max-width:900px;margin:auto}
-.brand{font-size:12px;font-weight:800;letter-spacing:1.4px;opacity:.9}
-header h1{font-size:22px;margin:3px 0 5px}
-header p{font-size:13px;margin:0;opacity:.95}
-.progress-row{display:flex;align-items:center;gap:10px;margin-top:13px}
-.progress-track{height:6px;border-radius:99px;background:#ffffff55;flex:1;overflow:hidden}
-.progress-bar{height:100%;width:0;background:#fff;border-radius:99px;transition:width .15s}
-.progress-label{font-size:12px;white-space:nowrap}
-main{max-width:900px;margin:auto;padding:14px 12px 120px}
-.card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:14px;margin-bottom:12px;overflow:hidden;
+header h1 { margin: 0 0 5px; font-size: 23px; }
+header p { margin: 0; font-size: 13px; opacity: .95; }
+main { max-width: 760px; margin: auto; padding: 12px; }
+.card, .group {
+  background: var(--card);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  border: 1px solid var(--line);
+  overflow: hidden;
 }
-.card-head{padding:14px 14px 10px}
-.card-head h2{font-size:16px;margin:0 0 3px}
-.card-head p{font-size:12px;color:var(--muted);margin:0}
-.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px 14px}
-.field{display:flex;flex-direction:column;gap:5px;min-width:0}
-.field label,.field-label{font-size:12px;font-weight:700;color:#51565d}
-input[type=text],input[type=date],input[type=number],select,textarea{
-  width:100%;min-width:0;border:1px solid #d5d9df;border-radius:10px;
-  padding:11px 10px;background:#fff;color:var(--text);outline:none;
+.card { padding: 15px; }
+h2 { font-size: 17px; margin: 0 0 12px; }
+h3 { font-size: 15px; margin: 0; }
+.meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
-input:focus,select:focus,textarea:focus{
-  border-color:var(--orange);box-shadow:0 0 0 3px #f4772122;
+.field label {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
 }
-input[type=number]{font-size:17px;font-weight:650;text-align:right;padding:10px 8px;
-  font-variant-numeric:tabular-nums;appearance:textfield;-moz-appearance:textfield}
-input::-webkit-inner-spin-button,input::-webkit-outer-spin-button{
-  -webkit-appearance:none;margin:0
+input, textarea, select {
+  font: inherit;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  width: 100%;
+  min-width: 0;
+  background: white;
+  color: var(--text);
 }
-.section-title{
-  padding:13px 14px;background:#fff8f2;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
+input, select { height: 43px; padding: 0 10px; }
+textarea { padding: 10px; min-height: 75px; resize: vertical; }
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid #f9b47f;
+  border-color: var(--orange);
 }
-.section-title strong{font-size:14px}
-.section-title small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
-.count{font-size:11px;color:var(--orange-dark);font-weight:750;white-space:nowrap}
-.category{border-bottom:1px solid var(--border)}
-.category:last-child{border-bottom:0}
-.category summary{
-  list-style:none;display:flex;justify-content:space-between;align-items:center;
-  gap:10px;padding:13px 14px;font-weight:750;font-size:13px;cursor:pointer;
+.group-title {
+  padding: 13px 14px;
+  background: #fff1e6;
+  border-bottom: 1px solid #f6d5bd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 }
-.category summary::-webkit-details-marker{display:none}
-.category summary:after{content:"＋";color:var(--orange);font-size:17px}
-.category[open] summary:after{content:"−"}
-.category summary .cat-name{flex:1}
-.category summary .cat-count{font-size:11px;color:var(--muted);font-weight:500}
-.items{padding:0 12px 8px}
-.item{
-  display:grid;grid-template-columns:minmax(0,1fr) 112px;align-items:center;
-  gap:10px;padding:10px 2px;border-top:1px solid #f0f1f3;
-  scroll-margin-top:180px;
+.group-title small { color: #8b4a1c; font-size: 12px; }
+.item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0f1f3;
+  min-height: 62px;
 }
-.item-name{font-size:13px;font-weight:600;overflow-wrap:anywhere}
-.item-unit{font-size:11px;color:var(--muted);margin-top:2px}
-.qty-wrap{display:flex;flex-direction:column;gap:3px}
-.qty-wrap input{height:43px}
-.input-state{font-size:10px;color:var(--muted);text-align:right;min-height:12px}
-.item.is-active{background:#fff8f2;outline:2px solid var(--orange);outline-offset:-2px;border-radius:8px}
-.item.is-entered .input-state{color:var(--green)}
-.equip-head,.equip-row{
-  display:grid;grid-template-columns:minmax(0,1fr) 72px 72px;gap:7px;align-items:center;
+.item:last-child { border-bottom: 0; }
+.item-name { font-weight: 500; line-height: 1.35; }
+.item-unit { color: var(--muted); font-size: 12px; margin-top: 3px; }
+.qty {
+  text-align: right;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+  padding: 0 9px;
+  height: 44px;
+  border-radius: 10px;
+  background: #fff;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.equip-head{
-  padding:10px 12px;background:#fafafa;color:var(--muted);
-  font-size:11px;font-weight:750;text-align:center;
+.qty::placeholder { color: #c0c4cc; font-size: 14px; }
+.qty:focus { background: #fffaf6; }
+.equipment-note {
+  padding: 10px 13px;
+  color: var(--muted);
+  background: #fafafa;
+  font-size: 12px;
+  border-bottom: 1px solid var(--line);
 }
-.equip-head span:first-child{text-align:left}
-.equip-row{padding:9px 12px;border-top:1px solid #f0f1f3;scroll-margin-top:180px}
-.equip-name{font-size:12px;font-weight:600}
-.equip-standard{font-size:10px;color:var(--muted);margin-top:2px}
-.equip-row input{height:40px;padding:7px 5px;font-size:15px}
-.equip-row.is-active{background:#fff8f2;outline:2px solid var(--orange);outline-offset:-2px}
-.note-box{padding:0 14px 14px}
-.note-box textarea{resize:vertical;min-height:75px}
-.toolbar{
-  display:flex;gap:8px;flex-wrap:wrap;padding:0 14px 14px;
+.progress-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(245,246,248,.96);
+  padding: 8px 0;
+  backdrop-filter: blur(8px);
 }
-.btn{
-  border:0;border-radius:10px;padding:11px 14px;font-weight:750;font-size:13px;
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
 }
-.btn-primary{background:var(--orange);color:#fff}
-.btn-secondary{background:#f0f1f3;color:#25282c}
-.btn-outline{background:#fff;border:1px solid var(--border);color:#30343a}
-.btn-danger{background:#fff0f0;color:var(--red)}
-.sticky-actions{
-  position:fixed;bottom:0;left:0;right:0;z-index:30;
-  background:#ffffffed;backdrop-filter:blur(12px);
-  border-top:1px solid var(--border);
-  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+.progress { height: 5px; background: #e5e7eb; border-radius: 10px; overflow: hidden; }
+.progress > div { height: 100%; width: 0; background: var(--orange); transition: width .15s; }
+.quick-nav {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 2px 0 9px;
+  scrollbar-width: none;
 }
-.sticky-inner{max-width:900px;margin:auto;display:flex;gap:8px}
-.sticky-inner button{flex:1;min-width:0}
-.status{text-align:center;color:var(--muted);font-size:11px;margin-top:6px}
-.toast{
-  position:fixed;left:50%;bottom:100px;transform:translateX(-50%);
-  z-index:50;background:#242424;color:white;padding:11px 15px;
-  border-radius:12px;font-size:13px;max-width:90%;display:none;
-  box-shadow:0 5px 20px #0002;
+.quick-nav button {
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 20px;
+  padding: 7px 11px;
+  font-size: 12px;
+  color: #444;
 }
-.help{padding:12px 14px;background:#fff8f2;color:#754016;font-size:12px}
-@media(min-width:650px){
-  main{padding:20px 18px 130px}
-  .meta-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .item{grid-template-columns:minmax(0,1fr) 145px;padding:11px 5px}
-  .equip-head,.equip-row{grid-template-columns:minmax(0,1fr) 100px 100px}
-  .item-name{font-size:14px}
+.quick-nav button:active { background: #fff0e5; }
+.bottom-bar {
+  position: fixed;
+  z-index: 20;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 9px 12px calc(9px + env(safe-area-inset-bottom));
+  background: rgba(255,255,255,.97);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -3px 12px rgba(0,0,0,.05);
 }
-@media print{
-  header{position:static;background:#fff;color:#000;box-shadow:none;padding:10px 0}
-  main{padding:0;max-width:none}
-  body{background:#fff;font-size:11px}
-  .sticky-actions,.toolbar,.progress-row,.help,.toast{display:none!important}
-  .card{break-inside:avoid;border-color:#bbb}
-  .category summary:after{display:none}
-  details.category{display:block}
-  .items{display:block}
-  input,select,textarea{border:0!important;box-shadow:none!important;padding:2px!important}
-  .item{padding:4px 2px}
-  .equip-row{padding:4px 12px}
+.bottom-inner { max-width: 760px; margin: auto; }
+.bottom-actions { display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 8px; }
+button { cursor: pointer; font: inherit; }
+.action {
+  border: 0;
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.secondary { background: #f0f1f3; color: #30343b; }
+.primary { background: var(--orange); color: white; }
+.action:active { transform: scale(.98); }
+.status {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 5px;
+  text-align: center;
+}
+.hint { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.section-count { color: var(--muted); font-size: 12px; }
+@media (max-width: 420px) {
+  main { padding: 9px; }
+  .meta-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+  .item { grid-template-columns: minmax(0, 1fr) 100px; padding: 9px; gap: 8px; }
+  .qty { height: 45px; font-size: 17px; }
+  .bottom-actions { grid-template-columns: .8fr .8fr 1.5fr; gap: 6px; }
+  .action { font-size: 12px; }
+}
+@media print {
+  body { background: white; padding: 0; }
+  header { background: white; color: black; padding: 10px 0; }
+  main { max-width: none; padding: 0; }
+  .progress-wrap, .bottom-bar, .quick-nav, .no-print { display: none !important; }
+  .card, .group { break-inside: avoid; border: 1px solid #ccc; }
+  .item { min-height: 35px; padding: 5px 8px; }
+  .qty { height: 30px; border: 1px solid #aaa; }
 }
 </style>
 </head>
 <body>
 <header>
-  <div class="header-inner">
-    <div class="brand">TASCUS FOOD · 69 KHƯƠNG TRUNG</div>
-    <h1>Kiểm kho nguyên vật liệu</h1>
-    <p>Nhập số lượng → bấm Enter → sang ô tiếp theo.</p>
-    <div class="progress-row">
-      <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
-      <div class="progress-label" id="progressLabel">0 ô đã nhập</div>
-    </div>
-  </div>
+  <h1>Kiểm kho · Tascus Food</h1>
+  <p>69 Khương Trung · Phiếu kiểm kê hằng ngày</p>
 </header>
 
 <main>
-  <section class="card">
-    <div class="card-head">
-      <h2>Thông tin kiểm kho</h2>
-      <p>Nhập thông tin chung trước khi kiểm kê.</p>
+  <div class="progress-wrap no-print">
+    <div class="progress-label">
+      <span id="progressText">Đã nhập 0 mục</span>
+      <span id="progressPercent">0%</span>
     </div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div class="quick-nav" id="quickNav"></div>
+  </div>
+
+  <section class="card" id="thong-tin">
+    <h2>Thông tin kiểm kho</h2>
     <div class="meta-grid">
       <div class="field">
-        <label for="inspectionDate">Ngày kiểm kho</label>
-        <input id="inspectionDate" type="date" autocomplete="off">
+        <label for="date">Ngày kiểm</label>
+        <input id="date" type="date">
       </div>
       <div class="field">
-        <label for="inspectionTime">Thời gian</label>
-        <select id="inspectionTime">
-          <option value="14:00-15:00">14:00–15:00</option>
-          <option value="other">Khung giờ khác</option>
-        </select>
+        <label for="time">Giờ kiểm</label>
+        <input id="time" type="time">
       </div>
       <div class="field">
-        <label for="checker">Người kiểm kho</label>
+        <label for="checker">Người kiểm</label>
         <input id="checker" type="text" placeholder="Tên nhân viên" autocomplete="name">
       </div>
       <div class="field">
-        <label for="reporter">Người xác nhận</label>
-        <input id="reporter" type="text" placeholder="Tên người xác nhận">
+        <label for="reporter">Người báo cáo</label>
+        <input id="reporter" type="text" placeholder="Tên nhân viên">
       </div>
-    </div>
-    <div class="note-box">
-      <label class="field-label" for="generalNotes">Ghi chú chung</label>
-      <textarea id="generalNotes" placeholder="Ví dụ: hàng chưa giao, nguyên liệu hỏng, số lượng cần xác minh..."></textarea>
-    </div>
-    <div class="help">
-      Ô trống = chưa nhập/chưa kiểm. Nhập <b>0</b> nếu đã kiểm và thực tế không còn hàng.
-      Bấm Enter để chuyển tiếp; dùng nút “Ô tiếp theo” nếu bàn phím điện thoại không hiện Enter.
     </div>
   </section>
 
-  <section class="card" id="inventoryCard">
-    <div class="section-title">
-      <div>
-        <strong>Nguyên vật liệu</strong>
-        <small>Nhập tổng số lượng thực tế hiện có của từng loại.</small>
-      </div>
-      <span class="count" id="inventoryCount">0 mục</span>
-    </div>
-    <div id="inventoryGroups"></div>
-  </section>
+  <div id="inventory"></div>
 
-  <section class="card" id="equipmentCard">
-    <div class="section-title">
-      <div>
-        <strong>Kiểm tra dụng cụ, thiết bị</strong>
-        <small>Nhập số lượng thực tế theo ca sáng và ca chiều.</small>
-      </div>
-      <span class="count" id="equipmentCount">0 mục</span>
-    </div>
-    <div class="equip-head">
-      <span>Dụng cụ</span><span>Ca sáng</span><span>Ca chiều</span>
-    </div>
-    <div id="equipmentList"></div>
+  <section class="card" id="ghi-chu">
+    <h2>Ghi chú và bất thường</h2>
+    <textarea id="notes" placeholder="Ví dụ: nguyên liệu hỏng, thiếu hàng, lệch số lượng, hàng đang chờ nhập..."></textarea>
+    <p class="hint">Để trống những mục chưa kiểm tra. Số 0 chỉ nhập khi đã kiểm và xác nhận thực tế không còn hàng.</p>
   </section>
 
   <section class="card">
-    <div class="card-head">
-      <h2>Kiểm tra trước khi lưu</h2>
-      <p>Những ô bỏ trống sẽ được lưu là chưa nhập, không tự động tính thành 0.</p>
-    </div>
-    <div class="meta-grid">
-      <div class="field">
-        <label>Tổng nguyên liệu</label>
-        <input id="summaryTotal" type="text" readonly value="0">
-      </div>
-      <div class="field">
-        <label>Đã nhập</label>
-        <input id="summaryEntered" type="text" readonly value="0">
-      </div>
-      <div class="field">
-        <label>Còn trống</label>
-        <input id="summaryMissing" type="text" readonly value="0">
-      </div>
-      <div class="field">
-        <label>Dụng cụ đã nhập</label>
-        <input id="summaryEquipment" type="text" readonly value="0">
-      </div>
-    </div>
-    <div class="toolbar">
-      <button class="btn btn-secondary" id="nextBtn" type="button">Ô tiếp theo ↵</button>
-      <button class="btn btn-outline" id="reviewBtn" type="button">Xem ô còn trống</button>
-      <button class="btn btn-outline" id="printBtn" type="button">In / lưu PDF</button>
-      <button class="btn btn-danger" id="resetBtn" type="button">Xóa bản nháp</button>
-    </div>
+    <h2>Kiểm tra trước khi xuất</h2>
+    <p class="hint" id="summary">Chưa có dữ liệu.</p>
+    <p class="hint">Bản ghi JSON gồm ngày kiểm, người kiểm, số lượng từng nguyên liệu, công cụ dụng cụ và ghi chú. Các ô chưa nhập được giữ là null, không tự quy thành 0.</p>
   </section>
 </main>
 
-<div class="sticky-actions">
-  <div class="sticky-inner">
-    <button class="btn btn-secondary" id="saveDraftBtn" type="button">Lưu nháp</button>
-    <button class="btn btn-primary" id="submitBtn" type="button">Hoàn tất & xuất JSON</button>
+<div class="bottom-bar no-print">
+  <div class="bottom-inner">
+    <div class="bottom-actions">
+      <button class="action secondary" id="prevBtn" type="button">↑ Trước</button>
+      <button class="action secondary" id="nextBtn" type="button">↓ Tiếp</button>
+      <button class="action primary" id="exportBtn" type="button">Hoàn tất · Xuất JSON</button>
+    </div>
+    <div class="status" id="saveStatus">Nháp được lưu trên thiết bị này</div>
   </div>
-  <div class="status" id="saveStatus">Bản nháp được lưu trên thiết bị này</div>
 </div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 "use strict";
 
-const DRAFT_KEY = "tascus_inventory_draft_v2";
-const SCHEMA_VERSION = "1.0";
+const STORAGE_KEY = "tascus_kiemkho_v3";
 
-const inventoryGroups = [
+const groups = [
   {
-    id:"external-packaging",
-    title:"Nhà cung cấp ngoài · Bao bì và vật tư",
-    items:[
+    id: "bao-bi-ngoai",
+    title: "Bao bì và vật tư mua ngoài",
+    items: [
       ["Bao bì đựng bánh mì Tascus","Chiếc"],
       ["Bao bì đựng sandwich Tascus","Chiếc"],
       ["Bao bì đựng crepe Tascus","Chiếc"],
@@ -305,17 +295,17 @@ const inventoryGroups = [
     ]
   },
   {
-    id:"external-drinks",
-    title:"Nhà cung cấp ngoài · Nước đóng chai",
-    items:[
+    id: "do-uong-ngoai",
+    title: "Đồ uống mua ngoài",
+    items: [
       ["Coca Cola 330 ml","Lon"],
       ["Nước suối đóng chai","Chai"]
     ]
   },
   {
-    id:"external-ingredients",
-    title:"Nhà cung cấp ngoài · Nguyên liệu",
-    items:[
+    id: "nguyen-lieu-ngoai",
+    title: "Nguyên liệu mua ngoài",
+    items: [
       ["Xúc xích hấp Đức Việt làm BM Crepe","Gram"],
       ["Jambong Đức Việt làm BM Crepe","Gram"],
       ["Trứng gà","Quả"],
@@ -333,9 +323,9 @@ const inventoryGroups = [
     ]
   },
   {
-    id:"external-produce",
-    title:"Nhà cung cấp ngoài · Rau củ và trái cây",
-    items:[
+    id: "rau-cu-ngoai",
+    title: "Rau củ và hoa quả mua ngoài",
+    items: [
       ["Xà lách","Gram"],
       ["Cà chua","Gram"],
       ["Rau mùi","Gram"],
@@ -349,34 +339,34 @@ const inventoryGroups = [
     ]
   },
   {
-    id:"workshop-packaging",
-    title:"Xưởng Tascus · Bao bì",
-    items:[
+    id: "bao-bi-xuong",
+    title: "Bao bì từ xưởng Tascus",
+    items: [
       ["Bao bì combo vuông 2–4 người (bigbox)","Chiếc"],
       ["Bao bì combo nhỏ 1–2 người Tascus (no nê)","Chiếc"]
     ]
   },
   {
-    id:"workshop-drinks",
-    title:"Xưởng Tascus · Đồ uống",
-    items:[
+    id: "do-uong-xuong",
+    title: "Đồ uống từ xưởng Tascus",
+    items: [
       ["Cốt trà tắc, chanh Tascus","Gram"],
       ["Nước trà Hibiscus thành phẩm","Gram"]
     ]
   },
   {
-    id:"workshop-pickles",
-    title:"Xưởng Tascus · Rau củ muối",
-    items:[
+    id: "rau-cu-xuong",
+    title: "Rau củ muối và sơ chế từ xưởng",
+    items: [
       ["Nộm củ cải làm bánh mì","Gram"],
       ["Bắp cải tím muối làm bánh mì","Gram"],
       ["Hành tây muối làm burger","Gram"]
     ]
   },
   {
-    id:"workshop-ingredients",
-    title:"Xưởng Tascus · Nguyên liệu",
-    items:[
+    id: "nguyen-lieu-xuong",
+    title: "Nguyên liệu từ xưởng Tascus",
+    items: [
       ["Phô mai lá làm BM Burger","Lát"],
       ["Phô mai hạt/sợi làm sandwich crepe","Gram"],
       ["Bơ nhạt","Gram"],
@@ -386,9 +376,9 @@ const inventoryGroups = [
     ]
   },
   {
-    id:"workshop-sauces",
-    title:"Xưởng Tascus · Sốt và nguyên liệu pha chế",
-    items:[
+    id: "sot-xuong",
+    title: "Sốt và nguyên liệu chế biến từ xưởng",
+    items: [
       ["Sốt tiêu đen","Gram"],
       ["Sốt phô mai","Gram"],
       ["Sốt kem nấm","Gram"],
@@ -408,17 +398,17 @@ const inventoryGroups = [
     ]
   },
   {
-    id:"workshop-raw-meat",
-    title:"Xưởng Tascus · Thịt sống",
-    items:[
+    id: "thit-song",
+    title: "Thịt sống và thịt sơ chế",
+    items: [
       ["Bò miếng Burger","Gram"],
       ["Bò thành phẩm ướp sống bánh mì","Gram"]
     ]
   },
   {
-    id:"workshop-cooked-meat",
-    title:"Xưởng Tascus · Thịt đã chế biến",
-    items:[
+    id: "thit-chin",
+    title: "Thịt đã chế biến",
+    items: [
       ["Gà nướng sả","Gram"],
       ["Heo nướng xá xíu","Gram"]
     ]
@@ -470,378 +460,383 @@ const equipment = [
   ["A43","Đĩa đựng mì/burger",6]
 ];
 
-const $ = id => document.getElementById(id);
-const inventoryRoot = $("inventoryGroups");
-const equipmentRoot = $("equipmentList");
-let toastTimer = null;
-let lastFocusedInput = null;
+const root = document.getElementById("inventory");
+const nav = document.getElementById("quickNav");
+let fieldOrder = [];
+let saveTimer = null;
 
-function escapeHtml(value){
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[c]));
+function safeId(value) {
+  return value.replace(/[^a-zA-Z0-9_-]/g, "-");
 }
-function slug(value){
-  return value.normalize("NFD").replace(/[\u0300-\u036f]/g,"")
-    .toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-}
-function inventoryId(groupId,item){
-  return "inv-" + groupId + "-" + slug(item[0]);
-}
-function buildInventory(){
-  inventoryRoot.innerHTML = inventoryGroups.map((group,index) => {
-    const rows = group.items.map(item => {
-      const id = inventoryId(group.id,item);
-      return `
-        <div class="item" data-row="${id}">
-          <div>
-            <div class="item-name">${escapeHtml(item[0])}</div>
-            <div class="item-unit">Đơn vị: ${escapeHtml(item[1])}</div>
-          </div>
-          <div class="qty-wrap">
-            <input id="${id}" data-kind="inventory" data-id="${id}"
-              data-name="${escapeHtml(item[0])}" data-unit="${escapeHtml(item[1])}"
-              type="number" inputmode="decimal" enterkeyhint="next"
-              min="0" step="any" placeholder="Số lượng"
-              aria-label="${escapeHtml(item[0])}, đơn vị ${escapeHtml(item[1])}">
-            <div class="input-state">Chưa nhập</div>
-          </div>
-        </div>`;
-    }).join("");
-    return `
-      <details class="category" ${index===0?"open":""} id="group-${group.id}">
-        <summary>
-          <span class="cat-name">${escapeHtml(group.title)}</span>
-          <span class="cat-count">${group.items.length} mục</span>
-        </summary>
-        <div class="items">${rows}</div>
-      </details>`;
-  }).join("");
-  $("inventoryCount").textContent =
-    inventoryGroups.reduce((n,g)=>n+g.items.length,0) + " mục";
-}
-function buildEquipment(){
-  equipmentRoot.innerHTML = equipment.map(([code,name,standard]) => `
-    <div class="equip-row" data-row="eq-${code}">
-      <div>
-        <div class="equip-name">${escapeHtml(code)} · ${escapeHtml(name)}</div>
-        <div class="equip-standard">Chuẩn: ${standard}</div>
-      </div>
-      <input type="number" min="0" step="1" inputmode="numeric"
-        enterkeyhint="next" data-kind="equipment" data-id="${code}"
-        data-period="morning" aria-label="${escapeHtml(name)} ca sáng"
-        placeholder="${standard}">
-      <input type="number" min="0" step="1" inputmode="numeric"
-        enterkeyhint="next" data-kind="equipment" data-id="${code}"
-        data-period="afternoon" aria-label="${escapeHtml(name)} ca chiều"
-        placeholder="${standard}">
-    </div>
-  `).join("");
-  $("equipmentCount").textContent = equipment.length + " dụng cụ × 2 ca";
-}
-function localDate(){
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
-}
-function getAllDataInputs(){
-  return [...document.querySelectorAll('input[data-kind]')];
-}
-function valueOf(input){
-  if(input.value.trim()==="") return null;
-  const n = Number(input.value);
-  return Number.isFinite(n) && n>=0 ? n : null;
-}
-function updateInputState(input){
-  const row = input.closest(".item,.equip-row");
-  if(!row) return;
-  const inputs = [...row.querySelectorAll('input[data-kind]')];
-  const filled = inputs.filter(i=>i.value.trim()!=="").length;
-  row.classList.toggle("is-entered",filled===inputs.length);
-  const state = row.querySelector(".input-state");
-  if(state){
-    state.textContent = input.value.trim()==="" ? "Chưa nhập" : "Đã nhập";
-  }
-}
-function updateSummary(){
-  const all = getAllDataInputs();
-  const inv = all.filter(i=>i.dataset.kind==="inventory");
-  const eq = all.filter(i=>i.dataset.kind==="equipment");
-  const enteredInv = inv.filter(i=>i.value.trim()!=="").length;
-  const enteredEq = eq.filter(i=>i.value.trim()!=="").length;
-  $("summaryTotal").value = inv.length;
-  $("summaryEntered").value = enteredInv;
-  $("summaryMissing").value = inv.length-enteredInv;
-  $("summaryEquipment").value = `${enteredEq}/${eq.length}`;
-  const totalEntered = enteredInv+enteredEq;
-  $("progressBar").style.width =
-    (all.length ? totalEntered/all.length*100 : 0) + "%";
-  $("progressLabel").textContent = `${totalEntered}/${all.length} ô đã nhập`;
-  inventoryGroups.forEach(group=>{
-    const inputs = group.items.map(item=>$(inventoryId(group.id,item)));
-    const filled = inputs.filter(i=>i && i.value.trim()!=="").length;
-    const summary = document.querySelector(`#group-${group.id} .cat-count`);
-    if(summary) summary.textContent = `${filled}/${inputs.length}`;
+
+function createGroup(group) {
+  const section = document.createElement("section");
+  section.className = "group";
+  section.id = group.id;
+
+  const title = document.createElement("div");
+  title.className = "group-title";
+
+  const heading = document.createElement("h3");
+  heading.textContent = group.title;
+
+  const count = document.createElement("small");
+  count.textContent = group.items.length + " mục";
+
+  title.append(heading, count);
+  section.appendChild(title);
+
+  group.items.forEach((item, index) => {
+    const key = group.id + "_" + index;
+    section.appendChild(createItem(key, item[0], item[1]));
   });
+
+  root.appendChild(section);
+  addNav(group.id, group.title);
 }
-function showToast(message){
-  const el=$("toast");
-  el.textContent=message;
-  el.style.display="block";
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>el.style.display="none",2200);
+
+function createItem(key, name, unit) {
+  const row = document.createElement("div");
+  row.className = "item";
+
+  const details = document.createElement("div");
+  details.className = "item-details";
+
+  const label = document.createElement("div");
+  label.className = "item-name";
+  label.textContent = name;
+
+  const unitText = document.createElement("div");
+  unitText.className = "item-unit";
+  unitText.textContent = unit;
+
+  details.append(label, unitText);
+
+  const input = document.createElement("input");
+  input.className = "qty sequence-field";
+  input.type = "number";
+  input.inputMode = "decimal";
+  input.step = "any";
+  input.min = "0";
+  input.placeholder = "Số lượng";
+  input.autocomplete = "off";
+  input.dataset.key = key;
+  input.dataset.name = name;
+  input.setAttribute("aria-label", name + ", đơn vị " + unit);
+
+  input.addEventListener("input", () => {
+    updateProgress();
+    scheduleSave();
+  });
+
+  input.addEventListener("keydown", handleArrowNavigation);
+  input.addEventListener("focus", () => {
+    setTimeout(() => {
+      input.scrollIntoView({ block: "center", behavior: "smooth" });
+    }, 220);
+  });
+
+  row.append(details, input);
+  fieldOrder.push(input);
+  return row;
 }
-function collectPayload(){
-  const items=[];
-  inventoryGroups.forEach(group=>{
-    group.items.forEach(item=>{
-      const id=inventoryId(group.id,item);
-      const input=$(id);
-      items.push({
-        id,
-        group:group.title,
-        name:item[0],
-        unit:item[1],
-        quantity:valueOf(input),
-        entered:input.value.trim()!==""
-      });
+
+function createEquipmentSection() {
+  const section = document.createElement("section");
+  section.className = "group";
+  section.id = "cong-cu-dung-cu";
+
+  const title = document.createElement("div");
+  title.className = "group-title";
+
+  const heading = document.createElement("h3");
+  heading.textContent = "Công cụ, dụng cụ";
+
+  const count = document.createElement("small");
+  count.textContent = equipment.length + " mục";
+
+  title.append(heading, count);
+  section.appendChild(title);
+
+  const note = document.createElement("div");
+  note.className = "equipment-note";
+  note.textContent = "Kiểm một lần mỗi ngày. Nhập số lượng thực tế đang có, không nhập riêng sáng và chiều. SL chuẩn để đối chiếu.";
+  section.appendChild(note);
+
+  equipment.forEach((item, index) => {
+    const key = "equipment_" + item[0];
+    const row = document.createElement("div");
+    row.className = "item";
+
+    const details = document.createElement("div");
+    details.className = "item-details";
+
+    const label = document.createElement("div");
+    label.className = "item-name";
+    label.textContent = item[0] + " · " + item[1];
+
+    const unitText = document.createElement("div");
+    unitText.className = "item-unit";
+    unitText.textContent = "SL chuẩn: " + item[2] + " · Cái";
+
+    details.append(label, unitText);
+
+    const input = document.createElement("input");
+    input.className = "qty sequence-field";
+    input.type = "number";
+    input.inputMode = "numeric";
+    input.step = "1";
+    input.min = "0";
+    input.placeholder = "Thực tế";
+    input.autocomplete = "off";
+    input.dataset.key = key;
+    input.dataset.name = item[1];
+    input.dataset.standard = String(item[2]);
+    input.dataset.code = item[0];
+    input.setAttribute("aria-label", item[0] + " " + item[1] + ", số lượng thực tế");
+
+    input.addEventListener("input", () => {
+      updateProgress();
+      scheduleSave();
+    });
+
+    input.addEventListener("keydown", handleArrowNavigation);
+    input.addEventListener("focus", () => {
+      setTimeout(() => {
+        input.scrollIntoView({ block: "center", behavior: "smooth" });
+      }, 220);
+    });
+
+    row.append(details, input);
+    section.appendChild(row);
+    fieldOrder.push(input);
+  });
+
+  root.appendChild(section);
+  addNav("cong-cu-dung-cu", "Công cụ dụng cụ");
+}
+
+function addNav(id, title) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.textContent = title;
+  button.addEventListener("click", () => {
+    document.getElementById(id).scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
   });
-  const equipmentRows=equipment.map(([code,name,standard])=>{
-    const morning=document.querySelector(
-      `input[data-kind="equipment"][data-id="${code}"][data-period="morning"]`);
-    const afternoon=document.querySelector(
-      `input[data-kind="equipment"][data-id="${code}"][data-period="afternoon"]`);
-    return {
-      code,name,standard,
-      morning:{quantity:valueOf(morning),entered:morning.value.trim()!==""},
-      afternoon:{quantity:valueOf(afternoon),entered:afternoon.value.trim()!==""}
-    };
+  nav.appendChild(button);
+}
+
+function handleArrowNavigation(event) {
+  if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+
+  // Cho phép dùng mũi tên lên/xuống để di chuyển giữa các ô.
+  // Chỉ chặn khi không cần di chuyển con trỏ trong nội dung đang nhập.
+  event.preventDefault();
+
+  const index = fieldOrder.indexOf(event.currentTarget);
+  const nextIndex = event.key === "ArrowDown" ? index + 1 : index - 1;
+  focusField(nextIndex);
+}
+
+function focusField(index) {
+  if (index < 0 || index >= fieldOrder.length) {
+    document.activeElement?.blur();
+    return;
+  }
+
+  const input = fieldOrder[index];
+  input.focus({ preventScroll: true });
+  input.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  const index = fieldOrder.indexOf(document.activeElement);
+  if (index >= 0) focusField(index - 1);
+  else focusField(0);
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  const index = fieldOrder.indexOf(document.activeElement);
+  if (index >= 0) focusField(index + 1);
+  else focusField(0);
+});
+
+function updateProgress() {
+  const filled = fieldOrder.filter(input => input.value.trim() !== "").length;
+  const total = fieldOrder.length;
+  const percent = total ? Math.round(filled / total * 100) : 0;
+
+  document.getElementById("progressText").textContent =
+    "Đã nhập " + filled + "/" + total + " mục";
+  document.getElementById("progressPercent").textContent = percent + "%";
+  document.getElementById("progressBar").style.width = percent + "%";
+
+  const equipmentFilled = fieldOrder.filter(input =>
+    input.dataset.key.startsWith("equipment_") && input.value.trim() !== ""
+  ).length;
+
+  document.getElementById("summary").textContent =
+    "Đã nhập " + filled + "/" + total + " mục; " +
+    "công cụ dụng cụ đã nhập " + equipmentFilled + "/" + equipment.length + " mục.";
+}
+
+function readForm() {
+  const ingredients = {};
+  const tools = {};
+
+  fieldOrder.forEach(input => {
+    const raw = input.value.trim();
+    const value = raw === "" ? null : Number(raw);
+
+    if (input.dataset.key.startsWith("equipment_")) {
+      tools[input.dataset.code] = {
+        ten: input.dataset.name,
+        so_luong_chuan: Number(input.dataset.standard),
+        so_luong_thuc_te: value
+      };
+    } else {
+      ingredients[input.dataset.key] = {
+        ten: input.dataset.name,
+        so_luong: value
+      };
+    }
   });
+
   return {
-    schemaVersion:SCHEMA_VERSION,
-    recordId:makeRecordId(),
-    recordType:"inventory_inspection",
-    branch:"69 Khương Trung",
-    inspectionDate:$("inspectionDate").value || localDate(),
-    inspectionTime:$("inspectionTime").value,
-    checker:$("checker").value.trim(),
-    reporter:$("reporter").value.trim(),
-    notes:$("generalNotes").value.trim(),
-    inventory:items,
-    equipment:equipmentRows,
-    summary:{
-      totalInventoryItems:items.length,
-      inventoryEntered:items.filter(x=>x.entered).length,
-      inventoryMissing:items.filter(x=>!x.entered).length,
-      equipmentFieldsEntered:equipmentRows.reduce((n,x)=>
-        n+Number(x.morning.entered)+Number(x.afternoon.entered),0)
+    schema_version: 1,
+    loai_ban_ghi: "kiem_kho_hang_ngay",
+    chi_nhanh: "69 Khương Trung",
+    ngay: document.getElementById("date").value || null,
+    gio_kiem: document.getElementById("time").value || null,
+    nguoi_kiem: document.getElementById("checker").value.trim() || null,
+    nguoi_bao_cao: document.getElementById("reporter").value.trim() || null,
+    nguyen_vat_lieu: ingredients,
+    cong_cu_dung_cu: tools,
+    ghi_chu: document.getElementById("notes").value.trim() || null,
+    thong_ke: {
+      tong_muc: fieldOrder.length,
+      so_muc_da_nhap: fieldOrder.filter(input => input.value.trim() !== "").length,
+      so_muc_bo_trong: fieldOrder.filter(input => input.value.trim() === "").length
     },
-    createdAt:new Date().toISOString()
+    tao_luc: new Date().toISOString()
   };
 }
-function makeRecordId(){
-  const date=$("inspectionDate").value || localDate();
-  const time=Date.now().toString(36);
-  return `KT-69KT-${date}-${time}`;
-}
-function saveDraft(showMessage=true){
-  try{
-    const draft={
-      savedAt:new Date().toISOString(),
-      metadata:{
-        inspectionDate:$("inspectionDate").value,
-        inspectionTime:$("inspectionTime").value,
-        checker:$("checker").value,
-        reporter:$("reporter").value,
-        generalNotes:$("generalNotes").value
-      },
-      values:Object.fromEntries(getAllDataInputs().map(i=>[i.id,i.value]))
-    };
-    localStorage.setItem(DRAFT_KEY,JSON.stringify(draft));
-    $("saveStatus").textContent="Đã lưu nháp trên thiết bị · "+new Date().toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"});
-    if(showMessage) showToast("Đã lưu nháp trên thiết bị này.");
-    return true;
-  }catch(error){
-    $("saveStatus").textContent="Không lưu được nháp trên thiết bị";
-    if(showMessage) showToast("Trình duyệt không cho phép lưu nháp.");
-    return false;
+
+function saveDraft() {
+  const draft = {
+    date: document.getElementById("date").value,
+    time: document.getElementById("time").value,
+    checker: document.getElementById("checker").value,
+    reporter: document.getElementById("reporter").value,
+    notes: document.getElementById("notes").value,
+    quantities: Object.fromEntries(fieldOrder.map(input => [
+      input.dataset.key,
+      input.value
+    ]))
+  };
+
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
+    document.getElementById("saveStatus").textContent =
+      "Đã lưu nháp trên thiết bị · " +
+      new Date().toLocaleTimeString("vi-VN", {hour: "2-digit", minute: "2-digit"});
+  } catch (error) {
+    document.getElementById("saveStatus").textContent =
+      "Không lưu được nháp trên thiết bị này";
   }
 }
-function restoreDraft(){
-  try{
-    const raw=localStorage.getItem(DRAFT_KEY);
-    if(!raw) return;
-    const draft=JSON.parse(raw);
-    const m=draft.metadata||{};
-    $("inspectionDate").value=m.inspectionDate||localDate();
-    $("inspectionTime").value=m.inspectionTime||"14:00-15:00";
-    $("checker").value=m.checker||"";
-    $("reporter").value=m.reporter||"";
-    $("generalNotes").value=m.generalNotes||"";
-    Object.entries(draft.values||{}).forEach(([id,value])=>{
-      const input=$(id);
-      if(input && input.dataset.kind) input.value=value;
+
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveDraft, 250);
+}
+
+function loadDraft() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const draft = JSON.parse(raw);
+
+    ["date", "time", "checker", "reporter", "notes"].forEach(id => {
+      if (draft[id] !== undefined && draft[id] !== null) {
+        document.getElementById(id).value = draft[id];
+      }
     });
-    $("saveStatus").textContent="Đã khôi phục bản nháp gần nhất";
-  }catch(error){
-    $("saveStatus").textContent="Không thể đọc bản nháp cũ";
+
+    fieldOrder.forEach(input => {
+      if (draft.quantities && draft.quantities[input.dataset.key] !== undefined) {
+        input.value = draft.quantities[input.dataset.key];
+      }
+    });
+  } catch (error) {
+    console.warn("Không thể khôi phục bản nháp.", error);
   }
 }
-function getNextInput(current){
-  const inputs=getAllDataInputs();
-  const index=inputs.indexOf(current);
-  return index>=0 ? inputs[index+1]||null : null;
-}
-function focusInput(input){
-  if(!input) return false;
-  const details=input.closest("details");
-  if(details) details.open=true;
-  input.focus({preventScroll:true});
-  input.scrollIntoView({behavior:"smooth",block:"center"});
-  lastFocusedInput=input;
-  document.querySelectorAll(".item.is-active,.equip-row.is-active")
-    .forEach(row=>row.classList.remove("is-active"));
-  const row=input.closest(".item,.equip-row");
-  if(row) row.classList.add("is-active");
-  return true;
-}
-function moveNext(current){
-  const next=getNextInput(current);
-  if(next){
-    focusInput(next);
-  }else{
-    saveDraft(false);
-    showToast("Đã đến ô cuối cùng. Có thể kiểm tra và hoàn tất.");
-    $("submitBtn").scrollIntoView({behavior:"smooth",block:"center"});
-    current.blur();
-  }
-}
-function firstMissingInput(){
-  return getAllDataInputs().find(i=>i.value.trim()==="")||null;
-}
-function reviewMissing(){
-  const missing=firstMissingInput();
-  if(!missing){
-    showToast("Đã nhập tất cả các ô số lượng.");
+
+function downloadJSON() {
+  const data = readForm();
+
+  if (!data.ngay) {
+    alert("Hãy chọn ngày kiểm kho trước khi xuất JSON.");
+    document.getElementById("date").focus();
     return;
   }
-  focusInput(missing);
-  showToast("Đang đến ô chưa nhập đầu tiên.");
-}
-function downloadJSON(){
-  const payload=collectPayload();
-  const blob=new Blob([JSON.stringify(payload,null,2)],{
-    type:"application/json;charset=utf-8"
-  });
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url;
-  a.download=`kiem-kho-69-khuong-trung-${payload.inspectionDate}.json`;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),1000);
-  return payload;
-}
-function submitReport(){
-  if(!$("checker").value.trim()){
-    $("checker").focus();
-    showToast("Vui lòng nhập tên người kiểm kho.");
-    return;
-  }
-  const missing=getAllDataInputs().filter(i=>i.value.trim()==="");
-  let message="Xuất bản ghi JSON kiểm kho?";
-  if(missing.length){
-    message=`Còn ${missing.length} ô số lượng chưa nhập. Các ô này sẽ được giữ là null/chưa nhập, không tính là 0. Vẫn xuất JSON?`;
-  }
-  if(!confirm(message)) return;
-  const payload=downloadJSON();
-  saveDraft(false);
-  $("saveStatus").textContent="Đã xuất JSON lúc "+new Date().toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"});
-  showToast(`Đã xuất JSON · ${payload.inspectionDate}`);
-}
-function resetDraft(){
-  if(!confirm("Xóa toàn bộ số liệu đang nhập và bản nháp trên thiết bị này?")) return;
-  try{localStorage.removeItem(DRAFT_KEY);}catch(e){}
-  $("inspectionDate").value=localDate();
-  $("inspectionTime").value="14:00-15:00";
-  $("checker").value="";
-  $("reporter").value="";
-  $("generalNotes").value="";
-  getAllDataInputs().forEach(i=>i.value="");
-  updateSummary();
-  document.querySelectorAll(".item.is-active,.equip-row.is-active")
-    .forEach(row=>row.classList.remove("is-active"));
-  $("saveStatus").textContent="Đã xóa bản nháp";
-  showToast("Đã xóa dữ liệu nháp.");
+
+  const missing = data.thong_ke.so_muc_bo_trong;
+  const message = missing > 0
+    ? "Còn " + missing + " mục chưa nhập. Các mục này sẽ được lưu là null, không phải 0.\\n\\nVẫn xuất JSON?"
+    : "Đã nhập đủ tất cả các mục. Xuất bản ghi JSON?";
+
+  if (!confirm(message)) return;
+
+  const blob = new Blob(
+    [JSON.stringify(data, null, 2)],
+    { type: "application/json;charset=utf-8" }
+  );
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "Tascus_KiemKho_" + data.ngay + ".json";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+
+  document.getElementById("saveStatus").textContent =
+    "Đã tạo bản JSON để lưu hoặc gửi đi.";
 }
 
-buildInventory();
-buildEquipment();
-$("inspectionDate").value=localDate();
-restoreDraft();
-updateSummary();
+document.getElementById("exportBtn").addEventListener("click", downloadJSON);
 
-let autosaveTimer=null;
-document.addEventListener("input",event=>{
-  const target=event.target;
-  if(target.matches("input[data-kind]")){
-    if(target.value!=="" && Number(target.value)<0){
-      target.value="";
-      showToast("Số lượng không thể âm.");
-    }
-    updateInputState(target);
-    updateSummary();
-  }
-  if(target.matches("input,textarea,select")){
-    clearTimeout(autosaveTimer);
-    autosaveTimer=setTimeout(()=>saveDraft(false),350);
-  }
+["date", "time", "checker", "reporter", "notes"].forEach(id => {
+  document.getElementById(id).addEventListener("input", scheduleSave);
+  document.getElementById(id).addEventListener("change", scheduleSave);
 });
-document.addEventListener("change",event=>{
-  if(event.target.matches("input,textarea,select")){
-    updateSummary();
-    saveDraft(false);
-  }
-});
-document.addEventListener("focusin",event=>{
-  if(event.target.matches("input[data-kind]")){
-    lastFocusedInput=event.target;
-    const row=event.target.closest(".item,.equip-row");
-    if(row){
-      document.querySelectorAll(".item.is-active,.equip-row.is-active")
-        .forEach(r=>r.classList.remove("is-active"));
-      row.classList.add("is-active");
-    }
-  }
-});
-document.addEventListener("keydown",event=>{
-  const target=event.target;
-  if(!target.matches("input[data-kind]")) return;
-  if(event.key==="Enter" || event.key==="NumpadEnter"){
-    event.preventDefault();
-    saveDraft(false);
-    moveNext(target);
-  }
-});
-$("nextBtn").addEventListener("click",()=>{
-  const active=document.activeElement;
-  if(active && active.matches("input[data-kind]")){
-    moveNext(active);
-  }else if(lastFocusedInput){
-    moveNext(lastFocusedInput);
-  }else{
-    const first=getAllDataInputs()[0];
-    if(first) focusInput(first);
-  }
-});
-$("saveDraftBtn").addEventListener("click",()=>saveDraft(true));
-$("submitBtn").addEventListener("click",submitReport);
-$("reviewBtn").addEventListener("click",reviewMissing);
-$("printBtn").addEventListener("click",()=>window.print());
-$("resetBtn").addEventListener("click",resetDraft);
 
-window.addEventListener("beforeunload",()=>saveDraft(false));
+function initialize() {
+  // Tạo danh sách đầy đủ trước, sau đó khôi phục nháp.
+  groups.forEach(createGroup);
+  createEquipmentSection();
+
+  const now = new Date();
+  const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+  const today = localDate.toISOString().slice(0, 10);
+  const currentTime = localDate.toISOString().slice(11, 16);
+
+  document.getElementById("date").value = today;
+  document.getElementById("time").value = currentTime;
+
+  loadDraft();
+  updateProgress();
+
+  // Lưu ngay khi thay đổi ngày/giờ hoặc thông tin ban đầu.
+  saveDraft();
+}
+
+initialize();
 </script>
 </body>
 </html>
