@@ -1,188 +1,847 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f97316">
-<title>Tascus Food · Báo cáo kiểm kho</title>
+<meta name="theme-color" content="#f47721">
+<title>Kiểm kho · Tascus Food</title>
 <style>
-:root{--orange:#f97316;--orange-dark:#c2410c;--ink:#242424;--muted:#6b7280;--line:#e5e7eb;--bg:#f6f7f9;--card:#fff;--green:#087f5b}
+:root {
+  --orange:#f47721;
+  --orange-dark:#c9570a;
+  --orange-light:#fff0e4;
+  --bg:#f5f6f8;
+  --card:#fff;
+  --text:#202124;
+  --muted:#70757d;
+  --border:#e2e5e9;
+  --green:#16834a;
+  --red:#c62828;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{background:var(--orange);color:white;padding:18px 16px 20px}
-.wrap{max-width:760px;margin:auto}
-.brand{font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.95}
-h1{font-size:23px;line-height:1.2;margin:8px 0 6px}
-header p{margin:0;font-size:13px;opacity:.95}
-main{padding:12px;max-width:760px;margin:auto}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 12px}
-.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-label.field{display:block;font-size:12px;color:var(--muted);font-weight:650}
-input,select,textarea{font:inherit}
-.field input,.field select{display:block;width:100%;margin-top:5px;padding:11px;border:1px solid #d1d5db;border-radius:9px;background:white;color:var(--ink);min-width:0}
-.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 8px}
-h2{font-size:16px;margin:0}
-.sub{font-size:12px;color:var(--muted);margin-top:3px}
-details.group{background:white;border:1px solid var(--line);border-radius:12px;margin:8px 0;overflow:hidden}
-details.group summary{list-style:none;cursor:pointer;padding:13px 12px;font-weight:750;display:flex;justify-content:space-between;gap:10px;align-items:center}
-details.group summary::-webkit-details-marker{display:none}
-details.group summary:after{content:"＋";color:var(--orange);font-size:18px}
-details.group[open] summary:after{content:"−"}
-.group-body{padding:0 10px 10px}
-.item{display:grid;grid-template-columns:minmax(0,1fr) 118px;gap:10px;align-items:center;padding:10px 2px;border-top:1px solid #f0f1f3}
-.item-name{font-size:13px;font-weight:600}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:15px;line-height:1.45;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{
+  background:var(--orange);color:#fff;padding:18px 16px 20px;
+  position:sticky;top:0;z-index:20;box-shadow:0 2px 8px #0002;
+}
+.header-inner{max-width:900px;margin:auto}
+.brand{font-size:12px;font-weight:800;letter-spacing:1.4px;opacity:.9}
+header h1{font-size:22px;margin:3px 0 5px}
+header p{font-size:13px;margin:0;opacity:.95}
+.progress-row{display:flex;align-items:center;gap:10px;margin-top:13px}
+.progress-track{height:6px;border-radius:99px;background:#ffffff55;flex:1;overflow:hidden}
+.progress-bar{height:100%;width:0;background:#fff;border-radius:99px;transition:width .15s}
+.progress-label{font-size:12px;white-space:nowrap}
+main{max-width:900px;margin:auto;padding:14px 12px 120px}
+.card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;margin-bottom:12px;overflow:hidden;
+}
+.card-head{padding:14px 14px 10px}
+.card-head h2{font-size:16px;margin:0 0 3px}
+.card-head p{font-size:12px;color:var(--muted);margin:0}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px 14px}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.field label,.field-label{font-size:12px;font-weight:700;color:#51565d}
+input[type=text],input[type=date],input[type=number],select,textarea{
+  width:100%;min-width:0;border:1px solid #d5d9df;border-radius:10px;
+  padding:11px 10px;background:#fff;color:var(--text);outline:none;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--orange);box-shadow:0 0 0 3px #f4772122;
+}
+input[type=number]{font-size:17px;font-weight:650;text-align:right;padding:10px 8px;
+  font-variant-numeric:tabular-nums;appearance:textfield;-moz-appearance:textfield}
+input::-webkit-inner-spin-button,input::-webkit-outer-spin-button{
+  -webkit-appearance:none;margin:0
+}
+.section-title{
+  padding:13px 14px;background:#fff8f2;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.section-title strong{font-size:14px}
+.section-title small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.count{font-size:11px;color:var(--orange-dark);font-weight:750;white-space:nowrap}
+.category{border-bottom:1px solid var(--border)}
+.category:last-child{border-bottom:0}
+.category summary{
+  list-style:none;display:flex;justify-content:space-between;align-items:center;
+  gap:10px;padding:13px 14px;font-weight:750;font-size:13px;cursor:pointer;
+}
+.category summary::-webkit-details-marker{display:none}
+.category summary:after{content:"＋";color:var(--orange);font-size:17px}
+.category[open] summary:after{content:"−"}
+.category summary .cat-name{flex:1}
+.category summary .cat-count{font-size:11px;color:var(--muted);font-weight:500}
+.items{padding:0 12px 8px}
+.item{
+  display:grid;grid-template-columns:minmax(0,1fr) 112px;align-items:center;
+  gap:10px;padding:10px 2px;border-top:1px solid #f0f1f3;
+  scroll-margin-top:180px;
+}
+.item-name{font-size:13px;font-weight:600;overflow-wrap:anywhere}
 .item-unit{font-size:11px;color:var(--muted);margin-top:2px}
-.item input{width:100%;min-width:0;text-align:right;padding:10px 8px;border:1px solid #d1d5db;border-radius:9px;background:#fff;font-size:16px}
-.item input:focus,.field input:focus,.field select:focus{outline:2px solid #fed7aa;border-color:var(--orange)}
-.input-wrap{display:flex;align-items:center;gap:5px}
-.input-wrap input{flex:1}
-.input-wrap span{font-size:11px;color:var(--muted);min-width:20px}
-.tool-row{display:grid;grid-template-columns:minmax(0,1fr) 72px 72px;gap:7px;align-items:center;padding:9px 0;border-top:1px solid #f0f1f3}
-.tool-name{font-size:12px;font-weight:600}
-.tool-code{font-size:10px;color:var(--muted);margin-right:4px}
-.tool-row input{width:100%;min-width:0;text-align:center;padding:9px 3px;border:1px solid #d1d5db;border-radius:8px;font-size:15px}
-.tool-labels{display:grid;grid-template-columns:minmax(0,1fr) 72px 72px;gap:7px;font-size:10px;color:var(--muted);text-align:center;padding:0 0 6px}
-.tool-labels span:first-child{text-align:left}
-.note{font-size:12px;color:var(--muted);margin:8px 0 0}
-.actions{position:sticky;bottom:0;background:rgba(246,247,249,.96);backdrop-filter:blur(10px);padding:10px 0 calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr;gap:8px}
-button{border:0;border-radius:11px;padding:13px 10px;font:700 14px system-ui;cursor:pointer}
-.primary{background:var(--orange);color:white}
-.secondary{background:white;border:1px solid var(--line);color:var(--ink)}
-.success{background:#e7f7ef;border:1px solid #b7e4ce;padding:12px;border-radius:10px;font-size:13px;margin-bottom:12px;display:none}
-#result{display:none}
-#result pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#f8fafc;padding:10px;border-radius:8px}
-@media(min-width:600px){main{padding:18px}.item{grid-template-columns:minmax(0,1fr) 160px}.tool-row,.tool-labels{grid-template-columns:minmax(0,1fr) 90px 90px}}
+.qty-wrap{display:flex;flex-direction:column;gap:3px}
+.qty-wrap input{height:43px}
+.input-state{font-size:10px;color:var(--muted);text-align:right;min-height:12px}
+.item.is-active{background:#fff8f2;outline:2px solid var(--orange);outline-offset:-2px;border-radius:8px}
+.item.is-entered .input-state{color:var(--green)}
+.equip-head,.equip-row{
+  display:grid;grid-template-columns:minmax(0,1fr) 72px 72px;gap:7px;align-items:center;
+}
+.equip-head{
+  padding:10px 12px;background:#fafafa;color:var(--muted);
+  font-size:11px;font-weight:750;text-align:center;
+}
+.equip-head span:first-child{text-align:left}
+.equip-row{padding:9px 12px;border-top:1px solid #f0f1f3;scroll-margin-top:180px}
+.equip-name{font-size:12px;font-weight:600}
+.equip-standard{font-size:10px;color:var(--muted);margin-top:2px}
+.equip-row input{height:40px;padding:7px 5px;font-size:15px}
+.equip-row.is-active{background:#fff8f2;outline:2px solid var(--orange);outline-offset:-2px}
+.note-box{padding:0 14px 14px}
+.note-box textarea{resize:vertical;min-height:75px}
+.toolbar{
+  display:flex;gap:8px;flex-wrap:wrap;padding:0 14px 14px;
+}
+.btn{
+  border:0;border-radius:10px;padding:11px 14px;font-weight:750;font-size:13px;
+}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-secondary{background:#f0f1f3;color:#25282c}
+.btn-outline{background:#fff;border:1px solid var(--border);color:#30343a}
+.btn-danger{background:#fff0f0;color:var(--red)}
+.sticky-actions{
+  position:fixed;bottom:0;left:0;right:0;z-index:30;
+  background:#ffffffed;backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+}
+.sticky-inner{max-width:900px;margin:auto;display:flex;gap:8px}
+.sticky-inner button{flex:1;min-width:0}
+.status{text-align:center;color:var(--muted);font-size:11px;margin-top:6px}
+.toast{
+  position:fixed;left:50%;bottom:100px;transform:translateX(-50%);
+  z-index:50;background:#242424;color:white;padding:11px 15px;
+  border-radius:12px;font-size:13px;max-width:90%;display:none;
+  box-shadow:0 5px 20px #0002;
+}
+.help{padding:12px 14px;background:#fff8f2;color:#754016;font-size:12px}
+@media(min-width:650px){
+  main{padding:20px 18px 130px}
+  .meta-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .item{grid-template-columns:minmax(0,1fr) 145px;padding:11px 5px}
+  .equip-head,.equip-row{grid-template-columns:minmax(0,1fr) 100px 100px}
+  .item-name{font-size:14px}
+}
+@media print{
+  header{position:static;background:#fff;color:#000;box-shadow:none;padding:10px 0}
+  main{padding:0;max-width:none}
+  body{background:#fff;font-size:11px}
+  .sticky-actions,.toolbar,.progress-row,.help,.toast{display:none!important}
+  .card{break-inside:avoid;border-color:#bbb}
+  .category summary:after{display:none}
+  details.category{display:block}
+  .items{display:block}
+  input,select,textarea{border:0!important;box-shadow:none!important;padding:2px!important}
+  .item{padding:4px 2px}
+  .equip-row{padding:4px 12px}
+}
 </style>
 </head>
 <body>
-<header><div class="wrap">
-  <div class="brand">Tascus Food · 69 Khương Trung</div>
-  <h1>Báo cáo kiểm kho nguyên vật liệu</h1>
-  <p>Nhập toàn bộ phiếu trong một lần. Ô trống được hiểu là chưa nhập, không tự coi là 0.</p>
-</div></header>
-<main>
-<form id="inventoryForm">
-  <section class="card">
-    <div class="meta">
-      <label class="field">Ngày kiểm kho<input id="date" name="date" type="date" required></label>
-      <label class="field">Ca kiểm kho<select id="shift" name="shift"><option>Giữa ca 1 và ca 2 (14:00–15:00)</option><option>Cuối ca</option><option>Kiểm kê cuối tháng</option></select></label>
-      <label class="field">Người kiểm kho<input id="checker" name="checker" placeholder="Tên người kiểm"></label>
-      <label class="field">Người nhập báo cáo<input id="reporter" name="reporter" placeholder="Tên người nhập"></label>
+<header>
+  <div class="header-inner">
+    <div class="brand">TASCUS FOOD · 69 KHƯƠNG TRUNG</div>
+    <h1>Kiểm kho nguyên vật liệu</h1>
+    <p>Nhập số lượng → bấm Enter → sang ô tiếp theo.</p>
+    <div class="progress-row">
+      <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+      <div class="progress-label" id="progressLabel">0 ô đã nhập</div>
     </div>
-    <label class="field" style="margin-top:10px">Ghi chú chung<textarea id="notes" rows="2" placeholder="Ghi chú nếu có" style="width:100%;margin-top:5px;padding:10px;border:1px solid #d1d5db;border-radius:9px"></textarea></label>
-  </section>
-
-  <section class="card">
-    <div class="section-head"><div><h2>Nguyên vật liệu</h2><div class="sub">Mỗi nguyên liệu chỉ nhập một tổng lượng tồn. Dùng đúng đơn vị ghi bên dưới.</div></div><strong id="count">0/0</strong></div>
-    <div id="ingredients"></div>
-    <p class="note">Với hàng tính bằng gram nhưng kiểm nhanh theo túi, hãy quy đổi theo khối lượng mỗi túi đã biết. Nếu không biết chính xác, ghi lượng ước tính và nêu trong ghi chú.</p>
-  </section>
-
-  <section class="card">
-    <div class="section-head"><div><h2>Dụng cụ, công cụ</h2><div class="sub">Nhập số lượng kiểm đếm sáng và chiều theo phiếu giấy.</div></div></div>
-    <div class="tool-labels"><span>Dụng cụ</span><span>Sáng</span><span>Chiều</span></div>
-    <div id="tools"></div>
-  </section>
-  <div id="success" class="success"></div>
-  <div class="actions">
-    <button class="secondary" type="button" id="saveDraft">Lưu nháp trên máy</button>
-    <button class="primary" type="submit">Hoàn tất & xuất báo cáo</button>
   </div>
-</form>
-<section class="card" id="result">
-  <h2>Báo cáo đã tạo</h2>
-  <p class="sub">Tải file JSON để lưu hoặc chuyển tiếp cho hệ thống xử lý. Bản HTML này chưa tự gửi dữ liệu lên Lark Base.</p>
-  <button class="primary" type="button" id="download">Tải báo cáo JSON</button>
-  <button class="secondary" type="button" id="print" style="margin-left:5px">In / lưu PDF</button>
-  <pre id="preview"></pre>
-</section>
+</header>
+
+<main>
+  <section class="card">
+    <div class="card-head">
+      <h2>Thông tin kiểm kho</h2>
+      <p>Nhập thông tin chung trước khi kiểm kê.</p>
+    </div>
+    <div class="meta-grid">
+      <div class="field">
+        <label for="inspectionDate">Ngày kiểm kho</label>
+        <input id="inspectionDate" type="date" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="inspectionTime">Thời gian</label>
+        <select id="inspectionTime">
+          <option value="14:00-15:00">14:00–15:00</option>
+          <option value="other">Khung giờ khác</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="checker">Người kiểm kho</label>
+        <input id="checker" type="text" placeholder="Tên nhân viên" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="reporter">Người xác nhận</label>
+        <input id="reporter" type="text" placeholder="Tên người xác nhận">
+      </div>
+    </div>
+    <div class="note-box">
+      <label class="field-label" for="generalNotes">Ghi chú chung</label>
+      <textarea id="generalNotes" placeholder="Ví dụ: hàng chưa giao, nguyên liệu hỏng, số lượng cần xác minh..."></textarea>
+    </div>
+    <div class="help">
+      Ô trống = chưa nhập/chưa kiểm. Nhập <b>0</b> nếu đã kiểm và thực tế không còn hàng.
+      Bấm Enter để chuyển tiếp; dùng nút “Ô tiếp theo” nếu bàn phím điện thoại không hiện Enter.
+    </div>
+  </section>
+
+  <section class="card" id="inventoryCard">
+    <div class="section-title">
+      <div>
+        <strong>Nguyên vật liệu</strong>
+        <small>Nhập tổng số lượng thực tế hiện có của từng loại.</small>
+      </div>
+      <span class="count" id="inventoryCount">0 mục</span>
+    </div>
+    <div id="inventoryGroups"></div>
+  </section>
+
+  <section class="card" id="equipmentCard">
+    <div class="section-title">
+      <div>
+        <strong>Kiểm tra dụng cụ, thiết bị</strong>
+        <small>Nhập số lượng thực tế theo ca sáng và ca chiều.</small>
+      </div>
+      <span class="count" id="equipmentCount">0 mục</span>
+    </div>
+    <div class="equip-head">
+      <span>Dụng cụ</span><span>Ca sáng</span><span>Ca chiều</span>
+    </div>
+    <div id="equipmentList"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <h2>Kiểm tra trước khi lưu</h2>
+      <p>Những ô bỏ trống sẽ được lưu là chưa nhập, không tự động tính thành 0.</p>
+    </div>
+    <div class="meta-grid">
+      <div class="field">
+        <label>Tổng nguyên liệu</label>
+        <input id="summaryTotal" type="text" readonly value="0">
+      </div>
+      <div class="field">
+        <label>Đã nhập</label>
+        <input id="summaryEntered" type="text" readonly value="0">
+      </div>
+      <div class="field">
+        <label>Còn trống</label>
+        <input id="summaryMissing" type="text" readonly value="0">
+      </div>
+      <div class="field">
+        <label>Dụng cụ đã nhập</label>
+        <input id="summaryEquipment" type="text" readonly value="0">
+      </div>
+    </div>
+    <div class="toolbar">
+      <button class="btn btn-secondary" id="nextBtn" type="button">Ô tiếp theo ↵</button>
+      <button class="btn btn-outline" id="reviewBtn" type="button">Xem ô còn trống</button>
+      <button class="btn btn-outline" id="printBtn" type="button">In / lưu PDF</button>
+      <button class="btn btn-danger" id="resetBtn" type="button">Xóa bản nháp</button>
+    </div>
+  </section>
 </main>
+
+<div class="sticky-actions">
+  <div class="sticky-inner">
+    <button class="btn btn-secondary" id="saveDraftBtn" type="button">Lưu nháp</button>
+    <button class="btn btn-primary" id="submitBtn" type="button">Hoàn tất & xuất JSON</button>
+  </div>
+  <div class="status" id="saveStatus">Bản nháp được lưu trên thiết bị này</div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-const groups = [
- {name:"NCC bên ngoài · Bao bì, NVL tiêu hao", items:[
- ["Bao bì đựng bánh mì Tascus","Chiếc"],["Bao bì đựng sandwich Tascus","Chiếc"],["Bao bì đựng crepe Tascus","Chiếc"],["Giấy gói burger 30x30 Tascus","Chiếc"],["Túi Nilong vuông đựng bánh","Gram"],["Túi Nilong dọc đựng cốc nước","Gram"],["Túi rác đen loại 20kg thùng to","Gram"],["Cốc nhựa to 1 lít","Cái"],["Cốc nhựa nhỏ 500 ml","Cái"],["Cốc nhỏ đựng sốt combo","Cái"],["Khay (thuyền) đựng mì/khoai dùng tại chỗ","Cái"],["Hộp đựng mì/khoai mang đi","Cái"],["Ống hút to","Cái"],["Ống hút nhỏ","Cái"],["Giấy ăn khô","Bịch"],["Giấy in bill hóa đơn","Cuộn"],["Găng tay Nilong làm bánh","Gram"],["Giấy nến lót nhân Burger","Bịch"],["Dĩa gỗ / nhựa","Cái"]]},
- {name:"NCC bên ngoài · Đồ uống đóng chai",items:[
- ["Coca Cola 330 ml","Lon"],["Nước suối đóng chai","Chai"]]},
- {name:"NCC bên ngoài · Nguyên liệu làm bánh, pha trà",items:[
- ["Xúc xích hấp Đức Việt làm BM Crepe","Gram"],["Jambong Đức Việt làm BM Crepe","Gram"],["Trứng gà","Quả"],["Nha đam Tascus","Gram"],["Vỏ bánh mì","Cái"],["Vỏ burger","Cái"],["Vỏ sandwich (túi 10 lát)","Lát"],["Dầu ăn","Gram"],["Khoai tây để chiên","Gram"],["Bánh Oreo làm crepe","Gram"],["Mì Ý sợi khô","Gram"],["Gà vòng","Gram"],["Gà viên popcorn","Gram"],["Miếng Burger tôm","Miếng"]]},
- {name:"NCC bên ngoài · Rau củ quả tươi",items:[
- ["Xà lách","Gram"],["Cà chua","Gram"],["Rau mùi","Gram"],["Dưa chuột","Gram"],["Chanh","Gram"],["Quất","Gram"],["Chuối chín làm bánh crepe","Gram"],["Hành tây sống","Gram"],["Chanh vàng","Gram"],["Táo (salad)","Gram"]]},
- {name:"Xưởng Tascus Food · Bao bì, NVL tiêu hao",items:[
- ["Bao bì combo vuông 2–4 người (bigbox)","Chiếc"],["Bao bì combo nhỏ 1–2 người Tascus (no nê)","Chiếc"]]},
- {name:"Xưởng Tascus Food · Đồ uống tự sản xuất",items:[
- ["Cốt trà tắc, chanh Tascus","Gram"],["Nước trà Hibiscus thành phẩm","Gram"]]},
- {name:"Xưởng Tascus Food · Rau/nộm muối",items:[
- ["Nộm củ cải làm bánh mì","Gram"],["Bắp cải tím muối làm bánh mì","Gram"],["Hành tây muối làm burger","Gram"]]},
- {name:"Xưởng Tascus Food · Nguyên liệu làm bánh, pha trà",items:[
- ["Phô mai lá làm BM Burger","Lát"],["Phô mai hạt, sợi làm sandwich crepe","Gram"],["Bơ nhạt","Gram"],["Bột phô mai cho vào khoai","Gram"],["Bột xí muội cho vào khoai","Gram"],["Đường nước pha trà (chai 1,5 lít)","Gram"]]},
- {name:"Xưởng Tascus Food · Sốt thành phẩm",items:[
- ["Sốt tiêu đen","Gram"],["Sốt phô mai","Gram"],["Sốt kem nấm","Gram"],["Sốt hồng bánh mì","Gram"],["Sốt Sapo","Gram"],["Sốt Seoul","Gram"],["Sốt bò băm hầm","Gram"],["Pate heo","Gram"],["Pate bò","Gram"],["Tương ớt Cholimex","Gram"],["Tương cà Cholimex","Gram"],["Sốt ớt bánh mì","Gram"],["Sữa đặc","Gram"],["Socola chai","Gram"],["Bột bánh Crepe","Gram"],["Sốt bánh mì chảo","Gram"]]},
- {name:"Xưởng Tascus Food · Thịt sống",items:[
- ["Bò miếng Burger","Gram"],["Bò thành phẩm ướp sống bánh mì","Gram"]]},
- {name:"Xưởng Tascus Food · Thịt chín",items:[
- ["Gà nướng sả","Gram"],["Heo nướng xá xíu","Gram"]]}
+"use strict";
+
+const DRAFT_KEY = "tascus_inventory_draft_v2";
+const SCHEMA_VERSION = "1.0";
+
+const inventoryGroups = [
+  {
+    id:"external-packaging",
+    title:"Nhà cung cấp ngoài · Bao bì và vật tư",
+    items:[
+      ["Bao bì đựng bánh mì Tascus","Chiếc"],
+      ["Bao bì đựng sandwich Tascus","Chiếc"],
+      ["Bao bì đựng crepe Tascus","Chiếc"],
+      ["Giấy gói burger 30x30 Tascus","Chiếc"],
+      ["Túi Nilong vuông đựng bánh","Gram"],
+      ["Túi Nilong dọc đựng cốc nước","Gram"],
+      ["Túi rác đen loại 20kg thùng to","Gram"],
+      ["Cốc nhựa to 1 lít","Cái"],
+      ["Cốc nhựa nhỏ 500 ml","Cái"],
+      ["Cốc nhỏ đựng sốt combo","Cái"],
+      ["Khay/thuyền đựng mì/khoai dùng tại chỗ","Cái"],
+      ["Hộp đựng mì/khoai mang đi","Cái"],
+      ["Ống hút to","Cái"],
+      ["Ống hút nhỏ","Cái"],
+      ["Giấy ăn khô","Bịch"],
+      ["Giấy in bill hóa đơn","Cuộn"],
+      ["Găng tay Nilong làm bánh","Gram"],
+      ["Giấy nến lót nhân Burger","Bịch"],
+      ["Dĩa gỗ/nhựa","Cái"]
+    ]
+  },
+  {
+    id:"external-drinks",
+    title:"Nhà cung cấp ngoài · Nước đóng chai",
+    items:[
+      ["Coca Cola 330 ml","Lon"],
+      ["Nước suối đóng chai","Chai"]
+    ]
+  },
+  {
+    id:"external-ingredients",
+    title:"Nhà cung cấp ngoài · Nguyên liệu",
+    items:[
+      ["Xúc xích hấp Đức Việt làm BM Crepe","Gram"],
+      ["Jambong Đức Việt làm BM Crepe","Gram"],
+      ["Trứng gà","Quả"],
+      ["Nha đam Tascus","Gram"],
+      ["Vỏ bánh mì","Cái"],
+      ["Vỏ burger","Cái"],
+      ["Vỏ sandwich (túi 10 lát)","Lát"],
+      ["Dầu ăn","Gram"],
+      ["Khoai tây để chiên","Gram"],
+      ["Bánh Oreo làm crepe","Gram"],
+      ["Mì Ý sợi khô","Gram"],
+      ["Gà vòng","Gram"],
+      ["Gà viên popcorn","Gram"],
+      ["Miếng Burger tôm","Miếng"]
+    ]
+  },
+  {
+    id:"external-produce",
+    title:"Nhà cung cấp ngoài · Rau củ và trái cây",
+    items:[
+      ["Xà lách","Gram"],
+      ["Cà chua","Gram"],
+      ["Rau mùi","Gram"],
+      ["Dưa chuột","Gram"],
+      ["Chanh","Gram"],
+      ["Quất","Gram"],
+      ["Chuối chín làm bánh crepe","Gram"],
+      ["Hành tây sống","Gram"],
+      ["Chanh vàng","Gram"],
+      ["Táo (salad)","Gram"]
+    ]
+  },
+  {
+    id:"workshop-packaging",
+    title:"Xưởng Tascus · Bao bì",
+    items:[
+      ["Bao bì combo vuông 2–4 người (bigbox)","Chiếc"],
+      ["Bao bì combo nhỏ 1–2 người Tascus (no nê)","Chiếc"]
+    ]
+  },
+  {
+    id:"workshop-drinks",
+    title:"Xưởng Tascus · Đồ uống",
+    items:[
+      ["Cốt trà tắc, chanh Tascus","Gram"],
+      ["Nước trà Hibiscus thành phẩm","Gram"]
+    ]
+  },
+  {
+    id:"workshop-pickles",
+    title:"Xưởng Tascus · Rau củ muối",
+    items:[
+      ["Nộm củ cải làm bánh mì","Gram"],
+      ["Bắp cải tím muối làm bánh mì","Gram"],
+      ["Hành tây muối làm burger","Gram"]
+    ]
+  },
+  {
+    id:"workshop-ingredients",
+    title:"Xưởng Tascus · Nguyên liệu",
+    items:[
+      ["Phô mai lá làm BM Burger","Lát"],
+      ["Phô mai hạt/sợi làm sandwich crepe","Gram"],
+      ["Bơ nhạt","Gram"],
+      ["Bột phô mai cho vào khoai","Gram"],
+      ["Bột xí muội cho vào khoai","Gram"],
+      ["Đường nước pha trà (chai 1.5 lít)","Gram"]
+    ]
+  },
+  {
+    id:"workshop-sauces",
+    title:"Xưởng Tascus · Sốt và nguyên liệu pha chế",
+    items:[
+      ["Sốt tiêu đen","Gram"],
+      ["Sốt phô mai","Gram"],
+      ["Sốt kem nấm","Gram"],
+      ["Sốt hồng bánh mì","Gram"],
+      ["Sốt Sapo","Gram"],
+      ["Sốt Seoul","Gram"],
+      ["Sốt bò băm hầm","Gram"],
+      ["Pate heo","Gram"],
+      ["Pate bò","Gram"],
+      ["Tương ớt Cholimex","Gram"],
+      ["Tương cà Cholimex","Gram"],
+      ["Sốt ớt bánh mì","Gram"],
+      ["Sữa đặc","Gram"],
+      ["Socola chai","Gram"],
+      ["Bột bánh Crepe","Gram"],
+      ["Sốt bánh mì chảo","Gram"]
+    ]
+  },
+  {
+    id:"workshop-raw-meat",
+    title:"Xưởng Tascus · Thịt sống",
+    items:[
+      ["Bò miếng Burger","Gram"],
+      ["Bò thành phẩm ướp sống bánh mì","Gram"]
+    ]
+  },
+  {
+    id:"workshop-cooked-meat",
+    title:"Xưởng Tascus · Thịt đã chế biến",
+    items:[
+      ["Gà nướng sả","Gram"],
+      ["Heo nướng xá xíu","Gram"]
+    ]
+  }
 ];
-const tools = [
- ["A1","Kẹp dài răng cưa",4],["A2","Kẹp ngắn răng cưa",4],["A3","Kẹp ngắn dẹt",2],["A4","Dao ăn",10],["A5","Dĩa ăn",10],["A6","Thìa ăn",4],["A7","Thìa to múc sốt",3],["A8","Muôi múc sốt",2],["A9","Thìa nhỏ múc sốt",6],["A10","Dao cắt thái",3],["A12","Kéo cắt",1],["A13","Dụng cụ vắt chanh/quất",1],["A14","Chày giã chanh",1],["A15","Thìa khuấy",1],["A16","Rây lọc",2],["A17","Búa dần thịt",1],["A18","Khuôn nặn burger",1],["A19","Dụng cụ ép burger",1],["A20","Dao cắt burger",1],["A21","Sủi cạo vệ sinh bàn chiên phẳng",1],["A22","Kẹp gắp chảo bánh mì (đen)",2],["A23","Khuôn trứng",2],["A24","Xẻng burger dài",2],["A25","Xẻng burger tam giác",2],["A26","Xẻng trộn mì (đen)",1],["A27","Chổi bơ",1],["A28","Nạo vỏ hoa quả",1],["A29","Khay nhựa vàng",5],["A30","Khay inox bé",6],["A31","Khay inox to",3],["A32","Đĩa đựng sốt/tương ớt/tương cà",10],["A33","Bát con",8],["A34","Bát to",6],["A35","Dao rọc bánh mì (đỏ)",2],["A36","Giỏ burger thấp",5],["A37","Giỏ đựng khoai cao",6],["A38","Bát sắt salad",3],["A39","Khăn nâu vệ sinh bếp",3],["A40","Khăn xanh dương khô dụng cụ",1],["A41","Thìa xúc nha đam",1],["A42","Con lăn bơ",1],["A43","Đĩa đựng mì / burger",6]
+
+const equipment = [
+  ["A1","Kẹp dài răng cưa",4],
+  ["A2","Kẹp ngắn răng cưa",4],
+  ["A3","Kẹp ngắn dẹt",2],
+  ["A4","Dao ăn",10],
+  ["A5","Dĩa ăn",10],
+  ["A6","Thìa ăn",4],
+  ["A7","Thìa to múc sốt",3],
+  ["A8","Muôi múc sốt",2],
+  ["A9","Thìa nhỏ múc sốt",6],
+  ["A10","Dao cắt thái",3],
+  ["A12","Kéo cắt",1],
+  ["A13","Dụng cụ vắt chanh/quất",1],
+  ["A14","Chày giã chanh",1],
+  ["A15","Thìa khuấy",1],
+  ["A16","Rây lọc",2],
+  ["A17","Búa dần thịt",1],
+  ["A18","Khuôn nặn burger",1],
+  ["A19","Dụng cụ ép burger",1],
+  ["A20","Dao cắt burger",1],
+  ["A21","Sủi cạo vệ sinh bàn chiên phẳng",1],
+  ["A22","Kẹp gắp chảo bánh mì (đen)",2],
+  ["A23","Khuôn trứng",2],
+  ["A24","Xẻng burger dài",2],
+  ["A25","Xẻng burger tam giác",2],
+  ["A26","Xẻng trộn mì (đen)",1],
+  ["A27","Chổi bơ",1],
+  ["A28","Nạo vỏ hoa quả",1],
+  ["A29","Khay nhựa vàng",5],
+  ["A30","Khay inox bé",6],
+  ["A31","Khay inox to",3],
+  ["A32","Đĩa đựng sốt/tương ớt/tương cà",10],
+  ["A33","Bát con",8],
+  ["A34","Bát to",6],
+  ["A35","Dao rọc bánh mì (đỏ)",2],
+  ["A36","Giỏ burger thấp",5],
+  ["A37","Giỏ đựng khoai cao",6],
+  ["A38","Bát sắt salad",3],
+  ["A39","Khăn nâu vệ sinh bếp",3],
+  ["A40","Khăn xanh dương khô dụng cụ",1],
+  ["A41","Thìa xúc nha đam",1],
+  ["A42","Con lăn bơ",1],
+  ["A43","Đĩa đựng mì/burger",6]
 ];
-const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const ingredientRoot=document.getElementById('ingredients');
-let idx=0;
-groups.forEach((g,gi)=>{
- const d=document.createElement('details'); d.className='group'; d.open=gi===0;
- const count=g.items.length;
- d.innerHTML=`<summary><span>${esc(g.name)} <span style="color:#6b7280;font-weight:500">(${count})</span></span></summary><div class="group-body"></div>`;
- const body=d.querySelector('.group-body');
- g.items.forEach(([name,unit])=>{
-   idx++;
-   const id='i'+idx;
-   const row=document.createElement('div'); row.className='item';
-   row.innerHTML=`<div><div class="item-name">${esc(name)}</div><div class="item-unit">${esc(unit)}</div></div><div class="input-wrap"><input type="number" min="0" step="any" inputmode="decimal" id="${id}" data-name="${esc(name)}" data-unit="${esc(unit)}" aria-label="${esc(name)}" placeholder="—"><span>${esc(unit==='Gram'?'g':unit==='Chiếc'?'cái':unit==='Cái'?'cái':unit==='Quả'?'quả':unit==='Lon'?'lon':unit==='Chai'?'chai':unit==='Lát'?'lát':unit==='Miếng'?'miếng':unit==='Cuộn'?'cuộn':unit==='Bịch'?'bịch':unit)}</span></div>`;
-   body.appendChild(row);
- });
- ingredientRoot.appendChild(d);
-});
-const toolRoot=document.getElementById('tools');
-tools.forEach(([code,name,expected])=>{
- const row=document.createElement('div');row.className='tool-row';
- row.innerHTML=`<div class="tool-name"><span class="tool-code">${code}</span>${esc(name)}<div class="item-unit">Chuẩn: ${expected}</div></div><input type="number" min="0" step="1" inputmode="numeric" data-tool="${code}" data-name="${esc(name)}" data-period="Sáng" aria-label="${esc(name)} sáng" placeholder="${expected}"><input type="number" min="0" step="1" inputmode="numeric" data-tool="${code}" data-name="${esc(name)}" data-period="Chiều" aria-label="${esc(name)} chiều" placeholder="${expected}">`;
- toolRoot.appendChild(row);
-});
-document.getElementById('count').textContent=`${idx} nguyên liệu`;
-const now=new Date();document.getElementById('date').value=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,10);
-function collect(){
- const ingredients=[...document.querySelectorAll('#ingredients input')].map(el=>({name:el.dataset.name,unit:el.dataset.unit,quantity:el.value===''?null:Number(el.value),entered:el.value!==''}));
- const equipment=[...document.querySelectorAll('#tools input')].map(el=>({code:el.dataset.tool,name:el.dataset.name,period:el.dataset.period,quantity:el.value===''?null:Number(el.value),standard:tools.find(t=>t[0]===el.dataset.tool)?.[2]??null,entered:el.value!==''}));
- return {reportType:"Tascus Food inventory report",branch:"69 Khương Trung",date:document.getElementById('date').value,shift:document.getElementById('shift').value,checker:document.getElementById('checker').value,reporter:document.getElementById('reporter').value,notes:document.getElementById('notes').value,ingredients,equipment,createdAt:new Date().toISOString()};
+
+const $ = id => document.getElementById(id);
+const inventoryRoot = $("inventoryGroups");
+const equipmentRoot = $("equipmentList");
+let toastTimer = null;
+let lastFocusedInput = null;
+
+function escapeHtml(value){
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
 }
-let currentReport=null;
-document.getElementById('saveDraft').addEventListener('click',()=>{
- const data=collect();localStorage.setItem('tascus_inventory_draft',JSON.stringify(data));
- const s=document.getElementById('success');s.style.display='block';s.textContent='Đã lưu nháp trên thiết bị này. Mở lại trang trên cùng thiết bị/trình duyệt để tiếp tục.';
+function slug(value){
+  return value.normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+    .toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+}
+function inventoryId(groupId,item){
+  return "inv-" + groupId + "-" + slug(item[0]);
+}
+function buildInventory(){
+  inventoryRoot.innerHTML = inventoryGroups.map((group,index) => {
+    const rows = group.items.map(item => {
+      const id = inventoryId(group.id,item);
+      return `
+        <div class="item" data-row="${id}">
+          <div>
+            <div class="item-name">${escapeHtml(item[0])}</div>
+            <div class="item-unit">Đơn vị: ${escapeHtml(item[1])}</div>
+          </div>
+          <div class="qty-wrap">
+            <input id="${id}" data-kind="inventory" data-id="${id}"
+              data-name="${escapeHtml(item[0])}" data-unit="${escapeHtml(item[1])}"
+              type="number" inputmode="decimal" enterkeyhint="next"
+              min="0" step="any" placeholder="Số lượng"
+              aria-label="${escapeHtml(item[0])}, đơn vị ${escapeHtml(item[1])}">
+            <div class="input-state">Chưa nhập</div>
+          </div>
+        </div>`;
+    }).join("");
+    return `
+      <details class="category" ${index===0?"open":""} id="group-${group.id}">
+        <summary>
+          <span class="cat-name">${escapeHtml(group.title)}</span>
+          <span class="cat-count">${group.items.length} mục</span>
+        </summary>
+        <div class="items">${rows}</div>
+      </details>`;
+  }).join("");
+  $("inventoryCount").textContent =
+    inventoryGroups.reduce((n,g)=>n+g.items.length,0) + " mục";
+}
+function buildEquipment(){
+  equipmentRoot.innerHTML = equipment.map(([code,name,standard]) => `
+    <div class="equip-row" data-row="eq-${code}">
+      <div>
+        <div class="equip-name">${escapeHtml(code)} · ${escapeHtml(name)}</div>
+        <div class="equip-standard">Chuẩn: ${standard}</div>
+      </div>
+      <input type="number" min="0" step="1" inputmode="numeric"
+        enterkeyhint="next" data-kind="equipment" data-id="${code}"
+        data-period="morning" aria-label="${escapeHtml(name)} ca sáng"
+        placeholder="${standard}">
+      <input type="number" min="0" step="1" inputmode="numeric"
+        enterkeyhint="next" data-kind="equipment" data-id="${code}"
+        data-period="afternoon" aria-label="${escapeHtml(name)} ca chiều"
+        placeholder="${standard}">
+    </div>
+  `).join("");
+  $("equipmentCount").textContent = equipment.length + " dụng cụ × 2 ca";
+}
+function localDate(){
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
+function getAllDataInputs(){
+  return [...document.querySelectorAll('input[data-kind]')];
+}
+function valueOf(input){
+  if(input.value.trim()==="") return null;
+  const n = Number(input.value);
+  return Number.isFinite(n) && n>=0 ? n : null;
+}
+function updateInputState(input){
+  const row = input.closest(".item,.equip-row");
+  if(!row) return;
+  const inputs = [...row.querySelectorAll('input[data-kind]')];
+  const filled = inputs.filter(i=>i.value.trim()!=="").length;
+  row.classList.toggle("is-entered",filled===inputs.length);
+  const state = row.querySelector(".input-state");
+  if(state){
+    state.textContent = input.value.trim()==="" ? "Chưa nhập" : "Đã nhập";
+  }
+}
+function updateSummary(){
+  const all = getAllDataInputs();
+  const inv = all.filter(i=>i.dataset.kind==="inventory");
+  const eq = all.filter(i=>i.dataset.kind==="equipment");
+  const enteredInv = inv.filter(i=>i.value.trim()!=="").length;
+  const enteredEq = eq.filter(i=>i.value.trim()!=="").length;
+  $("summaryTotal").value = inv.length;
+  $("summaryEntered").value = enteredInv;
+  $("summaryMissing").value = inv.length-enteredInv;
+  $("summaryEquipment").value = `${enteredEq}/${eq.length}`;
+  const totalEntered = enteredInv+enteredEq;
+  $("progressBar").style.width =
+    (all.length ? totalEntered/all.length*100 : 0) + "%";
+  $("progressLabel").textContent = `${totalEntered}/${all.length} ô đã nhập`;
+  inventoryGroups.forEach(group=>{
+    const inputs = group.items.map(item=>$(inventoryId(group.id,item)));
+    const filled = inputs.filter(i=>i && i.value.trim()!=="").length;
+    const summary = document.querySelector(`#group-${group.id} .cat-count`);
+    if(summary) summary.textContent = `${filled}/${inputs.length}`;
+  });
+}
+function showToast(message){
+  const el=$("toast");
+  el.textContent=message;
+  el.style.display="block";
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.style.display="none",2200);
+}
+function collectPayload(){
+  const items=[];
+  inventoryGroups.forEach(group=>{
+    group.items.forEach(item=>{
+      const id=inventoryId(group.id,item);
+      const input=$(id);
+      items.push({
+        id,
+        group:group.title,
+        name:item[0],
+        unit:item[1],
+        quantity:valueOf(input),
+        entered:input.value.trim()!==""
+      });
+    });
+  });
+  const equipmentRows=equipment.map(([code,name,standard])=>{
+    const morning=document.querySelector(
+      `input[data-kind="equipment"][data-id="${code}"][data-period="morning"]`);
+    const afternoon=document.querySelector(
+      `input[data-kind="equipment"][data-id="${code}"][data-period="afternoon"]`);
+    return {
+      code,name,standard,
+      morning:{quantity:valueOf(morning),entered:morning.value.trim()!==""},
+      afternoon:{quantity:valueOf(afternoon),entered:afternoon.value.trim()!==""}
+    };
+  });
+  return {
+    schemaVersion:SCHEMA_VERSION,
+    recordId:makeRecordId(),
+    recordType:"inventory_inspection",
+    branch:"69 Khương Trung",
+    inspectionDate:$("inspectionDate").value || localDate(),
+    inspectionTime:$("inspectionTime").value,
+    checker:$("checker").value.trim(),
+    reporter:$("reporter").value.trim(),
+    notes:$("generalNotes").value.trim(),
+    inventory:items,
+    equipment:equipmentRows,
+    summary:{
+      totalInventoryItems:items.length,
+      inventoryEntered:items.filter(x=>x.entered).length,
+      inventoryMissing:items.filter(x=>!x.entered).length,
+      equipmentFieldsEntered:equipmentRows.reduce((n,x)=>
+        n+Number(x.morning.entered)+Number(x.afternoon.entered),0)
+    },
+    createdAt:new Date().toISOString()
+  };
+}
+function makeRecordId(){
+  const date=$("inspectionDate").value || localDate();
+  const time=Date.now().toString(36);
+  return `KT-69KT-${date}-${time}`;
+}
+function saveDraft(showMessage=true){
+  try{
+    const draft={
+      savedAt:new Date().toISOString(),
+      metadata:{
+        inspectionDate:$("inspectionDate").value,
+        inspectionTime:$("inspectionTime").value,
+        checker:$("checker").value,
+        reporter:$("reporter").value,
+        generalNotes:$("generalNotes").value
+      },
+      values:Object.fromEntries(getAllDataInputs().map(i=>[i.id,i.value]))
+    };
+    localStorage.setItem(DRAFT_KEY,JSON.stringify(draft));
+    $("saveStatus").textContent="Đã lưu nháp trên thiết bị · "+new Date().toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"});
+    if(showMessage) showToast("Đã lưu nháp trên thiết bị này.");
+    return true;
+  }catch(error){
+    $("saveStatus").textContent="Không lưu được nháp trên thiết bị";
+    if(showMessage) showToast("Trình duyệt không cho phép lưu nháp.");
+    return false;
+  }
+}
+function restoreDraft(){
+  try{
+    const raw=localStorage.getItem(DRAFT_KEY);
+    if(!raw) return;
+    const draft=JSON.parse(raw);
+    const m=draft.metadata||{};
+    $("inspectionDate").value=m.inspectionDate||localDate();
+    $("inspectionTime").value=m.inspectionTime||"14:00-15:00";
+    $("checker").value=m.checker||"";
+    $("reporter").value=m.reporter||"";
+    $("generalNotes").value=m.generalNotes||"";
+    Object.entries(draft.values||{}).forEach(([id,value])=>{
+      const input=$(id);
+      if(input && input.dataset.kind) input.value=value;
+    });
+    $("saveStatus").textContent="Đã khôi phục bản nháp gần nhất";
+  }catch(error){
+    $("saveStatus").textContent="Không thể đọc bản nháp cũ";
+  }
+}
+function getNextInput(current){
+  const inputs=getAllDataInputs();
+  const index=inputs.indexOf(current);
+  return index>=0 ? inputs[index+1]||null : null;
+}
+function focusInput(input){
+  if(!input) return false;
+  const details=input.closest("details");
+  if(details) details.open=true;
+  input.focus({preventScroll:true});
+  input.scrollIntoView({behavior:"smooth",block:"center"});
+  lastFocusedInput=input;
+  document.querySelectorAll(".item.is-active,.equip-row.is-active")
+    .forEach(row=>row.classList.remove("is-active"));
+  const row=input.closest(".item,.equip-row");
+  if(row) row.classList.add("is-active");
+  return true;
+}
+function moveNext(current){
+  const next=getNextInput(current);
+  if(next){
+    focusInput(next);
+  }else{
+    saveDraft(false);
+    showToast("Đã đến ô cuối cùng. Có thể kiểm tra và hoàn tất.");
+    $("submitBtn").scrollIntoView({behavior:"smooth",block:"center"});
+    current.blur();
+  }
+}
+function firstMissingInput(){
+  return getAllDataInputs().find(i=>i.value.trim()==="")||null;
+}
+function reviewMissing(){
+  const missing=firstMissingInput();
+  if(!missing){
+    showToast("Đã nhập tất cả các ô số lượng.");
+    return;
+  }
+  focusInput(missing);
+  showToast("Đang đến ô chưa nhập đầu tiên.");
+}
+function downloadJSON(){
+  const payload=collectPayload();
+  const blob=new Blob([JSON.stringify(payload,null,2)],{
+    type:"application/json;charset=utf-8"
+  });
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download=`kiem-kho-69-khuong-trung-${payload.inspectionDate}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  return payload;
+}
+function submitReport(){
+  if(!$("checker").value.trim()){
+    $("checker").focus();
+    showToast("Vui lòng nhập tên người kiểm kho.");
+    return;
+  }
+  const missing=getAllDataInputs().filter(i=>i.value.trim()==="");
+  let message="Xuất bản ghi JSON kiểm kho?";
+  if(missing.length){
+    message=`Còn ${missing.length} ô số lượng chưa nhập. Các ô này sẽ được giữ là null/chưa nhập, không tính là 0. Vẫn xuất JSON?`;
+  }
+  if(!confirm(message)) return;
+  const payload=downloadJSON();
+  saveDraft(false);
+  $("saveStatus").textContent="Đã xuất JSON lúc "+new Date().toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"});
+  showToast(`Đã xuất JSON · ${payload.inspectionDate}`);
+}
+function resetDraft(){
+  if(!confirm("Xóa toàn bộ số liệu đang nhập và bản nháp trên thiết bị này?")) return;
+  try{localStorage.removeItem(DRAFT_KEY);}catch(e){}
+  $("inspectionDate").value=localDate();
+  $("inspectionTime").value="14:00-15:00";
+  $("checker").value="";
+  $("reporter").value="";
+  $("generalNotes").value="";
+  getAllDataInputs().forEach(i=>i.value="");
+  updateSummary();
+  document.querySelectorAll(".item.is-active,.equip-row.is-active")
+    .forEach(row=>row.classList.remove("is-active"));
+  $("saveStatus").textContent="Đã xóa bản nháp";
+  showToast("Đã xóa dữ liệu nháp.");
+}
+
+buildInventory();
+buildEquipment();
+$("inspectionDate").value=localDate();
+restoreDraft();
+updateSummary();
+
+let autosaveTimer=null;
+document.addEventListener("input",event=>{
+  const target=event.target;
+  if(target.matches("input[data-kind]")){
+    if(target.value!=="" && Number(target.value)<0){
+      target.value="";
+      showToast("Số lượng không thể âm.");
+    }
+    updateInputState(target);
+    updateSummary();
+  }
+  if(target.matches("input,textarea,select")){
+    clearTimeout(autosaveTimer);
+    autosaveTimer=setTimeout(()=>saveDraft(false),350);
+  }
 });
-window.addEventListener('load',()=>{
- try{const raw=localStorage.getItem('tascus_inventory_draft');if(!raw)return;const d=JSON.parse(raw);
- if(d.date)document.getElementById('date').value=d.date;if(d.shift)document.getElementById('shift').value=d.shift;
- document.getElementById('checker').value=d.checker||'';document.getElementById('reporter').value=d.reporter||'';document.getElementById('notes').value=d.notes||'';
- (d.ingredients||[]).forEach(x=>{const el=[...document.querySelectorAll('#ingredients input')].find(e=>e.dataset.name===x.name);if(el&&x.entered)el.value=x.quantity;});
- (d.equipment||[]).forEach(x=>{const el=[...document.querySelectorAll('#tools input')].find(e=>e.dataset.tool===x.code&&e.dataset.period===x.period);if(el&&x.entered)el.value=x.quantity;});
- }catch(e){}
+document.addEventListener("change",event=>{
+  if(event.target.matches("input,textarea,select")){
+    updateSummary();
+    saveDraft(false);
+  }
 });
-document.getElementById('inventoryForm').addEventListener('submit',e=>{
- e.preventDefault();currentReport=collect();
- const filled=currentReport.ingredients.filter(x=>x.entered).length;
- const missing=currentReport.ingredients.length-filled;
- const s=document.getElementById('success');s.style.display='block';s.textContent=`Đã tổng hợp báo cáo. Đã nhập ${filled}/${currentReport.ingredients.length} nguyên liệu${missing ? `; còn ${missing} nguyên liệu để trống.` : '.'}`;
- document.getElementById('result').style.display='block';
- document.getElementById('preview').textContent=`Ngày: ${currentReport.date}\nCa: ${currentReport.shift}\nNguyên liệu đã nhập: ${filled}/${currentReport.ingredients.length}\nDụng cụ đã nhập: ${currentReport.equipment.filter(x=>x.entered).length}/${currentReport.equipment.length}\n\nBản ghi có đầy đủ danh mục và đánh dấu rõ trường nào đã nhập. Trường trống không bị coi là tồn bằng 0.`;
- document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+document.addEventListener("focusin",event=>{
+  if(event.target.matches("input[data-kind]")){
+    lastFocusedInput=event.target;
+    const row=event.target.closest(".item,.equip-row");
+    if(row){
+      document.querySelectorAll(".item.is-active,.equip-row.is-active")
+        .forEach(r=>r.classList.remove("is-active"));
+      row.classList.add("is-active");
+    }
+  }
 });
-document.getElementById('download').addEventListener('click',()=>{
- if(!currentReport)currentReport=collect();
- const blob=new Blob([JSON.stringify(currentReport,null,2)],{type:'application/json;charset=utf-8'});
- const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`Tascus_KiemKho_${currentReport.date||'chua-ngay'}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+document.addEventListener("keydown",event=>{
+  const target=event.target;
+  if(!target.matches("input[data-kind]")) return;
+  if(event.key==="Enter" || event.key==="NumpadEnter"){
+    event.preventDefault();
+    saveDraft(false);
+    moveNext(target);
+  }
 });
-document.getElementById('print').addEventListener('click',()=>window.print());
+$("nextBtn").addEventListener("click",()=>{
+  const active=document.activeElement;
+  if(active && active.matches("input[data-kind]")){
+    moveNext(active);
+  }else if(lastFocusedInput){
+    moveNext(lastFocusedInput);
+  }else{
+    const first=getAllDataInputs()[0];
+    if(first) focusInput(first);
+  }
+});
+$("saveDraftBtn").addEventListener("click",()=>saveDraft(true));
+$("submitBtn").addEventListener("click",submitReport);
+$("reviewBtn").addEventListener("click",reviewMissing);
+$("printBtn").addEventListener("click",()=>window.print());
+$("resetBtn").addEventListener("click",resetDraft);
+
+window.addEventListener("beforeunload",()=>saveDraft(false));
 </script>
 </body>
 </html>
