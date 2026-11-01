@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T15:31:04.827Z",
+  "updated_at": "2026-11-01T23:16:33.003Z",
   "records": [
     {
       "id": "Z032",
@@ -809,9 +809,10 @@
       "noi_dung": "Bổ sung thêm cốc nhựa nhỏ, nắp cốc nhỏ, nắp cốc to, ống hút nhỏ, giấy in ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Đang xử lý",
+      "trang_thai_xu_ly": "Đã xử lý",
       "phuong_an_xu_ly": "10 giấy in\n178 cốc nhỏ\n113 ống hút nhỏ",
-      "nguoi_xu_ly": "Hưng"
+      "nguoi_xu_ly": "Hưng",
+      "thoi_gian_xu_ly": "2026/11/02 06:16"
     },
     {
       "id": "Z095",
