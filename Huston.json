@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T23:17:53.219Z",
+  "updated_at": "2026-11-01T23:39:23.648Z",
   "records": [
     {
       "id": "Z032",
@@ -900,6 +900,16 @@
       "noi_dung": "Hết sạch giấy ăn khô",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z102",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/11/02 06:39",
+      "nguoi_bao_cao": "Hưng",
+      "noi_dung": "Tủ đông phả hơi nóng\nNóng như cái lò sấy\nKhả năng cao đã hỏng một số nguyên vật liệu",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Có thể tự xử lý",
       "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
