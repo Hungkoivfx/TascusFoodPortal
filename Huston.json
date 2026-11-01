@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T23:49:25.544Z",
+  "updated_at": "2026-11-01T15:31:04.827Z",
   "records": [
     {
       "id": "Z032",
@@ -877,6 +877,16 @@
       "thoi_gian": "2026/10/26 06:49",
       "nguoi_bao_cao": "M hà",
       "noi_dung": "Trứng còn 1 khay rưỡi ạ",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z101",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/11/01 22:31",
+      "nguoi_bao_cao": "Định",
+      "noi_dung": "Hết sạch giấy ăn khô",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
       "trang_thai_xu_ly": "Chưa xử lý"
