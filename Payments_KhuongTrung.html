@@ -468,6 +468,148 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 
 }
 
+.list-toolbar {
+
+    display: grid;
+
+    grid-template-columns: minmax(220px, 1fr) minmax(300px, 1.15fr);
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+
+}
+
+.search-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+    min-height: 46px;
+
+    padding: 0 13px;
+
+    border: 1px solid var(--md-outline-variant);
+
+    border-radius: 13px;
+
+    background: var(--md-surface);
+
+    color: var(--md-text-muted);
+
+    transition: border-color .18s, box-shadow .18s;
+
+}
+
+.search-box:focus-within {
+
+    border-color: var(--md-primary);
+
+    box-shadow: 0 0 0 3px rgba(80,92,146,.10);
+
+}
+
+.search-icon {
+
+    flex: 0 0 auto;
+
+    font-size: 19px;
+
+    line-height: 1;
+
+}
+
+.search-input {
+
+    width: 100%;
+
+    min-width: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: var(--md-text);
+
+    font: inherit;
+
+    font-size: 14px;
+
+}
+
+.search-input::placeholder { color: var(--md-text-muted); }
+
+.clear-search {
+
+    display: none;
+
+    flex: 0 0 auto;
+
+    width: 28px;
+
+    height: 28px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: var(--md-surface-high);
+
+    color: var(--md-text-secondary);
+
+    font-size: 19px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+}
+
+.clear-search.visible { display: grid; place-items: center; }
+
+.list-filter-bar {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 6px;
+
+    min-width: 0;
+
+}
+
+.list-filter-bar .filter-button {
+
+    min-width: 0;
+
+    padding-left: 8px;
+
+    padding-right: 8px;
+
+    white-space: nowrap;
+
+}
+
+@media (max-width: 600px) {
+
+    .list-toolbar { grid-template-columns: 1fr; gap: 10px; }
+
+    .search-box { min-height: 44px; }
+
+    .list-filter-bar .filter-button { min-height: 42px; }
+
+}
+
 .section-title {
 
     font-size: 18px;
@@ -1357,23 +1499,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 
     </header>
 
-    <div class="filter-bar">
 
-        <button type="button" class="filter-button"
-
-            data-filter="week" onclick="setFilter('week')">Tuần này</button>
-
-        <button type="button" class="filter-button active"
-
-            data-filter="month" onclick="setFilter('month')">Tháng này</button>
-
-        <button type="button" class="filter-button"
-
-            data-filter="previous-month" onclick="setFilter('previous-month')">Tháng trước</button>
-
-    </div>
-
-    
 
     <section class="summary" aria-label="Tổng thanh toán">
 
@@ -1401,6 +1527,44 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
             <div class="section-title">Lịch sử thanh toán</div>
 
             <div class="record-count" id="recordCount">0 khoản</div>
+
+        </div>
+
+        <div class="list-toolbar">
+
+            <label class="search-box" for="paymentSearch">
+
+                <span class="search-icon" aria-hidden="true">⌕</span>
+
+                <input type="search" id="paymentSearch" class="search-input"
+
+                    placeholder="Tìm nội dung, số tiền, mã giao dịch..."
+
+                    autocomplete="off" spellcheck="false"
+
+                    aria-label="Tìm kiếm khoản thanh toán">
+
+                <button type="button" class="clear-search" id="clearSearch"
+
+                    aria-label="Xóa nội dung tìm kiếm" title="Xóa tìm kiếm">×</button>
+
+            </label>
+
+            <div class="list-filter-bar" role="group" aria-label="Lọc theo thời gian">
+
+                <button type="button" class="filter-button" data-filter="week"
+
+                    onclick="setFilter('week')">Tuần này</button>
+
+                <button type="button" class="filter-button active" data-filter="month"
+
+                    onclick="setFilter('month')">Tháng này</button>
+
+                <button type="button" class="filter-button" data-filter="previous-month"
+
+                    onclick="setFilter('previous-month')">Tháng trước</button>
+
+            </div>
 
         </div>
 
@@ -1607,6 +1771,8 @@ const BRANCH = "69 Khương Trung";
 let payments = [];
 
 let currentFilter = "month";
+
+let searchQuery = "";
 
 let isLoadingPayments = false;
 
@@ -1942,9 +2108,27 @@ function getFilterRange() {
 
 /* FILTER PAYMENTS FOR DISPLAY ONLY */
 
+function normalizeSearchText(value) {
+
+    return String(value ?? "")
+
+        .normalize("NFD")
+
+        .replace(/[\u0300-\u036f]/g, "")
+
+        .replace(/đ/g, "d")
+
+        .toLowerCase()
+
+        .trim();
+
+}
+
 function getFilteredPayments() {
 
     const range = getFilterRange();
+
+    const query = normalizeSearchText(searchQuery);
 
     return payments
 
@@ -1952,7 +2136,31 @@ function getFilteredPayments() {
 
             const date = parsePaymentDate(payment.ngay_gio);
 
-            return date && date >= range.start && date <= range.end;
+            if (!date || date < range.start || date > range.end) return false;
+
+            if (!query) return true;
+
+            const searchableValues = [
+
+                payment.noi_dung,
+
+                payment.so_tien,
+
+                formatMoney(payment.so_tien),
+
+                payment.hinh_thuc,
+
+                payment.ma_giao_dich,
+
+                payment.ngay_gio,
+
+                formatDateTime(payment.ngay_gio)
+
+            ];
+
+            const haystack = normalizeSearchText(searchableValues.join(" "));
+
+            return haystack.includes(query);
 
         })
 
@@ -2092,17 +2300,19 @@ function renderPayments() {
 
     if (filtered.length === 0) {
 
+        const hasSearch = Boolean(normalizeSearchText(searchQuery));
+
         list.innerHTML = `
 
             <div class="empty">
 
-                <div class="empty-icon">💳</div>
+                <div class="empty-icon">${hasSearch ? "⌕" : "💳"}</div>
 
-                <div class="empty-title">Chưa có khoản thanh toán</div>
+                <div class="empty-title">${hasSearch ? "Không tìm thấy khoản thanh toán phù hợp" : "Chưa có khoản thanh toán"}</div>
 
                 <div class="empty-text">
 
-                    Không có dữ liệu trong khoảng thời gian này.
+                    ${hasSearch ? "Thử từ khóa khác hoặc thay đổi bộ lọc thời gian." : "Không có dữ liệu trong khoảng thời gian này."}
 
                 </div>
 
@@ -2719,6 +2929,36 @@ document.addEventListener("keydown", function(event) {
         closeHelp();
 
     }
+
+});
+
+/* SEARCH */
+
+const paymentSearchInput = document.getElementById("paymentSearch");
+
+const clearSearchButton = document.getElementById("clearSearch");
+
+paymentSearchInput.addEventListener("input", function() {
+
+    searchQuery = this.value;
+
+    clearSearchButton.classList.toggle("visible", Boolean(this.value));
+
+    renderPayments();
+
+});
+
+clearSearchButton.addEventListener("click", function() {
+
+    paymentSearchInput.value = "";
+
+    searchQuery = "";
+
+    this.classList.remove("visible");
+
+    renderPayments();
+
+    paymentSearchInput.focus();
 
 });
 
