@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T13:31:40.434Z",
+  "updated_at": "2026-11-06T12:22:54.543Z",
   "records": [
     {
       "id": "Z032",
@@ -928,6 +928,16 @@
       "thoi_gian": "2026/11/02 20:31",
       "nguoi_bao_cao": "Duyên",
       "noi_dung": "Chân sạc máy trực lại k vào điện mai ai có ổ khác cầm đi để phòng hết pin",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z105",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/11/06 19:22",
+      "nguoi_bao_cao": "Duyên",
+      "noi_dung": "Hết hành muối cho burger",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
       "trang_thai_xu_ly": "Chưa xử lý"
