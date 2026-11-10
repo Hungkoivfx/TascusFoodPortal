@@ -2,841 +2,1618 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f47721">
-<title>Kiểm kho · Tascus Food</title>
-<style>
-:root {
-  --orange: #f47721;
-  --orange-dark: #d85e0a;
-  --bg: #f5f6f8;
-  --card: #ffffff;
-  --text: #202124;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --green: #16834a;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 120px; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 15px;
-  padding-bottom: calc(95px + env(safe-area-inset-bottom));
-}
-header {
-  background: var(--orange);
-  color: white;
-  padding: 22px 16px 18px;
-}
-header h1 { margin: 0 0 5px; font-size: 23px; }
-header p { margin: 0; font-size: 13px; opacity: .95; }
-main { max-width: 760px; margin: auto; padding: 12px; }
-.card, .group {
-  background: var(--card);
-  border-radius: 14px;
-  margin-bottom: 12px;
-  border: 1px solid var(--line);
-  overflow: hidden;
-}
-.card { padding: 15px; }
-h2 { font-size: 17px; margin: 0 0 12px; }
-h3 { font-size: 15px; margin: 0; }
-.meta-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-.field label {
-  display: block;
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-input, textarea, select {
-  font: inherit;
-  border: 1px solid #d1d5db;
-  border-radius: 9px;
-  width: 100%;
-  min-width: 0;
-  background: white;
-  color: var(--text);
-}
-input, select { height: 43px; padding: 0 10px; }
-textarea { padding: 10px; min-height: 75px; resize: vertical; }
-input:focus, textarea:focus, select:focus {
-  outline: 2px solid #f9b47f;
-  border-color: var(--orange);
-}
-.group-title {
-  padding: 13px 14px;
-  background: #fff1e6;
-  border-bottom: 1px solid #f6d5bd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
-.group-title small { color: #8b4a1c; font-size: 12px; }
-.item {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 112px;
-  gap: 10px;
-  align-items: center;
-  padding: 10px 12px;
-  border-bottom: 1px solid #f0f1f3;
-  min-height: 62px;
-}
-.item:last-child { border-bottom: 0; }
-.item-name { font-weight: 500; line-height: 1.35; }
-.item-unit { color: var(--muted); font-size: 12px; margin-top: 3px; }
-.qty {
-  text-align: right;
-  font-size: 17px;
-  font-variant-numeric: tabular-nums;
-  padding: 0 9px;
-  height: 44px;
-  border-radius: 10px;
-  background: #fff;
-  -webkit-appearance: none;
-  appearance: none;
-}
-.qty::placeholder { color: #c0c4cc; font-size: 14px; }
-.qty:focus { background: #fffaf6; }
-.equipment-note {
-  padding: 10px 13px;
-  color: var(--muted);
-  background: #fafafa;
-  font-size: 12px;
-  border-bottom: 1px solid var(--line);
-}
-.progress-wrap {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(245,246,248,.96);
-  padding: 8px 0;
-  backdrop-filter: blur(8px);
-}
-.progress-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-.progress { height: 5px; background: #e5e7eb; border-radius: 10px; overflow: hidden; }
-.progress > div { height: 100%; width: 0; background: var(--orange); transition: width .15s; }
-.quick-nav {
-  display: flex;
-  gap: 7px;
-  overflow-x: auto;
-  padding: 2px 0 9px;
-  scrollbar-width: none;
-}
-.quick-nav button {
-  flex: 0 0 auto;
-  border: 1px solid var(--line);
-  background: white;
-  border-radius: 20px;
-  padding: 7px 11px;
-  font-size: 12px;
-  color: #444;
-}
-.quick-nav button:active { background: #fff0e5; }
-.bottom-bar {
-  position: fixed;
-  z-index: 20;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 9px 12px calc(9px + env(safe-area-inset-bottom));
-  background: rgba(255,255,255,.97);
-  border-top: 1px solid var(--line);
-  box-shadow: 0 -3px 12px rgba(0,0,0,.05);
-}
-.bottom-inner { max-width: 760px; margin: auto; }
-.bottom-actions { display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 8px; }
-button { cursor: pointer; font: inherit; }
-.action {
-  border: 0;
-  border-radius: 10px;
-  height: 44px;
-  padding: 0 8px;
-  font-size: 13px;
-  font-weight: 600;
-}
-.secondary { background: #f0f1f3; color: #30343b; }
-.primary { background: var(--orange); color: white; }
-.action:active { transform: scale(.98); }
-.status {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 5px;
-  text-align: center;
-}
-.hint { font-size: 12px; color: var(--muted); line-height: 1.5; }
-.section-count { color: var(--muted); font-size: 12px; }
-@media (max-width: 420px) {
-  main { padding: 9px; }
-  .meta-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
-  .item { grid-template-columns: minmax(0, 1fr) 100px; padding: 9px; gap: 8px; }
-  .qty { height: 45px; font-size: 17px; }
-  .bottom-actions { grid-template-columns: .8fr .8fr 1.5fr; gap: 6px; }
-  .action { font-size: 12px; }
-}
-@media print {
-  body { background: white; padding: 0; }
-  header { background: white; color: black; padding: 10px 0; }
-  main { max-width: none; padding: 0; }
-  .progress-wrap, .bottom-bar, .quick-nav, .no-print { display: none !important; }
-  .card, .group { break-inside: avoid; border: 1px solid #ccc; }
-  .item { min-height: 35px; padding: 5px 8px; }
-  .qty { height: 30px; border: 1px solid #aaa; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#fffaf6">
+    <title>Thư viện công thức | Tascus Food</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #fffaf6;
+            --surface: #ffffff;
+            --surface-soft: #fff0e7;
+            --primary: #f36b2d;
+            --primary-dark: #e94f1b;
+            --primary-soft: #ffe5d5;
+            --text: #29231f;
+            --text-secondary: #776b64;
+            --outline: #eee0d7;
+            --outline-strong: #e2cbbd;
+            --shadow: 0 2px 8px rgba(75, 43, 24, 0.05);
+            --radius-card: 18px;
+            --radius-control: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* HEADER */
+
+        .app-header {
+            position: relative;
+            z-index: 20;
+            overflow: hidden;
+            min-height: 260px;
+            color: #fff;
+            background: linear-gradient(125deg, #f47a36 0%, #f36b2d 55%, #e94f1b 100%);
+            border-radius: 0 0 30px 30px;
+        }
+
+        .header-inner {
+            position: relative;
+            width: min(1440px, 100%);
+            min-height: 260px;
+            margin: 0 auto;
+            padding: calc(25px + env(safe-area-inset-top)) 28px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .header-top {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-action {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.18s, transform 0.18s;
+        }
+
+        .header-action:hover {
+            background: rgba(255, 255, 255, 0.28);
+        }
+
+        .header-action:active {
+            transform: scale(0.94);
+        }
+
+        .header-action svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .help-button {
+            font-size: 19px;
+            font-weight: 600;
+        }
+
+        .header-spacer {
+            flex: 1;
+        }
+
+        .header-brand {
+            position: relative;
+            z-index: 2;
+            margin-top: 27px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            opacity: 0.9;
+        }
+
+        .header-heading {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+            margin: 9px 0 0;
+            font-size: clamp(28px, 4vw, 39px);
+            font-weight: 700;
+            letter-spacing: -1.1px;
+            line-height: 1.18;
+        }
+
+        .header-description {
+            position: relative;
+            z-index: 2;
+            max-width: 510px;
+            margin: 12px 0 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .mascot {
+            position: absolute;
+            right: 7px;
+            bottom: 15px;
+            z-index: 1;
+            width: 43%;
+            max-width: 250px;
+            height: 205px;
+            object-fit: contain;
+            object-position: right bottom;
+            pointer-events: none;
+        }
+
+        /* MAIN */
+
+        .page-container {
+            width: min(1440px, 100%);
+            margin: 0 auto;
+            padding: 30px 28px 56px;
+        }
+
+        /* SEARCH */
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .search-box {
+            min-width: 0;
+            flex: 1;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 0 16px;
+            background: var(--surface);
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-control);
+            transition: border-color 0.18s, box-shadow 0.18s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(243, 107, 45, 0.10);
+        }
+
+        .search-icon {
+            width: 21px;
+            height: 21px;
+            flex: 0 0 21px;
+            color: var(--text-secondary);
+        }
+
+        .search-box input {
+            width: 100%;
+            min-width: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .search-box input::placeholder {
+            color: #999087;
+        }
+
+        .clear-search {
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: none;
+            place-items: center;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: var(--surface-soft);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .clear-search.visible {
+            display: grid;
+        }
+
+        .result-count {
+            color: var(--text-secondary);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        /* CATEGORY */
+
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-heading {
+            margin: 0 0 12px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 10px;
+            padding: 2px 0 4px;
+        }
+
+        .category-chip {
+            width: 100%;
+            min-width: 0;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 0 10px;
+            border: 1px solid var(--outline);
+            border-radius: 13px;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.18s, border-color 0.18s, color 0.18s;
+        }
+
+        .category-chip:hover {
+            background: var(--surface-soft);
+        }
+
+        .category-chip.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .category-chip > span:first-child {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .chip-count {
+            min-width: 21px;
+            height: 21px;
+            flex: 0 0 auto;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 5px;
+            border-radius: 999px;
+            background: rgba(243, 107, 45, 0.10);
+            color: var(--primary-dark);
+            font-size: 11px;
+        }
+
+        .category-chip.active .chip-count {
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+        }
+
+        /* RECIPE GRID */
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 17px;
+        }
+
+        .section-title {
+            margin: 0;
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        .section-subtitle {
+            margin-top: 5px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .recipe-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-card);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(75, 43, 24, 0.09);
+        }
+
+        .recipe-image-button {
+            position: relative;
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            padding: 0;
+            border: 0;
+            background: #f7f4f1;
+            cursor: zoom-in;
+        }
+
+        .recipe-image {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            display: block;
+            object-fit: contain;
+            background: #f7f4f1;
+            transition: transform 0.3s ease;
+        }
+
+        .recipe-card:hover .recipe-image {
+            transform: scale(1.015);
+        }
+
+        .zoom-hint {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            z-index: 1;
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--primary-dark);
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.18s, transform 0.18s;
+        }
+
+        .recipe-card:hover .zoom-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .zoom-hint svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .recipe-info {
+            min-height: 86px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 14px 15px 16px;
+        }
+
+        .recipe-name {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+        }
+
+        .recipe-category {
+            align-self: flex-start;
+            padding: 5px 9px;
+            border-radius: 7px;
+            background: var(--surface-soft);
+            color: var(--primary-dark);
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* EMPTY STATE */
+
+        .empty-state {
+            display: none;
+            padding: 64px 20px;
+            border: 1px dashed var(--outline-strong);
+            border-radius: var(--radius-card);
+            background: rgba(255, 255, 255, 0.55);
+            text-align: center;
+        }
+
+        .empty-state.visible {
+            display: block;
+        }
+
+        .empty-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 15px;
+            border-radius: 18px;
+            background: var(--surface-soft);
+            color: var(--primary);
+        }
+
+        .empty-icon svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        .empty-title {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .empty-description {
+            margin: 8px 0 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .reset-button {
+            min-height: 40px;
+            margin-top: 18px;
+            padding: 0 16px;
+            border: 1px solid var(--outline);
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--primary-dark);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .reset-button:hover {
+            background: var(--surface-soft);
+        }
+
+        .page-footer {
+            display: flex;
+            justify-content: center;
+            padding-top: 42px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* MODAL */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(20, 19, 24, 0.78);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            width: min(100%, 1050px);
+            max-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .modal-topbar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .modal-title {
+            min-width: 0;
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        .modal-close {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .modal-close svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        /* IMAGE VIEWER */
+
+        .viewer-content {
+            height: min(100%, 900px);
+        }
+
+        .viewer-image-wrap {
+            min-height: 0;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .viewer-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .viewer-caption {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* HELP DIALOG */
+
+        .help-content {
+            width: min(100%, 520px);
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 22px;
+            border-radius: 22px;
+            background: var(--surface);
+            color: var(--text);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .help-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .help-title {
+            margin: 0;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .help-close {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border: 1px solid var(--outline);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .help-intro {
+            margin: 0 0 18px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .help-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .help-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 13px;
+            border: 1px solid var(--outline);
+            border-radius: 14px;
+            background: #fff;
+        }
+
+        .help-item-icon {
+            width: 36px;
+            height: 36px;
+            flex: 0 0 36px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .help-item-title {
+            margin: 1px 0 4px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .help-item-description {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .help-done {
+            width: 100%;
+            min-height: 44px;
+            margin-top: 18px;
+            border: 0;
+            border-radius: 999px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .help-done:hover {
+            background: var(--primary-dark);
+        }
+
+        /* TABLET */
+
+        @media (max-width: 1100px) {
+            .page-container {
+                padding-right: 22px;
+                padding-left: 22px;
+            }
+
+            .recipe-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 16px;
+            }
+
+            .category-list {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+            .app-header {
+                min-height: 230px;
+                border-radius: 0 0 24px 24px;
+            }
+
+            .header-inner {
+                min-height: 230px;
+                padding: calc(18px + env(safe-area-inset-top)) 16px 28px;
+            }
+
+            .header-top {
+                gap: 10px;
+            }
+
+            .header-action {
+                width: 38px;
+                height: 38px;
+                flex-basis: 38px;
+            }
+
+            .header-brand {
+                margin-top: 22px;
+                font-size: 11px;
+            }
+
+            .header-heading {
+                max-width: 68%;
+                margin-top: 8px;
+                font-size: 27px;
+            }
+
+            .header-description {
+                max-width: 66%;
+                margin-top: 9px;
+                font-size: 12px;
+                line-height: 1.5;
+            }
+
+            .mascot {
+                right: 0;
+                bottom: 10px;
+                width: 43%;
+                max-width: 190px;
+                height: 165px;
+            }
+
+            .page-container {
+                padding: 24px 16px 40px;
+            }
+
+            .toolbar {
+                align-items: stretch;
+                flex-direction: column;
+                gap: 9px;
+            }
+
+            .search-box {
+                flex: auto;
+                height: 49px;
+            }
+
+            .result-count {
+                padding-left: 3px;
+                font-size: 12px;
+            }
+
+            .category-section {
+                margin-bottom: 24px;
+            }
+
+            .category-list {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 8px;
+            }
+
+            .category-chip {
+                min-height: 40px;
+                padding: 0 7px;
+                gap: 5px;
+                border-radius: 11px;
+                font-size: 12px;
+            }
+
+            .chip-count {
+                min-width: 18px;
+                height: 18px;
+                padding: 0 4px;
+                font-size: 10px;
+            }
+
+            .recipe-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .recipe-card {
+                border-radius: 14px;
+            }
+
+            .recipe-info {
+                min-height: 78px;
+                gap: 7px;
+                padding: 11px 11px 13px;
+            }
+
+            .recipe-name {
+                font-size: 13px;
+            }
+
+            .recipe-category {
+                padding: 4px 7px;
+                font-size: 10px;
+            }
+
+            .zoom-hint {
+                right: 8px;
+                bottom: 8px;
+                width: 30px;
+                height: 30px;
+                opacity: 1;
+                transform: none;
+            }
+
+            .section-title {
+                font-size: 19px;
+            }
+
+            .modal {
+                padding: 12px;
+            }
+
+            .modal-close {
+                width: 38px;
+                height: 38px;
+                flex-basis: 38px;
+            }
+
+            .help-content {
+                padding: 18px;
+                border-radius: 18px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .header-heading {
+                font-size: 24px;
+            }
+
+            .header-description {
+                font-size: 11px;
+            }
+
+            .mascot {
+                width: 41%;
+                height: 150px;
+            }
+
+            .category-list {
+                gap: 6px;
+            }
+
+            .category-chip {
+                font-size: 11px;
+                padding: 0 5px;
+            }
+
+            .chip-count {
+                min-width: 16px;
+                height: 16px;
+                font-size: 9px;
+            }
+
+            .recipe-grid {
+                gap: 9px;
+            }
+
+            .recipe-info {
+                padding: 10px;
+            }
+
+            .recipe-name {
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<header>
-  <h1>Kiểm kho · Tascus Food</h1>
-  <p>69 Khương Trung · Phiếu kiểm kê hằng ngày</p>
-</header>
+    <header class="app-header">
+        <div class="header-inner">
 
-<main>
-  <div class="progress-wrap no-print">
-    <div class="progress-label">
-      <span id="progressText">Đã nhập 0 mục</span>
-      <span id="progressPercent">0%</span>
+            <div class="header-top">
+                <button
+                    class="header-action"
+                    id="backButton"
+                    type="button"
+                    aria-label="Quay lại"
+                    title="Quay lại"
+                >
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M19 12H5M12 19l-7-7 7-7"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"/>
+                    </svg>
+                </button>
+
+                <div class="header-spacer"></div>
+
+                <button
+                    class="header-action help-button"
+                    id="helpButton"
+                    type="button"
+                    aria-label="Trợ giúp"
+                    title="Trợ giúp"
+                >?</button>
+            </div>
+
+            <div class="header-brand">TASCUS FOOD · TÀI LIỆU NỘI BỘ</div>
+
+            <h1 class="header-heading">Thư viện công thức</h1>
+
+            <p class="header-description">
+                Tra cứu công thức chế biến và sơ đồ sắp xếp tại cửa hàng.
+            </p>
+
+            <img
+                class="mascot"
+                src="./duck-chef.png"
+                alt=""
+                aria-hidden="true"
+            >
+        </div>
+    </header>
+
+    <main class="page-container">
+
+        <section class="toolbar" aria-label="Tìm kiếm công thức">
+            <label class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Tìm tên món, ví dụ: bánh mì bò..."
+                    autocomplete="off"
+                    aria-label="Tìm kiếm theo tên công thức"
+                >
+
+                <button
+                    class="clear-search"
+                    id="clearSearch"
+                    type="button"
+                    aria-label="Xóa nội dung tìm kiếm"
+                    title="Xóa tìm kiếm"
+                >
+                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" aria-hidden="true">
+                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </label>
+
+            <div class="result-count" id="resultCount" aria-live="polite"></div>
+        </section>
+
+        <section class="category-section" aria-label="Danh mục công thức">
+            <h2 class="category-heading">Danh mục</h2>
+            <div class="category-list" id="categoryList"></div>
+        </section>
+
+        <section aria-label="Danh sách công thức">
+            <div class="section-heading">
+                <div>
+                    <h2 class="section-title" id="sectionTitle">Tất cả công thức</h2>
+                    <div class="section-subtitle" id="sectionSubtitle">Tra cứu theo hình ảnh</div>
+                </div>
+            </div>
+
+            <div class="recipe-grid" id="recipeGrid"></div>
+
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        <path d="M8.5 10.8h4.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <h3 class="empty-title">Không tìm thấy công thức</h3>
+
+                <p class="empty-description">
+                    Không có mục nào khớp với nội dung tìm kiếm hoặc danh mục hiện tại.
+                </p>
+
+                <button class="reset-button" id="resetFilters" type="button">
+                    Hiển thị tất cả công thức
+                </button>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            Tascus Food · Thư viện công thức và sơ đồ nội bộ
+        </footer>
+    </main>
+
+    <!-- IMAGE VIEWER -->
+    <div
+        class="modal"
+        id="imageViewer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Xem ảnh công thức"
+        aria-hidden="true"
+    >
+        <div class="modal-content viewer-content">
+            <div class="modal-topbar">
+                <h2 class="modal-title" id="viewerTitle"></h2>
+
+                <button class="modal-close" id="viewerClose" type="button" aria-label="Đóng ảnh">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="viewer-image-wrap">
+                <img class="viewer-image" id="viewerImage" src="" alt="">
+            </div>
+
+            <div class="viewer-caption">Nhấn bên ngoài ảnh hoặc phím Esc để đóng</div>
+        </div>
     </div>
-    <div class="progress"><div id="progressBar"></div></div>
-    <div class="quick-nav" id="quickNav"></div>
-  </div>
 
-  <section class="card" id="thong-tin">
-    <h2>Thông tin kiểm kho</h2>
-    <div class="meta-grid">
-      <div class="field">
-        <label for="date">Ngày kiểm</label>
-        <input id="date" type="date">
-      </div>
-      <div class="field">
-        <label for="time">Giờ kiểm</label>
-        <input id="time" type="time">
-      </div>
-      <div class="field">
-        <label for="checker">Người kiểm</label>
-        <input id="checker" type="text" placeholder="Tên nhân viên" autocomplete="name">
-      </div>
-      <div class="field">
-        <label for="reporter">Người báo cáo</label>
-        <input id="reporter" type="text" placeholder="Tên nhân viên">
-      </div>
+    <!-- HELP DIALOG -->
+    <div
+        class="modal"
+        id="helpViewer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Hướng dẫn sử dụng"
+        aria-hidden="true"
+    >
+        <div class="help-content">
+            <div class="help-header">
+                <h2 class="help-title">Hướng dẫn sử dụng</h2>
+
+                <button class="help-close" id="helpClose" type="button" aria-label="Đóng hướng dẫn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+                        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <p class="help-intro">
+                Sử dụng thư viện để tra cứu công thức chế biến và tài liệu bố trí tại cửa hàng.
+            </p>
+
+            <div class="help-list">
+                <div class="help-item">
+                    <div class="help-item-icon">⌕</div>
+                    <div>
+                        <h3 class="help-item-title">Tìm kiếm công thức</h3>
+                        <p class="help-item-description">
+                            Nhập tên món vào ô tìm kiếm. Có thể tìm cả khi không nhập dấu tiếng Việt.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-item">
+                    <div class="help-item-icon">▦</div>
+                    <div>
+                        <h3 class="help-item-title">Lọc theo danh mục</h3>
+                        <p class="help-item-description">
+                            Chọn danh mục để chỉ hiển thị các công thức thuộc nhóm tương ứng.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-item">
+                    <div class="help-item-icon">↗</div>
+                    <div>
+                        <h3 class="help-item-title">Xem ảnh chi tiết</h3>
+                        <p class="help-item-description">
+                            Nhấn vào ảnh công thức để phóng to. Nhấn nút đóng, vùng nền bên ngoài hoặc phím Esc để trở lại thư viện.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-item">
+                    <div class="help-item-icon">←</div>
+                    <div>
+                        <h3 class="help-item-title">Quay lại cổng vận hành</h3>
+                        <p class="help-item-description">
+                            Nhấn nút mũi tên ở góc trên bên trái. Nếu không có trang trước trong lịch sử trình duyệt, hệ thống sẽ mở index.html.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="help-done" id="helpDone" type="button">Đã hiểu</button>
+        </div>
     </div>
-  </section>
-
-  <div id="inventory"></div>
-
-  <section class="card" id="ghi-chu">
-    <h2>Ghi chú và bất thường</h2>
-    <textarea id="notes" placeholder="Ví dụ: nguyên liệu hỏng, thiếu hàng, lệch số lượng, hàng đang chờ nhập..."></textarea>
-    <p class="hint">Để trống những mục chưa kiểm tra. Số 0 chỉ nhập khi đã kiểm và xác nhận thực tế không còn hàng.</p>
-  </section>
-
-  <section class="card">
-    <h2>Kiểm tra trước khi xuất</h2>
-    <p class="hint" id="summary">Chưa có dữ liệu.</p>
-    <p class="hint">Bản ghi JSON gồm ngày kiểm, người kiểm, số lượng từng nguyên liệu, công cụ dụng cụ và ghi chú. Các ô chưa nhập được giữ là null, không tự quy thành 0.</p>
-  </section>
-</main>
-
-<div class="bottom-bar no-print">
-  <div class="bottom-inner">
-    <div class="bottom-actions">
-      <button class="action secondary" id="prevBtn" type="button">↑ Trước</button>
-      <button class="action secondary" id="nextBtn" type="button">↓ Tiếp</button>
-      <button class="action primary" id="exportBtn" type="button">Hoàn tất · Xuất JSON</button>
-    </div>
-    <div class="status" id="saveStatus">Nháp được lưu trên thiết bị này</div>
-  </div>
-</div>
-
-<script>
-"use strict";
-
-const STORAGE_KEY = "tascus_kiemkho_v3";
-
-const groups = [
-  {
-    id: "bao-bi-ngoai",
-    title: "Bao bì và vật tư mua ngoài",
-    items: [
-      ["Bao bì đựng bánh mì Tascus","Chiếc"],
-      ["Bao bì đựng sandwich Tascus","Chiếc"],
-      ["Bao bì đựng crepe Tascus","Chiếc"],
-      ["Giấy gói burger 30x30 Tascus","Chiếc"],
-      ["Túi Nilong vuông đựng bánh","Gram"],
-      ["Túi Nilong dọc đựng cốc nước","Gram"],
-      ["Túi rác đen loại 20kg thùng to","Gram"],
-      ["Cốc nhựa to 1 lít","Cái"],
-      ["Cốc nhựa nhỏ 500 ml","Cái"],
-      ["Cốc nhỏ đựng sốt combo","Cái"],
-      ["Khay/thuyền đựng mì/khoai dùng tại chỗ","Cái"],
-      ["Hộp đựng mì/khoai mang đi","Cái"],
-      ["Ống hút to","Cái"],
-      ["Ống hút nhỏ","Cái"],
-      ["Giấy ăn khô","Bịch"],
-      ["Giấy in bill hóa đơn","Cuộn"],
-      ["Găng tay Nilong làm bánh","Gram"],
-      ["Giấy nến lót nhân Burger","Bịch"],
-      ["Dĩa gỗ/nhựa","Cái"]
-    ]
-  },
-  {
-    id: "do-uong-ngoai",
-    title: "Đồ uống mua ngoài",
-    items: [
-      ["Coca Cola 330 ml","Lon"],
-      ["Nước suối đóng chai","Chai"]
-    ]
-  },
-  {
-    id: "nguyen-lieu-ngoai",
-    title: "Nguyên liệu mua ngoài",
-    items: [
-      ["Xúc xích hấp Đức Việt làm BM Crepe","Gram"],
-      ["Jambong Đức Việt làm BM Crepe","Gram"],
-      ["Trứng gà","Quả"],
-      ["Nha đam Tascus","Gram"],
-      ["Vỏ bánh mì","Cái"],
-      ["Vỏ burger","Cái"],
-      ["Vỏ sandwich (túi 10 lát)","Lát"],
-      ["Dầu ăn","Gram"],
-      ["Khoai tây để chiên","Gram"],
-      ["Bánh Oreo làm crepe","Gram"],
-      ["Mì Ý sợi khô","Gram"],
-      ["Gà vòng","Gram"],
-      ["Gà viên popcorn","Gram"],
-      ["Miếng Burger tôm","Miếng"]
-    ]
-  },
-  {
-    id: "rau-cu-ngoai",
-    title: "Rau củ và hoa quả mua ngoài",
-    items: [
-      ["Xà lách","Gram"],
-      ["Cà chua","Gram"],
-      ["Rau mùi","Gram"],
-      ["Dưa chuột","Gram"],
-      ["Chanh","Gram"],
-      ["Quất","Gram"],
-      ["Chuối chín làm bánh crepe","Gram"],
-      ["Hành tây sống","Gram"],
-      ["Chanh vàng","Gram"],
-      ["Táo (salad)","Gram"]
-    ]
-  },
-  {
-    id: "bao-bi-xuong",
-    title: "Bao bì từ xưởng Tascus",
-    items: [
-      ["Bao bì combo vuông 2–4 người (bigbox)","Chiếc"],
-      ["Bao bì combo nhỏ 1–2 người Tascus (no nê)","Chiếc"]
-    ]
-  },
-  {
-    id: "do-uong-xuong",
-    title: "Đồ uống từ xưởng Tascus",
-    items: [
-      ["Cốt trà tắc, chanh Tascus","Gram"],
-      ["Nước trà Hibiscus thành phẩm","Gram"]
-    ]
-  },
-  {
-    id: "rau-cu-xuong",
-    title: "Rau củ muối và sơ chế từ xưởng",
-    items: [
-      ["Nộm củ cải làm bánh mì","Gram"],
-      ["Bắp cải tím muối làm bánh mì","Gram"],
-      ["Hành tây muối làm burger","Gram"]
-    ]
-  },
-  {
-    id: "nguyen-lieu-xuong",
-    title: "Nguyên liệu từ xưởng Tascus",
-    items: [
-      ["Phô mai lá làm BM Burger","Lát"],
-      ["Phô mai hạt/sợi làm sandwich crepe","Gram"],
-      ["Bơ nhạt","Gram"],
-      ["Bột phô mai cho vào khoai","Gram"],
-      ["Bột xí muội cho vào khoai","Gram"],
-      ["Đường nước pha trà (chai 1.5 lít)","Gram"]
-    ]
-  },
-  {
-    id: "sot-xuong",
-    title: "Sốt và nguyên liệu chế biến từ xưởng",
-    items: [
-      ["Sốt tiêu đen","Gram"],
-      ["Sốt phô mai","Gram"],
-      ["Sốt kem nấm","Gram"],
-      ["Sốt hồng bánh mì","Gram"],
-      ["Sốt Sapo","Gram"],
-      ["Sốt Seoul","Gram"],
-      ["Sốt bò băm hầm","Gram"],
-      ["Pate heo","Gram"],
-      ["Pate bò","Gram"],
-      ["Tương ớt Cholimex","Gram"],
-      ["Tương cà Cholimex","Gram"],
-      ["Sốt ớt bánh mì","Gram"],
-      ["Sữa đặc","Gram"],
-      ["Socola chai","Gram"],
-      ["Bột bánh Crepe","Gram"],
-      ["Sốt bánh mì chảo","Gram"]
-    ]
-  },
-  {
-    id: "thit-song",
-    title: "Thịt sống và thịt sơ chế",
-    items: [
-      ["Bò miếng Burger","Gram"],
-      ["Bò thành phẩm ướp sống bánh mì","Gram"]
-    ]
-  },
-  {
-    id: "thit-chin",
-    title: "Thịt đã chế biến",
-    items: [
-      ["Gà nướng sả","Gram"],
-      ["Heo nướng xá xíu","Gram"]
-    ]
-  }
-];
-
-const equipment = [
-  ["A1","Kẹp dài răng cưa",4],
-  ["A2","Kẹp ngắn răng cưa",4],
-  ["A3","Kẹp ngắn dẹt",2],
-  ["A4","Dao ăn",10],
-  ["A5","Dĩa ăn",10],
-  ["A6","Thìa ăn",4],
-  ["A7","Thìa to múc sốt",3],
-  ["A8","Muôi múc sốt",2],
-  ["A9","Thìa nhỏ múc sốt",6],
-  ["A10","Dao cắt thái",3],
-  ["A12","Kéo cắt",1],
-  ["A13","Dụng cụ vắt chanh/quất",1],
-  ["A14","Chày giã chanh",1],
-  ["A15","Thìa khuấy",1],
-  ["A16","Rây lọc",2],
-  ["A17","Búa dần thịt",1],
-  ["A18","Khuôn nặn burger",1],
-  ["A19","Dụng cụ ép burger",1],
-  ["A20","Dao cắt burger",1],
-  ["A21","Sủi cạo vệ sinh bàn chiên phẳng",1],
-  ["A22","Kẹp gắp chảo bánh mì (đen)",2],
-  ["A23","Khuôn trứng",2],
-  ["A24","Xẻng burger dài",2],
-  ["A25","Xẻng burger tam giác",2],
-  ["A26","Xẻng trộn mì (đen)",1],
-  ["A27","Chổi bơ",1],
-  ["A28","Nạo vỏ hoa quả",1],
-  ["A29","Khay nhựa vàng",5],
-  ["A30","Khay inox bé",6],
-  ["A31","Khay inox to",3],
-  ["A32","Đĩa đựng sốt/tương ớt/tương cà",10],
-  ["A33","Bát con",8],
-  ["A34","Bát to",6],
-  ["A35","Dao rọc bánh mì (đỏ)",2],
-  ["A36","Giỏ burger thấp",5],
-  ["A37","Giỏ đựng khoai cao",6],
-  ["A38","Bát sắt salad",3],
-  ["A39","Khăn nâu vệ sinh bếp",3],
-  ["A40","Khăn xanh dương khô dụng cụ",1],
-  ["A41","Thìa xúc nha đam",1],
-  ["A42","Con lăn bơ",1],
-  ["A43","Đĩa đựng mì/burger",6]
-];
-
-const root = document.getElementById("inventory");
-const nav = document.getElementById("quickNav");
-let fieldOrder = [];
-let saveTimer = null;
-
-function safeId(value) {
-  return value.replace(/[^a-zA-Z0-9_-]/g, "-");
-}
-
-function createGroup(group) {
-  const section = document.createElement("section");
-  section.className = "group";
-  section.id = group.id;
-
-  const title = document.createElement("div");
-  title.className = "group-title";
-
-  const heading = document.createElement("h3");
-  heading.textContent = group.title;
-
-  const count = document.createElement("small");
-  count.textContent = group.items.length + " mục";
-
-  title.append(heading, count);
-  section.appendChild(title);
-
-  group.items.forEach((item, index) => {
-    const key = group.id + "_" + index;
-    section.appendChild(createItem(key, item[0], item[1]));
-  });
-
-  root.appendChild(section);
-  addNav(group.id, group.title);
-}
-
-function createItem(key, name, unit) {
-  const row = document.createElement("div");
-  row.className = "item";
-
-  const details = document.createElement("div");
-  details.className = "item-details";
-
-  const label = document.createElement("div");
-  label.className = "item-name";
-  label.textContent = name;
-
-  const unitText = document.createElement("div");
-  unitText.className = "item-unit";
-  unitText.textContent = unit;
-
-  details.append(label, unitText);
-
-  const input = document.createElement("input");
-  input.className = "qty sequence-field";
-  input.type = "number";
-  input.inputMode = "decimal";
-  input.step = "any";
-  input.min = "0";
-  input.placeholder = "Số lượng";
-  input.autocomplete = "off";
-  input.dataset.key = key;
-  input.dataset.name = name;
-  input.setAttribute("aria-label", name + ", đơn vị " + unit);
-
-  input.addEventListener("input", () => {
-    updateProgress();
-    scheduleSave();
-  });
-
-  input.addEventListener("keydown", handleArrowNavigation);
-  input.addEventListener("focus", () => {
-    setTimeout(() => {
-      input.scrollIntoView({ block: "center", behavior: "smooth" });
-    }, 220);
-  });
-
-  row.append(details, input);
-  fieldOrder.push(input);
-  return row;
-}
-
-function createEquipmentSection() {
-  const section = document.createElement("section");
-  section.className = "group";
-  section.id = "cong-cu-dung-cu";
-
-  const title = document.createElement("div");
-  title.className = "group-title";
-
-  const heading = document.createElement("h3");
-  heading.textContent = "Công cụ, dụng cụ";
-
-  const count = document.createElement("small");
-  count.textContent = equipment.length + " mục";
-
-  title.append(heading, count);
-  section.appendChild(title);
-
-  const note = document.createElement("div");
-  note.className = "equipment-note";
-  note.textContent = "Kiểm một lần mỗi ngày. Nhập số lượng thực tế đang có, không nhập riêng sáng và chiều. SL chuẩn để đối chiếu.";
-  section.appendChild(note);
-
-  equipment.forEach((item, index) => {
-    const key = "equipment_" + item[0];
-    const row = document.createElement("div");
-    row.className = "item";
-
-    const details = document.createElement("div");
-    details.className = "item-details";
-
-    const label = document.createElement("div");
-    label.className = "item-name";
-    label.textContent = item[0] + " · " + item[1];
-
-    const unitText = document.createElement("div");
-    unitText.className = "item-unit";
-    unitText.textContent = "SL chuẩn: " + item[2] + " · Cái";
-
-    details.append(label, unitText);
-
-    const input = document.createElement("input");
-    input.className = "qty sequence-field";
-    input.type = "number";
-    input.inputMode = "numeric";
-    input.step = "1";
-    input.min = "0";
-    input.placeholder = "Thực tế";
-    input.autocomplete = "off";
-    input.dataset.key = key;
-    input.dataset.name = item[1];
-    input.dataset.standard = String(item[2]);
-    input.dataset.code = item[0];
-    input.setAttribute("aria-label", item[0] + " " + item[1] + ", số lượng thực tế");
-
-    input.addEventListener("input", () => {
-      updateProgress();
-      scheduleSave();
-    });
-
-    input.addEventListener("keydown", handleArrowNavigation);
-    input.addEventListener("focus", () => {
-      setTimeout(() => {
-        input.scrollIntoView({ block: "center", behavior: "smooth" });
-      }, 220);
-    });
-
-    row.append(details, input);
-    section.appendChild(row);
-    fieldOrder.push(input);
-  });
-
-  root.appendChild(section);
-  addNav("cong-cu-dung-cu", "Công cụ dụng cụ");
-}
-
-function addNav(id, title) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.textContent = title;
-  button.addEventListener("click", () => {
-    document.getElementById(id).scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  });
-  nav.appendChild(button);
-}
-
-function handleArrowNavigation(event) {
-  if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
-
-  // Cho phép dùng mũi tên lên/xuống để di chuyển giữa các ô.
-  // Chỉ chặn khi không cần di chuyển con trỏ trong nội dung đang nhập.
-  event.preventDefault();
-
-  const index = fieldOrder.indexOf(event.currentTarget);
-  const nextIndex = event.key === "ArrowDown" ? index + 1 : index - 1;
-  focusField(nextIndex);
-}
-
-function focusField(index) {
-  if (index < 0 || index >= fieldOrder.length) {
-    document.activeElement?.blur();
-    return;
-  }
-
-  const input = fieldOrder[index];
-  input.focus({ preventScroll: true });
-  input.scrollIntoView({ behavior: "smooth", block: "center" });
-}
-
-document.getElementById("prevBtn").addEventListener("click", () => {
-  const index = fieldOrder.indexOf(document.activeElement);
-  if (index >= 0) focusField(index - 1);
-  else focusField(0);
-});
-
-document.getElementById("nextBtn").addEventListener("click", () => {
-  const index = fieldOrder.indexOf(document.activeElement);
-  if (index >= 0) focusField(index + 1);
-  else focusField(0);
-});
-
-function updateProgress() {
-  const filled = fieldOrder.filter(input => input.value.trim() !== "").length;
-  const total = fieldOrder.length;
-  const percent = total ? Math.round(filled / total * 100) : 0;
-
-  document.getElementById("progressText").textContent =
-    "Đã nhập " + filled + "/" + total + " mục";
-  document.getElementById("progressPercent").textContent = percent + "%";
-  document.getElementById("progressBar").style.width = percent + "%";
-
-  const equipmentFilled = fieldOrder.filter(input =>
-    input.dataset.key.startsWith("equipment_") && input.value.trim() !== ""
-  ).length;
-
-  document.getElementById("summary").textContent =
-    "Đã nhập " + filled + "/" + total + " mục; " +
-    "công cụ dụng cụ đã nhập " + equipmentFilled + "/" + equipment.length + " mục.";
-}
-
-function readForm() {
-  const ingredients = {};
-  const tools = {};
-
-  fieldOrder.forEach(input => {
-    const raw = input.value.trim();
-    const value = raw === "" ? null : Number(raw);
-
-    if (input.dataset.key.startsWith("equipment_")) {
-      tools[input.dataset.code] = {
-        ten: input.dataset.name,
-        so_luong_chuan: Number(input.dataset.standard),
-        so_luong_thuc_te: value
-      };
-    } else {
-      ingredients[input.dataset.key] = {
-        ten: input.dataset.name,
-        so_luong: value
-      };
-    }
-  });
-
-  return {
-    schema_version: 1,
-    loai_ban_ghi: "kiem_kho_hang_ngay",
-    chi_nhanh: "69 Khương Trung",
-    ngay: document.getElementById("date").value || null,
-    gio_kiem: document.getElementById("time").value || null,
-    nguoi_kiem: document.getElementById("checker").value.trim() || null,
-    nguoi_bao_cao: document.getElementById("reporter").value.trim() || null,
-    nguyen_vat_lieu: ingredients,
-    cong_cu_dung_cu: tools,
-    ghi_chu: document.getElementById("notes").value.trim() || null,
-    thong_ke: {
-      tong_muc: fieldOrder.length,
-      so_muc_da_nhap: fieldOrder.filter(input => input.value.trim() !== "").length,
-      so_muc_bo_trong: fieldOrder.filter(input => input.value.trim() === "").length
-    },
-    tao_luc: new Date().toISOString()
-  };
-}
-
-function saveDraft() {
-  const draft = {
-    date: document.getElementById("date").value,
-    time: document.getElementById("time").value,
-    checker: document.getElementById("checker").value,
-    reporter: document.getElementById("reporter").value,
-    notes: document.getElementById("notes").value,
-    quantities: Object.fromEntries(fieldOrder.map(input => [
-      input.dataset.key,
-      input.value
-    ]))
-  };
-
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
-    document.getElementById("saveStatus").textContent =
-      "Đã lưu nháp trên thiết bị · " +
-      new Date().toLocaleTimeString("vi-VN", {hour: "2-digit", minute: "2-digit"});
-  } catch (error) {
-    document.getElementById("saveStatus").textContent =
-      "Không lưu được nháp trên thiết bị này";
-  }
-}
-
-function scheduleSave() {
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(saveDraft, 250);
-}
-
-function loadDraft() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
-    const draft = JSON.parse(raw);
-
-    ["date", "time", "checker", "reporter", "notes"].forEach(id => {
-      if (draft[id] !== undefined && draft[id] !== null) {
-        document.getElementById(id).value = draft[id];
-      }
-    });
-
-    fieldOrder.forEach(input => {
-      if (draft.quantities && draft.quantities[input.dataset.key] !== undefined) {
-        input.value = draft.quantities[input.dataset.key];
-      }
-    });
-  } catch (error) {
-    console.warn("Không thể khôi phục bản nháp.", error);
-  }
-}
-
-function downloadJSON() {
-  const data = readForm();
-
-  if (!data.ngay) {
-    alert("Hãy chọn ngày kiểm kho trước khi xuất JSON.");
-    document.getElementById("date").focus();
-    return;
-  }
-
-  const missing = data.thong_ke.so_muc_bo_trong;
-  const message = missing > 0
-    ? "Còn " + missing + " mục chưa nhập. Các mục này sẽ được lưu là null, không phải 0.\\n\\nVẫn xuất JSON?"
-    : "Đã nhập đủ tất cả các mục. Xuất bản ghi JSON?";
-
-  if (!confirm(message)) return;
-
-  const blob = new Blob(
-    [JSON.stringify(data, null, 2)],
-    { type: "application/json;charset=utf-8" }
-  );
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "Tascus_KiemKho_" + data.ngay + ".json";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-
-  document.getElementById("saveStatus").textContent =
-    "Đã tạo bản JSON để lưu hoặc gửi đi.";
-}
-
-document.getElementById("exportBtn").addEventListener("click", downloadJSON);
-
-["date", "time", "checker", "reporter", "notes"].forEach(id => {
-  document.getElementById(id).addEventListener("input", scheduleSave);
-  document.getElementById(id).addEventListener("change", scheduleSave);
-});
-
-function initialize() {
-  // Tạo danh sách đầy đủ trước, sau đó khôi phục nháp.
-  groups.forEach(createGroup);
-  createEquipmentSection();
-
-  const now = new Date();
-  const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
-  const today = localDate.toISOString().slice(0, 10);
-  const currentTime = localDate.toISOString().slice(11, 16);
-
-  document.getElementById("date").value = today;
-  document.getElementById("time").value = currentTime;
-
-  loadDraft();
-  updateProgress();
-
-  // Lưu ngay khi thay đổi ngày/giờ hoặc thông tin ban đầu.
-  saveDraft();
-}
-
-initialize();
-</script>
+
+    <script>
+        const categories = [
+            { id: "all", name: "Tất cả" },
+            { id: "banhmi", name: "Bánh mì" },
+            { id: "burger", name: "Burger" },
+            { id: "sandwich", name: "Sandwich" },
+            { id: "crepe", name: "Crepe" },
+            { id: "salad", name: "Salad" },
+            { id: "fries", name: "Khoai tây" },
+            { id: "pasta", name: "Mỳ Ý" },
+            { id: "bmchao", name: "Bánh mì chảo" },
+            { id: "drink", name: "Đồ uống" },
+            { id: "stuffs", name: "Linh tinh" }
+        ];
+
+        const recipes = [
+            {
+                category: "banhmi",
+                name: "Bánh mì gà nướng sả",
+                image: "BM-BMganuongsa.png"
+            },
+            {
+                category: "banhmi",
+                name: "Bánh mì xúc xích bò bằm hầm phô mai",
+                image: "BM-BMXucxichbobamhamphomai.png"
+            },
+            {
+                category: "banhmi",
+                name: "Bánh mì heo nướng xá xíu",
+                image: "BM-BMheonuongxaxiu.png"
+            },
+            {
+                category: "banhmi",
+                name: "Bánh mì bò phô mai",
+                image: "BM-BMbophomai.png"
+            },
+            {
+                category: "banhmi",
+                name: "Bánh mì bò tiêu đen",
+                image: "BM-BMbotieuden.png"
+            },
+            {
+                category: "burger",
+                name: "Burger bò",
+                image: "Burger.png"
+            },
+            {
+                category: "burger",
+                name: "Burger tôm",
+                image: "Burger-Burgertom.png"
+            },
+            {
+                category: "sandwich",
+                name: "Sandwich xúc xích phô mai",
+                image: "Sanwich-Sandwichxucxichphomai.png"
+            },
+            {
+                category: "sandwich",
+                name: "Sandwich jambon phô mai",
+                image: "Sanwich-Sandwichjambonphomai.png"
+            },
+            {
+                category: "sandwich",
+                name: "Sandwich phô mai pate heo",
+                image: "Sanwich-Sandwichphomaipateheo.png"
+            },
+            {
+                category: "sandwich",
+                name: "Sandwich phô mai pate bò",
+                image: "Sanwich-Sandwichphomaipatebo.png"
+            },
+            {
+                category: "sandwich",
+                name: "Sandwich phô mai sô cô la",
+                image: "Sandwich-Sanwichphomaisocola.png"
+            },
+            {
+                category: "crepe",
+                name: "Crepe xúc xích phô mai",
+                image: "Crepe-Crepexucxicphomai.png"
+            },
+            {
+                category: "crepe",
+                name: "Crepe jambon phô mai",
+                image: "Crepe-Crepejambonphomai.png"
+            },
+            {
+                category: "crepe",
+                name: "Crepe Oreo sữa",
+                image: "Crepe-CrepeOreoSua.png"
+            },
+            {
+                category: "crepe",
+                name: "Crepe xúc xích jambon phô mai",
+                image: "Crepe-Crepexucxichjambonphomai.png"
+            },
+            {
+                category: "crepe",
+                name: "Crepe chuối sô cô la phô mai",
+                image: "Crepe-Crepechuoisocolaphomai.png"
+            },
+            {
+                category: "salad",
+                name: "Salad gà viên",
+                image: "Salad-gavien.png"
+            },
+            {
+                category: "salad",
+                name: "Salad combo No Nê một ghế",
+                image: "Salad-none.png"
+            },
+            {
+                category: "fries",
+                name: "Khoai tây chiên",
+                image: "Khoaitaychien.png"
+            },
+            {
+                category: "pasta",
+                name: "Mỳ Ý xúc xích bò bằm",
+                image: "Pasta-MyYsotbobam.png"
+            },
+            {
+                category: "bmchao",
+                name: "Bánh mì chảo",
+                image: "Banhmychao.png"
+            },
+            {
+                category: "drink",
+                name: "Công thức đồ uống",
+                image: "Douong.png"
+            },
+            {
+                category: "stuffs",
+                name: "Bố cục sắp xếp quầy salad cơ sở Khương Trung",
+                image: "quaysalad.png"
+            }
+        ];
+
+        const categoryList = document.getElementById("categoryList");
+        const recipeGrid = document.getElementById("recipeGrid");
+        const searchInput = document.getElementById("searchInput");
+        const clearSearch = document.getElementById("clearSearch");
+        const resultCount = document.getElementById("resultCount");
+        const sectionTitle = document.getElementById("sectionTitle");
+        const sectionSubtitle = document.getElementById("sectionSubtitle");
+        const emptyState = document.getElementById("emptyState");
+        const resetFilters = document.getElementById("resetFilters");
+
+        const imageViewer = document.getElementById("imageViewer");
+        const viewerImage = document.getElementById("viewerImage");
+        const viewerTitle = document.getElementById("viewerTitle");
+        const viewerClose = document.getElementById("viewerClose");
+
+        const helpViewer = document.getElementById("helpViewer");
+        const helpButton = document.getElementById("helpButton");
+        const helpClose = document.getElementById("helpClose");
+        const helpDone = document.getElementById("helpDone");
+
+        let activeCategory = "all";
+        let previousFocusedElement = null;
+        let activeModal = null;
+
+        function normalizeText(value) {
+            return String(value)
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/đ/g, "d")
+                .replace(/Đ/g, "D")
+                .toLocaleLowerCase("vi")
+                .trim();
+        }
+
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, character => {
+                const entities = {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;"
+                };
+
+                return entities[character];
+            });
+        }
+
+        function getCategoryName(categoryId) {
+            const category = categories.find(item => item.id === categoryId);
+            return category ? category.name : "";
+        }
+
+        function getCategoryCount(categoryId) {
+            if (categoryId === "all") {
+                return recipes.length;
+            }
+
+            return recipes.filter(recipe => recipe.category === categoryId).length;
+        }
+
+        function renderCategories() {
+            categoryList.innerHTML = categories.map(category => {
+                const isActive = category.id === activeCategory;
+
+                return `
+                    <button
+                        type="button"
+                        class="category-chip ${isActive ? "active" : ""}"
+                        data-category="${category.id}"
+                        aria-pressed="${isActive}"
+                    >
+                        <span>${category.name}</span>
+                        <span class="chip-count">${getCategoryCount(category.id)}</span>
+                    </button>
+                `;
+            }).join("");
+        }
+
+        function getFilteredRecipes() {
+            const keyword = normalizeText(searchInput.value);
+
+            return recipes.filter(recipe => {
+                const matchesCategory =
+                    activeCategory === "all" ||
+                    recipe.category === activeCategory;
+
+                const matchesSearch =
+                    !keyword ||
+                    normalizeText(recipe.name).includes(keyword) ||
+                    normalizeText(getCategoryName(recipe.category)).includes(keyword);
+
+                return matchesCategory && matchesSearch;
+            });
+        }
+
+        function renderRecipes() {
+            const filteredRecipes = getFilteredRecipes();
+            const keyword = searchInput.value.trim();
+
+            recipeGrid.innerHTML = filteredRecipes.map(recipe => {
+                const originalIndex = recipes.indexOf(recipe);
+
+                return `
+                    <article class="recipe-card">
+                        <button
+                            class="recipe-image-button"
+                            type="button"
+                            data-recipe-index="${originalIndex}"
+                            aria-label="Phóng to ảnh: ${escapeHTML(recipe.name)}"
+                        >
+                            <img
+                                class="recipe-image"
+                                src="${escapeHTML(recipe.image)}"
+                                alt="${escapeHTML(recipe.name)}"
+                                loading="lazy"
+                                decoding="async"
+                            >
+
+                            <span class="zoom-hint" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="10.8" cy="10.8" r="6.8"
+                                        stroke="currentColor" stroke-width="1.8"/>
+                                    <path d="m16 16 4.2 4.2"
+                                        stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <div class="recipe-info">
+                            <h3 class="recipe-name">${escapeHTML(recipe.name)}</h3>
+                            <span class="recipe-category">
+                                ${escapeHTML(getCategoryName(recipe.category))}
+                            </span>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+
+            sectionTitle.textContent =
+                activeCategory === "all"
+                    ? "Tất cả công thức"
+                    : getCategoryName(activeCategory);
+
+            if (keyword) {
+                sectionSubtitle.textContent = `Kết quả tìm kiếm cho “${keyword}”`;
+            } else if (activeCategory === "all") {
+                sectionSubtitle.textContent = "Tra cứu theo hình ảnh";
+            } else {
+                sectionSubtitle.textContent =
+                    `Công thức thuộc danh mục ${getCategoryName(activeCategory)}`;
+            }
+
+            resultCount.textContent =
+                `Hiển thị ${filteredRecipes.length}/${recipes.length} mục`;
+
+            clearSearch.classList.toggle(
+                "visible",
+                searchInput.value.length > 0
+            );
+
+            const noResults = filteredRecipes.length === 0;
+
+            emptyState.classList.toggle("visible", noResults);
+            recipeGrid.style.display = noResults ? "none" : "grid";
+        }
+
+        function renderAll() {
+            renderCategories();
+            renderRecipes();
+        }
+
+        function selectCategory(categoryId) {
+            activeCategory = categoryId;
+            renderAll();
+        }
+
+        function openModal(modal, focusElement) {
+            if (activeModal) {
+                closeModal(activeModal, false);
+            }
+
+            previousFocusedElement = document.activeElement;
+            activeModal = modal;
+
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
+
+            if (focusElement) {
+                focusElement.focus();
+            }
+        }
+
+        function closeModal(modal, restoreFocus = true) {
+            if (!modal) return;
+
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+
+            if (modal === imageViewer) {
+                viewerImage.src = "";
+            }
+
+            if (activeModal === modal) {
+                activeModal = null;
+            }
+
+            if (!activeModal) {
+                document.body.classList.remove("modal-open");
+            }
+
+            if (
+                restoreFocus &&
+                previousFocusedElement &&
+                typeof previousFocusedElement.focus === "function"
+            ) {
+                previousFocusedElement.focus();
+            }
+        }
+
+        function openImageViewer(recipe) {
+            if (!recipe) return;
+
+            viewerImage.src = recipe.image;
+            viewerImage.alt = recipe.name;
+            viewerTitle.textContent = recipe.name;
+
+            openModal(imageViewer, viewerClose);
+        }
+
+        function openHelp() {
+            openModal(helpViewer, helpClose);
+        }
+
+        /* CATEGORY EVENTS */
+
+        categoryList.addEventListener("click", event => {
+            const button = event.target.closest("[data-category]");
+
+            if (!button) return;
+
+            selectCategory(button.dataset.category);
+        });
+
+        /* IMAGE EVENTS */
+
+        recipeGrid.addEventListener("click", event => {
+            const button = event.target.closest("[data-recipe-index]");
+
+            if (!button) return;
+
+            const recipeIndex = Number(button.dataset.recipeIndex);
+            openImageViewer(recipes[recipeIndex]);
+        });
+
+        /* SEARCH EVENTS */
+
+        searchInput.addEventListener("input", renderRecipes);
+
+        clearSearch.addEventListener("click", () => {
+            searchInput.value = "";
+            renderRecipes();
+            searchInput.focus();
+        });
+
+        resetFilters.addEventListener("click", () => {
+            activeCategory = "all";
+            searchInput.value = "";
+            renderAll();
+        });
+
+        /* BACK BUTTON */
+
+        document.getElementById("backButton").addEventListener("click", () => {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "index.html";
+            }
+        });
+
+        /* HELP BUTTON */
+
+        helpButton.addEventListener("click", openHelp);
+        helpClose.addEventListener("click", () => closeModal(helpViewer));
+        helpDone.addEventListener("click", () => closeModal(helpViewer));
+
+        helpViewer.addEventListener("click", event => {
+            if (event.target === helpViewer) {
+                closeModal(helpViewer);
+            }
+        });
+
+        /* IMAGE VIEWER CLOSE */
+
+        viewerClose.addEventListener("click", () => closeModal(imageViewer));
+
+        imageViewer.addEventListener("click", event => {
+            if (event.target === imageViewer) {
+                closeModal(imageViewer);
+            }
+        });
+
+        /* KEYBOARD */
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && activeModal) {
+                closeModal(activeModal);
+            }
+        });
+
+        renderAll();
+    </script>
 </body>
 </html>
