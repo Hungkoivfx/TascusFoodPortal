@@ -25,7 +25,7 @@
 html{min-height:100%;scroll-behavior:smooth}
 body{
   min-height:100vh;min-height:100dvh;
-  padding: max(0px,env(safe-area-inset-top)) 0 calc(100px + env(safe-area-inset-bottom));
+  padding:0 0 calc(100px + env(safe-area-inset-bottom));
   background:var(--paper);color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
@@ -33,15 +33,15 @@ body{
 button,a{font:inherit}
 button{-webkit-tap-highlight-color:transparent}
 .container{width:100%;max-width:680px;margin:0 auto}
-.tab-panel{display:none!important;opacity:0;transform:translateY(8px)}
-.tab-panel.active{display:block!important}
-.tab-panel.entering{animation:panelEnter .22s ease both}
-@keyframes panelEnter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.tab-panel{display:none;opacity:0;transform:translateY(8px)}
+.tab-panel.active{display:block}
+.tab-panel.entering{animation:panelEnter .28s ease forwards}
+@keyframes panelEnter{to{opacity:1;transform:translateY(0)}}
 
 /* Header cong, màu cam và vùng mascot */
 .hero{
   position:relative;isolation:isolate;overflow:hidden;
-  min-height:260px;padding:25px 22px 78px;
+  min-height:260px;padding:calc(25px + env(safe-area-inset-top)) 22px 78px;
   color:#fff;
   background:
     radial-gradient(circle at 78% 20%,rgba(255,191,91,.28) 0 12%,transparent 12.5%),
@@ -63,10 +63,10 @@ button{-webkit-tap-highlight-color:transparent}
 .brand-name{font-size:clamp(23px,6vw,29px);font-weight:800;letter-spacing:-.8px;line-height:1.15}
 .brand-sub{font-size:13px;font-weight:500;letter-spacing:.2px;opacity:.92;margin-top:5px}
 .greeting{margin-top:31px;font-size:25px;font-weight:800;letter-spacing:-.6px;line-height:1.15}
-.greeting-line{margin-top:7px;font-size:15px;font-weight:600;line-height:1.4}
-.hero-description{max-width:290px;margin-top:8px;font-size:12px;line-height:1.5;color:rgba(255,255,255,.88)}
+.greeting-line{margin-top:7px;font-size:15px;font-weight:600;line-height:1.4;max-width:210px}
+.hero-description{max-width:200px;margin-top:8px;font-size:12px;line-height:1.5;color:rgba(255,255,255,.88)}
 .mascot-wrap{
-  position:absolute;z-index:3;right:7px;bottom:23px;width:43%;max-width:250px;
+  position:absolute;z-index:3;right:7px;bottom:23px;width:43%;max-width:350px;
   height:205px;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;
 }
 .mascot{
@@ -85,8 +85,8 @@ button{-webkit-tap-highlight-color:transparent}
 }
 .page-content{padding:0 17px}
 .welcome-spacer{height:5px}
-.section{margin:17px 0 19px}
-.section-heading{display:flex;align-items:center;gap:9px;margin:0 3px 10px}
+.section{margin:17px 0 25px}
+.section-heading{display:flex;align-items:center;gap:9px;margin:0 3px 12px}
 .section-number{
   width:29px;height:29px;border-radius:10px;display:flex;align-items:center;justify-content:center;
   background:#ffe5d5;color:#d95720;font-size:12px;font-weight:850;letter-spacing:.1px;flex:none;
@@ -118,45 +118,39 @@ button{-webkit-tap-highlight-color:transparent}
 .action-card.disabled .action-icon{background:#f4f0ed;filter:grayscale(.3)}
 .disabled-note{font-size:9px;color:#a59a92;font-weight:700;margin-top:auto;padding-top:8px;letter-spacing:.2px}
 .section-intro{font-size:11px;color:#8a817b;line-height:1.45;margin:-5px 3px 11px}
-.compact-list{display:flex;flex-direction:column;gap:8px}
+.compact-list{display:flex;flex-direction:column;gap:9px}
 .list-card{
-  min-height:64px;padding:10px 12px;display:flex;align-items:center;gap:10px;
+  min-height:70px;padding:12px 14px;display:flex;align-items:center;gap:12px;
   border:1px solid #f1e7df;border-radius:17px;background:#fff;box-shadow:0 4px 14px rgba(104,59,31,.045);
   text-decoration:none;color:inherit;transition:transform .15s ease,background .15s ease;
 }
 .list-card:active{transform:scale(.985);background:#fff8f3}
 .list-icon{
-  width:38px;height:38px;border-radius:13px;display:flex;align-items:center;justify-content:center;
-  flex:none;background:#fff0e7;font-size:19px;
+  width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  flex:none;background:#fff0e7;font-size:20px;
 }
 .list-copy{min-width:0;flex:1}
-.list-title{font-size:12.5px;font-weight:800;line-height:1.3}
-.list-desc{font-size:10px;color:var(--muted);line-height:1.35;margin-top:3px}
+.list-title{font-size:13px;font-weight:800;line-height:1.3}
+.list-desc{font-size:10.5px;color:var(--muted);line-height:1.4;margin-top:4px}
 .list-arrow{font-size:20px;color:#c6aaa0;flex:none}
 .footer{text-align:center;color:#a79b93;font-size:10px;margin:27px 0 12px}
 
-/* Khu vực điều hành */
+/* Khu vực điều hành: dùng chung motif với phần vận hành */
 .management-header{
   margin:22px 17px 25px;padding:20px;border-radius:22px;
   background:linear-gradient(135deg,#fff0e7,#fff9f4);border:1px solid #f4e2d5;
 }
 .management-header h1{font-size:22px;font-weight:850}
 .management-header p{font-size:12px;color:var(--muted);margin-top:5px}
-.function-list{display:flex;flex-direction:column;gap:10px;padding:0 17px}
-.function-card{
-  min-height:72px;padding:13px 15px;display:flex;align-items:center;gap:13px;
-  background:#fff;border:1px solid #f1e7df;border-radius:17px;box-shadow:0 4px 14px rgba(104,59,31,.045);
-  text-decoration:none;color:inherit;
-}
-.function-card .icon{
-  width:43px;height:43px;border-radius:14px;background:#fff0e7;display:flex;align-items:center;
-  justify-content:center;font-size:20px;flex:none;
-}
-.card-content{flex:1;min-width:0}
-.card-title{font-size:14px;font-weight:800;line-height:1.3}
-.card-desc{font-size:11px;color:var(--muted);line-height:1.4;margin-top:4px}
-.function-card .arrow{font-size:20px;color:#c6aaa0}
-.function-card.disabled{opacity:.65;cursor:not-allowed;box-shadow:none;border-style:dashed}
+
+/* Thẻ chức năng điều hành sử dụng chung action-grid/action-card */
+#managementPanel .page-content{padding:0 17px}
+#managementPanel .section{margin-top:0}
+#managementPanel .action-card{min-height:142px}
+#managementPanel .action-card:nth-child(2) .action-icon{background:#fff3d9}
+#managementPanel .action-card:nth-child(3) .action-icon{background:#eaf4ee}
+#managementPanel .action-card:nth-child(4) .action-icon{background:#f1edff}
+#managementPanel .action-card:nth-child(5) .action-icon{background:#f4f0ed}
 
 .bottom-nav{
   position:fixed;z-index:1000;left:12px;right:12px;bottom:calc(8px + env(safe-area-inset-bottom));
@@ -195,10 +189,11 @@ button{-webkit-tap-highlight-color:transparent}
 .info-popup p:last-child{margin-bottom:0}
 .management-popup{max-width:350px}
 .management-popup h2{font-size:18px}
-.password-inputs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
-.password-digit{width:100%;height:58px;min-width:0;border:1px solid #e8d8cc;border-radius:14px;background:#fff;color:var(--ink);font-size:25px;font-weight:800;text-align:center;outline:none;caret-color:var(--orange)}
-.password-digit:focus{border-color:var(--orange);box-shadow:0 0 0 3px #f36b2d20}
-.password-digit.filled{border-color:#efb18e;background:#fffaf6}
+.management-password{
+  width:100%;padding:13px 14px;border:1px solid #e8d8cc;border-radius:12px;background:#fff;
+  color:var(--ink);font-size:16px;outline:none;
+}
+.management-password:focus{border-color:var(--orange);box-shadow:0 0 0 3px #f36b2d20}
 .management-submit{
   width:100%;margin-top:10px;padding:13px;border:0;border-radius:12px;background:var(--orange);
   color:#fff;font-size:14px;font-weight:800;cursor:pointer;
@@ -266,23 +261,23 @@ const NON_ZALO_REDIRECT="./TascusfoodPortal.html";
           <span class="section-number">01</span><h2>Việc cần làm</h2><span class="heading-line"></span>
         </div>
         <div class="action-grid">
-          <a class="action-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlggPVO86rfDEPoRFVrZilAeg?from=navigation" target="_blank" rel="noopener">
-            <span class="action-icon">🥬</span><span class="action-title">Đặt rau, bánh</span>
-            <span class="action-desc">Tạo lệnh đặt hàng bánh và rau cho cửa hàng.</span><span class="action-arrow">↗</span>
+          <a class="action-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgLCEfAwnR4W1LwBhxiDmLec" target="_blank" rel="noopener">
+            <span class="action-icon">🥬</span><span class="action-title">Đặt rau, bánh, đồ nhựa...</span>
+            <span class="action-desc">Tạo lệnh đặt hàng bánh, rau. đồ nhựa cho cửa hàng.</span><span class="action-arrow">↗</span>
           </a>
           <a class="action-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlgZBVWGRxoxGS1QUIzk1RZZg" target="_blank" rel="noopener">
             <span class="action-icon">🍞</span><span class="action-title">Xác nhận bánh</span>
-            <span class="action-desc">Xác nhận số lượng bánh đã nhận tại cửa hàng.</span><span class="action-arrow">↗</span>
+            <span class="action-desc">Xác nhận số lượng bánh đã nhận tại cửa hàng theo từng ca.</span><span class="action-arrow">↗</span>
           </a>
           <a class="action-card" href="./OperationLogs.html">
             <span class="action-icon">📋</span><span class="action-title">Nhật ký vận hành</span>
             <span class="action-desc">Ghi nhận và cập nhật các vấn đề phát sinh.</span><span class="action-arrow">›</span>
           </a>
-          <div class="action-card disabled" role="group" aria-disabled="true">
+          <a class="action-card" href="./reminder.html">
             <span class="action-icon">🗓️</span><span class="action-title">Làm gì hôm nay?</span>
             <span class="action-desc">Trình giao việc, nhắc việc tự động thường nhật cho nhân sự.</span>
-            <span class="disabled-note">CHƯA KÍCH HOẠT</span>
-          </div>
+</a>
+          
         </div>
       </section>
 
@@ -295,7 +290,7 @@ const NON_ZALO_REDIRECT="./TascusfoodPortal.html";
             <span class="action-icon">🗑️</span><span class="action-title">Báo cáo hủy nguyên vật liệu</span>
             <span class="action-desc">Ghi nhận nguyên vật liệu bị hủy trong quá trình vận hành.</span><span class="action-arrow">↗</span>
           </a>
-          <a class="action-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg88vMgJkqi4kdAVZdzaaUOb" target="_blank" rel="noopener">
+          <a class="action-card" href="https://rjtj1yaw65k.sg.larksuite.com/share/base/form/shrlg6ueaRLjhCauteDAshnZmCf" target="_blank" rel="noopener">
             <span class="action-icon">💰</span><span class="action-title">Báo cáo doanh thu</span>
             <span class="action-desc">Gửi báo cáo doanh thu của cửa hàng.</span><span class="action-arrow">↗</span>
           </a>
@@ -309,7 +304,7 @@ const NON_ZALO_REDIRECT="./TascusfoodPortal.html";
         <div class="compact-list">
           <a class="list-card" href="https://rjtj1yaw65k.sg.larksuite.com/wiki/UE0wwgqeSi2pKskkDgalSbTjgJd?from=from_copylink" target="_blank" rel="noopener">
             <span class="list-icon">📖</span>
-            <span class="list-copy"><span class="list-title">Quy trình vận hành · 69 Khương Trung</span><span class="list-desc">Quy trình cửa hàng, nhân sự cần đọc và cập nhật thường xuyên.</span></span>
+            <span class="list-copy"><span class="list-title">Quy trình vận hành · 69 Khương Trung</span><span class="list-desc"><br>Quy trình cửa hàng, nhân sự cần đọc và cập nhật thường xuyên.</span></span>
             <span class="list-arrow">↗</span>
           </a>
         </div>
@@ -322,7 +317,7 @@ const NON_ZALO_REDIRECT="./TascusfoodPortal.html";
         <div class="compact-list">
           <a class="list-card" href="./Thu-vien.html">
             <span class="list-icon">📚</span>
-            <span class="list-copy"><span class="list-title">Thư viện công thức</span><span class="list-desc">Tra cứu công thức và hình ảnh các món tại Tascus Food.</span></span>
+            <span class="list-copy"><span class="list-title">Thư viện công thức</span><span class="list-desc"><br>Tra cứu công thức và hình ảnh các món tại Tascus Food.</span></span>
             <span class="list-arrow">›</span>
           </a>
         </div>
@@ -330,22 +325,6 @@ const NON_ZALO_REDIRECT="./TascusfoodPortal.html";
       <footer class="footer">Tascus Food · 69 Khương Trung</footer>
     </div>
   </section>
-
-  <section id="managementPanel" class="tab-panel">
-    <header class="management-header">
-      <h1>Cổng điều hành</h1>
-      <p>Quản lý · Tascus Food 69 Khương Trung</p>
-    </header>
-    <div class="page-content">
-      <div class="section-heading"><span class="section-number">01</span><h2>Chức năng điều hành</h2><span class="heading-line"></span></div>
-    </div>
-    <div class="function-list">
-      <a href="./Payments_KhuongTrung.html" class="function-card"><div class="icon">💳</div><div class="card-content"><div class="card-title">Sổ thanh toán</div><div class="card-desc">Kế toán · 69 Khương Trung</div></div><div class="arrow">›</div></a>
-      <a href="./thongkebanh.html" class="function-card"><div class="icon">🥖</div><div class="card-content"><div class="card-title">Bảng thống kê bánh</div><div class="card-desc">Theo dõi số lượng bánh</div></div><div class="arrow">›</div></a>
-      <a href="./docbaocaodoanhthu.html" class="function-card"><div class="icon">📊</div><div class="card-content"><div class="card-title">Xem báo cáo doanh thu</div><div class="card-desc">Báo cáo doanh thu theo ca</div></div><div class="arrow">›</div></a>
-      <a href="https://rjtj1yaw65k.sg.larksuite.com/share/base/view/shrlglckv7oUgyJjf3e9Beoq6qc" target="_blank" rel="noopener" class="function-card"><div class="icon">🗑️</div><div class="card-content"><div class="card-title">Tổng hợp báo cáo hủy nguyên vật liệu</div><div class="card-desc">Theo dõi nguyên vật liệu và sản phẩm hủy</div></div><div class="arrow">↗</div></a>
-      <div class="function-card disabled" aria-disabled="true"><div class="icon">🔔</div><div class="card-content"><div class="card-title">Quản lý nhắc nhở công việc tự động</div><div class="card-desc">Quản lý các công việc và lịch nhắc tự động</div></div><div class="arrow">·</div></div>
-    </div>
 
   <section id="managementPanel" class="tab-panel">
     <!-- Header được giữ nguyên -->
