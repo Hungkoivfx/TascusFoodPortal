@@ -146,7 +146,7 @@ async function loadNote() {
     try {
 
         const response = await fetch(
-            "./ducksnote.json?t=" + Date.now(),
+            "./Data/ducksnote.json?t=" + Date.now(),
             { cache: "no-store" }
         );
 
