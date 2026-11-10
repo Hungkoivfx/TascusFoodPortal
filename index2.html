@@ -328,11 +328,19 @@ const NON_ZALO_REDIRECT="./TascusfoodPortal.html";
 
   <section id="managementPanel" class="tab-panel">
     <!-- Header được giữ nguyên -->
-    <header class="management-header">
-      <h1>Cổng điều hành</h1>
-      <p>Quản lý · Tascus Food 69 Khương Trung</p>
-    </header>
-
+   <header class="hero">
+  <div class="hero-copy">
+    <div class="brand-name">Tascus Food 69 Khương Trung</div>
+    <div class="brand-sub">Operations Portal</div>
+    <div class="greeting">Xin chào!</div>
+    <p class="hero-description">Mục này dành cho các hoạt động điều hành cửa hàng.</p>
+  </div>
+  <button class="info-button" type="button" onclick="openInfo()" aria-label="Giới thiệu cổng vận hành">?</button>
+  <div class="mascot-wrap" aria-hidden="true">
+    <img class="mascot" src="./duck-chef.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="mascot-fallback">🦆</div>
+  </div>
+</header>
     <div class="page-content">
       <section class="section">
         <div class="section-heading">
