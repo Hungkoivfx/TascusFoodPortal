@@ -79,6 +79,12 @@ body {
     cursor: pointer;
     z-index: 2;
     -webkit-tap-highlight-color: transparent;
+
+    transform: scale(1) translateY(0);
+    transform-origin: center;
+    transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .confirm-button img {
@@ -86,14 +92,13 @@ body {
     width: 100%;
     height: auto;
     object-fit: contain;
+    pointer-events: none;
 }
 
+/* Giữ trạng thái nhấn trong lúc giữ chuột hoặc ngón tay */
 .confirm-button:active {
-    transform: scale(0.94);
-}
-
-.hidden {
-    display: none;
+    transform: scale(0.88) translateY(4px);
+    transition: transform 80ms ease-out;
 }
 </style>
 </head>
@@ -135,11 +140,6 @@ Chúc các bạn có một ngày làm việc vui vẻ, năng động và hiệu 
 
 </div>
 
-<script>
-document.getElementById("confirmButton").addEventListener("click", () => {
-    document.getElementById("reminder").classList.add("hidden");
-});
-</script>
 
 </body>
 </html>
