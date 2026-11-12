@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T13:50:42.337Z",
+  "updated_at": "2026-11-12T13:51:06.375Z",
   "records": [
     {
       "id": "Z032",
@@ -953,7 +953,10 @@
       "noi_dung": "Hết ống hút to",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/11/12 20:51",
+      "phuong_an_xu_ly": "Đã đặt",
+      "nguoi_xu_ly": "ánh"
     },
     {
       "id": "Z107",
