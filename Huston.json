@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T13:51:28.880Z",
+  "updated_at": "2026-11-12T13:52:19.261Z",
   "records": [
     {
       "id": "Z032",
@@ -933,7 +933,10 @@
       "noi_dung": "Chân sạc máy trực lại k vào điện mai ai có ổ khác cầm đi để phòng hết pin",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/11/12 20:52",
+      "phuong_an_xu_ly": "Đã mua mới. Đang chờ hàng về\nXài tạm dây sạc của anh Hưng",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z105",
