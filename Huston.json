@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T13:52:19.261Z",
+  "updated_at": "2026-11-12T13:52:46.782Z",
   "records": [
     {
       "id": "Z032",
@@ -913,7 +913,10 @@
       "noi_dung": "Tủ đông phả hơi nóng\nNóng như cái lò sấy\nKhả năng cao đã hỏng một số nguyên vật liệu",
       "muc_do": "Thông thường",
       "can_xu_ly": "Có thể tự xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/11/12 20:52",
+      "phuong_an_xu_ly": "Xong",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z103",
