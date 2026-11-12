@@ -160,7 +160,7 @@ async function loadNote() {
             throw new Error("Dữ liệu content không hợp lệ");
         }
 
-        content.textContent = data.content;
+        content.textContent content.innerHTML = data.content;= data.content;
 
     } catch (error) {
 
