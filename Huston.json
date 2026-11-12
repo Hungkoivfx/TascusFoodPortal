@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11T14:18:16.104Z",
+  "updated_at": "2026-11-12T12:43:04.882Z",
   "records": [
     {
       "id": "Z032",
@@ -948,6 +948,16 @@
       "thoi_gian": "2026/11/11 21:18",
       "nguoi_bao_cao": "Duyên",
       "noi_dung": "Hết ống hút to",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z107",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/11/12 19:43",
+      "nguoi_bao_cao": "Duyên",
+      "noi_dung": "Nha đam còn 1 gói , sắp hết ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
       "trang_thai_xu_ly": "Chưa xử lý"
