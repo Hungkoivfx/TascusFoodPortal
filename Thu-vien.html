@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f7f7fb">
+    <meta name="theme-color" content="#F47B20">
     <title>Thư viện công thức | Tascus Food</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,19 +14,19 @@
     <style>
         :root {
             color-scheme: light;
-            --bg: #f7f7fb;
+            --bg: #fff9f2;
             --surface: #ffffff;
-            --surface-soft: #f0eff7;
-            --primary: #625b71;
-            --primary-dark: #4f485e;
-            --primary-soft: #e9e4f2;
-            --text: #1c1b1f;
-            --text-secondary: #625f68;
-            --outline: #dedbe5;
-            --outline-strong: #c9c5d1;
-            --shadow: 0 2px 8px rgba(30, 25, 40, 0.05);
-            --radius-card: 18px;
-            --radius-control: 14px;
+            --surface-soft: #fff0e2;
+            --primary: #f47b20;
+            --primary-dark: #dc6814;
+            --primary-soft: #ffead8;
+            --text: #29231f;
+            --text-secondary: #75685e;
+            --outline: #f0dfd1;
+            --outline-strong: #e8c8ad;
+            --shadow: 0 3px 12px rgba(104, 63, 28, 0.07);
+            --radius-card: 20px;
+            --radius-control: 15px;
         }
 
         * {
@@ -58,27 +58,24 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* HEADER */
-
+        /* HEADER - giữ nguyên nội dung, đồng bộ màu sắc với trang index */
         .app-header {
-            position: sticky;
-            top: 0;
+            position: relative;
             z-index: 20;
-            background: rgba(247, 247, 251, 0.94);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(222, 219, 229, 0.85);
+            overflow: hidden;
+            background: linear-gradient(115deg, #f47b20 0%, #f88b35 100%);
+            box-shadow: 0 4px 16px rgba(145, 76, 23, 0.13);
         }
-
         .header-inner {
+            position: relative;
             width: min(1440px, 100%);
-            min-height: 64px;
+            min-height: 104px;
             margin: 0 auto;
-            padding: 10px 28px;
+            padding: 22px 30px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
         }
-
         .header-action {
             width: 42px;
             height: 42px;
@@ -86,38 +83,40 @@
             display: grid;
             place-items: center;
             padding: 0;
-            border: 1px solid var(--outline);
-            border-radius: 50%;
-            background: var(--surface);
-            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.58);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
             cursor: pointer;
-            transition: background 0.18s, border-color 0.18s;
+            transition: background 0.18s, transform 0.18s;
         }
-
         .header-action:hover {
-            background: var(--surface-soft);
-            border-color: var(--outline-strong);
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
         }
-
-        .header-action svg {
-            width: 21px;
-            height: 21px;
-        }
-
-        .help-button {
-            font-size: 19px;
-            font-weight: 600;
-        }
-
+        .header-action svg { width: 21px; height: 21px; }
+        .help-button { margin-left: auto; font-size: 19px; font-weight: 700; }
         .header-title {
+            position: relative;
+            z-index: 2;
             min-width: 0;
-            font-size: 17px;
+            color: #fff;
+            font-size: clamp(19px, 2.5vw, 25px);
             font-weight: 700;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 1px 2px rgba(100, 48, 12, 0.12);
         }
-
-        .header-spacer {
-            flex: 1;
+        .header-spacer { flex: 1; }
+        .header-mascot {
+            position: absolute;
+            right: 88px;
+            bottom: -18px;
+            width: 118px;
+            height: 118px;
+            object-fit: contain;
+            pointer-events: none;
+            user-select: none;
+            filter: drop-shadow(0 4px 5px rgba(112, 56, 18, 0.12));
         }
 
         /* MAIN */
@@ -148,7 +147,7 @@
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background: #8c829f;
+            background: var(--primary);
         }
 
         h1 {
@@ -192,7 +191,7 @@
 
         .search-box:focus-within {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(98, 91, 113, 0.10);
+            box-shadow: 0 0 0 3px rgba(244, 123, 32, 0.14);
         }
 
         .search-icon {
@@ -305,7 +304,7 @@
             place-items: center;
             padding: 0 5px;
             border-radius: 999px;
-            background: rgba(98, 91, 113, 0.10);
+            background: rgba(244, 123, 32, 0.14);
             color: var(--text-secondary);
             font-size: 11px;
         }
@@ -734,19 +733,28 @@
 
         @media (max-width: 600px) {
             .header-inner {
-                min-height: 58px;
-                padding: 9px 14px;
-                gap: 12px;
+                min-height: 82px;
+                padding: 16px 14px;
+                gap: 11px;
             }
 
             .header-action {
                 width: 38px;
                 height: 38px;
                 flex-basis: 38px;
+                border-radius: 12px;
             }
 
             .header-title {
-                font-size: 16px;
+                max-width: calc(100% - 116px);
+                font-size: 17px;
+            }
+
+            .header-mascot {
+                right: 62px;
+                bottom: -12px;
+                width: 88px;
+                height: 88px;
             }
 
             .page-container {
@@ -856,11 +864,15 @@
 
         @media (max-width: 360px) {
             .header-inner {
-                gap: 9px;
+                gap: 8px;
             }
 
-            .header-title {
-                font-size: 15px;
+            .header-title { font-size: 14px; }
+
+            .header-mascot {
+                right: 56px;
+                width: 76px;
+                height: 76px;
             }
 
             .category-list {
@@ -927,6 +939,8 @@
                 aria-label="Trợ giúp"
                 title="Trợ giúp"
             >?</button>
+
+            <img class="header-mascot" src="./duck-chef.png" alt="" aria-hidden="true" onerror="this.style.display='none'">
         </div>
     </header>
 
