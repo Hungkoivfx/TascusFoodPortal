@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15T12:39:00.173Z",
+  "updated_at": "2026-11-15T12:39:11.088Z",
   "records": [
     {
       "id": "Z032",
@@ -988,9 +988,10 @@
       "noi_dung": "Bóng đèn bếp bị hỏng",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý",
+      "trang_thai_xu_ly": "Đã xử lý",
       "phuong_an_xu_ly": "Đã thay bóng 7w",
-      "nguoi_xu_ly": "Hưng"
+      "nguoi_xu_ly": "Hưng",
+      "thoi_gian_xu_ly": "2026/11/15 19:39"
     }
   ]
 }
