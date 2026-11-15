@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
 
-<meta name="theme-color" content="#f7f7fa">
+<meta name="theme-color" content="#fff8f2">
 <title>Nhật ký vận hành · Tascus Food</title>
 
 <style>
@@ -14,29 +14,29 @@
 
 :root {
     color-scheme: light;
-    --md-primary: #625b71;
+    --md-primary: #f36b16;
     --md-on-primary: #ffffff;
-    --md-primary-container: #eaddff;
-    --md-on-primary-container: #21005d;
-    --md-secondary-container: #e8def8;
-    --md-on-secondary-container: #1d192b;
-    --md-background: #f7f7fa;
-    --md-surface: #ffffff;
-    --md-surface-low: #f0eff5;
-    --md-surface-high: #e9e7ef;
-    --md-outline: #797680;
-    --md-outline-variant: #cac6d1;
-    --md-on-surface: #1b1b21;
-    --md-on-surface-variant: #48464f;
+    --md-primary-container: #ffe3cf;
+    --md-on-primary-container: #7d2c00;
+    --md-secondary-container: #ffeadc;
+    --md-on-secondary-container: #59301d;
+    --md-background: #fff8f2;
+    --md-surface: #fffefd;
+    --md-surface-low: #fff1e7;
+    --md-surface-high: #f8e4d6;
+    --md-outline: #d8b9a6;
+    --md-outline-variant: #f0d8c8;
+    --md-on-surface: #29201b;
+    --md-on-surface-variant: #78665b;
     --md-error: #ba1a1a;
     --md-error-container: #ffdad6;
     --md-success: #386a42;
     --md-success-container: #d8f2d5;
     --md-warning: #795900;
     --md-warning-container: #ffdf9e;
-    --radius-card: 24px;
+    --radius-card: 22px;
     --radius-control: 14px;
-    --shadow-card: 0 1px 3px rgba(30, 25, 40, .08);
+    --shadow-card: 0 3px 14px rgba(126, 69, 31, .055);
 }
 
 * {
@@ -804,6 +804,195 @@ textarea.form-control {
         scroll-behavior: auto !important;
     }
 }
+
+
+/* Tascus Food · pastel orange visual refresh */
+body {
+    background:
+        radial-gradient(ellipse at 8% 0%, rgba(255, 222, 194, .42), transparent 34rem),
+        linear-gradient(180deg, #fffaf6 0%, #fff6ef 100%);
+}
+
+.top-app-bar {
+    background: rgba(255, 249, 244, .92);
+    border-bottom: 1px solid rgba(239, 207, 185, .72);
+    box-shadow: 0 3px 16px rgba(125, 71, 38, .035);
+}
+
+.icon-button { color: #a94a12; }
+.icon-button:hover { background: #ffeadc; }
+.app-title { color: #30231b; }
+.app-subtitle { color: #92796a; }
+.top-action, .primary-button {
+    background: linear-gradient(135deg, #ff8a26 0%, #f35d0c 100%);
+    box-shadow: 0 5px 13px rgba(237, 103, 20, .2);
+}
+.top-action:hover, .primary-button:hover { filter: brightness(1.025); }
+
+.page { margin-top: 25px; }
+.eyebrow {
+    color: #e85f12;
+    letter-spacing: .8px;
+}
+.page-heading { color: #30231c; }
+.page-description { color: #806e63; }
+
+.summary-card {
+    border-color: #f4dfd0;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #fffefd, #fff8f2);
+    box-shadow: 0 4px 16px rgba(130, 75, 42, .055);
+}
+.summary-card:nth-child(1) { background: linear-gradient(145deg, #fffefd, #fff0e5); }
+.summary-card:nth-child(2) { background: linear-gradient(145deg, #fffefd, #fff7ed); }
+.summary-card:nth-child(3) { background: linear-gradient(145deg, #fffefd, #f3f8ed); }
+.summary-label { color: #806e63; }
+.summary-value { color: #30231c; }
+
+.section { margin-top: 27px; }
+.section-title { color: #33251d; }
+.section-count {
+    background: #ffeadc;
+    color: #a9470c;
+}
+.filter-chip {
+    border-color: #edcfbb;
+    background: rgba(255,255,255,.72);
+    color: #78665b;
+}
+.filter-chip.active {
+    border-color: #ff7a1a;
+    background: #ff7918;
+    color: #fff;
+    box-shadow: 0 3px 9px rgba(239, 105, 19, .17);
+}
+
+.log-card {
+    border-color: #f1ddcf;
+    border-radius: 21px;
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 3px 13px rgba(124, 72, 39, .055);
+}
+.log-card:hover { box-shadow: 0 6px 18px rgba(124, 72, 39, .10); }
+.branch-tag { background: #fff0e5; color: #9a4a1c; }
+.log-content { color: #33271f; }
+.log-footer { border-top-color: #f5e8df; color: #88776d; }
+.log-footer strong { color: #453329; }
+.empty-state {
+    border-color: #edcfbb;
+    background: rgba(255,255,255,.62);
+}
+.empty-title { color: #3b2b21; }
+
+.text-button { color: #e85f12; }
+.text-button:hover { background: #fff0e5; }
+.secondary-button {
+    border-color: #edcbb3;
+    background: #fffaf6;
+    color: #a64b15;
+}
+.secondary-button:hover { background: #fff0e5; }
+.danger-button { background: #ffebe8; }
+
+/* Popup/modal: đồng bộ giao diện demo, không còn kiểu bottom-sheet mặc định trên mobile */
+.modal {
+    padding: 18px;
+    background: rgba(55, 36, 25, .42);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.modal-panel {
+    position: relative;
+    width: min(100%, 520px);
+    max-height: min(88vh, 820px);
+    padding: 25px 25px 23px;
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 28px;
+    background: linear-gradient(160deg, #fffefd 0%, #fff9f4 100%);
+    box-shadow: 0 20px 60px rgba(58, 35, 19, .22);
+    animation: modalIn .22s cubic-bezier(.2,.8,.2,1);
+}
+.modal-header {
+    align-items: flex-start;
+    margin: -25px -25px 22px;
+    padding: 23px 22px 18px;
+    border-bottom: 1px solid #f4e2d5;
+    background: linear-gradient(115deg, #fff1e5 0%, #fffaf6 78%);
+    border-radius: 27px 27px 0 0;
+}
+.modal-title {
+    color: #332219;
+    font-size: 23px;
+    letter-spacing: -.45px;
+}
+.modal-description { color: #8b7567; line-height: 1.5; }
+.close-button {
+    background: #ffeadc;
+    color: #a94c15;
+    transition: background .16s, transform .16s;
+}
+.close-button:hover { background: #ffdcc5; transform: rotate(90deg); }
+.form-label { color: #49352a; }
+.form-control {
+    border: 1px solid #e8cbb8;
+    border-radius: 15px;
+    background: #fffaf6;
+    color: #30231c;
+    transition: border-color .16s, box-shadow .16s, background .16s;
+}
+.form-control:focus {
+    border: 1.5px solid #f36b16;
+    padding: 11.5px 13.5px;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(243,107,22,.11);
+}
+.form-hint { color: #947e70; }
+.form-error {
+    border: 1px solid #f0c3bc;
+    border-radius: 13px;
+    background: #fff0ed;
+    color: #a52d22;
+}
+.modal-actions {
+    padding-top: 16px;
+    border-top: 1px solid #f3e4da;
+}
+.primary-button { min-height: 48px; }
+.detail-label { color: #94796a; text-transform: uppercase; letter-spacing: .45px; }
+.detail-content { background: #fff1e7; border: 1px solid #f6e0d0; }
+.detail-divider { background: #f0dfd3; }
+.help-list { color: #705d51; }
+.help-list li { padding-left: 3px; }
+.toast {
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 16px;
+    background: #3d2b20;
+    box-shadow: 0 8px 26px rgba(58, 35, 19, .2);
+}
+.page-footer { color: #a28d80; }
+
+@media (max-width: 600px) {
+    .modal {
+        align-items: center;
+        padding: 14px;
+    }
+    .modal-panel {
+        width: 100%;
+        max-height: 88vh;
+        padding: 21px 18px 19px;
+        border-radius: 25px;
+    }
+    .modal-header {
+        margin: -21px -18px 19px;
+        padding: 20px 17px 16px;
+        border-radius: 24px 24px 0 0;
+    }
+    .modal-title { font-size: 21px; }
+    .modal-actions { gap: 8px; }
+    .modal-actions > button { min-width: 0; }
+    .summary-card { border-color: #f1dfd2; }
+}
+
 </style>
 </head>
 
