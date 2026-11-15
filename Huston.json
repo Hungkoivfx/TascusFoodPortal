@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15T12:39:11.088Z",
+  "updated_at": "2026-11-15T12:39:34.990Z",
   "records": [
     {
       "id": "Z032",
@@ -978,7 +978,10 @@
       "noi_dung": "Nha đam còn 1 gói , sắp hết ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/11/15 19:39",
+      "phuong_an_xu_ly": "Đóng sự việc",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z108",
