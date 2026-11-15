@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15T07:51:23.579Z",
+  "updated_at": "2026-11-15T12:38:41.670Z",
   "records": [
     {
       "id": "Z032",
@@ -604,7 +604,10 @@
       "noi_dung": "Cửa bên trái từ ngoài vào bị nặng cửa, khó đóng mở\nTạm thời theo dõi,\nƯu tiên thấp, chưa cần sửa vội",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần xử lý",
-      "trang_thai_xu_ly": "Chưa xử lý"
+      "trang_thai_xu_ly": "Đã xử lý",
+      "thoi_gian_xu_ly": "2026/11/15 19:38",
+      "phuong_an_xu_ly": "Cửa bị vong nhập, lúc nặng lúc nhẹ. Không cần xử lý thêm",
+      "nguoi_xu_ly": "Hưng"
     },
     {
       "id": "Z079",
