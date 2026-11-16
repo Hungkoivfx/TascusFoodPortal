@@ -1,9 +1,17 @@
+
 {
+  "id": "./",
   "name": "Tascus Food Portal",
   "short_name": "Tascus",
+  "description": "Hệ thống điều hành Tascus Food",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#ffffff"
+  "theme_color": "#f26a21",
+  "categories": [
+    "business",
+    "productivity"
+  ]
 }
