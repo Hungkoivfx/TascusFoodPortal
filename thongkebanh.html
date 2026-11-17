@@ -4,26 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#f7f7fb">
-    <title>Thống kê số lượng bánh</title>
+    <meta name="theme-color" content="#f36b35">
+    <title>Thống kê bánh | Tascus Food</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            color-scheme: light;
-            --bg: #f7f7fb;
-            --surface: #ffffff;
-            --surface-container: #efeff6;
-            --primary: #705b91;
-            --primary-container: #eaddff;
-            --on-primary-container: #271642;
-            --text: #1b1b21;
-            --subtext: #62616a;
-            --outline: #c8c5d0;
+            --orange: #ef6b35;
+            --orange-dark: #d95425;
+            --orange-light: #fff0e8;
+            --orange-pale: #fff8f4;
+            --text: #292522;
+            --muted: #81766f;
+            --line: #eee3dc;
+            --white: #fff;
+            --bg: #fffaf7;
         }
 
         * {
@@ -36,51 +34,43 @@
             min-height: 100vh;
             background: var(--bg);
             color: var(--text);
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Be Vietnam Pro', sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
-        button, a {
-            font: inherit;
-        }
-
         button {
-            color: inherit;
+            font: inherit;
+            cursor: pointer;
         }
 
         .topbar {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px 12px;
+            height: 76px;
+            padding: 0 30px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
         }
 
         .icon-button {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            border: none;
-            border-radius: 50%;
+            width: 42px;
+            height: 42px;
             display: grid;
             place-items: center;
-            background: transparent;
-            cursor: pointer;
-            transition: background .2s;
+            flex-shrink: 0;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--text);
+            font-size: 23px;
+            transition: .18s ease;
         }
 
         .icon-button:hover {
-            background: var(--surface-container);
-        }
-
-        .icon-button .material-icons-round {
-            font-size: 24px;
-        }
-
-        .help-button {
-            border: 1px solid var(--outline);
+            border-color: var(--orange);
+            color: var(--orange);
+            background: var(--orange-pale);
         }
 
         .page-heading {
@@ -90,52 +80,110 @@
 
         .page-heading h1 {
             margin: 0;
-            font-size: 24px;
-            line-height: 1.3;
-            font-weight: 600;
-            letter-spacing: -.4px;
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: -.3px;
         }
 
         .page-heading p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            color: var(--subtext);
-            line-height: 1.5;
+            margin: 3px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .help-button {
+            font-size: 17px;
+            font-weight: 800;
         }
 
         .main {
             width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 18px 24px 32px;
+            max-width: 1240px;
+            margin: auto;
+            padding: 28px 30px 36px;
         }
 
-        .intro {
-            margin-bottom: 22px;
+        /* HERO */
+
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 175px;
+            padding: 30px 38px;
+            margin-bottom: 27px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: var(--orange);
+            color: white;
         }
 
-        .intro h2 {
-            font-size: 20px;
-            font-weight: 600;
-            margin: 0 0 8px;
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            right: 110px;
+            top: -190px;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 30px rgba(255,255,255,.05),
+                0 0 0 60px rgba(255,255,255,.04);
+            pointer-events: none;
         }
 
-        .intro p {
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            display: inline-block;
+            margin-bottom: 11px;
+            padding: 5px 10px;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 5px;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hero h2 {
             margin: 0;
-            font-size: 14px;
-            line-height: 1.65;
-            color: var(--subtext);
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: -.7px;
         }
+
+        .hero p {
+            margin: 8px 0 0;
+            color: rgba(255,255,255,.9);
+            font-size: 13px;
+        }
+
+        .duck {
+            position: relative;
+            z-index: 1;
+            width: 116px;
+            height: 116px;
+            flex-shrink: 0;
+            margin-right: 20px;
+        }
+
+        /* HELP */
 
         .help-panel {
             display: none;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             padding: 18px 20px;
-            background: var(--surface);
-            border: 1px solid #e7e5ed;
-            border-radius: 16px;
-            line-height: 1.7;
-            animation: appear .2s ease-out;
+            border: 1px solid #f2d5c5;
+            border-left: 4px solid var(--orange);
+            border-radius: 9px;
+            background: var(--white);
+            animation: appear .2s ease;
         }
 
         .help-panel.show {
@@ -143,68 +191,262 @@
         }
 
         .help-panel h3 {
-            font-size: 16px;
-            margin: 0 0 8px;
-            font-weight: 600;
+            margin: 0 0 10px;
+            font-size: 14px;
+            font-weight: 800;
         }
 
         .help-panel p {
-            font-size: 14px;
-            color: var(--subtext);
-            margin: 5px 0;
+            margin: 6px 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
         }
 
+        /* SECTION */
+
+        .section-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 13px;
+        }
+
+        .section-heading h3 {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .section-heading p {
+            margin: 4px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .section-tag {
+            color: var(--orange-dark);
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* TABS */
+
         .tabs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            padding: 5px;
-            border-radius: 20px;
-            background: var(--surface-container);
-            margin-bottom: 16px;
+            display: flex;
+            gap: 9px;
+            margin-bottom: 15px;
         }
 
         .tab {
+            position: relative;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             gap: 9px;
-            min-height: 56px;
-            padding: 12px;
-            border: 1px solid transparent;
-            border-radius: 15px;
-            background: transparent;
-            font-size: 14px;
-            line-height: 1.4;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background .2s;
+            min-height: 49px;
+            padding: 0 19px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            background: white;
+            color: #766b64;
+            font-size: 12px;
+            font-weight: 700;
+            transition: .18s ease;
         }
 
-        .tab .material-icons-round {
-            font-size: 22px;
-            flex-shrink: 0;
+        .tab:hover {
+            border-color: #f3b398;
+            color: var(--orange-dark);
         }
 
         .tab.active {
-            color: var(--on-primary-container);
-            background: var(--primary-container);
-            font-weight: 600;
+            border-color: var(--orange);
+            background: var(--orange);
+            color: white;
+        }
+
+        .tab-symbol {
+            font-size: 17px;
+            line-height: 1;
         }
 
         .tab:focus-visible,
-        .icon-button:focus-visible {
-            outline: 3px solid var(--primary);
+        .icon-button:focus-visible,
+        .retry-button:focus-visible {
+            outline: 3px solid rgba(239,107,53,.35);
             outline-offset: 3px;
         }
 
+        /* CONTENT */
+
         .content-card {
-            background: var(--surface);
-            border: 1px solid #e7e5ed;
-            border-radius: 24px;
-            padding: 22px;
-            box-shadow: 0 2px 5px rgba(30, 25, 45, .025);
-            animation: appear .2s ease-out;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: white;
+            animation: appear .2s ease;
+        }
+
+        .content-heading {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .content-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: var(--orange-light);
+            color: var(--orange-dark);
+            font-size: 20px;
+        }
+
+        .content-heading h2 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .content-heading p {
+            margin: 4px 0 0;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .device-info {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--muted);
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .device-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #47a878;
+        }
+
+        .device-value {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        /* IFRAME */
+
+        .frame-wrapper {
+            position: relative;
+            width: 100%;
+            height: 76vh;
+            min-height: 520px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .frame-loading {
+            position: absolute;
+            z-index: 0;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 13px;
+            padding: 24px;
+            background: white;
+            color: var(--muted);
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .spinner {
+            width: 29px;
+            height: 29px;
+            border: 3px solid #ffe3d5;
+            border-top-color: var(--orange);
+            border-radius: 50%;
+            animation: spin .8s linear infinite;
+        }
+
+        .loading-title {
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .retry-button {
+            display: none;
+            margin-top: 4px;
+            padding: 9px 17px;
+            border: 0;
+            border-radius: 6px;
+            background: var(--orange);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .retry-button:hover {
+            background: var(--orange-dark);
+        }
+
+        .stats-frame {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: white;
+        }
+
+        .frame-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            padding: 13px 18px;
+            border-top: 1px solid var(--line);
+            background: var(--orange-pale);
+            color: #806f63;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .note-icon {
+            color: var(--orange);
+            font-weight: 800;
+        }
+
+        .footer {
+            padding-top: 24px;
+            color: #a69a92;
+            text-align: center;
+            font-size: 10px;
+            letter-spacing: .3px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         @keyframes appear {
@@ -218,238 +460,173 @@
             }
         }
 
-        .content-heading {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-            margin-bottom: 18px;
-        }
-
-        .content-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 15px;
-            display: grid;
-            place-items: center;
-            flex-shrink: 0;
-            background: var(--primary-container);
-            color: var(--primary);
-        }
-
-        .content-icon .material-icons-round {
-            font-size: 26px;
-        }
-
-        .content-heading h2 {
-            margin: 0 0 5px;
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .content-heading p {
-            margin: 0;
-            color: var(--subtext);
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .device-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-            color: var(--subtext);
-            font-size: 13px;
-        }
-
-        .device-info .material-icons-round {
-            font-size: 19px;
-        }
-
-        .device-value {
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .frame-wrapper {
-            position: relative;
-            width: 100%;
-            height: 76vh;
-            min-height: 520px;
-            overflow: hidden;
-            border: 1px solid #e4e1ea;
-            border-radius: 16px;
-            background: #fff;
-        }
-
-        .frame-loading {
-            position: absolute;
-            z-index: 0;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            padding: 24px;
-            text-align: center;
-            color: var(--subtext);
-            font-size: 14px;
-            line-height: 1.6;
-            background: #fff;
-        }
-
-        .spinner {
-            width: 30px;
-            height: 30px;
-            border: 3px solid #e7e0f2;
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin .8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .stats-frame {
-            position: relative;
-            z-index: 1;
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            background: transparent;
-        }
-
-        .frame-note {
-            display: flex;
-            gap: 9px;
-            align-items: flex-start;
-            margin-top: 14px;
-            padding: 13px 15px;
-            border-radius: 12px;
-            background: #f5f4f8;
-            color: var(--subtext);
-            font-size: 13px;
-            line-height: 1.65;
-        }
-
-        .frame-note .material-icons-round {
-            flex-shrink: 0;
-            color: var(--primary);
-            font-size: 19px;
-        }
-
-        .retry-button {
-            margin-top: 8px;
-            padding: 9px 16px;
-            border: 1px solid var(--outline);
-            border-radius: 100px;
-            background: #fff;
-            color: var(--text);
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .footer {
-            padding: 22px 0 0;
-            text-align: center;
-            color: #898791;
-            font-size: 12px;
-            line-height: 1.6;
-        }
+        /* MOBILE */
 
         @media (max-width: 600px) {
             .topbar {
-                padding: 10px 12px 8px;
-                gap: 7px;
+                height: 62px;
+                padding: 0 12px;
+                gap: 10px;
             }
 
             .icon-button {
-                width: 42px;
-                height: 42px;
+                width: 37px;
+                height: 37px;
+                border-radius: 9px;
             }
 
             .page-heading h1 {
-                font-size: 19px;
+                font-size: 14px;
             }
 
             .page-heading p {
-                font-size: 12px;
+                font-size: 10px;
             }
 
             .main {
-                padding: 14px 12px 24px;
+                padding: 16px 12px 25px;
             }
 
-            .intro {
-                margin-bottom: 18px;
+            .hero {
+                min-height: 135px;
+                padding: 21px 19px;
+                margin-bottom: 22px;
+                border-radius: 12px;
             }
 
-            .intro h2 {
-                font-size: 18px;
+            .hero h2 {
+                font-size: 20px;
             }
 
-            .intro p {
-                font-size: 13px;
+            .hero p {
+                max-width: 220px;
+                font-size: 10px;
+                line-height: 1.6;
+            }
+
+            .hero-label {
+                margin-bottom: 8px;
+                font-size: 8px;
+            }
+
+            .duck {
+                width: 76px;
+                height: 76px;
+                margin-right: 0;
+            }
+
+            .hero::after {
+                right: -100px;
+                top: -200px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                margin-bottom: 11px;
+            }
+
+            .section-heading h3 {
+                font-size: 15px;
+            }
+
+            .section-heading p {
+                font-size: 10px;
+            }
+
+            .section-tag {
+                font-size: 9px;
             }
 
             .tabs {
-                gap: 4px;
-                padding: 4px;
-                border-radius: 17px;
-                margin-bottom: 12px;
+                gap: 7px;
+                margin-bottom: 11px;
             }
 
             .tab {
+                flex: 1;
                 flex-direction: column;
                 gap: 5px;
-                min-height: 72px;
-                padding: 9px 4px;
+                min-height: 67px;
+                padding: 9px 5px;
+                border-radius: 8px;
+                font-size: 10px;
+                line-height: 1.4;
                 text-align: center;
-                font-size: 12px;
             }
 
-            .tab .material-icons-round {
-                font-size: 21px;
-            }
-
-            .content-card {
-                padding: 16px 12px;
-                border-radius: 20px;
+            .tab-symbol {
+                font-size: 18px;
             }
 
             .content-heading {
-                gap: 10px;
-                margin-bottom: 16px;
+                min-height: 67px;
+                padding: 12px 11px;
+            }
+
+            .content-title-wrap {
+                gap: 9px;
             }
 
             .content-icon {
-                width: 43px;
-                height: 43px;
-                border-radius: 13px;
+                width: 36px;
+                height: 36px;
+                border-radius: 8px;
+                font-size: 17px;
             }
 
             .content-heading h2 {
-                font-size: 16px;
+                font-size: 12px;
             }
 
             .content-heading p {
-                font-size: 12px;
+                font-size: 9px;
+            }
+
+            .device-info {
+                gap: 5px;
+                font-size: 9px;
+            }
+
+            .device-dot {
+                width: 6px;
+                height: 6px;
             }
 
             .frame-wrapper {
                 height: 76vh;
                 min-height: 420px;
-                border-radius: 12px;
             }
 
             .frame-note {
-                font-size: 12px;
                 padding: 11px;
+                font-size: 10px;
+            }
+
+            .footer {
+                padding-top: 20px;
+            }
+
+            .help-panel {
+                padding: 14px;
+            }
+
+            .help-panel p {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .device-info > span:nth-child(2) {
+                display: none;
+            }
+
+            .hero h2 {
+                font-size: 18px;
+            }
+
+            .duck {
+                width: 65px;
+                height: 65px;
             }
         }
 
@@ -464,27 +641,32 @@
 
 <body>
     <header class="topbar">
-        <button class="icon-button" id="backButton" type="button"
-                aria-label="Quay lại" title="Quay lại">
-    ‹
+        <button class="icon-button" id="backButton"
+                type="button" aria-label="Quay lại" title="Quay lại">
+            ←
         </button>
 
         <div class="page-heading">
             <h1>Thống kê số lượng bánh</h1>
-            <p>Tra cứu và theo dõi số liệu</p>
+            <p>Tascus Food · Cổng vận hành</p>
         </div>
 
-        <button class="icon-button help-button" id="helpButton" type="button"
-                aria-label="Hướng dẫn sử dụng" aria-expanded="false"
-                title="Hướng dẫn">
+        <button class="icon-button help-button" id="helpButton"
+                type="button" aria-label="Hướng dẫn sử dụng"
+                aria-expanded="false" title="Hướng dẫn">
             ?
         </button>
     </header>
 
     <main class="main">
-        <section class="intro">
-            <h2>Tra cứu thống kê</h2>
-            <p>Chọn loại thống kê để xem bảng dữ liệu trực tiếp ngay bên dưới.</p>
+
+        <section class="hero">
+            <div class="hero-content">
+               
+                <h2>Thống kê bánh</h2>
+                <p>Tra cứu dữ liệu tiền bánh và số lượng bánh.</p>
+            </div>
+            
         </section>
 
         <section class="help-panel" id="helpPanel" aria-hidden="true">
@@ -495,48 +677,66 @@
             <p>• Nếu bảng không hiển thị, Lark có thể đang chặn iframe hoặc yêu cầu đăng nhập. Khi đó cần mở liên kết trực tiếp trên Lark.</p>
         </section>
 
-        <nav class="tabs" role="tablist" aria-label="Loại thống kê">
-            <button class="tab active" id="tabMoney" type="button"
-                    role="tab" aria-selected="true"
-                    aria-controls="tabContent" data-tab="money">
-                <span class="material-icons-round">payments</span>
-                <span>Thống kê tiền bánh</span>
-            </button>
+        <section>
+            <div class="section-heading">
+                <div>
+                    <h3>Chọn dữ liệu cần xem</h3>
+                    <p>Chọn một trong hai loại thống kê bên dưới.</p>
+                </div>
+                <span class="section-tag">DỮ LIỆU TRỰC TUYẾN</span>
+            </div>
 
-            <button class="tab" id="tabQuantity" type="button"
-                    role="tab" aria-selected="false"
-                    aria-controls="tabContent" data-tab="quantity" tabindex="-1">
-                <span class="material-icons-round">inventory_2</span>
-                <span>Thống kê số lượng bánh</span>
-            </button>
-        </nav>
+            <nav class="tabs" role="tablist" aria-label="Loại thống kê">
+                <button class="tab active" id="tabMoney"
+                        type="button" role="tab"
+                        aria-selected="true"
+                        aria-controls="tabContent"
+                        data-tab="money">
+                    <span class="tab-symbol">₫</span>
+                    <span>Thống kê tiền bánh</span>
+                </button>
+
+                <button class="tab" id="tabQuantity"
+                        type="button" role="tab"
+                        aria-selected="false"
+                        aria-controls="tabContent"
+                        data-tab="quantity" tabindex="-1">
+                    <span class="tab-symbol">▤</span>
+                    <span>Thống kê số lượng bánh</span>
+                </button>
+            </nav>
+        </section>
 
         <section class="content-card" id="tabContent"
                  role="tabpanel" aria-labelledby="tabMoney">
 
             <div class="content-heading">
-                <div class="content-icon">
-                    <span class="material-icons-round" id="contentIcon">payments</span>
+                <div class="content-title-wrap">
+                    <div class="content-icon" id="contentIcon">₫</div>
+                    <div>
+                        <h2 id="contentTitle">Thống kê tiền bánh</h2>
+                        <p id="contentDescription">Theo dõi dữ liệu thống kê tiền bánh.</p>
+                    </div>
                 </div>
 
-                <div>
-                    <h2 id="contentTitle">Thống kê tiền bánh</h2>
-                    <p id="contentDescription">Theo dõi dữ liệu thống kê tiền bánh.</p>
+                <div class="device-info">
+                    <span class="device-dot"></span>
+                    <span>Thiết bị:</span>
+                    <span class="device-value" id="deviceName">Máy tính</span>
                 </div>
-            </div>
-
-            <div class="device-info">
-                <span class="material-icons-round" id="deviceIcon">computer</span>
-                <span>Phiên bản:</span>
-                <span class="device-value" id="deviceName">Máy tính</span>
             </div>
 
             <div class="frame-wrapper">
                 <div class="frame-loading" id="frameLoading">
                     <div class="spinner"></div>
-                    <div id="loadingText">Đang tải bảng thống kê...</div>
-                    <button class="retry-button" id="retryButton" type="button"
-                            style="display:none">
+                    <div class="loading-title" id="loadingTitle">
+                        Đang tải bảng thống kê
+                    </div>
+                    <div id="loadingText">
+                        Vui lòng chờ trong giây lát...
+                    </div>
+                    <button class="retry-button" id="retryButton"
+                            type="button">
                         Tải lại bảng
                     </button>
                 </div>
@@ -553,13 +753,16 @@
             </div>
 
             <div class="frame-note">
-                <span class="material-icons-round">info</span>
-                <span id="frameNoteText">Bảng đang được tải trực tiếp từ Lark. Thời gian tải phụ thuộc vào kết nối mạng và quyền truy cập.</span>
+                <span class="note-icon">ⓘ</span>
+                <span id="frameNoteText">
+                    Bảng đang được tải trực tiếp từ Lark.
+                    Thời gian tải phụ thuộc vào kết nối mạng và quyền truy cập.
+                </span>
             </div>
         </section>
 
         <div class="footer">
-            Cổng vận hành · Tascus Food
+            CỔNG VẬN HÀNH · TASCUS FOOD
         </div>
     </main>
 
@@ -571,14 +774,14 @@
                 money: {
                     title: 'Thống kê tiền bánh',
                     description: 'Theo dõi dữ liệu thống kê tiền bánh.',
-                    icon: 'payments',
+                    icon: '₫',
                     mobile: 'https://rjtj1yaw65k.sg.larksuite.com/share/base/dashboard/shrlgk8jqlhHXtKDqs2QU4dpkad',
                     desktop: 'https://rjtj1yaw65k.sg.larksuite.com/share/base/dashboard/shrlgGIJ8pKJIN3z7QyngRk2Afb'
                 },
                 quantity: {
                     title: 'Thống kê số lượng bánh',
                     description: 'Theo dõi dữ liệu thống kê số lượng bánh.',
-                    icon: 'inventory_2',
+                    icon: '▤',
                     mobile: 'https://rjtj1yaw65k.sg.larksuite.com/share/base/view/shrlg5Z3tXnyuIAmkhjsnWRMAzb',
                     desktop: 'https://rjtj1yaw65k.sg.larksuite.com/share/base/view/shrlgVsvKDPgQFNBjLFHGkUs2XI'
                 }
@@ -595,13 +798,17 @@
             }
 
             function getUrl(tab) {
-                return isMobile() ? links[tab].mobile : links[tab].desktop;
+                return isMobile()
+                    ? links[tab].mobile
+                    : links[tab].desktop;
             }
 
             function showLoading(message, showRetry = false) {
                 $('frameLoading').style.display = 'flex';
+                $('loadingTitle').textContent = 'Đang tải bảng thống kê';
                 $('loadingText').textContent = message;
-                $('retryButton').style.display = showRetry ? 'inline-block' : 'none';
+                $('retryButton').style.display =
+                    showRetry ? 'inline-block' : 'none';
             }
 
             function hideLoading() {
@@ -613,8 +820,9 @@
                 const url = getUrl(currentTab);
                 const frame = $('statsFrame');
 
-                $('deviceName').textContent = isMobile() ? 'Điện thoại' : 'Máy tính';
-                $('deviceIcon').textContent = isMobile() ? 'smartphone' : 'computer';
+                $('deviceName').textContent =
+                    isMobile() ? 'Điện thoại' : 'Máy tính';
+
                 frame.title = item.title;
 
                 if (!forceReload && url === currentUrl) {
@@ -623,15 +831,19 @@
 
                 currentUrl = url;
                 clearTimeout(loadTimer);
-                showLoading('Đang tải bảng thống kê...');
 
+                showLoading('Vui lòng chờ trong giây lát...');
                 frame.src = url;
 
-                // Trình duyệt không cho biết chắc chắn iframe có bị máy chủ
-                // đích chặn hay không. Bộ hẹn giờ chỉ hiện hướng dẫn dự phòng.
+                // Trình duyệt không thể xác định chắc chắn iframe
+                // có bị máy chủ đích chặn hay không.
                 loadTimer = setTimeout(() => {
+                    $('loadingTitle').textContent =
+                        'Bảng đang tải lâu hơn dự kiến';
+
                     $('loadingText').textContent =
-                        'Bảng tải lâu hoặc không hiển thị? Lark có thể yêu cầu đăng nhập hoặc chặn nhúng iframe.';
+                        'Lark có thể yêu cầu đăng nhập hoặc chặn nhúng iframe.';
+
                     $('retryButton').style.display = 'inline-block';
                 }, 12000);
             }
@@ -644,8 +856,12 @@
 
                 document.querySelectorAll('.tab').forEach(button => {
                     const selected = button.dataset.tab === tab;
+
                     button.classList.toggle('active', selected);
-                    button.setAttribute('aria-selected', String(selected));
+                    button.setAttribute(
+                        'aria-selected',
+                        String(selected)
+                    );
                     button.tabIndex = selected ? 0 : -1;
                 });
 
@@ -670,12 +886,23 @@
                 });
 
                 button.addEventListener('keydown', event => {
-                    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+                    if (
+                        event.key !== 'ArrowLeft' &&
+                        event.key !== 'ArrowRight'
+                    ) return;
 
                     event.preventDefault();
-                    const nextTab = currentTab === 'money' ? 'quantity' : 'money';
+
+                    const nextTab =
+                        currentTab === 'money' ? 'quantity' : 'money';
+
                     selectTab(nextTab);
-                    $(nextTab === 'money' ? 'tabMoney' : 'tabQuantity').focus();
+
+                    $(
+                        nextTab === 'money'
+                            ? 'tabMoney'
+                            : 'tabQuantity'
+                    ).focus();
                 });
             });
 
@@ -683,8 +910,15 @@
                 const panel = $('helpPanel');
                 const isOpen = panel.classList.toggle('show');
 
-                $('helpButton').setAttribute('aria-expanded', String(isOpen));
-                panel.setAttribute('aria-hidden', String(!isOpen));
+                $('helpButton').setAttribute(
+                    'aria-expanded',
+                    String(isOpen)
+                );
+
+                panel.setAttribute(
+                    'aria-hidden',
+                    String(!isOpen)
+                );
             });
 
             $('backButton').addEventListener('click', () => {
@@ -703,9 +937,8 @@
             $('statsFrame').addEventListener('load', () => {
                 clearTimeout(loadTimer);
 
-                // Sự kiện load không đảm bảo nội dung Lark đã hiển thị.
-                // Một số máy chủ chặn iframe vẫn phát sinh sự kiện này.
-                $('loadingText').textContent = 'Đang hoàn tất tải bảng...';
+                $('loadingTitle').textContent =
+                    'Đang hoàn tất tải bảng...';
 
                 setTimeout(() => {
                     hideLoading();
@@ -726,9 +959,6 @@
 
                     $('deviceName').textContent =
                         isMobile() ? 'Điện thoại' : 'Máy tính';
-
-                    $('deviceIcon').textContent =
-                        isMobile() ? 'smartphone' : 'computer';
                 }, 200);
             });
 
