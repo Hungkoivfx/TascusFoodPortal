@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15T12:40:11.582Z",
+  "updated_at": "2026-11-20T15:03:25.815Z",
   "records": [
     {
       "id": "Z032",
@@ -998,6 +998,16 @@
       "phuong_an_xu_ly": "Đã thay bóng 7w",
       "nguoi_xu_ly": "Hưng",
       "thoi_gian_xu_ly": "2026/11/15 19:39"
+    },
+    {
+      "id": "Z109",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/11/20 22:03",
+      "nguoi_bao_cao": "Duyên",
+      "noi_dung": "Hết cốt trà và hibiscus mỗi (trà còn nửa chai và hibiscus 2 chai)",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
