@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20T15:03:25.815Z",
+  "updated_at": "2026-11-22T06:25:26.307Z",
   "records": [
     {
       "id": "Z032",
@@ -1005,6 +1005,16 @@
       "thoi_gian": "2026/11/20 22:03",
       "nguoi_bao_cao": "Duyên",
       "noi_dung": "Hết cốt trà và hibiscus mỗi (trà còn nửa chai và hibiscus 2 chai)",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
+    },
+    {
+      "id": "Z110",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/11/22 13:25",
+      "nguoi_bao_cao": "P.Linh",
+      "noi_dung": "Hết sạch nước rửa bát và phomai lát ạ",
       "muc_do": "Thông thường",
       "can_xu_ly": "Cần hỗ trợ",
       "trang_thai_xu_ly": "Chưa xử lý"
