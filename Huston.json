@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T07:39:53.133Z",
+  "updated_at": "2026-11-22T14:40:54.815Z",
   "records": [
     {
       "id": "Z032",
@@ -1021,6 +1021,16 @@
       "thoi_gian_xu_ly": "2026/11/22 14:39",
       "phuong_an_xu_ly": "Vẫn còn nước rửa bát ạ :))) \nCòn 1/3 gói phomai lát",
       "nguoi_xu_ly": "P.Linh"
+    },
+    {
+      "id": "Z111",
+      "chi_nhanh": "Khương Trung",
+      "thoi_gian": "2026/11/22 21:40",
+      "nguoi_bao_cao": "Định",
+      "noi_dung": "Hết tương cà",
+      "muc_do": "Thông thường",
+      "can_xu_ly": "Cần hỗ trợ",
+      "trang_thai_xu_ly": "Chưa xử lý"
     }
   ]
 }
